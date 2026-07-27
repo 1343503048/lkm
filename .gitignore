@@ -1,2 +1,3 @@
 sched/.config
 sched/.state/
+__pycache__/
