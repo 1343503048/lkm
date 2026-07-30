@@ -27,7 +27,7 @@ contribution_opportunities:
   - kind: discussion
     description: "如果有在大型 SMP 系统上调试单 CPU 调度问题的经验，可以回帖支持并补充使用场景"
 generated_at: "2026-07-30T10:00:00"
-source_email_count: 3
+source_email_count: 6
 related_articles: []
 tags: [sched_debug]
 ---
@@ -53,7 +53,7 @@ v1（2026-07-28）：首次发出。PeterZ 回帖质疑（具体意见在 uid=54
 
 ## Maintainer 意见与讨论焦点
 
-- **Peter Zijlstra**：质疑使用场景（具体意见未在缓存邮件正文中完整展示，但从作者回复推断是"为什么不直接用现有接口"）
+- **Peter Zijlstra**：明确质疑动机，原话："You're failing to explain why though. In what situation does the overhead from sched/debug matter one whit? If you're dumping this at frequencies high enough for this to matter, you're doing something terribly wrong." 核心观点是：sched/debug 本身是低频调试工具，如果读取频率高到全量输出成为瓶颈，那使用方式本身就有问题
 - **作者回复**：强调这不是用于高频轮询或生产监控，而是在调查特定 CPU 的延迟异常/调度问题时提供即时、定向的视图
 - **支持意见**（uid=5483，疑似 DPDK/realtime 用户）：
 
