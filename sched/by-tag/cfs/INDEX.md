@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 7 篇
+共 11 篇
 
+- [sched-20260730-010](../../2026/07/sched-20260730-010-sched-cache-task-cache-work-epoch-race.md) `discussion/medium/under_review` — 本文为增量更新，完整背景见 sched-20260729-005。Luo Gengkun 在 review v8 时发现 `task_tick_cache()` 中 epoch 更新的竞态条件：lockless check 在 spinlock 保护之外，可能导致 epoch 回退。Tim Chen 也参与了讨论。
+- [sched-20260730-008](../../2026/07/sched-20260730-008-sched-fair-prefer-fully-idle-cores-nohz-balancing-v2.md) `feature/under_review` — Andrea Righi 的 v2 补丁优化 NOHZ idle load balancer 的 CPU 选择：优先选择整个 SMT core 都 idle 的 CPU，避免唤醒部分空闲 core 的 sibling。在 NVIDIA Vera 的 GEMM 测试中从 6.2 TFLOP/s 提升到 9.4 TFLOP/s（+51%）。本文为增量更新，完整背景见 sched-20260729-00
+- [sched-20260730-004](../../2026/07/sched-20260730-004-sched-fair-prefer-waker-cpu-non-smt-reciprocal-sync-wakeups.md) `feature/under_review` — Shubhang 的 v3 补丁优化同步唤醒的 CPU 选择：对于非 SMT 系统的 reciprocal sync wakeup，优先选择 waker CPU 以保持 cache 热度。K Prateek Nayak 提供了将 SMT 检查推入 `select_idle_sibling()` 的代码建议，等待作者整合。
+- [sched-20260730-002](../../2026/07/sched-20260730-002-sched-fair-cgroup-mode-default-netperf-regression.md) `bug/high/under_review` — 0-Day robot 报告 `fb1050ac8e` 导致 netperf TCP_MAERTS 吞吐下降 14.6%。该 commit 将 cgroup-weight 计算从 smp 模式（flat）切换为 concur 模式（按 min(runnable, cpus) 缩放）。PeterZ 怀疑是 ksoftirqd 抢占行为变化导致，建议通过 slice 调优缓解。正在调查中。
 - [sched-20260729-005](../../2026/07/sched-20260729-005-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — cache-aware 调度系列中的扫描开销优化（`task_cache_work()` 只扫 visited cpus）走到 v8，Tim Chen 给了 Reviewed-by；剩余讨论集中在一个罕见并发场景是否需要显式互斥，Chen Yu 判定可容忍、只需改注释。接近成熟。
 - [sched-20260729-004](../../2026/07/sched-20260729-004-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stam.md) `fix/medium/under_review` — Ampere 的 Shubhang Kaushik 修复 4b603f1551a73 引入的统计缺陷：`update_rq_avg_idle()` 丢失了 `idle_stamp` 有效性检查，`idle_stamp==0` 时会把 `rq_clock(rq)` 整值当 idle 时长，瞬间把 avg_idle 顶到 clamp 上限。已获 Prateek Reviewed-by，合入概率高。
 - [sched-20260728-010](../../2026/07/sched-20260728-010-sched-idle-sysbench-threads-regression-after-f4c31b07b136.md) `bug/high/under_review` — Oracle 性能测试发现 commit f4c31b07b136（"sched: idle: Consolidate the handling of two special cases"）导致 MySQL Sysbench threads 在 OCI VM 上出现 10%~29% 的性能回归。讨论持续近一个月，Rafael Wysocki 和 Christian Loehel 参与分析，目前根因

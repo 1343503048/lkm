@@ -1,7 +1,8 @@
 # tag: idle
 
-共 6 篇
+共 7 篇
 
+- [sched-20260730-003](../../2026/07/sched-20260730-003-sched-idle-sysbench-regression-f4c31b07b136.md) `bug/high/under_review` — Zhan Xusheng 报告 commit `f4c31b07b136`（sched/idle tick stop 相关）导致 sysbench threads 性能回退。Christian Loehle 和 Rafael J. Wysocki 讨论认为可能与 hypervisor 的 vCPU 调度交互有关，但目前信息不足以确定 root cause。Rafael 明确表示不会在完全理解问题之
 - [sched-20260729-008](../../2026/07/sched-20260729-008-cpuidle-speed-up-do-idle-by-caching-the-governor-latency-qos.md) `feature/under_review` — Yaxiong Tian（麒麟）的 v2 系列把 cpuidle governor 的 latency QoS 约束聚合值按 CPU 缓存、经 QoS notifier 失效，将 cpuidle_governor_latency_req() 在 menu_select() 中的耗时占比从 19.9%（~1.9us/次）降到 4.2%（~0.3us/次）。idle 热路径优化方向合理，但暂无任何社区
 - [sched-20260729-004](../../2026/07/sched-20260729-004-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stam.md) `fix/medium/under_review` — Ampere 的 Shubhang Kaushik 修复 4b603f1551a73 引入的统计缺陷：`update_rq_avg_idle()` 丢失了 `idle_stamp` 有效性检查，`idle_stamp==0` 时会把 `rq_clock(rq)` 整值当 idle 时长，瞬间把 avg_idle 顶到 clamp 上限。已获 Prateek Reviewed-by，合入概率高。
 - [sched-20260729-003](../../2026/07/sched-20260729-003-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/high/under_review` — f4c31b07b136 让"无 cpuidle driver"路径也走 got_tick 启发式，导致 Oracle 在 OCI 小规格 VM 上 sysbench 回退最多 -29%；Christian Loehle（ARM）发出单行修复恢复无条件停 tick，Zhan Xusheng 同日给出机理分析。影响虚拟化场景明显，值得测试参与。

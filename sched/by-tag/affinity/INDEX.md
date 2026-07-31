@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 3 篇
+共 4 篇
 
+- [sched-20260730-004](../../2026/07/sched-20260730-004-sched-fair-prefer-waker-cpu-non-smt-reciprocal-sync-wakeups.md) `feature/under_review` — Shubhang 的 v3 补丁优化同步唤醒的 CPU 选择：对于非 SMT 系统的 reciprocal sync wakeup，优先选择 waker CPU 以保持 cache 热度。K Prateek Nayak 提供了将 SMT 检查推入 `select_idle_sibling()` 的代码建议，等待作者整合。
 - [sched-20260728-003](../../2026/07/sched-20260728-003-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wake.md) `feature/under_review` — Ampere 的 Shubhang Kaushik 发出 v3，针对非 SMT 系统上的 pipe 式 ping-pong 负载，在 wake-affine 域内优先将 wakee 放到 waker CPU 上（而非走 select_idle_sibling 找 idle CPU）。在 80 核 Ampere Altra 上 `perf bench sched pipe` 提升约 30%。v3 刚
 - [sched-20260726-007](../../2026/07/sched-20260726-007-selftests-sched-ext-make-allowed-cpus-idle-validation-race-free.md) `fix/medium/under_review` — 一组针对 sched_ext idle 跟踪与 selftest 竞态的修复：Kuba Piecuch 先修复 WAKE_SYNC 下 waker CPU 未被标记 busy 导致的 `allowed_cpus` selftest 偶发失败；Andrea Righi 跟进重写 selftest 的 idle 校验为无竞态版本。目标分支 `sched_ext/for-7.2-fixes`，合入可能性
 - [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
