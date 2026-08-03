@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 12 篇
+共 13 篇
 
+- [sched-20260803-006](../../2026/08/sched-20260803-006-sched-numa-prevent-race-on-sysctl_numa_balancing-static-key.md) `bug/high/under_review` — `sched/numa` 修复 `sysctl_numa_balancing` 静态键切换时的抢占竞态（UAF / use-after-uninit），附 syzkaller C repro 与 Fixes 标签。问题真实且有复现，合入可能性高。
 - [sched-20260802-003](../../2026/08/sched-20260802-003-perf-sched-latency-refine-outputs-unit-scaling-histogram-v6.md) `feature/under_review` — **本文为增量更新** —— 完整背景见 `related_articles` 中的 `sched-20260731-009` 与 `sched-20260801-008`。v6 的核心变化是响应 Namhyung Kim 的 review：把 pipe 模式处理从 Patch 1 拆出成独立 patch（系列 3→4 个），补上 `Fixes:` 标签，并在 commit log 中加入表头格式
 - [sched-20260801-010](../../2026/08/sched-20260801-010-sched-fix-two-misspellings-in-linux-sched-h.md) `fix/under_review` — 一个仅改 2 行注释的 typo 修复 patch，但其中一处的目标拼写看起来是错的——把 `memalloc_nfs_save()` 改成了 `memalloc_nfos_save()`，而内核中实际的函数名是 `memalloc_nofs_save()`。值得回帖指出。
 - [sched-20260801-008](../../2026/08/sched-20260801-008-perf-sched-latency-output-improvements-v5.md) `fix/low/under_review` — Aaron Tomlin 的 `perf sched latency` 输出改进系列走到 v5：修掉在无 tracepoint 样本时仍打印空表格的问题，并为延迟/运行时数值加上自动单位换算。Namhyung Kim 给出的都是可操作的形式性意见（拆 commit、补示例输出），方向已获认可，v6 应能收敛。

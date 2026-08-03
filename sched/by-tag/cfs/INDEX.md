@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 20 篇
+共 23 篇
 
+- [sched-20260803-004](../../2026/08/sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups.md) `discussion/under_review` — `sched/fair` 的「非 SMT reciprocal sync wakeup 优先选 waker CPU」补丁（v3）引发更深层的讨论：review 要求先定义 sync wakeup 的整体策略，而非零散修补。合入取决于策略共识，目前 medium。
+- [sched-20260803-005](../../2026/08/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.md) `fix/medium/under_review` — `sched/cache` 修正 active load balance 未尊重 `migrate_llc_task` 的「仅本地 LLC 内迁移」语义。Peter Zijlstra 要求消除与 `can_migrate_task()` 的语义重复。待 v5 收敛，合入可能性高。
+- [sched-20260803-008](../../2026/08/sched-20260803-008-sched-adjust-cfs_bandwidth-layout-to-save-memory.md) `fix/low/under_review` — `sched` 重排 `cfs_bandwidth` 结构成员以节省内存并对齐热字段。属低严重度的布局优化，合入可能性 medium，需确认 cache-line 影响。
 - [sched-20260801-006](../../2026/08/sched-20260801-006-sched-cache-honor-migrate-llc-task-in-active-load-balance.md) `fix/medium/under_review` — cache-aware scheduling 的 `migrate_llc_task` 迁移类型在被动负载均衡切换到 active balance 的异步边界上丢失了，导致 CPU stopper 可能把任务搬到它 preferred LLC 之外。Lu Wang 用一个 rq 字段把迁移类型传递过去并补上目的 LLC 校验。修复思路清晰，但完全没有提供复现或效果证据。
 - [sched-20260801-005](../../2026/08/sched-20260801-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing-v3.md) `feature/under_review` — Andrea Righi 让 NOHZ idle load balancer 优先挑选整个 core 都空闲的 CPU，避免 ILB 跑在繁忙 SMT core 的空闲兄弟线程上而挤占其算力。方案本身简单合理、已经过三轮 reviewer 打磨，但**三个版本自始至终没有给出任何效果数据**，这是它目前唯一的明显短板。
 - [sched-20260801-004](../../2026/08/sched-20260801-004-sched-fair-prefer-waker-cpu-non-smt-reciprocal-sync-wakeups-v3.md) `feature/under_review` — Shubhang Kaushik (Ampere) 试图让 pipe 式乒乓负载的互惠同步唤醒直接留在 waker CPU 上，在 80 核非 SMT Ampere Altra 上 `perf bench sched pipe` 提升约 30%。但 v3 采用的「非 SMT 才生效」二分法遭到 K Prateek Nayak 的结构性异议，后者给出了一份下推进 `select_idle_sibli

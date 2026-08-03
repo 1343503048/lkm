@@ -1,0 +1,1 @@
+../../2026/08/sched-20260803-009-sched-numa-apply-remote-socket-distance-averaging-for-hygon-7447v.md

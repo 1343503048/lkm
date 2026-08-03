@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 6 篇
+共 7 篇
 
+- [sched-20260803-004](../../2026/08/sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups.md) `discussion/under_review` — `sched/fair` 的「非 SMT reciprocal sync wakeup 优先选 waker CPU」补丁（v3）引发更深层的讨论：review 要求先定义 sync wakeup 的整体策略，而非零散修补。合入取决于策略共识，目前 medium。
 - [sched-20260801-005](../../2026/08/sched-20260801-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing-v3.md) `feature/under_review` — Andrea Righi 让 NOHZ idle load balancer 优先挑选整个 core 都空闲的 CPU，避免 ILB 跑在繁忙 SMT core 的空闲兄弟线程上而挤占其算力。方案本身简单合理、已经过三轮 reviewer 打磨，但**三个版本自始至终没有给出任何效果数据**，这是它目前唯一的明显短板。
 - [sched-20260801-004](../../2026/08/sched-20260801-004-sched-fair-prefer-waker-cpu-non-smt-reciprocal-sync-wakeups-v3.md) `feature/under_review` — Shubhang Kaushik (Ampere) 试图让 pipe 式乒乓负载的互惠同步唤醒直接留在 waker CPU 上，在 80 核非 SMT Ampere Altra 上 `perf bench sched pipe` 提升约 30%。但 v3 采用的「非 SMT 才生效」二分法遭到 K Prateek Nayak 的结构性异议，后者给出了一份下推进 `select_idle_sibli
 - [sched-20260801-003](../../2026/08/sched-20260801-003-sched-fair-sync-wakeups-target-wakers-core.md) `feature/under_review` — Madadi Vineeth Reddy 提出让 `WF_SYNC` 同步唤醒把 wakee 放到 waker 所在 core 的 SMT 兄弟线程上，以保住已经热的 cache。POWER11 上 hackbench 小规模场景有 6–8% 提升，但 reviewer 当天就指出这个收益可能高度依赖 SMT 编号连续性，x86 上未必成立——在补齐跨平台数据之前不宜下结论。
