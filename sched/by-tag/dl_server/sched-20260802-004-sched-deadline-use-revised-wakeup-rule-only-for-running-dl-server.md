@@ -1,1 +1,0 @@
-../../2026/08/sched-20260802-004-sched-deadline-use-revised-wakeup-rule-only-for-running-dl-server.md
