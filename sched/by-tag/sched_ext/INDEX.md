@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 8 篇
+共 12 篇
 
+- [sched-20260801-001](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md) `feature/under_review` — Tejun Heo 发出 12 个 patch 的系列，为 sched_ext 层级调度（子调度器）补上一条内核兜底路径：当子调度器持有的 cid 无法覆盖某个任务的亲和性时，内核以受限带宽直接把该任务跑起来，而不是让它在 cap 拒绝与重新入队之间反复直到调度器被驱逐或任务 stall。这是 sched_ext 层级化能力的关键补齐，由子系统 maintainer 本人提出，值得关注。
+- [sched-20260801-002](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md) `fix/medium/under_review` — sched_ext 的 built-in idle mask 在初始化时把所有 online CPU 一律标记为 idle，但真正的 idle 跟踪要等调度器完全启用后才开始，导致 `ops.init()` 期间以及某些 CPU 下一次 idle 转换之前，繁忙 CPU 被错误地宣称为 idle。v3 把跟踪时机提前并顺带修掉了一个 selftest 的固有竞态，方案已按 review 意见收敛，接近可合入状态。
+- [sched-20260731-004](../../2026/07/sched-20260731-004-sched-ext-fix-stale-cgroup-id-in-sched-ext-ops-kernel-doc.md) `fix/low/under_review` — Liang Luo (Kylinos) 修复 sched_ext_ops 结构体的 kernel-doc 注释：`@cgroup_id` 应更新为 `@sub_cgroup_id` 以匹配实际成员名。此不一致导致两个 kernel-doc 警告。单行修复，合入可能性高。
+- [sched-20260731-001](../../2026/07/sched-20260731-001-sched-ext-fix-idle-cpu-state-initialization-v2.md) `fix/medium/under_review` — sched_ext v2 修复：在 BPF 调度器的 ops.init() 回调执行前，内置 idle 掩码未正确初始化，导致 ops.init() 可能观察到错误的 idle CPU 状态。Andrea Righi (NVIDIA) 发出 v2 补丁系列，包含核心修复和 selftest 竞态修复。Kuba Piecuch (Google) 已 review 并建议在 v3 中合并静态键，And
 - [sched-20260728-009](../../2026/07/sched-20260728-009-sched-ext-set-errno-on-enabling-to-enabled-transition-failure.md) `fix/low/under_review` — sched_ext 启用流程中一个极小的错误处理缺陷：当 SCX_ENABLING → SCX_ENABLED 的 cmpxchg 竞态失败时，函数跳转到 err_disable 但 ret 仍为 0，导致内核日志打印 "scx_root_enable() failed (0)" 这样无意义的信息。单行修复，设置 ret = -EBUSY。
 - [sched-20260728-002](../../2026/07/sched-20260728-002-sched-ext-nmi-safe-exit-handling.md) `feature/merged_tip` — Tejun Heo 的 5-patch 系列让 sched_ext 的 exit claiming 变为 lock-free 且 NMI-safe，已合入 sched_ext/for-7.3 分支。这解决了 BPF kfunc 在 NMI 中触发 scx_error() 时死锁的问题。
 - [sched-20260728-001](../../2026/07/sched-20260728-001-sched-ext-proxy-execution-support-with-sched-ext.md) `feature/under_review` — Andrea Righi (NVIDIA) 发出 15-patch 系列，目标是让 proxy execution（代理执行）与 sched_ext 共存。此前 SCHED_PROXY_EXEC 显式依赖 `!SCHED_CLASS_EXT`，本系列移除该限制，让 BPF 调度器能正确处理 blocked donor 的入队和 DSQ 转移竞态。v1 刚发出，暂无 review。
