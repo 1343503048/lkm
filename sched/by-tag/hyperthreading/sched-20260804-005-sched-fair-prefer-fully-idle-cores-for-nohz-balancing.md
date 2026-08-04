@@ -1,0 +1,1 @@
+../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md

@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 9 篇
+共 10 篇
 
+- [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。
 - [sched-20260803-014](../../2026/08/sched-20260803-014-nohz-replace-dead-select-with-choice-default-v2.md) `fix/low/under_review` — `nohz` 用 `choice/default` 替换失效的 `select` 依赖（08-02 系列 005）在 08-03 收到 Reviewed-by，确认语义等价。低严重度，合入可能性高；仍缺 `.config` 对比数据（明确参与点）。
 - [sched-20260802-005](../../2026/08/sched-20260802-005-nohz-replace-dead-select-with-choice-default.md) `fix/low/under_review` — Kconfig 中 `select` 对 `choice` 内的选项无效，`NO_HZ_FULL` 里的 `select VIRT_CPU_ACCOUNTING_GEN` 是一行死代码。补丁删除它并改用 choice 的条件 default 表达同一关系。由静态分析工具 kconfirm 发现，已获一个非维护者的 Reviewed-by，但缺少配置验证数据且无维护者关注，存在沉寂风险。
 - [sched-20260802-001](../../2026/08/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md) `fix/low/under_review` — `housekeeping_init()` 在 deferred struct page 初始化完成之前调用 `memblock_free()` 释放 bootmem cpumask，在 `CONFIG_DEFERRED_STRUCT_PAGE_INIT=y` 时每种 housekeeping 类型触发一条 WARN 并给内核打上 `G W` 污点。补丁把释放动作推迟到 `core_initcal

@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 15 篇
+共 19 篇
 
+- [sched-20260804-001](../../2026/08/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.md) `feature/under_review` — Andrea Righi 的 15-patch 系列把内核主流的 SCHED_PROXY_EXEC（代理执行）机制带到 sched_ext：互斥锁/RT 阻塞的任务可被同调度类或更早调度类的高优先级任务「代理执行」，从而缓解优先级反转。Tejun 评价「Nice.」并指出两处需澄清的语义。属大型 feature，合入可能性高，仍处 review。
+- [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
+- [sched-20260804-003](../../2026/08/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.md) `fix/medium/merged` — sched_ext 内置 idle 掩码初始化为 busy 的修复（08-03-002）在 08-04 发 v4，获 Kuba Piecuch Reviewed-by，并由 Tejun 以 tag `sched_ext-for-7.3` **合入**。这是 08-03-002 的收尾，状态更新为 merged。
+- [sched-20260804-004](../../2026/08/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.md) `fix/high/merged_tip` — Tejun 在 08-04 发出 sched_ext 的 7.2-rc6 fixes pull 第二波，延续 08-03-003 的稳定性修复集合（UAF / kernfs 死锁 / sync wakeup 误标 busy）。状态 merged_tip，等待 7.2-rc6 进入主线。这是 08-03-003 的延续。
 - [sched-20260803-001](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md) `feature/under_review` — sched_ext 引入了内核侧的「rescue 执行」机制，解决子调度器持有的 CPU 授权（caps）不覆盖其任务亲和、导致任务被 cap 反复拒绝/饿死直至 watchdog 触发的问题。v2 已按 AI review 修正，合入阻力小，值得 SCX 开发者跟进。
 - [sched-20260803-002](../../2026/08/sched-20260803-002-sched-ext-initialize-idle-masks-as-busy.md) `fix/medium/under_review` — sched_ext 内置 idle 掩码初始化时把全部 online CPU 误标为 idle，导致 busy CPU 被错误广播。改为保守地初始为空，待 bypass 解除后由真实 idle 转换填充。修复方向已获 Tejun 认可，合入概率高。
 - [sched-20260803-003](../../2026/08/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.md) `fix/high/merged_tip` — Tejun 发出 sched_ext 的 7.2-rc6 fixes pull，修复子调度器生命周期中的多处 UAF / 死锁 / 错误状态，其中 sync wakeup 把 waker CPU 误标 idle 与 002 号文章（idle 掩码初始化）属同一正确性主题。已以 tag 提交，合入可能性=merged。

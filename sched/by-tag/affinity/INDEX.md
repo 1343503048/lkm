@@ -1,7 +1,10 @@
 # tag: affinity
 
-共 10 篇
+共 13 篇
 
+- [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
+- [sched-20260804-007](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md) `fix/medium/under_review` — active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。
+- [sched-20260804-017](../../2026/08/sched-20260804-017-sched-docs-document-cpu_preferred_mask.md) `feature/under_review` — Shrikanth Hegde 把 `cpu_preferred_mask`（per-task 偏好的大/小核子集，用于节能与缓存热）概念文档化，作为 cpu_preferred_mask 系列（v9→v10）的一部分。作者公开表示仍在等待一组 benchmark 数字支撑合入。合入可能性 medium——明确等数据。
 - [sched-20260803-001](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md) `feature/under_review` — sched_ext 引入了内核侧的「rescue 执行」机制，解决子调度器持有的 CPU 授权（caps）不覆盖其任务亲和、导致任务被 cap 反复拒绝/饿死直至 watchdog 触发的问题。v2 已按 AI review 修正，合入阻力小，值得 SCX 开发者跟进。
 - [sched-20260803-005](../../2026/08/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.md) `fix/medium/under_review` — `sched/cache` 修正 active load balance 未尊重 `migrate_llc_task` 的「仅本地 LLC 内迁移」语义。Peter Zijlstra 要求消除与 `can_migrate_task()` 的语义重复。待 v5 收敛，合入可能性高。
 - [sched-20260803-013](../../2026/08/sched-20260803-013-sched-isolation-defer-freeing-of-bootmem-housekeeping-cpumasks-v2.md) `fix/low/under_review` — `sched/isolation` 推迟释放 bootmem housekeeping cpumask（08-02 系列 001）在 08-03 进入释放时机的讨论：应将释放推迟到 bootmem 回收阶段而非即刻 `memblock_free`。低严重度，合入可能性高。

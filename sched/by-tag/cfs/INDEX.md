@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 23 篇
+共 27 篇
 
+- [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。
+- [sched-20260804-006](../../2026/08/sched-20260804-006-sched-fair-sync-wakeups-target-waker-core.md) `discussion/under_review` — sync wakeup 优化在 08-04 呈三个并行子方向：选 waker 的 core、保留 wake-affine、非 SMT reciprocal 优先 waker cpu。延续 08-03-004 的「先定义统一 policy」要求，目前仍 medium，需先收敛策略再定补丁定位。
+- [sched-20260804-007](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md) `fix/medium/under_review` — active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。
+- [sched-20260804-011](../../2026/08/sched-20260804-011-sched-fair-allow-load-balance-identical-capacity.md) `feature/under_review` — `sched_balance_find_src_rq()` 的「~5% 额外容量」阈值无意中阻止了相同容量 CPU 间的迁移；Ricardo Neri 改为用 `get_actual_cpu_capacity()` 并经 `sched_cluster_active` 静态键保护，使 `CONFIG_SCHED_CLUSTER` 下能跨相同容量 cluster 均衡。v6 已两枚 Tested-by，合入可能性 high。
 - [sched-20260803-004](../../2026/08/sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups.md) `discussion/under_review` — `sched/fair` 的「非 SMT reciprocal sync wakeup 优先选 waker CPU」补丁（v3）引发更深层的讨论：review 要求先定义 sync wakeup 的整体策略，而非零散修补。合入取决于策略共识，目前 medium。
 - [sched-20260803-005](../../2026/08/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.md) `fix/medium/under_review` — `sched/cache` 修正 active load balance 未尊重 `migrate_llc_task` 的「仅本地 LLC 内迁移」语义。Peter Zijlstra 要求消除与 `can_migrate_task()` 的语义重复。待 v5 收敛，合入可能性高。
 - [sched-20260803-008](../../2026/08/sched-20260803-008-sched-adjust-cfs_bandwidth-layout-to-save-memory.md) `fix/low/under_review` — `sched` 重排 `cfs_bandwidth` 结构成员以节省内存并对齐热字段。属低严重度的布局优化，合入可能性 medium，需确认 cache-line 影响。

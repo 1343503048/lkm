@@ -1,7 +1,8 @@
 # tag: perf
 
-共 18 篇
+共 19 篇
 
+- [sched-20260804-019](../../2026/08/sched-20260804-019-perf-sched-latency-v7-median-fix.md) `feature/under_review` — `perf sched latency` v7（08-03-010）在 08-04 收到 review：global 直方图排除 swapper 线程的方式（比较 comm 字符串）被建议改为检查 `tid==0`；另讨论 `--histogram/--time/--CPU` 输出细节。已 7 版，合入可能性 high，待小修订。
 - [sched-20260803-010](../../2026/08/sched-20260803-010-perf-sched-latency-refine-outputs-unit-scaling-histogram-v7.md) `feature/under_review` — `perf sched latency` 在 v6（08-02）基础上发 v7，仅修正直方图中位数计算的零点偏差。属工具侧打磨，已迭代 7 版，合入可能性高。这是 08-02 系列 003 的后续版本。
 - [sched-20260802-003](../../2026/08/sched-20260802-003-perf-sched-latency-refine-outputs-unit-scaling-histogram-v6.md) `feature/under_review` — **本文为增量更新** —— 完整背景见 `related_articles` 中的 `sched-20260731-009` 与 `sched-20260801-008`。v6 的核心变化是响应 Namhyung Kim 的 review：把 pipe 模式处理从 Patch 1 拆出成独立 patch（系列 3→4 个），补上 `Fixes:` 标签，并在 commit log 中加入表头格式
 - [sched-20260801-008](../../2026/08/sched-20260801-008-perf-sched-latency-output-improvements-v5.md) `fix/low/under_review` — Aaron Tomlin 的 `perf sched latency` 输出改进系列走到 v5：修掉在无 tracepoint 样本时仍打印空表格的问题，并为延迟/运行时数值加上自动单位换算。Namhyung Kim 给出的都是可操作的形式性意见（拆 commit、补示例输出），方向已获认可，v6 应能收敛。

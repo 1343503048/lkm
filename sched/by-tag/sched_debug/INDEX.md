@@ -1,7 +1,12 @@
 # tag: sched_debug
 
-共 13 篇
+共 18 篇
 
+- [sched-20260804-010](../../2026/08/sched-20260804-010-sched-topology-restore-sd_prefer_sibling.md) `feature/under_review` — Chen Yu 在 EAS 路径上恢复 `SD_PREFER_SIBLING` 语义：当兄弟域是 MC 且非 cluster 时，倾向把任务集中到更少 CPU 以留出全 idle sibling 节能。v6 已获 Vincent R-b + Tested-by，合入可能性 high。
+- [sched-20260804-013](../../2026/08/sched-20260804-013-sched-numa-fix-scan-period-remote-private-faults.md) `fix/medium/under_review` — Hongling Zeng 的「加速远程私有 fault 扫描周期」补丁被 Zhan Xusheng 精确 review 指出理由不成立（实际未加速），作者承认并发布 v2 改用正确的修正理由。这是「review 抓出错误 commit message」的典型案例，合入可能性 high（v2）。
+- [sched-20260804-014](../../2026/08/sched-20260804-014-sched-numa-clear-locality-stats-on-early-return.md) `fix/medium/under_review` — `update_task_scan_period()` 在迁移失败（slow-scan 路径）early return 前未清零 locality 统计，导致同一迁移失败反复选 slow-scan、把扫描周期拖到最大。Hongling Zeng 补上清零，与正常路径一致。Fixes + stable，合入可能性 high。
+- [sched-20260804-015](../../2026/08/sched-20260804-015-sched-numa-prevent-race-sysctl-static-key-v2.md) `bug/high/under_review` — `sysctl_numa_balancing` 静态键切换竞态（UAF/use-after-uninit，附 syzkaller repro + Fixes）在 08-04 继续推进。这是 08-03-006 的延续，合入可能性 high。
+- [sched-20260804-016](../../2026/08/sched-20260804-016-sched-psi-skip-cpus-zero-non-idle-delta.md) `feature/low/under_review` — PSI 统计中对非 idle 时间增量为 0 的 CPU 仍走完整更新路径，Dmitry Pletnev 改为跳过以减开销（大量 idle CPU 的系统受益明显）。低严重度优化，合入可能性 medium，需确认边界正确性。
 - [sched-20260803-006](../../2026/08/sched-20260803-006-sched-numa-prevent-race-on-sysctl_numa_balancing-static-key.md) `bug/high/under_review` — `sched/numa` 修复 `sysctl_numa_balancing` 静态键切换时的抢占竞态（UAF / use-after-uninit），附 syzkaller C repro 与 Fixes 标签。问题真实且有复现，合入可能性高。
 - [sched-20260802-003](../../2026/08/sched-20260802-003-perf-sched-latency-refine-outputs-unit-scaling-histogram-v6.md) `feature/under_review` — **本文为增量更新** —— 完整背景见 `related_articles` 中的 `sched-20260731-009` 与 `sched-20260801-008`。v6 的核心变化是响应 Namhyung Kim 的 review：把 pipe 模式处理从 Patch 1 拆出成独立 patch（系列 3→4 个），补上 `Fixes:` 标签，并在 commit log 中加入表头格式
 - [sched-20260801-010](../../2026/08/sched-20260801-010-sched-fix-two-misspellings-in-linux-sched-h.md) `fix/under_review` — 一个仅改 2 行注释的 typo 修复 patch，但其中一处的目标拼写看起来是错的——把 `memalloc_nfs_save()` 改成了 `memalloc_nfos_save()`，而内核中实际的函数名是 `memalloc_nofs_save()`。值得回帖指出。
