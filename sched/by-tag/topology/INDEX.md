@@ -1,6 +1,14 @@
 # tag: topology
 
-共 13 篇
+共 19 篇
+
+- [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core（SMT core 选择）。延续 08-04-005。
+- [sched-20260805-003](../../2026/08/sched-20260805-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC（通用层）。延续 08-04-009。
+- [sched-20260805-006](../../2026/08/sched-20260805-006-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — sync wakeup core 粒度。延续 08-04-006。
+- [sched-20260805-007](../../2026/08/sched-20260805-007-sched-fair-wf_sync-semantics-wake-affine-doc.md) `feature/under_review` — WF_SYNC 语义 + 非 SMT 亲和。延续 08-04-006。
+- [sched-20260805-008](../../2026/08/sched-20260805-008-sched-fair-decline-wf_sync-stacking-when-waker-llc-busier.md) `feature/under_review` — WF_SYNC 堆叠 LLC 忙闲判断。延续 08-04-006。
+- [sched-20260805-009](../../2026/08/sched-20260805-009-sched-debug-per-cpu-debugfs-files.md) `feature/under_review` — per-CPU debugfs 文件。
+- [sched-20260805-012](../../2026/08/sched-20260805-012-arm64-separate-preempt-resched-bits.md) `feature/under_review` — arm64 分离 resched 位 v4。延续 08-03-007。
 
 - [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。
 - [sched-20260804-006](../../2026/08/sched-20260804-006-sched-fair-sync-wakeups-target-waker-core.md) `discussion/under_review` — sync wakeup 优化在 08-04 呈三个并行子方向：选 waker 的 core、保留 wake-affine、非 SMT reciprocal 优先 waker cpu。延续 08-03-004 的「先定义统一 policy」要求，目前仍 medium，需先收敛策略再定补丁定位。

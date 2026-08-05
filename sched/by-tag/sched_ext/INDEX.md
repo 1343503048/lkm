@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 19 篇
+共 20 篇
 
+- [sched-20260805-001](../../2026/08/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.md) `feature/under_review` — Andrea Righi 的 sched_ext proxy execution 大系列（目标 7.3）在 08-05 收到 Tejun 两处 review 收尾：09/15 reject DSQ re-enqueue 路径需拆分 move/change 并直接把 reason 写入 p->scx.flags；07/15 跨类切换阻断 proxy donor 不能全局无条件，因 RT/DL PI 需跨类保留 donor。方向明确，合入可能性高。
 - [sched-20260804-001](../../2026/08/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.md) `feature/under_review` — Andrea Righi 的 15-patch 系列把内核主流的 SCHED_PROXY_EXEC（代理执行）机制带到 sched_ext：互斥锁/RT 阻塞的任务可被同调度类或更早调度类的高优先级任务「代理执行」，从而缓解优先级反转。Tejun 评价「Nice.」并指出两处需澄清的语义。属大型 feature，合入可能性高，仍处 review。
 - [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
 - [sched-20260804-003](../../2026/08/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.md) `fix/medium/merged` — sched_ext 内置 idle 掩码初始化为 busy 的修复（08-03-002）在 08-04 发 v4，获 Kuba Piecuch Reviewed-by，并由 Tejun 以 tag `sched_ext-for-7.3` **合入**。这是 08-03-002 的收尾，状态更新为 merged。

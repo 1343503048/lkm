@@ -1,6 +1,8 @@
 # tag: cgroup
 
-共 5 篇
+共 6 篇
+
+- [sched-20260805-004](../../2026/08/sched-20260805-004-sched-fair-remove-dead-throttled-check-pick-task-fair.md) `cleanup/merged` — pick_task_fair 删除失效 throttled 检查（CFS 带宽控制相关）。已合入 85570f10a4c6。
 
 - [sched-20260804-004](../../2026/08/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.md) `fix/high/merged_tip` — Tejun 在 08-04 发出 sched_ext 的 7.2-rc6 fixes pull 第二波，延续 08-03-003 的稳定性修复集合（UAF / kernfs 死锁 / sync wakeup 误标 busy）。状态 merged_tip，等待 7.2-rc6 进入主线。这是 08-03-003 的延续。
 - [sched-20260803-003](../../2026/08/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.md) `fix/high/merged_tip` — Tejun 发出 sched_ext 的 7.2-rc6 fixes pull，修复子调度器生命周期中的多处 UAF / 死锁 / 错误状态，其中 sync wakeup 把 waker CPU 误标 idle 与 002 号文章（idle 掩码初始化）属同一正确性主题。已以 tag 提交，合入可能性=merged。

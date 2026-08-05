@@ -1,6 +1,10 @@
 # tag: preempt
 
-共 7 篇
+共 10 篇
+
+- [sched-20260805-003](../../2026/08/sched-20260805-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC（通用 enable helper）。延续 08-04-009。
+- [sched-20260805-010](../../2026/08/sched-20260805-010-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/high/under_review` — schedutil rate_limit 溢出修复（标签 preempt 仅作交叉参考，实为 cpufreq bug）。
+- [sched-20260805-012](../../2026/08/sched-20260805-012-arm64-separate-preempt-resched-bits.md) `feature/under_review` — arm64 分离 need_resched / preempt resched 位 v4。延续 08-03-007。
 
 - [sched-20260804-009](../../2026/08/sched-20260804-009-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 在 08-03-007 引入 `HAS_SEPARATE_PREEMPT_RESCHED_BITS` 的基础上，Mark Rutland 进一步简化 PREEMPT_DYNAMIC 的静态键选择与重写逻辑（6 笔 patch），收敛架构分支。这是 08-03-007 的延续，合入可能性 high。
 - [sched-20260804-018](../../2026/08/sched-20260804-018-rseq-fix-hard-lockup-granted-time-slice-extension-v3.md) `bug/critical/under_review` — rseq 时间片扩展授予路径的硬死锁（critical）在 08-04 按 Peter Zijlstra 的 reflow 建议定稿 v3：将 TSE 授予与 hrtimer 重排组织到已知关中断路径，避免新增 `guard(irq)()` 包装。仍 critical，待合入。

@@ -1,6 +1,10 @@
 # tag: sched_debug
 
-共 18 篇
+共 21 篇
+
+- [sched-20260805-009](../../2026/08/sched-20260805-009-sched-debug-per-cpu-debugfs-files.md) `feature/under_review` — per-CPU debugfs 文件（rq/curr/clock 等）。
+- [sched-20260805-011](../../2026/08/sched-20260805-011-perf-sched-latency-refine.md) `feature/under_review` — perf sched latency 细化（直方图/swapper）。
+- [sched-20260805-013](../../2026/08/sched-20260805-013-hung_task-v8-warning-budget-and-reporting.md) `feature/under_review` — hung_task v8 警告预算与报告。
 
 - [sched-20260804-010](../../2026/08/sched-20260804-010-sched-topology-restore-sd_prefer_sibling.md) `feature/under_review` — Chen Yu 在 EAS 路径上恢复 `SD_PREFER_SIBLING` 语义：当兄弟域是 MC 且非 cluster 时，倾向把任务集中到更少 CPU 以留出全 idle sibling 节能。v6 已获 Vincent R-b + Tested-by，合入可能性 high。
 - [sched-20260804-013](../../2026/08/sched-20260804-013-sched-numa-fix-scan-period-remote-private-faults.md) `fix/medium/under_review` — Hongling Zeng 的「加速远程私有 fault 扫描周期」补丁被 Zhan Xusheng 精确 review 指出理由不成立（实际未加速），作者承认并发布 v2 改用正确的修正理由。这是「review 抓出错误 commit message」的典型案例，合入可能性 high（v2）。

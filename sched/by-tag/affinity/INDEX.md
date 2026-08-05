@@ -1,6 +1,8 @@
 # tag: affinity
 
-共 13 篇
+共 14 篇
+
+- [sched-20260805-005](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task 的「仅本地 LLC 内迁移」语义。延续 08-04-007。
 
 - [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
 - [sched-20260804-007](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md) `fix/medium/under_review` — active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。

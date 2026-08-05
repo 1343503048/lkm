@@ -1,7 +1,13 @@
 # tag: cfs
 
-共 27 篇
+共 34 篇
 
+- [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core 在 08-05 推进 v3/v4：Peter 质疑 cpumask_andnot 裁剪候选是否改变 ILB 语义，Vincent 关注 sched_smt_active 判定时机。仍缺稳定效果数据。延续 08-04-005。
+- [sched-20260805-006](../../2026/08/sched-20260805-006-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — Prateek 让 sync wakeup 优先落到 waker 所在 core 的空闲兄弟；Peter 质疑 core 粒度定义，Tim 提示需区分 waker 是否真让出。缺数据。延续 08-04-006。
+- [sched-20260805-007](../../2026/08/sched-20260805-007-sched-fair-wf_sync-semantics-wake-affine-doc.md) `feature/under_review` — Prateek 与 Shrikanth 澄清 WF_SYNC 语义，并对非 SMT 互为 sync wakeup 保留 wake-affine，不盲目追 waker core。延续 08-04-006。
+- [sched-20260805-008](../../2026/08/sched-20260805-008-sched-fair-decline-wf_sync-stacking-when-waker-llc-busier.md) `feature/under_review` — Vinicius RFC：waker LLC 更忙时拒绝把 wakee 堆叠到 waker LLC；Hillf 指出 nr_running 度量粗糙且提前 return 可能破坏 prev_cpu 亲和。RFC 阶段。延续 08-04-006。
+- [sched-20260805-005](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active load balance 尊重 migrate_llc_task 语义，Prateek 确认语义一致并建议加 schedstat 计数。延续 08-04-007。
+- [sched-20260805-004](../../2026/08/sched-20260805-004-sched-fair-remove-dead-throttled-check-pick-task-fair.md) `cleanup/merged` — pick_task_fair 中失效的 throttled 检查已由 Peter 合入（85570f10a4c6），死代码删除。
 - [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。
 - [sched-20260804-006](../../2026/08/sched-20260804-006-sched-fair-sync-wakeups-target-waker-core.md) `discussion/under_review` — sync wakeup 优化在 08-04 呈三个并行子方向：选 waker 的 core、保留 wake-affine、非 SMT reciprocal 优先 waker cpu。延续 08-03-004 的「先定义统一 policy」要求，目前仍 medium，需先收敛策略再定补丁定位。
 - [sched-20260804-007](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md) `fix/medium/under_review` — active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。
