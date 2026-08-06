@@ -1,6 +1,13 @@
 # tag: cfs
 
-共 34 篇
+共 40 篇
+
+- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core v5，集齐 4 R-b。延续 08-05-002。
+- [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task，Chen Yu 备选统一 helper。延续 08-05-005。
+- [sched-20260806-009](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — sync wakeup 落到 waker core（Kayra x86 实测）。延续 08-05-006。
+- [sched-20260806-012](../../2026/08/sched-20260806-012-fuse-wakeup-hints-to-scheduler.md) `feature/draft` — fuse 唤醒 hint 透传调度器（RFC, ping Miklos）。
+- [sched-20260806-013](../../2026/08/sched-20260806-013-sched-fair-load-balance-identical-capacity-v6.md) `feature/under_review` — 相同 capacity CPU 间 LB v6。
+- [sched-20260806-014](../../2026/08/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.md) `fix/medium/under_review` — numa Hygon 远程 socket 距离 v2。
 
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core 在 08-05 推进 v3/v4：Peter 质疑 cpumask_andnot 裁剪候选是否改变 ILB 语义，Vincent 关注 sched_smt_active 判定时机。仍缺稳定效果数据。延续 08-04-005。
 - [sched-20260805-006](../../2026/08/sched-20260805-006-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — Prateek 让 sync wakeup 优先落到 waker 所在 core 的空闲兄弟；Peter 质疑 core 粒度定义，Tim 提示需区分 waker 是否真让出。缺数据。延续 08-04-006。

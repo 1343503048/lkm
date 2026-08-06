@@ -1,6 +1,8 @@
 # tag: hyperthreading
 
-共 9 篇
+共 10 篇
+
+- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core 优先整核全 idle（SMT 兄弟判定）。延续 08-05-002。
 
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core 优先整核全 idle（SMT 兄弟判定）。延续 08-04-005。
 

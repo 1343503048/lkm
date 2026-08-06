@@ -1,6 +1,11 @@
 # tag: preempt
 
-共 10 篇
+共 14 篇
+
+- [sched-20260806-003](../../2026/08/sched-20260806-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC v2（Jinjie R-b）。延续 08-05-003。
+- [sched-20260806-004](../../2026/08/sched-20260806-004-sched-core-dont-pin-idle-task-migrate-disable-switch.md) `fix/high/under_review` — sched/core 不要钉住 idle 任务（panic 修复）。
+- [sched-20260806-006](../../2026/08/sched-20260806-006-sched-cpufreq-schedutil-boost-freq-handling.md) `fix/high/under_review` — schedutil boost 频率处理修复（交叉参考 cpufreq）。
+- [sched-20260806-007](../../2026/08/sched-20260806-007-cpufreq-schedutil-fix-rate-limit-overflow-v3.md) `fix/high/under_review` — schedutil rate_limit 溢出修复 v3。延续 08-05-010。
 
 - [sched-20260805-003](../../2026/08/sched-20260805-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC（通用 enable helper）。延续 08-04-009。
 - [sched-20260805-010](../../2026/08/sched-20260805-010-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/high/under_review` — schedutil rate_limit 溢出修复（标签 preempt 仅作交叉参考，实为 cpufreq bug）。

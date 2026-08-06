@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 11 篇
+共 12 篇
 
+- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core v5，集齐 4 R-b，合入在即。延续 08-05-002。
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core v3/v4 收尾：Peter 质疑 cpumask_andnot 裁剪候选是否改变 ILB 语义，Vincent 关注 sched_smt_active 判定时机；仍缺稳定效果数据。延续 08-04-005 / 08-01-005。
 
 - [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。

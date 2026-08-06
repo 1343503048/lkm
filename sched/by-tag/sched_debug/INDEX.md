@@ -1,6 +1,9 @@
 # tag: sched_debug
 
-共 21 篇
+共 23 篇
+
+- [sched-20260806-001](../../2026/08/sched-20260806-001-perf-sched-latency-v9-refine-histogram.md) `feature/under_review` — perf sched latency v9 细化输出/单位缩放/直方图。延续 08-05-011。
+- [sched-20260806-005](../../2026/08/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.md) `fix/medium/under_review` — perf/core sched_task 分发与分支记录修复 v6。
 
 - [sched-20260805-009](../../2026/08/sched-20260805-009-sched-debug-per-cpu-debugfs-files.md) `feature/under_review` — per-CPU debugfs 文件（rq/curr/clock 等）。
 - [sched-20260805-011](../../2026/08/sched-20260805-011-perf-sched-latency-refine.md) `feature/under_review` — perf sched latency 细化（直方图/swapper）。

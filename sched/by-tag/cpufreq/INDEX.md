@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 4 篇
+共 6 篇
 
+- [sched-20260806-006](../../2026/08/sched-20260806-006-sched-cpufreq-schedutil-boost-freq-handling.md) `fix/high/under_review` — schedutil 对 boost 频率的 DVFS 请求修复（x86 Turbo / ARM）。
+- [sched-20260806-007](../../2026/08/sched-20260806-007-cpufreq-schedutil-fix-rate-limit-overflow-v3.md) `fix/high/under_review` — schedutil rate_limit 溢出修复 v3（限幅只作用于写入、时间窗用原始目标）。延续 08-05-010。
 - [sched-20260805-010](../../2026/08/sched-20260805-010-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/high/under_review` — schedutil 在频率限幅时 rate_limit 计算溢出，导致 last_freq_update_time 异常、调频抖动。Viresh 已确认 bug，建议优先 fix。
 
 - [sched-20260804-020](../../2026/08/sched-20260804-020-cpufreq-intel_pstate-consolidate-hwp-init.md) `cleanup/low/under_review` — Rafael 重构 intel_pstate 的 HWP P-state 初始化：引入 `intel_pstate_get_hwp_pstates()` 统一 HWP 专属初始化，移除冗余的 `intel_pstate_hybrid_hwp_adjust()` 及其 kerneldoc。声明无功能影响，低严重度清理，合入可能性 high。

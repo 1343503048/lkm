@@ -1,6 +1,8 @@
 # tag: affinity
 
-共 14 篇
+共 15 篇
+
+- [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task，Chen Yu 建议统一 task_wants_llc_stay() helper。延续 08-05-005。
 
 - [sched-20260805-005](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task 的「仅本地 LLC 内迁移」语义。延续 08-04-007。
 

@@ -1,6 +1,12 @@
 # tag: topology
 
-共 19 篇
+共 24 篇
+
+- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core v5（SMT core 选择）。延续 08-05-002。
+- [sched-20260806-003](../../2026/08/sched-20260806-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC v2（Jinjie R-b）。延续 08-05-003。
+- [sched-20260806-004](../../2026/08/sched-20260806-004-sched-core-dont-pin-idle-task-migrate-disable-switch.md) `fix/high/under_review` — sched/core 不要钉住 idle 任务（panic 修复）。
+- [sched-20260806-009](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — sync wakeup core 粒度。延续 08-05-006。
+- [sched-20260806-013](../../2026/08/sched-20260806-013-sched-fair-load-balance-identical-capacity-v6.md) `feature/under_review` — 相同 capacity CPU 间 LB v6。
 
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core（SMT core 选择）。延续 08-04-005。
 - [sched-20260805-003](../../2026/08/sched-20260805-003-sched-dynamic-simplify-preempt_dynamic-v2.md) `feature/under_review` — 简化 PREEMPT_DYNAMIC（通用层）。延续 08-04-009。

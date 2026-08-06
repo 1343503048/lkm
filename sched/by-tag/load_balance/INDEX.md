@@ -1,6 +1,12 @@
 # tag: load_balance
 
-共 23 篇
+共 28 篇
+
+- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core v5（集齐 4 R-b）。延续 08-05-002。
+- [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task。延续 08-05-005。
+- [sched-20260806-009](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review` — sync wakeup 落到 waker core。延续 08-05-006。
+- [sched-20260806-013](../../2026/08/sched-20260806-013-sched-fair-load-balance-identical-capacity-v6.md) `feature/under_review` — 相同 capacity CPU 间 LB v6。
+- [sched-20260806-014](../../2026/08/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.md) `fix/medium/under_review` — numa Hygon 远程 socket 距离 v2。
 
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review` — NOHZ fully-idle-core v3/v4（ILB 选择优先整核 idle）。延续 08-04-005。
 - [sched-20260805-005](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task 语义。延续 08-04-007。
