@@ -1,6 +1,5 @@
 # tag: sched_ext
 
-共 21 篇
 
 - [sched-20260806-010](../../2026/08/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.md) `feature/under_review` — Andrea 在 07/15 由「跨类保留 donor」转向更保守的「sched_change_begin 边界 terminate proxy」，规避 RT/DL PI 跨类代理难题。延续 08-05-001。
 
@@ -24,3 +23,9 @@
 - [sched-20260726-004](../../2026/07/sched-20260726-004-sched-ext-sparse-annotation-cleanups.md) `fix/low/merged_tip` — Tejun Heo 的 sched_ext sparse 注解清理三连补丁，消除 RCU/锁注解告警，已被直接应用到 `sched_ext/for-7.3`。纯代码质量整理，无需额外跟进。
 - [sched-20260726-002](../../2026/07/sched-20260726-002-sched-ext-bound-per-task-reenqueues-and-eject-the-owning-scheduler.md) `feature/under_review` — Tejun Heo 的 sched_ext 自我保护补丁 v2：给单个任务的 re-enqueue 次数设上限，超限即认定 BPF 调度器有缺陷并将其 eject 回退到默认调度。属于提升 SCX 健壮性的防御性机制，方向获认可，合入可能性较高。
 - [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
+
+## 文章
+- [sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)
+- [selftests/sched_ext: 检查 exit 测试骨架打开失败](../../2026/08/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.md)
+
+共 2 篇

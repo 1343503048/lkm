@@ -1,6 +1,5 @@
 # tag: perf
 
-共 22 篇
 
 - [sched-20260806-001](../../2026/08/sched-20260806-001-perf-sched-latency-v9-refine-histogram.md) `feature/under_review` — perf sched latency v9：修复 has_traces 失败返回、单位自动缩放、直方图(-H)、--time 过滤。Namhyung/Ian R-b。延续 08-05-011。
 - [sched-20260806-005](../../2026/08/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.md) `fix/medium/under_review` — perf/core sched_task() 分发修复 v6：NULL pmu_ctx、漏分发、branch entry 清空。stable 标记。
@@ -25,3 +24,12 @@
 - [sched-20260728-005](../../2026/07/sched-20260728-005-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `discussion/under_review` — sched/cache 的 task_cache_work 优化补丁（v8）进入深度技术讨论阶段。华为开发者质疑 `visited_cpus` 在扫描期间被并发清除的风险，Chenyu 回复确认 `try_cmpxchg` 已保证同一 mm 同一时刻只有一个 scanner。讨论趋于收敛。
 - [sched-20260728-003](../../2026/07/sched-20260728-003-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wake.md) `feature/under_review` — Ampere 的 Shubhang Kaushik 发出 v3，针对非 SMT 系统上的 pipe 式 ping-pong 负载，在 wake-affine 域内优先将 wakee 放到 waker CPU 上（而非走 select_idle_sibling 找 idle CPU）。在 80 核 Ampere Altra 上 `perf bench sched pipe` 提升约 30%。v3 刚
 - [sched-20260726-003](../../2026/07/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.md) `feature/under_review` — Aaron Tomlin 改进 `perf sched latency` 的第 3 版：修复缺少 tracepoint 时误报成功的 bug、为延迟/运行时列做单位自适应缩放（ns/us/ms/s）、新增延迟直方图与时间区间过滤。属于 perf 工具侧的可用性增强，已迭代到 v3、逐条回应了 review，合入可能性较高。
+
+## 文章
+- [perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）](../../2026/08/sched-20260807-006-perf-core-kfree-nolock-sched.md)
+- [perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用](../../2026/08/sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx.md)
+- [perf/core: sched_task() dispatch 与 branch entry 修复](../../2026/08/sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes.md)
+- [perf/core: 修复 sibling detach 后 group leader 的 use-after-free](../../2026/08/sched-20260807-009-perf-core-group-leader-use-after-free.md)
+- [psi: 用 __ffs() 遍历 task count 位图](../../2026/08/sched-20260807-011-psi-use-ffs-task-count-bitmask.md)
+
+共 5 篇

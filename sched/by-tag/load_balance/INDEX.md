@@ -1,6 +1,5 @@
 # tag: load_balance
 
-共 28 篇
 
 - [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review` — NOHZ fully-idle-core v5（集齐 4 R-b）。延续 08-05-002。
 - [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task。延续 08-05-005。
@@ -32,3 +31,11 @@
 - [sched-20260730-002](../../2026/07/sched-20260730-002-sched-fair-cgroup-mode-default-netperf-regression.md) `bug/high/under_review` — 0-Day robot 报告 `fb1050ac8e` 导致 netperf TCP_MAERTS 吞吐下降 14.6%。该 commit 将 cgroup-weight 计算从 smp 模式（flat）切换为 concur 模式（按 min(runnable, cpus) 缩放）。PeterZ 怀疑是 ksoftirqd 抢占行为变化导致，建议通过 slice 调优缓解。正在调查中。
 - [sched-20260729-004](../../2026/07/sched-20260729-004-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stam.md) `fix/medium/under_review` — Ampere 的 Shubhang Kaushik 修复 4b603f1551a73 引入的统计缺陷：`update_rq_avg_idle()` 丢失了 `idle_stamp` 有效性检查，`idle_stamp==0` 时会把 `rq_clock(rq)` 整值当 idle 时长，瞬间把 avg_idle 顶到 clamp 上限。已获 Prateek Reviewed-by，合入概率高。
 - [sched-20260729-001](../../2026/07/sched-20260729-001-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NVIDIA 的 Andrea Righi 让 NOHZ idle load balancer 优先挑"整个物理核都空闲"的 CPU 来执行，避免 ILB 短暂唤醒 SMT 兄弟线程拖累另一个兄弟的单线程性能；GEMM 实测 6.2 → 9.4 TFLOP/s。当天讨论热烈（7 封），Peter Zijlstra 已介入，review 走向正面，值得关注 v2。
+
+## 文章
+- [sched/cache: 在 active load balance 中落实 migrate_llc_task 语义](../../2026/08/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.md)
+- [sched/fair: NOHZ 负载均衡优先选择完全空闲核心](../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md)
+- [sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)
+- [sched/numa: 为 Hygon model 7 应用远端 socket 距离平均](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md)
+
+共 4 篇

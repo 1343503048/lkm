@@ -1,6 +1,5 @@
 # tag: idle
 
-共 16 篇
 
 - [sched-20260804-003](../../2026/08/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.md) `fix/medium/merged` — sched_ext 内置 idle 掩码初始化为 busy 的修复（08-03-002）在 08-04 发 v4，获 Kuba Piecuch Reviewed-by，并由 Tejun 以 tag `sched_ext-for-7.3` **合入**。这是 08-03-002 的收尾，状态更新为 merged。
 - [sched-20260804-004](../../2026/08/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.md) `fix/high/merged_tip` — Tejun 在 08-04 发出 sched_ext 的 7.2-rc6 fixes pull 第二波，延续 08-03-003 的稳定性修复集合（UAF / kernfs 死锁 / sync wakeup 误标 busy）。状态 merged_tip，等待 7.2-rc6 进入主线。这是 08-03-003 的延续。
@@ -18,3 +17,9 @@
 - [sched-20260728-010](../../2026/07/sched-20260728-010-sched-idle-sysbench-threads-regression-after-f4c31b07b136.md) `bug/high/under_review` — Oracle 性能测试发现 commit f4c31b07b136（"sched: idle: Consolidate the handling of two special cases"）导致 MySQL Sysbench threads 在 OCI VM 上出现 10%~29% 的性能回归。讨论持续近一个月，Rafael Wysocki 和 Christian Loehel 参与分析，目前根因
 - [sched-20260726-007](../../2026/07/sched-20260726-007-selftests-sched-ext-make-allowed-cpus-idle-validation-race-free.md) `fix/medium/under_review` — 一组针对 sched_ext idle 跟踪与 selftest 竞态的修复：Kuba Piecuch 先修复 WAKE_SYNC 下 waker CPU 未被标记 busy 导致的 `allowed_cpus` selftest 偶发失败；Andrea Righi 跟进重写 selftest 的 idle 校验为无竞态版本。目标分支 `sched_ext/for-7.2-fixes`，合入可能性
 - [sched-20260726-005](../../2026/07/sched-20260726-005-sched-ext-fix-incorrect-scx-pick-idle-cpu-flag-prefix-in-kernel-doc.md) `fix/low/merged_tip` — 一处 kernel-doc 文档 bug 修复：更正 `SCX_PICK_IDLE_CPU_*` 标志的前缀书写错误，已被 Tejun 直接应用到 `sched_ext/for-7.3`。琐碎文档修复，无需跟进。
+
+## 文章
+- [sched/fair: 让 is_core_idle() 检查核心内所有 CPU](../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md)
+- [sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新](../../2026/08/sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp.md)
+
+共 2 篇

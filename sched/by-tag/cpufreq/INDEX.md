@@ -1,6 +1,5 @@
 # tag: cpufreq
 
-共 6 篇
 
 - [sched-20260806-006](../../2026/08/sched-20260806-006-sched-cpufreq-schedutil-boost-freq-handling.md) `fix/high/under_review` — schedutil 对 boost 频率的 DVFS 请求修复（x86 Turbo / ARM）。
 - [sched-20260806-007](../../2026/08/sched-20260806-007-cpufreq-schedutil-fix-rate-limit-overflow-v3.md) `fix/high/under_review` — schedutil rate_limit 溢出修复 v3（限幅只作用于写入、时间窗用原始目标）。延续 08-05-010。
@@ -9,3 +8,12 @@
 - [sched-20260804-020](../../2026/08/sched-20260804-020-cpufreq-intel_pstate-consolidate-hwp-init.md) `cleanup/low/under_review` — Rafael 重构 intel_pstate 的 HWP P-state 初始化：引入 `intel_pstate_get_hwp_pstates()` 统一 HWP 专属初始化，移除冗余的 `intel_pstate_hybrid_hwp_adjust()` 及其 kerneldoc。声明无功能影响，低严重度清理，合入可能性 high。
 - [sched-20260804-021](../../2026/08/sched-20260804-021-cpufreq-cppc-resource-priority-sysfs.md) `feature/under_review` — CPPC v4（Resource Priority）新增 sysfs 接口，允许设置每个 CPU 的 CPPC 资源优先级，与 sched 的 uclamp/latency 偏好呼应，在共享电源域下影响硬件调度决策。v4 整合多轮反馈，合入可能性 medium（sysfs ABI 待确认）。
 - [sched-20260801-009](../../2026/08/sched-20260801-009-cpufreq-intel-pstate-adjust-policy-cur-in-active-mode.md) `fix/low/under_review` — `intel_pstate` 在 performance policy 下把 CPU 钉到固定 pstate 后，却又把 `policy->cur` 覆写成 `policy->min`，导致 nohz_full 隔离 CPU 因为拿不到新的 APERF/MPERF 采样而**永远上报频率下限**。修复很直接：把 `policy->cur` 设为实际钉住的频率。Rafael 与 Srinivas 均
+
+## 文章
+- [sched-20260807-003 schedutil: 让 DVFS 请求可达 boost 频率上限](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md)
+- [sched-20260807-005 cpufreq: CPPC 最高性能寄存器与 update_limits 支持](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)
+- [schedutil: 让 DVFS 请求可达 boost 频率上限](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md)
+- [cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md)
+- [cpufreq: CPPC 最高性能寄存器与 update_limits 支持](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)
+
+共 5 篇

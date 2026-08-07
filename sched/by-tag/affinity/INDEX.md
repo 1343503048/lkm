@@ -1,6 +1,5 @@
 # tag: affinity
 
-共 15 篇
 
 - [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task，Chen Yu 建议统一 task_wants_llc_stay() helper。延续 08-05-005。
 
@@ -19,3 +18,11 @@
 - [sched-20260728-003](../../2026/07/sched-20260728-003-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wake.md) `feature/under_review` — Ampere 的 Shubhang Kaushik 发出 v3，针对非 SMT 系统上的 pipe 式 ping-pong 负载，在 wake-affine 域内优先将 wakee 放到 waker CPU 上（而非走 select_idle_sibling 找 idle CPU）。在 80 核 Ampere Altra 上 `perf bench sched pipe` 提升约 30%。v3 刚
 - [sched-20260726-007](../../2026/07/sched-20260726-007-selftests-sched-ext-make-allowed-cpus-idle-validation-race-free.md) `fix/medium/under_review` — 一组针对 sched_ext idle 跟踪与 selftest 竞态的修复：Kuba Piecuch 先修复 WAKE_SYNC 下 waker CPU 未被标记 busy 导致的 `allowed_cpus` selftest 偶发失败；Andrea Righi 跟进重写 selftest 的 idle 校验为无竞态版本。目标分支 `sched_ext/for-7.2-fixes`，合入可能性
 - [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
+
+## 文章
+- [sched/cache: 在 active load balance 中落实 migrate_llc_task 语义](../../2026/08/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.md)
+- [sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)
+- [sched/fair: 在非 SMT 互逆关系下保留 wake-affine CPU](../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md)
+- [sched/wake_q: 6.12.y 上 raw_spin_unlock*_wake() helper 的 backport 评审](../../2026/08/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md)
+
+共 4 篇
