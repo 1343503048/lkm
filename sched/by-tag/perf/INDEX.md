@@ -27,9 +27,10 @@
 
 ## 文章
 - [perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）](../../2026/08/sched-20260807-006-perf-core-kfree-nolock-sched.md)
-- [perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用](../../2026/08/sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx.md)
-- [perf/core: sched_task() dispatch 与 branch entry 修复](../../2026/08/sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes.md)
 - [perf/core: 修复 sibling detach 后 group leader 的 use-after-free](../../2026/08/sched-20260807-009-perf-core-group-leader-use-after-free.md)
+- [perf/core: sched_task() dispatch 与 branch entry 修复](../../2026/08/sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes.md)
 - [psi: 用 __ffs() 遍历 task count 位图](../../2026/08/sched-20260807-011-psi-use-ffs-task-count-bitmask.md)
+- [perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用](../../2026/08/sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx.md)
+- [perf sched latency: v9 改进已合入 perf-tools-next](../../2026/08/sched-20260808-005-perf-sched-latency-v9-applied.md)
 
-共 5 篇
+共 6 篇

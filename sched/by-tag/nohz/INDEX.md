@@ -17,5 +17,6 @@
 
 ## 文章
 - [sched/fair: NOHZ 负载均衡优先选择完全空闲核心](../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md)
+- [sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md)
 
-共 1 篇
+共 2 篇

@@ -9,5 +9,6 @@
 
 ## 文章
 - [Proxy Execution: Sleeping Owner Handling (v31, resend)](../../2026/08/sched-20260807-001-proxy-execution-sleeping-owner-v31.md)
+- [sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)
 
-共 1 篇
+共 2 篇

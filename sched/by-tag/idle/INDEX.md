@@ -21,5 +21,7 @@
 ## 文章
 - [sched/fair: 让 is_core_idle() 检查核心内所有 CPU](../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md)
 - [sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新](../../2026/08/sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp.md)
+- [sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）](../../2026/08/sched-20260808-001-sched-core-skip-avg-idle-v3.md)
+- [kcov: 抑制定时器与调度器覆盖泄漏](../../2026/08/sched-20260808-002-kcov-scheduler-coverage-leaks.md)
 
-共 2 篇
+共 4 篇

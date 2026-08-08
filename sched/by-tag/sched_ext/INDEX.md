@@ -25,7 +25,8 @@
 - [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
 
 ## 文章
-- [sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)
 - [selftests/sched_ext: 检查 exit 测试骨架打开失败](../../2026/08/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.md)
+- [sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)
+- [sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)
 
-共 2 篇
+共 3 篇

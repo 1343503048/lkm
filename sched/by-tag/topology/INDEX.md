@@ -33,5 +33,6 @@
 - [cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md)
 - [sched/fair: 让 is_core_idle() 检查核心内所有 CPU](../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md)
 - [sched/numa: 为 Hygon model 7 应用远端 socket 距离平均](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md)
+- [sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）](../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md)
 
-共 3 篇
+共 4 篇

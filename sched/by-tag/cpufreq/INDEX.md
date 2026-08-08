@@ -10,10 +10,11 @@
 - [sched-20260801-009](../../2026/08/sched-20260801-009-cpufreq-intel-pstate-adjust-policy-cur-in-active-mode.md) `fix/low/under_review` — `intel_pstate` 在 performance policy 下把 CPU 钉到固定 pstate 后，却又把 `policy->cur` 覆写成 `policy->min`，导致 nohz_full 隔离 CPU 因为拿不到新的 APERF/MPERF 采样而**永远上报频率下限**。修复很直接：把 `policy->cur` 设为实际钉住的频率。Rafael 与 Srinivas 均
 
 ## 文章
-- [sched-20260807-003 schedutil: 让 DVFS 请求可达 boost 频率上限](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md)
-- [sched-20260807-005 cpufreq: CPPC 最高性能寄存器与 update_limits 支持](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)
 - [schedutil: 让 DVFS 请求可达 boost 频率上限](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md)
-- [cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md)
+- [sched-20260807-003 schedutil: 让 DVFS 请求可达 boost 频率上限](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md)
 - [cpufreq: CPPC 最高性能寄存器与 update_limits 支持](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)
+- [sched-20260807-005 cpufreq: CPPC 最高性能寄存器与 update_limits 支持](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)
+- [cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md)
+- [cpufreq: CPPC 增加 OSPM nominal perf 支持（v7）](../../2026/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md)
 
-共 5 篇
+共 6 篇
