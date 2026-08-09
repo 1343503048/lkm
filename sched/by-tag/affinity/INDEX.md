@@ -1,28 +1,21 @@
-# tag: affinity
+# by-tag: affinity
 
 
-- [sched-20260806-008](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task，Chen Yu 建议统一 task_wants_llc_stay() helper。延续 08-05-005。
+> 自动索引，共 15 篇。
 
-- [sched-20260805-005](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md) `fix/medium/under_review` — active LB 尊重 migrate_llc_task 的「仅本地 LLC 内迁移」语义。延续 08-04-007。
 
-- [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
-- [sched-20260804-007](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md) `fix/medium/under_review` — active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。
-- [sched-20260804-017](../../2026/08/sched-20260804-017-sched-docs-document-cpu_preferred_mask.md) `feature/under_review` — Shrikanth Hegde 把 `cpu_preferred_mask`（per-task 偏好的大/小核子集，用于节能与缓存热）概念文档化，作为 cpu_preferred_mask 系列（v9→v10）的一部分。作者公开表示仍在等待一组 benchmark 数字支撑合入。合入可能性 medium——明确等数据。
-- [sched-20260803-001](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md) `feature/under_review` — sched_ext 引入了内核侧的「rescue 执行」机制，解决子调度器持有的 CPU 授权（caps）不覆盖其任务亲和、导致任务被 cap 反复拒绝/饿死直至 watchdog 触发的问题。v2 已按 AI review 修正，合入阻力小，值得 SCX 开发者跟进。
-- [sched-20260803-005](../../2026/08/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.md) `fix/medium/under_review` — `sched/cache` 修正 active load balance 未尊重 `migrate_llc_task` 的「仅本地 LLC 内迁移」语义。Peter Zijlstra 要求消除与 `can_migrate_task()` 的语义重复。待 v5 收敛，合入可能性高。
-- [sched-20260803-013](../../2026/08/sched-20260803-013-sched-isolation-defer-freeing-of-bootmem-housekeeping-cpumasks-v2.md) `fix/low/under_review` — `sched/isolation` 推迟释放 bootmem housekeeping cpumask（08-02 系列 001）在 08-03 进入释放时机的讨论：应将释放推迟到 bootmem 回收阶段而非即刻 `memblock_free`。低严重度，合入可能性高。
-- [sched-20260802-001](../../2026/08/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md) `fix/low/under_review` — `housekeeping_init()` 在 deferred struct page 初始化完成之前调用 `memblock_free()` 释放 bootmem cpumask，在 `CONFIG_DEFERRED_STRUCT_PAGE_INIT=y` 时每种 housekeeping 类型触发一条 WARN 并给内核打上 `G W` 污点。补丁把释放动作推迟到 `core_initcal
-- [sched-20260801-002](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md) `fix/medium/under_review` — sched_ext 的 built-in idle mask 在初始化时把所有 online CPU 一律标记为 idle，但真正的 idle 跟踪要等调度器完全启用后才开始，导致 `ops.init()` 期间以及某些 CPU 下一次 idle 转换之前，繁忙 CPU 被错误地宣称为 idle。v3 把跟踪时机提前并顺带修掉了一个 selftest 的固有竞态，方案已按 review 意见收敛，
-- [sched-20260801-001](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md) `feature/under_review` — Tejun Heo 发出 12 个 patch 的系列，为 sched_ext 层级调度（子调度器）补上一条内核兜底路径：当子调度器持有的 cid 无法覆盖某个任务的亲和性时，内核以受限带宽直接把该任务跑起来，而不是让它在 cap 拒绝与重新入队之间反复直到调度器被驱逐或任务 stall。这是 sched_ext 层级化能力的关键补齐，由子系统 maintainer 本人提出，值得关注。
-- [sched-20260730-004](../../2026/07/sched-20260730-004-sched-fair-prefer-waker-cpu-non-smt-reciprocal-sync-wakeups.md) `feature/under_review` — Shubhang 的 v3 补丁优化同步唤醒的 CPU 选择：对于非 SMT 系统的 reciprocal sync wakeup，优先选择 waker CPU 以保持 cache 热度。K Prateek Nayak 提供了将 SMT 检查推入 `select_idle_sibling()` 的代码建议，等待作者整合。
-- [sched-20260728-003](../../2026/07/sched-20260728-003-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wake.md) `feature/under_review` — Ampere 的 Shubhang Kaushik 发出 v3，针对非 SMT 系统上的 pipe 式 ping-pong 负载，在 wake-affine 域内优先将 wakee 放到 waker CPU 上（而非走 select_idle_sibling 找 idle CPU）。在 80 核 Ampere Altra 上 `perf bench sched pipe` 提升约 30%。v3 刚
-- [sched-20260726-007](../../2026/07/sched-20260726-007-selftests-sched-ext-make-allowed-cpus-idle-validation-race-free.md) `fix/medium/under_review` — 一组针对 sched_ext idle 跟踪与 selftest 竞态的修复：Kuba Piecuch 先修复 WAKE_SYNC 下 waker CPU 未被标记 busy 导致的 `allowed_cpus` selftest 偶发失败；Andrea Righi 跟进重写 selftest 的 idle 校验为无竞态版本。目标分支 `sched_ext/for-7.2-fixes`，合入可能性
-- [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
-
-## 文章
-- [sched/cache: 在 active load balance 中落实 migrate_llc_task 语义](../../2026/08/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.md)
-- [sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)
-- [sched/fair: 在非 SMT 互逆关系下保留 wake-affine CPU](../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md)
-- [sched/wake_q: 6.12.y 上 raw_spin_unlock*_wake() helper 的 backport 评审](../../2026/08/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md)
-
-共 4 篇
+- [sched-20260801-001 · ](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md)  (2026-08-01)
+- [sched-20260801-002 · ](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md)  (2026-08-01)
+- [sched-20260802-001 · sched/isolation: 推迟释放 bootmem housekeeping cpumask](../../2026/08/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md)  (2026-08-02)
+- [sched-20260803-001 · sched_ext: 为 stranded 任务引入带宽受限的 rescue 执行](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md)  (2026-08-03)
+- [sched-20260803-005 · sched/cache: active load balance 尊重 migrate_llc_task 语义](../../2026/08/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.md)  (2026-08-03)
+- [sched-20260803-013 · sched/isolation: 推迟释放 bootmem housekeeping cpumask（释放时机细化）](../../2026/08/sched-20260803-013-sched-isolation-defer-freeing-of-bootmem-housekeeping-cpumasks-v2.md)  (2026-08-03)
+- [sched-20260804-002 · sched_ext: rescue 执行 v2 扩展（与 proxy execution 联动）](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md)  (2026-08-04)
+- [sched-20260804-007 · sched/cache: active LB 尊重 migrate_llc_task（v4→v5 推进）](../../2026/08/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.md)  (2026-08-04)
+- [sched-20260804-017 · sched/docs: 文档化 cpu_preferred_mask（v10 准备）](../../2026/08/sched-20260804-017-sched-docs-document-cpu_preferred_mask.md)  (2026-08-04)
+- [sched-20260805-005 · sched/cache: active 负载均衡尊重 migrate_llc_task 语义](../../2026/08/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.md)  ("2026-08-05")
+- [sched-20260806-008 · sched/cache: active 负载均衡尊重 migrate_llc_task 语义（Chen Yu 备选方案）](../../2026/08/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.md)  ("2026-08-06")
+- [? · ](../../2026/08/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.md)  (2026-08-07)
+- [? · ](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)  (2026-08-07)
+- [? · ](../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md)  (2026-08-07)
+- [? · ](../../2026/08/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md)  (2026-08-07)

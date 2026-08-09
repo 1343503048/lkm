@@ -1,32 +1,21 @@
-# tag: sched_ext
+# by-tag: sched_ext
 
 
-- [sched-20260806-010](../../2026/08/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.md) `feature/under_review` — Andrea 在 07/15 由「跨类保留 donor」转向更保守的「sched_change_begin 边界 terminate proxy」，规避 RT/DL PI 跨类代理难题。延续 08-05-001。
+> 自动索引，共 15 篇。
 
-- [sched-20260805-001](../../2026/08/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.md) `feature/under_review` — Andrea Righi 的 sched_ext proxy execution 大系列（目标 7.3）在 08-05 收到 Tejun 两处 review 收尾：09/15 reject DSQ re-enqueue 路径需拆分 move/change 并直接把 reason 写入 p->scx.flags；07/15 跨类切换阻断 proxy donor 不能全局无条件，因 RT/DL PI 需跨类保留 donor。方向明确，合入可能性高。
-- [sched-20260804-001](../../2026/08/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.md) `feature/under_review` — Andrea Righi 的 15-patch 系列把内核主流的 SCHED_PROXY_EXEC（代理执行）机制带到 sched_ext：互斥锁/RT 阻塞的任务可被同调度类或更早调度类的高优先级任务「代理执行」，从而缓解优先级反转。Tejun 评价「Nice.」并指出两处需澄清的语义。属大型 feature，合入可能性高，仍处 review。
-- [sched-20260804-002](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md) `feature/under_review` — sched_ext 的 rescue 执行（v2，08-03 发出）在 08-04 追加了「通用 rejected DSQ 重入队」与「阻塞 proxy donor 处理」，与同日大型 proxy execution 系列（08-04-001）形成接口联动。这是 08-03-001 的后续进展。
-- [sched-20260804-003](../../2026/08/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.md) `fix/medium/merged` — sched_ext 内置 idle 掩码初始化为 busy 的修复（08-03-002）在 08-04 发 v4，获 Kuba Piecuch Reviewed-by，并由 Tejun 以 tag `sched_ext-for-7.3` **合入**。这是 08-03-002 的收尾，状态更新为 merged。
-- [sched-20260804-004](../../2026/08/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.md) `fix/high/merged_tip` — Tejun 在 08-04 发出 sched_ext 的 7.2-rc6 fixes pull 第二波，延续 08-03-003 的稳定性修复集合（UAF / kernfs 死锁 / sync wakeup 误标 busy）。状态 merged_tip，等待 7.2-rc6 进入主线。这是 08-03-003 的延续。
-- [sched-20260803-001](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md) `feature/under_review` — sched_ext 引入了内核侧的「rescue 执行」机制，解决子调度器持有的 CPU 授权（caps）不覆盖其任务亲和、导致任务被 cap 反复拒绝/饿死直至 watchdog 触发的问题。v2 已按 AI review 修正，合入阻力小，值得 SCX 开发者跟进。
-- [sched-20260803-002](../../2026/08/sched-20260803-002-sched-ext-initialize-idle-masks-as-busy.md) `fix/medium/under_review` — sched_ext 内置 idle 掩码初始化时把全部 online CPU 误标为 idle，导致 busy CPU 被错误广播。改为保守地初始为空，待 bypass 解除后由真实 idle 转换填充。修复方向已获 Tejun 认可，合入概率高。
-- [sched-20260803-003](../../2026/08/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.md) `fix/high/merged_tip` — Tejun 发出 sched_ext 的 7.2-rc6 fixes pull，修复子调度器生命周期中的多处 UAF / 死锁 / 错误状态，其中 sync wakeup 把 waker CPU 误标 idle 与 002 号文章（idle 掩码初始化）属同一正确性主题。已以 tag 提交，合入可能性=merged。
-- [sched-20260801-002](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md) `fix/medium/under_review` — sched_ext 的 built-in idle mask 在初始化时把所有 online CPU 一律标记为 idle，但真正的 idle 跟踪要等调度器完全启用后才开始，导致 `ops.init()` 期间以及某些 CPU 下一次 idle 转换之前，繁忙 CPU 被错误地宣称为 idle。v3 把跟踪时机提前并顺带修掉了一个 selftest 的固有竞态，方案已按 review 意见收敛，
-- [sched-20260801-001](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md) `feature/under_review` — Tejun Heo 发出 12 个 patch 的系列，为 sched_ext 层级调度（子调度器）补上一条内核兜底路径：当子调度器持有的 cid 无法覆盖某个任务的亲和性时，内核以受限带宽直接把该任务跑起来，而不是让它在 cap 拒绝与重新入队之间反复直到调度器被驱逐或任务 stall。这是 sched_ext 层级化能力的关键补齐，由子系统 maintainer 本人提出，值得关注。
-- [sched-20260731-004](../../2026/07/sched-20260731-004-sched-ext-fix-stale-cgroup-id-in-sched-ext-ops-kernel-doc.md) `fix/low/under_review` — Liang Luo (Kylinos) 修复 sched_ext_ops 结构体的 kernel-doc 注释：`@cgroup_id` 应更新为 `@sub_cgroup_id` 以匹配实际成员名。此不一致导致两个 kernel-doc 警告。单行修复，合入可能性高。
-- [sched-20260731-001](../../2026/07/sched-20260731-001-sched-ext-fix-idle-cpu-state-initialization-v2.md) `fix/medium/under_review` — sched_ext v2 修复：在 BPF 调度器的 ops.init() 回调执行前，内置 idle 掩码未正确初始化，导致 ops.init() 可能观察到错误的 idle CPU 状态。Andrea Righi (NVIDIA) 发出 v2 补丁系列，包含核心修复和 selftest 竞态修复。Kuba Piecuch (Google) 已 review 并建议在 v3 中合并静态键，And
-- [sched-20260728-009](../../2026/07/sched-20260728-009-sched-ext-set-errno-on-enabling-to-enabled-transition-failure.md) `fix/low/under_review` — sched_ext 启用流程中一个极小的错误处理缺陷：当 SCX_ENABLING → SCX_ENABLED 的 cmpxchg 竞态失败时，函数跳转到 err_disable 但 ret 仍为 0，导致内核日志打印 "scx_root_enable() failed (0)" 这样无意义的信息。单行修复，设置 ret = -EBUSY。
-- [sched-20260728-002](../../2026/07/sched-20260728-002-sched-ext-nmi-safe-exit-handling.md) `feature/merged_tip` — Tejun Heo 的 5-patch 系列让 sched_ext 的 exit claiming 变为 lock-free 且 NMI-safe，已合入 sched_ext/for-7.3 分支。这解决了 BPF kfunc 在 NMI 中触发 scx_error() 时死锁的问题。
-- [sched-20260728-001](../../2026/07/sched-20260728-001-sched-ext-proxy-execution-support-with-sched-ext.md) `feature/under_review` — Andrea Righi (NVIDIA) 发出 15-patch 系列，目标是让 proxy execution（代理执行）与 sched_ext 共存。此前 SCHED_PROXY_EXEC 显式依赖 `!SCHED_CLASS_EXT`，本系列移除该限制，让 BPF 调度器能正确处理 blocked donor 的入队和 DSQ 转移竞态。v1 刚发出，暂无 review。
-- [sched-20260726-007](../../2026/07/sched-20260726-007-selftests-sched-ext-make-allowed-cpus-idle-validation-race-free.md) `fix/medium/under_review` — 一组针对 sched_ext idle 跟踪与 selftest 竞态的修复：Kuba Piecuch 先修复 WAKE_SYNC 下 waker CPU 未被标记 busy 导致的 `allowed_cpus` selftest 偶发失败；Andrea Righi 跟进重写 selftest 的 idle 校验为无竞态版本。目标分支 `sched_ext/for-7.2-fixes`，合入可能性
-- [sched-20260726-005](../../2026/07/sched-20260726-005-sched-ext-fix-incorrect-scx-pick-idle-cpu-flag-prefix-in-kernel-doc.md) `fix/low/merged_tip` — 一处 kernel-doc 文档 bug 修复：更正 `SCX_PICK_IDLE_CPU_*` 标志的前缀书写错误，已被 Tejun 直接应用到 `sched_ext/for-7.3`。琐碎文档修复，无需跟进。
-- [sched-20260726-004](../../2026/07/sched-20260726-004-sched-ext-sparse-annotation-cleanups.md) `fix/low/merged_tip` — Tejun Heo 的 sched_ext sparse 注解清理三连补丁，消除 RCU/锁注解告警，已被直接应用到 `sched_ext/for-7.3`。纯代码质量整理，无需额外跟进。
-- [sched-20260726-002](../../2026/07/sched-20260726-002-sched-ext-bound-per-task-reenqueues-and-eject-the-owning-scheduler.md) `feature/under_review` — Tejun Heo 的 sched_ext 自我保护补丁 v2：给单个任务的 re-enqueue 次数设上限，超限即认定 BPF 调度器有缺陷并将其 eject 回退到默认调度。属于提升 SCX 健壮性的防御性机制，方向获认可，合入可能性较高。
-- [sched-20260726-001](../../2026/07/sched-20260726-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — Andrea Righi 发布的 proxy execution（PE）与 sched_ext 兼容第 9 版（`[PATCHSET v9 sched_ext/for-7.3]`），目标是让 PE 与 sched_ext 共存：当被阻塞任务需要把执行权代理给持锁的 owner，而该 owner 恰好由 SCX 调度器管理时，PE 不能破坏 SCX 的 pick/dispatch 语义。方向已获认可
 
-## 文章
-- [selftests/sched_ext: 检查 exit 测试骨架打开失败](../../2026/08/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.md)
-- [sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)
-- [sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)
-
-共 3 篇
+- [sched-20260801-001 · ](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md)  (2026-08-01)
+- [sched-20260801-002 · ](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md)  (2026-08-01)
+- [sched-20260803-001 · sched_ext: 为 stranded 任务引入带宽受限的 rescue 执行](../../2026/08/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.md)  (2026-08-03)
+- [sched-20260803-002 · sched_ext: 内置 idle 掩码初始化为 busy](../../2026/08/sched-20260803-002-sched-ext-initialize-idle-masks-as-busy.md)  (2026-08-03)
+- [sched-20260803-003 · sched_ext: 7.2-rc6 fixes pull（UAF/死锁/状态错误）](../../2026/08/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.md)  (2026-08-03)
+- [sched-20260804-001 · sched_ext: 在 sched_ext 下启用 proxy execution](../../2026/08/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.md)  (2026-08-04)
+- [sched-20260804-002 · sched_ext: rescue 执行 v2 扩展（与 proxy execution 联动）](../../2026/08/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.md)  (2026-08-04)
+- [sched-20260804-003 · sched_ext: 修复 idle CPU 状态初始化（v4，已合入 for-7.3）](../../2026/08/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.md)  (2026-08-04)
+- [sched-20260804-004 · sched_ext: 7.2-rc6 fixes pull（第二波）](../../2026/08/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.md)  (2026-08-04)
+- [sched-20260805-001 · sched_ext: proxy execution 系列的两个 review 收尾（reject DSQ 泛化 + 跨类切换的代理 donor 阻断）](../../2026/08/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.md)  ("2026-08-05")
+- [sched-20260806-010 · sched_ext: proxy execution 系列 review 推进（07/15 转向保守 terminate）](../../2026/08/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.md)  ("2026-08-06")
+- [? · ](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)  (2026-08-07)
+- [? · ](../../2026/08/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.md)  (2026-08-07)
+- [? · ](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)  (2026-08-08)
+- [sched-20260809-005 · ](../../2026/08/sched-20260809-005.md)  (2026-08-09)

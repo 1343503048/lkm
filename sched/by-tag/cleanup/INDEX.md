@@ -1,6 +1,8 @@
-# tag: cleanup
+# by-tag: cleanup
 
-共 2 篇
 
-- [sched-20260804-008](../../2026/08/sched-20260804-008-sched-rt-minor-cleanups.md) `cleanup/low/under_review` — sched/rt 三笔小清理（删未用代码、修翻转注释、其它整洁化），声明无功能影响。低严重度清理，合入可能性 high。
-- [sched-20260804-012](../../2026/08/sched-20260804-012-sched-topology-free-numa-masks-on-alloc-failure.md) `fix/low/under_review` — `sched_domains_numa_masks` 在部分分配失败时未释放已分配掩码，存在错误路径泄漏。Hongling Zeng 补上清理。低严重度清理，属 medium（需确认与其它 topology 清理的合并）。
+> 自动索引，共 2 篇。
+
+
+- [sched-20260804-008 · sched/rt: 琐碎清理（无功能影响）](../../2026/08/sched-20260804-008-sched-rt-minor-cleanups.md)  (2026-08-04)
+- [sched-20260804-012 · sched/topology: NUMA 掩码分配失败时释放](../../2026/08/sched-20260804-012-sched-topology-free-numa-masks-on-alloc-failure.md)  (2026-08-04)

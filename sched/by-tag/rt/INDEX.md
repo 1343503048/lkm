@@ -1,5 +1,8 @@
-# tag: rt
+# by-tag: rt
 
-共 1 篇
 
-- [sched-20260804-008](../../2026/08/sched-20260804-008-sched-rt-minor-cleanups.md) `cleanup/low/under_review` — sched/rt 三笔小清理（删未用代码、修翻转注释、其它整洁化），声明无功能影响。低严重度清理，合入可能性 high。
+> 自动索引，共 2 篇。
+
+
+- [sched-20260804-008 · sched/rt: 琐碎清理（无功能影响）](../../2026/08/sched-20260804-008-sched-rt-minor-cleanups.md)  (2026-08-04)
+- [sched-20260809-005 · ](../../2026/08/sched-20260809-005.md)  (2026-08-09)
