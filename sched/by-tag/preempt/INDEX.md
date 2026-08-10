@@ -1,7 +1,7 @@
 # by-tag: preempt
 
 
-> 自动索引，共 16 篇。
+> 自动索引，共 17 篇。
 
 
 - [sched-20260801-007 · ](../../2026/08/sched-20260801-007-sched-preempt-count-cleanups-and-separate-resched-bits.md)  (2026-08-01)
@@ -20,3 +20,4 @@
 - [? · ](../../2026/08/sched-20260807-014-preempt-dynamic-simplify-v2.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup.md)  (2026-08-07)
 - [sched-20260809-004 · ](../../2026/08/sched-20260809-004.md)  (2026-08-09)
+- [sched-20260810-015 · ](../../2026/08/sched-20260810-015.md)  (2026-08-10)

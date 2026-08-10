@@ -1,7 +1,7 @@
 # by-tag: affinity
 
 
-> 自动索引，共 15 篇。
+> 自动索引，共 16 篇。
 
 
 - [sched-20260801-001 · ](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md)  (2026-08-01)
@@ -19,3 +19,4 @@
 - [? · ](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md)  (2026-08-07)
+- [sched-20260810-008 · ](../../2026/08/sched-20260810-008.md)  (2026-08-10)

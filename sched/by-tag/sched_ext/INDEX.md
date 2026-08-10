@@ -1,7 +1,7 @@
 # by-tag: sched_ext
 
 
-> 自动索引，共 15 篇。
+> 自动索引，共 16 篇。
 
 
 - [sched-20260801-001 · ](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md)  (2026-08-01)
@@ -19,3 +19,4 @@
 - [? · ](../../2026/08/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)  (2026-08-08)
 - [sched-20260809-005 · ](../../2026/08/sched-20260809-005.md)  (2026-08-09)
+- [sched-20260810-001 · ](../../2026/08/sched-20260810-001.md)  (2026-08-10)

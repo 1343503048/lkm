@@ -1,7 +1,7 @@
 # by-tag: idle
 
 
-> 自动索引，共 13 篇。
+> 自动索引，共 14 篇。
 
 
 - [sched-20260801-002 · ](../../2026/08/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.md)  (2026-08-01)
@@ -17,3 +17,4 @@
 - [? · ](../../2026/08/sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-001-sched-core-skip-avg-idle-v3.md)  (2026-08-08)
 - [? · ](../../2026/08/sched-20260808-002-kcov-scheduler-coverage-leaks.md)  (2026-08-08)
+- [sched-20260810-009 · ](../../2026/08/sched-20260810-009.md)  (2026-08-10)

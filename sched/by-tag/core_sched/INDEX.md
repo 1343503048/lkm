@@ -1,7 +1,7 @@
 # by-tag: core_sched
 
 
-> 自动索引，共 6 篇。
+> 自动索引，共 7 篇。
 
 
 - [sched-20260805-001 · sched_ext: proxy execution 系列的两个 review 收尾（reject DSQ 泛化 + 跨类切换的代理 donor 阻断）](../../2026/08/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.md)  ("2026-08-05")
@@ -10,3 +10,4 @@
 - [? · ](../../2026/08/sched-20260807-001-proxy-execution-sleeping-owner-v31.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-003-sched-ext-core-scheduling-fixes.md)  (2026-08-08)
 - [sched-20260809-003 · ](../../2026/08/sched-20260809-003.md)  (2026-08-09)
+- [sched-20260810-006 · ](../../2026/08/sched-20260810-006.md)  (2026-08-10)

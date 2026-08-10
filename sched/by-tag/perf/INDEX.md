@@ -1,7 +1,7 @@
 # by-tag: perf
 
 
-> 自动索引，共 15 篇。
+> 自动索引，共 17 篇。
 
 
 - [sched-20260801-003 · ](../../2026/08/sched-20260801-003-sched-fair-sync-wakeups-target-wakers-core.md)  (2026-08-01)
@@ -19,3 +19,5 @@
 - [? · ](../../2026/08/sched-20260807-009-perf-core-group-leader-use-after-free.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-011-psi-use-ffs-task-count-bitmask.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-005-perf-sched-latency-v9-applied.md)  (2026-08-08)
+- [sched-20260810-004 · ](../../2026/08/sched-20260810-004.md)  (2026-08-10)
+- [sched-20260810-005 · ](../../2026/08/sched-20260810-005.md)  (2026-08-10)

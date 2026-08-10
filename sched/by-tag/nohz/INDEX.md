@@ -1,7 +1,7 @@
 # by-tag: nohz
 
 
-> 自动索引，共 10 篇。
+> 自动索引，共 11 篇。
 
 
 - [sched-20260801-005 · ](../../2026/08/sched-20260801-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing-v3.md)  (2026-08-01)
@@ -14,3 +14,4 @@
 - [sched-20260806-002 · sched/fair: NOHZ 优先 fully idle core（v5，已集齐 R-b）](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md)  ("2026-08-06")
 - [? · ](../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md)  (2026-08-08)
+- [sched-20260810-009 · ](../../2026/08/sched-20260810-009.md)  (2026-08-10)
