@@ -1,7 +1,7 @@
 # by-tag: topology
 
 
-> 自动索引，共 26 篇。
+> 自动索引，共 27 篇。
 
 
 - [sched-20260801-006 · ](../../2026/08/sched-20260801-006-sched-cache-honor-migrate-llc-task-in-active-load-balance.md)  (2026-08-01)
@@ -30,3 +30,4 @@
 - [? · ](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md)  (2026-08-08)
 - [sched-20260810-013 · ](../../2026/08/sched-20260810-013.md)  (2026-08-10)
+- [sched-20260814-003 · ](../../2026/08/sched-20260814-003.md)  (2026-08-14)

@@ -1,7 +1,7 @@
 # by-tag: cgroup
 
 
-> 自动索引，共 6 篇。
+> 自动索引，共 7 篇。
 
 
 - [sched-20260801-001 · ](../../2026/08/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.md)  (2026-08-01)
@@ -10,3 +10,4 @@
 - [sched-20260805-004 · sched/fair: 删除 pick_task_fair() 中失效的 throttled 检查](../../2026/08/sched-20260805-004-sched-fair-remove-dead-throttled-check-pick-task-fair.md)  ("2026-08-05")
 - [? · ](../../2026/08/sched-20260807-002-sched-ext-find-parent-sched-null-check.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-013-sched-preserve-reset-on-fork.md)  (2026-08-07)
+- [sched-20260814-008 · ](../../2026/08/sched-20260814-008.md)  (2026-08-14)
