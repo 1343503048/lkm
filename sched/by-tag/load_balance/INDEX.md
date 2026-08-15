@@ -1,7 +1,7 @@
 # by-tag: load_balance
 
 
-> 自动索引，共 26 篇。
+> 自动索引，共 27 篇。
 
 
 - [sched-20260801-003 · ](../../2026/08/sched-20260801-003-sched-fair-sync-wakeups-target-wakers-core.md)  (2026-08-01)
@@ -30,3 +30,4 @@
 - [? · ](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md)  (2026-08-08)
 - [? · ](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md)  (2026-08-08)
+- [sched-20260815-001 · ](../../2026/08/sched-20260815-001.md)  (2026-08-15)
