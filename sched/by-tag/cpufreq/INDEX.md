@@ -1,7 +1,7 @@
 # by-tag: cpufreq
 
 
-> 自动索引，共 10 篇。
+> 自动索引，共 11 篇。
 
 
 - [sched-20260801-009 · ](../../2026/08/sched-20260801-009-cpufreq-intel-pstate-adjust-policy-cur-in-active-mode.md)  (2026-08-01)
@@ -14,3 +14,4 @@
 - [? · ](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md)  (2026-08-07)
 - [? · ](../../2026/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md)  (2026-08-08)
+- [sched-20260816-004 · ](../../2026/08/sched-20260816-004.md)  (2026-08-16)
