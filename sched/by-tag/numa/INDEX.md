@@ -1,7 +1,7 @@
 # by-tag: numa
 
 
-> 自动索引，共 7 篇。
+> 自动索引，共 8 篇。
 
 
 - [sched-20260803-006 · sched/numa: 修复 sysctl_numa_balancing 静态键切换竞态](../../2026/08/sched-20260803-006-sched-numa-prevent-race-on-sysctl_numa_balancing-static-key.md)  (2026-08-03)
@@ -11,3 +11,4 @@
 - [sched-20260804-014 · sched/numa: early return 时清零 locality 统计](../../2026/08/sched-20260804-014-sched-numa-clear-locality-stats-on-early-return.md)  (2026-08-04)
 - [sched-20260804-015 · sched/numa: 静态键切换竞态修复（v1 推进）](../../2026/08/sched-20260804-015-sched-numa-prevent-race-sysctl-static-key-v2.md)  (2026-08-04)
 - [sched-20260806-014 · sched/numa: Hygon 平台远程 socket 距离修正（v2）](../../2026/08/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.md)  ("2026-08-06")
+- [sched-20260817-005 · ](../../2026/08/sched-20260817-005.md)  (2026-08-17)
