@@ -1,38 +1,4 @@
----
-id: sched-20260801-007
-date: 2026-08-01
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<uid-13886@qq-imap>"
-lore_url: unknown
-authors: [Boqun Feng]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-13886@qq-imap>"
-    date: 2026-08-01
-    summary: "24 个 patch 的大系列，围绕 preempt_count 语义清理与 HAS_SEPARATE_PREEMPT_RESCHED_BITS 展开。当日观察到其中 3 个与 sched 直接相关：08/24 移除 __cant_sleep() 中恒为 0 的 preempt_offset 参数；09/24 消除 __cant_migrate() 中对 preempt_count() 的有符号比较；11/24 为 arm64 打开 HAS_SEPARATE_PREEMPT_RESCHED_BITS，节省一个 per-CPU 变量并减少 NMI 路径指令"
-    review_outcome: "当日仅观察到系列本身发出，未见 review 回复"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["24 个 patch 的跨子系统大系列，需要 sched、arm64、以及各架构 maintainer 分别确认，协调成本高", "本次仅观察到 3 封 sched 相关邮件，系列整体状态与其余 21 个 patch 的内容不在本次采样范围内，信息不完整"]
-  next_action: "等待 Peter Zijlstra（sched preempt 方向）与 arm64 maintainer 对相关 patch 的意见"
-contribution_opportunities:
-  - kind: review
-    description: "08/24 与 09/24 是低风险清理，可以帮忙核对 __cant_sleep() 的所有调用点确实都传 0、以及 __cant_migrate() 改为无符号比较后在各架构 preempt_count 布局下语义不变"
-  - kind: testing
-    description: "在 arm64 机器上验证 11/24 开启 HAS_SEPARATE_PREEMPT_RESCHED_BITS 后 NMI 嵌套（perf NMI / SDEI）路径行为正常，并测量作者声称的『节省 per-CPU 变量与 NMI 路径指令』的实际效果"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 3
-related_articles: []
-tags: [preempt, arm64]
----
+# arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS
 
 ## TL;DR
 
@@ -96,3 +62,40 @@ v1，2026-08-01 04:30 发出（三封邮件时间戳相同，为同一批投递�
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS"
+id: sched-20260801-007
+date: 2026-08-01
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<uid-13886@qq-imap>"
+lore_url: unknown
+authors: [Boqun Feng]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-13886@qq-imap>"
+    date: 2026-08-01
+    summary: "24 个 patch 的大系列，围绕 preempt_count 语义清理与 HAS_SEPARATE_PREEMPT_RESCHED_BITS 展开。当日观察到其中 3 个与 sched 直接相关：08/24 移除 __cant_sleep() 中恒为 0 的 preempt_offset 参数；09/24 消除 __cant_migrate() 中对 preempt_count() 的有符号比较；11/24 为 arm64 打开 HAS_SEPARATE_PREEMPT_RESCHED_BITS，节省一个 per-CPU 变量并减少 NMI 路径指令"
+    review_outcome: "当日仅观察到系列本身发出，未见 review 回复"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["24 个 patch 的跨子系统大系列，需要 sched、arm64、以及各架构 maintainer 分别确认，协调成本高", "本次仅观察到 3 封 sched 相关邮件，系列整体状态与其余 21 个 patch 的内容不在本次采样范围内，信息不完整"]
+  next_action: "等待 Peter Zijlstra（sched preempt 方向）与 arm64 maintainer 对相关 patch 的意见"
+contribution_opportunities:
+  - kind: review
+    description: "08/24 与 09/24 是低风险清理，可以帮忙核对 __cant_sleep() 的所有调用点确实都传 0、以及 __cant_migrate() 改为无符号比较后在各架构 preempt_count 布局下语义不变"
+  - kind: testing
+    description: "在 arm64 机器上验证 11/24 开启 HAS_SEPARATE_PREEMPT_RESCHED_BITS 后 NMI 嵌套（perf NMI / SDEI）路径行为正常，并测量作者声称的『节省 per-CPU 变量与 NMI 路径指令』的实际效果"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 3
+related_articles: []
+tags: [preempt, arm64]
+---

@@ -1,36 +1,4 @@
----
-id: sched-20260731-007
-date: 2026-07-31
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260729163225.1987068-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/lkml/20260729163225.1987068-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [Mete Durlu, Peter Zijlstra]
-current_version: v2
-patch_series:
-  - version: v2
-    msgid: "<20260729163225.1987068-1-arighi@nvidia.com>"
-    date: 2026-07-29
-    summary: "优先选择完全空闲的 SMT 核心运行 NOHZ 负载均衡器"
-    review_outcome: "Mete (s390) 提出 per-core 遍历优化建议；Andrea 指出 is_core_idle() 不检查目标 CPU 本身的问题"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["需要解决 is_core_idle() 不检查目标 CPU 的逻辑问题", "s390 测试结果待反馈"]
-  next_action: "等待 Mete 的 s390 测试结果；Andrea 修正 is_core_idle() 逻辑"
-contribution_opportunities:
-  - kind: testing
-    description: "在多平台 SMT 系统上测试（x86、Power、ARM），验证性能影响"
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 2
-related_articles: [sched-20260730-008]
-tags: [cfs, nohz, load_balance, hyperthreading]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 ## TL;DR
 
@@ -71,3 +39,38 @@ tags: [cfs, nohz, load_balance, hyperthreading]
 
 - lore thread: https://lore.kernel.org/lkml/20260729163225.1987068-1-arighi@nvidia.com
 - 前日分析: sched-20260730-008
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260731-007
+date: 2026-07-31
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260729163225.1987068-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/lkml/20260729163225.1987068-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [Mete Durlu, Peter Zijlstra]
+current_version: v2
+patch_series:
+  - version: v2
+    msgid: "<20260729163225.1987068-1-arighi@nvidia.com>"
+    date: 2026-07-29
+    summary: "优先选择完全空闲的 SMT 核心运行 NOHZ 负载均衡器"
+    review_outcome: "Mete (s390) 提出 per-core 遍历优化建议；Andrea 指出 is_core_idle() 不检查目标 CPU 本身的问题"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["需要解决 is_core_idle() 不检查目标 CPU 的逻辑问题", "s390 测试结果待反馈"]
+  next_action: "等待 Mete 的 s390 测试结果；Andrea 修正 is_core_idle() 逻辑"
+contribution_opportunities:
+  - kind: testing
+    description: "在多平台 SMT 系统上测试（x86、Power、ARM），验证性能影响"
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 2
+related_articles: [sched-20260730-008]
+tags: [cfs, nohz, load_balance, hyperthreading]
+---

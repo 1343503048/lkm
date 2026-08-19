@@ -2,7 +2,7 @@
 
 共 7 篇
 
-- [sched-20260810-012](../../2026/08/sched-20260810-012.md) `feature/under_review` — Madadi Vineeth Reddy 提交「让同步唤醒目标落在唤醒者所在 core」，附 Kayra Cizmeci 在 8/10 提供的 x86 实测数据（部分负载 IPC/延迟改善）。under_review。
+- [sched-20260810-012](../../2026/08/sched-20260810-012-sched-fair-let-sync-wakeups-target-the-waker-s-core.md) `feature/under_review` — Madadi Vineeth Reddy 提交「让同步唤醒目标落在唤醒者所在 core」，附 Kayra Cizmeci 在 8/10 提供的 x86 实测数据（部分负载 IPC/延迟改善）。under_review。
 - [sched-20260806-012](../../2026/08/sched-20260806-012-fuse-wakeup-hints-to-scheduler.md) `feature/draft`
 - [sched-20260806-009](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review`
 - [sched-20260805-008](../../2026/08/sched-20260805-008-sched-fair-decline-wf_sync-stacking-when-waker-llc-busier.md) `feature/under_review`

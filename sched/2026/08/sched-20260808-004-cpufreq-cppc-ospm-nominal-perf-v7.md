@@ -1,20 +1,4 @@
----
-title: "cpufreq: CPPC 增加 OSPM nominal perf 支持（v7）"
-date: 2026-08-08
-series: "cpufreq-cppc-ospm-nominal-perf"
-version: "v7"
-status: "in-review"
-tags: [cpufreq]
-related_articles: [sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug]
-submitter: "Lifeng Zheng"
-emails:
-  - uid: 27762
-    subject: "[PATCH v7 0/3] ACPI / cpufreq: CPPC: Add ospm_nominal_perf support"
-  - uid: 27763
-    subject: "[PATCH v7 2/3] cpufreq: CPPC: Add ospm_nominal_freq attribute"
-  - uid: 27765
-    subject: "[PATCH v7 3/3] cpufreq: CPPC: Reflect the OSPM nominal in boost and limits"
----
+# cpufreq cppc ospm nominal perf v7
 
 ## 概述
 
@@ -45,3 +29,21 @@ v7，依赖于 Sumit Gupta 的 "Preserve OSPM-set registers across hotplug and u
 
 - 系列：uid 27762 / 27763 / 27765
 - 依赖系列分析：sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug
+
+---
+subject: "cpufreq: CPPC 增加 OSPM nominal perf 支持（v7）"
+date: 2026-08-08
+series: "cpufreq-cppc-ospm-nominal-perf"
+version: "v7"
+status: "in-review"
+tags: [cpufreq]
+related_articles: [sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug]
+submitter: "Lifeng Zheng"
+emails:
+  - uid: 27762
+    subject: "[PATCH v7 0/3] ACPI / cpufreq: CPPC: Add ospm_nominal_perf support"
+  - uid: 27763
+    subject: "[PATCH v7 2/3] cpufreq: CPPC: Add ospm_nominal_freq attribute"
+  - uid: 27765
+    subject: "[PATCH v7 3/3] cpufreq: CPPC: Reflect the OSPM nominal in boost and limits"
+---

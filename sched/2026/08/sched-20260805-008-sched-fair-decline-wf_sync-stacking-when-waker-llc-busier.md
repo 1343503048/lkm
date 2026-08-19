@@ -1,18 +1,4 @@
----
-id: sched-20260805-008
-date: "2026-08-05"
-title: "sched/fair: 当唤醒者 LLC 更忙时拒绝 WF_SYNC 堆叠（RFC + Hillf 审查）"
-series: "Decline WF_SYNC stacking when waker LLC is busier share"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: low
-tags: [cfs, load_balance, topology, wake_affine]
-authors: ["Vinicius Peixoto <viniciuspeixoto@github.com>", "Hillf Danton <hdanton@sina.com>"]
-reviewers: ["Hillf Danton <hdanton@sina.com>"]
-related_articles: ["sched-20260804-006"]
-emails: ["uid-21117@qq-imap", "uid-21331@qq-imap"]
----
+# sched/fair: decline WF_SYNC stacking when waker LLC is the busier share
 
 # sched/fair: 当唤醒者 LLC 更忙时拒绝 WF_SYNC 堆叠（RFC + Hillf 审查）
 
@@ -53,3 +39,20 @@ Hillf 的反对点：
 ## 评价
 
 与 006/007 一起把 sync wakeup 主题拆成了「往 waker 靠 / 同 SMT 才靠 / waker 忙就别靠」三个互补视角，讨论健康。但本 RFC 的负载度量过于粗糙，需要换成考虑 capacity/weight 的指标并补数据，才有机会脱离 RFC。当前合入可能性低，属于方向性探索。
+
+---
+subject: "sched/fair: decline WF_SYNC stacking when waker LLC is the busier share"
+id: sched-20260805-008
+date: "2026-08-05"
+title: "sched/fair: 当唤醒者 LLC 更忙时拒绝 WF_SYNC 堆叠（RFC + Hillf 审查）"
+series: "Decline WF_SYNC stacking when waker LLC is busier share"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: low
+tags: [cfs, load_balance, topology, wake_affine]
+authors: ["Vinicius Peixoto <viniciuspeixoto@github.com>", "Hillf Danton <hdanton@sina.com>"]
+reviewers: ["Hillf Danton <hdanton@sina.com>"]
+related_articles: ["sched-20260804-006"]
+emails: ["uid-21117@qq-imap", "uid-21331@qq-imap"]
+---

@@ -3,7 +3,7 @@
 共 36 篇
 
 - [sched-20260818-005](../../2026/08/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.md) `feature/medium/under_review` — Szabina 在 s390 LPAR（32 vCPU）上对 "Flatten the pick" v3 系列做了详细 benchmark（schbench、sysbench、hackbench），含 stress-ng 并行负载。关键发现：无并行负载时结果普遍正面（高线程数最高 -9.55%），但 stress-ng 并行时低线程数场景出现回退（最高 +2.36%），且 stress-ng 自身
-- [sched-20260815-001](../../2026/08/sched-20260815-001.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
+- [sched-20260815-001](../../2026/08/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
 - [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md) `merged`
 - [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md](../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md) `merged`
 - [sched-20260807-020-sched-numa-hygon-remote-socket-distance.md](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md) `in-review`

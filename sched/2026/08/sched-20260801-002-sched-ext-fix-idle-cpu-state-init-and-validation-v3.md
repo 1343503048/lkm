@@ -1,48 +1,4 @@
----
-id: sched-20260801-002
-date: 2026-08-01
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<uid-13680@qq-imap>"
-lore_url: "https://lore.kernel.org/all/20260731090334.2911948-1-arighi@nvidia.com/"
-authors: [Andrea Righi]
-maintainers_involved: [Kuba Piecuch]
-current_version: v3
-patch_series:
-  - version: v1
-    msgid: unknown
-    date: 2026-07-26
-    summary: "在 allowed_cpus selftest 内部初始化 idle mask，规避 ops.init() 期间 idle 状态不准确的问题"
-    review_outcome: "Kuba Piecuch 指出这属于 sched_ext 核心问题，不应在 selftest 里绕过，应移到核心修复"
-  - version: v2
-    msgid: unknown
-    date: 2026-07-31
-    summary: "把 idle mask 初始化从 selftest 移入 sched_ext 核心；新增专用 idle-tracking static key，使得调度器完全启用前就能跟踪 idle 状态转换；重写 allowed_cpus selftest，改为校验稳定的本地 CPU-idle 不变式"
-    review_outcome: "Kuba Piecuch 建议不必新增专用 static key，复用已有的 built-in idle-selection static key 即可；并对 selftest 检查点提出细化意见"
-  - version: v3
-    msgid: "<uid-13680@qq-imap>"
-    date: 2026-08-01
-    summary: "复用 built-in idle-selection static key（不再新增专用 key）；在 ops.select_cpu() 与 ops.enqueue() 两处都检查本地 CPU-idle 不变式；只读取 idle mask 而不修改，且把检查放在 scx_bpf_select_cpu_and() 调用之前"
-    review_outcome: "Kuba Piecuch 在 2/2 上继续讨论 idle task 与 idle bit 的边界语义，作者已认可其指正"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 Tejun Heo 拉入 sched_ext/for-7.3，或 Kuba 对 v3 的最终确认"
-contribution_opportunities:
-  - kind: testing
-    description: "在 SMT 与非 SMT 机器上反复运行 allowed_cpus selftest，确认 v3 改写后的本地不变式检查不再出现偶发失败"
-  - kind: review
-    description: "核对『在 ops.init() 之前开启 idle 跟踪、但抑制 ops.update_idle() 通知』这一拆分是否在所有 BPF 调度器加载路径上都成立"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 4
-related_articles: []
-tags: [sched_ext, idle, affinity]
----
+# selftests/sched_ext: Make allowed_cpus idle validation race-free
 
 ## TL;DR
 
@@ -102,3 +58,50 @@ Kuba Piecuch 是本系列事实上的主要 reviewer，v1→v2→v3 的全部关
 - lore thread (v3): 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "selftests/sched_ext: Make allowed_cpus idle validation race-free"
+id: sched-20260801-002
+date: 2026-08-01
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<uid-13680@qq-imap>"
+lore_url: "https://lore.kernel.org/all/20260731090334.2911948-1-arighi@nvidia.com/"
+authors: [Andrea Righi]
+maintainers_involved: [Kuba Piecuch]
+current_version: v3
+patch_series:
+  - version: v1
+    msgid: unknown
+    date: 2026-07-26
+    summary: "在 allowed_cpus selftest 内部初始化 idle mask，规避 ops.init() 期间 idle 状态不准确的问题"
+    review_outcome: "Kuba Piecuch 指出这属于 sched_ext 核心问题，不应在 selftest 里绕过，应移到核心修复"
+  - version: v2
+    msgid: unknown
+    date: 2026-07-31
+    summary: "把 idle mask 初始化从 selftest 移入 sched_ext 核心；新增专用 idle-tracking static key，使得调度器完全启用前就能跟踪 idle 状态转换；重写 allowed_cpus selftest，改为校验稳定的本地 CPU-idle 不变式"
+    review_outcome: "Kuba Piecuch 建议不必新增专用 static key，复用已有的 built-in idle-selection static key 即可；并对 selftest 检查点提出细化意见"
+  - version: v3
+    msgid: "<uid-13680@qq-imap>"
+    date: 2026-08-01
+    summary: "复用 built-in idle-selection static key（不再新增专用 key）；在 ops.select_cpu() 与 ops.enqueue() 两处都检查本地 CPU-idle 不变式；只读取 idle mask 而不修改，且把检查放在 scx_bpf_select_cpu_and() 调用之前"
+    review_outcome: "Kuba Piecuch 在 2/2 上继续讨论 idle task 与 idle bit 的边界语义，作者已认可其指正"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 Tejun Heo 拉入 sched_ext/for-7.3，或 Kuba 对 v3 的最终确认"
+contribution_opportunities:
+  - kind: testing
+    description: "在 SMT 与非 SMT 机器上反复运行 allowed_cpus selftest，确认 v3 改写后的本地不变式检查不再出现偶发失败"
+  - kind: review
+    description: "核对『在 ops.init() 之前开启 idle 跟踪、但抑制 ops.update_idle() 通知』这一拆分是否在所有 BPF 调度器加载路径上都成立"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 4
+related_articles: []
+tags: [sched_ext, idle, affinity]
+---

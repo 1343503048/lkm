@@ -1,36 +1,4 @@
----
-id: sched-20260729-004
-date: 2026-07-29
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260728-master-v1-1-f95d9b0147d2@gentwo.org>"
-lore_url: "https://lore.kernel.org/r/20260728-master-v1-1-f95d9b0147d2@gentwo.org"
-authors: [Shubhang Kaushik]
-maintainers_involved: [K Prateek Nayak]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260728-master-v1-1-f95d9b0147d2@gentwo.org>"
-    date: 2026-07-29
-    summary: "update_rq_avg_idle() 恢复 idle_stamp 有效性检查：idle_stamp 为 0 时跳过 avg_idle 更新，避免用 rq_clock 整值污染 avg_idle。"
-    review_outcome: "Prateek 给出 Reviewed-by，并确认 proxy execution / force-idle 路径确实会触发 idle_stamp==0 的情况。"
-upstream_commit: null
-fixes_commit: "4b603f1551a73"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "带 Prateek 的 Reviewed-by 等待维护者收取，或视意见发 v2"
-contribution_opportunities:
-  - kind: testing
-    description: "在 newidle balance 敏感的负载（hackbench/schbench）上验证 avg_idle 被污染前后 newidle balance 触发频率的差异，补充量化数据"
-generated_at: "2026-07-30T09:30:00"
-source_email_count: 2
-related_articles: []
-tags: [cfs, load_balance, idle]
----
+# sched/core: Skip rq->avg_idle update without a valid idle_stamp
 
 ## TL;DR
 
@@ -71,3 +39,38 @@ likelihood: high。语义上是恢复被重构丢掉的原有检查，带 Fixes 
 
 - lore thread: https://lore.kernel.org/r/20260728-master-v1-1-f95d9b0147d2@gentwo.org
 - 早前相关讨论: https://lore.kernel.org/r/20260423023322.1293923-1-firelzrd@gmail.com
+
+---
+subject: "sched/core: Skip rq->avg_idle update without a valid idle_stamp"
+id: sched-20260729-004
+date: 2026-07-29
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260728-master-v1-1-f95d9b0147d2@gentwo.org>"
+lore_url: "https://lore.kernel.org/r/20260728-master-v1-1-f95d9b0147d2@gentwo.org"
+authors: [Shubhang Kaushik]
+maintainers_involved: [K Prateek Nayak]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260728-master-v1-1-f95d9b0147d2@gentwo.org>"
+    date: 2026-07-29
+    summary: "update_rq_avg_idle() 恢复 idle_stamp 有效性检查：idle_stamp 为 0 时跳过 avg_idle 更新，避免用 rq_clock 整值污染 avg_idle。"
+    review_outcome: "Prateek 给出 Reviewed-by，并确认 proxy execution / force-idle 路径确实会触发 idle_stamp==0 的情况。"
+upstream_commit: null
+fixes_commit: "4b603f1551a73"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "带 Prateek 的 Reviewed-by 等待维护者收取，或视意见发 v2"
+contribution_opportunities:
+  - kind: testing
+    description: "在 newidle balance 敏感的负载（hackbench/schbench）上验证 avg_idle 被污染前后 newidle balance 触发频率的差异，补充量化数据"
+generated_at: "2026-07-30T09:30:00"
+source_email_count: 2
+related_articles: []
+tags: [cfs, load_balance, idle]
+---

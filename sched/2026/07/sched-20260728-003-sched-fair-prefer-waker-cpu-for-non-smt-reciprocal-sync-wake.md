@@ -1,41 +1,4 @@
----
-id: sched-20260728-003
-date: 2026-07-28
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org>"
-lore_url: "https://lore.kernel.org/r/20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org"
-authors: [Shubhang Kaushik]
-maintainers_involved: []
-current_version: v3
-patch_series:
-  - version: v2
-    msgid: "<20260722-b4-sched-sync-wakeup-v2-1-f1164560b24b@gentwo.org>"
-    date: 2026-07-22
-    summary: "Move reciprocal handoff preference under wake_affine domain check"
-    review_outcome: "未获取到"
-  - version: v3
-    msgid: "<20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org>"
-    date: 2026-07-27
-    summary: "Limit to !sched_smt_active(); drop redundant affinity check; use plain p->last_wakee read; rebase on v7.2-rc5"
-    review_outcome: "v3 刚发出，暂无 review"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["需要 CFS maintainer (PeterZ / Vincent Guittot) review", "SMT 场景的排除逻辑需要确认是否充分"]
-  next_action: "等待 maintainer review"
-contribution_opportunities:
-  - kind: testing
-    description: "在非 SMT ARM 平台（如 Ampere Altra）或 x86 关闭 SMT 后测试 pipe/hackbench/schbench，验证 30% 提升可复现且无回退"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: [cfs, affinity, perf]
----
+# sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups
 
 ## TL;DR
 
@@ -95,3 +58,43 @@ v3 暂无 review 意见。此前 v2 的 review 意见未在本次邮件中体现
 - lore thread: https://lore.kernel.org/r/20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org
 - v2 link: https://lore.kernel.org/r/20260722-b4-sched-sync-wakeup-v2-1-f1164560b24b@gentwo.org
 - tip-bot commit: 未获取到
+
+---
+subject: "sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups"
+id: sched-20260728-003
+date: 2026-07-28
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org>"
+lore_url: "https://lore.kernel.org/r/20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org"
+authors: [Shubhang Kaushik]
+maintainers_involved: []
+current_version: v3
+patch_series:
+  - version: v2
+    msgid: "<20260722-b4-sched-sync-wakeup-v2-1-f1164560b24b@gentwo.org>"
+    date: 2026-07-22
+    summary: "Move reciprocal handoff preference under wake_affine domain check"
+    review_outcome: "未获取到"
+  - version: v3
+    msgid: "<20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org>"
+    date: 2026-07-27
+    summary: "Limit to !sched_smt_active(); drop redundant affinity check; use plain p->last_wakee read; rebase on v7.2-rc5"
+    review_outcome: "v3 刚发出，暂无 review"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["需要 CFS maintainer (PeterZ / Vincent Guittot) review", "SMT 场景的排除逻辑需要确认是否充分"]
+  next_action: "等待 maintainer review"
+contribution_opportunities:
+  - kind: testing
+    description: "在非 SMT ARM 平台（如 Ampere Altra）或 x86 关闭 SMT 后测试 pipe/hackbench/schbench，验证 30% 提升可复现且无回退"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: [cfs, affinity, perf]
+---

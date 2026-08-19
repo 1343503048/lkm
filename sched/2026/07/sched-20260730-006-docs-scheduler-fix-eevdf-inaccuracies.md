@@ -1,34 +1,4 @@
----
-id: sched-20260730-006
-date: 2026-07-30
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<20260729-sched-docs-eevdf-fix...@gmail.com>"
-lore_url: "https://lore.kernel.org/lkml/20260729-sched-docs-eevdf-fix"
-authors: [Zhan Xusheng]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260729-sched-docs-eevdf-fix...@gmail.com>"
-    date: 2026-07-29
-    summary: "Fix EEVDF-related inaccuracies in scheduler documentation"
-    review_outcome: "No review feedback yet"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "Wait for review"
-contribution_opportunities: []
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 1
-related_articles: []
-tags: [eevdf, sched_debug]
----
+# docs/scheduler: fix EEVDF-related inaccuracies in the scheduler docs
 
 ## TL;DR
 
@@ -74,3 +44,36 @@ v1 刚发出，暂无 review 意见。
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "docs/scheduler: fix EEVDF-related inaccuracies in the scheduler docs"
+id: sched-20260730-006
+date: 2026-07-30
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<20260729-sched-docs-eevdf-fix...@gmail.com>"
+lore_url: "https://lore.kernel.org/lkml/20260729-sched-docs-eevdf-fix"
+authors: [Zhan Xusheng]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260729-sched-docs-eevdf-fix...@gmail.com>"
+    date: 2026-07-29
+    summary: "Fix EEVDF-related inaccuracies in scheduler documentation"
+    review_outcome: "No review feedback yet"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "Wait for review"
+contribution_opportunities: []
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 1
+related_articles: []
+tags: [eevdf, sched_debug]
+---

@@ -2,9 +2,9 @@
 
 共 19 篇
 
-- [sched-20260815-001](../../2026/08/sched-20260815-001.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
-- [sched-20260810-015](../../2026/08/sched-20260810-015.md) `cleanup/low/merged_tip` — Boqun Feng 的 3 个抢占/锁相关清理 commit 已由 tip-bot 合入 `tip/locking/core`（2026-08-10 报告）：移除未使用的 `preempt_offset` 参数、避免有符号比较、arm64 启用 `HAS_SEPARATE_PREEMPT_RESCHED_BITS`。merged_tip。
-- [sched-20260809-004](../../2026/08/sched-20260809-004.md) `fix/low/merged_tip` — Boqun Feng 的 3 个抢占相关清理/修复已由 tip-bot 合入 `tip/locking/core`（2026-08-09 报告），属已合入主线前的 tip 阶段。无需额外 review。
+- [sched-20260815-001](../../2026/08/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
+- [sched-20260810-015](../../2026/08/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.md) `cleanup/low/merged_tip` — Boqun Feng 的 3 个抢占/锁相关清理 commit 已由 tip-bot 合入 `tip/locking/core`（2026-08-10 报告）：移除未使用的 `preempt_offset` 参数、避免有符号比较、arm64 启用 `HAS_SEPARATE_PREEMPT_RESCHED_BITS`。merged_tip。
+- [sched-20260809-004](../../2026/08/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.md) `fix/low/merged_tip` — Boqun Feng 的 3 个抢占相关清理/修复已由 tip-bot 合入 `tip/locking/core`（2026-08-09 报告），属已合入主线前的 tip 阶段。无需额外 review。
 - [sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup.md](../../2026/08/sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup.md) `in-review`
 - [sched-20260807-014-preempt-dynamic-simplify-v2.md](../../2026/08/sched-20260807-014-preempt-dynamic-simplify-v2.md) `in-review`
 - [sched-20260806-007](../../2026/08/sched-20260806-007-cpufreq-schedutil-fix-rate-limit-overflow-v3.md) `fix/high/under_review`

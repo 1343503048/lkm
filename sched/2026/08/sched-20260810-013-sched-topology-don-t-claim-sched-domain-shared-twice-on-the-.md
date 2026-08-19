@@ -1,0 +1,66 @@
+# sched/topology: don't claim sched_domain_shared twice on the same domain
+
+## TL;DR
+Breno Leitao 提交修复：「sched/topology: don't claim sched_domain_shared twice」。修复 shared domain 被重复 claim 导致的引用计数残留/内存泄漏。under_review。
+
+## 背景与问题
+`sched_domain_shared`（用于 EAS/节能共享域）在调度域构建中通过 claim 机制共享。某些构建/配置路径下会被重复 claim，造成引用计数未正确释放，长期累积形成内存泄漏（在频繁重建调度域如 CPU 热插拔/ cpuset 调整时更明显）。
+
+## 技术方案
+在 claim sched_domain_shared 前检查是否已被本 CPU/域 claim，避免重复计入引用计数。设计取舍：最小侵入地修正 claim 幂等性，不改变正常共享语义。
+
+## 版本演进与当前进展
+当前 v1。8/10 发出。
+
+## Maintainer 意见与讨论焦点
+焦点：shared domain 生命周期与 claim 幂等性的正确性，是否影响 EAS 路径。
+
+## 合入评估
+合入可能性 medium。属明确的引用计数修复。
+
+## 效果评估
+无 benchmark；修复潜在内存泄漏，稳定性收益。
+
+## 我可以参与的点
+- 在反复调度域重建场景验证无泄漏（kmemleak）；
+- 评审 claim 幂等性修复的正确性。
+
+## 参考链接
+- lore: 未获取到
+
+---
+subject: "sched/topology: don't claim sched_domain_shared twice on the same domain"
+id: sched-20260810-013
+date: 2026-08-10
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<20260810xxxxxx-breno@kernel.org>"
+lore_url: "未获取到"
+authors: [Breno Leitao]
+maintainers_involved: [Peter Zijlstra, Vincent Guittot, Dietmar Eggemann, Ingo Molnar]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260810xxxxxx-breno@kernel.org>"
+    date: 2026-08-10
+    summary: "修复 sched_domain_shared 在部分构建/配置下被重复 claim 导致的引用计数残留/内存泄漏问题。"
+    review_outcome: "v1 发出，等待维护者对 shared domain 生命周期的反馈。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: []
+  next_action: "等待维护者确认 shared domain 引用计数修复的正确性。"
+contribution_opportunities:
+  - kind: review
+    description: "评审 sched_domain_shared 引用计数/claim 逻辑。"
+  - kind: testing
+    description: "在反复触发调度域重建（热插拔/cpuset）场景下验证无内存泄漏。"
+generated_at: "2026-08-11T00:15:00"
+source_email_count: 1
+related_articles: []
+tags: [topology, sched/core]
+---

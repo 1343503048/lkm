@@ -1,37 +1,4 @@
----
-id: sched-20260729-005
-date: 2026-07-29
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260723040429.630176-1-luogengkun2@huawei.com>"
-lore_url: "https://lore.kernel.org/r/20260723040429.630176-1-luogengkun2@huawei.com"
-authors: [Luo Gengkun]
-maintainers_involved: [Tim Chen, Chen Yu]
-current_version: v8
-patch_series:
-  - version: v8
-    msgid: "<20260723040429.630176-1-luogengkun2@huawei.com>"
-    date: 2026-07-23
-    summary: "task_cache_work() 只扫描进程实际访问过的 CPU（visited cpus）而非全部 CPU，降低 cache-aware 调度的扫描开销（v1-v7 演进未在当日缓存内）。"
-    review_outcome: "Tim Chen 给出 Reviewed-by；Luo 提出相邻扫描周期并发执行的边界场景，Chen Yu 认为可容忍，建议下版只改注释表述。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues:
-    - "相邻 epoch 并发扫描的边界场景达成'可容忍'共识，但需在下一版落实注释修改"
-  next_action: "作者按 Chen Yu 建议更新注释（'elect a single scanner per epoch'）发 v9，或维护者直接收 v8"
-contribution_opportunities:
-  - kind: review
-    description: "并发场景分析仍开放：可独立审视 try_cmpxchg 选举窗口下两个 task_cache_work 重叠执行时 cpumask_clear 的实际影响，验证'可容忍'结论"
-generated_at: "2026-07-30T09:30:00"
-source_email_count: 3
-related_articles: []
-tags: [cfs, perf]
----
+# : [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 
 ## TL;DR
 
@@ -70,3 +37,39 @@ likelihood: medium。review 基本通过，但 sched/cache 整个方向仍在迭
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/r/20260723040429.630176-1-luogengkun2@huawei.com
+
+---
+subject: ": [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus"
+id: sched-20260729-005
+date: 2026-07-29
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260723040429.630176-1-luogengkun2@huawei.com>"
+lore_url: "https://lore.kernel.org/r/20260723040429.630176-1-luogengkun2@huawei.com"
+authors: [Luo Gengkun]
+maintainers_involved: [Tim Chen, Chen Yu]
+current_version: v8
+patch_series:
+  - version: v8
+    msgid: "<20260723040429.630176-1-luogengkun2@huawei.com>"
+    date: 2026-07-23
+    summary: "task_cache_work() 只扫描进程实际访问过的 CPU（visited cpus）而非全部 CPU，降低 cache-aware 调度的扫描开销（v1-v7 演进未在当日缓存内）。"
+    review_outcome: "Tim Chen 给出 Reviewed-by；Luo 提出相邻扫描周期并发执行的边界场景，Chen Yu 认为可容忍，建议下版只改注释表述。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+    - "相邻 epoch 并发扫描的边界场景达成'可容忍'共识，但需在下一版落实注释修改"
+  next_action: "作者按 Chen Yu 建议更新注释（'elect a single scanner per epoch'）发 v9，或维护者直接收 v8"
+contribution_opportunities:
+  - kind: review
+    description: "并发场景分析仍开放：可独立审视 try_cmpxchg 选举窗口下两个 task_cache_work 重叠执行时 cpumask_clear 的实际影响，验证'可容忍'结论"
+generated_at: "2026-07-30T09:30:00"
+source_email_count: 3
+related_articles: []
+tags: [cfs, perf]
+---

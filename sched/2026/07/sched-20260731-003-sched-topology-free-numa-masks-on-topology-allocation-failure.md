@@ -1,34 +1,4 @@
----
-id: sched-20260731-003
-date: 2026-07-31
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260731081413.5505-1-wangfengyu@hygon.cn>"
-lore_url: "https://lore.kernel.org/lkml/20260731081413.5505-1-wangfengyu@hygon.cn"
-authors: [Fengyu Wang]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260731081413.5505-1-wangfengyu@hygon.cn>"
-    date: 2026-07-31
-    summary: "sched_init_numa() 中 topology 数组分配失败时，撤销并释放已发布的 numa_masks，修复内存泄漏"
-    review_outcome: "v1 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: "cb83b629bae0"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 review"
-contribution_opportunities: []
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 1
-related_articles: []
-tags: [topology, numa_balancing]
----
+# sched/topology: Free NUMA masks on topology allocation failure
 
 ## TL;DR
 
@@ -82,3 +52,36 @@ Fengyu Wang (Hygon) 修复 sched_init_numa() 中 topology 数组分配失败时�
 
 - lore thread: https://lore.kernel.org/lkml/20260731081413.5505-1-wangfengyu@hygon.cn
 - Fixes: cb83b629bae0 ("sched/numa: Rewrite the CONFIG_NUMA sched domain support")
+
+---
+subject: "sched/topology: Free NUMA masks on topology allocation failure"
+id: sched-20260731-003
+date: 2026-07-31
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260731081413.5505-1-wangfengyu@hygon.cn>"
+lore_url: "https://lore.kernel.org/lkml/20260731081413.5505-1-wangfengyu@hygon.cn"
+authors: [Fengyu Wang]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260731081413.5505-1-wangfengyu@hygon.cn>"
+    date: 2026-07-31
+    summary: "sched_init_numa() 中 topology 数组分配失败时，撤销并释放已发布的 numa_masks，修复内存泄漏"
+    review_outcome: "v1 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: "cb83b629bae0"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 review"
+contribution_opportunities: []
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 1
+related_articles: []
+tags: [topology, numa_balancing]
+---

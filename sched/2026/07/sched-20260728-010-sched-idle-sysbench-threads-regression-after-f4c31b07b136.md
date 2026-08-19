@@ -1,38 +1,4 @@
----
-id: sched-20260728-010
-date: 2026-07-28
-subsystem: sched
-type: bug
-status: under_review
-severity: high
-thread_root_msgid: null
-lore_url: null
-authors: [Joseph Salisbury]
-maintainers_involved: [Rafael J. Wysocki, Christian Loehel]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: null
-    date: 2026-07-02
-    summary: "报告 f4c31b07b136 (sched: idle: Consolidate the handling of two special cases) 引入 Sysbench threads 回归"
-    review_outcome: "Rafael 确认可能是 tick 停止行为变化导致；Christian Loehel 参与分析；Oracle 确认 guest 无 cpuidle driver"
-upstream_commit: null
-fixes_commit: "f4c31b07b136"
-merged_branch: null
-merge_assessment:
-  likelihood: unknown
-  blocking_issues: ["根因尚未完全确认", "guest 环境下 cpuidle 状态不明确"]
-  next_action: "需要确认 tick 停止频率变化是否为根因，可能需要 revert 或条件性修复"
-contribution_opportunities:
-  - kind: testing
-    description: "在类似 OCI VM 环境（无 cpuidle driver、少核）中复现回归并收集 ftrace idle 事件数据"
-  - kind: discussion
-    description: "分析 f4c31b07b136 前后 tick_nohz_idle 行为差异，确认 previous-wakeup 启发式的影响"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: [cfs, regression, idle]
----
+# sched idle sysbench threads regression after f4c31b07b136
 
 ## TL;DR
 
@@ -110,3 +76,40 @@ Rafael Wysocki 确认："I think that this is your case and the tick stops for y
 - lore thread: 未获取到
 - 问题 commit: f4c31b07b136 ("sched: idle: Consolidate the handling of two special cases")
 - 报告者: Joseph Salisbury (Oracle)
+
+---
+subject: "sched idle sysbench threads regression after f4c31b07b136"
+id: sched-20260728-010
+date: 2026-07-28
+subsystem: sched
+type: bug
+status: under_review
+severity: high
+thread_root_msgid: null
+lore_url: null
+authors: [Joseph Salisbury]
+maintainers_involved: [Rafael J. Wysocki, Christian Loehel]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: null
+    date: 2026-07-02
+    summary: "报告 f4c31b07b136 (sched: idle: Consolidate the handling of two special cases) 引入 Sysbench threads 回归"
+    review_outcome: "Rafael 确认可能是 tick 停止行为变化导致；Christian Loehel 参与分析；Oracle 确认 guest 无 cpuidle driver"
+upstream_commit: null
+fixes_commit: "f4c31b07b136"
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: ["根因尚未完全确认", "guest 环境下 cpuidle 状态不明确"]
+  next_action: "需要确认 tick 停止频率变化是否为根因，可能需要 revert 或条件性修复"
+contribution_opportunities:
+  - kind: testing
+    description: "在类似 OCI VM 环境（无 cpuidle driver、少核）中复现回归并收集 ftrace idle 事件数据"
+  - kind: discussion
+    description: "分析 f4c31b07b136 前后 tick_nohz_idle 行为差异，确认 previous-wakeup 启发式的影响"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: [cfs, regression, idle]
+---

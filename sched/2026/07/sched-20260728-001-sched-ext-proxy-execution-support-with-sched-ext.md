@@ -1,38 +1,4 @@
----
-id: sched-20260728-001
-date: 2026-07-28
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260728154425.1549660-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/r/20260728154425.1549660-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [Tejun Heo, John Stultz]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260728154425.1549660-1-arighi@nvidia.com>"
-    date: 2026-07-28
-    summary: "15-patch series enabling proxy execution with sched_ext: split curr/donor references, handle proxy-exec races in DSQ transfers, delegate blocked donor admission to BPF schedulers, add selftest and scx_qmap support"
-    review_outcome: "v1 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["需要 Tejun Heo 等 sched_ext maintainer review", "涉及 sched core 与 sched_ext 的交互，需要 Peter Zijlstra 确认"]
-  next_action: "等待 maintainer review 反馈"
-contribution_opportunities:
-  - kind: testing
-    description: "在启用 SCHED_PROXY_EXEC + SCHED_CLASS_EXT 的配置下测试 proxy execution 场景（如 stress-ng --pipeherd），验证无 sleeping-while-atomic 警告"
-  - kind: review
-    description: "review patch 10/15 中 proxy-exec races in remote DSQ transfers 的竞态处理逻辑"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 10
-related_articles: []
-tags: [sched_ext]
----
+# sched_ext: Add selftest for blocked donor admission
 
 ## TL;DR
 
@@ -97,3 +63,40 @@ v1 刚发出，暂无公开 review 意见。但从 patch 中的 Signed-off/Acked
 - lore thread: https://lore.kernel.org/r/20260728154425.1549660-1-arighi@nvidia.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched_ext: Add selftest for blocked donor admission"
+id: sched-20260728-001
+date: 2026-07-28
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260728154425.1549660-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/r/20260728154425.1549660-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [Tejun Heo, John Stultz]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260728154425.1549660-1-arighi@nvidia.com>"
+    date: 2026-07-28
+    summary: "15-patch series enabling proxy execution with sched_ext: split curr/donor references, handle proxy-exec races in DSQ transfers, delegate blocked donor admission to BPF schedulers, add selftest and scx_qmap support"
+    review_outcome: "v1 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["需要 Tejun Heo 等 sched_ext maintainer review", "涉及 sched core 与 sched_ext 的交互，需要 Peter Zijlstra 确认"]
+  next_action: "等待 maintainer review 反馈"
+contribution_opportunities:
+  - kind: testing
+    description: "在启用 SCHED_PROXY_EXEC + SCHED_CLASS_EXT 的配置下测试 proxy execution 场景（如 stress-ng --pipeherd），验证无 sleeping-while-atomic 警告"
+  - kind: review
+    description: "review patch 10/15 中 proxy-exec races in remote DSQ transfers 的竞态处理逻辑"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 10
+related_articles: []
+tags: [sched_ext]
+---

@@ -1,18 +1,4 @@
----
-id: sched-20260805-009
-date: "2026-08-05"
-title: "sched/debug: 引入 per-CPU 的 debugfs 文件"
-series: "Introduce per-CPU debugfs files"
-type: feature
-status: under_review
-severity: medium
-merge_likelihood: medium
-tags: [sched_debug, topology]
-authors: ["Vineeth Pillai <vineeth@vit.edu>", "Peter Zijlstra <peterz@infradead.org>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
-related_articles: []
-emails: ["uid-22478@qq-imap"]
----
+# sched debug per cpu debugfs files
 
 # sched/debug: 引入 per-CPU 的 debugfs 文件
 
@@ -51,3 +37,20 @@ Peter 关注点：
 ## 评价
 
 调试可视性增强，方向合理。Peter 已介入 review，主要关卡在「并发读取保护」与「字段与全局输出一致性」。合入可能性中等，建议采纳 Peter 的锁/复用建议后推进。
+
+---
+subject: "sched debug per cpu debugfs files"
+id: sched-20260805-009
+date: "2026-08-05"
+title: "sched/debug: 引入 per-CPU 的 debugfs 文件"
+series: "Introduce per-CPU debugfs files"
+type: feature
+status: under_review
+severity: medium
+merge_likelihood: medium
+tags: [sched_debug, topology]
+authors: ["Vineeth Pillai <vineeth@vit.edu>", "Peter Zijlstra <peterz@infradead.org>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
+related_articles: []
+emails: ["uid-22478@qq-imap"]
+---

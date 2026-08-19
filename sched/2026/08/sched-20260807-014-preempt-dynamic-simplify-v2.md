@@ -1,26 +1,4 @@
----
-title: "preempt: 简化 PREEMPT_DYNAMIC（v2）"
-date: 2026-08-07
-series: "preempt-dynamic-simplify"
-version: "v2"
-status: "in-review"
-tags: [preempt, sched_debug]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26025
-    subject: "[PATCH v2 0/6] preempt: simplify PREEMPT_DYNAMIC"
-  - uid: 25979
-    subject: "[PATCH v2 1/6] ... remove HAVE_PREEMPT_DYNAMIC_CALL key"
-  - uid: 25960
-    subject: "[PATCH v2 2/6] ... simplify preempt-dynamic"
-  - uid: 25967
-    subject: "[PATCH v2 3/6] ... simplify irqentry_exit_cond_resched"
-  - uid: 25950
-    subject: "[PATCH v2 4/6] ... simplify preempt model accessors"
-  - uid: 26006
-    subject: "[PATCH v2 5/6] ... related"
----
+# preempt dynamic simplify v2
 
 ## 概述
 
@@ -44,3 +22,27 @@ v2，处于评审阶段，运行时切换路径存已知问题。
 ## 参考链接
 
 - 系列：uid 26025 / 25979 / 25960 / 25967 / 25950 / 26006
+
+---
+subject: "preempt: 简化 PREEMPT_DYNAMIC（v2）"
+date: 2026-08-07
+series: "preempt-dynamic-simplify"
+version: "v2"
+status: "in-review"
+tags: [preempt, sched_debug]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26025
+    subject: "[PATCH v2 0/6] preempt: simplify PREEMPT_DYNAMIC"
+  - uid: 25979
+    subject: "[PATCH v2 1/6] ... remove HAVE_PREEMPT_DYNAMIC_CALL key"
+  - uid: 25960
+    subject: "[PATCH v2 2/6] ... simplify preempt-dynamic"
+  - uid: 25967
+    subject: "[PATCH v2 3/6] ... simplify irqentry_exit_cond_resched"
+  - uid: 25950
+    subject: "[PATCH v2 4/6] ... simplify preempt model accessors"
+  - uid: 26006
+    subject: "[PATCH v2 5/6] ... related"
+---

@@ -1,16 +1,4 @@
----
-title: "psi: 用 __ffs() 遍历 task count 位图"
-date: 2026-08-07
-series: "psi-use-ffs"
-version: "v2"
-status: "in-review"
-tags: [psi, perf]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26540
-    subject: "[PATCH v2] psi: use __ffs() to walk task count bitmasks in psi_group_cpu()"
----
+# psi use ffs task count bitmask
 
 ## 概述
 
@@ -27,3 +15,17 @@ v2 迭代，处于评审阶段。
 ## 参考链接
 
 - 邮件：uid 26540
+
+---
+subject: "psi: 用 __ffs() 遍历 task count 位图"
+date: 2026-08-07
+series: "psi-use-ffs"
+version: "v2"
+status: "in-review"
+tags: [psi, perf]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26540
+    subject: "[PATCH v2] psi: use __ffs() to walk task count bitmasks in psi_group_cpu()"
+---

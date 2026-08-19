@@ -1,18 +1,4 @@
----
-id: sched-20260805-010
-date: "2026-08-05"
-title: "cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出"
-series: "schedutil: Fix rate limit overflow when clamping frequency"
-type: fix
-status: under_review
-severity: high
-merge_likelihood: high
-tags: [cpufreq, preempt]
-authors: ["Rafael J. Wysocki <rafael.j.wysocki@intel.com>", "Viresh Kumar <viresh.kumar@linaro.org>"]
-reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>"]
-related_articles: []
-emails: ["uid-22691@qq-imap"]
----
+# cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled
 
 # cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出
 
@@ -51,3 +37,20 @@ policy->cur = clamp(raw_target, policy->min, policy->max);  // 限幅只作用�
 ## 评价
 
 明确的真实 bug，维护者（Viresh）已确认，修复方向清晰。合入可能性高，属于应当优先进入 tip/sched 或 cpufreq 的 fix。建议补一个复现/验证说明后提交。
+
+---
+subject: "cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled"
+id: sched-20260805-010
+date: "2026-08-05"
+title: "cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出"
+series: "schedutil: Fix rate limit overflow when clamping frequency"
+type: fix
+status: under_review
+severity: high
+merge_likelihood: high
+tags: [cpufreq, preempt]
+authors: ["Rafael J. Wysocki <rafael.j.wysocki@intel.com>", "Viresh Kumar <viresh.kumar@linaro.org>"]
+reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>"]
+related_articles: []
+emails: ["uid-22691@qq-imap"]
+---

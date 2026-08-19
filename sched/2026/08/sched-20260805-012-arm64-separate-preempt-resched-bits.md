@@ -1,18 +1,4 @@
----
-id: sched-20260805-012
-date: "2026-08-05"
-title: "arm64/sched/preempt: 分离 need_resched 与 preempt 的 resched 位（v4）"
-series: "arm64: Separate resched bits for need_resched and preempt"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [preempt, arm64, topology]
-authors: ["Boqun Feng <boqun.feng@gmail.com>", "Mark Rutland <mark.rutland@arm.com>"]
-reviewers: ["Mark Rutland <mark.rutland@arm.com>", "Catalin Marinas <catalin.marinas@arm.com>"]
-related_articles: ["sched-20260803-007"]
-emails: ["uid-20432@qq-imap", "uid-20413@qq-imap", "uid-20423@qq-imap"]
----
+# arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS
 
 # arm64/sched/preempt: 分离 need_resched 与 preempt 的 resched 位（v4）
 
@@ -54,3 +40,20 @@ else if (test_thread_flag(TIF_NEED_RESCHED_LAZY) && !preempt_count() && !rcu_pre
 ## 评价
 
 与 08-03-007（同系列前序）衔接的 v4 迭代，reviewer（Mark、Catalin）已深度介入。方向正确、向 x86 对齐，合入可能性中等—高。建议通过 arm64 的 preempt 压力测试（如 `rt-tests` cyclictest）后再进主线。
+
+---
+subject: "arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS"
+id: sched-20260805-012
+date: "2026-08-05"
+title: "arm64/sched/preempt: 分离 need_resched 与 preempt 的 resched 位（v4）"
+series: "arm64: Separate resched bits for need_resched and preempt"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [preempt, arm64, topology]
+authors: ["Boqun Feng <boqun.feng@gmail.com>", "Mark Rutland <mark.rutland@arm.com>"]
+reviewers: ["Mark Rutland <mark.rutland@arm.com>", "Catalin Marinas <catalin.marinas@arm.com>"]
+related_articles: ["sched-20260803-007"]
+emails: ["uid-20432@qq-imap", "uid-20413@qq-imap", "uid-20423@qq-imap"]
+---

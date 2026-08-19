@@ -1,34 +1,4 @@
----
-id: sched-20260802-004
-date: 2026-08-02
-subsystem: sched
-type: fix
-status: merged_tip
-severity: medium
-thread_root_msgid: "unknown"
-lore_url: "unknown"
-authors: [Gabriele Monaco]
-maintainers_involved: [Ingo Molnar, Linus Torvalds]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-15025@qq-imap>"
-    date: 2026-08-02
-    summary: "修正 deferred DL server 的唤醒行为：revised wakeup rule 只应用于已处于 running 状态的 dl_server，使 deferred DL server 的唤醒真正被延迟。"
-    review_outcome: "已通过 tip 树 review 并进入 sched/urgent，由 Ingo Molnar 发起 pull request 送往 Linus。"
-upstream_commit: "1842bf97af109f5ebf830175c9725bf81ebb78b1"
-fixes_commit: null
-merged_branch: "tip/sched/urgent"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "无需额外动作；已在 sched-urgent-2026-08-02 tag 中送 Linus，等待合入主线即可。"
-contribution_opportunities: []
-generated_at: "2026-08-03T00:15:00"
-source_email_count: 1
-related_articles: []
-tags: [deadline, dl_server]
----
+# scheduler fix
 
 # sched/deadline: revised wakeup rule 仅用于 running 状态的 dl_server（已进 tip/sched/urgent）
 
@@ -132,3 +102,36 @@ Pull request 邮件不包含性能数据、benchmark 结果或复现验证 —�
 - pull request: `git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git sched-urgent-2026-08-02`
 - tip-bot commit: `1842bf97af109f5ebf830175c9725bf81ebb78b1`（tip/sched/urgent）
 - stable backport: 未获取到
+
+---
+subject: "scheduler fix"
+id: sched-20260802-004
+date: 2026-08-02
+subsystem: sched
+type: fix
+status: merged_tip
+severity: medium
+thread_root_msgid: "unknown"
+lore_url: "unknown"
+authors: [Gabriele Monaco]
+maintainers_involved: [Ingo Molnar, Linus Torvalds]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-15025@qq-imap>"
+    date: 2026-08-02
+    summary: "修正 deferred DL server 的唤醒行为：revised wakeup rule 只应用于已处于 running 状态的 dl_server，使 deferred DL server 的唤醒真正被延迟。"
+    review_outcome: "已通过 tip 树 review 并进入 sched/urgent，由 Ingo Molnar 发起 pull request 送往 Linus。"
+upstream_commit: "1842bf97af109f5ebf830175c9725bf81ebb78b1"
+fixes_commit: null
+merged_branch: "tip/sched/urgent"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "无需额外动作；已在 sched-urgent-2026-08-02 tag 中送 Linus，等待合入主线即可。"
+contribution_opportunities: []
+generated_at: "2026-08-03T00:15:00"
+source_email_count: 1
+related_articles: []
+tags: [deadline, dl_server]
+---

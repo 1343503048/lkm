@@ -2,8 +2,8 @@
 
 共 6 篇
 
-- [sched-20260815-013](../../2026/08/sched-20260815-013.md) `regression/high/under_review` — Martin King 报告并修复一个 RT 回归：`CONFIG_NO_RT_PUSH_IPI` 下，当 RT 任务 push 失败（找不到可运行的更低优先级 CPU）时，`rt_rq->rto` 计数未被扣除。残留的 rto 计数让后续 PI-boost 与任务迁移逻辑误判"有 overload"，导致饥饿/迁移停滞。严重度为 high。
-- [sched-20260810-011](../../2026/08/sched-20260810-011.md) `regression/high/under_review` — Jose Souza（John Stultz 等参与）针对 6.18 稳定分支提交 Revert of `6d71a9c61604`（EEVDF 实体放置改动），修复其引入的调度延迟回归/任务饥饿。Peter 在 8/10 讨论是否应直接 revert。属 high 严重度回归，under_review。
+- [sched-20260815-013](../../2026/08/sched-20260815-013-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost-starvat.md) `regression/high/under_review` — Martin King 报告并修复一个 RT 回归：`CONFIG_NO_RT_PUSH_IPI` 下，当 RT 任务 push 失败（找不到可运行的更低优先级 CPU）时，`rt_rq->rto` 计数未被扣除。残留的 rto 计数让后续 PI-boost 与任务迁移逻辑误判"有 overload"，导致饥饿/迁移停滞。严重度为 high。
+- [sched-20260810-011](../../2026/08/sched-20260810-011-sched-fair-revert-6d71a9c61604-sched-fair-fix-eevdf-entity-p.md) `regression/high/under_review` — Jose Souza（John Stultz 等参与）针对 6.18 稳定分支提交 Revert of `6d71a9c61604`（EEVDF 实体放置改动），修复其引入的调度延迟回归/任务饥饿。Peter 在 8/10 讨论是否应直接 revert。属 high 严重度回归，under_review。
 - [sched-20260730-003](../../2026/07/sched-20260730-003-sched-idle-sysbench-regression-f4c31b07b136.md) `bug/high/under_review` — Zhan Xusheng 报告 commit `f4c31b07b136`（sched/idle tick stop 相关）导致 sysbench threads 性能回退。Christian Loehle 和 Rafael J. Wysocki 讨论认为可能与 hypervisor 的 vCPU 调度交互有关，但目前信息不足以确定 root cause。Rafael 明确表示不会在完全理解问题之
 - [sched-20260730-002](../../2026/07/sched-20260730-002-sched-fair-cgroup-mode-default-netperf-regression.md) `bug/high/under_review` — 0-Day robot 报告 `fb1050ac8e` 导致 netperf TCP_MAERTS 吞吐下降 14.6%。该 commit 将 cgroup-weight 计算从 smp 模式（flat）切换为 concur 模式（按 min(runnable, cpus) 缩放）。PeterZ 怀疑是 ksoftirqd 抢占行为变化导致，建议通过 slice 调优缓解。正在调查中。
 - [sched-20260729-003](../../2026/07/sched-20260729-003-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/high/under_review` — f4c31b07b136 让"无 cpuidle driver"路径也走 got_tick 启发式，导致 Oracle 在 OCI 小规格 VM 上 sysbench 回退最多 -29%；Christian Loehle（ARM）发出单行修复恢复无条件停 tick，Zhan Xusheng 同日给出机理分析。影响虚拟化场景明显，值得测试参与。

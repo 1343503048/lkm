@@ -1,18 +1,4 @@
----
-id: sched-20260806-013
-date: "2026-08-06"
-title: "sched/fair: 允许相同 capacity 的 CPU 间负载均衡（v6）"
-series: "sched/fair: Allow load balancing between CPUs of identical capacity"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [cfs, load_balance, topology]
-authors: ["Ricardo Neri <ricardo.neri-calderon@linux.intel.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Christian Loehle <christian.loehle@arm.com>"]
-reviewers: ["Vincent Guittot <vincent.guittot@linaro.org>", "Christian Loehle <christian.loehle@arm.com>"]
-related_articles: []
-emails: ["uid-23679@qq-imap"]
----
+# sched/fair: Allow load balancing between CPUs of identical capacity
 
 # sched/fair: 允许相同 capacity 的 CPU 间负载均衡（v6）
 
@@ -46,3 +32,20 @@ Vincent 的收敛建议：复用 `sd->flags & SD_ASYM_CPUCAPACITY` 判断，而�
 ## 评价
 
 方向合理（解决真实 Hybrid 粘滞），reviewer（Vincent/Christian）已给出收敛建议。合入可能性中等，建议落实 Vincent 的「复用既有 flag」与 Christian 的「对称平台 gate」后推进。属 feature，仍处 review。
+
+---
+subject: "sched/fair: Allow load balancing between CPUs of identical capacity"
+id: sched-20260806-013
+date: "2026-08-06"
+title: "sched/fair: 允许相同 capacity 的 CPU 间负载均衡（v6）"
+series: "sched/fair: Allow load balancing between CPUs of identical capacity"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [cfs, load_balance, topology]
+authors: ["Ricardo Neri <ricardo.neri-calderon@linux.intel.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Christian Loehle <christian.loehle@arm.com>"]
+reviewers: ["Vincent Guittot <vincent.guittot@linaro.org>", "Christian Loehle <christian.loehle@arm.com>"]
+related_articles: []
+emails: ["uid-23679@qq-imap"]
+---

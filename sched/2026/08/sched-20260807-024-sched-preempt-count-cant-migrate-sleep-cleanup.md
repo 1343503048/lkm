@@ -1,18 +1,4 @@
----
-title: "sched: 清理 preempt_count 的 __cant_migrate/__cant_sleep 参数"
-date: 2026-08-07
-series: "sched-preempt-count-cant-migrate-sleep"
-version: "v5"
-status: "in-review"
-tags: [preempt, sched/core]
-related_articles: []
-submitter: "Boqun Feng"
-emails:
-  - uid: 26237
-    subject: "[PATCH v5 09/18] sched: avoid signed comparison of preempt_count in __cant_migrate()"
-  - uid: 26240
-    subject: "[PATCH v5 10/18] sched: remove the unused preempt offset parameter of __cant_sleep()"
----
+# sched preempt count cant migrate sleep cleanup
 
 ## 概述
 
@@ -30,3 +16,19 @@ v5 大系列的一部分（仅本批见到 9/18 与 10/18），处于评审阶�
 ## 参考链接
 
 - 邮件：uid 26237 / 26240
+
+---
+subject: "sched: 清理 preempt_count 的 __cant_migrate/__cant_sleep 参数"
+date: 2026-08-07
+series: "sched-preempt-count-cant-migrate-sleep"
+version: "v5"
+status: "in-review"
+tags: [preempt, sched/core]
+related_articles: []
+submitter: "Boqun Feng"
+emails:
+  - uid: 26237
+    subject: "[PATCH v5 09/18] sched: avoid signed comparison of preempt_count in __cant_migrate()"
+  - uid: 26240
+    subject: "[PATCH v5 10/18] sched: remove the unused preempt offset parameter of __cant_sleep()"
+---

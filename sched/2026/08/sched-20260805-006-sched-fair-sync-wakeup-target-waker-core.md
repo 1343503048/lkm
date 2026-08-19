@@ -1,18 +1,4 @@
----
-id: sched-20260805-006
-date: "2026-08-05"
-title: "sched/fair: sync wakeup 让目标落到唤醒者所在 core"
-series: "Let sync wakeups target the waker's core"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [cfs, load_balance, topology, wake_affine]
-authors: ["K Prateek Nayak <kprateeknayak@amd.com>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>", "Tim Chen <tim.c.chen@linux.intel.com>"]
-related_articles: ["sched-20260804-006"]
-emails: ["uid-21417@qq-imap"]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 # sched/fair: sync wakeup 让目标落到唤醒者所在 core
 
@@ -51,3 +37,20 @@ if (wake_flags & WF_SYNC) {
 ## 评价
 
 是 08-04-006「sync wakeup 多子方向」讨论的延续与具体化。方向有吸引力，但「core 粒度定义」和「waker 是否真让出」两个未决点需要先解答 + 给数据，才有望推进。属于 under_review 的明确参与点（缺数据）。
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260805-006
+date: "2026-08-05"
+title: "sched/fair: sync wakeup 让目标落到唤醒者所在 core"
+series: "Let sync wakeups target the waker's core"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [cfs, load_balance, topology, wake_affine]
+authors: ["K Prateek Nayak <kprateeknayak@amd.com>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>", "Tim Chen <tim.c.chen@linux.intel.com>"]
+related_articles: ["sched-20260804-006"]
+emails: ["uid-21417@qq-imap"]
+---

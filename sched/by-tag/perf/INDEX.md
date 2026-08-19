@@ -2,9 +2,9 @@
 
 共 31 篇
 
-- [sched-20260815-001](../../2026/08/sched-20260815-001.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
-- [sched-20260810-005](../../2026/08/sched-20260810-005.md) `fix/high/merged_tip` — Aditya Chillara 的 perf 事件组 leader use-after-free 修复已由 tip-bot 合入 `tip/perf/urgent`（2026-08-10 报告），属紧急高严重度崩溃修复。无需额外 review。
-- [sched-20260810-004](../../2026/08/sched-20260810-004.md) `fix/medium/under_review` — Puranjay Mohan 提交 v7（3 patches）「perf/core: Fix sched_task() dispatch and branch entry callbacks」。在调度核心路径为 sched_task() 加 RCU 保护，并把分支入口回调交给 sched/core 调用，修复分支跟踪在任务切换时的数据竞争/跳过。under_review。
+- [sched-20260815-001](../../2026/08/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
+- [sched-20260810-005](../../2026/08/sched-20260810-005-perf-core-fix-group-leader-use-after-free-after-sibling-deta.md) `fix/high/merged_tip` — Aditya Chillara 的 perf 事件组 leader use-after-free 修复已由 tip-bot 合入 `tip/perf/urgent`（2026-08-10 报告），属紧急高严重度崩溃修复。无需额外 review。
+- [sched-20260810-004](../../2026/08/sched-20260810-004-perf-core-sched-task-dispatch-and-branch-entry-fixes.md) `fix/medium/under_review` — Puranjay Mohan 提交 v7（3 patches）「perf/core: Fix sched_task() dispatch and branch entry callbacks」。在调度核心路径为 sched_task() 加 RCU 保护，并把分支入口回调交给 sched/core 调用，修复分支跟踪在任务切换时的数据竞争/跳过。under_review。
 - [sched-20260808-005-perf-sched-latency-v9-applied.md](../../2026/08/sched-20260808-005-perf-sched-latency-v9-applied.md) `merged`
 - [sched-20260807-011-psi-use-ffs-task-count-bitmask.md](../../2026/08/sched-20260807-011-psi-use-ffs-task-count-bitmask.md) `in-review`
 - [sched-20260807-009-perf-core-group-leader-use-after-free.md](../../2026/08/sched-20260807-009-perf-core-group-leader-use-after-free.md) `in-review`

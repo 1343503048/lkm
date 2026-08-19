@@ -1,48 +1,4 @@
----
-id: sched-20260801-004
-date: 2026-08-01
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<uid-14197@qq-imap>"
-lore_url: unknown
-authors: [Shubhang Kaushik]
-maintainers_involved: [K Prateek Nayak, Chris Mason, Madadi Vineeth Reddy]
-current_version: v3
-patch_series:
-  - version: v1
-    msgid: unknown
-    date: unknown
-    summary: "利用已有的 last_wakee / wake_wide() 状态识别窄范围的互惠 WF_SYNC 唤醒（A 唤醒 B、B 唤醒 A 交替），对这类 handoff 直接偏好 waker CPU"
-    review_outcome: "未获取到 v1 的具体 review 内容"
-  - version: v2
-    msgid: unknown
-    date: unknown
-    summary: "在 v1 基础上迭代"
-    review_outcome: "Chris Mason 建议把 SMT 系统也纳入考虑；Madadi Vineeth Reddy 指出应从 SMT 侧同样处理该问题"
-  - version: v3
-    msgid: unknown
-    date: 2026-07-28
-    summary: "把直接偏好 waker CPU 的行为限定在 !sched_smt_active()；SMT 系统继续走原有 wake_affine() 与 select_idle_sibling() 路径。仅在 waker CPU 上没有其他可运行 fair 任务、且在非对称算力系统上 wakee 能放得下时才生效"
-    review_outcome: "K Prateek Nayak 认为不应按 SMT 与否二分，应把判断下推进 select_idle_sibling()、在已知 test_idle_core() 结果处统一决策，并给出了完整的替代 diff（SMT-2 上轻度测试，perf bench sched pipe 平均约 10% 提升）"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["K Prateek Nayak 提出了结构不同的替代实现并已有可用 diff，作者的 !sched_smt_active() 二分法未获认可", "同期存在 Madadi Vineeth Reddy 的 SMT 侧独立 patch，三条路径需要收敛", "Prateek 的替代实现自称仅在 SMT-2 上轻度测试，两套方案都缺少充分的跨平台数据"]
-  next_action: "作者需要在『维持 v3 的 non-SMT 限定』与『采纳 Prateek 下推进 select_idle_sibling() 的统一实现』之间做出选择并发 v4；社区需要先就这三条路径的边界达成一致"
-contribution_opportunities:
-  - kind: testing
-    description: "对比测试三套实现（v3 的 non-SMT 限定、Prateek 的 select_idle_sibling 下推版、Vineeth 的 select_idle_core 版）在同一批机器上的表现，这是当前 thread 最缺、也最能推动收敛的输入"
-  - kind: review
-    description: "审阅 Prateek diff 中 select_idle_smt() 从 sched_domain_span(sd) 改为 rd->span 的语义变化——从 LLC 域放宽到 root domain 是否会在 isolcpus / cpuset 隔离场景下引入越界选择"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 1
-related_articles: []
-tags: [cfs, load_balance, perf, arm64, hyperthreading]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 ## TL;DR
 
@@ -125,3 +81,50 @@ A 唤醒 B
 - Vineeth 在 v2 中提出 SMT 侧思路: https://lore.kernel.org/all/60a584c5-25ac-4077-a725-a2f9ee74318d@linux.ibm.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260801-004
+date: 2026-08-01
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<uid-14197@qq-imap>"
+lore_url: unknown
+authors: [Shubhang Kaushik]
+maintainers_involved: [K Prateek Nayak, Chris Mason, Madadi Vineeth Reddy]
+current_version: v3
+patch_series:
+  - version: v1
+    msgid: unknown
+    date: unknown
+    summary: "利用已有的 last_wakee / wake_wide() 状态识别窄范围的互惠 WF_SYNC 唤醒（A 唤醒 B、B 唤醒 A 交替），对这类 handoff 直接偏好 waker CPU"
+    review_outcome: "未获取到 v1 的具体 review 内容"
+  - version: v2
+    msgid: unknown
+    date: unknown
+    summary: "在 v1 基础上迭代"
+    review_outcome: "Chris Mason 建议把 SMT 系统也纳入考虑；Madadi Vineeth Reddy 指出应从 SMT 侧同样处理该问题"
+  - version: v3
+    msgid: unknown
+    date: 2026-07-28
+    summary: "把直接偏好 waker CPU 的行为限定在 !sched_smt_active()；SMT 系统继续走原有 wake_affine() 与 select_idle_sibling() 路径。仅在 waker CPU 上没有其他可运行 fair 任务、且在非对称算力系统上 wakee 能放得下时才生效"
+    review_outcome: "K Prateek Nayak 认为不应按 SMT 与否二分，应把判断下推进 select_idle_sibling()、在已知 test_idle_core() 结果处统一决策，并给出了完整的替代 diff（SMT-2 上轻度测试，perf bench sched pipe 平均约 10% 提升）"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["K Prateek Nayak 提出了结构不同的替代实现并已有可用 diff，作者的 !sched_smt_active() 二分法未获认可", "同期存在 Madadi Vineeth Reddy 的 SMT 侧独立 patch，三条路径需要收敛", "Prateek 的替代实现自称仅在 SMT-2 上轻度测试，两套方案都缺少充分的跨平台数据"]
+  next_action: "作者需要在『维持 v3 的 non-SMT 限定』与『采纳 Prateek 下推进 select_idle_sibling() 的统一实现』之间做出选择并发 v4；社区需要先就这三条路径的边界达成一致"
+contribution_opportunities:
+  - kind: testing
+    description: "对比测试三套实现（v3 的 non-SMT 限定、Prateek 的 select_idle_sibling 下推版、Vineeth 的 select_idle_core 版）在同一批机器上的表现，这是当前 thread 最缺、也最能推动收敛的输入"
+  - kind: review
+    description: "审阅 Prateek diff 中 select_idle_smt() 从 sched_domain_span(sd) 改为 rd->span 的语义变化——从 LLC 域放宽到 root domain 是否会在 isolcpus / cpuset 隔离场景下引入越界选择"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 1
+related_articles: []
+tags: [cfs, load_balance, perf, arm64, hyperthreading]
+---

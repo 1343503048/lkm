@@ -1,18 +1,4 @@
----
-id: sched-20260806-005
-date: "2026-08-06"
-title: "perf/core: sched_task() 调度钩子的分发与分支记录修复（v6）"
-series: "perf/core: sched_task() dispatch and branch entry fixes"
-type: fix
-status: under_review
-severity: medium
-merge_likelihood: high
-tags: [perf, sched_debug]
-authors: ["Puranjay Mohan <puranjay@kernel.org>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
-related_articles: []
-emails: ["uid-24755@qq-imap", "uid-24760@qq-imap", "uid-24761@qq-imap"]
----
+# perf/core: sched_task() dispatch and branch entry fixes
 
 # perf/core: sched_task() 调度钩子的分发与分支记录修复（v6）
 
@@ -47,3 +33,20 @@ if (cpc->task_epc)                // 新增 gate，避免两路径重复运行
 ## 评价
 
 扎实的 perf 修复（带 stable + WARN_ON 自验证），从 BRBE 系列独立后更聚焦。合入可能性高，建议进 tip/perf/core。
+
+---
+subject: "perf/core: sched_task() dispatch and branch entry fixes"
+id: sched-20260806-005
+date: "2026-08-06"
+title: "perf/core: sched_task() 调度钩子的分发与分支记录修复（v6）"
+series: "perf/core: sched_task() dispatch and branch entry fixes"
+type: fix
+status: under_review
+severity: medium
+merge_likelihood: high
+tags: [perf, sched_debug]
+authors: ["Puranjay Mohan <puranjay@kernel.org>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
+related_articles: []
+emails: ["uid-24755@qq-imap", "uid-24760@qq-imap", "uid-24761@qq-imap"]
+---

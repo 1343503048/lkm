@@ -1,18 +1,4 @@
----
-id: sched-20260806-010
-date: "2026-08-06"
-title: "sched_ext: proxy execution 系列 review 推进（07/15 转向保守 terminate）"
-series: "sched_ext proxy execution（7.3）"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [sched_ext, proxy_execution, core_sched]
-authors: ["Andrea Righi <arighi@nvidia.com>", "Tejun Heo <tj@kernel.org>"]
-reviewers: ["Tejun Heo <tj@kernel.org>"]
-related_articles: ["sched-20260805-001", "sched-20260804-001"]
-emails: ["uid-24168@qq-imap", "uid-23945@qq-imap", "uid-23843@qq-imap", "uid-22920@qq-imap"]
----
+# sched_ext: scx_qmap: Add proxy execution support
 
 # sched_ext: proxy execution 系列 review 推进（07/15 转向保守 terminate）
 
@@ -46,3 +32,20 @@ sched_change_begin():
 ## 评价
 
 从「跨类保留 donor」转向「类边界 terminate」，是 Tejun review 引导下的理性收敛。方向更稳、合入概率高。建议 Andrea 在 v-next 落实 terminate-on-sched_change 并同步更新文档/注释。与 08-05-001 / 08-04-001 同系列延续。
+
+---
+subject: "sched_ext: scx_qmap: Add proxy execution support"
+id: sched-20260806-010
+date: "2026-08-06"
+title: "sched_ext: proxy execution 系列 review 推进（07/15 转向保守 terminate）"
+series: "sched_ext proxy execution（7.3）"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [sched_ext, proxy_execution, core_sched]
+authors: ["Andrea Righi <arighi@nvidia.com>", "Tejun Heo <tj@kernel.org>"]
+reviewers: ["Tejun Heo <tj@kernel.org>"]
+related_articles: ["sched-20260805-001", "sched-20260804-001"]
+emails: ["uid-24168@qq-imap", "uid-23945@qq-imap", "uid-23843@qq-imap", "uid-22920@qq-imap"]
+---

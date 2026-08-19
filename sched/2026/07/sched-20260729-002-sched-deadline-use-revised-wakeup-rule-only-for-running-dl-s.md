@@ -1,34 +1,4 @@
----
-id: sched-20260729-002
-date: 2026-07-29
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260522125833.264145-1-gmonaco@redhat.com>"
-lore_url: "https://lore.kernel.org/r/20260522125833.264145-1-gmonaco@redhat.com"
-authors: [Gabriele Monaco]
-maintainers_involved: [Peter Zijlstra]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260522125833.264145-1-gmonaco@redhat.com>"
-    date: 2026-05-22
-    summary: "限制 SCHED_DEADLINE 的 revised wakeup rule 只应用于 running 状态的 dl_server（补丁正文发布于 5 月，未在当日邮件缓存内）。"
-    review_outcome: "长期无人处理；7-29 作者 ping 后 PeterZ 度假归来响应，确认走 sched/urgent。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 PeterZ 将补丁排入 tip/sched/urgent"
-contribution_opportunities: []
-generated_at: "2026-07-30T09:30:00"
-source_email_count: 4
-related_articles: []
-tags: [deadline, dl_server]
----
+# sched/deadline: Use revised wakeup rule only for running dl_server
 
 ## TL;DR
 
@@ -70,3 +40,36 @@ likelihood: high。维护者已明确表态走 sched/urgent 通道，剩余动�
 
 - lore thread: https://lore.kernel.org/lkml/20260522125833.264145-1-gmonaco@redhat.com/
 - tip-bot commit: 未获取到（尚未合入）
+
+---
+subject: "sched/deadline: Use revised wakeup rule only for running dl_server"
+id: sched-20260729-002
+date: 2026-07-29
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260522125833.264145-1-gmonaco@redhat.com>"
+lore_url: "https://lore.kernel.org/r/20260522125833.264145-1-gmonaco@redhat.com"
+authors: [Gabriele Monaco]
+maintainers_involved: [Peter Zijlstra]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260522125833.264145-1-gmonaco@redhat.com>"
+    date: 2026-05-22
+    summary: "限制 SCHED_DEADLINE 的 revised wakeup rule 只应用于 running 状态的 dl_server（补丁正文发布于 5 月，未在当日邮件缓存内）。"
+    review_outcome: "长期无人处理；7-29 作者 ping 后 PeterZ 度假归来响应，确认走 sched/urgent。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 PeterZ 将补丁排入 tip/sched/urgent"
+contribution_opportunities: []
+generated_at: "2026-07-30T09:30:00"
+source_email_count: 4
+related_articles: []
+tags: [deadline, dl_server]
+---

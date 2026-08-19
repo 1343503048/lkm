@@ -1,18 +1,4 @@
----
-id: sched-20260806-014
-date: "2026-08-06"
-title: "sched/numa: Hygon 平台远程 socket 距离修正（v2）"
-series: "sched/numa: Fix remote socket distance on Hygon platforms"
-type: fix
-status: under_review
-severity: medium
-merge_likelihood: medium
-tags: [cfs, numa, load_balance]
-authors: ["Guo Chaohong <guochohong@hygon.cn>", "Zhan Xusheng <xusheng.zhan@hygon.cn>", "K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
-reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
-related_articles: []
-emails: ["uid-23502@qq-imap", "uid-23783@qq-imap", "uid-23676@qq-imap"]
----
+# sched/numa: Apply remote socket distance averaging for Hygon CPUs
 
 # sched/numa: Hygon 平台远程 socket 距离修正（v2）
 
@@ -48,3 +34,20 @@ Prateek 的反馈：需确认不会让其他 AMD/Zen 平台（同样 distance �
 ## 评价
 
 方向合理（修正真实平台 distance 误报），reviewer（Prateek/Peter）已要求「通用化 + 基于 SLIT + 避免误伤其他平台」。合入可能性中等，建议落实 Peter 的通用 helper 与 Prateek 的 per-platform 覆盖表后再推进。属 fix，仍处 review。
+
+---
+subject: "sched/numa: Apply remote socket distance averaging for Hygon CPUs"
+id: sched-20260806-014
+date: "2026-08-06"
+title: "sched/numa: Hygon 平台远程 socket 距离修正（v2）"
+series: "sched/numa: Fix remote socket distance on Hygon platforms"
+type: fix
+status: under_review
+severity: medium
+merge_likelihood: medium
+tags: [cfs, numa, load_balance]
+authors: ["Guo Chaohong <guochohong@hygon.cn>", "Zhan Xusheng <xusheng.zhan@hygon.cn>", "K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
+reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
+related_articles: []
+emails: ["uid-23502@qq-imap", "uid-23783@qq-imap", "uid-23676@qq-imap"]
+---

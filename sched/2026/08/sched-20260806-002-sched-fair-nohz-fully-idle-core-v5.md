@@ -1,18 +1,4 @@
----
-id: sched-20260806-002
-date: "2026-08-06"
-title: "sched/fair: NOHZ 优先 fully idle core（v5，已集齐 R-b）"
-series: "Prefer fully idle cores for NOHZ balancing"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [cfs, load_balance, nohz, topology, hyperthreading]
-authors: ["Andrea Righi <arighi@nvidia.com>", "K Prateek Nayak <kprateeknayak@amd.com>", "Mete Durlu <meted@linux.ibm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
-reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Mete Durlu <meted@linux.ibm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
-related_articles: ["sched-20260805-002", "sched-20260804-005", "sched-20260801-005", "sched-20260730-008"]
-emails: ["uid-24730@qq-imap", "uid-24669@qq-imap", "uid-24357@qq-imap"]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 # sched/fair: NOHZ 优先 fully idle core（v5，已集齐 R-b）
 
@@ -57,3 +43,20 @@ return fallback;            // 回退到首个 idle CPU
 ## 评价
 
 从 08-01 起历经 v2→v5，是本轮最成熟的系列之一。**集齐 4 R-b 后合入可能性很高**，建议 maintainer 收尾进 tip/sched/core。值得注意 reviewer 已接受「fallback 保留首个 idle CPU」的设计，解决了 Peter 早前对 `cpumask_andnot` 裁剪候选的担忧。
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260806-002
+date: "2026-08-06"
+title: "sched/fair: NOHZ 优先 fully idle core（v5，已集齐 R-b）"
+series: "Prefer fully idle cores for NOHZ balancing"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [cfs, load_balance, nohz, topology, hyperthreading]
+authors: ["Andrea Righi <arighi@nvidia.com>", "K Prateek Nayak <kprateeknayak@amd.com>", "Mete Durlu <meted@linux.ibm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
+reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Mete Durlu <meted@linux.ibm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
+related_articles: ["sched-20260805-002", "sched-20260804-005", "sched-20260801-005", "sched-20260730-008"]
+emails: ["uid-24730@qq-imap", "uid-24669@qq-imap", "uid-24357@qq-imap"]
+---

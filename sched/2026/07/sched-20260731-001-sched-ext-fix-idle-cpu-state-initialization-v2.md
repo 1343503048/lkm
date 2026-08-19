@@ -1,34 +1,4 @@
----
-id: sched-20260731-001
-date: 2026-07-31
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260731090334.2911948-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/lkml/20260731090334.2911948-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [Kuba Piecuch]
-current_version: v2
-patch_series:
-  - version: v2
-    msgid: "<20260731090334.2911948-1-arighi@nvidia.com>"
-    date: 2026-07-31
-    summary: "sched_ext: 在 ops.init() 之前启用 idle 跟踪并刷新在线 CPU 的 idle 掩码；selftest 增加竞态保护"
-    review_outcome: "Kuba 建议复用 scx_builtin_idle_enabled 静态键而非新增独立键；selftest 中建议在 enqueue 回调也检查 idle 不变量"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: ["需要复用现有静态键而非新增独立键（Kuba 建议）"]
-  next_action: "Andrea 已确认在 v3 中采纳 Kuba 的建议，合并静态键并在 enqueue 回调增加检查"
-contribution_opportunities: []
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 6
-related_articles: []
-tags: [sched_ext]
----
+# selftests/sched_ext: Make allowed_cpus idle validation race-free
 
 ## TL;DR
 
@@ -83,3 +53,36 @@ sched_ext 的内置 idle 跟踪机制在初始化时存在时序问题：idle �
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260731090334.2911948-1-arighi@nvidia.com
+
+---
+subject: "selftests/sched_ext: Make allowed_cpus idle validation race-free"
+id: sched-20260731-001
+date: 2026-07-31
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260731090334.2911948-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/lkml/20260731090334.2911948-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [Kuba Piecuch]
+current_version: v2
+patch_series:
+  - version: v2
+    msgid: "<20260731090334.2911948-1-arighi@nvidia.com>"
+    date: 2026-07-31
+    summary: "sched_ext: 在 ops.init() 之前启用 idle 跟踪并刷新在线 CPU 的 idle 掩码；selftest 增加竞态保护"
+    review_outcome: "Kuba 建议复用 scx_builtin_idle_enabled 静态键而非新增独立键；selftest 中建议在 enqueue 回调也检查 idle 不变量"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: ["需要复用现有静态键而非新增独立键（Kuba 建议）"]
+  next_action: "Andrea 已确认在 v3 中采纳 Kuba 的建议，合并静态键并在 enqueue 回调增加检查"
+contribution_opportunities: []
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 6
+related_articles: []
+tags: [sched_ext]
+---

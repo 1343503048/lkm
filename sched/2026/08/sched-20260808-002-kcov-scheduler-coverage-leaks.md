@@ -1,22 +1,4 @@
----
-title: "kcov: 抑制定时器与调度器覆盖泄漏"
-date: 2026-08-08
-series: "kcov-scheduler-coverage-leaks"
-version: "v1"
-status: "in-review"
-tags: [sched/core, idle]
-related_articles: []
-submitter: "Marco Elver"
-emails:
-  - uid: 27674
-    subject: "[PATCH 0/5] kcov: suppress timer and scheduler coverage leaks"
-  - uid: 27678
-    subject: "[PATCH 3/5] sched: pause KCOV in __schedule()"
-  - uid: 27675
-    subject: "[PATCH 4/5] sched: pause KCOV in try_to_wake_up()"
-  - uid: 27679
-    subject: "[PATCH 5/5] sched: pause KCOV in wake_up_new_task()"
----
+# kcov scheduler coverage leaks
 
 ## 概述
 
@@ -44,3 +26,23 @@ v1，处于评审阶段。
 ## 参考链接
 
 - 系列：uid 27674 / 27678 / 27675 / 27679
+
+---
+subject: "kcov: 抑制定时器与调度器覆盖泄漏"
+date: 2026-08-08
+series: "kcov-scheduler-coverage-leaks"
+version: "v1"
+status: "in-review"
+tags: [sched/core, idle]
+related_articles: []
+submitter: "Marco Elver"
+emails:
+  - uid: 27674
+    subject: "[PATCH 0/5] kcov: suppress timer and scheduler coverage leaks"
+  - uid: 27678
+    subject: "[PATCH 3/5] sched: pause KCOV in __schedule()"
+  - uid: 27675
+    subject: "[PATCH 4/5] sched: pause KCOV in try_to_wake_up()"
+  - uid: 27679
+    subject: "[PATCH 5/5] sched: pause KCOV in wake_up_new_task()"
+---

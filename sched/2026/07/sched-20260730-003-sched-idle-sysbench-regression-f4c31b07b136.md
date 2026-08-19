@@ -1,36 +1,4 @@
----
-id: sched-20260730-003
-date: 2026-07-30
-subsystem: sched
-type: bug
-status: under_review
-severity: high
-thread_root_msgid: "<20260729022930.318742-1-zhanxusheng1024@gmail.com>"
-lore_url: "https://lore.kernel.org/lkml/20260729022930.318742-1-zhanxusheng1024@gmail.com"
-authors: [Zhan Xusheng]
-maintainers_involved: [Christian Loehle, Rafael J. Wysocki]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260729022930.318742-1-zhanxusheng1024@gmail.com>"
-    date: 2026-07-29
-    summary: "Reports sysbench threads regression after f4c31b07b136 (sched/idle tick stop change)"
-    review_outcome: "Christian and Rafael discuss possible vCPU scheduling interaction, need more data"
-upstream_commit: null
-fixes_commit: "f4c31b07b136"
-merged_branch: null
-merge_assessment:
-  likelihood: unknown
-  blocking_issues: ["Root cause unclear - may be hypervisor vCPU scheduling interaction", "Need more diagnostic data"]
-  next_action: "Gather more data on tick wakeup frequency and vCPU behavior"
-contribution_opportunities:
-  - kind: testing
-    description: "Provide data on tick wakeup counts in 'leave tick enabled' case to distinguish hypervisor behavior"
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 3
-related_articles: []
-tags: [idle, regression, perf]
----
+# sched/idle: Sysbench threads regression after f4c31b07b136
 
 ## TL;DR
 
@@ -89,3 +57,38 @@ Rafael J. Wysocki 表示：
 - lore thread: https://lore.kernel.org/lkml/20260729022930.318742-1-zhanxusheng1024@gmail.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/idle: Sysbench threads regression after f4c31b07b136"
+id: sched-20260730-003
+date: 2026-07-30
+subsystem: sched
+type: bug
+status: under_review
+severity: high
+thread_root_msgid: "<20260729022930.318742-1-zhanxusheng1024@gmail.com>"
+lore_url: "https://lore.kernel.org/lkml/20260729022930.318742-1-zhanxusheng1024@gmail.com"
+authors: [Zhan Xusheng]
+maintainers_involved: [Christian Loehle, Rafael J. Wysocki]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260729022930.318742-1-zhanxusheng1024@gmail.com>"
+    date: 2026-07-29
+    summary: "Reports sysbench threads regression after f4c31b07b136 (sched/idle tick stop change)"
+    review_outcome: "Christian and Rafael discuss possible vCPU scheduling interaction, need more data"
+upstream_commit: null
+fixes_commit: "f4c31b07b136"
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: ["Root cause unclear - may be hypervisor vCPU scheduling interaction", "Need more diagnostic data"]
+  next_action: "Gather more data on tick wakeup frequency and vCPU behavior"
+contribution_opportunities:
+  - kind: testing
+    description: "Provide data on tick wakeup counts in 'leave tick enabled' case to distinguish hypervisor behavior"
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 3
+related_articles: []
+tags: [idle, regression, perf]
+---

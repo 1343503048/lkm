@@ -1,42 +1,4 @@
----
-id: sched-20260802-002
-date: 2026-08-02
-subsystem: sched
-type: bug
-status: under_review
-severity: critical
-thread_root_msgid: "unknown"
-lore_url: "unknown"
-authors: [Niels Pressel]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-15200@qq-imap>"
-    date: 2026-08-02
-    summary: "在 rseq_grant_slice_extension() 中调用 hrtimer_rearm_deferred_tif() 前用 guard(irq)() 关中断，修复 hrtimer_bases.lock 的 IN-HARDIRQ-W → HARDIRQ-ON-W 反转导致的硬死锁。"
-    review_outcome: "v1 当日刚发出，暂无 review 回帖。"
-upstream_commit: null
-fixes_commit: "15dd3a948855"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues:
-    - "尚无 rseq / timer 维护者（Thomas Gleixner、Mathieu Desnoyers、Peter Zijlstra）回帖确认。"
-    - "guard(irq)() 放在 rseq_grant_slice_extension() 内部是否为最优位置未经讨论——也可能维护者更倾向于在 __exit_to_user_mode_loop 侧统一处理，或直接修改 hrtimer_rearm_deferred_tif() 的契约。"
-  next_action: "等待 tglx / Mathieu Desnoyers 对修复位置的意见；由于是 hard lockup 且有 lockdep 实证，预计会较快进 tip/sched/urgent 或 timers/urgent。"
-contribution_opportunities:
-  - kind: review
-    description: "分析 guard(irq)() 的作用域是否覆盖了全部不安全路径——TSE 授予流程中是否还有其他在开中断下调用 hrtimer 重装的分支，可回帖补充分析。"
-  - kind: testing
-    description: "在开启 lockdep 的内核上跑 rseq selftests（尤其 slice_test）复现 inconsistent lock state 告警并验证补丁，回帖 Tested-by。"
-  - kind: discussion
-    description: "TSE 资格检查为什么放在 IRQ 使能状态下做、能否整体收紧这段路径的中断上下文契约，是一个尚无人展开的设计问题。"
-generated_at: "2026-08-03T00:15:00"
-source_email_count: 1
-related_articles: []
-tags: [hang, sched_clock, preempt, x86]
----
+# rseq: fix hard lockup on granted time slice extension
 
 # rseq: 修复时间片扩展（TSE）授予路径上的硬死锁
 
@@ -150,3 +112,44 @@ v1，2026-08-02 20:44（北京时间）发出，当日无回帖。
 - lore thread: 未获取到（IMAP 邮件头未暴露原始 Message-ID）
 - tip-bot commit: 未获取到
 - stable backport: 未获取到（作者未 Cc stable）
+
+---
+subject: "rseq: fix hard lockup on granted time slice extension"
+id: sched-20260802-002
+date: 2026-08-02
+subsystem: sched
+type: bug
+status: under_review
+severity: critical
+thread_root_msgid: "unknown"
+lore_url: "unknown"
+authors: [Niels Pressel]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-15200@qq-imap>"
+    date: 2026-08-02
+    summary: "在 rseq_grant_slice_extension() 中调用 hrtimer_rearm_deferred_tif() 前用 guard(irq)() 关中断，修复 hrtimer_bases.lock 的 IN-HARDIRQ-W → HARDIRQ-ON-W 反转导致的硬死锁。"
+    review_outcome: "v1 当日刚发出，暂无 review 回帖。"
+upstream_commit: null
+fixes_commit: "15dd3a948855"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues:
+    - "尚无 rseq / timer 维护者（Thomas Gleixner、Mathieu Desnoyers、Peter Zijlstra）回帖确认。"
+    - "guard(irq)() 放在 rseq_grant_slice_extension() 内部是否为最优位置未经讨论——也可能维护者更倾向于在 __exit_to_user_mode_loop 侧统一处理，或直接修改 hrtimer_rearm_deferred_tif() 的契约。"
+  next_action: "等待 tglx / Mathieu Desnoyers 对修复位置的意见；由于是 hard lockup 且有 lockdep 实证，预计会较快进 tip/sched/urgent 或 timers/urgent。"
+contribution_opportunities:
+  - kind: review
+    description: "分析 guard(irq)() 的作用域是否覆盖了全部不安全路径——TSE 授予流程中是否还有其他在开中断下调用 hrtimer 重装的分支，可回帖补充分析。"
+  - kind: testing
+    description: "在开启 lockdep 的内核上跑 rseq selftests（尤其 slice_test）复现 inconsistent lock state 告警并验证补丁，回帖 Tested-by。"
+  - kind: discussion
+    description: "TSE 资格检查为什么放在 IRQ 使能状态下做、能否整体收紧这段路径的中断上下文契约，是一个尚无人展开的设计问题。"
+generated_at: "2026-08-03T00:15:00"
+source_email_count: 1
+related_articles: []
+tags: [hang, sched_clock, preempt, x86]
+---

@@ -1,42 +1,4 @@
----
-id: sched-20260802-005
-date: 2026-08-02
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "unknown"
-lore_url: "unknown"
-authors: [Julian Braha]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-14581@qq-imap>"
-    date: 2026-08-02
-    summary: "删除 NO_HZ_FULL 中对 choice 成员 VIRT_CPU_ACCOUNTING_GEN 的失效 select，改为在 choice 上加 `default VIRT_CPU_ACCOUNTING_GEN if NO_HZ_FULL` 表达同一依赖关系。由静态分析工具 kconfirm 发现。"
-    review_outcome: "Bradley Morgan 给出 Reviewed-by；无维护者回帖。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues:
-    - "尚无 timer/nohz 维护者（Frederic Weisbecker、Thomas Gleixner）回帖；唯一 Reviewed-by 来自非维护者。"
-    - "改动跨 init/Kconfig 与 kernel/time/Kconfig 两个文件，归属哪棵树（tip/timers 还是 kbuild）未明确，容易在无人认领的情况下沉寂。"
-    - "补丁未附任何配置矩阵验证证据，无法确认在 NO_HZ_FULL=y 但 HAVE_VIRT_CPU_ACCOUNTING_GEN=n 等边界组合下语义完全等价。"
-  next_action: "需要作者补充 allmodconfig/allnoconfig 及 NO_HZ_FULL 相关组合下 .config 前后对比，并明确 Cc 到 Frederic Weisbecker；否则大概率停滞。"
-contribution_opportunities:
-  - kind: testing
-    description: "构造若干配置组合（NO_HZ_FULL=y/n × HAVE_VIRT_CPU_ACCOUNTING_GEN=y/n × 各 arch defconfig），对比打补丁前后生成的 .config 中 VIRT_CPU_ACCOUNTING_GEN 取值是否完全一致，回帖数据——这是当前补丁最缺的证据。"
-    
-  - kind: review
-    description: "核对 choice 中多个 default 的优先级语义：新加的 `default VIRT_CPU_ACCOUNTING_GEN if NO_HZ_FULL` 置于 `default TICK_CPU_ACCOUNTING` 之前，Kconfig 取首个条件成立的 default，可确认该顺序是否确保了预期行为。"
-generated_at: "2026-08-03T00:15:00"
-source_email_count: 2
-related_articles: []
-tags: [nohz, sched_clock]
----
+# nohz: replace dead select with choice default
 
 # nohz: 用 choice default 替换失效的 select
 
@@ -171,3 +133,44 @@ v1，2026-08-02 00:01（北京时间）发出。同日 05:26 收到回帖：
 - 静态分析工具: kconfirm（补丁中提及，未附链接）
 - tip-bot commit: 未获取到
 - stable backport: 不适用
+
+---
+subject: "nohz: replace dead select with choice default"
+id: sched-20260802-005
+date: 2026-08-02
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "unknown"
+lore_url: "unknown"
+authors: [Julian Braha]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-14581@qq-imap>"
+    date: 2026-08-02
+    summary: "删除 NO_HZ_FULL 中对 choice 成员 VIRT_CPU_ACCOUNTING_GEN 的失效 select，改为在 choice 上加 `default VIRT_CPU_ACCOUNTING_GEN if NO_HZ_FULL` 表达同一依赖关系。由静态分析工具 kconfirm 发现。"
+    review_outcome: "Bradley Morgan 给出 Reviewed-by；无维护者回帖。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+    - "尚无 timer/nohz 维护者（Frederic Weisbecker、Thomas Gleixner）回帖；唯一 Reviewed-by 来自非维护者。"
+    - "改动跨 init/Kconfig 与 kernel/time/Kconfig 两个文件，归属哪棵树（tip/timers 还是 kbuild）未明确，容易在无人认领的情况下沉寂。"
+    - "补丁未附任何配置矩阵验证证据，无法确认在 NO_HZ_FULL=y 但 HAVE_VIRT_CPU_ACCOUNTING_GEN=n 等边界组合下语义完全等价。"
+  next_action: "需要作者补充 allmodconfig/allnoconfig 及 NO_HZ_FULL 相关组合下 .config 前后对比，并明确 Cc 到 Frederic Weisbecker；否则大概率停滞。"
+contribution_opportunities:
+  - kind: testing
+    description: "构造若干配置组合（NO_HZ_FULL=y/n × HAVE_VIRT_CPU_ACCOUNTING_GEN=y/n × 各 arch defconfig），对比打补丁前后生成的 .config 中 VIRT_CPU_ACCOUNTING_GEN 取值是否完全一致，回帖数据——这是当前补丁最缺的证据。"
+    
+  - kind: review
+    description: "核对 choice 中多个 default 的优先级语义：新加的 `default VIRT_CPU_ACCOUNTING_GEN if NO_HZ_FULL` 置于 `default TICK_CPU_ACCOUNTING` 之前，Kconfig 取首个条件成立的 default，可确认该顺序是否确保了预期行为。"
+generated_at: "2026-08-03T00:15:00"
+source_email_count: 2
+related_articles: []
+tags: [nohz, sched_clock]
+---

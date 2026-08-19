@@ -1,34 +1,4 @@
----
-id: sched-20260730-001
-date: 2026-07-30
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260730055011.2267333-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/lkml/20260730055011.2267333-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [Peter Zijlstra, Andrea Righi]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260730055011.2267333-1-arighi@nvidia.com>"
-    date: 2026-07-30
-    summary: "2-patch series fixing two side effects in __sched_setscheduler() when SCHED_FLAG_KEEP_PARAMS is set"
-    review_outcome: "PeterZ reviewed and provided feedback on both patches"
-upstream_commit: null
-fixes_commit: "637b0682821b"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "Address PeterZ feedback, likely ready for tip"
-contribution_opportunities: []
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 11
-related_articles: []
-tags: [core_sched, cgroup]
----
+# sched/deadline: Skip bandwidth accounting with SCHED_FLAG_KEEP_PARAMS
 
 ## TL;DR
 
@@ -81,3 +51,36 @@ PeterZ 对两个 patch 都给出了反馈。从讨论看，方向被认可，但
 - lore thread: https://lore.kernel.org/lkml/20260730055011.2267333-1-arighi@nvidia.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/deadline: Skip bandwidth accounting with SCHED_FLAG_KEEP_PARAMS"
+id: sched-20260730-001
+date: 2026-07-30
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260730055011.2267333-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/lkml/20260730055011.2267333-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [Peter Zijlstra, Andrea Righi]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260730055011.2267333-1-arighi@nvidia.com>"
+    date: 2026-07-30
+    summary: "2-patch series fixing two side effects in __sched_setscheduler() when SCHED_FLAG_KEEP_PARAMS is set"
+    review_outcome: "PeterZ reviewed and provided feedback on both patches"
+upstream_commit: null
+fixes_commit: "637b0682821b"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "Address PeterZ feedback, likely ready for tip"
+contribution_opportunities: []
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 11
+related_articles: []
+tags: [core_sched, cgroup]
+---

@@ -1,18 +1,4 @@
----
-id: sched-20260805-007
-date: "2026-08-05"
-title: "sched/fair: WF_SYNC 语义澄清 + 非 SMT 互为 sync wakeup 的 wake-affine 保留"
-series: "Preserve wake-affine CPU for non-SMT reciprocal sync wakeups"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [cfs, load_balance, topology, wake_affine]
-authors: ["K Prateek Nayak <kprateeknayak@amd.com>", "Shrikanth Hegde <shrikanth.hegde@oracle.com>"]
-reviewers: ["Shrikanth Hegde <shrikanth.hegde@oracle.com>", "Peter Zijlstra <peterz@infradead.org>"]
-related_articles: ["sched-20260804-006"]
-emails: ["uid-21384@qq-imap"]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 # sched/fair: WF_SYNC 语义澄清 + 非 SMT 互为 sync wakeup 的 wake-affine 保留
 
@@ -58,3 +44,20 @@ if (wake_flags & WF_SYNC) {
 ## 评价
 
 与 006 共同构成 08-04-006「sync wakeup 多子方向」的细化。建议先把 `WF_SYNC` 语义写进文档（呼应 08-04-017 的文档化主题），再分别推进 006 与本文的实现，避免实现先于契约。属于 under_review、待数据/待文档的明确参与点。
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260805-007
+date: "2026-08-05"
+title: "sched/fair: WF_SYNC 语义澄清 + 非 SMT 互为 sync wakeup 的 wake-affine 保留"
+series: "Preserve wake-affine CPU for non-SMT reciprocal sync wakeups"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [cfs, load_balance, topology, wake_affine]
+authors: ["K Prateek Nayak <kprateeknayak@amd.com>", "Shrikanth Hegde <shrikanth.hegde@oracle.com>"]
+reviewers: ["Shrikanth Hegde <shrikanth.hegde@oracle.com>", "Peter Zijlstra <peterz@infradead.org>"]
+related_articles: ["sched-20260804-006"]
+emails: ["uid-21384@qq-imap"]
+---

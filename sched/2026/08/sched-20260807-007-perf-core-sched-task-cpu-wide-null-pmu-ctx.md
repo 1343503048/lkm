@@ -1,20 +1,4 @@
----
-title: "perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用"
-date: 2026-08-07
-series: "perf-core-sched-task-cpu-wide"
-version: "v6"
-status: "in-review"
-tags: [perf, sched/core, crash]
-related_articles: []
-submitter: "Puranjay Mohan"
-emails:
-  - uid: 27034
-    subject: "Re: [PATCH v6 3/3] perf/core: Fix NULL pmu_ctx passed to pmu->sched_task()"
-  - uid: 26563
-    subject: "[PATCH v6 2/3] ... Run sched_task() for PMUs with only CPU-wide events"
-  - uid: 26587
-    subject: "[PATCH v6 1/3] ... sched_task() dispatch and branch entry fixes"
----
+# perf core sched task cpu wide null pmu ctx
 
 ## 概述
 
@@ -35,3 +19,21 @@ v6，已获 Usama Arif `Acked-by`；第 1 片在讨论中确认将于 v7 简化�
 ## 参考链接
 
 - 讨论：uid 27034 / 26563 / 26587
+
+---
+subject: "perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用"
+date: 2026-08-07
+series: "perf-core-sched-task-cpu-wide"
+version: "v6"
+status: "in-review"
+tags: [perf, sched/core, crash]
+related_articles: []
+submitter: "Puranjay Mohan"
+emails:
+  - uid: 27034
+    subject: "Re: [PATCH v6 3/3] perf/core: Fix NULL pmu_ctx passed to pmu->sched_task()"
+  - uid: 26563
+    subject: "[PATCH v6 2/3] ... Run sched_task() for PMUs with only CPU-wide events"
+  - uid: 26587
+    subject: "[PATCH v6 1/3] ... sched_task() dispatch and branch entry fixes"
+---

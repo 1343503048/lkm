@@ -1,16 +1,4 @@
----
-title: "sched/fair: 在非 SMT 互逆关系下保留 wake-affine CPU"
-date: 2026-08-07
-series: "sched-fair-wake-affine"
-version: "v4"
-status: "in-review"
-tags: [sched/fair, affinity]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 25792
-    subject: "Re: [PATCH v4] sched/fair: preserve wake-affine CPU for non-SMT reciprocal scenario"
----
+# sched fair wake affine nonsmt reciprocal
 
 ## 概述
 
@@ -27,3 +15,17 @@ v4，处于评审回复阶段。
 ## 参考链接
 
 - 邮件：uid 25792
+
+---
+subject: "sched/fair: 在非 SMT 互逆关系下保留 wake-affine CPU"
+date: 2026-08-07
+series: "sched-fair-wake-affine"
+version: "v4"
+status: "in-review"
+tags: [sched/fair, affinity]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 25792
+    subject: "Re: [PATCH v4] sched/fair: preserve wake-affine CPU for non-SMT reciprocal scenario"
+---

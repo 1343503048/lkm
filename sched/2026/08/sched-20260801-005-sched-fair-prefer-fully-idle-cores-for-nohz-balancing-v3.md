@@ -1,48 +1,4 @@
----
-id: sched-20260801-005
-date: 2026-08-01
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<uid-13761@qq-imap>"
-lore_url: "https://lore.kernel.org/all/20260729163225.1987068-1-arighi@nvidia.com/"
-authors: [Andrea Righi]
-maintainers_involved: [Mete Durlu, K Prateek Nayak, Shrikanth Hegde]
-current_version: v3
-patch_series:
-  - version: v1
-    msgid: unknown
-    date: 2026-07-28
-    summary: "find_new_ilb() 在选择 idle load balancer CPU 时优先选择整个 core 都空闲的 CPU，避免在繁忙 SMT core 的空闲兄弟上跑 ILB 而挤占其兄弟的算力；保留第一个空闲 CPU 作为 fallback"
-    review_outcome: "K Prateek Nayak 指出在宽 SMT 系统上会产生大量重复的 is_core_idle() 检查"
-  - version: v2
-    msgid: unknown
-    date: 2026-07-29
-    summary: "回应 Prateek：对部分繁忙的 core 剪掉其剩余兄弟线程，避免宽 SMT 系统上重复的 is_core_idle() 调用"
-    review_outcome: "Mete Durlu 进一步指出剪枝还可以更彻底"
-  - version: v3
-    msgid: "<uid-13761@qq-imap>"
-    date: 2026-08-01
-    summary: "回应 Mete Durlu：找到 idle fallback 之后，一旦遇到繁忙 CPU 即跳过其所有兄弟线程，避免对已知繁忙的 core 做逐 CPU 遍历。实现上改用 per-CPU select_rq_mask（依赖关中断保证互斥）承载候选集合，以便在遍历中就地剪枝"
-    review_outcome: "v3 当日发出，暂无新的 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: ["整个系列三个版本均未见任何量化效果数据，缺少能证明『ILB 挤占兄弟线程算力』这一动机的实测数字"]
-  next_action: "补充 benchmark 数据证明优先选择全空闲 core 的实际收益，并确认复用 select_rq_mask 在 find_new_ilb() 调用上下文中的安全性"
-contribution_opportunities:
-  - kind: testing
-    description: "在宽 SMT 机器（POWER SMT8 / s390）上测量 ILB 跑在繁忙 core 空闲兄弟上时对该 core 上任务的实际影响，补上这个系列自始至终缺失的量化动机数据"
-  - kind: review
-    description: "核对复用 per-CPU select_rq_mask 的安全性——注释称『本 CPU 上由关中断保护免于并发使用』，需要确认 find_new_ilb() 的所有调用路径确实都在关中断上下文，且不会与同一 CPU 上其他 select_rq_mask 使用者嵌套冲突"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 1
-related_articles: ["sched-20260731-007"]
-tags: [cfs, load_balance, nohz, idle, hyperthreading]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 ## TL;DR
 
@@ -110,3 +66,50 @@ Cc 列表为 Mete Durlu、K Prateek Nayak、Shrikanth Hegde——三位都是 SM
 - lore thread (v3): 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260801-005
+date: 2026-08-01
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<uid-13761@qq-imap>"
+lore_url: "https://lore.kernel.org/all/20260729163225.1987068-1-arighi@nvidia.com/"
+authors: [Andrea Righi]
+maintainers_involved: [Mete Durlu, K Prateek Nayak, Shrikanth Hegde]
+current_version: v3
+patch_series:
+  - version: v1
+    msgid: unknown
+    date: 2026-07-28
+    summary: "find_new_ilb() 在选择 idle load balancer CPU 时优先选择整个 core 都空闲的 CPU，避免在繁忙 SMT core 的空闲兄弟上跑 ILB 而挤占其兄弟的算力；保留第一个空闲 CPU 作为 fallback"
+    review_outcome: "K Prateek Nayak 指出在宽 SMT 系统上会产生大量重复的 is_core_idle() 检查"
+  - version: v2
+    msgid: unknown
+    date: 2026-07-29
+    summary: "回应 Prateek：对部分繁忙的 core 剪掉其剩余兄弟线程，避免宽 SMT 系统上重复的 is_core_idle() 调用"
+    review_outcome: "Mete Durlu 进一步指出剪枝还可以更彻底"
+  - version: v3
+    msgid: "<uid-13761@qq-imap>"
+    date: 2026-08-01
+    summary: "回应 Mete Durlu：找到 idle fallback 之后，一旦遇到繁忙 CPU 即跳过其所有兄弟线程，避免对已知繁忙的 core 做逐 CPU 遍历。实现上改用 per-CPU select_rq_mask（依赖关中断保证互斥）承载候选集合，以便在遍历中就地剪枝"
+    review_outcome: "v3 当日发出，暂无新的 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: ["整个系列三个版本均未见任何量化效果数据，缺少能证明『ILB 挤占兄弟线程算力』这一动机的实测数字"]
+  next_action: "补充 benchmark 数据证明优先选择全空闲 core 的实际收益，并确认复用 select_rq_mask 在 find_new_ilb() 调用上下文中的安全性"
+contribution_opportunities:
+  - kind: testing
+    description: "在宽 SMT 机器（POWER SMT8 / s390）上测量 ILB 跑在繁忙 core 空闲兄弟上时对该 core 上任务的实际影响，补上这个系列自始至终缺失的量化动机数据"
+  - kind: review
+    description: "核对复用 per-CPU select_rq_mask 的安全性——注释称『本 CPU 上由关中断保护免于并发使用』，需要确认 find_new_ilb() 的所有调用路径确实都在关中断上下文，且不会与同一 CPU 上其他 select_rq_mask 使用者嵌套冲突"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 1
+related_articles: ["sched-20260731-007"]
+tags: [cfs, load_balance, nohz, idle, hyperthreading]
+---

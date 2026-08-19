@@ -1,18 +1,4 @@
----
-id: sched-20260806-011
-date: "2026-08-06"
-title: "sched/wake_q: 向 6.12.y 稳定分支回引 wake_q 辅助函数"
-series: "Backport wake_q helper to stable 6.12.y"
-type: fix
-status: under_review
-severity: low
-merge_likelihood: high
-tags: [wake_q, core_sched]
-authors: ["Simon Liebold <simon.liebold@amd.com>", "John Stultz <jstultz@google.com>", "Waiman Long <longman@redhat.com>", "Peter Zijlstra <peterz@infradead.org>", "Ingo Molnar <mingo@kernel.org>"]
-reviewers: ["John Stultz <jstultz@google.com>", "Waiman Long <longman@redhat.com>", "Peter Zijlstra <peterz@infradead.org>"]
-related_articles: []
-emails: ["uid-24225@qq-imap"]
----
+# sched/wake_q: Add helper to call wake_up_q after unlock with preemption disabled
 
 # sched/wake_q: 向 6.12.y 稳定分支回引 wake_q 辅助函数
 
@@ -40,3 +26,20 @@ wake_q 机制：锁释放者把待唤醒任务放入 per-CPU `wake_q`，待退�
 ## 评价
 
 标准的 stable 准备性回引，reviewer 阵容为各相关子系统维护者。合入可能性高（走 stable 流程）。属基础设施类，本身无行为变更。
+
+---
+subject: "sched/wake_q: Add helper to call wake_up_q after unlock with preemption disabled"
+id: sched-20260806-011
+date: "2026-08-06"
+title: "sched/wake_q: 向 6.12.y 稳定分支回引 wake_q 辅助函数"
+series: "Backport wake_q helper to stable 6.12.y"
+type: fix
+status: under_review
+severity: low
+merge_likelihood: high
+tags: [wake_q, core_sched]
+authors: ["Simon Liebold <simon.liebold@amd.com>", "John Stultz <jstultz@google.com>", "Waiman Long <longman@redhat.com>", "Peter Zijlstra <peterz@infradead.org>", "Ingo Molnar <mingo@kernel.org>"]
+reviewers: ["John Stultz <jstultz@google.com>", "Waiman Long <longman@redhat.com>", "Peter Zijlstra <peterz@infradead.org>"]
+related_articles: []
+emails: ["uid-24225@qq-imap"]
+---

@@ -1,18 +1,4 @@
----
-id: sched-20260806-001
-date: "2026-08-06"
-title: "perf sched latency: v9 细化输出、单位自动缩放与直方图支持"
-series: "perf sched latency: Refine outputs, unit scaling, histogram"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [perf, sched_debug]
-authors: ["Aaron Tomlin <atomlin@atomlin.com>", "Namhyung Kim <namhyung@kernel.org>", "Ian Rogers <irogers@google.com>", "Arnaldo Carvalho de Melo <acme@kernel.org>"]
-reviewers: ["Ian Rogers <irogers@google.com>", "Namhyung Kim <namhyung@kernel.org>"]
-related_articles: ["sched-20260805-011"]
-emails: ["uid-24961@qq-imap", "uid-24963@qq-imap", "uid-24971@qq-imap", "uid-24958@qq-imap"]
----
+# perf sched latency: Refine outputs, unit scaling, and histogram support
 
 # perf sched latency: v9 细化输出、单位自动缩放与直方图支持
 
@@ -53,3 +39,20 @@ swapper 处理：用 `thread__tid(...) != 0` 整数判断替代字符串比较�
 ## 评价
 
 工具可观测性增强，已过多轮打磨（v1→v9），reviewer（Namhyung/Ian/Arnaldo）深度介入，合入可能性高。建议通过后进入 perf-tools-next。
+
+---
+subject: "perf sched latency: Refine outputs, unit scaling, and histogram support"
+id: sched-20260806-001
+date: "2026-08-06"
+title: "perf sched latency: v9 细化输出、单位自动缩放与直方图支持"
+series: "perf sched latency: Refine outputs, unit scaling, histogram"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [perf, sched_debug]
+authors: ["Aaron Tomlin <atomlin@atomlin.com>", "Namhyung Kim <namhyung@kernel.org>", "Ian Rogers <irogers@google.com>", "Arnaldo Carvalho de Melo <acme@kernel.org>"]
+reviewers: ["Ian Rogers <irogers@google.com>", "Namhyung Kim <namhyung@kernel.org>"]
+related_articles: ["sched-20260805-011"]
+emails: ["uid-24961@qq-imap", "uid-24963@qq-imap", "uid-24971@qq-imap", "uid-24958@qq-imap"]
+---

@@ -1,38 +1,4 @@
----
-id: sched-20260728-008
-date: 2026-07-28
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: null
-lore_url: null
-authors: [Guopeng Zhang]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: null
-    date: 2026-07-17
-    summary: "修复 PSI trigger 在 32 位架构上的两处溢出：时间转换 u32 乘法和长窗口增长插值乘法"
-    review_outcome: "Tao Cui 回复确认问题存在，讨论修复方案细节"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["尚未获得 maintainer Ack"]
-  next_action: "等待 PSI maintainer (Johannes Weiner) review"
-contribution_opportunities:
-  - kind: testing
-    description: "在 32 位 ARM 平台上验证 PSI trigger 配置大窗口（>4s）时的行为是否正确"
-  - kind: review
-    description: "检查 mul_u64_u64_div_u64() 在极端参数下的精度损失"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: [psi]
----
+# sched psi fix 32 bit overflow in trigger window
 
 ## TL;DR
 
@@ -93,3 +59,40 @@ PSI trigger 允许用户通过 `/proc/pressure/*` 配置阈值（threshold_us）
 
 - lore thread: 未获取到
 - 原始 patch 发送日期: 2026-07-17
+
+---
+subject: "sched psi fix 32 bit overflow in trigger window"
+id: sched-20260728-008
+date: 2026-07-28
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: null
+lore_url: null
+authors: [Guopeng Zhang]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: null
+    date: 2026-07-17
+    summary: "修复 PSI trigger 在 32 位架构上的两处溢出：时间转换 u32 乘法和长窗口增长插值乘法"
+    review_outcome: "Tao Cui 回复确认问题存在，讨论修复方案细节"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["尚未获得 maintainer Ack"]
+  next_action: "等待 PSI maintainer (Johannes Weiner) review"
+contribution_opportunities:
+  - kind: testing
+    description: "在 32 位 ARM 平台上验证 PSI trigger 配置大窗口（>4s）时的行为是否正确"
+  - kind: review
+    description: "检查 mul_u64_u64_div_u64() 在极端参数下的精度损失"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: [psi]
+---

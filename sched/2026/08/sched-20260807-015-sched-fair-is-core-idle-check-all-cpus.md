@@ -1,18 +1,4 @@
----
-title: "sched/fair: 让 is_core_idle() 检查核心内所有 CPU"
-date: 2026-08-07
-series: "sched-fair-is-core-idle"
-version: "v1"
-status: "in-review"
-tags: [sched/fair, idle, topology]
-related_articles: []
-submitter: "Mete Durlu"
-emails:
-  - uid: 25338
-    subject: "[PATCH] sched/fair: make is_core_idle() check all CPUs in a core"
-  - uid: 26028
-    subject: "Re: [PATCH] sched/fair: make is_core_idle() check all CPUs in a core"
----
+# sched fair is core idle check all cpus
 
 ## 概述
 
@@ -35,3 +21,19 @@ Peter Zijlstra（Re）指出该 skip 的存在正是为了让调用方能从"即
 ## 参考链接
 
 - 邮件：uid 25338 / 26028
+
+---
+subject: "sched/fair: 让 is_core_idle() 检查核心内所有 CPU"
+date: 2026-08-07
+series: "sched-fair-is-core-idle"
+version: "v1"
+status: "in-review"
+tags: [sched/fair, idle, topology]
+related_articles: []
+submitter: "Mete Durlu"
+emails:
+  - uid: 25338
+    subject: "[PATCH] sched/fair: make is_core_idle() check all CPUs in a core"
+  - uid: 26028
+    subject: "Re: [PATCH] sched/fair: make is_core_idle() check all CPUs in a core"
+---

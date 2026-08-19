@@ -1,18 +1,4 @@
----
-id: sched-20260805-002
-date: "2026-08-05"
-title: "sched/fair: NOHZ 负载均衡优先 fully idle core（v3/v4 收尾讨论）"
-series: "Prefer fully idle cores for NOHZ balancing"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [cfs, load_balance, nohz, topology, hyperthreading]
-authors: ["Andrea Righi <arighi@nvidia.com>", "Gautham R. Shenoy <gautham.shenoy@amd.com>", "K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>", "Vincent Guittot <vincent.guittot@linaro.org>"]
-related_articles: ["sched-20260804-005", "sched-20260801-005", "sched-20260730-008"]
-emails: ["uid-22123@qq-imap", "uid-21934@qq-imap", "uid-20997@qq-imap", "uid-20678@qq-imap"]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 # sched/fair: NOHZ 负载均衡优先 fully idle core（v3/v4 收尾讨论）
 
@@ -56,3 +42,20 @@ if (sched_smt_active())           // 依赖运行期开关
 
 - 直接延续 08-04-005（v3 已获 Vincent R-b）/ 08-01-005（v3 主线）/ 07-30-008（v2 背景）。
 - 与本系列历史归档：`sched/by-tag/nohz` 已累计 10 篇。
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260805-002
+date: "2026-08-05"
+title: "sched/fair: NOHZ 负载均衡优先 fully idle core（v3/v4 收尾讨论）"
+series: "Prefer fully idle cores for NOHZ balancing"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [cfs, load_balance, nohz, topology, hyperthreading]
+authors: ["Andrea Righi <arighi@nvidia.com>", "Gautham R. Shenoy <gautham.shenoy@amd.com>", "K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>", "Vincent Guittot <vincent.guittot@linaro.org>"]
+related_articles: ["sched-20260804-005", "sched-20260801-005", "sched-20260730-008"]
+emails: ["uid-22123@qq-imap", "uid-21934@qq-imap", "uid-20997@qq-imap", "uid-20678@qq-imap"]
+---

@@ -1,16 +1,4 @@
----
-title: "sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）"
-date: 2026-08-08
-series: "sched-fair-nohz-fully-idle"
-version: "v4"
-status: "merged"
-tags: [sched/fair, nohz, load_balance]
-related_articles: [sched-20260807-016-sched-fair-nohz-fully-idle-cores]
-submitter: "Andrea Righi (NVIDIA)"
-emails:
-  - uid: 28237
-    subject: "[tip: sched/core] sched/fair: Prefer fully idle cores for NOHZ balancing"
----
+# sched fair nohz fully idle cores merged
 
 ## 概述
 
@@ -36,3 +24,17 @@ Andrea Righi 的 "sched/fair: Prefer fully idle cores for NOHZ balancing" 由 ti
 
 - tip 合并通知：uid 28237（Commit `293f9611ae73564febc553935830074f0f300694`）
 - 前序分析：sched-20260807-016-sched-fair-nohz-fully-idle-cores
+
+---
+subject: "sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）"
+date: 2026-08-08
+series: "sched-fair-nohz-fully-idle"
+version: "v4"
+status: "merged"
+tags: [sched/fair, nohz, load_balance]
+related_articles: [sched-20260807-016-sched-fair-nohz-fully-idle-cores]
+submitter: "Andrea Righi (NVIDIA)"
+emails:
+  - uid: 28237
+    subject: "[tip: sched/core] sched/fair: Prefer fully idle cores for NOHZ balancing"
+---

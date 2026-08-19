@@ -1,38 +1,4 @@
----
-id: sched-20260731-005
-date: 2026-07-31
-subsystem: sched
-type: feature
-status: rfc
-severity: none
-thread_root_msgid: "<20260731070102.5850-1-xuewen.yan@unisoc.com>"
-lore_url: "https://lore.kernel.org/lkml/20260731070102.5850-1-xuewen.yan@unisoc.com"
-authors: [Xuewen Yan]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260731070102.5850-1-xuewen.yan@unisoc.com>"
-    date: 2026-07-31
-    summary: "RFC: 为 fuse 同步请求添加调度器唤醒提示，通过 FR_SYNC_WAKEUP 标志位避免修改导出接口"
-    review_outcome: "RFC 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: unknown
-  blocking_issues: ["RFC 阶段，需要社区反馈", "Miklos 之前对接口变更有疑虑"]
-  next_action: "等待 fuse 和 sched 维护者的反馈"
-contribution_opportunities:
-  - kind: testing
-    description: "在 big.LITTLE 或不对称拓扑设备上测试 fuse 同步请求的唤醒迁移效果"
-  - kind: discussion
-    description: "评估 FR_SYNC_WAKEUP 标志位方案的合理性，与 WF_SYNC 的关系"
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 1
-related_articles: []
-tags: [cfs, load_balance]
----
+# [RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests
 
 ## TL;DR
 
@@ -87,3 +53,40 @@ fuse 文件系统在处理同步请求时，使用普通的 `wake_up_interruptib
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260731070102.5850-1-xuewen.yan@unisoc.com
+
+---
+subject: "[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests"
+id: sched-20260731-005
+date: 2026-07-31
+subsystem: sched
+type: feature
+status: rfc
+severity: none
+thread_root_msgid: "<20260731070102.5850-1-xuewen.yan@unisoc.com>"
+lore_url: "https://lore.kernel.org/lkml/20260731070102.5850-1-xuewen.yan@unisoc.com"
+authors: [Xuewen Yan]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260731070102.5850-1-xuewen.yan@unisoc.com>"
+    date: 2026-07-31
+    summary: "RFC: 为 fuse 同步请求添加调度器唤醒提示，通过 FR_SYNC_WAKEUP 标志位避免修改导出接口"
+    review_outcome: "RFC 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: ["RFC 阶段，需要社区反馈", "Miklos 之前对接口变更有疑虑"]
+  next_action: "等待 fuse 和 sched 维护者的反馈"
+contribution_opportunities:
+  - kind: testing
+    description: "在 big.LITTLE 或不对称拓扑设备上测试 fuse 同步请求的唤醒迁移效果"
+  - kind: discussion
+    description: "评估 FR_SYNC_WAKEUP 标志位方案的合理性，与 WF_SYNC 的关系"
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 1
+related_articles: []
+tags: [cfs, load_balance]
+---

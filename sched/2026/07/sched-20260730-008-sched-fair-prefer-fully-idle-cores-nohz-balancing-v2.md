@@ -1,41 +1,4 @@
----
-id: sched-20260730-008
-date: 2026-07-30
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<sched-fair-nohz-idle-cores-v2...@nvidia.com>"
-lore_url: "https://lore.kernel.org/lkml/sched-fair-nohz-idle-cores-v2"
-authors: [Andrea Righi]
-maintainers_involved: []
-current_version: v2
-patch_series:
-  - version: v1
-    msgid: "<sched-fair-nohz-idle-cores-v1...>"
-    date: 2026-07-29
-    summary: "Initial proposal to prefer fully idle cores for NOHZ balancing"
-    review_outcome: "v1 covered on 20260729"
-  - version: v2
-    msgid: "<sched-fair-nohz-idle-cores-v2...@nvidia.com>"
-    date: 2026-07-30
-    summary: "v2 with refinements for SMT sibling skipping"
-    review_outcome: "Pending review"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["Need review/benchmark data on NVIDIA Vera"]
-  next_action: "Get review from sched maintainers"
-contribution_opportunities:
-  - kind: testing
-    description: "Test on SMT systems to validate ILB core selection behavior"
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 1
-related_articles: [sched-20260729-001]
-tags: [cfs, load_balance, nohz, perf, hyperthreading]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 ## TL;DR
 
@@ -89,3 +52,43 @@ v2 方案：
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
 - related: sched-20260729-001
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260730-008
+date: 2026-07-30
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<sched-fair-nohz-idle-cores-v2...@nvidia.com>"
+lore_url: "https://lore.kernel.org/lkml/sched-fair-nohz-idle-cores-v2"
+authors: [Andrea Righi]
+maintainers_involved: []
+current_version: v2
+patch_series:
+  - version: v1
+    msgid: "<sched-fair-nohz-idle-cores-v1...>"
+    date: 2026-07-29
+    summary: "Initial proposal to prefer fully idle cores for NOHZ balancing"
+    review_outcome: "v1 covered on 20260729"
+  - version: v2
+    msgid: "<sched-fair-nohz-idle-cores-v2...@nvidia.com>"
+    date: 2026-07-30
+    summary: "v2 with refinements for SMT sibling skipping"
+    review_outcome: "Pending review"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["Need review/benchmark data on NVIDIA Vera"]
+  next_action: "Get review from sched maintainers"
+contribution_opportunities:
+  - kind: testing
+    description: "Test on SMT systems to validate ILB core selection behavior"
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 1
+related_articles: [sched-20260729-001]
+tags: [cfs, load_balance, nohz, perf, hyperthreading]
+---

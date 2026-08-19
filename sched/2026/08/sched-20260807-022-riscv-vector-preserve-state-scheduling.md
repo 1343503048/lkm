@@ -1,16 +1,4 @@
----
-title: "riscv: 在非零 Vector 嵌套深度调度时保留 Vector 状态"
-date: 2026-08-07
-series: "riscv-vector-preserve-state"
-version: "v1"
-status: "in-review"
-tags: [riscv, sched/fair]
-related_articles: []
-submitter: "Karl Mehltretter"
-emails:
-  - uid: 25457
-    subject: "[PATCH] riscv: vector: preserve state when scheduling at nonzero depth"
----
+# riscv vector preserve state scheduling
 
 ## 概述
 
@@ -37,3 +25,17 @@ v1，处于评审阶段（属调度相关的架构状态保存修复）。
 ## 参考链接
 
 - 邮件：uid 25457
+
+---
+subject: "riscv: 在非零 Vector 嵌套深度调度时保留 Vector 状态"
+date: 2026-08-07
+series: "riscv-vector-preserve-state"
+version: "v1"
+status: "in-review"
+tags: [riscv, sched/fair]
+related_articles: []
+submitter: "Karl Mehltretter"
+emails:
+  - uid: 25457
+    subject: "[PATCH] riscv: vector: preserve state when scheduling at nonzero depth"
+---

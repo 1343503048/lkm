@@ -1,22 +1,4 @@
----
-title: "schedutil: 让 DVFS 请求可达 boost 频率上限"
-date: 2026-08-07
-series: "schedutil-boost-dvfs"
-version: "v1"
-status: "in-review"
-tags: [cpufreq, schedutil]
-related_articles: []
-submitter: "Sibi Sankar / Ananthu C V"
-emails:
-  - uid: 27139
-    subject: "Re: [PATCH 2/2] sched/cpufreq: Update schedutil's DVFS request to reach the boost ceiling"
-  - uid: 27085
-    subject: "Re: [PATCH 2/2] sched/cpufreq: Update schedutil's DVFS request to reach the boost ceiling"
-  - uid: 27064
-    subject: "Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled"
-  - uid: 26813
-    subject: "Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled"
----
+# schedutil boost dvfs policy max
 
 ## 概述
 
@@ -45,3 +27,23 @@ Vincent Guittot、Christian Loehle、Zhongqiu Han 等参与讨论，围绕 capac
 ## 参考链接
 
 - 讨论线程：uid 27139 / 27085 / 27064 / 26813
+
+---
+subject: "schedutil: 让 DVFS 请求可达 boost 频率上限"
+date: 2026-08-07
+series: "schedutil-boost-dvfs"
+version: "v1"
+status: "in-review"
+tags: [cpufreq, schedutil]
+related_articles: []
+submitter: "Sibi Sankar / Ananthu C V"
+emails:
+  - uid: 27139
+    subject: "Re: [PATCH 2/2] sched/cpufreq: Update schedutil's DVFS request to reach the boost ceiling"
+  - uid: 27085
+    subject: "Re: [PATCH 2/2] sched/cpufreq: Update schedutil's DVFS request to reach the boost ceiling"
+  - uid: 27064
+    subject: "Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled"
+  - uid: 26813
+    subject: "Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled"
+---

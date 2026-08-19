@@ -1,18 +1,4 @@
----
-title: "sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）"
-date: 2026-08-08
-series: "sched-core-skip-avg-idle"
-version: "v3"
-status: "in-review"
-tags: [sched/core, idle]
-related_articles: [sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp]
-submitter: "Shubhang Kaushik (Ampere)"
-emails:
-  - uid: 27672
-    subject: "[PATCH v3] sched/core: Skip rq->avg_idle update without a valid idle_stamp"
-  - uid: 27645
-    subject: "Re: [PATCH v2] sched/core: Skip rq->avg_idle update without a valid idle_stamp"
----
+# sched core skip avg idle v3
 
 ## 概述
 
@@ -38,3 +24,19 @@ v3，已获 Reviewed-by + Acked-by，处于评审阶段。同日另有 tip 合�
 
 - 本日 v3：uid 27672
 - 前序分析：sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp
+
+---
+subject: "sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）"
+date: 2026-08-08
+series: "sched-core-skip-avg-idle"
+version: "v3"
+status: "in-review"
+tags: [sched/core, idle]
+related_articles: [sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp]
+submitter: "Shubhang Kaushik (Ampere)"
+emails:
+  - uid: 27672
+    subject: "[PATCH v3] sched/core: Skip rq->avg_idle update without a valid idle_stamp"
+  - uid: 27645
+    subject: "Re: [PATCH v2] sched/core: Skip rq->avg_idle update without a valid idle_stamp"
+---

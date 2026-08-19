@@ -1,18 +1,4 @@
----
-id: sched-20260805-001
-date: "2026-08-05"
-title: "sched_ext: proxy execution 系列的两个 review 收尾（reject DSQ 泛化 + 跨类切换的代理 donor 阻断）"
-series: "sched_ext proxy execution（7.3）"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [sched_ext, proxy_execution, core_sched]
-authors: ["Andrea Righi <arighi@nvidia.com>", "Tejun Heo <tj@kernel.org>"]
-reviewers: ["Tejun Heo <tj@kernel.org>"]
-related_articles: ["sched-20260804-001"]
-emails: ["uid-21918@qq-imap", "uid-21667@qq-imap"]
----
+# sched_ext: Block proxy donors across scheduler transitions
 
 # sched_ext: proxy execution 系列的两个 review 收尾（reject DSQ 泛化 + 跨类切换的代理 donor 阻断）
 
@@ -58,3 +44,20 @@ rt_mutex_setprio(D, H) 把 D 从 FAIR 提升为 RT
 ## 评价
 
 属于大型 feature 进入 maintainer 精修阶段的正常 review 往返。方向明确、reviewer 反馈具体且可操作，合入 7.3 的概率高。
+
+---
+subject: "sched_ext: Block proxy donors across scheduler transitions"
+id: sched-20260805-001
+date: "2026-08-05"
+title: "sched_ext: proxy execution 系列的两个 review 收尾（reject DSQ 泛化 + 跨类切换的代理 donor 阻断）"
+series: "sched_ext proxy execution（7.3）"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [sched_ext, proxy_execution, core_sched]
+authors: ["Andrea Righi <arighi@nvidia.com>", "Tejun Heo <tj@kernel.org>"]
+reviewers: ["Tejun Heo <tj@kernel.org>"]
+related_articles: ["sched-20260804-001"]
+emails: ["uid-21918@qq-imap", "uid-21667@qq-imap"]
+---

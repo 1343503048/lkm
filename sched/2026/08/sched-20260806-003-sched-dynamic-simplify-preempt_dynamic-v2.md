@@ -1,18 +1,4 @@
----
-id: sched-20260806-003
-date: "2026-08-06"
-title: "sched: 简化 PREEMPT_DYNAMIC（v2，Jinjie Ruan R-b）"
-series: "Simplify PREEMPT_DYNAMIC"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [preempt, topology]
-authors: ["Mark Rutland <mark.rutland@arm.com>", "Jinjie Ruan <ruanjinjie@huawei.com>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
-reviewers: ["Jinjie Ruan <ruanjinjie@huawei.com>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
-related_articles: ["sched-20260805-003", "sched-20260804-009"]
-emails: ["uid-24724@qq-imap", "uid-24531@qq-imap"]
----
+# sched: dynamic: Simplify preempt_schedule{,_notrace}()
 
 # sched: 简化 PREEMPT_DYNAMIC（v2，Jinjie Ruan R-b）
 
@@ -47,3 +33,20 @@ Jinjie 的 review 结论：因 full/lazy 下这两个函数恒启用，dynamic �
 ## 评价
 
 健康的维护性重构，reviewer（Shrikanth、Jinjie）已介入并放行。合入可能性高，建议 Peter 收尾进 tip/sched/core。
+
+---
+subject: "sched: dynamic: Simplify preempt_schedule{,_notrace}()"
+id: sched-20260806-003
+date: "2026-08-06"
+title: "sched: 简化 PREEMPT_DYNAMIC（v2，Jinjie Ruan R-b）"
+series: "Simplify PREEMPT_DYNAMIC"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [preempt, topology]
+authors: ["Mark Rutland <mark.rutland@arm.com>", "Jinjie Ruan <ruanjinjie@huawei.com>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
+reviewers: ["Jinjie Ruan <ruanjinjie@huawei.com>", "Shrikanth Hegde <sshegde@linux.ibm.com>"]
+related_articles: ["sched-20260805-003", "sched-20260804-009"]
+emails: ["uid-24724@qq-imap", "uid-24531@qq-imap"]
+---

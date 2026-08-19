@@ -1,34 +1,4 @@
----
-id: sched-20260731-008
-date: 2026-07-31
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260730135858.2460751-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/lkml/20260730135858.2460751-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [Bharata B Rao]
-current_version: v2
-patch_series:
-  - version: v2
-    msgid: "<20260730135858.2460751-1-arighi@nvidia.com>"
-    date: 2026-07-30
-    summary: "修复 SCHED_FLAG_KEEP_PARAMS 下的策略变更副作用问题"
-    review_outcome: "Bharata 确认修复方向正确"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待更多 review 或合入"
-contribution_opportunities: []
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 2
-related_articles: [sched-20260730-001]
-tags: [cfs]
----
+# sched: Reject policy changes with SCHED_FLAG_KEEP_PARAMS
 
 ## TL;DR
 
@@ -60,3 +30,36 @@ tags: [cfs]
 
 - lore thread: https://lore.kernel.org/lkml/20260730135858.2460751-1-arighi@nvidia.com
 - 前日分析: sched-20260730-001
+
+---
+subject: "sched: Reject policy changes with SCHED_FLAG_KEEP_PARAMS"
+id: sched-20260731-008
+date: 2026-07-31
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260730135858.2460751-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/lkml/20260730135858.2460751-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [Bharata B Rao]
+current_version: v2
+patch_series:
+  - version: v2
+    msgid: "<20260730135858.2460751-1-arighi@nvidia.com>"
+    date: 2026-07-30
+    summary: "修复 SCHED_FLAG_KEEP_PARAMS 下的策略变更副作用问题"
+    review_outcome: "Bharata 确认修复方向正确"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待更多 review 或合入"
+contribution_opportunities: []
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 2
+related_articles: [sched-20260730-001]
+tags: [cfs]
+---

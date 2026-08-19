@@ -1,18 +1,4 @@
----
-title: "sched/numa: 为 Hygon model 7 应用远端 socket 距离平均"
-date: 2026-08-07
-series: "sched-numa-hygon"
-version: "v3"
-status: "in-review"
-tags: [numa_balancing, topology, load_balance]
-related_articles: []
-submitter: "Chaohong Guo"
-emails:
-  - uid: 25979
-    subject: "[PATCH v3 0/2] sched/numa: apply remote socket distance averaging for Hygon"
-  - uid: 25980
-    subject: "[PATCH v3 1/2] ... (related)"
----
+# sched numa hygon remote socket distance
 
 ## 概述
 
@@ -33,3 +19,19 @@ v3，处于评审阶段。
 ## 参考链接
 
 - 系列：uid 25979 / 25980
+
+---
+subject: "sched/numa: 为 Hygon model 7 应用远端 socket 距离平均"
+date: 2026-08-07
+series: "sched-numa-hygon"
+version: "v3"
+status: "in-review"
+tags: [numa_balancing, topology, load_balance]
+related_articles: []
+submitter: "Chaohong Guo"
+emails:
+  - uid: 25979
+    subject: "[PATCH v3 0/2] sched/numa: apply remote socket distance averaging for Hygon"
+  - uid: 25980
+    subject: "[PATCH v3 1/2] ... (related)"
+---

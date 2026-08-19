@@ -2,8 +2,8 @@
 
 共 31 篇
 
-- [sched-20260814-003](../../2026/08/sched-20260814-003.md) `fix/medium/under_review` — K Prateek Nayak（Valentin Schneider 等参与）修复 sched/topology 的 `sd->shared` 重复分配/泄漏：当 `sd_llc` 与 `sd_asym_cpucapacity` 指向同一域时，`init_sched_domain_shared()` 会覆盖并泄漏先前分配。同时涉及 NUMA masks 释放、rebuild 加锁等关联修复。属内存
-- [sched-20260810-013](../../2026/08/sched-20260810-013.md) `fix/low/under_review` — Breno Leitao 提交修复：「sched/topology: don't claim sched_domain_shared twice」。修复 shared domain 被重复 claim 导致的引用计数残留/内存泄漏。under_review。
+- [sched-20260814-003](../../2026/08/sched-20260814-003-sched-topology-add-a-cpus-read-lock-to-rebuild-sched-domains.md) `fix/medium/under_review` — K Prateek Nayak（Valentin Schneider 等参与）修复 sched/topology 的 `sd->shared` 重复分配/泄漏：当 `sd_llc` 与 `sd_asym_cpucapacity` 指向同一域时，`init_sched_domain_shared()` 会覆盖并泄漏先前分配。同时涉及 NUMA masks 释放、rebuild 加锁等关联修复。属内存
+- [sched-20260810-013](../../2026/08/sched-20260810-013-sched-topology-don-t-claim-sched-domain-shared-twice-on-the-.md) `fix/low/under_review` — Breno Leitao 提交修复：「sched/topology: don't claim sched_domain_shared twice」。修复 shared domain 被重复 claim 导致的引用计数残留/内存泄漏。under_review。
 - [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md](../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md) `merged`
 - [sched-20260807-020-sched-numa-hygon-remote-socket-distance.md](../../2026/08/sched-20260807-020-sched-numa-hygon-remote-socket-distance.md) `in-review`
 - [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md](../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md) `in-review`

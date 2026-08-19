@@ -1,22 +1,4 @@
----
-title: "sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠"
-date: 2026-08-07
-series: "sched-fair-wf-sync-stacking"
-version: "v1"
-status: "in-review"
-tags: [sched/fair, affinity, load_balance]
-related_articles: []
-submitter: "Vinicius Costa Gomes"
-emails:
-  - uid: 25787
-    subject: "[PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
-  - uid: 25778
-    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
-  - uid: 25281
-    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
-  - uid: 26097
-    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
----
+# sched fair wf sync stacking decline
 
 ## 概述
 
@@ -37,3 +19,23 @@ RFC，处于讨论阶段。
 ## 参考链接
 
 - 邮件：uid 25787 / 25778 / 25281 / 26097
+
+---
+subject: "sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠"
+date: 2026-08-07
+series: "sched-fair-wf-sync-stacking"
+version: "v1"
+status: "in-review"
+tags: [sched/fair, affinity, load_balance]
+related_articles: []
+submitter: "Vinicius Costa Gomes"
+emails:
+  - uid: 25787
+    subject: "[PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
+  - uid: 25778
+    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
+  - uid: 25281
+    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
+  - uid: 26097
+    subject: "Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is the bottleneck"
+---

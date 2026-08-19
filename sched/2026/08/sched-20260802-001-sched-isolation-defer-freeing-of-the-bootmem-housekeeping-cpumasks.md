@@ -1,40 +1,4 @@
----
-id: sched-20260802-001
-date: 2026-08-02
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "unknown"
-lore_url: "unknown"
-authors: [Ionut Nechita]
-maintainers_involved: [Mike Rapoport]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-15170@qq-imap>"
-    date: 2026-08-02
-    summary: "把 housekeeping_init() 中对 bootmem cpumask 的 memblock_free() 推迟到 core_initcall，绕开 deferred struct page init 未完成时 __free_reserved_area() 拒绝释放的 WARN。"
-    review_outcome: "v1 当日刚发出，暂无 review 回帖；方案本身出自 Mike Rapoport 在 linux-mm 线程中的建议。"
-upstream_commit: null
-fixes_commit: "27c3a5967f05"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues:
-    - "是否需要 Cc stable 尚未定论：作者认为只是 WARN + G W taint、无实际内存泄漏，故未加 stable 标签，把决定权留给维护者。"
-    - "尚无 sched 侧维护者（Peter Zijlstra / Frederic Weisbecker）回帖确认 core_initcall 时机选择。"
-  next_action: "等待 Frederic Weisbecker 或 Peter Zijlstra 对 initcall 时机与 stable 归属表态；Mike Rapoport 给出 Acked-by 后基本可进 tip/sched/core。"
-contribution_opportunities:
-  - kind: review
-    description: "复核 core_initcall 是否确实晚于 page_alloc_init_late()——作者已论证 early_initcall 太早，但 core_initcall 与 page_alloc_init_late 的先后可以再独立确认一遍并回帖。"
-  - kind: testing
-    description: "在 CONFIG_DEFERRED_STRUCT_PAGE_INIT=y + nohz_full/isolcpus 的机器上复现四条 WARN 并验证补丁消除告警，回帖 Tested-by。"
-generated_at: "2026-08-03T00:15:00"
-source_email_count: 1
-related_articles: []
-tags: [nohz, affinity, topology, x86]
----
+# sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 
 # sched/isolation: 推迟释放 bootmem housekeeping cpumask
 
@@ -158,3 +122,42 @@ irqaffinity=4-7,60-63 rcutree.kthread_prio=21
 - 前置讨论（patch 中 Link 标签）: https://lore.kernel.org/linux-mm/20260728134016.674388f101f141362598240f@linux-foundation.org/
 - tip-bot commit: 未获取到
 - stable backport: 无（作者未 Cc stable）
+
+---
+subject: "sched/isolation: Defer freeing of the bootmem housekeeping cpumasks"
+id: sched-20260802-001
+date: 2026-08-02
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "unknown"
+lore_url: "unknown"
+authors: [Ionut Nechita]
+maintainers_involved: [Mike Rapoport]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-15170@qq-imap>"
+    date: 2026-08-02
+    summary: "把 housekeeping_init() 中对 bootmem cpumask 的 memblock_free() 推迟到 core_initcall，绕开 deferred struct page init 未完成时 __free_reserved_area() 拒绝释放的 WARN。"
+    review_outcome: "v1 当日刚发出，暂无 review 回帖；方案本身出自 Mike Rapoport 在 linux-mm 线程中的建议。"
+upstream_commit: null
+fixes_commit: "27c3a5967f05"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues:
+    - "是否需要 Cc stable 尚未定论：作者认为只是 WARN + G W taint、无实际内存泄漏，故未加 stable 标签，把决定权留给维护者。"
+    - "尚无 sched 侧维护者（Peter Zijlstra / Frederic Weisbecker）回帖确认 core_initcall 时机选择。"
+  next_action: "等待 Frederic Weisbecker 或 Peter Zijlstra 对 initcall 时机与 stable 归属表态；Mike Rapoport 给出 Acked-by 后基本可进 tip/sched/core。"
+contribution_opportunities:
+  - kind: review
+    description: "复核 core_initcall 是否确实晚于 page_alloc_init_late()——作者已论证 early_initcall 太早，但 core_initcall 与 page_alloc_init_late 的先后可以再独立确认一遍并回帖。"
+  - kind: testing
+    description: "在 CONFIG_DEFERRED_STRUCT_PAGE_INIT=y + nohz_full/isolcpus 的机器上复现四条 WARN 并验证补丁消除告警，回帖 Tested-by。"
+generated_at: "2026-08-03T00:15:00"
+source_email_count: 1
+related_articles: []
+tags: [nohz, affinity, topology, x86]
+---

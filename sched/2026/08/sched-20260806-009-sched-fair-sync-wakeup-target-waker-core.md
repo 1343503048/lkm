@@ -1,18 +1,4 @@
----
-id: sched-20260806-009
-date: "2026-08-06"
-title: "sched/fair: sync wakeup 落到 waker 所在 core（Kayra 实测 x86 数据）"
-series: "Let sync wakeups target the waker's core"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [cfs, load_balance, topology, wake_affine]
-authors: ["K Prateek Nayak <kprateeknayak@amd.com>", "Madadi Vineeth Reddy <vineethr@linux.ibm.com>", "Kayra Cizmeci <kayra@dominiek.com>"]
-reviewers: ["Kayra Cizmeci <kayra@dominiek.com>", "Madadi Vineeth Reddy <vineethr@linux.ibm.com>"]
-related_articles: ["sched-20260805-006", "sched-20260804-006"]
-emails: ["uid-24638@qq-imap", "uid-23737@qq-imap"]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 # sched/fair: sync wakeup 落到 waker 所在 core（Kayra 实测 x86 数据）
 
@@ -39,3 +25,20 @@ Prateek 系列在 `select_idle_sibling()` 的 `WF_SYNC` 分支优先 `waker_cpu`
 ## 评价
 
 是 08-04-006 / 08-05-006 的延续与实证化。方向有吸引力但**数据呈现混合信号**（cycles 微降、cache-misses/cache 退化），且核心定义未冻结。合入可能性中等，建议 Prateek 在更多平台/负载上复测并以「最终系列口径」统一数据后再推进。
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260806-009
+date: "2026-08-06"
+title: "sched/fair: sync wakeup 落到 waker 所在 core（Kayra 实测 x86 数据）"
+series: "Let sync wakeups target the waker's core"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [cfs, load_balance, topology, wake_affine]
+authors: ["K Prateek Nayak <kprateeknayak@amd.com>", "Madadi Vineeth Reddy <vineethr@linux.ibm.com>", "Kayra Cizmeci <kayra@dominiek.com>"]
+reviewers: ["Kayra Cizmeci <kayra@dominiek.com>", "Madadi Vineeth Reddy <vineethr@linux.ibm.com>"]
+related_articles: ["sched-20260805-006", "sched-20260804-006"]
+emails: ["uid-24638@qq-imap", "uid-23737@qq-imap"]
+---

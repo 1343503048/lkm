@@ -1,38 +1,4 @@
----
-id: sched-20260801-003
-date: 2026-08-01
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<uid-14193@qq-imap>"
-lore_url: "https://lore.kernel.org/lkml/20260801035532.260625-1-vineethr@linux.ibm.com/"
-authors: [Madadi Vineeth Reddy]
-maintainers_involved: [Zhan Xusheng]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-14193@qq-imap>"
-    date: 2026-08-01
-    summary: "WF_SYNC 唤醒且 waker runqueue 只有一个可运行任务时，把 waker 的 CPU 传给 select_idle_core() 并让它计为 idle，使 waker 所在 core 保持 idle-core 候选资格，wakee 落到其 SMT 兄弟线程上；在 POWER11 SMT8 上 producer_consumer 最多提升 11%、hackbench 1-group 提升 6-8%"
-    review_outcome: "Zhan Xusheng 指出收益可能依赖 SMT 编号连续性（POWER 连续、x86 不连续），要求补 x86/arm64 SMT2 数据"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["缺少 x86/arm64 SMT2 平台的基准数据，收益是否只在 SMT 编号连续的平台上成立尚未证实", "hackbench thread-pipe 4-group 出现 -8.8% 回退，未见解释", "与 Shubhang Kaushik 的 non-SMT 方案、K Prateek Nayak 的 select_idle_sibling() 内联方案存在方案竞争，社区需要收敛到一条路径"]
-  next_action: "补充 x86 / arm64 SMT2 平台的基准测试数据，并解释 thread-pipe 4-group 的回退；同时与并行的 non-SMT 方案协调，明确二者是互补还是需要合并为统一方案"
-contribution_opportunities:
-  - kind: testing
-    description: "在 x86（SMT 兄弟为 cpu+nr_cores 的非连续编号）与 arm64 SMT2 上跑 perf bench sched pipe / producer_consumer / hackbench，验证 Zhan Xusheng 提出的『非连续编号下 wrap 扫描会先命中其他冷 core』这一质疑，这正是当前 thread 中明确悬空、作者尚未回应的问题"
-  - kind: discussion
-    description: "本 patch 与同期的 non-SMT reciprocal sync wakeup 方案、以及 K Prateek Nayak 的 select_idle_sibling() 内联改法在解决同一类问题，可以帮忙梳理三者的适用边界并在 thread 中提出统一方案建议"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 2
-related_articles: []
-tags: [cfs, load_balance, perf, hyperthreading]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 ## TL;DR
 
@@ -125,3 +91,40 @@ Zhan Xusheng 的意见构成本 thread 唯一也是最核心的争议点，他�
 - 相关讨论（作者在 v2 中提出 SMT 侧思路）: https://lore.kernel.org/all/60a584c5-25ac-4077-a725-a2f9ee74318d@linux.ibm.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260801-003
+date: 2026-08-01
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<uid-14193@qq-imap>"
+lore_url: "https://lore.kernel.org/lkml/20260801035532.260625-1-vineethr@linux.ibm.com/"
+authors: [Madadi Vineeth Reddy]
+maintainers_involved: [Zhan Xusheng]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-14193@qq-imap>"
+    date: 2026-08-01
+    summary: "WF_SYNC 唤醒且 waker runqueue 只有一个可运行任务时，把 waker 的 CPU 传给 select_idle_core() 并让它计为 idle，使 waker 所在 core 保持 idle-core 候选资格，wakee 落到其 SMT 兄弟线程上；在 POWER11 SMT8 上 producer_consumer 最多提升 11%、hackbench 1-group 提升 6-8%"
+    review_outcome: "Zhan Xusheng 指出收益可能依赖 SMT 编号连续性（POWER 连续、x86 不连续），要求补 x86/arm64 SMT2 数据"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["缺少 x86/arm64 SMT2 平台的基准数据，收益是否只在 SMT 编号连续的平台上成立尚未证实", "hackbench thread-pipe 4-group 出现 -8.8% 回退，未见解释", "与 Shubhang Kaushik 的 non-SMT 方案、K Prateek Nayak 的 select_idle_sibling() 内联方案存在方案竞争，社区需要收敛到一条路径"]
+  next_action: "补充 x86 / arm64 SMT2 平台的基准测试数据，并解释 thread-pipe 4-group 的回退；同时与并行的 non-SMT 方案协调，明确二者是互补还是需要合并为统一方案"
+contribution_opportunities:
+  - kind: testing
+    description: "在 x86（SMT 兄弟为 cpu+nr_cores 的非连续编号）与 arm64 SMT2 上跑 perf bench sched pipe / producer_consumer / hackbench，验证 Zhan Xusheng 提出的『非连续编号下 wrap 扫描会先命中其他冷 core』这一质疑，这正是当前 thread 中明确悬空、作者尚未回应的问题"
+  - kind: discussion
+    description: "本 patch 与同期的 non-SMT reciprocal sync wakeup 方案、以及 K Prateek Nayak 的 select_idle_sibling() 内联改法在解决同一类问题，可以帮忙梳理三者的适用边界并在 thread 中提出统一方案建议"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 2
+related_articles: []
+tags: [cfs, load_balance, perf, hyperthreading]
+---

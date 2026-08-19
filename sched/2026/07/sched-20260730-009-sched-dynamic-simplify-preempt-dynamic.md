@@ -1,36 +1,4 @@
----
-id: sched-20260730-009
-date: 2026-07-30
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260703133358.698078-1-mark.rutland@arm.com>"
-lore_url: "https://lore.kernel.org/lkml/20260703133358.698078-1-mark.rutland@arm.com"
-authors: [Mark Rutland]
-maintainers_involved: [Mark Rutland]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260703133358.698078-1-mark.rutland@arm.com>"
-    date: 2026-07-03
-    summary: "5-patch series to simplify PREEMPT_DYNAMIC configuration"
-    review_outcome: "Mete Durlu provided s390 test results showing ~1MB vmlinux size reduction"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["Need more arch testing and review"]
-  next_action: "Gather more arch test results"
-contribution_opportunities:
-  - kind: testing
-    description: "Test on other architectures (x86, arm64, riscv) and report size/behavior changes"
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 1
-related_articles: []
-tags: [preempt]
----
+# sched dynamic simplify preempt dynamic
 
 ## TL;DR
 
@@ -76,3 +44,38 @@ s390 测试结果（Mete Durlu）：
 - lore thread: https://lore.kernel.org/lkml/20260703133358.698078-1-mark.rutland@arm.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched dynamic simplify preempt dynamic"
+id: sched-20260730-009
+date: 2026-07-30
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260703133358.698078-1-mark.rutland@arm.com>"
+lore_url: "https://lore.kernel.org/lkml/20260703133358.698078-1-mark.rutland@arm.com"
+authors: [Mark Rutland]
+maintainers_involved: [Mark Rutland]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260703133358.698078-1-mark.rutland@arm.com>"
+    date: 2026-07-03
+    summary: "5-patch series to simplify PREEMPT_DYNAMIC configuration"
+    review_outcome: "Mete Durlu provided s390 test results showing ~1MB vmlinux size reduction"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["Need more arch testing and review"]
+  next_action: "Gather more arch test results"
+contribution_opportunities:
+  - kind: testing
+    description: "Test on other architectures (x86, arm64, riscv) and report size/behavior changes"
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 1
+related_articles: []
+tags: [preempt]
+---

@@ -1,36 +1,4 @@
----
-id: sched-20260728-009
-date: 2026-07-28
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: null
-lore_url: null
-authors: [Liang Luo]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: null
-    date: 2026-07-28
-    summary: "scx_root_enable_workfn() 中 ENABLING->ENABLED cmpxchg 失败时未设置 ret，导致错误日志打印无意义的 errno 0"
-    review_outcome: "v1 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 sched_ext maintainer (Tejun Heo) review"
-contribution_opportunities:
-  - kind: review
-    description: "确认同一函数中其他错误路径是否也存在类似的 ret 未设置问题"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 1
-related_articles: [sched-20260728-001]
-tags: [sched_ext]
----
+# sched ext set errno on enabling to enabled transition failure
 
 ## TL;DR
 
@@ -87,3 +55,38 @@ v1 刚发出，暂无 review 意见。
 
 - lore thread: 未获取到
 - 修改文件: kernel/sched/ext/ext.c
+
+---
+subject: "sched ext set errno on enabling to enabled transition failure"
+id: sched-20260728-009
+date: 2026-07-28
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: null
+lore_url: null
+authors: [Liang Luo]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: null
+    date: 2026-07-28
+    summary: "scx_root_enable_workfn() 中 ENABLING->ENABLED cmpxchg 失败时未设置 ret，导致错误日志打印无意义的 errno 0"
+    review_outcome: "v1 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 sched_ext maintainer (Tejun Heo) review"
+contribution_opportunities:
+  - kind: review
+    description: "确认同一函数中其他错误路径是否也存在类似的 ret 未设置问题"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 1
+related_articles: [sched-20260728-001]
+tags: [sched_ext]
+---

@@ -1,34 +1,4 @@
----
-id: sched-20260804-004
-date: 2026-08-04
-subsystem: sched
-type: fix
-status: merged_tip
-severity: high
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [Tejun Heo]
-maintainers_involved: [Tejun Heo]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<unknown>"
-    date: 2026-08-04
-    summary: "GIT PULL sched_ext-for-7.2-rc6-fixes（第二波）：延续 08-03-003 的 fixes 汇总，包含子调度器生命周期 UAF、enable/disable 与 cgroup 经 kernfs 死锁、sync wakeup 误标 waker busy 等。"
-    review_outcome: "作为 fixes pull 发出，等待 tip 侧接收（08-03-003 已覆盖首批）。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: "sched_ext/for-7.2-rc6-fixes"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "等待 Linus 在 7.2-rc6 周期合入。"
-contribution_opportunities: []
-generated_at: "2026-08-05T00:25:00"
-source_email_count: 1
-related_articles: ["sched-20260803-003-sched-ext-fixes-for-v7.2-rc6"]
-tags: [sched_ext, cgroup, idle]
----
+# sched_ext: Fix idle CPU state initialization and validation
 
 # sched_ext: 7.2-rc6 fixes pull（第二波）
 
@@ -59,3 +29,36 @@ Tejun 在 08-04 发出 sched_ext 的 7.2-rc6 fixes pull 第二波，延续 08-03
 
 ## 参考链接
 - 08-03 文章：sched-20260803-003-sched-ext-fixes-for-v7.2-rc6
+
+---
+subject: "sched_ext: Fix idle CPU state initialization and validation"
+id: sched-20260804-004
+date: 2026-08-04
+subsystem: sched
+type: fix
+status: merged_tip
+severity: high
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [Tejun Heo]
+maintainers_involved: [Tejun Heo]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<unknown>"
+    date: 2026-08-04
+    summary: "GIT PULL sched_ext-for-7.2-rc6-fixes（第二波）：延续 08-03-003 的 fixes 汇总，包含子调度器生命周期 UAF、enable/disable 与 cgroup 经 kernfs 死锁、sync wakeup 误标 waker busy 等。"
+    review_outcome: "作为 fixes pull 发出，等待 tip 侧接收（08-03-003 已覆盖首批）。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: "sched_ext/for-7.2-rc6-fixes"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "等待 Linus 在 7.2-rc6 周期合入。"
+contribution_opportunities: []
+generated_at: "2026-08-05T00:25:00"
+source_email_count: 1
+related_articles: ["sched-20260803-003-sched-ext-fixes-for-v7.2-rc6"]
+tags: [sched_ext, cgroup, idle]
+---

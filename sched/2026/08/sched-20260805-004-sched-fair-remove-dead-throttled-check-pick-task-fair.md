@@ -1,18 +1,4 @@
----
-id: sched-20260805-004
-date: "2026-08-05"
-title: "sched/fair: 删除 pick_task_fair() 中失效的 throttled 检查"
-series: "Remove dead throttled check in pick_task_fair()"
-type: cleanup
-status: superseded
-severity: low
-merge_likelihood: medium
-tags: [cfs, cgroup]
-authors: ["Peter Zijlstra <peterz@infradead.org>"]
-reviewers: []
-related_articles: []
-emails: ["uid-21962@qq-imap", "uid-21301@qq-imap"]
----
+# sched fair remove dead throttled check pick task fair
 
 # sched/fair: 删除 pick_task_fair() 中失效的 throttled 检查
 
@@ -47,3 +33,20 @@ for_each_sched_entity(se) {
 ## 评价
 
 典型的 maintainer 级清理，已合入。无后续动作，仅作为「本日引用该 commit 的上下文」记录。
+
+---
+subject: "sched fair remove dead throttled check pick task fair"
+id: sched-20260805-004
+date: "2026-08-05"
+title: "sched/fair: 删除 pick_task_fair() 中失效的 throttled 检查"
+series: "Remove dead throttled check in pick_task_fair()"
+type: cleanup
+status: superseded
+severity: low
+merge_likelihood: medium
+tags: [cfs, cgroup]
+authors: ["Peter Zijlstra <peterz@infradead.org>"]
+reviewers: []
+related_articles: []
+emails: ["uid-21962@qq-imap", "uid-21301@qq-imap"]
+---

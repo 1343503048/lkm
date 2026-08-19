@@ -1,36 +1,4 @@
----
-id: sched-20260801-010
-date: 2026-08-01
-subsystem: sched
-type: fix
-status: under_review
-severity: none
-thread_root_msgid: "<uid-14484@qq-imap>"
-lore_url: unknown
-authors: [Jiangong.Han]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-14484@qq-imap>"
-    date: 2026-08-01
-    summary: "修正 include/linux/sched.h 中的两处笔误：task_mm_cid() 注释中的 althrough 改为 although；以及 PF_MEMALLOC_NOFS 注释中引用的函数名 memalloc_nfs_save()"
-    review_outcome: "当日刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["patch 中 PF_MEMALLOC_NOFS 一处的改动方向存疑：diff 显示把 memalloc_nfs_save() 改成了 memalloc_nfos_save()，而实际存在的函数名应为 memalloc_nofs_save()，疑似引入了新的拼写错误"]
-  next_action: "作者需确认 PF_MEMALLOC_NOFS 注释的目标拼写应为 memalloc_nofs_save()，若 diff 确为 memalloc_nfos_save() 则需发 v2 更正"
-contribution_opportunities:
-  - kind: review
-    description: "核对 diff 中 memalloc_nfos_save() 的拼写并在 thread 中指出——如果这确实是笔误，一条简短回复就能避免一个错别字修复 patch 反而引入新错别字"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 1
-related_articles: []
-tags: [sched_debug]
----
+# sched fix two misspellings in linux sched h
 
 ## TL;DR
 
@@ -104,3 +72,38 @@ typo 类 patch 通常由 maintainer 直接 pick 或直接忽略，很少产生�
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched fix two misspellings in linux sched h"
+id: sched-20260801-010
+date: 2026-08-01
+subsystem: sched
+type: fix
+status: under_review
+severity: none
+thread_root_msgid: "<uid-14484@qq-imap>"
+lore_url: unknown
+authors: [Jiangong.Han]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-14484@qq-imap>"
+    date: 2026-08-01
+    summary: "修正 include/linux/sched.h 中的两处笔误：task_mm_cid() 注释中的 althrough 改为 although；以及 PF_MEMALLOC_NOFS 注释中引用的函数名 memalloc_nfs_save()"
+    review_outcome: "当日刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["patch 中 PF_MEMALLOC_NOFS 一处的改动方向存疑：diff 显示把 memalloc_nfs_save() 改成了 memalloc_nfos_save()，而实际存在的函数名应为 memalloc_nofs_save()，疑似引入了新的拼写错误"]
+  next_action: "作者需确认 PF_MEMALLOC_NOFS 注释的目标拼写应为 memalloc_nofs_save()，若 diff 确为 memalloc_nfos_save() 则需发 v2 更正"
+contribution_opportunities:
+  - kind: review
+    description: "核对 diff 中 memalloc_nfos_save() 的拼写并在 thread 中指出——如果这确实是笔误，一条简短回复就能避免一个错别字修复 patch 反而引入新错别字"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 1
+related_articles: []
+tags: [sched_debug]
+---

@@ -1,16 +1,4 @@
----
-title: "sched: 并发 sched_setparam 下保留 reset-on-fork"
-date: 2026-08-07
-series: "sched-preserve-reset-on-fork"
-version: "v1"
-status: "in-review"
-tags: [sched/core, cgroup]
-related_articles: []
-submitter: "Andrea Righi"
-emails:
-  - uid: 26398
-    subject: "[PATCH] sched: preserve reset-on-fork across concurrent sched_setparam()"
----
+# sched preserve reset on fork
 
 ## 概述
 
@@ -31,3 +19,17 @@ v1，处于评审阶段。
 ## 参考链接
 
 - 邮件：uid 26398
+
+---
+subject: "sched: 并发 sched_setparam 下保留 reset-on-fork"
+date: 2026-08-07
+series: "sched-preserve-reset-on-fork"
+version: "v1"
+status: "in-review"
+tags: [sched/core, cgroup]
+related_articles: []
+submitter: "Andrea Righi"
+emails:
+  - uid: 26398
+    subject: "[PATCH] sched: preserve reset-on-fork across concurrent sched_setparam()"
+---

@@ -1,36 +1,4 @@
----
-id: sched-20260728-005
-date: 2026-07-28
-subsystem: sched
-type: discussion
-status: under_review
-severity: none
-thread_root_msgid: "<cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com>"
-lore_url: "https://lore.kernel.org/r/cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com"
-authors: [Zhan Xusheng]
-maintainers_involved: [Tim Chen]
-current_version: v8
-patch_series:
-  - version: v8
-    msgid: "<cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com>"
-    date: 2026-07-27
-    summary: "Use for_each_cpu_and with visited_cpus to only scan visited CPUs in task_cache_work, removing get_scan_cpumasks()"
-    review_outcome: "华为开发者提出并发安全疑问；Chenyu 确认 try_cmpxchg 保证单 scanner"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["并发安全性讨论仍在进行", "需要 Tim Chen 最终确认"]
-  next_action: "解决并发安全疑问后等待 Tim Chen 最终 review"
-contribution_opportunities:
-  - kind: testing
-    description: "在多核系统上测试 task_cache_work 优化后的 cache 亲和性效果和开销变化"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: [cfs, perf]
----
+# : [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 
 ## TL;DR
 
@@ -85,3 +53,38 @@ v8 是当前版本。本次邮件是 review 讨论：
 
 - lore thread: https://lore.kernel.org/r/cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com
 - tip-bot commit: 未获取到
+
+---
+subject: ": [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus"
+id: sched-20260728-005
+date: 2026-07-28
+subsystem: sched
+type: discussion
+status: under_review
+severity: none
+thread_root_msgid: "<cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com>"
+lore_url: "https://lore.kernel.org/r/cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com"
+authors: [Zhan Xusheng]
+maintainers_involved: [Tim Chen]
+current_version: v8
+patch_series:
+  - version: v8
+    msgid: "<cc9d6d06-382e-4f67-aaad-25e58fac90a1@intel.com>"
+    date: 2026-07-27
+    summary: "Use for_each_cpu_and with visited_cpus to only scan visited CPUs in task_cache_work, removing get_scan_cpumasks()"
+    review_outcome: "华为开发者提出并发安全疑问；Chenyu 确认 try_cmpxchg 保证单 scanner"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["并发安全性讨论仍在进行", "需要 Tim Chen 最终确认"]
+  next_action: "解决并发安全疑问后等待 Tim Chen 最终 review"
+contribution_opportunities:
+  - kind: testing
+    description: "在多核系统上测试 task_cache_work 优化后的 cache 亲和性效果和开销变化"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: [cfs, perf]
+---

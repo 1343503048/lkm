@@ -2,9 +2,9 @@
 
 共 27 篇
 
-- [sched-20260810-003](../../2026/08/sched-20260810-003.md) `fix/high/under_review` — Zhan Xusheng 提交 v2「sched/debug: Validate writes to scan_size_mb」。该值被写成 0 会在 NUMA 平衡扫描逻辑中触发 divide error panic（由 Chen Yu 指出）。v2 增加写入校验与 sysctl 文档。属 high 严重度崩溃修复，合入可能性高。
-- [sched-20260810-002](../../2026/08/sched-20260810-002.md) `fix/medium/under_review` — Aaron Tomlin 提交 v4（5 patches）「sched/debug per-CPU debugfs 文件 + 调试路径多处 UAF/TOCTOU 修复」。修复了 print_cpu/print_dl_rq/sched_show_numa/print_cfs_stats 多处无锁并发读导致的 UAF 与 TOCTOU，并引入 per-CPU debugfs。合入可能性高。
-- [sched-20260809-001](../../2026/08/sched-20260809-001.md) `feature/under_review` — Aaron Tomlin 第三版提交「按 CPU 暴露调度调试信息」系列，把原本集中在 `/proc/sched_debug` 的部分内容下放到 per-CPU debugfs 文件，并修正了并发读取潜在的 UAF。目前处于 under_review，暂无维护者明确表态。
+- [sched-20260810-003](../../2026/08/sched-20260810-003-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — Zhan Xusheng 提交 v2「sched/debug: Validate writes to scan_size_mb」。该值被写成 0 会在 NUMA 平衡扫描逻辑中触发 divide error panic（由 Chen Yu 指出）。v2 增加写入校验与 sysctl 文档。属 high 严重度崩溃修复，合入可能性高。
+- [sched-20260810-002](../../2026/08/sched-20260810-002-sched-fair-use-list-for-each-entry-rcu-in-print-cfs-stats.md) `fix/medium/under_review` — Aaron Tomlin 提交 v4（5 patches）「sched/debug per-CPU debugfs 文件 + 调试路径多处 UAF/TOCTOU 修复」。修复了 print_cpu/print_dl_rq/sched_show_numa/print_cfs_stats 多处无锁并发读导致的 UAF 与 TOCTOU，并引入 per-CPU debugfs。合入可能性高。
+- [sched-20260809-001](../../2026/08/sched-20260809-001-sched-debug-introduce-per-cpu-debugfs-files.md) `feature/under_review` — Aaron Tomlin 第三版提交「按 CPU 暴露调度调试信息」系列，把原本集中在 `/proc/sched_debug` 的部分内容下放到 per-CPU debugfs 文件，并修正了并发读取潜在的 UAF。目前处于 under_review，暂无维护者明确表态。
 - [sched-20260807-014-preempt-dynamic-simplify-v2.md](../../2026/08/sched-20260807-014-preempt-dynamic-simplify-v2.md) `in-review`
 - [sched-20260806-005](../../2026/08/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.md) `fix/medium/under_review`
 - [sched-20260806-001](../../2026/08/sched-20260806-001-perf-sched-latency-v9-refine-histogram.md) `feature/under_review`

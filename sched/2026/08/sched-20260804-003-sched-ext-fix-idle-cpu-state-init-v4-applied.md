@@ -1,34 +1,4 @@
----
-id: sched-20260804-003
-date: 2026-08-04
-subsystem: sched
-type: fix
-status: merged
-severity: medium
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [Andrea Righi, Kuba Piecuch]
-maintainers_involved: [Tejun Heo]
-current_version: v4
-patch_series:
-  - version: v4
-    msgid: "<unknown>"
-    date: 2026-08-04
-    summary: "内置 idle 掩码初始化为 busy（而非把全部 online CPU 标 idle），并在 bypass 解除时由真实 idle 转换填充。Kuba Piecuch 给 Reviewed-by，Tejun 在 08-04 以 tag sched_ext-for-7.3 合入。"
-    review_outcome: "Kuba Piecuch: Reviewed-by。Tejun Heo: APPLIED to sched_ext/for-7.3。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: "sched_ext/for-7.3"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入 for-7.3，等待进入主线 7.3 周期。"
-contribution_opportunities: []
-generated_at: "2026-08-05T00:25:00"
-source_email_count: 1
-related_articles: ["sched-20260803-002-sched-ext-initialize-idle-masks-as-busy"]
-tags: [sched_ext, idle]
----
+# sched_ext: Fix idle CPU state initialization and validation
 
 # sched_ext: 修复 idle CPU 状态初始化（v4，已合入 for-7.3）
 
@@ -59,3 +29,36 @@ Tejun 直接合入，Kuba R-b。无反对。
 
 ## 参考链接
 - 08-03 文章：sched-20260803-002-sched-ext-initialize-idle-masks-as-busy
+
+---
+subject: "sched_ext: Fix idle CPU state initialization and validation"
+id: sched-20260804-003
+date: 2026-08-04
+subsystem: sched
+type: fix
+status: merged
+severity: medium
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [Andrea Righi, Kuba Piecuch]
+maintainers_involved: [Tejun Heo]
+current_version: v4
+patch_series:
+  - version: v4
+    msgid: "<unknown>"
+    date: 2026-08-04
+    summary: "内置 idle 掩码初始化为 busy（而非把全部 online CPU 标 idle），并在 bypass 解除时由真实 idle 转换填充。Kuba Piecuch 给 Reviewed-by，Tejun 在 08-04 以 tag sched_ext-for-7.3 合入。"
+    review_outcome: "Kuba Piecuch: Reviewed-by。Tejun Heo: APPLIED to sched_ext/for-7.3。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: "sched_ext/for-7.3"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入 for-7.3，等待进入主线 7.3 周期。"
+contribution_opportunities: []
+generated_at: "2026-08-05T00:25:00"
+source_email_count: 1
+related_articles: ["sched-20260803-002-sched-ext-initialize-idle-masks-as-busy"]
+tags: [sched_ext, idle]
+---

@@ -1,39 +1,4 @@
----
-id: sched-20260728-002
-date: 2026-07-28
-subsystem: sched
-type: feature
-status: merged_tip
-severity: none
-thread_root_msgid: "<20260725005019.1297049-1-tj@kernel.org>"
-lore_url: "https://lore.kernel.org/r/20260725005019.1297049-1-tj@kernel.org"
-authors: [Tejun Heo]
-maintainers_involved: [Tejun Heo, Andrea Righi]
-current_version: v2
-patch_series:
-  - version: v1
-    msgid: "<20260725005019.1297049-2-tj@kernel.org>"
-    date: 2026-07-25
-    summary: "Make exit claiming lock-free: split synchronous ->aborting sweep (RCU) from deferred exit_kind claim (irq_work)"
-    review_outcome: "Andrea Righi 给出 Reviewed-by"
-  - version: v2
-    msgid: "<684ed36923a4f388b8be726cfbfc5154@kernel.org>"
-    date: 2026-07-28
-    summary: "patch 1/5 的 v2 修订版"
-    review_outcome: "Tejun 确认 applied 1-5 到 sched_ext/for-7.3"
-upstream_commit: null
-fixes_commit: null
-merged_branch: "sched_ext/for-7.3"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入 sched_ext/for-7.3，等待 7.3 合并窗口"
-contribution_opportunities: []
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 3
-related_articles: []
-tags: [sched_ext]
----
+# sched_ext: Make exit claiming lock-free
 
 ## TL;DR
 
@@ -85,3 +50,41 @@ Tejun Heo 的 5-patch 系列让 sched_ext 的 exit claiming 变为 lock-free 且
 - lore thread: https://lore.kernel.org/r/20260725005019.1297049-1-tj@kernel.org
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched_ext: Make exit claiming lock-free"
+id: sched-20260728-002
+date: 2026-07-28
+subsystem: sched
+type: feature
+status: merged_tip
+severity: none
+thread_root_msgid: "<20260725005019.1297049-1-tj@kernel.org>"
+lore_url: "https://lore.kernel.org/r/20260725005019.1297049-1-tj@kernel.org"
+authors: [Tejun Heo]
+maintainers_involved: [Tejun Heo, Andrea Righi]
+current_version: v2
+patch_series:
+  - version: v1
+    msgid: "<20260725005019.1297049-2-tj@kernel.org>"
+    date: 2026-07-25
+    summary: "Make exit claiming lock-free: split synchronous ->aborting sweep (RCU) from deferred exit_kind claim (irq_work)"
+    review_outcome: "Andrea Righi 给出 Reviewed-by"
+  - version: v2
+    msgid: "<684ed36923a4f388b8be726cfbfc5154@kernel.org>"
+    date: 2026-07-28
+    summary: "patch 1/5 的 v2 修订版"
+    review_outcome: "Tejun 确认 applied 1-5 到 sched_ext/for-7.3"
+upstream_commit: null
+fixes_commit: null
+merged_branch: "sched_ext/for-7.3"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入 sched_ext/for-7.3，等待 7.3 合并窗口"
+contribution_opportunities: []
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 3
+related_articles: []
+tags: [sched_ext]
+---

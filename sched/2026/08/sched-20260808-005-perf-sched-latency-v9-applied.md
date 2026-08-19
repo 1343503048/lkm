@@ -1,16 +1,4 @@
----
-title: "perf sched latency: v9 改进已合入 perf-tools-next"
-date: 2026-08-08
-series: "perf-sched-latency-v9"
-version: "v9"
-status: "merged"
-tags: [perf]
-related_articles: [sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx]
-submitter: "Aaron Tomlin"
-emails:
-  - uid: 27929
-    subject: "Re: [PATCH v9 0/4] perf sched latency: Refine outputs, unit scaling, and histogram support"
----
+# perf sched latency v9 applied
 
 ## 概述
 
@@ -31,3 +19,17 @@ Aaron Tomlin 的 `perf sched latency` v9 系列获 Namhyung Kim 回复 **"Applie
 ## 参考链接
 
 - 合入确认回帖：uid 27929（Namhyung Kim）
+
+---
+subject: "perf sched latency: v9 改进已合入 perf-tools-next"
+date: 2026-08-08
+series: "perf-sched-latency-v9"
+version: "v9"
+status: "merged"
+tags: [perf]
+related_articles: [sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx]
+submitter: "Aaron Tomlin"
+emails:
+  - uid: 27929
+    subject: "Re: [PATCH v9 0/4] perf sched latency: Refine outputs, unit scaling, and histogram support"
+---

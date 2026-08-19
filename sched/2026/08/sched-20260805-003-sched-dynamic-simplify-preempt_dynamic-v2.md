@@ -1,18 +1,4 @@
----
-id: sched-20260805-003
-date: "2026-08-05"
-title: "sched: 简化 PREEMPT_DYNAMIC（v2 0/6 与 2/6 收尾）"
-series: "Simplify PREEMPT_DYNAMIC"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [preempt, topology]
-authors: ["Mark Rutland <mark.rutland@arm.com>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
-related_articles: ["sched-20260804-009"]
-emails: ["uid-22078@qq-imap", "uid-22034@qq-imap"]
----
+# sched dynamic simplify preempt_dynamic v2
 
 # sched: 简化 PREEMPT_DYNAMIC（v2 0/6 与 2/6 收尾）
 
@@ -50,3 +36,20 @@ void preempt_dynamic_enable(enum preempt_dynamic_mode mode,
 ## 评价
 
 属于健康的维护性重构，方向清晰、reviewer（Peter）已介入。合入可能性高，建议等 v2 各架构 ack 后进入 tip/sched/core。
+
+---
+subject: "sched dynamic simplify preempt_dynamic v2"
+id: sched-20260805-003
+date: "2026-08-05"
+title: "sched: 简化 PREEMPT_DYNAMIC（v2 0/6 与 2/6 收尾）"
+series: "Simplify PREEMPT_DYNAMIC"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [preempt, topology]
+authors: ["Mark Rutland <mark.rutland@arm.com>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
+related_articles: ["sched-20260804-009"]
+emails: ["uid-22078@qq-imap", "uid-22034@qq-imap"]
+---

@@ -1,36 +1,4 @@
----
-id: sched-20260731-002
-date: 2026-07-31
-subsystem: sched
-type: bug
-status: under_review
-severity: high
-thread_root_msgid: "<20260730175151.3855700-1-pohaosu@google.com>"
-lore_url: "https://lore.kernel.org/lkml/20260730175151.3855700-1-pohaosu@google.com"
-authors: [Phineas Su]
-maintainers_involved: [Peter Zijlstra, Bharata B Rao]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260730175151.3855700-1-pohaosu@google.com>"
-    date: 2026-07-30
-    summary: "在无内存 NUMA 节点上跳过 NUMA balancing 扫描，避免 ~78% sys CPU 开销"
-    review_outcome: "PeterZ 认为不应完全禁用扫描，应确保页面在距离最近的节点上；Bharata 建议在 mm 侧的 numa_migrate_check() 中抑制迁移而非跳过 task_numa_work()"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: low
-  blocking_issues: ["PeterZ 和 Bharata 都不同意当前方案，认为不应完全跳过 task_numa_work()", "需要重新设计方案"]
-  next_action: "作者需要回应 PeterZ 和 Bharata 的反馈，可能需要改为在 numa_migrate_check() 中处理而非跳过整个扫描"
-contribution_opportunities:
-  - kind: discussion
-    description: "无内存 NUMA 节点的场景下，最佳处理方式存在分歧，可以参与讨论提出方案"
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 3
-related_articles: []
-tags: [cfs, numa_balancing, load_balance]
----
+# sched/fair: Skip NUMA balancing scan on memoryless nodes
 
 ## TL;DR
 
@@ -90,3 +58,38 @@ PeterZ 认为即使当前节点无内存，也不应跳过扫描——应该确�
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260730175151.3855700-1-pohaosu@google.com
+
+---
+subject: "sched/fair: Skip NUMA balancing scan on memoryless nodes"
+id: sched-20260731-002
+date: 2026-07-31
+subsystem: sched
+type: bug
+status: under_review
+severity: high
+thread_root_msgid: "<20260730175151.3855700-1-pohaosu@google.com>"
+lore_url: "https://lore.kernel.org/lkml/20260730175151.3855700-1-pohaosu@google.com"
+authors: [Phineas Su]
+maintainers_involved: [Peter Zijlstra, Bharata B Rao]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260730175151.3855700-1-pohaosu@google.com>"
+    date: 2026-07-30
+    summary: "在无内存 NUMA 节点上跳过 NUMA balancing 扫描，避免 ~78% sys CPU 开销"
+    review_outcome: "PeterZ 认为不应完全禁用扫描，应确保页面在距离最近的节点上；Bharata 建议在 mm 侧的 numa_migrate_check() 中抑制迁移而非跳过 task_numa_work()"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: low
+  blocking_issues: ["PeterZ 和 Bharata 都不同意当前方案，认为不应完全跳过 task_numa_work()", "需要重新设计方案"]
+  next_action: "作者需要回应 PeterZ 和 Bharata 的反馈，可能需要改为在 numa_migrate_check() 中处理而非跳过整个扫描"
+contribution_opportunities:
+  - kind: discussion
+    description: "无内存 NUMA 节点的场景下，最佳处理方式存在分歧，可以参与讨论提出方案"
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 3
+related_articles: []
+tags: [cfs, numa_balancing, load_balance]
+---

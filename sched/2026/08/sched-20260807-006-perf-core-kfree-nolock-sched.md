@@ -1,18 +1,4 @@
----
-title: "perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）"
-date: 2026-08-07
-series: "perf-core-kfree-nolock"
-version: "v1"
-status: "in-review"
-tags: [perf, sched/core]
-related_articles: []
-submitter: "Vlastimil Babka (SUSE)"
-emails:
-  - uid: 27002
-    subject: "[PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()"
-  - uid: 27200
-    subject: "Re: [PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()"
----
+# perf core kfree nolock sched
 
 ## 概述
 
@@ -33,3 +19,19 @@ Vlastimil Babka 的系列（RFC 5/5，本批仅见到第 5 片及 Re）将 `kfre
 ## 参考链接
 
 - 本批邮件：uid 27002 / 27200
+
+---
+subject: "perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）"
+date: 2026-08-07
+series: "perf-core-kfree-nolock"
+version: "v1"
+status: "in-review"
+tags: [perf, sched/core]
+related_articles: []
+submitter: "Vlastimil Babka (SUSE)"
+emails:
+  - uid: 27002
+    subject: "[PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()"
+  - uid: 27200
+    subject: "Re: [PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()"
+---

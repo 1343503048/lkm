@@ -1,34 +1,4 @@
----
-id: sched-20260731-006
-date: 2026-07-31
-subsystem: sched
-type: discussion
-status: under_review
-severity: medium
-thread_root_msgid: "<20260731024417.1106503-1-luogengkun2@huawei.com>"
-lore_url: "https://lore.kernel.org/lkml/20260731024417.1106503-1-luogengkun2@huawei.com"
-authors: [Luo Gengkun]
-maintainers_involved: [Tim Chen, Intel]
-current_version: v9
-patch_series:
-  - version: v9
-    msgid: "<20260731024417.1106503-1-luogengkun2@huawei.com>"
-    date: 2026-07-31
-    summary: "v9: 仅扫描已访问 CPU 以减少 task_cache_work 开销；附带 debug trace event（标记 DO NOT APPLY）"
-    review_outcome: "Tim Chen 和 Chenyu 讨论 epoch 回退逻辑和锁获取时机"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["epoch 回退逻辑的正确性仍需确认", "debug patch（2/2）标记为 DO NOT APPLY"]
-  next_action: "等待更多 review 反馈，确认 epoch 逻辑无 race"
-contribution_opportunities: []
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 4
-related_articles: [sched-20260730-010]
-tags: [cfs, load_balance, sched_debug]
----
+# -- DO NOT APPLY!!! -- sched/cache/debug: Add trace event and sched feature to track scan cost
 
 ## TL;DR
 
@@ -78,3 +48,36 @@ v9 核心变更：
 
 - lore thread: https://lore.kernel.org/lkml/20260731024417.1106503-1-luogengkun2@huawei.com
 - 前日分析: sched-20260730-010
+
+---
+subject: "-- DO NOT APPLY!!! -- sched/cache/debug: Add trace event and sched feature to track scan cost"
+id: sched-20260731-006
+date: 2026-07-31
+subsystem: sched
+type: discussion
+status: under_review
+severity: medium
+thread_root_msgid: "<20260731024417.1106503-1-luogengkun2@huawei.com>"
+lore_url: "https://lore.kernel.org/lkml/20260731024417.1106503-1-luogengkun2@huawei.com"
+authors: [Luo Gengkun]
+maintainers_involved: [Tim Chen, Intel]
+current_version: v9
+patch_series:
+  - version: v9
+    msgid: "<20260731024417.1106503-1-luogengkun2@huawei.com>"
+    date: 2026-07-31
+    summary: "v9: 仅扫描已访问 CPU 以减少 task_cache_work 开销；附带 debug trace event（标记 DO NOT APPLY）"
+    review_outcome: "Tim Chen 和 Chenyu 讨论 epoch 回退逻辑和锁获取时机"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["epoch 回退逻辑的正确性仍需确认", "debug patch（2/2）标记为 DO NOT APPLY"]
+  next_action: "等待更多 review 反馈，确认 epoch 逻辑无 race"
+contribution_opportunities: []
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 4
+related_articles: [sched-20260730-010]
+tags: [cfs, load_balance, sched_debug]
+---

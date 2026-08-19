@@ -2,7 +2,7 @@
 
 共 15 篇
 
-- [sched-20260810-009](../../2026/08/sched-20260810-009.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。
+- [sched-20260810-009](../../2026/08/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。
 - [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md) `merged`
 - [sched-20260807-016-sched-fair-nohz-fully-idle-cores.md](../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md) `in-review`
 - [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review`

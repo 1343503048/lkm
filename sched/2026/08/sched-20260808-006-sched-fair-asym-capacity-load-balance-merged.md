@@ -1,26 +1,4 @@
----
-title: "sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）"
-date: 2026-08-08
-series: "sched-fair-asym-capacity-load-balance"
-version: "v1"
-status: "merged"
-tags: [sched/fair, load_balance, topology]
-related_articles: []
-submitter: "Ricardo Neri (Intel)"
-emails:
-  - uid: 28230
-    subject: "[tip: sched/core] sched/topology: Restore SD_PREFER_SIBLING in domains with asymmetric capacity"
-  - uid: 28231
-    subject: "[tip: sched/core] sched/fair: Allow load balancing between CPUs of identical capacity"
-  - uid: 28232
-    subject: "[tip: sched/core] sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings"
-  - uid: 28233
-    subject: "[tip: sched/core] sched/fair: Check CPU capacity before comparing group types during load balance"
-  - uid: 28235
-    subject: "[tip: sched/core] sched/fair: Skip misfit load accounting when the destination CPU cannot help"
-  - uid: 28236
-    subject: "[tip: sched/core] sched/fair: Also gate overloaded status update for SD_ASYM_CPUCAPACITY"
----
+# sched fair asym capacity load balance merged
 
 ## 概述
 
@@ -42,3 +20,27 @@ emails:
 ## 参考链接
 
 - tip 合并通知：uid 28230 / 28231 / 28232 / 28233 / 28235 / 28236
+
+---
+subject: "sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）"
+date: 2026-08-08
+series: "sched-fair-asym-capacity-load-balance"
+version: "v1"
+status: "merged"
+tags: [sched/fair, load_balance, topology]
+related_articles: []
+submitter: "Ricardo Neri (Intel)"
+emails:
+  - uid: 28230
+    subject: "[tip: sched/core] sched/topology: Restore SD_PREFER_SIBLING in domains with asymmetric capacity"
+  - uid: 28231
+    subject: "[tip: sched/core] sched/fair: Allow load balancing between CPUs of identical capacity"
+  - uid: 28232
+    subject: "[tip: sched/core] sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings"
+  - uid: 28233
+    subject: "[tip: sched/core] sched/fair: Check CPU capacity before comparing group types during load balance"
+  - uid: 28235
+    subject: "[tip: sched/core] sched/fair: Skip misfit load accounting when the destination CPU cannot help"
+  - uid: 28236
+    subject: "[tip: sched/core] sched/fair: Also gate overloaded status update for SD_ASYM_CPUCAPACITY"
+---

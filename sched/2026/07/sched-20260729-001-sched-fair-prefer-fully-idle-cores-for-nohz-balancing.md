@@ -1,39 +1,4 @@
----
-id: sched-20260729-001
-date: 2026-07-29
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260728214442.1648483-1-arighi@nvidia.com>"
-lore_url: "https://lore.kernel.org/r/20260728214442.1648483-1-arighi@nvidia.com"
-authors: [Andrea Righi]
-maintainers_involved: [K Prateek Nayak, Shrikanth Hegde, Peter Zijlstra]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260728214442.1648483-1-arighi@nvidia.com>"
-    date: 2026-07-29
-    summary: "find_new_ilb() 优先选择整个 SMT core 都空闲的 housekeeping CPU 执行 NOHZ idle load balance，找不到时回退到第一个空闲 CPU。"
-    review_outcome: "方向获认可；Prateek 提出用 select_rq_mask + cpumask_andnot 剪枝优化大 SMT 系统的扫描开销，作者拟纳入 v2。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues:
-    - "v2 需吸收 Prateek 的 select_rq_mask 剪枝优化并复测无回退"
-  next_action: "作者发 v2：合入剪枝优化 + lockdep_assert_irqs_disabled()，等待 Shrikanth 在 SMT-4/8 平台的测试结果"
-contribution_opportunities:
-  - kind: testing
-    description: "在 SMT-4/SMT-8（如 Power）或其他 SMT 平台上测试 v1/v2，验证 ILB 选核变化没有引入延迟/能耗回退，把数据回帖"
-  - kind: new_patch
-    description: "PeterZ 认可的独立清理方向：为 select_rq_mask 提供带 lockdep 断言的访问 helper（或用 clang context analysis），可以单独发 patch"
-generated_at: "2026-07-30T09:30:00"
-source_email_count: 7
-related_articles: []
-tags: [load_balance, nohz, hyperthreading, perf]
----
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 ## TL;DR
 
@@ -80,3 +45,41 @@ likelihood: high。方案动机清晰、有硬数据、review 意见集中在实
 - lore thread: https://lore.kernel.org/r/20260728214442.1648483-1-arighi@nvidia.com
 - 参考的历史优化：f8858d96061f ("sched/fair: Optimize should_we_balance() for large SMT systems")
 - select_rq_mask 改名历史讨论: https://lore.kernel.org/lkml/20260320114312.GB3558198@noisy.programming.kicks-ass.net/
+
+---
+subject: "sched/fair: Prefer fully idle cores for NOHZ balancing"
+id: sched-20260729-001
+date: 2026-07-29
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260728214442.1648483-1-arighi@nvidia.com>"
+lore_url: "https://lore.kernel.org/r/20260728214442.1648483-1-arighi@nvidia.com"
+authors: [Andrea Righi]
+maintainers_involved: [K Prateek Nayak, Shrikanth Hegde, Peter Zijlstra]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260728214442.1648483-1-arighi@nvidia.com>"
+    date: 2026-07-29
+    summary: "find_new_ilb() 优先选择整个 SMT core 都空闲的 housekeeping CPU 执行 NOHZ idle load balance，找不到时回退到第一个空闲 CPU。"
+    review_outcome: "方向获认可；Prateek 提出用 select_rq_mask + cpumask_andnot 剪枝优化大 SMT 系统的扫描开销，作者拟纳入 v2。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues:
+    - "v2 需吸收 Prateek 的 select_rq_mask 剪枝优化并复测无回退"
+  next_action: "作者发 v2：合入剪枝优化 + lockdep_assert_irqs_disabled()，等待 Shrikanth 在 SMT-4/8 平台的测试结果"
+contribution_opportunities:
+  - kind: testing
+    description: "在 SMT-4/SMT-8（如 Power）或其他 SMT 平台上测试 v1/v2，验证 ILB 选核变化没有引入延迟/能耗回退，把数据回帖"
+  - kind: new_patch
+    description: "PeterZ 认可的独立清理方向：为 select_rq_mask 提供带 lockdep 断言的访问 helper（或用 clang context analysis），可以单独发 patch"
+generated_at: "2026-07-30T09:30:00"
+source_email_count: 7
+related_articles: []
+tags: [load_balance, nohz, hyperthreading, perf]
+---

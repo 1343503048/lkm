@@ -1,18 +1,4 @@
----
-id: sched-20260806-007
-date: "2026-08-06"
-title: "cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出（v3）"
-series: "schedutil: Fix rate limit overflow when clamping frequency"
-type: fix
-status: under_review
-severity: high
-merge_likelihood: high
-tags: [cpufreq, preempt]
-authors: ["Hui Su <hui.su@linux.dev>", "Rafael J. Wysocki <rafael.j.wysocki@intel.com>", "Viresh Kumar <viresh.kumar@linaro.org>", "Zhongqiu Han <quic_zhonghan@quicinc.com>"]
-reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>", "Rafael J. Wysocki <rafael.j.wysocki@intel.com>"]
-related_articles: ["sched-20260805-010"]
-emails: ["uid-24824@qq-imap", "uid-24803@qq-imap", "uid-24613@qq-imap", "uid-24438@qq-imap", "uid-23848@qq-imap", "uid-23944@qq-imap"]
----
+# cpufreq: schedutil: Fix rate limit overflow
 
 # cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出（v3）
 
@@ -48,3 +34,20 @@ policy->cur = next_freq;
 ## 评价
 
 明确的真实 bug，维护者已介入并给出改进方向，v3 已吸收 Rafael 的 invariant/helper 建议。合入可能性高，建议作为 cpufreq fix 优先提交（与 08-05-010 同系列，现为 v3）。
+
+---
+subject: "cpufreq: schedutil: Fix rate limit overflow"
+id: sched-20260806-007
+date: "2026-08-06"
+title: "cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出（v3）"
+series: "schedutil: Fix rate limit overflow when clamping frequency"
+type: fix
+status: under_review
+severity: high
+merge_likelihood: high
+tags: [cpufreq, preempt]
+authors: ["Hui Su <hui.su@linux.dev>", "Rafael J. Wysocki <rafael.j.wysocki@intel.com>", "Viresh Kumar <viresh.kumar@linaro.org>", "Zhongqiu Han <quic_zhonghan@quicinc.com>"]
+reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>", "Rafael J. Wysocki <rafael.j.wysocki@intel.com>"]
+related_articles: ["sched-20260805-010"]
+emails: ["uid-24824@qq-imap", "uid-24803@qq-imap", "uid-24613@qq-imap", "uid-24438@qq-imap", "uid-23848@qq-imap", "uid-23944@qq-imap"]
+---

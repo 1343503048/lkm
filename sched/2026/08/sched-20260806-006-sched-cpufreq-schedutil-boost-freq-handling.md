@@ -1,18 +1,4 @@
----
-id: sched-20260806-006
-date: "2026-08-06"
-title: "sched/cpufreq: 修复 schedutil 对 boost 频率的 DVFS 请求处理"
-series: "sched/cpufreq: Fix schedutil's boost frequency handling"
-type: fix
-status: under_review
-severity: high
-merge_likelihood: medium
-tags: [cpufreq, preempt]
-authors: ["Sibi Sankar <quic_sibis@quicinc.com>", "Viresh Kumar <viresh.kumar@linaro.org>", "Christian Loehle <christian.loehle@arm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Hongyan Xia <hongyan.xia@arm.com>", "Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>", "Zhongqiu Han <quic_zhonghan@quicinc.com>"]
-reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>", "Christian Loehle <christian.loehle@arm.com>", "Vincent Guittot <vincent.guittot@linaro.org>"]
-related_articles: []
-emails: ["uid-23730@qq-imap", "uid-23731@qq-imap", "uid-24908@qq-imap", "uid-24906@qq-imap", "uid-24155@qq-imap", "uid-24525@qq-imap", "uid-24446@qq-imap", "uid-24325@qq-imap", "uid-24226@qq-imap"]
----
+# sched/cpufreq: Update schedutil's DVFS request to reach the boost frequencies
 
 # sched/cpufreq: 修复 schedutil 对 boost 频率的 DVFS 请求处理
 
@@ -49,3 +35,20 @@ patch1：在 `cpufreq_disable_boost()`/驱动回调里允许 `cpuinfo.max_freq =
 ## 评价
 
 方向合理、reviewer 阵容强（Viresh 为 cpufreq 维护者）。当前仍处 review（多轮 nit + 并发保护要求），合入可能性中等—高。建议落实 `READ_ONCE/WRITE_ONCE` 与 boost 映射语义澄清后推进。与 08-05-010（rate_limit 溢出）同属 cpufreq/schedutil 修复簇。
+
+---
+subject: "sched/cpufreq: Update schedutil's DVFS request to reach the boost frequencies"
+id: sched-20260806-006
+date: "2026-08-06"
+title: "sched/cpufreq: 修复 schedutil 对 boost 频率的 DVFS 请求处理"
+series: "sched/cpufreq: Fix schedutil's boost frequency handling"
+type: fix
+status: under_review
+severity: high
+merge_likelihood: medium
+tags: [cpufreq, preempt]
+authors: ["Sibi Sankar <quic_sibis@quicinc.com>", "Viresh Kumar <viresh.kumar@linaro.org>", "Christian Loehle <christian.loehle@arm.com>", "Vincent Guittot <vincent.guittot@linaro.org>", "Hongyan Xia <hongyan.xia@arm.com>", "Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>", "Zhongqiu Han <quic_zhonghan@quicinc.com>"]
+reviewers: ["Viresh Kumar <viresh.kumar@linaro.org>", "Christian Loehle <christian.loehle@arm.com>", "Vincent Guittot <vincent.guittot@linaro.org>"]
+related_articles: []
+emails: ["uid-23730@qq-imap", "uid-23731@qq-imap", "uid-24908@qq-imap", "uid-24906@qq-imap", "uid-24155@qq-imap", "uid-24525@qq-imap", "uid-24446@qq-imap", "uid-24325@qq-imap", "uid-24226@qq-imap"]
+---

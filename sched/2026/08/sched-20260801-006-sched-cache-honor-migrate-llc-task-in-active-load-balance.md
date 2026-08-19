@@ -1,38 +1,4 @@
----
-id: sched-20260801-006
-date: 2026-08-01
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<uid-14461@qq-imap>"
-lore_url: unknown
-authors: [Lu Wang]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-14461@qq-imap>"
-    date: 2026-08-01
-    summary: "被动负载均衡把 group_llc_balance 标记为 migrate_llc_task 并排队 active balance，但 CPU stopper 回调会重建全新的 lb_env，migration_type 在异步边界上丢失。本 patch 在 rq 上新增 active_balance_type 字段把迁移类型带过异步边界；并在 LBF_ACTIVE_LB 快速路径上拒绝 preferred_llc 与目的 LLC 不匹配的候选任务"
-    review_outcome: "当日刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: "e4c9a4cb244a"
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["缺少任何效果数据或复现说明，未展示该 bug 造成的实际影响", "同一 patch 在 20:17 与 20:22 连发两封，可能存在重复投递或未标注的修订，需要作者澄清", "sched/cache（cache-aware scheduling）本身仍是较新的特性，其 maintainer 尚未表态"]
-  next_action: "补充能说明问题的复现场景或数据；澄清重复投递；等待 cache-aware scheduling 方向的 reviewer（如 Chen Yu / Tim Chen）确认语义"
-contribution_opportunities:
-  - kind: testing
-    description: "构造 cache-aware scheduling 开启且触发 active balance 的场景，用 tracepoint 验证修复前任务确实会被搬离其 preferred LLC、修复后不再发生——这正是该 patch 缺失的证据"
-  - kind: review
-    description: "核对在 LBF_ACTIVE_LB 快速路径上从无条件 return 1 改为 return !migrate_llc_task_wrong_dst(p, env) 是否会让某些本应成功的 active balance 变成空转，进而触发 balance 失败计数上升"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 2
-related_articles: []
-tags: [cfs, load_balance, topology]
----
+# sched cache honor migrate llc task in active load balance
 
 ## TL;DR
 
@@ -116,3 +82,40 @@ v1 于 2026-08-01 发出，当日无 review 回复。
 - 被修复的 commit: `e4c9a4cb244a ("sched/cache: Add migrate_llc_task migration type for cache-aware balancing")`
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched cache honor migrate llc task in active load balance"
+id: sched-20260801-006
+date: 2026-08-01
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<uid-14461@qq-imap>"
+lore_url: unknown
+authors: [Lu Wang]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-14461@qq-imap>"
+    date: 2026-08-01
+    summary: "被动负载均衡把 group_llc_balance 标记为 migrate_llc_task 并排队 active balance，但 CPU stopper 回调会重建全新的 lb_env，migration_type 在异步边界上丢失。本 patch 在 rq 上新增 active_balance_type 字段把迁移类型带过异步边界；并在 LBF_ACTIVE_LB 快速路径上拒绝 preferred_llc 与目的 LLC 不匹配的候选任务"
+    review_outcome: "当日刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: "e4c9a4cb244a"
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["缺少任何效果数据或复现说明，未展示该 bug 造成的实际影响", "同一 patch 在 20:17 与 20:22 连发两封，可能存在重复投递或未标注的修订，需要作者澄清", "sched/cache（cache-aware scheduling）本身仍是较新的特性，其 maintainer 尚未表态"]
+  next_action: "补充能说明问题的复现场景或数据；澄清重复投递；等待 cache-aware scheduling 方向的 reviewer（如 Chen Yu / Tim Chen）确认语义"
+contribution_opportunities:
+  - kind: testing
+    description: "构造 cache-aware scheduling 开启且触发 active balance 的场景，用 tracepoint 验证修复前任务确实会被搬离其 preferred LLC、修复后不再发生——这正是该 patch 缺失的证据"
+  - kind: review
+    description: "核对在 LBF_ACTIVE_LB 快速路径上从无条件 return 1 改为 return !migrate_llc_task_wrong_dst(p, env) 是否会让某些本应成功的 active balance 变成空转，进而触发 balance 失败计数上升"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 2
+related_articles: []
+tags: [cfs, load_balance, topology]
+---

@@ -1,18 +1,4 @@
----
-title: "psi: 防止 rtpoll 拆除后陈旧定时器被重新武装"
-date: 2026-08-07
-series: "psi-rtpoll-teardown"
-version: "v1"
-status: "in-review"
-tags: [psi]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26538
-    subject: "[PATCH 1/3] psi: prevent stale timer rearm after rtpoll teardown"
-  - uid: 26539
-    subject: "[PATCH 2/3] ... (related psi fix)"
----
+# psi rtpoll teardown stale timer
 
 ## 概述
 
@@ -33,3 +19,19 @@ rtpoll 路径依赖 hrtimer 周期性刷新 PSI 状态。若在 teardown 后仍�
 ## 参考链接
 
 - 邮件：uid 26538 / 26539
+
+---
+subject: "psi: 防止 rtpoll 拆除后陈旧定时器被重新武装"
+date: 2026-08-07
+series: "psi-rtpoll-teardown"
+version: "v1"
+status: "in-review"
+tags: [psi]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26538
+    subject: "[PATCH 1/3] psi: prevent stale timer rearm after rtpoll teardown"
+  - uid: 26539
+    subject: "[PATCH 2/3] ... (related psi fix)"
+---

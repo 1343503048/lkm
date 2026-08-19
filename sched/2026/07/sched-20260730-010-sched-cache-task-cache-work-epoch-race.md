@@ -1,36 +1,4 @@
----
-id: sched-20260730-010
-date: 2026-07-30
-subsystem: sched
-type: discussion
-status: under_review
-severity: medium
-thread_root_msgid: "<2d191aead79140de43022f480c3b542c101613f...>"
-lore_url: "https://lore.kernel.org/lkml/sched-cache-task-cache-work-v8"
-authors: [Luo Gengkun]
-maintainers_involved: [Tim Chen]
-current_version: v8
-patch_series:
-  - version: v8
-    msgid: "<sched-cache-task-cache-work-v8...>"
-    date: 2026-07-29
-    summary: "v8 of task_cache_work optimization, only scan visited CPUs"
-    review_outcome: "Luo Gengkun identifies epoch race condition in lockless check"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: unknown
-  blocking_issues: ["Epoch race condition needs fix before merge"]
-  next_action: "Fix the epoch backwards movement race"
-contribution_opportunities:
-  - kind: review
-    description: "Review the proposed fix for epoch race condition"
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 3
-related_articles: [sched-20260729-005]
-tags: [cfs, perf]
----
+# : [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 
 ## TL;DR
 
@@ -96,3 +64,38 @@ Luo Gengkun 提出的竞态场景：
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
 - related: sched-20260729-005
+
+---
+subject: ": [PATCH v8 1/2] sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus"
+id: sched-20260730-010
+date: 2026-07-30
+subsystem: sched
+type: discussion
+status: under_review
+severity: medium
+thread_root_msgid: "<2d191aead79140de43022f480c3b542c101613f...>"
+lore_url: "https://lore.kernel.org/lkml/sched-cache-task-cache-work-v8"
+authors: [Luo Gengkun]
+maintainers_involved: [Tim Chen]
+current_version: v8
+patch_series:
+  - version: v8
+    msgid: "<sched-cache-task-cache-work-v8...>"
+    date: 2026-07-29
+    summary: "v8 of task_cache_work optimization, only scan visited CPUs"
+    review_outcome: "Luo Gengkun identifies epoch race condition in lockless check"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: ["Epoch race condition needs fix before merge"]
+  next_action: "Fix the epoch backwards movement race"
+contribution_opportunities:
+  - kind: review
+    description: "Review the proposed fix for epoch race condition"
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 3
+related_articles: [sched-20260729-005]
+tags: [cfs, perf]
+---

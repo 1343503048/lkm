@@ -1,22 +1,4 @@
----
-title: "cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器"
-date: 2026-08-07
-series: "cpufreq-cppc-preserve-registers"
-version: "v4"
-status: "in-review"
-tags: [cpufreq, topology]
-related_articles: []
-submitter: "Sumit Gupta"
-emails:
-  - uid: 25518
-    subject: "[PATCH v4 0/4] cpufreq: CPPC: Keep the policy across CPU hotplug"
-  - uid: 25519
-    subject: "[PATCH v4 1/4] ... preserve OSPM set registers across hotplug"
-  - uid: 25521
-    subject: "[PATCH v4 2/4] ... preserve across suspend/resume"
-  - uid: 25522
-    subject: "[PATCH v4 3/4] ... cover/related"
----
+# cpufreq cppc preserve registers hotplug
 
 ## 概述
 
@@ -47,3 +29,23 @@ v4 迭代，处于评审阶段。
 ## 参考链接
 
 - 系列：uid 25518 / 25519 / 25521 / 25522
+
+---
+subject: "cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器"
+date: 2026-08-07
+series: "cpufreq-cppc-preserve-registers"
+version: "v4"
+status: "in-review"
+tags: [cpufreq, topology]
+related_articles: []
+submitter: "Sumit Gupta"
+emails:
+  - uid: 25518
+    subject: "[PATCH v4 0/4] cpufreq: CPPC: Keep the policy across CPU hotplug"
+  - uid: 25519
+    subject: "[PATCH v4 1/4] ... preserve OSPM set registers across hotplug"
+  - uid: 25521
+    subject: "[PATCH v4 2/4] ... preserve across suspend/resume"
+  - uid: 25522
+    subject: "[PATCH v4 3/4] ... cover/related"
+---

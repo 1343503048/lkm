@@ -1,34 +1,4 @@
----
-id: sched-20260728-007
-date: 2026-07-28
-subsystem: sched
-type: discussion
-status: under_review
-severity: low
-thread_root_msgid: "<CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com>"
-lore_url: "https://lore.kernel.org/r/CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com"
-authors: [Tao]
-maintainers_involved: [Suren Baghdasaryan]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com>"
-    date: 2026-07-27
-    summary: "Drop stale 500ms window minimum from PSI trigger docs"
-    review_outcome: "Suren 指出历史上下文；作者计划发 v2 恢复统一措辞"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "作者发 v2 保留 window-range fix 但恢复统一措辞"
-contribution_opportunities: []
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: [psi]
----
+# docs: accounting/psi: drop stale 500ms window minimum from trigger docs
 
 ## TL;DR
 
@@ -70,3 +40,36 @@ PSI trigger 文档中残留了"500ms window minimum"的过时描述。实际上 
 
 - lore thread: https://lore.kernel.org/r/CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com
 - tip-bot commit: 未获取到
+
+---
+subject: "docs: accounting/psi: drop stale 500ms window minimum from trigger docs"
+id: sched-20260728-007
+date: 2026-07-28
+subsystem: sched
+type: discussion
+status: under_review
+severity: low
+thread_root_msgid: "<CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com>"
+lore_url: "https://lore.kernel.org/r/CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com"
+authors: [Tao]
+maintainers_involved: [Suren Baghdasaryan]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<CAJuCfpGhijcg1N2AxbRbTHf7FvtaTG_xYL1fPVUA=k7snPYtzA@mail.gmail.com>"
+    date: 2026-07-27
+    summary: "Drop stale 500ms window minimum from PSI trigger docs"
+    review_outcome: "Suren 指出历史上下文；作者计划发 v2 恢复统一措辞"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "作者发 v2 保留 window-range fix 但恢复统一措辞"
+contribution_opportunities: []
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: [psi]
+---

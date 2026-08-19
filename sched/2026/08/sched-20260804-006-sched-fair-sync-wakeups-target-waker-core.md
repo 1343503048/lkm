@@ -1,36 +1,4 @@
----
-id: sched-20260804-006
-date: 2026-08-04
-subsystem: sched
-type: discussion
-status: under_review
-severity: none
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [K Prateek Nayak, Chen Yu, Madadi Vineeth Reddy]
-maintainers_involved: [Peter Zijlstra, Vincent Guittot, Ingo Molnar]
-current_version: v3
-patch_series:
-  - version: v3
-    msgid: "<unknown>"
-    date: 2026-08-04
-    summary: "sync wakeup 系列延续 08-03-004：多个子方向并行——(a) sync wakeup 选 waker 的 core 而非仅 waker cpu；(b) 保留 wake-affine 语义；(c) 非 SMT reciprocal sync wakeup 优先 waker cpu。讨论焦点仍是『先定义统一 sync wakeup policy』。"
-    review_outcome: "08-03-004 中 Venkatesh 要求先定义 policy；08-04 上各子补丁继续迭代，Chen Yu / Madadi 等给出实测与微调和。无方向 NAK，但 policy 共识未定。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["sync wakeup 统一 policy 仍未定义（08-03-004 遗留）；多个子方向并行，需先收敛策略再定补丁定位"]
-  next_action: "等待对 sync wakeup 整体策略（SMT/非SMT、idle core 优先、LLC 回退顺序）的共识；各子补丁暂处于『策略确定前的局部优化』状态。"
-contribution_opportunities:
-  - kind: discussion
-    description: "可基于 08-03-004 提出的 policy 清单，结合本日 (a)(b)(c) 三个子方向，提出 sync wakeup 统一 policy 草案，把分散的局部优化收敛到一个一致的语义下参与讨论。"
-generated_at: "2026-08-05T00:25:00"
-source_email_count: 2
-related_articles: ["sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups"]
-tags: [cfs, load_balance, topology, wake_affine]
----
+# sched/fair: Let sync wakeups target the waker's core
 
 # sched/fair: sync wakeup 多子方向并行（policy 待定）
 
@@ -63,3 +31,38 @@ sync wakeup（waker 与被唤醒者后续会同步通信）的放置策略涉及
 
 ## 参考链接
 - 08-03 文章：sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups
+
+---
+subject: "sched/fair: Let sync wakeups target the waker's core"
+id: sched-20260804-006
+date: 2026-08-04
+subsystem: sched
+type: discussion
+status: under_review
+severity: none
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [K Prateek Nayak, Chen Yu, Madadi Vineeth Reddy]
+maintainers_involved: [Peter Zijlstra, Vincent Guittot, Ingo Molnar]
+current_version: v3
+patch_series:
+  - version: v3
+    msgid: "<unknown>"
+    date: 2026-08-04
+    summary: "sync wakeup 系列延续 08-03-004：多个子方向并行——(a) sync wakeup 选 waker 的 core 而非仅 waker cpu；(b) 保留 wake-affine 语义；(c) 非 SMT reciprocal sync wakeup 优先 waker cpu。讨论焦点仍是『先定义统一 sync wakeup policy』。"
+    review_outcome: "08-03-004 中 Venkatesh 要求先定义 policy；08-04 上各子补丁继续迭代，Chen Yu / Madadi 等给出实测与微调和。无方向 NAK，但 policy 共识未定。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["sync wakeup 统一 policy 仍未定义（08-03-004 遗留）；多个子方向并行，需先收敛策略再定补丁定位"]
+  next_action: "等待对 sync wakeup 整体策略（SMT/非SMT、idle core 优先、LLC 回退顺序）的共识；各子补丁暂处于『策略确定前的局部优化』状态。"
+contribution_opportunities:
+  - kind: discussion
+    description: "可基于 08-03-004 提出的 policy 清单，结合本日 (a)(b)(c) 三个子方向，提出 sync wakeup 统一 policy 草案，把分散的局部优化收敛到一个一致的语义下参与讨论。"
+generated_at: "2026-08-05T00:25:00"
+source_email_count: 2
+related_articles: ["sched-20260803-004-sched-fair-prefer-waker-cpu-for-non-smt-reciprocal-sync-wakeups"]
+tags: [cfs, load_balance, topology, wake_affine]
+---

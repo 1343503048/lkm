@@ -1,57 +1,4 @@
----
-id: sched-20260802-003
-date: 2026-08-02
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "unknown"
-lore_url: "unknown"
-authors: [Aaron Tomlin]
-maintainers_involved: [Namhyung Kim]
-current_version: v6
-patch_series:
-  - version: v3
-    msgid: "unknown"
-    date: 2026-07-29
-    summary: "补齐 pipe 模式所需的 .attr / .tracing_data / .build_id 回调；引入 pipe 后处理检查避免空表；给 map_switch_event() 的 thread__get_runtime() 加 NULL 检查；修正列对齐；把 swapper 排除出 global_hist；把 --time 过滤下移进 add_sched_in_event() 以保住任务状态机。"
-    review_outcome: "详细 review 意见推动了 v4 的多项修正。"
-  - version: v4
-    msgid: "unknown"
-    date: 2026-07-29
-    summary: "补上遗漏的 .feature 回调；复用未完成 work atom 修复内存泄漏；handlers 数组提升为文件作用域 latency_handlers[] 并在 evsel->handler==NULL 时动态挂接；避免 pipe/非 pipe 模式下 wakeup 重复计数；补齐自动缩放格式串的尾部竖线。"
-    review_outcome: "仍有输出示例缺失与 patch 拆分粒度问题待解决。"
-  - version: v5
-    msgid: "unknown"
-    date: 2026-07-30
-    summary: "3 个 patch 的形态，pipe 模式处理与空表抑制仍合并在 Patch 1 中。"
-    review_outcome: "Namhyung Kim 要求：涉及用户可见输出的改动应附 before/after 示例；并要求把 pipe 模式处理拆成独立 patch。作者 7/31 回复 Acknowledged。"
-  - version: v6
-    msgid: "<uid-14879@qq-imap>"
-    date: 2026-08-02
-    summary: "按 Namhyung 意见把 pipe 模式 trace sample 处理从 Patch 1 拆为独立 Patch 2（系列由 3 patch 变 4 patch）；给 pipe 模式 patch 补 Fixes: 27295592c22e；commit log 补充表头格式的 before/after 图示。"
-    review_outcome: "v6 当日刚发出，暂无新 review 回帖。"
-upstream_commit: null
-fixes_commit: "27295592c22e"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues:
-    - "Namhyung Kim 尚未确认 v6 是否已完全满足 v5 提出的 before/after 示例要求（作者称已在 commit log 补充，但 reviewer 未复核）。"
-    - "Patch 4 引入 --histogram / --hist-mode / --time 三个新用户接口，接口设计本身尚未获得明确 ack；新增 CLI 选项通常需要维护者对命名与语义单独把关。"
-  next_action: "等待 Namhyung Kim 对 v6 的复核；若 Patch 1/2 的 bug 修复部分先获 ack，可能出现前两个 patch 先合、histogram 功能继续迭代的拆分合入。"
-contribution_opportunities:
-  - kind: testing
-    description: "在 pipe 模式（perf record -o - | perf sched latency -i -）下验证 Patch 2 的动态 handler 挂接是否覆盖所有 tracepoint，尤其检查 wakeup 是否仍存在重复计数——这是 v4 修过一次的问题，值得独立复验。"
-  - kind: review
-    description: "复核 Patch 3 自动缩放的单位切换阈值与列宽对齐：格式串需与表头逐字符对齐，这类改动极易在极端值（ns 级与 s 级混合）下错位，可构造混合量级数据集验证。"
-  - kind: extend
-    description: "--hist-mode 目前只支持 log 与 100us 等宽 linear 两种分桶，可提出/实现用户自定义桶宽或百分位输出。"
-generated_at: "2026-08-03T00:15:00"
-source_email_count: 6
-related_articles: [sched-20260731-009, sched-20260801-008]
-tags: [sched_debug, perf]
----
+# perf sched latency: Refine outputs, unit scaling, and histogram support
 
 # perf sched latency v6: 输出精修、单位自动缩放与直方图支持
 
@@ -170,3 +117,59 @@ v6 的 changelog 明确记录了三条变化，均直接对应 Namhyung 的意�
 - lore thread (v6): 未获取到（IMAP 邮件头未暴露原始 Message-ID）
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "perf sched latency: Refine outputs, unit scaling, and histogram support"
+id: sched-20260802-003
+date: 2026-08-02
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "unknown"
+lore_url: "unknown"
+authors: [Aaron Tomlin]
+maintainers_involved: [Namhyung Kim]
+current_version: v6
+patch_series:
+  - version: v3
+    msgid: "unknown"
+    date: 2026-07-29
+    summary: "补齐 pipe 模式所需的 .attr / .tracing_data / .build_id 回调；引入 pipe 后处理检查避免空表；给 map_switch_event() 的 thread__get_runtime() 加 NULL 检查；修正列对齐；把 swapper 排除出 global_hist；把 --time 过滤下移进 add_sched_in_event() 以保住任务状态机。"
+    review_outcome: "详细 review 意见推动了 v4 的多项修正。"
+  - version: v4
+    msgid: "unknown"
+    date: 2026-07-29
+    summary: "补上遗漏的 .feature 回调；复用未完成 work atom 修复内存泄漏；handlers 数组提升为文件作用域 latency_handlers[] 并在 evsel->handler==NULL 时动态挂接；避免 pipe/非 pipe 模式下 wakeup 重复计数；补齐自动缩放格式串的尾部竖线。"
+    review_outcome: "仍有输出示例缺失与 patch 拆分粒度问题待解决。"
+  - version: v5
+    msgid: "unknown"
+    date: 2026-07-30
+    summary: "3 个 patch 的形态，pipe 模式处理与空表抑制仍合并在 Patch 1 中。"
+    review_outcome: "Namhyung Kim 要求：涉及用户可见输出的改动应附 before/after 示例；并要求把 pipe 模式处理拆成独立 patch。作者 7/31 回复 Acknowledged。"
+  - version: v6
+    msgid: "<uid-14879@qq-imap>"
+    date: 2026-08-02
+    summary: "按 Namhyung 意见把 pipe 模式 trace sample 处理从 Patch 1 拆为独立 Patch 2（系列由 3 patch 变 4 patch）；给 pipe 模式 patch 补 Fixes: 27295592c22e；commit log 补充表头格式的 before/after 图示。"
+    review_outcome: "v6 当日刚发出，暂无新 review 回帖。"
+upstream_commit: null
+fixes_commit: "27295592c22e"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues:
+    - "Namhyung Kim 尚未确认 v6 是否已完全满足 v5 提出的 before/after 示例要求（作者称已在 commit log 补充，但 reviewer 未复核）。"
+    - "Patch 4 引入 --histogram / --hist-mode / --time 三个新用户接口，接口设计本身尚未获得明确 ack；新增 CLI 选项通常需要维护者对命名与语义单独把关。"
+  next_action: "等待 Namhyung Kim 对 v6 的复核；若 Patch 1/2 的 bug 修复部分先获 ack，可能出现前两个 patch 先合、histogram 功能继续迭代的拆分合入。"
+contribution_opportunities:
+  - kind: testing
+    description: "在 pipe 模式（perf record -o - | perf sched latency -i -）下验证 Patch 2 的动态 handler 挂接是否覆盖所有 tracepoint，尤其检查 wakeup 是否仍存在重复计数——这是 v4 修过一次的问题，值得独立复验。"
+  - kind: review
+    description: "复核 Patch 3 自动缩放的单位切换阈值与列宽对齐：格式串需与表头逐字符对齐，这类改动极易在极端值（ns 级与 s 级混合）下错位，可构造混合量级数据集验证。"
+  - kind: extend
+    description: "--hist-mode 目前只支持 log 与 100us 等宽 linear 两种分桶，可提出/实现用户自定义桶宽或百分位输出。"
+generated_at: "2026-08-03T00:15:00"
+source_email_count: 6
+related_articles: [sched-20260731-009, sched-20260801-008]
+tags: [sched_debug, perf]
+---

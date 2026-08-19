@@ -1,36 +1,4 @@
----
-id: sched-20260730-002
-date: 2026-07-30
-subsystem: sched
-type: bug
-status: under_review
-severity: high
-thread_root_msgid: "<202607151644.d59b94e9-lkp@intel.com>"
-lore_url: "https://lore.kernel.org/lkml/202607151644.d59b94e9-lkp@intel.com"
-authors: [Oliver Sang]
-maintainers_involved: [Peter Zijlstra]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<202607151644.d59b94e9-lkp@intel.com>"
-    date: 2026-07-15
-    summary: "0-Day robot reports 14.6% netperf TCP_MAERTS regression from sched/fair cgroup_mode default change (fb1050ac8e)"
-    review_outcome: "PeterZ suspects ksoftirqd preemption behavior change, suggests mitigation via slice tuning"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: unknown
-  blocking_issues: ["Need to confirm root cause (ksoftirqd preemption change?)", "Need mitigation evaluation"]
-  next_action: "Test PeterZ suggested mitigations (ksoftirqd slice tuning, renice)"
-contribution_opportunities:
-  - kind: testing
-    description: "Test PeterZ suggested mitigations (ksoftirqd slice tuning) and report results"
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 3
-related_articles: []
-tags: [cfs, cgroup, load_balance, regression, perf]
----
+# [linux-next:master] [sched/fair]  fb1050ac8e: netperf.Throughput_Mbps 14.6% regression
 
 ## TL;DR
 
@@ -90,3 +58,38 @@ PeterZ 认为需要：
 - lore thread: https://lore.kernel.org/lkml/202607151644.d59b94e9-lkp@intel.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "[linux-next:master] [sched/fair]  fb1050ac8e: netperf.Throughput_Mbps 14.6% regression"
+id: sched-20260730-002
+date: 2026-07-30
+subsystem: sched
+type: bug
+status: under_review
+severity: high
+thread_root_msgid: "<202607151644.d59b94e9-lkp@intel.com>"
+lore_url: "https://lore.kernel.org/lkml/202607151644.d59b94e9-lkp@intel.com"
+authors: [Oliver Sang]
+maintainers_involved: [Peter Zijlstra]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<202607151644.d59b94e9-lkp@intel.com>"
+    date: 2026-07-15
+    summary: "0-Day robot reports 14.6% netperf TCP_MAERTS regression from sched/fair cgroup_mode default change (fb1050ac8e)"
+    review_outcome: "PeterZ suspects ksoftirqd preemption behavior change, suggests mitigation via slice tuning"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: ["Need to confirm root cause (ksoftirqd preemption change?)", "Need mitigation evaluation"]
+  next_action: "Test PeterZ suggested mitigations (ksoftirqd slice tuning, renice)"
+contribution_opportunities:
+  - kind: testing
+    description: "Test PeterZ suggested mitigations (ksoftirqd slice tuning) and report results"
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 3
+related_articles: []
+tags: [cfs, cgroup, load_balance, regression, perf]
+---

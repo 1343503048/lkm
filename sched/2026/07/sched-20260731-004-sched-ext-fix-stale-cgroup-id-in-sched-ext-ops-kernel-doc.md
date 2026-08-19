@@ -1,34 +1,4 @@
----
-id: sched-20260731-004
-date: 2026-07-31
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<20260731023004.1062947-1-luoliang@kylinos.cn>"
-lore_url: "https://lore.kernel.org/lkml/20260731023004.1062947-1-luoliang@kylinos.cn"
-authors: [Liang Luo]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260731023004.1062947-1-luoliang@kylinos.cn>"
-    date: 2026-07-31
-    summary: "将 sched_ext_ops 的 kernel-doc 中过时的 @cgroup_id 更新为 @sub_cgroup_id"
-    review_outcome: "v1 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 review"
-contribution_opportunities: []
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 1
-related_articles: []
-tags: [sched_ext, sched_debug]
----
+# sched ext fix stale cgroup id in sched ext ops kernel doc
 
 ## TL;DR
 
@@ -70,3 +40,36 @@ Warning: Excess struct member cgroup_id description in sched_ext_ops
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260731023004.1062947-1-luoliang@kylinos.cn
+
+---
+subject: "sched ext fix stale cgroup id in sched ext ops kernel doc"
+id: sched-20260731-004
+date: 2026-07-31
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<20260731023004.1062947-1-luoliang@kylinos.cn>"
+lore_url: "https://lore.kernel.org/lkml/20260731023004.1062947-1-luoliang@kylinos.cn"
+authors: [Liang Luo]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260731023004.1062947-1-luoliang@kylinos.cn>"
+    date: 2026-07-31
+    summary: "将 sched_ext_ops 的 kernel-doc 中过时的 @cgroup_id 更新为 @sub_cgroup_id"
+    review_outcome: "v1 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 review"
+contribution_opportunities: []
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 1
+related_articles: []
+tags: [sched_ext, sched_debug]
+---

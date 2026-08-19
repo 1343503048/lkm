@@ -1,36 +1,4 @@
----
-id: sched-20260801-009
-date: 2026-08-01
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<uid-13553@qq-imap>"
-lore_url: unknown
-authors: [Jing Wu, Qiliang Yuan]
-maintainers_involved: [Rafael J. Wysocki, Srinivas Pandruvada]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: unknown
-    date: 2026-07-29
-    summary: "intel_pstate_set_policy() 在 CPUFREQ_POLICY_PERFORMANCE 分支中把 CPU 钉在固定 pstate 并直接编程，但随后又无条件把 policy->cur 覆写为 policy->min，丢弃了刚算出并应用的钉住值。在 nohz_full 隔离 CPU 上，arch_freq_get_on_cpu() 的 APERF/MPERF 采样长期不刷新而回退到 cpufreq_quick_get()，导致该 CPU 永远上报频率下限。本 patch 改为在该分支把 policy->cur 设为实际钉住的频率（pstate * scaling）"
-    review_outcome: "Rafael J. Wysocki 与 Srinivas Pandruvada 均已参与讨论，具体结论在本次采样中未完整获取"
-upstream_commit: null
-fixes_commit: "d51847acb018"
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["本次仅采样到 2 封回复邮件且正文截断，Rafael 与 Srinivas 的最终意见未能完整获取，无法判断是否存在实质异议", "属于 cpufreq 子系统而非 kernel/sched，与调度的关联点在 nohz_full 隔离场景"]
-  next_action: "跟踪 Rafael J. Wysocki 与 Srinivas Pandruvada 的完整回复，确认是否需要 v2"
-contribution_opportunities:
-  - kind: testing
-    description: "在开启 nohz_full 的 Intel 机器上，把隔离 CPU 设为 performance policy 并只跑一个可运行任务，对比 /sys/devices/system/cpu/cpuX/cpufreq/scaling_cur_freq 与实际 APERF/MPERF 测得频率，验证上报值是否确实长期停在下限"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 2
-related_articles: []
-tags: [cpufreq, nohz, idle]
----
+# cpufreq: intel_pstate: Adjust policy->cur in active mode to policy
 
 ## TL;DR
 
@@ -95,3 +63,38 @@ v1 于 2026-07-29 由 Jing Wu 发出（Qiliang Yuan 为 Co-developed-by）。202
 - 被修复的 commit: `d51847acb018 ("cpufreq: intel_pstate: set stale CPU frequency to minimum")`
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "cpufreq: intel_pstate: Adjust policy->cur in active mode to policy"
+id: sched-20260801-009
+date: 2026-08-01
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<uid-13553@qq-imap>"
+lore_url: unknown
+authors: [Jing Wu, Qiliang Yuan]
+maintainers_involved: [Rafael J. Wysocki, Srinivas Pandruvada]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: unknown
+    date: 2026-07-29
+    summary: "intel_pstate_set_policy() 在 CPUFREQ_POLICY_PERFORMANCE 分支中把 CPU 钉在固定 pstate 并直接编程，但随后又无条件把 policy->cur 覆写为 policy->min，丢弃了刚算出并应用的钉住值。在 nohz_full 隔离 CPU 上，arch_freq_get_on_cpu() 的 APERF/MPERF 采样长期不刷新而回退到 cpufreq_quick_get()，导致该 CPU 永远上报频率下限。本 patch 改为在该分支把 policy->cur 设为实际钉住的频率（pstate * scaling）"
+    review_outcome: "Rafael J. Wysocki 与 Srinivas Pandruvada 均已参与讨论，具体结论在本次采样中未完整获取"
+upstream_commit: null
+fixes_commit: "d51847acb018"
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["本次仅采样到 2 封回复邮件且正文截断，Rafael 与 Srinivas 的最终意见未能完整获取，无法判断是否存在实质异议", "属于 cpufreq 子系统而非 kernel/sched，与调度的关联点在 nohz_full 隔离场景"]
+  next_action: "跟踪 Rafael J. Wysocki 与 Srinivas Pandruvada 的完整回复，确认是否需要 v2"
+contribution_opportunities:
+  - kind: testing
+    description: "在开启 nohz_full 的 Intel 机器上，把隔离 CPU 设为 performance policy 并只跑一个可运行任务，对比 /sys/devices/system/cpu/cpuX/cpufreq/scaling_cur_freq 与实际 APERF/MPERF 测得频率，验证上报值是否确实长期停在下限"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 2
+related_articles: []
+tags: [cpufreq, nohz, idle]
+---

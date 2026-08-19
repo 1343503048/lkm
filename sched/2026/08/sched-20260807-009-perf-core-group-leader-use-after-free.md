@@ -1,20 +1,4 @@
----
-title: "perf/core: 修复 sibling detach 后 group leader 的 use-after-free"
-date: 2026-08-07
-series: "perf-core-group-leader-uaf"
-version: "v1"
-status: "in-review"
-tags: [perf, crash]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26855
-    subject: "[PATCH] perf/core: Fix group leader use-after-free after sibling detach"
-  - uid: 25485
-    subject: "Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach"
-  - uid: 26209
-    subject: "Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach"
----
+# perf core group leader use after free
 
 ## 概述
 
@@ -35,3 +19,21 @@ emails:
 ## 参考链接
 
 - 邮件：uid 26855 / 25485 / 26209
+
+---
+subject: "perf/core: 修复 sibling detach 后 group leader 的 use-after-free"
+date: 2026-08-07
+series: "perf-core-group-leader-uaf"
+version: "v1"
+status: "in-review"
+tags: [perf, crash]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26855
+    subject: "[PATCH] perf/core: Fix group leader use-after-free after sibling detach"
+  - uid: 25485
+    subject: "Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach"
+  - uid: 26209
+    subject: "Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach"
+---

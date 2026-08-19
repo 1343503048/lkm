@@ -1,16 +1,4 @@
----
-title: "sched/fair: NOHZ 负载均衡优先选择完全空闲核心"
-date: 2026-08-07
-series: "sched-fair-nohz-fully-idle"
-version: "v4"
-status: "in-review"
-tags: [sched/fair, nohz, load_balance]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26834
-    subject: "Re: [PATCH v4] sched/fair: prefer fully idle cores for NOHZ balancing"
----
+# sched fair nohz fully idle cores
 
 ## 概述
 
@@ -27,3 +15,17 @@ v4，已进入评审回复阶段，讨论聚焦于实现细节与对其他负载
 ## 参考链接
 
 - 邮件：uid 26834
+
+---
+subject: "sched/fair: NOHZ 负载均衡优先选择完全空闲核心"
+date: 2026-08-07
+series: "sched-fair-nohz-fully-idle"
+version: "v4"
+status: "in-review"
+tags: [sched/fair, nohz, load_balance]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26834
+    subject: "Re: [PATCH v4] sched/fair: prefer fully idle cores for NOHZ balancing"
+---

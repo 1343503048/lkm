@@ -1,34 +1,4 @@
----
-id: sched-20260730-005
-date: 2026-07-30
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<sched-docs-v9-01-11...>"
-lore_url: "https://lore.kernel.org/lkml/sched-docs-v9"
-authors: [Yury Norov]
-maintainers_involved: [Yury Norov]
-current_version: v9
-patch_series:
-  - version: v9
-    msgid: "<sched-docs-v9-01-11...>"
-    date: 2026-07-30
-    summary: "11-patch series documenting cpu_preferred_mask and Preferred CPU concept"
-    review_outcome: "Yury Norov suggests possibly moving to sched-paravirt.rst"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["Documentation location discussion ongoing"]
-  next_action: "Decide on documentation file placement"
-contribution_opportunities: []
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 1
-related_articles: []
-tags: [sched_debug, topology]
----
+# sched/docs: Document cpu_preferred_mask and Preferred CPU concept
 
 ## TL;DR
 
@@ -69,3 +39,36 @@ Yury Norov 的 v9 文档系列（11 patches）为 `cpu_preferred_mask` 和 Prefe
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/docs: Document cpu_preferred_mask and Preferred CPU concept"
+id: sched-20260730-005
+date: 2026-07-30
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<sched-docs-v9-01-11...>"
+lore_url: "https://lore.kernel.org/lkml/sched-docs-v9"
+authors: [Yury Norov]
+maintainers_involved: [Yury Norov]
+current_version: v9
+patch_series:
+  - version: v9
+    msgid: "<sched-docs-v9-01-11...>"
+    date: 2026-07-30
+    summary: "11-patch series documenting cpu_preferred_mask and Preferred CPU concept"
+    review_outcome: "Yury Norov suggests possibly moving to sched-paravirt.rst"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["Documentation location discussion ongoing"]
+  next_action: "Decide on documentation file placement"
+contribution_opportunities: []
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 1
+related_articles: []
+tags: [sched_debug, topology]
+---

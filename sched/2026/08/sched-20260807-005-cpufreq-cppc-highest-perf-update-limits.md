@@ -1,18 +1,4 @@
----
-title: "cpufreq: CPPC 最高性能寄存器与 update_limits 支持"
-date: 2026-08-07
-series: "cpufreq-cppc-highest-perf"
-version: "v5"
-status: "in-review"
-tags: [cpufreq]
-related_articles: []
-submitter: "Xueqin Luo"
-emails:
-  - uid: 26144
-    subject: "[PATCH v5 1/3] cpufreq: CPPC: Add update_limits support for highest performance"
-  - uid: 26146
-    subject: "[PATCH v5 2/3] cpufreq: CPPC: Refactor autonomous perf bounds into helper"
----
+# cpufreq cppc highest perf update limits
 
 ## 概述
 
@@ -30,3 +16,19 @@ v5 迭代，与 Sumit Gupta 的 "preserve registers" 系列同属 CPPC 改进方
 ## 参考链接
 
 - 系列：uid 26144 / 26146
+
+---
+subject: "cpufreq: CPPC 最高性能寄存器与 update_limits 支持"
+date: 2026-08-07
+series: "cpufreq-cppc-highest-perf"
+version: "v5"
+status: "in-review"
+tags: [cpufreq]
+related_articles: []
+submitter: "Xueqin Luo"
+emails:
+  - uid: 26144
+    subject: "[PATCH v5 1/3] cpufreq: CPPC: Add update_limits support for highest performance"
+  - uid: 26146
+    subject: "[PATCH v5 2/3] cpufreq: CPPC: Refactor autonomous perf bounds into helper"
+---

@@ -1,20 +1,4 @@
----
-title: "sched/cache: 在 active load balance 中落实 migrate_llc_task 语义"
-date: 2026-08-07
-series: "sched-cache-active-lb-migrate-llc"
-version: "v1"
-status: "in-review"
-tags: [sched/cache, load_balance, affinity]
-related_articles: []
-submitter: "社区"
-emails:
-  - uid: 26556
-    subject: "Re: [PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
-  - uid: 25059
-    subject: "[PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
-  - uid: 26191
-    subject: "Re: [PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
----
+# sched cache active lb migrate llc task
 
 ## 概述
 
@@ -33,3 +17,21 @@ emails:
 ## 参考链接
 
 - 邮件：uid 26556 / 25059 / 26191
+
+---
+subject: "sched/cache: 在 active load balance 中落实 migrate_llc_task 语义"
+date: 2026-08-07
+series: "sched-cache-active-lb-migrate-llc"
+version: "v1"
+status: "in-review"
+tags: [sched/cache, load_balance, affinity]
+related_articles: []
+submitter: "社区"
+emails:
+  - uid: 26556
+    subject: "Re: [PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
+  - uid: 25059
+    subject: "[PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
+  - uid: 26191
+    subject: "Re: [PATCH] sched/cache: honor migrate_llc_task semantics in active load balance"
+---

@@ -1,36 +1,5 @@
----
-id: sched-20260803-007
-date: 2026-08-03
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [Boqun Feng]
-maintainers_involved: [Peter Zijlstra, Thomas Gleixner, Heiko Carstens]
-current_version: v2
-patch_series:
-  - version: v2
-    msgid: "<unknown>"
-    date: 2026-08-03
-    summary: "引入 HAS_SEPARATE_PREEMPT_RESCHED_BITS Kconfig，允许架构把 PREEMPT 与 NEED_RESCHED 标志分开保存在不同的 word/byte。Peter Zijlstra 要求把前两个 patch 合并；s390 侧 Heiko Carstens 给出实现 Reviewed-by。"
-    review_outcome: "Peter Zijlstra：合并 patch 1+2。Heiko Carstens (s390)：Reviewed-by（确认仅 set_thread_flag()/arch_set_task_state() 写 TIF 可安全使用 load-store 而非 set-bit）。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: ["仅剩 patch 1+2 合并的整理，无技术障碍"]
-  next_action: "按 PeterZ 合并前两 patch 发 v3，配合 s390 Reviewed-by 即可合入相关架构分支。"
-contribution_opportunities:
-  - kind: review
-    description: "可审阅其他需要分开 PREEMPT/NEED_RESCHED 位的架构（如 x86 在 TIF 位紧张下的场景）是否也受益于该 Kconfig，提出相应 arch 适配 review。"
-generated_at: "2026-08-04T00:20:00"
-source_email_count: 1
-related_articles: []
-tags: [preempt, arch]
----
+# preempt: Introduce HAS_SEPARATE_PREEMPT_RESCHED_BITS
+
 # preempt: 引入 HAS_SEPARATE_PREEMPT_RESCHED_BITS
 
 
@@ -63,3 +32,38 @@ tags: [preempt, arch]
 
 ## 参考链接
 - lore thread: 未获取到
+
+---
+subject: "preempt: Introduce HAS_SEPARATE_PREEMPT_RESCHED_BITS"
+id: sched-20260803-007
+date: 2026-08-03
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [Boqun Feng]
+maintainers_involved: [Peter Zijlstra, Thomas Gleixner, Heiko Carstens]
+current_version: v2
+patch_series:
+  - version: v2
+    msgid: "<unknown>"
+    date: 2026-08-03
+    summary: "引入 HAS_SEPARATE_PREEMPT_RESCHED_BITS Kconfig，允许架构把 PREEMPT 与 NEED_RESCHED 标志分开保存在不同的 word/byte。Peter Zijlstra 要求把前两个 patch 合并；s390 侧 Heiko Carstens 给出实现 Reviewed-by。"
+    review_outcome: "Peter Zijlstra：合并 patch 1+2。Heiko Carstens (s390)：Reviewed-by（确认仅 set_thread_flag()/arch_set_task_state() 写 TIF 可安全使用 load-store 而非 set-bit）。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: ["仅剩 patch 1+2 合并的整理，无技术障碍"]
+  next_action: "按 PeterZ 合并前两 patch 发 v3，配合 s390 Reviewed-by 即可合入相关架构分支。"
+contribution_opportunities:
+  - kind: review
+    description: "可审阅其他需要分开 PREEMPT/NEED_RESCHED 位的架构（如 x86 在 TIF 位紧张下的场景）是否也受益于该 Kconfig，提出相应 arch 适配 review。"
+generated_at: "2026-08-04T00:20:00"
+source_email_count: 1
+related_articles: []
+tags: [preempt, arch]
+---

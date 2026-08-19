@@ -1,34 +1,4 @@
----
-id: sched-20260728-006
-date: 2026-07-28
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260727121730.2148901-1-zhanxusheng1024@gmail.com>"
-lore_url: "https://lore.kernel.org/r/20260727121730.2148901-1-zhanxusheng1024@gmail.com"
-authors: [Zhan Xusheng]
-maintainers_involved: [Tim Chen]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260727121730.2148901-1-zhanxusheng1024@gmail.com>"
-    date: 2026-07-27
-    summary: "Fix thread aggregation conflict when there is one runnable task on asymmetric capacity systems"
-    review_outcome: "Tim Chen 给出 Reviewed-by，建议保持 SD_ASYM_CPUCAPACITY 现有逻辑不变"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "已有 Reviewed-by，等待 maintainer apply"
-contribution_opportunities: []
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: [cfs, topology]
----
+# sched/cache: Fix a thread aggregation conflict when there is one runnable task
 
 ## TL;DR
 
@@ -71,3 +41,36 @@ v1（2026-07-27）：首次发出。Tim Chen 于 7 月 28 日给出 Reviewed-by�
 
 - lore thread: https://lore.kernel.org/r/20260727121730.2148901-1-zhanxusheng1024@gmail.com
 - tip-bot commit: 未获取到
+
+---
+subject: "sched/cache: Fix a thread aggregation conflict when there is one runnable task"
+id: sched-20260728-006
+date: 2026-07-28
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260727121730.2148901-1-zhanxusheng1024@gmail.com>"
+lore_url: "https://lore.kernel.org/r/20260727121730.2148901-1-zhanxusheng1024@gmail.com"
+authors: [Zhan Xusheng]
+maintainers_involved: [Tim Chen]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260727121730.2148901-1-zhanxusheng1024@gmail.com>"
+    date: 2026-07-27
+    summary: "Fix thread aggregation conflict when there is one runnable task on asymmetric capacity systems"
+    review_outcome: "Tim Chen 给出 Reviewed-by，建议保持 SD_ASYM_CPUCAPACITY 现有逻辑不变"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "已有 Reviewed-by，等待 maintainer apply"
+contribution_opportunities: []
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: [cfs, topology]
+---

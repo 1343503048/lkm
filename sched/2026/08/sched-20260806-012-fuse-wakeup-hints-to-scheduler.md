@@ -1,18 +1,4 @@
----
-id: sched-20260806-012
-date: "2026-08-06"
-title: "fuse: 唤醒 hint 透传给调度器（RFC，ping Miklos）"
-series: "FUSE: Pass wakeup hints to the scheduler"
-type: feature
-status: draft
-severity: none
-merge_likelihood: low
-tags: [cfs, wake_affine]
-authors: ["Xuewen Yan <xuewen.yan@unisoc.com>", "Miklos Szeredi <miklos@szeredi.hu>"]
-reviewers: ["Miklos Szeredi <miklos@szeredi.hu>"]
-related_articles: ["sched-20260805-006"]
-emails: ["uid-23977@qq-imap"]
----
+# [RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests
 
 # fuse: 唤醒 hint 透传给调度器（RFC，ping Miklos）
 
@@ -44,3 +30,20 @@ wake_up_state(waiter, TASK_NORMAL, WF_FUSE_HINT /* 或复用 WF_SYNC */);
 ## 评价
 
 与 08-05-006（sync wakeup）同一「唤醒 hint / 协作 CPU 选择」主题，是用户态文件系统侧的新探索。当前仅 ping 阶段，依赖 FUSE 维护者先 ack。合入可能性低（RFC+draft），属于方向性探索，需等 FUSE 侧回应 + 补数据。
+
+---
+subject: "[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests"
+id: sched-20260806-012
+date: "2026-08-06"
+title: "fuse: 唤醒 hint 透传给调度器（RFC，ping Miklos）"
+series: "FUSE: Pass wakeup hints to the scheduler"
+type: feature
+status: draft
+severity: none
+merge_likelihood: low
+tags: [cfs, wake_affine]
+authors: ["Xuewen Yan <xuewen.yan@unisoc.com>", "Miklos Szeredi <miklos@szeredi.hu>"]
+reviewers: ["Miklos Szeredi <miklos@szeredi.hu>"]
+related_articles: ["sched-20260805-006"]
+emails: ["uid-23977@qq-imap"]
+---

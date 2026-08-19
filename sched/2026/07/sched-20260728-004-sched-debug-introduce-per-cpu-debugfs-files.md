@@ -1,36 +1,4 @@
----
-id: sched-20260728-004
-date: 2026-07-28
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260728020309.6169-1-atomlin@atomlin.com>"
-lore_url: "https://lore.kernel.org/r/20260728020309.6169-1-atomlin@atomlin.com"
-authors: [Aaron Tomlin]
-maintainers_involved: [Peter Zijlstra]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260728020309.6169-1-atomlin@atomlin.com>"
-    date: 2026-07-28
-    summary: "Add /sys/kernel/debug/sched/cpu/cpu<N>/debug for per-CPU scheduler debug output"
-    review_outcome: "PeterZ 质疑使用场景；作者回复将重写 commit message；另有用户表示支持（DPDK/realtime 调试场景）"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["PeterZ 要求更好地阐述 rationale", "commit message 需要重写"]
-  next_action: "作者发 v2 重写 commit message，说明 per-CPU debug 的具体使用场景"
-contribution_opportunities:
-  - kind: discussion
-    description: "如果有在大型 SMP 系统上调试单 CPU 调度问题的经验，可以回帖支持并补充使用场景"
-generated_at: "2026-07-30T10:00:00"
-source_email_count: 6
-related_articles: []
-tags: [sched_debug]
----
+# sched/debug: Introduce per-CPU debugfs files
 
 ## TL;DR
 
@@ -75,3 +43,38 @@ v1（2026-07-28）：首次发出。PeterZ 回帖质疑（具体意见在 uid=54
 
 - lore thread: https://lore.kernel.org/r/20260728020309.6169-1-atomlin@atomlin.com
 - tip-bot commit: 未获取到
+
+---
+subject: "sched/debug: Introduce per-CPU debugfs files"
+id: sched-20260728-004
+date: 2026-07-28
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260728020309.6169-1-atomlin@atomlin.com>"
+lore_url: "https://lore.kernel.org/r/20260728020309.6169-1-atomlin@atomlin.com"
+authors: [Aaron Tomlin]
+maintainers_involved: [Peter Zijlstra]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260728020309.6169-1-atomlin@atomlin.com>"
+    date: 2026-07-28
+    summary: "Add /sys/kernel/debug/sched/cpu/cpu<N>/debug for per-CPU scheduler debug output"
+    review_outcome: "PeterZ 质疑使用场景；作者回复将重写 commit message；另有用户表示支持（DPDK/realtime 调试场景）"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["PeterZ 要求更好地阐述 rationale", "commit message 需要重写"]
+  next_action: "作者发 v2 重写 commit message，说明 per-CPU debug 的具体使用场景"
+contribution_opportunities:
+  - kind: discussion
+    description: "如果有在大型 SMP 系统上调试单 CPU 调度问题的经验，可以回帖支持并补充使用场景"
+generated_at: "2026-07-30T10:00:00"
+source_email_count: 6
+related_articles: []
+tags: [sched_debug]
+---

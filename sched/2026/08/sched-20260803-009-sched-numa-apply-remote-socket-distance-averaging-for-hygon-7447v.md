@@ -1,36 +1,5 @@
----
-id: sched-20260803-009
-date: 2026-08-03
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [Rong Tao]
-maintainers_involved: [Peter Zijlstra, Mel Gorman, Ingo Molnar]
-current_version: v3
-patch_series:
-  - version: v3
-    msgid: "<unknown>"
-    date: 2026-08-03
-    summary: "Hygon 7447V（8 节点 Rome 级）采用模组化布局：NUMA 节点 0-3 在 socket0、4-7 在 socket1。远程 socket 距离统一为 32，丢失『本地节点 vs 远端 socket 的不同寻址成本』信息。改为对远程 socket 节点距离取平均，区分 intra-socket 与 inter-socket 远程。"
-    review_outcome: "Ingo Molnar 给出 Acked-by，认可把性能反馈纳入标准 review 流程；此前 Dave Hansen 询问 AMD 是否应同样的改动。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "已获 Ingo Acked-by，等待 PeterZ/Mel 最终接收；AMD 同款场景的对称性可顺带确认。"
-contribution_opportunities:
-  - kind: testing
-    description: "可在 Hygon 7447V / AMD Rome 上以 numa 基准（如 stream/numactl 跨节点带宽）验证距离平均后任务放置是否更优，回帖对比数据补强作者提供的效果证据。"
-generated_at: "2026-08-04T00:20:00"
-source_email_count: 2
-related_articles: []
-tags: [numa, topology, x86, hygon]
----
+# sched/numa: Apply remote socket distance averaging for Hygon 7447V
+
 # sched/numa: Hygon 7447V 远程 socket 距离平均
 
 
@@ -63,3 +32,38 @@ Hygon 7447V 是 Rome 代际的 8 节点处理器：节点 0-3 在一个 socket�
 
 ## 参考链接
 - lore thread: 未获取到
+
+---
+subject: "sched/numa: Apply remote socket distance averaging for Hygon 7447V"
+id: sched-20260803-009
+date: 2026-08-03
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [Rong Tao]
+maintainers_involved: [Peter Zijlstra, Mel Gorman, Ingo Molnar]
+current_version: v3
+patch_series:
+  - version: v3
+    msgid: "<unknown>"
+    date: 2026-08-03
+    summary: "Hygon 7447V（8 节点 Rome 级）采用模组化布局：NUMA 节点 0-3 在 socket0、4-7 在 socket1。远程 socket 距离统一为 32，丢失『本地节点 vs 远端 socket 的不同寻址成本』信息。改为对远程 socket 节点距离取平均，区分 intra-socket 与 inter-socket 远程。"
+    review_outcome: "Ingo Molnar 给出 Acked-by，认可把性能反馈纳入标准 review 流程；此前 Dave Hansen 询问 AMD 是否应同样的改动。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "已获 Ingo Acked-by，等待 PeterZ/Mel 最终接收；AMD 同款场景的对称性可顺带确认。"
+contribution_opportunities:
+  - kind: testing
+    description: "可在 Hygon 7447V / AMD Rome 上以 numa 基准（如 stream/numactl 跨节点带宽）验证距离平均后任务放置是否更优，回帖对比数据补强作者提供的效果证据。"
+generated_at: "2026-08-04T00:20:00"
+source_email_count: 2
+related_articles: []
+tags: [numa, topology, x86, hygon]
+---

@@ -1,28 +1,4 @@
----
-title: "sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏"
-date: 2026-08-08
-series: "sched-ext-core-scheduling-fixes"
-version: "v1"
-status: "in-review"
-tags: [sched_ext, core_sched]
-related_articles: []
-submitter: "Tejun Heo"
-emails:
-  - uid: 27703
-    subject: "[PATCHSET sched_ext/for-7.2-fixes] sched_ext: Fix core scheduling"
-  - uid: 27687
-    subject: "[PATCH 1/6] sched/core: Handle pick_task() releasing the rq lock"
-  - uid: 27705
-    subject: "[PATCH 2/6] sched/core: Make core-sched flips wait for in-flight selections"
-  - uid: 27690
-    subject: "[PATCH 3/6] sched_ext: Replace SCX_RQ_BAL_KEEP with a dispatch verdict return"
-  - uid: 27691
-    subject: "[PATCH 4/6] sched_ext: Fix this_rq() assumptions in dispatch kfuncs"
-  - uid: 27688
-    subject: "[PATCH 5/6] sched_ext: Count rq lock releases in rq->scx.lock_drop_seq"
-  - uid: 27689
-    subject: "[PATCH 6/6] sched_ext: Fix rq->core_pick corruption under core scheduling"
----
+# sched ext core scheduling fixes
 
 ## 概述
 
@@ -48,3 +24,29 @@ Tejun Heo 提交 `[PATCHSET sched_ext/for-7.2-fixes]`，6 片修复 sched_ext �
 ## 参考链接
 
 - 系列：uid 27703 / 27687 / 27705 / 27690 / 27691 / 27688 / 27689
+
+---
+subject: "sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏"
+date: 2026-08-08
+series: "sched-ext-core-scheduling-fixes"
+version: "v1"
+status: "in-review"
+tags: [sched_ext, core_sched]
+related_articles: []
+submitter: "Tejun Heo"
+emails:
+  - uid: 27703
+    subject: "[PATCHSET sched_ext/for-7.2-fixes] sched_ext: Fix core scheduling"
+  - uid: 27687
+    subject: "[PATCH 1/6] sched/core: Handle pick_task() releasing the rq lock"
+  - uid: 27705
+    subject: "[PATCH 2/6] sched/core: Make core-sched flips wait for in-flight selections"
+  - uid: 27690
+    subject: "[PATCH 3/6] sched_ext: Replace SCX_RQ_BAL_KEEP with a dispatch verdict return"
+  - uid: 27691
+    subject: "[PATCH 4/6] sched_ext: Fix this_rq() assumptions in dispatch kfuncs"
+  - uid: 27688
+    subject: "[PATCH 5/6] sched_ext: Count rq lock releases in rq->scx.lock_drop_seq"
+  - uid: 27689
+    subject: "[PATCH 6/6] sched_ext: Fix rq->core_pick corruption under core scheduling"
+---

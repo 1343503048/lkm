@@ -1,34 +1,5 @@
----
-id: sched-20260803-003
-date: 2026-08-03
-subsystem: sched
-type: fix
-status: merged_tip
-severity: high
-thread_root_msgid: "<unknown>"
-lore_url: "unknown"
-authors: [Tejun Heo, Kuba Piecuch]
-maintainers_involved: [Tejun Heo]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<unknown>"
-    date: 2026-08-03
-    summary: "GIT PULL sched_ext-for-7.2-rc6-fixes：子调度器生命周期修复（enable 失败撕裂未链接子调度器导致 UAF；非 ext class 任务仍收到 enable 回调；policy 拒绝路径静默改写运行中任务的调度策略）、enable/disable 与 cgroup 移除/权重写入经 kernfs 死锁（重排锁获取顺序）、sync wakeup 把 waker cpu 误标 idle 等。"
-    review_outcome: "作为 fixes pull 发出，等待 tip 侧接收。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: "sched_ext/for-7.2-rc6-fixes"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "等待 Linus 在 7.2-rc6 周期合入；已以 tag sched_ext-for-7.2-rc6-fixes 提交。"
-contribution_opportunities: []
-generated_at: "2026-08-04T00:20:00"
-source_email_count: 1
-related_articles: []
-tags: [sched_ext, cgroup, idle]
----
+# cgroup: Fixes for v7.2-rc6
+
 # sched_ext: 7.2-rc6 fixes pull（UAF/死锁/状态错误）
 
 
@@ -64,3 +35,36 @@ Tejun 发出 sched_ext 的 7.2-rc6 fixes pull，修复子调度器生命周期�
 
 ## 参考链接
 - tag: sched_ext-for-7.2-rc6-fixes (https://git.kernel.org/pub/scm/linux/kernel/git/tj/sched_ext.git)
+
+---
+subject: "cgroup: Fixes for v7.2-rc6"
+id: sched-20260803-003
+date: 2026-08-03
+subsystem: sched
+type: fix
+status: merged_tip
+severity: high
+thread_root_msgid: "<unknown>"
+lore_url: "unknown"
+authors: [Tejun Heo, Kuba Piecuch]
+maintainers_involved: [Tejun Heo]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<unknown>"
+    date: 2026-08-03
+    summary: "GIT PULL sched_ext-for-7.2-rc6-fixes：子调度器生命周期修复（enable 失败撕裂未链接子调度器导致 UAF；非 ext class 任务仍收到 enable 回调；policy 拒绝路径静默改写运行中任务的调度策略）、enable/disable 与 cgroup 移除/权重写入经 kernfs 死锁（重排锁获取顺序）、sync wakeup 把 waker cpu 误标 idle 等。"
+    review_outcome: "作为 fixes pull 发出，等待 tip 侧接收。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: "sched_ext/for-7.2-rc6-fixes"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "等待 Linus 在 7.2-rc6 周期合入；已以 tag sched_ext-for-7.2-rc6-fixes 提交。"
+contribution_opportunities: []
+generated_at: "2026-08-04T00:20:00"
+source_email_count: 1
+related_articles: []
+tags: [sched_ext, cgroup, idle]
+---

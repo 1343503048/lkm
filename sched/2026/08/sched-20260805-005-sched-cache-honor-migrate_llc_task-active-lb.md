@@ -1,18 +1,4 @@
----
-id: sched-20260805-005
-date: "2026-08-05"
-title: "sched/cache: active 负载均衡尊重 migrate_llc_task 语义"
-series: "Honor migrate_llc_task semantics in active load balance"
-type: fix
-status: under_review
-severity: medium
-merge_likelihood: high
-tags: [cfs, load_balance, affinity]
-authors: ["Tim Chen <tim.c.chen@linux.intel.com>", "K Prateek Nayak <kprateeknayak@amd.com>"]
-reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
-related_articles: ["sched-20260804-007"]
-emails: ["uid-21368@qq-imap", "uid-20828@qq-imap"]
----
+# sched/cache: honor migrate_llc_task semantics in active load balance
 
 # sched/cache: active 负载均衡尊重 migrate_llc_task 语义
 
@@ -52,3 +38,20 @@ active_load_balance_cpu_stop():
 ## 评价
 
 方向合理、reviewer（Prateek）已确认语义一致，合入可能性高。建议采纳 Prateek 的 schedstat 计数建议，便于量化收益。
+
+---
+subject: "sched/cache: honor migrate_llc_task semantics in active load balance"
+id: sched-20260805-005
+date: "2026-08-05"
+title: "sched/cache: active 负载均衡尊重 migrate_llc_task 语义"
+series: "Honor migrate_llc_task semantics in active load balance"
+type: fix
+status: under_review
+severity: medium
+merge_likelihood: high
+tags: [cfs, load_balance, affinity]
+authors: ["Tim Chen <tim.c.chen@linux.intel.com>", "K Prateek Nayak <kprateeknayak@amd.com>"]
+reviewers: ["K Prateek Nayak <kprateeknayak@amd.com>", "Peter Zijlstra <peterz@infradead.org>"]
+related_articles: ["sched-20260804-007"]
+emails: ["uid-21368@qq-imap", "uid-20828@qq-imap"]
+---

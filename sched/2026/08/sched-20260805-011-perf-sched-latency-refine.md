@@ -1,18 +1,4 @@
----
-id: sched-20260805-011
-date: "2026-08-05"
-title: "perf sched latency: 细化延迟直方图与 swapper 处理"
-series: "perf sched latency refinement"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: high
-tags: [perf, sched_debug]
-authors: ["Namhyung Kim <namhyung@kernel.org>"]
-reviewers: ["Arnaldo Carvalho de Melo <acme@kernel.org>"]
-related_articles: ["sched-20260804-019"]
-emails: ["uid-20515@qq-imap"]
----
+# perf sched latency: Refine outputs, unit scaling, and histogram support
 
 # perf sched latency: 细化延迟直方图与 swapper 处理
 
@@ -49,3 +35,20 @@ histogram_insert(task, delta);
 ## 评价
 
 工具可观测性增强，与 08-04-019 同系列延续。方向合理、reviewer（Arnaldo）已介入，合入可能性高。建议保留旧输出格式的可选兼容开关以免破坏既有脚本。
+
+---
+subject: "perf sched latency: Refine outputs, unit scaling, and histogram support"
+id: sched-20260805-011
+date: "2026-08-05"
+title: "perf sched latency: 细化延迟直方图与 swapper 处理"
+series: "perf sched latency refinement"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: high
+tags: [perf, sched_debug]
+authors: ["Namhyung Kim <namhyung@kernel.org>"]
+reviewers: ["Arnaldo Carvalho de Melo <acme@kernel.org>"]
+related_articles: ["sched-20260804-019"]
+emails: ["uid-20515@qq-imap"]
+---

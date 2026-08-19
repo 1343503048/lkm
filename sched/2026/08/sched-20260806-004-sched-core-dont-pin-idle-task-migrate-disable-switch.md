@@ -1,18 +1,4 @@
----
-id: sched-20260806-004
-date: "2026-08-06"
-title: "sched/core: 不要在 migrate_disable_switch() 中钉住 idle 任务（真实 panic 修复）"
-series: "sched/core: Don't pin the idle task in migrate_disable_switch()"
-type: fix
-status: under_review
-severity: high
-merge_likelihood: high
-tags: [preempt, topology]
-authors: ["Krystian Slowik <me@krystianslowik.com>"]
-reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
-related_articles: []
-emails: ["uid-24051@qq-imap", "uid-23936@qq-imap"]
----
+# sched/core: Don't pin the idle task in migrate_disable_switch()
 
 # sched/core: 不要在 migrate_disable_switch() 中钉住 idle 任务（真实 panic 修复）
 
@@ -54,3 +40,20 @@ static void migrate_disable_switch(struct rq *rq, struct task_struct *p)
 ## 评价
 
 明确的真实 bug + 精准最小修复 + stable 标记，合入可能性高。已带 Fixes/stable，建议优先进 tip/sched/urgent。是 08-06 最值得关注的 fix 之一。
+
+---
+subject: "sched/core: Don't pin the idle task in migrate_disable_switch()"
+id: sched-20260806-004
+date: "2026-08-06"
+title: "sched/core: 不要在 migrate_disable_switch() 中钉住 idle 任务（真实 panic 修复）"
+series: "sched/core: Don't pin the idle task in migrate_disable_switch()"
+type: fix
+status: under_review
+severity: high
+merge_likelihood: high
+tags: [preempt, topology]
+authors: ["Krystian Slowik <me@krystianslowik.com>"]
+reviewers: ["Peter Zijlstra <peterz@infradead.org>"]
+related_articles: []
+emails: ["uid-24051@qq-imap", "uid-23936@qq-imap"]
+---

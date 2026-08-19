@@ -1,34 +1,4 @@
----
-id: sched-20260730-007
-date: 2026-07-30
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260701195810.477326-1-longman@redhat.com>"
-lore_url: "https://lore.kernel.org/lkml/20260701195810.477326-1-longman@redhat.com"
-authors: [Waiman Long]
-maintainers_involved: [Waiman Long]
-current_version: v4
-patch_series:
-  - version: v4
-    msgid: "<20260701195810.477326-1-longman@redhat.com>"
-    date: 2026-07-01
-    summary: "Defer freeing cpumask memblock memory to initcall to avoid early boot issues"
-    review_outcome: "Waiman pinging for status, asking if patch is merge-able"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["Waiting for maintainer response"]
-  next_action: "Need maintainer review/ack"
-contribution_opportunities: []
-generated_at: "2026-07-31T00:10:00"
-source_email_count: 1
-related_articles: []
-tags: [topology]
----
+# sched/isolation: Defer freeing of cpumask memblock memory to initcall
 
 ## TL;DR
 
@@ -71,3 +41,36 @@ v4 方案将 cpumask memblock 内存释放从当前位置延迟到 initcall，�
 - lore thread: https://lore.kernel.org/lkml/20260701195810.477326-1-longman@redhat.com
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched/isolation: Defer freeing of cpumask memblock memory to initcall"
+id: sched-20260730-007
+date: 2026-07-30
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260701195810.477326-1-longman@redhat.com>"
+lore_url: "https://lore.kernel.org/lkml/20260701195810.477326-1-longman@redhat.com"
+authors: [Waiman Long]
+maintainers_involved: [Waiman Long]
+current_version: v4
+patch_series:
+  - version: v4
+    msgid: "<20260701195810.477326-1-longman@redhat.com>"
+    date: 2026-07-01
+    summary: "Defer freeing cpumask memblock memory to initcall to avoid early boot issues"
+    review_outcome: "Waiman pinging for status, asking if patch is merge-able"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["Waiting for maintainer response"]
+  next_action: "Need maintainer review/ack"
+contribution_opportunities: []
+generated_at: "2026-07-31T00:10:00"
+source_email_count: 1
+related_articles: []
+tags: [topology]
+---

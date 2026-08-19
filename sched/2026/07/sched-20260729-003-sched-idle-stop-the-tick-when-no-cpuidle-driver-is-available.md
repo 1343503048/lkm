@@ -1,39 +1,4 @@
----
-id: sched-20260729-003
-date: 2026-07-29
-subsystem: sched
-type: fix
-status: under_review
-severity: high
-thread_root_msgid: "<0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com>"
-lore_url: "https://lore.kernel.org/r/0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com"
-authors: [Christian Loehle, Zhan Xusheng]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com>"
-    date: 2026-07-29
-    summary: "无 cpuidle driver 路径恢复无条件 tick_nohz_idle_stop_tick()，修复 f4c31b07b136 引入的 sysbench 回退；单 idle state 路径保留 got_tick 启发式。"
-    review_outcome: "v1 刚发出；同日 Zhan Xusheng 在 REGRESSION 线程给出了回退机理分析，与修复方向一致。"
-upstream_commit: null
-fixes_commit: "f4c31b07b136"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues:
-    - "作者自己仍存疑：'I'd still be curious about why this happens here'——机理确认可能影响最终方案形态"
-  next_action: "Oracle 报告方复测确认恢复；社区确认 Zhan 的机理分析后合入"
-contribution_opportunities:
-  - kind: testing
-    description: "在无 cpuidle driver 的 VM（如 OCI 小规格、QEMU 裸 halt）上复测 sysbench threads，验证补丁恢复性能，回帖测试数据"
-  - kind: discussion
-    description: "作者明确表示对回退机理仍有疑问，Zhan 的 got_tick/hypervisor 分析尚待确认，可补充不同 HZ/架构的对比数据支持或修正该分析"
-generated_at: "2026-07-30T09:30:00"
-source_email_count: 2
-related_articles: []
-tags: [idle, nohz, regression]
----
+# sched/idle: Stop the tick when no cpuidle driver is available
 
 ## TL;DR
 
@@ -80,3 +45,41 @@ likelihood: high。带 Fixes 标签的回退修复、影响真实生产环境（
 - 修复补丁: https://lore.kernel.org/r/0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com
 - 回退报告（Closes）: https://lore.kernel.org/all/096b42fa-107f-450d-b3b1-03bcad3f1e04@oracle.com/
 - 机理分析: https://lore.kernel.org/r/20260729022930.318742-1-zhanxusheng1024@gmail.com
+
+---
+subject: "sched/idle: Stop the tick when no cpuidle driver is available"
+id: sched-20260729-003
+date: 2026-07-29
+subsystem: sched
+type: fix
+status: under_review
+severity: high
+thread_root_msgid: "<0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com>"
+lore_url: "https://lore.kernel.org/r/0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com"
+authors: [Christian Loehle, Zhan Xusheng]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<0b9b9c3d-8ba0-4329-9504-b9d33c627649@arm.com>"
+    date: 2026-07-29
+    summary: "无 cpuidle driver 路径恢复无条件 tick_nohz_idle_stop_tick()，修复 f4c31b07b136 引入的 sysbench 回退；单 idle state 路径保留 got_tick 启发式。"
+    review_outcome: "v1 刚发出；同日 Zhan Xusheng 在 REGRESSION 线程给出了回退机理分析，与修复方向一致。"
+upstream_commit: null
+fixes_commit: "f4c31b07b136"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues:
+    - "作者自己仍存疑：'I'd still be curious about why this happens here'——机理确认可能影响最终方案形态"
+  next_action: "Oracle 报告方复测确认恢复；社区确认 Zhan 的机理分析后合入"
+contribution_opportunities:
+  - kind: testing
+    description: "在无 cpuidle driver 的 VM（如 OCI 小规格、QEMU 裸 halt）上复测 sysbench threads，验证补丁恢复性能，回帖测试数据"
+  - kind: discussion
+    description: "作者明确表示对回退机理仍有疑问，Zhan 的 got_tick/hypervisor 分析尚待确认，可补充不同 HZ/架构的对比数据支持或修正该分析"
+generated_at: "2026-07-30T09:30:00"
+source_email_count: 2
+related_articles: []
+tags: [idle, nohz, regression]
+---

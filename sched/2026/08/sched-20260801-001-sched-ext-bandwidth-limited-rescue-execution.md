@@ -1,38 +1,4 @@
----
-id: sched-20260801-001
-date: 2026-08-01
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<uid-14362@qq-imap>"
-lore_url: unknown
-authors: [Tejun Heo]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<uid-14362@qq-imap>"
-    date: 2026-08-01
-    summary: "12 个 patch 的 PATCHSET，为 sched_ext 子调度器引入内核侧「带宽受限救援执行」（rescue execution）：子调度器插入可能被 cap 拒绝的任务时打 SCX_ENQ_RESCUE 标记，内核不再回弹而是以受限带宽在目标 CPU 上直接运行该任务；救援长期得不到服务时升级为 protected execution；某 CPU 救援队列持续过载时驱逐该 CPU 上救援消耗最高的子调度器。"
-    review_outcome: "当日刚发出，尚无 review 回复"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待社区对 rescue 语义、带宽参数与过载驱逐启发式的 review 意见"
-contribution_opportunities:
-  - kind: testing
-    description: "构造「子调度器持有的 cid 集合无法覆盖任务亲和性」的场景（如 cpuset 与 cid 授权不一致），验证 rescue 路径是否真的避免了 watchdog stall，并把复现脚本与结果回帖"
-  - kind: review
-    description: "审阅 0008/0009 的过载驱逐启发式：以「该 CPU 上近期救援消耗最高的子调度器」作为驱逐对象，在多个子调度器负载相近时是否会误伤"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 13
-related_articles: []
-tags: [sched_ext, cgroup, affinity]
----
+# sched_ext: Sync tools autogen enum headers
 
 ## TL;DR
 
@@ -89,3 +55,40 @@ Tejun Heo 本人即 sched_ext maintainer，该系列由他自己提出，因此�
 - git tree: `git://git.kernel.org/pub/scm/linux/kernel/git/tj/sched_ext.git`（封面信中给出，分支名在正文截断处）
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "sched_ext: Sync tools autogen enum headers"
+id: sched-20260801-001
+date: 2026-08-01
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<uid-14362@qq-imap>"
+lore_url: unknown
+authors: [Tejun Heo]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<uid-14362@qq-imap>"
+    date: 2026-08-01
+    summary: "12 个 patch 的 PATCHSET，为 sched_ext 子调度器引入内核侧「带宽受限救援执行」（rescue execution）：子调度器插入可能被 cap 拒绝的任务时打 SCX_ENQ_RESCUE 标记，内核不再回弹而是以受限带宽在目标 CPU 上直接运行该任务；救援长期得不到服务时升级为 protected execution；某 CPU 救援队列持续过载时驱逐该 CPU 上救援消耗最高的子调度器。"
+    review_outcome: "当日刚发出，尚无 review 回复"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待社区对 rescue 语义、带宽参数与过载驱逐启发式的 review 意见"
+contribution_opportunities:
+  - kind: testing
+    description: "构造「子调度器持有的 cid 集合无法覆盖任务亲和性」的场景（如 cpuset 与 cid 授权不一致），验证 rescue 路径是否真的避免了 watchdog stall，并把复现脚本与结果回帖"
+  - kind: review
+    description: "审阅 0008/0009 的过载驱逐启发式：以「该 CPU 上近期救援消耗最高的子调度器」作为驱逐对象，在多个子调度器负载相近时是否会误伤"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 13
+related_articles: []
+tags: [sched_ext, cgroup, affinity]
+---

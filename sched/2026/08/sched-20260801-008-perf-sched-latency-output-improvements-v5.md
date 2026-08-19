@@ -1,38 +1,4 @@
----
-id: sched-20260801-008
-date: 2026-08-01
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<uid-13985@qq-imap>"
-lore_url: unknown
-authors: [Aaron Tomlin]
-maintainers_involved: [Namhyung Kim]
-current_version: v5
-patch_series:
-  - version: v5
-    msgid: "<uid-13985@qq-imap>"
-    date: 2026-07-30
-    summary: "3 个 patch：1/3 让 perf_sched__read_events() 在 perf_session__has_traces() 为假时提前返回错误码，避免在缺少 tracepoint 样本的 perf.data 上渲染空的 latency 表格；同时补上 pipe 模式所需的 .attr/.tracing_data/.build_id/.feature 回调与动态 tracepoint handler 绑定。2/3 为 latency 与 runtime 输出列引入 ns/us/ms/s 自动单位换算，并精简列标题"
-    review_outcome: "Namhyung Kim 要求把 1/3 中的 pipe 模式改动拆成独立 commit、把 thread__get_runtime() 的 NULL 校验 squash 进去；对 2/3 要求补充改动前后的示例输出对比"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: ["v5 1/3 需要按 maintainer 要求拆分为『修复空表格输出』与『支持 pipe 模式』两个 commit", "v5 2/3 需要补充用户可见输出的前后对比示例"]
-  next_action: "发 v6：拆分 1/3 的 pipe 模式改动、squash NULL 校验、并为 2/3 附上 before/after 输出示例"
-contribution_opportunities:
-  - kind: testing
-    description: "用 pipe 模式（perf sched record | perf sched latency）与缺少 -R 的 perf.data 两种输入验证修复效果，并把 before/after 输出贴到 thread——这正是 Namhyung 明确要求但作者尚未提供的材料"
-  - kind: review
-    description: "核对 2/3 的自动单位换算在跨量级边界（999ns / 1000ns、999us / 1ms）上的列宽对齐是否仍然正确，避免表格错位"
-generated_at: "2026-08-02T00:55:00"
-source_email_count: 3
-related_articles: ["sched-20260731-009"]
-tags: [sched_debug, perf]
----
+# perf sched: Suppress latency table output when trace samples are missing
 
 ## TL;DR
 
@@ -104,3 +70,40 @@ if (nsecs < NSEC_PER_SEC)    return scnprintf(buf, size, "%6.3f ms", (double)nse
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+subject: "perf sched: Suppress latency table output when trace samples are missing"
+id: sched-20260801-008
+date: 2026-08-01
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<uid-13985@qq-imap>"
+lore_url: unknown
+authors: [Aaron Tomlin]
+maintainers_involved: [Namhyung Kim]
+current_version: v5
+patch_series:
+  - version: v5
+    msgid: "<uid-13985@qq-imap>"
+    date: 2026-07-30
+    summary: "3 个 patch：1/3 让 perf_sched__read_events() 在 perf_session__has_traces() 为假时提前返回错误码，避免在缺少 tracepoint 样本的 perf.data 上渲染空的 latency 表格；同时补上 pipe 模式所需的 .attr/.tracing_data/.build_id/.feature 回调与动态 tracepoint handler 绑定。2/3 为 latency 与 runtime 输出列引入 ns/us/ms/s 自动单位换算，并精简列标题"
+    review_outcome: "Namhyung Kim 要求把 1/3 中的 pipe 模式改动拆成独立 commit、把 thread__get_runtime() 的 NULL 校验 squash 进去；对 2/3 要求补充改动前后的示例输出对比"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: ["v5 1/3 需要按 maintainer 要求拆分为『修复空表格输出』与『支持 pipe 模式』两个 commit", "v5 2/3 需要补充用户可见输出的前后对比示例"]
+  next_action: "发 v6：拆分 1/3 的 pipe 模式改动、squash NULL 校验、并为 2/3 附上 before/after 输出示例"
+contribution_opportunities:
+  - kind: testing
+    description: "用 pipe 模式（perf sched record | perf sched latency）与缺少 -R 的 perf.data 两种输入验证修复效果，并把 before/after 输出贴到 thread——这正是 Namhyung 明确要求但作者尚未提供的材料"
+  - kind: review
+    description: "核对 2/3 的自动单位换算在跨量级边界（999ns / 1000ns、999us / 1ms）上的列宽对齐是否仍然正确，避免表格错位"
+generated_at: "2026-08-02T00:55:00"
+source_email_count: 3
+related_articles: ["sched-20260731-009"]
+tags: [sched_debug, perf]
+---

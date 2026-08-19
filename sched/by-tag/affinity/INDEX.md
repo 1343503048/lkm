@@ -2,8 +2,8 @@
 
 共 21 篇
 
-- [sched-20260814-004](../../2026/08/sched-20260814-004.md) `feature/under_review` — Shrikanth Hegde 的 steal_governor v10（12 patches，preferred CPUs + steal-driven vCPU backoff）在 8/14 与 Mete 讨论架构特定抽象（s390 计划采用并可能自带 governor 模块）。决定先简单合入、post-merge 再拆框架。under_review。
-- [sched-20260810-008](../../2026/08/sched-20260810-008.md) `feature/under_review` — Shrikanth Rao 的 v9 11-patch「preferred CPU」系列中 PATCH 04/11 在 `is_cpu_allowed()` 尝试使用任务的 preferred CPU。Mete Durlu 在 8/10 对 preferred CPU 与 `is_cpu_allowed` 的交互给出反馈。under_review。
+- [sched-20260814-004](../../2026/08/sched-20260814-004-patch-v10-00-12-sched-steal-governor-introduce-preferred-cpu.md) `feature/under_review` — Shrikanth Hegde 的 steal_governor v10（12 patches，preferred CPUs + steal-driven vCPU backoff）在 8/14 与 Mete 讨论架构特定抽象（s390 计划采用并可能自带 governor 模块）。决定先简单合入、post-merge 再拆框架。under_review。
+- [sched-20260810-008](../../2026/08/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.md) `feature/under_review` — Shrikanth Rao 的 v9 11-patch「preferred CPU」系列中 PATCH 04/11 在 `is_cpu_allowed()` 尝试使用任务的 preferred CPU。Mete Durlu 在 8/10 对 preferred CPU 与 `is_cpu_allowed` 的交互给出反馈。under_review。
 - [sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md](../../2026/08/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.md) `in-review`
 - [sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md](../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md) `in-review`
 - [sched-20260807-017-sched-fair-wf-sync-stacking-decline.md](../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md) `in-review`

@@ -1,16 +1,4 @@
----
-title: "perf/core: sched_task() dispatch 与 branch entry 修复"
-date: 2026-08-07
-series: "perf-core-sched-task-dispatch-branch"
-version: "v6"
-status: "in-review"
-tags: [perf, sched/core]
-related_articles: []
-submitter: "Puranjay Mohan"
-emails:
-  - uid: 26425
-    subject: "[PATCH v6 1/3] perf/core: sched_task() dispatch and branch entry fixes"
----
+# perf core sched task dispatch branch fixes
 
 ## 概述
 
@@ -30,3 +18,17 @@ v6，处于评审阶段（与 007 系列同源）。
 ## 参考链接
 
 - 邮件：uid 26425
+
+---
+subject: "perf/core: sched_task() dispatch 与 branch entry 修复"
+date: 2026-08-07
+series: "perf-core-sched-task-dispatch-branch"
+version: "v6"
+status: "in-review"
+tags: [perf, sched/core]
+related_articles: []
+submitter: "Puranjay Mohan"
+emails:
+  - uid: 26425
+    subject: "[PATCH v6 1/3] perf/core: sched_task() dispatch and branch entry fixes"
+---

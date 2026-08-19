@@ -1,18 +1,4 @@
----
-id: sched-20260805-013
-date: "2026-08-05"
-title: "hung_task: v8 改进警告预算处理与任务报告（含数据竞争修复）"
-series: "hung_task: Improve warning budget handling and task reporting"
-type: feature
-status: under_review
-severity: none
-merge_likelihood: medium
-tags: [hang, sched_debug]
-authors: ["Aaron Tomlin <atomlin@atomlin.com>", "Lance Yang <lance.yang@linux.dev>", "Andrew Morton <akpm@linux-foundation.org>"]
-reviewers: ["Lance Yang <lance.yang@linux.dev>", "Andrew Morton <akpm@linux-foundation.org>", "Petr Mladek <pmladek@suse.com>"]
-related_articles: []
-emails: ["uid-20910@qq-imap", "uid-22617@qq-imap"]
----
+# hung_task: Improve warning budget handling and task reporting
 
 # hung_task: v8 改进警告预算处理与任务报告（含数据竞争修复）
 
@@ -71,3 +57,20 @@ if (!hung_task_warnings_printed && !hung_task_call_panic)
 ## 评价
 
 是 debugging/monitoring 侧的稳健改进，经 AI review（sashiko）抓出两个实质性问题后质量提升。属于 08-05 少有的「review 直接产出修订补丁」的良性往返。合入可能性中等，建议在 v9 落实 `READ_ONCE/WRITE_ONCE` 与聚合摘要后再推进。
+
+---
+subject: "hung_task: Improve warning budget handling and task reporting"
+id: sched-20260805-013
+date: "2026-08-05"
+title: "hung_task: v8 改进警告预算处理与任务报告（含数据竞争修复）"
+series: "hung_task: Improve warning budget handling and task reporting"
+type: feature
+status: under_review
+severity: none
+merge_likelihood: medium
+tags: [hang, sched_debug]
+authors: ["Aaron Tomlin <atomlin@atomlin.com>", "Lance Yang <lance.yang@linux.dev>", "Andrew Morton <akpm@linux-foundation.org>"]
+reviewers: ["Lance Yang <lance.yang@linux.dev>", "Andrew Morton <akpm@linux-foundation.org>", "Petr Mladek <pmladek@suse.com>"]
+related_articles: []
+emails: ["uid-20910@qq-imap", "uid-22617@qq-imap"]
+---

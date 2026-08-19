@@ -1,36 +1,4 @@
----
-id: sched-20260731-009
-date: 2026-07-31
-subsystem: sched
-type: feature
-status: under_review
-severity: none
-thread_root_msgid: "<20260730185416.97166-1-atomlin@atomlin.com>"
-lore_url: "https://lore.kernel.org/lkml/20260730185416.97166-1-atomlin@atomlin.com"
-authors: [Adrian Hunter]
-maintainers_involved: []
-current_version: v5
-patch_series:
-  - version: v5
-    msgid: "<20260730185416.97166-1-atomlin@atomlin.com>"
-    date: 2026-07-30
-    summary: "perf sched latency 三项改进：修复空表格输出、动态单位自动缩放、延迟直方图可视化"
-    review_outcome: "v5 刚发出，暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: []
-  next_action: "等待 perf 维护者 review"
-contribution_opportunities:
-  - kind: testing
-    description: "使用 perf sched latency 测试不同工作负载，验证单位缩放和直方图功能"
-generated_at: "2026-07-31T16:30:00"
-source_email_count: 3
-related_articles: [sched-20260730-007]
-tags: [sched_debug, perf]
----
+# perf sched latency refine outputs v5
 
 ## TL;DR
 
@@ -84,3 +52,38 @@ tags: [sched_debug, perf]
 
 - lore thread: https://lore.kernel.org/lkml/20260730185416.97166-1-atomlin@atomlin.com
 - 前日分析: sched-20260730-007
+
+---
+subject: "perf sched latency refine outputs v5"
+id: sched-20260731-009
+date: 2026-07-31
+subsystem: sched
+type: feature
+status: under_review
+severity: none
+thread_root_msgid: "<20260730185416.97166-1-atomlin@atomlin.com>"
+lore_url: "https://lore.kernel.org/lkml/20260730185416.97166-1-atomlin@atomlin.com"
+authors: [Adrian Hunter]
+maintainers_involved: []
+current_version: v5
+patch_series:
+  - version: v5
+    msgid: "<20260730185416.97166-1-atomlin@atomlin.com>"
+    date: 2026-07-30
+    summary: "perf sched latency 三项改进：修复空表格输出、动态单位自动缩放、延迟直方图可视化"
+    review_outcome: "v5 刚发出，暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: []
+  next_action: "等待 perf 维护者 review"
+contribution_opportunities:
+  - kind: testing
+    description: "使用 perf sched latency 测试不同工作负载，验证单位缩放和直方图功能"
+generated_at: "2026-07-31T16:30:00"
+source_email_count: 3
+related_articles: [sched-20260730-007]
+tags: [sched_debug, perf]
+---

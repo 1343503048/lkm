@@ -1,18 +1,4 @@
----
-title: "Proxy Execution: Sleeping Owner Handling (v31, resend)"
-date: 2026-08-07
-series: "proxy-execution"
-version: "v31"
-status: "in-review"
-tags: [proxy_execution, sched/core, core_sched]
-related_articles: []
-submitter: "John Stultz"
-emails:
-  - uid: 26038
-    subject: "[PATCH resend v31 0/9] Sleeping Owner Handling for Proxy Execution, v31"
-  - uid: 26036
-    subject: "[PATCH resend v31 1/9] sched/deadline: Ignore proxy exec sched deadline"
----
+# proxy execution sleeping owner v31
 
 ## 概述
 
@@ -44,3 +30,19 @@ John Stultz 重新发送（resend）了 Proxy Execution 的下一大组件 —�
 
 - LKML 线程 v31 0/9：见邮件 uid 26038
 - 历程脉络：prep → single rq proxying → simple/optimized donor migration → **sleeping owner handling（本批）** → chain level balancing → proxy rwsems
+
+---
+subject: "Proxy Execution: Sleeping Owner Handling (v31, resend)"
+date: 2026-08-07
+series: "proxy-execution"
+version: "v31"
+status: "in-review"
+tags: [proxy_execution, sched/core, core_sched]
+related_articles: []
+submitter: "John Stultz"
+emails:
+  - uid: 26038
+    subject: "[PATCH resend v31 0/9] Sleeping Owner Handling for Proxy Execution, v31"
+  - uid: 26036
+    subject: "[PATCH resend v31 1/9] sched/deadline: Ignore proxy exec sched deadline"
+---

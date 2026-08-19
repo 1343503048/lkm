@@ -1,20 +1,4 @@
----
-title: "sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）"
-date: 2026-08-07
-series: "sched-ext-find-parent-sched"
-version: "v1"
-status: "in-review"
-tags: [sched_ext, cgroup]
-related_articles: []
-submitter: "Cui Jian"
-emails:
-  - uid: 26883
-    subject: "[PATCH] sched_ext: Add NULL check in find_parent_sched()"
-  - uid: 26514
-    subject: "[PATCH] sched_ext: Fix NULL dereference in find_parent_sched()"
-  - uid: 26779
-    subject: "Re: [PATCH] sched_ext: Fix NULL dereference in find_parent_sched()"
----
+# sched ext find parent sched null check
 
 ## 概述
 
@@ -48,3 +32,21 @@ Zhan Xusheng 在 Re 中指出 changelog 描述不成立：
 ## 参考链接
 
 - 补丁与讨论：uid 26883 / 26514 / 26779
+
+---
+subject: "sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）"
+date: 2026-08-07
+series: "sched-ext-find-parent-sched"
+version: "v1"
+status: "in-review"
+tags: [sched_ext, cgroup]
+related_articles: []
+submitter: "Cui Jian"
+emails:
+  - uid: 26883
+    subject: "[PATCH] sched_ext: Add NULL check in find_parent_sched()"
+  - uid: 26514
+    subject: "[PATCH] sched_ext: Fix NULL dereference in find_parent_sched()"
+  - uid: 26779
+    subject: "Re: [PATCH] sched_ext: Fix NULL dereference in find_parent_sched()"
+---
