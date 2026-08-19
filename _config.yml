@@ -16,24 +16,18 @@ exclude:
   - README.md
   - "*.py"
   - "*.sh"
-  - posts/_daily/
+  - _daily/
 
 # 包含预处理生成的目录
 include:
-  - posts/
+  - _posts/
   - pages/
   - assets/
-
-# 文章集合
-collections:
-  posts:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title:output_ext
 
 # 默认 layout
 defaults:
   - scope:
-      path: "posts/_posts"
+      path: ""
       type: "posts"
     values:
       layout: "article"
@@ -41,7 +35,3 @@ defaults:
       path: "pages"
     values:
       layout: "default"
-
-# 每页文章数
-paginate: 30
-paginate_path: "/page:num/"

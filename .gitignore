@@ -2,7 +2,8 @@ sched/.config
 sched/.state/
 __pycache__/
 _site/
-posts/
+_posts/
+_daily/
 pages/tags/
 assets/search.json
 .ruby-cache/

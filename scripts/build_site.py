@@ -21,8 +21,8 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCHED_DIR = REPO_ROOT / "sched"
-POSTS_DIR = REPO_ROOT / "posts" / "_posts"
-DAILY_DIR = REPO_ROOT / "posts" / "_daily"
+POSTS_DIR = REPO_ROOT / "_posts"
+DAILY_DIR = REPO_ROOT / "_daily"
 TAGS_DIR = REPO_ROOT / "pages" / "tags"
 ASSETS_DIR = REPO_ROOT / "assets"
 
