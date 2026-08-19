@@ -5,14 +5,43 @@ url: "https://1343503048.github.io"
 
 markdown: kramdown
 
+# 排除原始数据和构建产物
 exclude:
   - references/
   - scripts/
-  - sched/.config
-  - sched/.state/
+  - sched/
   - Gemfile*
   - vendor/
   - node_modules/
   - README.md
+  - "*.py"
+  - "*.sh"
+  - posts/_daily/
 
-permalink: :path/:basename
+# 包含预处理生成的目录
+include:
+  - posts/
+  - pages/
+  - assets/
+
+# 文章集合
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title:output_ext
+
+# 默认 layout
+defaults:
+  - scope:
+      path: "posts/_posts"
+      type: "posts"
+    values:
+      layout: "article"
+  - scope:
+      path: "pages"
+    values:
+      layout: "default"
+
+# 每页文章数
+paginate: 30
+paginate_path: "/page:num/"

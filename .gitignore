@@ -1,3 +1,9 @@
 sched/.config
 sched/.state/
 __pycache__/
+_site/
+posts/
+pages/tags/
+assets/search.json
+.ruby-cache/
+.sass-cache/

@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="home">
+  <section class="hero">
+    <h1>{{ site.title }}</h1>
+    <p class="hero-desc">{{ site.description }}</p>
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-num">{{ site.posts | size }}</span><span class="stat-label">篇文章</span></div>
+      <div class="stat"><span class="stat-num">{{ site.posts | group_by: "date" | size }}</span><span class="stat-label">天日报</span></div>
+      <div class="stat"><span class="stat-num">{{ site.tags | size }}</span><span class="stat-label">个标签</span></div>
+    </div>
+  </section>
+
+  <section class="filter-bar">
+    <div class="filter-group">
+      <label>类型:</label>
+      <select id="filter-type">
+        <option value="">全部</option>
+        <option value="feature">Feature</option>
+        <option value="fix">Fix</option>
+        <option value="bug">Bug</option>
+        <option value="discussion">Discussion</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>状态:</label>
+      <select id="filter-status">
+        <option value="">全部</option>
+        <option value="under_review">Under Review</option>
+        <option value="merged_tip">Merged</option>
+        <option value="stalled">Stalled</option>
+      </select>
+    </div>
+    <button id="filter-reset" class="btn-reset">重置</button>
+  </section>
+
+  <section class="article-list">
+    {% assign posts_by_date = site.posts | group_by_exp: "p: p.date | date: '%Y-%m-%d'" %}
+    {% for group in posts_by_date %}
+    <div class="date-group">
+      <h2 class="date-header">
+        <a href="{{ group.items[0].date | date: '/%Y/%m/%d/' | relative_url }}">{{ group.name }}</a>
+        <span class="count">({{ group.items | size }} 篇)</span>
+      </h2>
+      {% for post in group.items %}
+        {% include article_card.html post=post %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </section>
+</div>
