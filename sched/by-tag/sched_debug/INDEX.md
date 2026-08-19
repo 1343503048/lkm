@@ -1,24 +1,31 @@
-# by-tag: sched_debug
+# tag: sched_debug
 
+共 27 篇
 
-> 自动索引，共 18 篇。
-
-
-- [sched-20260801-008 · ](../../2026/08/sched-20260801-008-perf-sched-latency-output-improvements-v5.md)  (2026-08-01)
-- [sched-20260801-010 · ](../../2026/08/sched-20260801-010-sched-fix-two-misspellings-in-linux-sched-h.md)  (2026-08-01)
-- [sched-20260802-003 · perf sched latency v6: 输出精修、单位自动缩放与直方图支持](../../2026/08/sched-20260802-003-perf-sched-latency-refine-outputs-unit-scaling-histogram-v6.md)  (2026-08-02)
-- [sched-20260803-006 · sched/numa: 修复 sysctl_numa_balancing 静态键切换竞态](../../2026/08/sched-20260803-006-sched-numa-prevent-race-on-sysctl_numa_balancing-static-key.md)  (2026-08-03)
-- [sched-20260804-010 · sched/topology: 恢复 SD_PREFER_SIBLING（EAS 路径）](../../2026/08/sched-20260804-010-sched-topology-restore-sd_prefer_sibling.md)  (2026-08-04)
-- [sched-20260804-013 · sched/numa: 修正远程私有 fault 扫描周期（v2，review 抓出错误理由）](../../2026/08/sched-20260804-013-sched-numa-fix-scan-period-remote-private-faults.md)  (2026-08-04)
-- [sched-20260804-014 · sched/numa: early return 时清零 locality 统计](../../2026/08/sched-20260804-014-sched-numa-clear-locality-stats-on-early-return.md)  (2026-08-04)
-- [sched-20260804-015 · sched/numa: 静态键切换竞态修复（v1 推进）](../../2026/08/sched-20260804-015-sched-numa-prevent-race-sysctl-static-key-v2.md)  (2026-08-04)
-- [sched-20260804-016 · sched/psi: 跳过非 idle 增量为 0 的 CPU](../../2026/08/sched-20260804-016-sched-psi-skip-cpus-zero-non-idle-delta.md)  (2026-08-04)
-- [sched-20260805-009 · sched/debug: 引入 per-CPU 的 debugfs 文件](../../2026/08/sched-20260805-009-sched-debug-per-cpu-debugfs-files.md)  ("2026-08-05")
-- [sched-20260805-011 · perf sched latency: 细化延迟直方图与 swapper 处理](../../2026/08/sched-20260805-011-perf-sched-latency-refine.md)  ("2026-08-05")
-- [sched-20260805-013 · hung_task: v8 改进警告预算处理与任务报告（含数据竞争修复）](../../2026/08/sched-20260805-013-hung_task-v8-warning-budget-and-reporting.md)  ("2026-08-05")
-- [sched-20260806-001 · perf sched latency: v9 细化输出、单位自动缩放与直方图支持](../../2026/08/sched-20260806-001-perf-sched-latency-v9-refine-histogram.md)  ("2026-08-06")
-- [sched-20260806-005 · perf/core: sched_task() 调度钩子的分发与分支记录修复（v6）](../../2026/08/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.md)  ("2026-08-06")
-- [? · ](../../2026/08/sched-20260807-014-preempt-dynamic-simplify-v2.md)  (2026-08-07)
-- [sched-20260809-001 · ](../../2026/08/sched-20260809-001.md)  (2026-08-09)
-- [sched-20260810-002 · ](../../2026/08/sched-20260810-002.md)  (2026-08-10)
-- [sched-20260810-003 · ](../../2026/08/sched-20260810-003.md)  (2026-08-10)
+- [sched-20260810-003](../../2026/08/sched-20260810-003.md) `fix/high/under_review` — Zhan Xusheng 提交 v2「sched/debug: Validate writes to scan_size_mb」。该值被写成 0 会在 NUMA 平衡扫描逻辑中触发 divide error panic（由 Chen Yu 指出）。v2 增加写入校验与 sysctl 文档。属 high 严重度崩溃修复，合入可能性高。
+- [sched-20260810-002](../../2026/08/sched-20260810-002.md) `fix/medium/under_review` — Aaron Tomlin 提交 v4（5 patches）「sched/debug per-CPU debugfs 文件 + 调试路径多处 UAF/TOCTOU 修复」。修复了 print_cpu/print_dl_rq/sched_show_numa/print_cfs_stats 多处无锁并发读导致的 UAF 与 TOCTOU，并引入 per-CPU debugfs。合入可能性高。
+- [sched-20260809-001](../../2026/08/sched-20260809-001.md) `feature/under_review` — Aaron Tomlin 第三版提交「按 CPU 暴露调度调试信息」系列，把原本集中在 `/proc/sched_debug` 的部分内容下放到 per-CPU debugfs 文件，并修正了并发读取潜在的 UAF。目前处于 under_review，暂无维护者明确表态。
+- [sched-20260807-014-preempt-dynamic-simplify-v2.md](../../2026/08/sched-20260807-014-preempt-dynamic-simplify-v2.md) `in-review`
+- [sched-20260806-005](../../2026/08/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.md) `fix/medium/under_review`
+- [sched-20260806-001](../../2026/08/sched-20260806-001-perf-sched-latency-v9-refine-histogram.md) `feature/under_review`
+- [sched-20260805-013](../../2026/08/sched-20260805-013-hung_task-v8-warning-budget-and-reporting.md) `feature/under_review`
+- [sched-20260805-011](../../2026/08/sched-20260805-011-perf-sched-latency-refine.md) `feature/under_review`
+- [sched-20260805-009](../../2026/08/sched-20260805-009-sched-debug-per-cpu-debugfs-files.md) `feature/medium/under_review`
+- [sched-20260804-016](../../2026/08/sched-20260804-016-sched-psi-skip-cpus-zero-non-idle-delta.md) `feature/low/under_review` — PSI 统计中对非 idle 时间增量为 0 的 CPU 仍走完整更新路径，Dmitry Pletnev 改为跳过以减开销（大量 idle CPU 的系统受益明显）。低严重度优化，合入可能性 medium，需确认边界正确性。
+- [sched-20260804-015](../../2026/08/sched-20260804-015-sched-numa-prevent-race-sysctl-static-key-v2.md) `bug/high/under_review` — `sysctl_numa_balancing` 静态键切换竞态（UAF/use-after-uninit，附 syzkaller repro + Fixes）在 08-04 继续推进。这是 08-03-006 的延续，合入可能性 high。
+- [sched-20260804-014](../../2026/08/sched-20260804-014-sched-numa-clear-locality-stats-on-early-return.md) `fix/medium/under_review` — `update_task_scan_period()` 在迁移失败（slow-scan 路径）early return 前未清零 locality 统计，导致同一迁移失败反复选 slow-scan、把扫描周期拖到最大。Hongling Zeng 补上清零，与正常路径一致。Fixes + stable，合入可能性 high。
+- [sched-20260804-013](../../2026/08/sched-20260804-013-sched-numa-fix-scan-period-remote-private-faults.md) `fix/medium/under_review` — Hongling Zeng 的「加速远程私有 fault 扫描周期」补丁被 Zhan Xusheng 精确 review 指出理由不成立（实际未加速），作者承认并发布 v2 改用正确的修正理由。这是「review 抓出错误 commit message」的典型案例，合入可能性 high（v2）。
+- [sched-20260804-010](../../2026/08/sched-20260804-010-sched-topology-restore-sd_prefer_sibling.md) `feature/under_review` — Chen Yu 在 EAS 路径上恢复 `SD_PREFER_SIBLING` 语义：当兄弟域是 MC 且非 cluster 时，倾向把任务集中到更少 CPU 以留出全 idle sibling 节能。v6 已获 Vincent R-b + Tested-by，合入可能性 high。
+- [sched-20260803-006](../../2026/08/sched-20260803-006-sched-numa-prevent-race-on-sysctl_numa_balancing-static-key.md) `bug/high/under_review` — `sched/numa` 修复 `sysctl_numa_balancing` 静态键切换时的抢占竞态（UAF / use-after-uninit），附 syzkaller C repro 与 Fixes 标签。问题真实且有复现，合入可能性高。
+- [sched-20260802-003](../../2026/08/sched-20260802-003-perf-sched-latency-refine-outputs-unit-scaling-histogram-v6.md) `feature/under_review` — **本文为增量更新** —— 完整背景见 `related_articles` 中的 `sched-20260731-009` 与 `sched-20260801-008`。v6 的核心变化是响应 Namhyung Kim 的 review：把 pipe 模式处理从 Patch 1 拆出成独立 patch（系列 3→4 个），补上 `Fixes:` 标签，并在 commit log 中加入表头格式
+- [sched-20260801-010](../../2026/08/sched-20260801-010-sched-fix-two-misspellings-in-linux-sched-h.md) `fix/under_review` — 一个仅改 2 行注释的 typo 修复 patch，但其中一处的目标拼写看起来是错的——把 `memalloc_nfs_save()` 改成了 `memalloc_nfos_save()`，而内核中实际的函数名是 `memalloc_nofs_save()`。值得回帖指出。
+- [sched-20260801-008](../../2026/08/sched-20260801-008-perf-sched-latency-output-improvements-v5.md) `fix/low/under_review` — Aaron Tomlin 的 `perf sched latency` 输出改进系列走到 v5：修掉在无 tracepoint 样本时仍打印空表格的问题，并为延迟/运行时数值加上自动单位换算。Namhyung Kim 给出的都是可操作的形式性意见（拆 commit、补示例输出），方向已获认可，v6 应能收敛。
+- [sched-20260731-009](../../2026/07/sched-20260731-009-perf-sched-latency-refine-outputs-v5.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260730-007。Adrian Hunter 的 perf sched latency 改进系列推进到 v5，包含三项改进：修复空表格输出、动态单位自动缩放（ns/us/ms/s）、延迟直方图可视化（--histogram/-H、--hist-mode、--time 选项）。v5 刚发出，暂无新 review。
+- [sched-20260731-006](../../2026/07/sched-20260731-006-sched-cache-task-cache-work-v9.md) `discussion/medium/under_review` — 本文为增量更新，完整背景见 sched-20260730-010。Luo Gengkun (Huawei) 的 cache-aware 调度补丁系列推进到 v9，核心优化是 task_cache_work 仅扫描已访问 CPU 以减少开销。v9 新增讨论焦点：Tim Chen 和 Chenyu 就 epoch 回退逻辑的正确性和锁获取时机展开讨论。
+- [sched-20260731-004](../../2026/07/sched-20260731-004-sched-ext-fix-stale-cgroup-id-in-sched-ext-ops-kernel-doc.md) `fix/low/under_review` — Liang Luo (Kylinos) 修复 sched_ext_ops 结构体的 kernel-doc 注释：`@cgroup_id` 应更新为 `@sub_cgroup_id` 以匹配实际成员名。此不一致导致两个 kernel-doc 警告。单行修复，合入可能性高。
+- [sched-20260730-006](../../2026/07/sched-20260730-006-docs-scheduler-fix-eevdf-inaccuracies.md) `fix/low/under_review` — Zhan Xusheng 修复调度器文档中两处 EEVDF 相关的不准确描述：`sched-design-CFS.rst` 仍描述 fair class 为总是运行最小 vruntime 任务（实际自 Linux 6.6 起已实现 EEVDF），`sched-eevdf.rst` 中发布日期和 `sched_setattr()` 描述有误。纯文档修复，无代码改动。
+- [sched-20260730-005](../../2026/07/sched-20260730-005-sched-docs-document-cpu-preferred-mask.md) `feature/under_review` — Yury Norov 的 v9 文档系列（11 patches）为 `cpu_preferred_mask` 和 Preferred CPU 概念添加文档。社区讨论文档放置位置，可能移至 `sched-paravirt.rst`。
+- [sched-20260729-007](../../2026/07/sched-20260729-007-perf-sched-latency-refine-outputs-unit-scaling-and-histogram.md) `feature/under_review` — Aaron Tomlin 的 perf sched latency 改进系列更新到 v4（07-26 的 v3 已收录为 sched-20260726-003，本篇为增量分析）：v4 集中解决 pipe mode 支持问题并加固 NULL 防护。工具类改动、迭代活跃、意见都被逐条回应，合入可能性高。
+- [sched-20260729-006](../../2026/07/sched-20260729-006-sched-debug-introduce-per-cpu-debugfs-files.md) `feature/under_review` — Aaron Tomlin 的 v2 补丁在 debugfs 下为每个 CPU 增加独立的调度调试文件 `/sys/kernel/debug/sched/cpu/cpu<N>/debug`，避免排查单 CPU 问题时读全量 `/sys/kernel/debug/sched/debug`。v2 已回应 v1 全部意见，等待维护者表态，可关注但非紧急。
+- [sched-20260728-004](../../2026/07/sched-20260728-004-sched-debug-introduce-per-cpu-debugfs-files.md) `feature/under_review` — Aaron Tomlin 提出在 debugfs 下新增 per-CPU 调度调试文件 `/sys/kernel/debug/sched/cpu/cpu<N>/debug`，避免大型 SMP 系统上读取全量 debug 输出的开销。PeterZ 质疑使用场景，作者将重写 commit message 发 v2。有用户（DPDK/realtime 方向）表示支持。
+- [sched-20260726-003](../../2026/07/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.md) `feature/under_review` — Aaron Tomlin 改进 `perf sched latency` 的第 3 版：修复缺少 tracepoint 时误报成功的 bug、为延迟/运行时列做单位自适应缩放（ns/us/ms/s）、新增延迟直方图与时间区间过滤。属于 perf 工具侧的可用性增强，已迭代到 v3、逐条回应了 review，合入可能性较高。

@@ -1,1 +1,0 @@
-../../2026/08/sched-20260804-020-cpufreq-intel_pstate-consolidate-hwp-init.md

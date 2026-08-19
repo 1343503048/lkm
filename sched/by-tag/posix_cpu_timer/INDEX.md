@@ -1,7 +1,5 @@
-# by-tag: posix_cpu_timer
+# tag: posix_cpu_timer
 
+共 1 篇
 
-> 自动索引，共 1 篇。
-
-
-- [sched-20260803-011 · posix-cpu-timers: exec 失败路径 use-after-free](../../2026/08/sched-20260803-011-posix-cpu-timers-use-after-free-in-exec-failure-path.md)  (2026-08-03)
+- [sched-20260803-011](../../2026/08/sched-20260803-011-posix-cpu-timers-use-after-free-in-exec-failure-path.md) `bug/high/under_review` — 修复 exec 失败路径中 posix-cpu-timers 引用已释放 mm/sighand 的 use-after-free。附 Fixes 标签与 KASAN 报告，合入可能性高。

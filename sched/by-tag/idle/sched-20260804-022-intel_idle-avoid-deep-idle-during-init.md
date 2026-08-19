@@ -1,1 +1,0 @@
-../../2026/08/sched-20260804-022-intel_idle-avoid-deep-idle-during-init.md

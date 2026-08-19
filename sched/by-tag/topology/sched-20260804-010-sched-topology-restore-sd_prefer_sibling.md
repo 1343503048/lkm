@@ -1,1 +1,0 @@
-../../2026/08/sched-20260804-010-sched-topology-restore-sd_prefer_sibling.md

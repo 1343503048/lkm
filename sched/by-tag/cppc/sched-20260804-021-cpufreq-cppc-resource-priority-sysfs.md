@@ -1,1 +1,0 @@
-../../2026/08/sched-20260804-021-cpufreq-cppc-resource-priority-sysfs.md

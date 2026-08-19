@@ -1,13 +1,11 @@
-# by-tag: wake_affine
+# tag: wake_affine
 
+共 7 篇
 
-> 自动索引，共 7 篇。
-
-
-- [sched-20260804-006 · sched/fair: sync wakeup 多子方向并行（policy 待定）](../../2026/08/sched-20260804-006-sched-fair-sync-wakeups-target-waker-core.md)  (2026-08-04)
-- [sched-20260805-006 · sched/fair: sync wakeup 让目标落到唤醒者所在 core](../../2026/08/sched-20260805-006-sched-fair-sync-wakeup-target-waker-core.md)  ("2026-08-05")
-- [sched-20260805-007 · sched/fair: WF_SYNC 语义澄清 + 非 SMT 互为 sync wakeup 的 wake-affine 保留](../../2026/08/sched-20260805-007-sched-fair-wf_sync-semantics-wake-affine-doc.md)  ("2026-08-05")
-- [sched-20260805-008 · sched/fair: 当唤醒者 LLC 更忙时拒绝 WF_SYNC 堆叠（RFC + Hillf 审查）](../../2026/08/sched-20260805-008-sched-fair-decline-wf_sync-stacking-when-waker-llc-busier.md)  ("2026-08-05")
-- [sched-20260806-009 · sched/fair: sync wakeup 落到 waker 所在 core（Kayra 实测 x86 数据）](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md)  ("2026-08-06")
-- [sched-20260806-012 · fuse: 唤醒 hint 透传给调度器（RFC，ping Miklos）](../../2026/08/sched-20260806-012-fuse-wakeup-hints-to-scheduler.md)  ("2026-08-06")
-- [sched-20260810-012 · ](../../2026/08/sched-20260810-012.md)  (2026-08-10)
+- [sched-20260810-012](../../2026/08/sched-20260810-012.md) `feature/under_review` — Madadi Vineeth Reddy 提交「让同步唤醒目标落在唤醒者所在 core」，附 Kayra Cizmeci 在 8/10 提供的 x86 实测数据（部分负载 IPC/延迟改善）。under_review。
+- [sched-20260806-012](../../2026/08/sched-20260806-012-fuse-wakeup-hints-to-scheduler.md) `feature/draft`
+- [sched-20260806-009](../../2026/08/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review`
+- [sched-20260805-008](../../2026/08/sched-20260805-008-sched-fair-decline-wf_sync-stacking-when-waker-llc-busier.md) `feature/under_review`
+- [sched-20260805-007](../../2026/08/sched-20260805-007-sched-fair-wf_sync-semantics-wake-affine-doc.md) `feature/under_review`
+- [sched-20260805-006](../../2026/08/sched-20260805-006-sched-fair-sync-wakeup-target-waker-core.md) `feature/under_review`
+- [sched-20260804-006](../../2026/08/sched-20260804-006-sched-fair-sync-wakeups-target-waker-core.md) `discussion/under_review` — sync wakeup 优化在 08-04 呈三个并行子方向：选 waker 的 core、保留 wake-affine、非 SMT reciprocal 优先 waker cpu。延续 08-03-004 的「先定义统一 policy」要求，目前仍 medium，需先收敛策略再定补丁定位。

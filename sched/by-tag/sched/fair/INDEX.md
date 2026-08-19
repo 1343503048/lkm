@@ -1,28 +1,26 @@
-# by-tag: sched/fair
+# tag: sched/fair
 
+共 22 篇
 
-> 自动索引，共 22 篇。
-
-
-- [? · ](../../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md)  (2026-08-07)
-- [? · ](../../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md)  (2026-08-07)
-- [? · ](../../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md)  (2026-08-07)
-- [? · ](../../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md)  (2026-08-07)
-- [? · ](../../../2026/08/sched-20260807-022-riscv-vector-preserve-state-scheduling.md)  (2026-08-07)
-- [? · ](../../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md)  (2026-08-08)
-- [? · ](../../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md)  (2026-08-08)
-- [sched-20260809-001 · ](../../../2026/08/sched-20260809-001.md)  (2026-08-09)
-- [sched-20260809-002 · ](../../../2026/08/sched-20260809-002.md)  (2026-08-09)
-- [sched-20260809-003 · ](../../../2026/08/sched-20260809-003.md)  (2026-08-09)
-- [sched-20260810-002 · ](../../../2026/08/sched-20260810-002.md)  (2026-08-10)
-- [sched-20260810-009 · ](../../../2026/08/sched-20260810-009.md)  (2026-08-10)
-- [sched-20260810-010 · ](../../../2026/08/sched-20260810-010.md)  (2026-08-10)
-- [sched-20260810-011 · ](../../../2026/08/sched-20260810-011.md)  (2026-08-10)
-- [sched-20260810-012 · ](../../../2026/08/sched-20260810-012.md)  (2026-08-10)
-- [sched-20260810-014 · ](../../../2026/08/sched-20260810-014.md)  (2026-08-10)
-- [sched-20260814-001 · ](../../../2026/08/sched-20260814-001.md)  (2026-08-14)
-- [sched-20260815-001 · ](../../../2026/08/sched-20260815-001.md)  (2026-08-15)
-- [sched-20260815-014 · ](../../../2026/08/sched-20260815-014.md)  (2026-08-15)
-- [sched-20260817-004 · ](../../../2026/08/sched-20260817-004.md)  (2026-08-17)
-- [sched-20260817-005 · ](../../../2026/08/sched-20260817-005.md)  (2026-08-17)
-- [sched-20260818-006 · ](../../../2026/08/sched-20260818-006.md)  (2026-08-18)
+- [sched-20260818-005](../../../2026/08/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.md) `feature/medium/under_review` — Szabina 在 s390 LPAR（32 vCPU）上对 "Flatten the pick" v3 系列做了详细 benchmark（schbench、sysbench、hackbench），含 stress-ng 并行负载。关键发现：无并行负载时结果普遍正面（高线程数最高 -9.55%），但 stress-ng 并行时低线程数场景出现回退（最高 +2.36%），且 stress-ng 自身
+- [sched-20260817-005](../../../2026/08/sched-20260817-005.md) `feature/medium/under_review` — `steal_governor` v10 的讨论回复（Shrikanth Hegde，接 Prateek/K Prateek/J Joel 等 review）：系列引入"preferred CPUs"与"steal-driven vCPU backoff"，让空闲/轻载 CPU 从忙 CPU 偷取任务以减少空闲时间。本日回复集中回应三处缺陷——① 32 位 ARM64 上 `atomic_long
+- [sched-20260817-004](../../../2026/08/sched-20260817-004.md) `fix/medium/merged_tip` — Peter Zijlstra 的 `sched/urgent` 修复（Edgar E. Iglesias 报告）：组调度实体在 `sched_slice()` 中用**两任务 vruntime 差**而非 `cfs_rq->min_vruntime` 作基准，修复被延迟实体（DELAY_DEQUEUE）时间更新不正确的问题（`Fixes: f0f12c9b0e3e`）。Borislav 已发 PR
+- [sched-20260815-014](../../../2026/08/sched-20260815-014.md) `fix/low/merged_tip` — Vincent Guittot 的 EEVDF cgroup 权重修复由 tip-bot 合入 `sched/core`：把子权重"扁平化"，使 CPU 时间按权重比例分配，而非被层级结构过度约束。属于 08-14 系列 001（EEVDF/cgroup 权重扁平化）的延续/定稿。
+- [sched-20260815-001](../../../2026/08/sched-20260815-001.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。
+- [sched-20260814-001](../../../2026/08/sched-20260814-001.md) `fix/medium/merged_tip` — Vincent Guittot 修复 sched/fair 在 flat hierarchy 下 delayed-dequeue 实体的 `update_curr` 缺失问题。Peter 测试后已推到 `sched/urgent`，并把 7.2 的 `requeue_delayed_entity()` 适配改动推到 `sched/core`。已合入 tip 队列（merged_tip）。
+- [sched-20260810-014](../../../2026/08/sched-20260810-014.md) `discussion/low/under_review` — Kayra Cizmeci 提案从 `set_protect_slice()` 去掉 `min_vruntime()` 调用，但 Zhan Xusheng 在 8/10 给出反例：在自定义 slice 场景下盲目赋值会让 `protect_slice` 在实体 deadline 之后仍保护之，破坏 RUN_TO_PARITY。提案大概率需修正/撤回。
+- [sched-20260810-012](../../../2026/08/sched-20260810-012.md) `feature/under_review` — Madadi Vineeth Reddy 提交「让同步唤醒目标落在唤醒者所在 core」，附 Kayra Cizmeci 在 8/10 提供的 x86 实测数据（部分负载 IPC/延迟改善）。under_review。
+- [sched-20260810-011](../../../2026/08/sched-20260810-011.md) `regression/high/under_review` — Jose Souza（John Stultz 等参与）针对 6.18 稳定分支提交 Revert of `6d71a9c61604`（EEVDF 实体放置改动），修复其引入的调度延迟回归/任务饥饿。Peter 在 8/10 讨论是否应直接 revert。属 high 严重度回归，under_review。
+- [sched-20260810-010](../../../2026/08/sched-20260810-010.md) `fix/low/under_review` — Chen Yu 提交 v2「sched/cache: Fix a thread aggregation conflict when there is one runnable task」。修复 active load balance 在 LLC 内仅有一个可运行任务时的错误聚合/搬移。under_review。
+- [sched-20260810-009](../../../2026/08/sched-20260810-009.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。
+- [sched-20260810-002](../../../2026/08/sched-20260810-002.md) `fix/medium/under_review` — Aaron Tomlin 提交 v4（5 patches）「sched/debug per-CPU debugfs 文件 + 调试路径多处 UAF/TOCTOU 修复」。修复了 print_cpu/print_dl_rq/sched_show_numa/print_cfs_stats 多处无锁并发读导致的 UAF 与 TOCTOU，并引入 per-CPU debugfs。合入可能性高。
+- [sched-20260809-003](../../../2026/08/sched-20260809-003.md) `discussion/low/under_review` — Mete Durlu 在 2026-08-09 对前一天（08-08）提交的 `is_core_idle()` 修改 patch 发起讨论/追问，延续该系列。属 discussion，尚无定论。
+- [sched-20260809-002](../../../2026/08/sched-20260809-002.md) `fix/low/under_review` — Lu Wang 提交 v2，让 active load balance 尊重 `migrate_llc_task` 的缓存感知迁移语义，避免把被标记 prefer-LLC 的任务不必要地跨 LLC 搬移。处于 under_review。
+- [sched-20260809-001](../../../2026/08/sched-20260809-001.md) `feature/under_review` — Aaron Tomlin 第三版提交「按 CPU 暴露调度调试信息」系列，把原本集中在 `/proc/sched_debug` 的部分内容下放到 per-CPU debugfs 文件，并修正了并发读取潜在的 UAF。目前处于 under_review，暂无维护者明确表态。
+- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md](../../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md) `merged`
+- [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md](../../../2026/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.md) `merged`
+- [sched-20260807-022-riscv-vector-preserve-state-scheduling.md](../../../2026/08/sched-20260807-022-riscv-vector-preserve-state-scheduling.md) `in-review`
+- [sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md](../../../2026/08/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.md) `in-review`
+- [sched-20260807-017-sched-fair-wf-sync-stacking-decline.md](../../../2026/08/sched-20260807-017-sched-fair-wf-sync-stacking-decline.md) `in-review`
+- [sched-20260807-016-sched-fair-nohz-fully-idle-cores.md](../../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md) `in-review`
+- [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md](../../../2026/08/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.md) `in-review`
