@@ -1,0 +1,18 @@
+title: Linux 内核调度子系统 LKML 日报
+description: 每日自动分析 kernel/sched/* 邮件列表，生成补丁系列摘要与跟踪报告
+baseurl: "/lkm"
+url: "https://1343503048.github.io"
+
+markdown: kramdown
+
+exclude:
+  - references/
+  - scripts/
+  - sched/.config
+  - sched/.state/
+  - Gemfile*
+  - vendor/
+  - node_modules/
+  - README.md
+
+permalink: :path/:basename
