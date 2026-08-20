@@ -50,21 +50,22 @@ title: 首页
     {% endunless %}
     {% assign current_date = post_date %}
     <div class="date-group">
-    <h3 class="date-header">{{ current_date }}</h3>
+    <h2 class="date-header">{{ current_date }}</h2>
   {% endif %}
   <div class="article-card" data-type="{{ post.type }}" data-status="{{ post.status }}">
-    <div class="card-header">
+    <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <div class="card-badges">
       <span class="badge type-{{ post.type }}">{{ post.type }}</span>
       <span class="badge status-{{ post.status }}">{{ post.status | replace: '_', ' ' }}</span>
       {% if post.severity and post.severity != 'none' %}
       <span class="badge severity-{{ post.severity }}">{{ post.severity }}</span>
       {% endif %}
+      {% if post.current_version %}<span class="badge version-badge">{{ post.current_version }}</span>{% endif %}
+      <span class="card-date">{{ post.date | date: "%m-%d" }}</span>
     </div>
-    <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-    <div class="card-meta">
-      {% if post.authors %}<span>{{ post.authors | join: ', ' }}</span>{% endif %}
-      {% if post.current_version %}<span>{{ post.current_version }}</span>{% endif %}
-    </div>
+    {% if post.authors %}
+    <div class="card-authors">{{ post.authors | join: ', ' }}</div>
+    {% endif %}
     {% if post.tags %}
     <div class="card-tags">
       {% for tag in post.tags limit:5 %}
@@ -73,8 +74,8 @@ title: 首页
     </div>
     {% endif %}
   </div>
-{% endfor %}
-{% unless current_date == '' %}
-</div>
-{% endunless %}
+  {% endfor %}
+  {% unless current_date == '' %}
+  </div>
+  {% endunless %}
 </div>
