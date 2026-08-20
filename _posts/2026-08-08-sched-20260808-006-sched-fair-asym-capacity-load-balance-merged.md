@@ -28,7 +28,7 @@ emails:
     CPU cannot help'
 - uid: 28236
   subject: '[tip: sched/core] sched/fair: Also gate overloaded status update for SD_ASYM_CPUCAPACITY'
-title: 'sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）'
+title: sched fair asym capacity load balance merged
 layout: article
 ---
 

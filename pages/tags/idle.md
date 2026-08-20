@@ -8,10 +8,10 @@ article_count: 23
 - [sched-20260818-001](/lkm/2026/08/18/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.html) `fix/low/under_review` — sched/core: Skip rq->avg_idle update without a valid idle_stamp
 - [sched-20260817-005](/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core
-- [sched-20260808-001-sched-core-skip-avg-idle-v3](/lkm/2026/08/08/sched-20260808-001-sched-core-skip-avg-idle-v3.html) `unknown/none/in-review` — sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）
-- [sched-20260808-002-kcov-scheduler-coverage-leaks](/lkm/2026/08/08/sched-20260808-002-kcov-scheduler-coverage-leaks.html) `unknown/none/in-review` — kcov: 抑制定时器与调度器覆盖泄漏
-- [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus](/lkm/2026/08/07/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.html) `unknown/none/in-review` — sched/fair: 让 is_core_idle() 检查核心内所有 CPU
-- [sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp](/lkm/2026/08/07/sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp.html) `unknown/none/in-review` — sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新
+- [sched-20260808-001-sched-core-skip-avg-idle-v3](/lkm/2026/08/08/sched-20260808-001-sched-core-skip-avg-idle-v3.html) `unknown/none/in-review` — sched core skip avg idle v3
+- [sched-20260808-002-kcov-scheduler-coverage-leaks](/lkm/2026/08/08/sched-20260808-002-kcov-scheduler-coverage-leaks.html) `unknown/none/in-review` — kcov scheduler coverage leaks
+- [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus](/lkm/2026/08/07/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.html) `unknown/none/in-review` — sched fair is core idle check all cpus
+- [sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp](/lkm/2026/08/07/sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp.html) `unknown/none/in-review` — sched core skip avg idle no idle stamp
 - [sched-20260804-003](/lkm/2026/08/04/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.html) `fix/medium/merged` — sched_ext: Fix idle CPU state initialization and validation
 - [sched-20260804-004](/lkm/2026/08/04/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.html) `fix/high/merged_tip` — sched_ext: Fix idle CPU state initialization and validation
 - [sched-20260804-016](/lkm/2026/08/04/sched-20260804-016-sched-psi-skip-cpus-zero-non-idle-delta.html) `feature/low/under_review` — sched psi skip cpus zero non idle delta

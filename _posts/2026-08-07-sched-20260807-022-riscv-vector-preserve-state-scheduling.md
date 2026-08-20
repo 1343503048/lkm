@@ -12,7 +12,7 @@ submitter: Karl Mehltretter
 emails:
 - uid: 25457
   subject: '[PATCH] riscv: vector: preserve state when scheduling at nonzero depth'
-title: 'riscv: 在非零 Vector 嵌套深度调度时保留 Vector 状态'
+title: riscv vector preserve state scheduling
 layout: article
 ---
 

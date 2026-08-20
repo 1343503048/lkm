@@ -2,8 +2,6 @@
 title: 'sched/fair: Not goto more_balance if newly idle and has pending task when
   LBF_NEED_BREAK'
 layout: article
-subject: 'sched/fair: Not goto more_balance if newly idle and has pending task when
-  LBF_NEED_BREAK'
 ---
 
 ## TL;DR

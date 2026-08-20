@@ -22,7 +22,7 @@ emails:
   subject: '[PATCH v2 4/6] ... simplify preempt model accessors'
 - uid: 26006
   subject: '[PATCH v2 5/6] ... related'
-title: 'preempt: 简化 PREEMPT_DYNAMIC（v2）'
+title: preempt dynamic simplify v2
 layout: article
 ---
 

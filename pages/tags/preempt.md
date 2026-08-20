@@ -5,11 +5,11 @@ title: "标签: preempt"
 article_count: 19
 ---
 
-- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — 将调度子系统中直接使用的 raw static_key / static_key_{true,false}() 及 __cfs_bandwidth_used、p...
+- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
 - [sched-20260810-015](/lkm/2026/08/10/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `cleanup/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
-- [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt: 简化 PREEMPT_DYNAMIC（v2）
-- [sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup](/lkm/2026/08/07/sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup.html) `unknown/none/in-review` — sched: 清理 preempt_count 的 __cant_migrate/__cant_sleep 参数
+- [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt dynamic simplify v2
+- [sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup](/lkm/2026/08/07/sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup.html) `unknown/none/in-review` — sched preempt count cant migrate sleep cleanup
 - [sched-20260806-003](/lkm/2026/08/06/sched-20260806-003-sched-dynamic-simplify-preempt_dynamic-v2.html) `feature/none/under_review` — sched: dynamic: Simplify preempt_schedule{,_notrace}()
 - [sched-20260806-004](/lkm/2026/08/06/sched-20260806-004-sched-core-dont-pin-idle-task-migrate-disable-switch.html) `fix/high/under_review` — sched/core: Don't pin the idle task in migrate_disable_switch()
 - [sched-20260806-006](/lkm/2026/08/06/sched-20260806-006-sched-cpufreq-schedutil-boost-freq-handling.html) `fix/high/under_review` — sched/cpufreq: Update schedutil's DVFS request to reach the boost frequencies

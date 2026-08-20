@@ -23,7 +23,7 @@ emails:
 - uid: 26097
   subject: 'Re: [PATCH RFC] sched/fair: decline WF_SYNC stacking when waker LLC is
     the bottleneck'
-title: 'sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠'
+title: sched fair wf sync stacking decline
 layout: article
 ---
 

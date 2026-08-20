@@ -40,11 +40,8 @@ related_articles:
 tags:
 - sched_ext
 - compatibility
-title: 把 scx 仓库中领先内核副本的 tools/sched_ext/include/scx 头文件同步回内核树：__COMPAT_read_enum()
-  现可在 ...
+title: sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo
 layout: article
-subject: 把 scx 仓库中领先内核副本的 tools/sched_ext/include/scx 头文件同步回内核树：__COMPAT_read_enum()
-  现可在 ...
 ---
 
 

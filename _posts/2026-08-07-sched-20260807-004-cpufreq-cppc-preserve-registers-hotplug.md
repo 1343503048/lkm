@@ -18,7 +18,7 @@ emails:
   subject: '[PATCH v4 2/4] ... preserve across suspend/resume'
 - uid: 25522
   subject: '[PATCH v4 3/4] ... cover/related'
-title: 'cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器'
+title: cpufreq cppc preserve registers hotplug
 layout: article
 ---
 

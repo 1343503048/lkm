@@ -12,7 +12,7 @@ submitter: 社区
 emails:
 - uid: 26540
   subject: '[PATCH v2] psi: use __ffs() to walk task count bitmasks in psi_group_cpu()'
-title: 'psi: 用 __ffs() 遍历 task count 位图'
+title: psi use ffs task count bitmask
 layout: article
 ---
 

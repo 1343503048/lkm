@@ -20,7 +20,7 @@ emails:
   subject: 'Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled'
 - uid: 26813
   subject: 'Re: [PATCH 1/2] cpufreq: Allow cpuinfo max to decrease when boost is disabled'
-title: 'schedutil: 让 DVFS 请求可达 boost 频率上限'
+title: schedutil boost dvfs policy max
 layout: article
 ---
 

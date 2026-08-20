@@ -15,7 +15,7 @@ emails:
   subject: '[PATCH v3] sched/core: Skip rq->avg_idle update without a valid idle_stamp'
 - uid: 27645
   subject: 'Re: [PATCH v2] sched/core: Skip rq->avg_idle update without a valid idle_stamp'
-title: 'sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）'
+title: sched core skip avg idle v3
 layout: article
 ---
 

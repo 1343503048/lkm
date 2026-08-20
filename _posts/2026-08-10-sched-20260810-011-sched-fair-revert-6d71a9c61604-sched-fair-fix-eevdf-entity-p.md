@@ -2,8 +2,6 @@
 title: 'sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement bug
   causing scheduling lag")'
 layout: article
-subject: 'sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement
-  bug causing scheduling lag")'
 ---
 
 ## TL;DR

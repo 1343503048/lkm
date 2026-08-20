@@ -5,7 +5,7 @@ layout: default
   <div class="reading-progress" id="reading-progress"></div>
   <nav class="breadcrumbs">
     <a href="{{ '/' | relative_url }}">首页</a> ›
-    <span>{{ page.subject | default: page.title | truncate: 60 }}</span>
+    <span>{{ page.title | truncate: 60 }}</span>
   </nav>
   <div class="article-layout">
     <aside class="toc-sidebar">
@@ -14,7 +14,7 @@ layout: default
     </aside>
     <div class="article-content">
       <header class="article-header">
-        <h1>{{ page.subject | default: page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         <div class="article-meta">
           <span class="meta-date"> {{ page.date | date: "%Y-%m-%d" }}</span>
           <span class="badge type-{{ page.type }}">{{ page.type }}</span>
@@ -30,35 +30,7 @@ layout: default
         </div>
       </header>
 
-      <!-- Merge Assessment - 关键信息前置 -->
-      {% if page.merge_assessment %}
-      <div class="merge-assessment-card">
-        <div class="merge-assessment-header">
-          <span class="merge-icon"></span>
-          <strong>合入评估</strong>
-        </div>
-        <div class="merge-assessment-body">
-          <p class="merge-likelihood">
-            可能性: <span class="badge likelihood-{{ page.merge_assessment.likelihood }}">{{ page.merge_assessment.likelihood }}</span>
-          </p>
-          {% if page.merge_assessment.next_action %}
-          <p class="merge-next"><strong>下一步:</strong> {{ page.merge_assessment.next_action }}</p>
-          {% endif %}
-          {% if page.merge_assessment.blocking_issues and page.merge_assessment.blocking_issues.size > 0 %}
-          <details class="merge-blocking">
-            <summary>阻塞问题 ({{ page.merge_assessment.blocking_issues.size }})</summary>
-            <ul>
-              {% for issue in page.merge_assessment.blocking_issues %}
-              <li>{{ issue }}</li>
-              {% endfor %}
-            </ul>
-          </details>
-          {% endif %}
-        </div>
-      </div>
-      {% endif %}
-
-      <!-- Tags - 移到正文前 -->
+      <!-- Tags -->
       <div class="article-tags">
         {% for tag in page.tags %}
         {% assign safe_tag = tag | replace: '/', '_' %}
@@ -66,16 +38,16 @@ layout: default
         {% endfor %}
       </div>
 
-      <!-- Lore Link - 单独一行 -->
+      <!-- Lore Link -->
       {% if page.lore_url and page.lore_url != '未获取到' and page.lore_url != 'unknown' %}
       <div class="lore-link">
-        <a href="{{ page.lore_url }}" target="_blank" rel="noopener">🔗 查看 LKML 原始讨论线程</a>
+        <a href="{{ page.lore_url }}" target="_blank" rel="noopener"> 查看 LKML 原始讨论线程</a>
       </div>
       {% endif %}
 
       <div class="article-body">{{ content }}</div>
 
-      <!-- Footer metadata - 精简版 -->
+      <!-- Footer metadata -->
       <footer class="article-footer">
         <div class="footer-meta">
           {% if page.upstream_commit %}
@@ -105,7 +77,7 @@ layout: default
 </article>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // ── TOC 生成 ──
+  // ── TOC 生成 ─
   var body = document.querySelector('.article-body');
   var toc = document.getElementById('toc');
   if (!body || !toc) return;
@@ -131,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ─ TOC Active 高亮（Scroll Spy）──
+  // ── TOC Active 高亮（Scroll Spy）──
   var tocLinks = toc.querySelectorAll('a[data-target]');
   if (tocLinks.length > 0) {
     var observerOptions = { rootMargin: '-80px 0px -70% 0px', threshold: 0 };

@@ -5,9 +5,9 @@ title: "标签: sched_ext"
 article_count: 55
 ---
 
-- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-ext 文档两连修：(1) 把 cpu.max / cpu.max.burst / cpu.idle 的描述从'仅影响 fair-class'改为'...
-- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — 把 scx 仓库中领先内核副本的 tools/sched_ext/include/scx 头文件同步回内核树：__COMPAT_read_enum() 现可在 ...
-- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — 原 RFC 提议：当 cgroup 配了有限 cpu.max 配额但当前 BPF 调度器未实现 cgroup_set_bandwidth 回调时，打印一次性警告...
+- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
+- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo
+- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc
 - [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
 - [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — [GIT PULL] sched_ext: Changes for v7.3
 - [sched-20260818-004](/lkm/2026/08/18/sched-20260818-004-sched-ext-allow-ops-cgroup-set-bandwidth-to-be-sleepable.html) `feature/medium/under_review` — sched_ext: allow ops.cgroup_set_bandwidth() to be sleepable
@@ -36,9 +36,9 @@ article_count: 55
 - [sched-20260814-010](/lkm/2026/08/14/sched-20260814-010-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib-.html) `cleanup/low/under_review` — selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk
 - [sched-20260810-001](/lkm/2026/08/10/sched-20260810-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260809-005](/lkm/2026/08/09/sched-20260809-005-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type-.html) `fix/low/under_review` — kernel/sched/ext/ext.c:1451:38: sparse: sparse: incorrect type in initializer (different address spaces)
-- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏
-- [sched-20260807-002-sched-ext-find-parent-sched-null-check](/lkm/2026/08/07/sched-20260807-002-sched-ext-find-parent-sched-null-check.html) `unknown/none/in-review` — sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）
-- [sched-20260807-021-selftests-sched-ext-exit-skeleton-open](/lkm/2026/08/07/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.html) `unknown/none/in-review` — selftests/sched_ext: 检查 exit 测试骨架打开失败
+- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched ext core scheduling fixes
+- [sched-20260807-002-sched-ext-find-parent-sched-null-check](/lkm/2026/08/07/sched-20260807-002-sched-ext-find-parent-sched-null-check.html) `unknown/none/in-review` — sched ext find parent sched null check
+- [sched-20260807-021-selftests-sched-ext-exit-skeleton-open](/lkm/2026/08/07/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.html) `unknown/none/in-review` — selftests sched ext exit skeleton open
 - [sched-20260806-010](/lkm/2026/08/06/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.html) `feature/none/under_review` — sched_ext: scx_qmap: Add proxy execution support
 - [sched-20260805-001](/lkm/2026/08/05/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.html) `feature/none/under_review` — sched_ext: Block proxy donors across scheduler transitions
 - [sched-20260804-001](/lkm/2026/08/04/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.html) `feature/none/under_review` — sched: Allow enabling proxy exec with sched_ext

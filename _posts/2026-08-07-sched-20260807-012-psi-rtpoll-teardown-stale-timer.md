@@ -13,7 +13,7 @@ emails:
   subject: '[PATCH 1/3] psi: prevent stale timer rearm after rtpoll teardown'
 - uid: 26539
   subject: '[PATCH 2/3] ... (related psi fix)'
-title: 'psi: 防止 rtpoll 拆除后陈旧定时器被重新武装'
+title: psi rtpoll teardown stale timer
 layout: article
 ---
 

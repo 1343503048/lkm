@@ -12,7 +12,7 @@ submitter: Puranjay Mohan
 emails:
 - uid: 26425
   subject: '[PATCH v6 1/3] perf/core: sched_task() dispatch and branch entry fixes'
-title: 'perf/core: sched_task() dispatch 与 branch entry 修复'
+title: perf core sched task dispatch branch fixes
 layout: article
 ---
 

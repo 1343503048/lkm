@@ -16,7 +16,7 @@ emails:
     Hygon'
 - uid: 25980
   subject: '[PATCH v3 1/2] ... (related)'
-title: 'sched/numa: 为 Hygon model 7 应用远端 socket 距离平均'
+title: sched numa hygon remote socket distance
 layout: article
 ---
 

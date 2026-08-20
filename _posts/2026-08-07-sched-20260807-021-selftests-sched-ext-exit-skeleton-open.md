@@ -12,7 +12,7 @@ submitter: Liang Luo
 emails:
 - uid: 25953
   subject: '[PATCH] selftests/sched_ext: check skeleton open failure in exit test'
-title: 'selftests/sched_ext: 检查 exit 测试骨架打开失败'
+title: selftests sched ext exit skeleton open
 layout: article
 ---
 

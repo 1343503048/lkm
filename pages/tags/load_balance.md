@@ -5,14 +5,14 @@ title: "标签: load_balance"
 article_count: 36
 ---
 
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — 目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched ...
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
 - [sched-20260818-005](/lkm/2026/08/18/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.html) `feature/medium/under_review` — sched: Flatten the pick — v3 s390 benchmark results
-- [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）
-- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）
-- [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched/cache: 在 active load balance 中落实 migrate_llc_task 语义
-- [sched-20260807-016-sched-fair-nohz-fully-idle-cores](/lkm/2026/08/07/sched-20260807-016-sched-fair-nohz-fully-idle-cores.html) `unknown/none/in-review` — sched/fair: NOHZ 负载均衡优先选择完全空闲核心
-- [sched-20260807-017-sched-fair-wf-sync-stacking-decline](/lkm/2026/08/07/sched-20260807-017-sched-fair-wf-sync-stacking-decline.html) `unknown/none/in-review` — sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠
-- [sched-20260807-020-sched-numa-hygon-remote-socket-distance](/lkm/2026/08/07/sched-20260807-020-sched-numa-hygon-remote-socket-distance.html) `unknown/none/in-review` — sched/numa: 为 Hygon model 7 应用远端 socket 距离平均
+- [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched fair asym capacity load balance merged
+- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched fair nohz fully idle cores merged
+- [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched cache active lb migrate llc task
+- [sched-20260807-016-sched-fair-nohz-fully-idle-cores](/lkm/2026/08/07/sched-20260807-016-sched-fair-nohz-fully-idle-cores.html) `unknown/none/in-review` — sched fair nohz fully idle cores
+- [sched-20260807-017-sched-fair-wf-sync-stacking-decline](/lkm/2026/08/07/sched-20260807-017-sched-fair-wf-sync-stacking-decline.html) `unknown/none/in-review` — sched fair wf sync stacking decline
+- [sched-20260807-020-sched-numa-hygon-remote-socket-distance](/lkm/2026/08/07/sched-20260807-020-sched-numa-hygon-remote-socket-distance.html) `unknown/none/in-review` — sched numa hygon remote socket distance
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260806-008](/lkm/2026/08/06/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.html) `fix/medium/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260806-009](/lkm/2026/08/06/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.html) `feature/none/under_review` — sched/fair: Let sync wakeups target the waker's core

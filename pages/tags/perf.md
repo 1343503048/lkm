@@ -7,12 +7,12 @@ article_count: 30
 
 - [sched-20260810-004](/lkm/2026/08/10/sched-20260810-004-perf-core-sched-task-dispatch-and-branch-entry-fixes.html) `fix/medium/under_review` — perf/core: sched_task() dispatch and branch entry fixes
 - [sched-20260810-005](/lkm/2026/08/10/sched-20260810-005-perf-core-fix-group-leader-use-after-free-after-sibling-deta.html) `fix/high/merged_tip` — perf/core: Fix group leader use-after-free after sibling detach
-- [sched-20260808-005-perf-sched-latency-v9-applied](/lkm/2026/08/08/sched-20260808-005-perf-sched-latency-v9-applied.html) `unknown/none/merged` — perf sched latency: v9 改进已合入 perf-tools-next
-- [sched-20260807-006-perf-core-kfree-nolock-sched](/lkm/2026/08/07/sched-20260807-006-perf-core-kfree-nolock-sched.html) `unknown/none/in-review` — perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）
-- [sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx](/lkm/2026/08/07/sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx.html) `unknown/none/in-review` — perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用
-- [sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes](/lkm/2026/08/07/sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes.html) `unknown/none/in-review` — perf/core: sched_task() dispatch 与 branch entry 修复
-- [sched-20260807-009-perf-core-group-leader-use-after-free](/lkm/2026/08/07/sched-20260807-009-perf-core-group-leader-use-after-free.html) `unknown/none/in-review` — perf/core: 修复 sibling detach 后 group leader 的 use-after-free
-- [sched-20260807-011-psi-use-ffs-task-count-bitmask](/lkm/2026/08/07/sched-20260807-011-psi-use-ffs-task-count-bitmask.html) `unknown/none/in-review` — psi: 用 __ffs() 遍历 task count 位图
+- [sched-20260808-005-perf-sched-latency-v9-applied](/lkm/2026/08/08/sched-20260808-005-perf-sched-latency-v9-applied.html) `unknown/none/merged` — perf sched latency v9 applied
+- [sched-20260807-006-perf-core-kfree-nolock-sched](/lkm/2026/08/07/sched-20260807-006-perf-core-kfree-nolock-sched.html) `unknown/none/in-review` — perf core kfree nolock sched
+- [sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx](/lkm/2026/08/07/sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx.html) `unknown/none/in-review` — perf core sched task cpu wide null pmu ctx
+- [sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes](/lkm/2026/08/07/sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes.html) `unknown/none/in-review` — perf core sched task dispatch branch fixes
+- [sched-20260807-009-perf-core-group-leader-use-after-free](/lkm/2026/08/07/sched-20260807-009-perf-core-group-leader-use-after-free.html) `unknown/none/in-review` — perf core group leader use after free
+- [sched-20260807-011-psi-use-ffs-task-count-bitmask](/lkm/2026/08/07/sched-20260807-011-psi-use-ffs-task-count-bitmask.html) `unknown/none/in-review` — psi use ffs task count bitmask
 - [sched-20260806-001](/lkm/2026/08/06/sched-20260806-001-perf-sched-latency-v9-refine-histogram.html) `feature/none/under_review` — perf sched latency: Refine outputs, unit scaling, and histogram support
 - [sched-20260806-005](/lkm/2026/08/06/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.html) `fix/medium/under_review` — perf/core: sched_task() dispatch and branch entry fixes
 - [sched-20260805-011](/lkm/2026/08/05/sched-20260805-011-perf-sched-latency-refine.html) `feature/none/under_review` — perf sched latency: Refine outputs, unit scaling, and histogram support

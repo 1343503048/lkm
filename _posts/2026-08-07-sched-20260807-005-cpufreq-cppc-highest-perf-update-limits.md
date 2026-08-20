@@ -13,7 +13,7 @@ emails:
   subject: '[PATCH v5 1/3] cpufreq: CPPC: Add update_limits support for highest performance'
 - uid: 26146
   subject: '[PATCH v5 2/3] cpufreq: CPPC: Refactor autonomous perf bounds into helper'
-title: 'cpufreq: CPPC 最高性能寄存器与 update_limits 支持'
+title: cpufreq cppc highest perf update limits
 layout: article
 ---
 

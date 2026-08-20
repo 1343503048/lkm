@@ -46,11 +46,8 @@ tags:
 - topology
 - rt
 - sched/cache
-title: 读 /proc/sys/kernel/sched_rt_runtime_us 在 CONFIG_CPUSETS=n 下因缺少 cpu_hotplug_lock
-  ...
+title: sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains
 layout: article
-subject: 读 /proc/sys/kernel/sched_rt_runtime_us 在 CONFIG_CPUSETS=n 下因缺少 cpu_hotplug_lock
-  ...
 ---
 
 

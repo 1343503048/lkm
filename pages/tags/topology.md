@@ -5,13 +5,13 @@ title: "标签: topology"
 article_count: 32
 ---
 
-- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — 读 /proc/sys/kernel/sched_rt_runtime_us 在 CONFIG_CPUSETS=n 下因缺少 cpu_hotplug_lock ...
+- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains
 - [sched-20260814-003](/lkm/2026/08/14/sched-20260814-003-sched-topology-add-a-cpus-read-lock-to-rebuild-sched-domains.html) `fix/medium/under_review` — sched/topology: Add a cpus_read_lock to rebuild_sched_domains()
 - [sched-20260810-013](/lkm/2026/08/10/sched-20260810-013-sched-topology-don-t-claim-sched-domain-shared-twice-on-the-.html) `fix/low/under_review` — sched/topology: don't claim sched_domain_shared twice on the same domain
-- [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）
-- [sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug](/lkm/2026/08/07/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.html) `unknown/none/in-review` — cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器
-- [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus](/lkm/2026/08/07/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.html) `unknown/none/in-review` — sched/fair: 让 is_core_idle() 检查核心内所有 CPU
-- [sched-20260807-020-sched-numa-hygon-remote-socket-distance](/lkm/2026/08/07/sched-20260807-020-sched-numa-hygon-remote-socket-distance.html) `unknown/none/in-review` — sched/numa: 为 Hygon model 7 应用远端 socket 距离平均
+- [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched fair asym capacity load balance merged
+- [sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug](/lkm/2026/08/07/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.html) `unknown/none/in-review` — cpufreq cppc preserve registers hotplug
+- [sched-20260807-015-sched-fair-is-core-idle-check-all-cpus](/lkm/2026/08/07/sched-20260807-015-sched-fair-is-core-idle-check-all-cpus.html) `unknown/none/in-review` — sched fair is core idle check all cpus
+- [sched-20260807-020-sched-numa-hygon-remote-socket-distance](/lkm/2026/08/07/sched-20260807-020-sched-numa-hygon-remote-socket-distance.html) `unknown/none/in-review` — sched numa hygon remote socket distance
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260806-003](/lkm/2026/08/06/sched-20260806-003-sched-dynamic-simplify-preempt_dynamic-v2.html) `feature/none/under_review` — sched: dynamic: Simplify preempt_schedule{,_notrace}()
 - [sched-20260806-004](/lkm/2026/08/06/sched-20260806-004-sched-core-dont-pin-idle-task-migrate-disable-switch.html) `fix/high/under_review` — sched/core: Don't pin the idle task in migrate_disable_switch()

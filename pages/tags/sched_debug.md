@@ -8,7 +8,7 @@ article_count: 27
 - [sched-20260810-002](/lkm/2026/08/10/sched-20260810-002-sched-fair-use-list-for-each-entry-rcu-in-print-cfs-stats.html) `fix/medium/under_review` — sched/fair: Use list_for_each_entry_rcu() in print_cfs_stats()
 - [sched-20260810-003](/lkm/2026/08/10/sched-20260810-003-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260809-001](/lkm/2026/08/09/sched-20260809-001-sched-debug-introduce-per-cpu-debugfs-files.html) `feature/none/under_review` — sched/debug: Introduce per-CPU debugfs files
-- [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt: 简化 PREEMPT_DYNAMIC（v2）
+- [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt dynamic simplify v2
 - [sched-20260806-001](/lkm/2026/08/06/sched-20260806-001-perf-sched-latency-v9-refine-histogram.html) `feature/none/under_review` — perf sched latency: Refine outputs, unit scaling, and histogram support
 - [sched-20260806-005](/lkm/2026/08/06/sched-20260806-005-perf-core-sched_task-dispatch-fixes-v6.html) `fix/medium/under_review` — perf/core: sched_task() dispatch and branch entry fixes
 - [sched-20260805-009](/lkm/2026/08/05/sched-20260805-009-sched-debug-per-cpu-debugfs-files.html) `feature/medium/under_review` — sched debug per cpu debugfs files

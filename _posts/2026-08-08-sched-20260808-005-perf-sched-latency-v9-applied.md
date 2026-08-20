@@ -13,7 +13,7 @@ emails:
 - uid: 27929
   subject: 'Re: [PATCH v9 0/4] perf sched latency: Refine outputs, unit scaling, and
     histogram support'
-title: 'perf sched latency: v9 改进已合入 perf-tools-next'
+title: perf sched latency v9 applied
 layout: article
 ---
 

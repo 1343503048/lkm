@@ -43,9 +43,8 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: sched-ext 文档两连修：(1) 把 cpu.max / cpu.max.burst / cpu.idle 的描述从'仅影响 fair-class'改为'...
+title: sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
 layout: article
-subject: sched-ext 文档两连修：(1) 把 cpu.max / cpu.max.burst / cpu.idle 的描述从'仅影响 fair-class'改为'...
 ---
 
 

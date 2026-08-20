@@ -12,7 +12,7 @@ submitter: Andrea Righi
 emails:
 - uid: 26398
   subject: '[PATCH] sched: preserve reset-on-fork across concurrent sched_setparam()'
-title: 'sched: 并发 sched_setparam 下保留 reset-on-fork'
+title: sched preserve reset on fork
 layout: article
 ---
 

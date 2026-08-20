@@ -14,7 +14,7 @@ submitter: Andrea Righi (NVIDIA)
 emails:
 - uid: 28237
   subject: '[tip: sched/core] sched/fair: Prefer fully idle cores for NOHZ balancing'
-title: 'sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）'
+title: sched fair nohz fully idle cores merged
 layout: article
 ---
 

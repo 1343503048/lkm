@@ -6,8 +6,8 @@ article_count: 15
 ---
 
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core
-- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched/fair: NOHZ 负载均衡优先选择完全空闲核心（已合入 tip）
-- [sched-20260807-016-sched-fair-nohz-fully-idle-cores](/lkm/2026/08/07/sched-20260807-016-sched-fair-nohz-fully-idle-cores.html) `unknown/none/in-review` — sched/fair: NOHZ 负载均衡优先选择完全空闲核心
+- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched fair nohz fully idle cores merged
+- [sched-20260807-016-sched-fair-nohz-fully-idle-cores](/lkm/2026/08/07/sched-20260807-016-sched-fair-nohz-fully-idle-cores.html) `unknown/none/in-review` — sched fair nohz fully idle cores
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260805-002](/lkm/2026/08/05/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260804-005](/lkm/2026/08/04/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.html) `feature/none/under_review` — sched/fair: Allow load balancing between CPUs of identical capacity
