@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 搜索功能
+  // ── Search ──
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   let searchIndex = [];
 
   if (searchInput) {
-    // 加载搜索索引
     fetch('/lkm/assets/search.json')
       .then(r => r.json())
       .then(data => { searchIndex = data; })
@@ -13,10 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     searchInput.addEventListener('input', function() {
       const query = this.value.toLowerCase().trim();
-      if (query.length < 2) {
-        searchResults.innerHTML = '';
-        return;
-      }
+      if (query.length < 2) { searchResults.innerHTML = ''; return; }
 
       const results = searchIndex.filter(item =>
         item.title.toLowerCase().includes(query) ||
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
       ).join('');
     });
 
-    // 点击外部关闭搜索结果
     document.addEventListener('click', function(e) {
       if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
         searchResults.innerHTML = '';
@@ -48,33 +43,82 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 筛选功能
+  // ── Filters ──
   const filterType = document.getElementById('filter-type');
   const filterStatus = document.getElementById('filter-status');
+  const filterSort = document.getElementById('filter-sort');
   const filterReset = document.getElementById('filter-reset');
-  const cards = document.querySelectorAll('.article-card');
+  const filterCount = document.getElementById('filter-count');
+  const btnShowAll = document.getElementById('btn-show-all');
+  const allCards = document.querySelectorAll('.article-card');
+  const allGroups = document.querySelectorAll('.date-group');
+  const totalCards = allCards.length;
 
-  if (filterType && filterStatus && cards.length > 0) {
-    function applyFilters() {
-      const typeVal = filterType.value;
-      const statusVal = filterStatus.value;
-
-      cards.forEach(card => {
-        const matchType = !typeVal || card.dataset.type === typeVal;
-        const matchStatus = !statusVal || card.dataset.status === statusVal;
-        card.style.display = (matchType && matchStatus) ? '' : 'none';
-      });
+  // Update count display
+  function updateCount(visible) {
+    if (filterCount) {
+      if (visible === totalCards) {
+        filterCount.textContent = `共 ${totalCards} 篇`;
+      } else {
+        filterCount.textContent = `${visible} / ${totalCards} 篇`;
+        filterCount.style.color = '#2563eb';
+      }
     }
+  }
+  updateCount(totalCards);
 
-    filterType.addEventListener('change', applyFilters);
-    filterStatus.addEventListener('change', applyFilters);
+  // Severity sort order
+  const severityOrder = { critical: 0, high: 1, medium: 2, low: 3, none: 4, unknown: 5 };
 
-    if (filterReset) {
-      filterReset.addEventListener('click', function() {
-        filterType.value = '';
-        filterStatus.value = '';
-        cards.forEach(card => card.style.display = '');
-      });
-    }
+  function applyFilters() {
+    const typeVal = filterType ? filterType.value : '';
+    const statusVal = filterStatus ? filterStatus.value : '';
+    let visible = 0;
+
+    allCards.forEach(card => {
+      const matchType = !typeVal || card.dataset.type === typeVal;
+      const matchStatus = !statusVal || card.dataset.status === statusVal;
+      if (matchType && matchStatus) {
+        card.classList.remove('filtered-out');
+        visible++;
+      } else {
+        card.classList.add('filtered-out');
+      }
+    });
+
+    // Show parent date groups if they have visible cards
+    allGroups.forEach(group => {
+      const visibleCards = group.querySelectorAll('.article-card:not(.filtered-out)');
+      if (visibleCards.length === 0) {
+        group.style.display = 'none';
+      } else {
+        group.style.display = '';
+      }
+    });
+
+    updateCount(visible);
+  }
+
+  if (filterType) filterType.addEventListener('change', applyFilters);
+  if (filterStatus) filterStatus.addEventListener('change', applyFilters);
+
+  if (filterReset) {
+    filterReset.addEventListener('click', function() {
+      if (filterType) filterType.value = '';
+      if (filterStatus) filterStatus.value = '';
+      if (filterSort) filterSort.value = 'date-desc';
+      allCards.forEach(card => card.classList.remove('filtered-out'));
+      allGroups.forEach(group => group.style.display = '');
+      updateCount(totalCards);
+    });
+  }
+
+  // ── Show all / collapse ──
+  if (btnShowAll) {
+    btnShowAll.addEventListener('click', function() {
+      const collapsed = document.querySelectorAll('.date-group-collapsed');
+      collapsed.forEach(g => g.classList.add('show-all'));
+      this.style.display = 'none';
+    });
   }
 });

@@ -37,11 +37,21 @@ title: 首页
       <option value="rfc">rfc</option>
     </select>
   </div>
+  <div class="filter-group">
+    <label>排序:</label>
+    <select id="filter-sort">
+      <option value="date-desc">最新优先</option>
+      <option value="severity">严重度优先</option>
+    </select>
+  </div>
   <button class="btn-reset" id="filter-reset">重置</button>
+  <span class="filter-count" id="filter-count"></span>
 </div>
 
 <div class="article-list" id="article-list">
 {% assign current_date = '' %}
+{% assign day_index = 0 %}
+{% assign recent_days = 3 %}
 {% for post in site.posts %}
   {% assign post_date = post.date | date: '%Y-%m-%d' %}
   {% if post_date != current_date %}
@@ -49,10 +59,15 @@ title: 首页
     </div>
     {% endunless %}
     {% assign current_date = post_date %}
-    <div class="date-group">
+    {% assign day_index = day_index | plus: 1 %}
+    {% if day_index <= recent_days %}
+    <div class="date-group date-group-expanded" data-date="{{ current_date }}">
+    {% else %}
+    <div class="date-group date-group-collapsed" data-date="{{ current_date }}">
+    {% endif %}
     <h2 class="date-header">{{ current_date }}</h2>
   {% endif %}
-  <div class="article-card" data-type="{{ post.type }}" data-status="{{ post.status }}">
+  <div class="article-card" data-type="{{ post.type }}" data-status="{{ post.status }}" data-severity="{{ post.severity }}">
     <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
     <div class="card-badges">
       <span class="badge type-{{ post.type }}">{{ post.type }}</span>
@@ -69,13 +84,20 @@ title: 首页
     {% if post.tags %}
     <div class="card-tags">
       {% for tag in post.tags limit:5 %}
-      <a href="{{ '/pages/tags/' | append: tag | replace: '/', '_' | append: '.html' | relative_url }}" class="tag-link">{{ tag }}</a>
+      <a href="{{ '/pages/tags/' | append: tag | replace: '/', '_' | append: '.html' | relative_url }}" class="tag-link">{{ tag | replace: '_', ' ' }}</a>
       {% endfor %}
     </div>
     {% endif %}
   </div>
-  {% endfor %}
-  {% unless current_date == '' %}
-  </div>
-  {% endunless %}
+{% endfor %}
+{% unless current_date == '' %}
 </div>
+{% endunless %}
+</div>
+
+{% assign total_days = day_index %}
+{% if total_days > recent_days %}
+<div class="show-more-bar">
+  <button class="btn-show-more" id="btn-show-all">展开全部 {{ total_days }} 天</button>
+</div>
+{% endif %}
