@@ -352,3 +352,191 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 
 /* ── Footer ── */
 .footer { background: #fff; border-top: 1px solid #e5e7eb; padding: 1.5rem 0; margin-top: 3rem; text-align: center; font-size: 0.85rem; color: #9ca3af; }
+
+/* ── Home Split-Pane Layout ── */
+.home-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 0;
+  height: calc(100vh - 120px);
+  margin-top: -1rem;
+}
+
+.home-list-panel {
+  overflow-y: auto;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem 1.25rem 2rem;
+  background: #f8fafc;
+}
+
+.home-read-panel {
+  overflow-y: auto;
+  padding: 1.5rem 2.5rem;
+  background: #fff;
+  scroll-behavior: smooth;
+}
+
+/* Placeholder when no article selected */
+.read-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: #9ca3af;
+  text-align: center;
+}
+.placeholder-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.read-placeholder p { font-size: 0.95rem; }
+
+/* Article card active state (selected) */
+.article-card.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+.article-card.active .card-title a { color: #2563eb; }
+
+/* Loading spinner */
+.read-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+.read-loading::after {
+  content: '';
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error state */
+.read-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  color: #6b7280;
+  text-align: center;
+}
+.read-error p { margin-bottom: 0.75rem; }
+.read-error a { color: #2563eb; font-weight: 500; }
+
+/* Right panel article content styling */
+.home-read-panel .article-header { margin-bottom: 1.5rem; }
+.home-read-panel .article-header h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 0.85rem;
+  color: #111827;
+}
+.home-read-panel .article-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin-bottom: 0.6rem; }
+.home-read-panel .article-authors { font-size: 0.85rem; color: #6b7280; display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 1rem; }
+.home-read-panel .article-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid #e5e7eb; }
+.home-read-panel .article-body { font-size: 0.95rem; line-height: 1.8; color: #374151; }
+.home-read-panel .article-body h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #e5e7eb;
+  color: #111827;
+  scroll-margin-top: 20px;
+}
+.home-read-panel .article-body h2:first-child { margin-top: 0.5rem; }
+.home-read-panel .article-body h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: #1f2937; }
+.home-read-panel .article-body p { margin-bottom: 0.85rem; }
+.home-read-panel .article-body code {
+  background: #f1f5f9;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, Consolas, monospace;
+  color: #e11d48;
+}
+.home-read-panel .article-body pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1.1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.home-read-panel .article-body pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+.home-read-panel .article-body ul, .home-read-panel .article-body ol { margin-left: 1.5rem; margin-bottom: 0.85rem; }
+.home-read-panel .article-body li { margin-bottom: 0.3rem; }
+.home-read-panel .article-body blockquote {
+  border-left: 4px solid #2563eb;
+  padding: 0.6rem 1rem;
+  background: #f8fafc;
+  border-radius: 0 6px 6px 0;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+.home-read-panel .article-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e5e7eb;
+}
+.home-read-panel .footer-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem; }
+.home-read-panel .footer-meta code { background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.82em; }
+.home-read-panel .footer-id { font-size: 0.78rem; color: #9ca3af; }
+
+/* TOC in read panel */
+.home-read-panel .toc-inline {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.home-read-panel .toc-inline h4 { font-size: 0.82rem; color: #9ca3af; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.home-read-panel .toc-inline ul { list-style: none; margin: 0; padding: 0; }
+.home-read-panel .toc-inline li { margin-bottom: 0.1rem; }
+.home-read-panel .toc-inline a {
+  font-size: 0.82rem;
+  color: #6b7280;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+}
+.home-read-panel .toc-inline a:hover { color: #2563eb; background: #f0f7ff; text-decoration: none; }
+.home-read-panel .toc-inline a.active { color: #2563eb; font-weight: 600; background: #eff6ff; border-left-color: #2563eb; }
+
+/* Lore link in read panel */
+.home-read-panel .lore-link { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e5e7eb; }
+.home-read-panel .lore-link a { font-size: 0.88rem; color: #2563eb; font-weight: 500; }
+
+/* Responsive: stack on mobile */
+@media (max-width: 900px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .home-list-panel {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    max-height: 50vh;
+  }
+  .home-read-panel {
+    min-height: 60vh;
+    padding: 1.25rem;
+  }
+}

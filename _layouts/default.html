@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
 </head>
 <body>
   <nav class="navbar">
@@ -29,5 +29,8 @@
     </div>
   </footer>
   <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+  {% if page.url == '/' or page.url == '/index.html' %}
+  <script src="{{ '/assets/js/home.js' | relative_url }}"></script>
+  {% endif %}
 </body>
 </html>
