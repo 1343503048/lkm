@@ -1,0 +1,74 @@
+---
+layout: default
+---
+<article class="article-page">
+  <nav class="breadcrumbs">
+    <a href="{{ '/' | relative_url }}">首页</a> › 
+    <span>{{ page.title | truncate: 50 }}</span>
+  </nav>
+  <div class="article-layout">
+    <aside class="toc-sidebar"><h4>目录</h4><div id="toc"></div></aside>
+    <div class="article-content">
+      <header class="article-header">
+        <h1>{{ page.title }}</h1>
+        <div class="article-meta">
+          <span class="meta-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+          <span class="badge type-{{ page.type }}">{{ page.type }}</span>
+          <span class="badge status-{{ page.status }}">{{ page.status | replace: '_', ' ' }}</span>
+          {% if page.severity and page.severity != 'none' %}
+          <span class="badge severity-{{ page.severity }}">{{ page.severity }}</span>
+          {% endif %}
+          {% if page.current_version %}<span class="meta-version">{{ page.current_version }}</span>{% endif %}
+        </div>
+        <div class="article-authors">
+          {% if page.authors %}<span><strong>作者:</strong> {{ page.authors | join: ', ' }}</span>{% endif %}
+          {% if page.maintainers_involved %}<span><strong>维护者:</strong> {{ page.maintainers_involved | join: ', ' }}</span>{% endif %}
+        </div>
+      </header>
+      <details class="metadata-card">
+        <summary>详细元数据</summary>
+        <div class="metadata-grid">
+          <div><strong>ID:</strong> {{ page.id }}</div>
+          {% if page.lore_url %}<div><strong>LoRE:</strong> <a href="{{ page.lore_url }}" target="_blank">{{ page.lore_url | truncate: 60 }}</a></div>{% endif %}
+          {% if page.upstream_commit %}<div><strong>Commit:</strong> {{ page.upstream_commit }}</div>{% endif %}
+        </div>
+        {% if page.merge_assessment %}
+        <div class="merge-assessment">
+          <h4>合入评估</h4>
+          <p>可能性: <span class="badge likelihood-{{ page.merge_assessment.likelihood }}">{{ page.merge_assessment.likelihood }}</span></p>
+          {% if page.merge_assessment.next_action %}<p><strong>下一步:</strong> {{ page.merge_assessment.next_action }}</p>{% endif %}
+        </div>
+        {% endif %}
+      </details>
+      <div class="article-tags">
+        {% for tag in page.tags %}
+        <a href="{{ '/pages/tags/' | append: tag | replace: '/', '_' | append: '.html' | relative_url }}" class="tag-link">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      <div class="article-body">{{ content }}</div>
+    </div>
+    <aside class="related-sidebar">
+      {% if page.related_articles and page.related_articles.size > 0 %}
+      <h3>相关文章</h3>
+      <ul>{% for rel_id in page.related_articles %}<li>{{ rel_id }}</li>{% endfor %}</ul>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var body = document.querySelector('.article-body');
+  var toc = document.getElementById('toc');
+  if (!body || !toc) return;
+  var headings = body.querySelectorAll('h2, h3');
+  var html = '<ul>';
+  headings.forEach(function(h) {
+    var id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    h.id = id;
+    var cls = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+    html += '<li class="' + cls + '"><a href="#' + id + '">' + h.textContent + '</a></li>';
+  });
+  html += '</ul>';
+  toc.innerHTML = html;
+});
+</script>

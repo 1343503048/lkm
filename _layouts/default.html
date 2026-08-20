@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙</text></svg>">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="nav-brand" href="{{ '/' | relative_url }}">⚙ Sched LKML Daily</a>
+      <div class="nav-links">
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <a href="{{ '/pages/tags.html' | relative_url }}">标签</a>
+        <a href="https://github.com/1343503048/lkm" target="_blank">GitHub</a>
+      </div>
+      <div class="nav-search">
+        <input type="text" id="search-input" placeholder="搜索..." autocomplete="off">
+        <div id="search-results"></div>
+      </div>
+    </div>
+  </nav>
+  <main class="container">{{ content }}</main>
+  <footer class="footer">
+    <div class="container">
+      <p>Linux 内核调度子系统 LKML 日报 · 自动分析 kernel/sched/* 邮件列表</p>
+    </div>
+  </footer>
+  <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+</body>
+</html>

@@ -193,7 +193,7 @@ def generate_tag_pages(tag_index: dict):
 
         lines = [
             '---',
-            f'layout: tag',
+            f'layout: default',
             f'tag: "{tag}"',
             f'title: "标签: {tag}"',
             f'article_count: {len(articles)}',
@@ -208,7 +208,7 @@ def generate_tag_pages(tag_index: dict):
             title = a.get('title', a.get('id', ''))
             # 使用相对路径（从 pages/tags/ 到 posts/_posts/）
             date_parts = a['date'].replace('-', '/')
-            url = f"../../posts/_posts/{a['date']}-{a['slug']}.html"
+            url = f"/lkm/{a['date'].replace('-', '/')}/{a['slug']}.html"
             lines.append(
                 f'- [{a["id"]}]({url}) `{type_str}/{severity}/{status}` — {title}'
             )
