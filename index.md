@@ -41,11 +41,17 @@ title: 首页
 </div>
 
 <div class="article-list" id="article-list">
-{% assign posts_by_date = site.posts | group_by_exp: "p: p.date | date: '%Y-%m-%d'" %}
-{% for group in posts_by_date %}
-<div class="date-group">
-  <h3 class="date-header">{{ group.name }} <span class="count">({{ group.items | size }} 篇)</span></h3>
-  {% for post in group.items %}
+{% assign current_date = '' %}
+{% for post in site.posts %}
+  {% assign post_date = post.date | date: '%Y-%m-%d' %}
+  {% if post_date != current_date %}
+    {% unless current_date == '' %}
+    </div>
+    {% endunless %}
+    {% assign current_date = post_date %}
+    <div class="date-group">
+    <h3 class="date-header">{{ current_date }}</h3>
+  {% endif %}
   <div class="article-card" data-type="{{ post.type }}" data-status="{{ post.status }}">
     <div class="card-header">
       <span class="badge type-{{ post.type }}">{{ post.type }}</span>
@@ -67,7 +73,8 @@ title: 首页
     </div>
     {% endif %}
   </div>
-  {% endfor %}
-</div>
 {% endfor %}
+{% unless current_date == '' %}
+</div>
+{% endunless %}
 </div>
