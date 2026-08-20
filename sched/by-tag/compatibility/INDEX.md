@@ -2,4 +2,4 @@
 
 共 1 篇
 
-- [sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo](../../2026/08/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.md) `fix/low/merged_tip` — Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`），修复 64 位 enum 恢复、v6.18+ `is_migration_disabled()` 少报等问题。已基于 `sched_ext/for-7.3-fixes`，属常规同步。
+- [sched-20260820-002](../../2026/08/sched-20260820-002.md) `feature/low/under_review` — Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `PTR_UNTRUSTED` 改为 `PTR_TRUSTED`，因为 ops 调用上下文已保证其可信。用户写 BPF 调度器时不再被迫加冗余检查。已通过 bpf CI，合入概率高。

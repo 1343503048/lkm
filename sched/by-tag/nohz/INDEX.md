@@ -1,19 +1,5 @@
 # tag: nohz
 
-共 15 篇
+共 1 篇
 
-- [sched-20260810-009](../../2026/08/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。
-- [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md](../../2026/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.md) `merged`
-- [sched-20260807-016-sched-fair-nohz-fully-idle-cores.md](../../2026/08/sched-20260807-016-sched-fair-nohz-fully-idle-cores.md) `in-review`
-- [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review`
-- [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review`
-- [sched-20260804-005](../../2026/08/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NOHZ 负载均衡选 ilb（idle load balancer）CPU 时优先选「整核全 idle」的 CPU，避免把已运行兄弟线程的 SMT 核心当 ilb 损失吞吐。作者实测无调频噪声下 6.2→9.4 TFLOP/s，但加 ibs 噪声后提升消失。v3 已获 Vincent R-b，合入可能性高。
-- [sched-20260803-014](../../2026/08/sched-20260803-014-nohz-replace-dead-select-with-choice-default-v2.md) `fix/low/under_review` — `nohz` 用 `choice/default` 替换失效的 `select` 依赖（08-02 系列 005）在 08-03 收到 Reviewed-by，确认语义等价。低严重度，合入可能性高；仍缺 `.config` 对比数据（明确参与点）。
-- [sched-20260802-005](../../2026/08/sched-20260802-005-nohz-replace-dead-select-with-choice-default.md) `fix/low/under_review` — Kconfig 中 `select` 对 `choice` 内的选项无效，`NO_HZ_FULL` 里的 `select VIRT_CPU_ACCOUNTING_GEN` 是一行死代码。补丁删除它并改用 choice 的条件 default 表达同一关系。由静态分析工具 kconfirm 发现，已获一个非维护者的 Reviewed-by，但缺少配置验证数据且无维护者关注，存在沉寂风险。
-- [sched-20260802-001](../../2026/08/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md) `fix/low/under_review` — `housekeeping_init()` 在 deferred struct page 初始化完成之前调用 `memblock_free()` 释放 bootmem cpumask，在 `CONFIG_DEFERRED_STRUCT_PAGE_INIT=y` 时每种 housekeeping 类型触发一条 WARN 并给内核打上 `G W` 污点。补丁把释放动作推迟到 `core_initcal
-- [sched-20260801-009](../../2026/08/sched-20260801-009-cpufreq-intel-pstate-adjust-policy-cur-in-active-mode.md) `fix/low/under_review` — `intel_pstate` 在 performance policy 下把 CPU 钉到固定 pstate 后，却又把 `policy->cur` 覆写成 `policy->min`，导致 nohz_full 隔离 CPU 因为拿不到新的 APERF/MPERF 采样而**永远上报频率下限**。修复很直接：把 `policy->cur` 设为实际钉住的频率。Rafael 与 Srinivas 均
-- [sched-20260801-005](../../2026/08/sched-20260801-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing-v3.md) `feature/under_review` — Andrea Righi 让 NOHZ idle load balancer 优先挑选整个 core 都空闲的 CPU，避免 ILB 跑在繁忙 SMT core 的空闲兄弟线程上而挤占其算力。方案本身简单合理、已经过三轮 reviewer 打磨，但**三个版本自始至终没有给出任何效果数据**，这是它目前唯一的明显短板。
-- [sched-20260731-007](../../2026/07/sched-20260731-007-sched-fair-prefer-fully-idle-cores-nohz-v2-incremental.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260730-008。Andrea Righi (NVIDIA) 的 "Prefer fully idle cores for NOHZ balancing" v2 补丁在 20260731 收到 Mete Durlu 的 s390 测试反馈和代码优化建议。Andrea 指出 Mete 建议的 `is_core_idle()` 实现存在不检查目标 CPU
-- [sched-20260730-008](../../2026/07/sched-20260730-008-sched-fair-prefer-fully-idle-cores-nohz-balancing-v2.md) `feature/under_review` — Andrea Righi 的 v2 补丁优化 NOHZ idle load balancer 的 CPU 选择：优先选择整个 SMT core 都 idle 的 CPU，避免唤醒部分空闲 core 的 sibling。在 NVIDIA Vera 的 GEMM 测试中从 6.2 TFLOP/s 提升到 9.4 TFLOP/s（+51%）。本文为增量更新，完整背景见 sched-20260729-00
-- [sched-20260729-003](../../2026/07/sched-20260729-003-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/high/under_review` — f4c31b07b136 让"无 cpuidle driver"路径也走 got_tick 启发式，导致 Oracle 在 OCI 小规格 VM 上 sysbench 回退最多 -29%；Christian Loehle（ARM）发出单行修复恢复无条件停 tick，Zhan Xusheng 同日给出机理分析。影响虚拟化场景明显，值得测试参与。
-- [sched-20260729-001](../../2026/07/sched-20260729-001-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.md) `feature/under_review` — NVIDIA 的 Andrea Righi 让 NOHZ idle load balancer 优先挑"整个物理核都空闲"的 CPU 来执行，避免 ILB 短暂唤醒 SMT 兄弟线程拖累另一个兄弟的单线程性能；GEMM 实测 6.2 → 9.4 TFLOP/s。当天讨论热烈（7 封），Peter Zijlstra 已介入，review 走向正面，值得关注 v2。
+- [sched-20260820-009](../../2026/08/sched-20260820-009.md) `fix/low/under_review` — Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」，以保留空闲 SMT 兄弟供单线程突发。属 08-09 009 线的延续。
