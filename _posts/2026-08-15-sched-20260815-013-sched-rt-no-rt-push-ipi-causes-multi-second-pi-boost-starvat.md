@@ -1,0 +1,78 @@
+---
+id: sched-20260815-013
+date: 2026-08-15
+subsystem: sched
+type: regression
+status: under_review
+severity: high
+thread_root_msgid: <uid-40964@qq-imap>
+lore_url: 未获取到
+authors:
+- Martin King
+maintainers_involved:
+- Peter Zijlstra
+- Juri Lelli
+- Steven Rostedt
+- Waiman Long
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <uid-40964@qq-imap>
+  date: 2026-08-15
+  summary: NO_RT_PUSH_IPI 配置下，RT 任务 push 失败时 rto 计数不扣除，导致后续 PI-boost 饥饿/迁移停滞。
+  review_outcome: v1 刚发出，期待 RT 维护者（Dietmar/Juri/Steve）确认根因与修复。
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+  - 需 RT 维护者确认 rto 计数语义及 NUMA pushable 排序正确性
+  next_action: 等待 RT 维护者 review；可能需要补测试或调整注释。
+contribution_opportunities:
+- kind: testing
+  description: 在 CONFIG_NO_RT_PUSH_IPI=y 多 NUMA 节点机器上复现并验证 push 失败时 rto 计数正确扣除。
+generated_at: '2026-08-16T00:10:00'
+source_email_count: 2
+related_articles: []
+tags:
+- rt
+- regression
+- locking
+title: 'sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio
+  workloads (dd29c017aed6)'
+layout: article
+---
+
+## TL;DR
+Martin King 报告并修复一个 RT 回归：`CONFIG_NO_RT_PUSH_IPI` 下，当 RT 任务 push 失败（找不到可运行的更低优先级 CPU）时，`rt_rq->rto` 计数未被扣除。残留的 rto 计数让后续 PI-boost 与任务迁移逻辑误判"有 overload"，导致饥饿/迁移停滞。严重度为 high。
+
+## 背景与问题
+`NO_RT_PUSH_IPI` 路径用 `rto_push_irq_work_func` 而非 IPI 来 spread RT 任务。当前逻辑：push 成功才扣 `rto` 计数，push 失败则不扣。这违反了 rto 计数语义（rto 应反映"待 push 的过载任务"），残留计数导致：
+- 后续 `rto_push_irq_work_func` 误以为仍有任务要 push，反复空转；
+- PI-boost 时错误判断候选 CPU，造成 RT 任务饥饿或迁移停滞。
+
+## 技术方案
+在 `NO_RT_PUSH_IPI` 的 push 失败分支上，确保在合适时机扣除 `rto` 计数（与 `rto_start`/`rto_stop` 配对）。并修正 `pushable` 任务的 NUMA 节点排序（此前排序不完整，可能把任务留在非最优节点）。改动集中在 `kernel/sched/rt.c`。
+
+## 版本演进与当前进展
+v1（40964，实为 `[PATCH]`，单 patch）2026-08-15 由 Martin King 发出，回复 41027（此前相关讨论）。标记为 regression。暂无 RT 维护者 review 意见。
+
+## Maintainer 意见与讨论焦点
+v1 刚发出，RT 维护者（Dietmar Eggemann、Juri Lelli、Steve Rostedt、Waiman Long）尚未回复。关键点待确认：
+- rto 计数扣除时机是否覆盖所有 push 失败路径；
+- NUMA pushable 排序修正是否必要且正确。
+
+## 合入评估
+合入可能性中等。RT 回归修复通常优先，但需维护者确认语义。可能要求补充复现/测试或调整注释。
+
+## 效果评估
+预期恢复 `NO_RT_PUSH_IPI` 下 RT 任务的正确 push 与 PI-boost 行为，消除因 stale rto 计数导致的饥饿/停滞。无量化基准，需回归测试验证。
+
+## 我可以参与的点
+- 在 `CONFIG_NO_RT_PUSH_IPI=y` 多 NUMA 机器上复现并验证 push 失败时 rto 计数正确扣除。
+
+## 参考链接
+- lore thread: 未获取到
+- tip-bot commit: 未获取到
+- stable backport: 未获取到

@@ -1,36 +1,3 @@
----
-id: sched-20260819-002
-date: 2026-08-19
-subsystem: sched
-type: discussion
-status: under_review
-severity: high
-thread_root_msgid: "<unknown>"
-lore_url: "未获取到"
-authors: [Aaron Lu, Peter Zijlstra, K Prateek Nayak]
-maintainers_involved: [Peter Zijlstra]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<unknown>"
-    date: 2026-08-19
-    summary: "Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放 core-wide 锁后未触发 RETRY_TASK 而继续，导致 rqX->core_pick 被对端置 NULL 后 NULL 解引用。Peter 倾向在 pick 时取本地 core_task_seq 副本、末尾校验，但仍担心活锁；并点出 sched_ext 让问题更复杂（引用 8/19 另一封 sched_ext 邮件 [1]）。"
-    review_outcome: "讨论中，尚无合入补丁；Peter 自述 'Only bad ideas so far'，需先理清 core-sched 与 sched_ext 的交互。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["缺乏带前进进度保证的修复（RETRY_TASK 重做有活锁风险）", "sched_ext 参与 pick 使 core-sched 的锁中断语义更复杂"]
-  next_action: "Peter 表示需进一步研究，可能等其休假回来后再推进；需限定 lock-break/newidle 调用次数以提供前进保证。"
-contribution_opportunities:
-  - kind: discussion
-    description: "可帮忙构造一个最小化复现/syzkaller 用例，或分析如何用 core_task_seq 本地副本 + 有限次重试消除活锁担忧。"
-generated_at: "2026-08-20T00:30:00"
-source_email_count: 3
-related_articles: ["sched-20260817-001", "sched-20260818-001", "sched-20260818-002"]
-tags: [core_sched, sched/core, crash, proxy_execution]
----
 
 ## TL;DR
 core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续，造成 `rqX->core_pick` 被对端置 NULL 后空指针解引用。Peter 8/19 回复承认这是个漂亮竞态，但尚无好修复，且 sched_ext 参与让问题更复杂。属于 08-17→08-18 core_sched/proxy_exec 讨论线的延续。
@@ -65,3 +32,37 @@ Peter 的初步想法：在 pick 时取 `core_task_seq` 的本地副本，末尾
 ## 参考链接
 - lore thread: 未获取到
 - Peter 引用的 [1] sched_ext 邮件（2026-08-19）: 未获取到具体 URL
+
+---
+id: sched-20260819-002
+date: 2026-08-19
+subsystem: sched
+type: discussion
+status: under_review
+severity: high
+thread_root_msgid: "<unknown>"
+lore_url: "未获取到"
+authors: [Aaron Lu, Peter Zijlstra, K Prateek Nayak]
+maintainers_involved: [Peter Zijlstra]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<unknown>"
+    date: 2026-08-19
+    summary: "Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放 core-wide 锁后未触发 RETRY_TASK 而继续，导致 rqX->core_pick 被对端置 NULL 后 NULL 解引用。Peter 倾向在 pick 时取本地 core_task_seq 副本、末尾校验，但仍担心活锁；并点出 sched_ext 让问题更复杂（引用 8/19 另一封 sched_ext 邮件 [1]）。"
+    review_outcome: "讨论中，尚无合入补丁；Peter 自述 'Only bad ideas so far'，需先理清 core-sched 与 sched_ext 的交互。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["缺乏带前进进度保证的修复（RETRY_TASK 重做有活锁风险）", "sched_ext 参与 pick 使 core-sched 的锁中断语义更复杂"]
+  next_action: "Peter 表示需进一步研究，可能等其休假回来后再推进；需限定 lock-break/newidle 调用次数以提供前进保证。"
+contribution_opportunities:
+  - kind: discussion
+    description: "可帮忙构造一个最小化复现/syzkaller 用例，或分析如何用 core_task_seq 本地副本 + 有限次重试消除活锁担忧。"
+generated_at: "2026-08-20T00:30:00"
+source_email_count: 3
+related_articles: ["sched-20260817-001", "sched-20260818-001", "sched-20260818-002"]
+tags: [core_sched, sched/core, crash, proxy_execution]
+---

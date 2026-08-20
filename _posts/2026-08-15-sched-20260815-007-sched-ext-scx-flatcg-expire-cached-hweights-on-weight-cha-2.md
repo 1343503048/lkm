@@ -1,0 +1,73 @@
+---
+id: sched-20260815-007
+date: 2026-08-15
+subsystem: sched
+type: feature
+status: under_review
+severity: low
+thread_root_msgid: <uid-41506@qq-imap>
+lore_url: 未获取到
+authors:
+- Tao Cui
+- Tejun Heo
+maintainers_involved:
+- Tejun Heo
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <uid-41506@qq-imap>
+  date: 2026-08-15
+  summary: 在 cgroup 层级权重变更时让 scx_flatcg 缓存的 hweights 失效/重新计算，避免 stale 权重。
+  review_outcome: Tao Cui 提方案，Tejun 在讨论中给出替代实现思路（'let me see how it looks...'），尚未定稿。
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+  - Tejun 倾向用自己的实现替代 Tao 的方案，需等其贴出
+  next_action: 等待 Tejun 给出其版本的实现再定稿。
+contribution_opportunities:
+- kind: discussion
+  description: 可在讨论中对比 '在权重变更时主动 invalidate' 与 Tejun 提议的 '定期/按需重算' 两种策略的开销。
+generated_at: '2026-08-16T00:10:00'
+source_email_count: 3
+related_articles:
+- sched-20260815-006
+tags:
+- sched_ext
+- sched/cache
+title: 'sched_ext/scx_flatcg: expire cached hweights on weight changes'
+layout: article
+---
+
+## TL;DR
+本系列（接 08-14 002 的 scx_flatcg 权重连续性讨论）继续推进：当 cgroup 层级权重变更时，让 `scx_flatcg` 缓存的 hweights 失效并重算，避免 stale 权重被沿用。Tao Cui 提方案，Tejun 已有替代思路但未定稿。
+
+## 背景与问题
+`scx_flatcg` 为性能缓存了 cgroup 层级的 hweights。当某 cgroup 的权重被运行时修改（如 `cpu.weight` 调整），缓存未及时失效，调度器会用 stale 权重做公平决策，与真实配置脱节。
+
+## 技术方案（讨论中）
+- Tao Cui 方案：在权重变更路径上主动将缓存的 hweights 标记为过期（expire），下次使用时重算。
+- Tejun 在邮件中倾向另一种实现（"let me see how it looks..."，大致为更轻量的重算触发），并提示要配合 006 的 cvtime true-up 一起考虑。
+
+## 版本演进与当前进展
+作为 08-14 系列 002 的延续（ref: 41008/40948/40686），2026-08-15 新一轮讨论（41506）。尚处于方案讨论，未形成最终 patch v1。
+
+## Maintainer 意见与讨论焦点
+- Tejun Heo：已 apply 006 的临时 true-up，但指出本系列要配合"更大层级权重重构"，并倾向用自己的实现替代 Tao 的方案。
+- Tao Cui：持续推动 stale hweight 修复。
+
+## 合入评估
+合入可能性中等。由于 Tejun 倾向自实现，final 形态待定；Tao 的方案作为讨论基础。
+
+## 效果评估
+目标消除 stale 权重导致的公平偏差；尚未有性能数据/最终实现。
+
+## 我可以参与的点
+- 在讨论中对比"变更时主动 invalidate"与"定期/按需重算"的开销与正确性边界。
+
+## 参考链接
+- lore thread: 未获取到
+- tip-bot commit: 未获取到
+- stable backport: 未获取到

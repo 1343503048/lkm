@@ -1,0 +1,85 @@
+---
+id: sched-20260817-003
+date: 2026-08-17
+subsystem: sched
+type: feature
+status: merged_tip
+severity: high
+thread_root_msgid: <uid-43283@qq-imap>
+lore_url: 未获取到
+authors:
+- Ingo Molnar
+- Peter Zijlstra
+maintainers_involved:
+- Peter Zijlstra
+- Ingo Molnar
+- Thomas Gleixner
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <uid-43283@qq-imap>
+  date: 2026-08-17
+  summary: v7.3 调度器合并窗口 PR：flatten-the-pick cgroup 调度、EEVDF 单 run queue、short-slice
+    延迟、RT 抢占下限、scx/core-sched 支持等。
+  review_outcome: Ingo 已发 PR 给 Linus（合入 7.3 合并窗口）。
+upstream_commit: null
+fixes_commit: null
+merged_branch: tip/sched/core → v7.3
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: 已发 PR，等待 Linus 合入 7.3。
+contribution_opportunities:
+- kind: review
+  description: 可跟进 EEVDF 单 run queue 与 flatten-the-pick 在下游发行版的实际基准，关注单 RQ 对 NUMA
+    的影响。
+generated_at: '2026-08-18T00:10:00'
+source_email_count: 1
+related_articles:
+- sched-20260815-014
+tags:
+- sched/core
+- eevdf
+- cgroup
+- rt
+- sched_ext
+- core_sched
+title: Scheduler updates for v7.3
+layout: article
+---
+
+## TL;DR
+Ingo Molnar 发出 v7.3 合并窗口的 **Scheduler updates for v7.3** PR，规模巨大：flatten-the-pick cgroup 调度（扁平权重、运行在 per-CPU 队列而非 cgroup 层级）、EEVDF 核心拆解到单 run queue（CFS 去掉每 cgroup 内部队列）、short-slice 延迟优化、RT 抢占下限、scx 的 sub-scheduler 与 core-sched 支持等。已发 PR 给 Linus，进入 7.3 合并窗口。
+
+## 背景与问题
+传统 CFS 用 per-cgroup（per-CPU 内部）运行队列 + 周期性从底层向上拉取（hierarchical pick），在深层 cgroup 下带来额外开销与偶发 tail latency。EEVDF 作为默认调度类的演进需要更扁平、更低延迟的队列结构。
+
+## 技术方案（PR 要点）
+- **flatten-the-pick**：cgroup 调度扁平化，任务直接运行在 per-CPU 队列、按扁平权重参与公平竞争，去掉 per-cgroup per-CPU 内部队列与周期性向上拉取。Bias 通过对 `cfs_rq->removed`/`tg->shares` 的增量更新实现 O(1) 退出路径。
+- **EEVDF 单 run queue**：把 CFS rq 拆解为单一 `run_queue`（task 与 task_group 共享），移除 `cfs_rq->on_list` 的层级 pick；`tg->load_avg` 维护改为增量。task_group 仍保留用于带宽（CPU cgroup 控制器）与统计，但不出现在常规 pick 路径。
+- **short-slice 延迟**：把 slice 拆为 short-slice 与 full-slice，每 short-slice 末尾给更高优先级/被抢占者一次迁移机会，缩短 `schedule()` 重入 tail latency。实测实现 `sc->wakeup` 关键路径 ~260ns 重入（相关 patch 在 tip WIP 树）。
+- **RT 抢占下限**：`__schedule()` 末尾加 per-RQ 拥塞感知的抢占下限（受 `sysctl_sched_rt_preempt_floor` 控制），防 hrtick 风暴。
+- **scx**：sub-scheduler 支持、core-sched 支持（见 08-16 系列 002）。
+- **misc**：sched/numa 简化、sched/isolation `isolcpus=nohousekeeping`、未使用代码移除等。
+- 与 sched/rt、sched/eevdf 主题分支合并冲突已在 tip 树解决。
+
+## 版本演进与当前进展
+Ingo 于 2026-08-17 发 PR（基于 ~7.2 收尾期），面向 7.3 合并窗口。Peter Zijlstra 为实际系列作者，Ingo 整理合并冲突后发 PR。
+
+## Maintainer 意见与讨论焦点
+- Ingo：PR 已发 Linus；说明解决了与 sched/rt、sched/eevdf 分支的合并冲突，逐项列出。
+- 潜在风险：PR 末尾明确提示"并未改变 CFS 调度类默认行为"，意在降低 Linus 合并顾虑；但 flat + 单 RQ 属较大结构性改动，预计 review 在合入后持续。
+
+## 合入评估
+已发 PR 进入 7.3 合并窗口，合入可能性高。属核心调度器大改，需关注后续 -rc 期的 regressions 反馈。
+
+## 效果评估
+目标：深层 cgroup 下降低 wakeup/schedule 重入 tail latency（short-slice 实测 ~260ns `sc->wakeup` 重入）、减少层级 pick 开销。无统一基准数据，需 -rc 期验证。
+
+## 我可以参与的点
+- 跟进 EEVDF 单 RQ / flatten-the-pick 在下游发行版的基准，尤其关注单 RQ 对 NUMA 平衡的影响。
+
+## 参考链接
+- lore thread: 未获取到
+- tip-bot commit: 未获取到
+- stable backport: 未获取到

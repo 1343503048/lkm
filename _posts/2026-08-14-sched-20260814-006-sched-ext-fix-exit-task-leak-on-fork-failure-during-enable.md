@@ -1,0 +1,72 @@
+---
+id: sched-20260814-006
+date: 2026-08-14
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: <20260814112623.scx_fork_leak@fang>
+lore_url: 未获取到
+authors:
+- Qiurong Fang
+maintainers_involved:
+- Tejun Heo
+- David Vernet
+- Changwoo Min
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <20260814112623.scx_fork_leak@fang>
+  date: 2026-08-14
+  summary: scx_fork() 在 scx_init_task_enabled 置位时初始化任务，但 scx_cancel_fork() 仅在 scx_enabled()
+    为真时退出任务。enable 窗口（释放 scx_fork_rwsem 与置位 __scx_enabled 之间）内失败的 fork 会执行 ops.init_task()
+    却从不调用 ops.exit_task()，导致泄漏。改为以 scx_init_task_enabled 为门槛。
+  review_outcome: v1 发出，单行修改。
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: 等待 scx 维护者确认门控条件。
+contribution_opportunities:
+- kind: review
+  description: 评审用 scx_init_task_enabled 替代 scx_enabled() 的门控语义是否正确覆盖 enable 窗口。
+- kind: testing
+  description: 构造 enable 窗口内 fork 失败场景验证无 task 泄漏。
+generated_at: '2026-08-15T00:15:00'
+source_email_count: 1
+related_articles: []
+tags:
+- sched_ext
+title: 'sched_ext: Fix exit_task leak on fork failure during enable'
+layout: article
+---
+
+## TL;DR
+Qiurong Fang 修复 sched_ext：`scx_cancel_fork()` 在 enable 窗口（释放 `scx_fork_rwsem` 与置位 `__scx_enabled` 之间）内失败的 fork 会执行 `ops.init_task()` 却不调用 `ops.exit_task()`，造成任务泄漏。改为以 `scx_init_task_enabled` 为门控。单行修复，合入可能性 high。
+
+## 背景与问题
+`scx_fork()` 在 `scx_init_task_enabled` 置位时初始化（调用 `ops.init_task()`）任务。但 `scx_cancel_fork()` 仅在 `scx_enabled()` 为真时才调用 `ops.exit_task()` 退出任务。在 enable 窗口（已释放 `scx_fork_rwsem` 但尚未置位 `__scx_enabled`）内失败的 fork，会执行 `init_task` 却永不 `exit_task`，导致 BPF 调度器侧任务状态泄漏。
+
+## 技术方案
+将 `scx_cancel_fork()` 的门控从 `scx_enabled()` 改为 `scx_init_task_enabled`，使任何走过 `init_task` 路径的失败 fork 都能对称地触发 `exit_task`。最小一行修改，语义对应 `scx_fork()` 的初始化条件。
+
+## 版本演进与当前进展
+当前 v1。8/14 发出。
+
+## Maintainer 意见与讨论焦点
+纯修复，预期无争议。焦点在门控条件是否精确匹配 `scx_fork()` 的初始化门槛。
+
+## 合入评估
+合入可能性 high。明确的对称修复，风险低。
+
+## 效果评估
+修复 enable 窗口内 fork 失败的 task 泄漏。
+
+## 我可以参与的点
+- 构造 enable 窗口 fork 失败压测验证无泄漏；
+- 评审门控条件与 `scx_fork()` 的一致性。
+
+## 参考链接
+- lore: 未获取到

@@ -1,36 +1,3 @@
----
-id: sched-20260819-011
-date: 2026-08-19
-subsystem: sched
-type: feature
-status: under_review
-severity: low
-thread_root_msgid: "<unknown>"
-lore_url: "未获取到"
-authors: [unknown]
-maintainers_involved: [Peter Zijlstra, Ingo Molnar, Vincent Guittot]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<unknown>"
-    date: "unknown"
-    summary: "目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched 的交互：在 core cookie 最终确定前做 balance 可能把任务错移到别的 core 上空等，且 core-sched 下 balance 用 RETRY_TASK 机制存疑（参见 article 002 同日 Peter 的 core_sched 竞态分析）。注：本次抓取未拿到系列原始 cover letter，以下为该系列在 8/19 讨论中可确认的内容。"
-    review_outcome: "8/19 回复主要为对 '在 pick 内做 balance 与 core-sched 正确性' 的质疑，尚未见到明确 ack 或合入意向。"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: ["与 core_sched 的交互未厘清（pick 内 balance 的 cookie 一致性、RETRY_TASK 语义）", "原始 cover 与作者未在本批抓取中获取，方案全貌待补"]
-  next_action: "需作者澄清 balance() 移除后在 core-sched 下的等价处理，等待 Peter 对 core_sched 竞态的修复思路落定后再推进。"
-contribution_opportunities:
-  - kind: discussion
-    description: "可帮忙分析移除 balance() 后 core-sched 路径如何保证 cookie 一致性，或提供原 cover letter 的 lore 链接补全上下文。"
-generated_at: "2026-08-20T00:30:00"
-source_email_count: 3
-related_articles: ["sched-20260819-002"]
-tags: [sched/core, load_balance, core_sched]
----
 
 ## TL;DR
 `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复，讨论焦点是与 core_sched 的交互正确性（在 pick 内做 balance 可能错移任务、core-sched 下 RETRY_TASK 语义存疑）。本次抓取未拿到原始 cover，方案全貌与作者待补；合入前景 medium，受同日 core_sched 竞态分析（article 002）牵连。
@@ -65,3 +32,37 @@ tags: [sched/core, load_balance, core_sched]
 ## 参考链接
 - lore thread: 未获取到（需补原始 cover）
 - 关联：article 002（同日 core_sched pick_task 竞态，Peter 8/19 分析）
+
+---
+id: sched-20260819-011
+date: 2026-08-19
+subsystem: sched
+type: feature
+status: under_review
+severity: low
+thread_root_msgid: "<unknown>"
+lore_url: "未获取到"
+authors: [unknown]
+maintainers_involved: [Peter Zijlstra, Ingo Molnar, Vincent Guittot]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<unknown>"
+    date: "unknown"
+    summary: "目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched 的交互：在 core cookie 最终确定前做 balance 可能把任务错移到别的 core 上空等，且 core-sched 下 balance 用 RETRY_TASK 机制存疑（参见 article 002 同日 Peter 的 core_sched 竞态分析）。注：本次抓取未拿到系列原始 cover letter，以下为该系列在 8/19 讨论中可确认的内容。"
+    review_outcome: "8/19 回复主要为对 '在 pick 内做 balance 与 core-sched 正确性' 的质疑，尚未见到明确 ack 或合入意向。"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: ["与 core_sched 的交互未厘清（pick 内 balance 的 cookie 一致性、RETRY_TASK 语义）", "原始 cover 与作者未在本批抓取中获取，方案全貌待补"]
+  next_action: "需作者澄清 balance() 移除后在 core-sched 下的等价处理，等待 Peter 对 core_sched 竞态的修复思路落定后再推进。"
+contribution_opportunities:
+  - kind: discussion
+    description: "可帮忙分析移除 balance() 后 core-sched 路径如何保证 cookie 一致性，或提供原 cover letter 的 lore 链接补全上下文。"
+generated_at: "2026-08-20T00:30:00"
+source_email_count: 3
+related_articles: ["sched-20260819-002"]
+tags: [sched/core, load_balance, core_sched]
+---
