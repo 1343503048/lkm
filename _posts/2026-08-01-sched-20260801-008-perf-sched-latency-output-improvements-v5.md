@@ -1,4 +1,5 @@
 ---
+subject: 'perf sched: Suppress latency table output when trace samples are missing'
 id: sched-20260801-008
 date: 2026-08-01
 subsystem: sched

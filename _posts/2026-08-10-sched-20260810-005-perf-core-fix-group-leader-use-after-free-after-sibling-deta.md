@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: Fix group leader use-after-free after sibling detach'
 id: sched-20260810-005
 date: 2026-08-10
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: Make core-sched flips wait for in-flight selections'
 id: sched-20260810-006
 date: 2026-08-10
 subsystem: sched

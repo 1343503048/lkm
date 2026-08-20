@@ -1,4 +1,5 @@
 ---
+subject: perf sched latency refine outputs v5
 id: sched-20260731-009
 date: 2026-07-31
 subsystem: sched

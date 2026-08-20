@@ -1,4 +1,5 @@
 ---
+subject: 'sched: Reject policy changes with SCHED_FLAG_KEEP_PARAMS'
 id: sched-20260731-008
 date: 2026-07-31
 subsystem: sched

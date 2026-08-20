@@ -1,4 +1,5 @@
 ---
+subject: 'selftests/sched_ext: Fix flaky ddsp failure tests on busy systems'
 id: sched-20260815-015
 date: 2026-08-15
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Sparse annotation cleanups'
 id: sched-20260726-004
 date: 2026-07-26
 subsystem: sched

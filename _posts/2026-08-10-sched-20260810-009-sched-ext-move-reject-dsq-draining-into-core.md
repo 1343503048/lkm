@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Move reject DSQ draining into core'
 id: sched-20260810-009
 date: 2026-08-10
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: CPPC 最高性能寄存器与 update_limits 支持'
 date: 2026-08-07
 series: cpufreq-cppc-highest-perf
 version: v5

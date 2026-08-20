@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Convert arena-pointer interfaces to __arena arguments'
 id: sched-20260814-009
 date: 2026-08-14
 subsystem: sched

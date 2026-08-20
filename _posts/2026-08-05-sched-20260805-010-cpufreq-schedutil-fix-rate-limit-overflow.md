@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled'
 id: sched-20260805-010
 date: '2026-08-05'
 title: 'cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled'

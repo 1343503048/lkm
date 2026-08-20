@@ -45,8 +45,11 @@ tags:
 - sched/core
 - load_balance
 - core_sched
-title: sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
+title: '目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched
+  ...'
 layout: article
+subject: '目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched
+  ...'
 ---
 
 

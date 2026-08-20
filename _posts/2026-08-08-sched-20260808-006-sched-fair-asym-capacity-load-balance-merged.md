@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: 非对称容量域负载均衡改进（已合入 tip/sched/core）'
 date: 2026-08-08
 series: sched-fair-asym-capacity-load-balance
 version: v1

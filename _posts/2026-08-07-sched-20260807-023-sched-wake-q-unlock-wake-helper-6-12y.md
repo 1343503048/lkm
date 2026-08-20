@@ -1,4 +1,5 @@
 ---
+subject: 'sched/wake_q: 6.12.y 上 raw_spin_unlock*_wake() helper 的 backport 评审'
 date: 2026-08-07
 series: sched-wake-q-unlock-wake-6-12y
 version: v1

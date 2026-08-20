@@ -1,4 +1,5 @@
 ---
+subject: 'sched/deadline: check start_dl_timer expiry with ktime_before()'
 id: sched-20260816-001
 date: 2026-08-16
 subsystem: sched

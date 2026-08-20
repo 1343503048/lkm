@@ -1,4 +1,5 @@
 ---
+subject: 'sched/isolation: Defer freeing of the bootmem housekeeping cpumasks'
 id: sched-20260802-001
 date: 2026-08-02
 subsystem: sched

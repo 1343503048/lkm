@@ -41,8 +41,11 @@ related_articles: []
 tags:
 - psi
 - cgroup
-title: sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3
+title: 为 cgroup selftests 新增 test_psi.c：per-resource（io/memory/cpu/irq）PSI 触发烟测（每
+  fd 一个...
 layout: article
+subject: 为 cgroup selftests 新增 test_psi.c：per-resource（io/memory/cpu/irq）PSI 触发烟测（每
+  fd 一个...
 ---
 
 

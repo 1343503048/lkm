@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: 用 kfree_nolock() 替代 kfree_rcu()（调度上下文释放）'
 date: 2026-08-07
 series: perf-core-kfree-nolock
 version: v1

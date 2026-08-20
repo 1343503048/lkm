@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: don''t rehome a dead task in scx_cgroup_task_migrated'
 id: sched-20260815-008
 date: 2026-08-15
 subsystem: sched

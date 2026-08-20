@@ -1,4 +1,5 @@
 ---
+subject: 'sched/deadline: Use revised wakeup rule only for running dl_server'
 id: sched-20260729-002
 date: 2026-07-29
 subsystem: sched

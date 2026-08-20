@@ -1,4 +1,5 @@
 ---
+subject: 'Documentation: sched_ext: fix events sysfs path and show_state example'
 id: sched-20260814-005
 date: 2026-08-14
 subsystem: sched

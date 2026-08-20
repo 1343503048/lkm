@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: Try to use a preferred CPU in is_cpu_allowed'
 id: sched-20260810-008
 date: 2026-08-10
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/cpufreq: Update schedutil''s DVFS request to reach the boost frequencies'
 id: sched-20260806-006
 date: '2026-08-06'
 title: 'sched/cpufreq: Update schedutil''s DVFS request to reach the boost frequencies'

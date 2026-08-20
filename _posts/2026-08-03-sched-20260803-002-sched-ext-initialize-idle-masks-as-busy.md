@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Initialize idle masks as busy'
 id: sched-20260803-002
 date: 2026-08-03
 subsystem: sched

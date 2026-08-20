@@ -1,4 +1,5 @@
 ---
+subject: 'sched/docs: Document cpu_preferred_mask and Preferred CPU concept'
 id: sched-20260730-005
 date: 2026-07-30
 subsystem: sched

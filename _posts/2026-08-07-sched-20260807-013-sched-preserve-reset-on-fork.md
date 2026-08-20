@@ -1,4 +1,5 @@
 ---
+subject: 'sched: 并发 sched_setparam 下保留 reset-on-fork'
 date: 2026-08-07
 series: sched-preserve-reset-on-fork
 version: v1

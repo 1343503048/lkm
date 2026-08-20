@@ -1,4 +1,5 @@
 ---
+subject: 'perf sched latency: Add histogram and time interval options'
 id: sched-20260729-007
 date: 2026-07-29
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: sched_task() dispatch 与 branch entry 修复'
 date: 2026-08-07
 series: perf-core-sched-task-dispatch-branch
 version: v6

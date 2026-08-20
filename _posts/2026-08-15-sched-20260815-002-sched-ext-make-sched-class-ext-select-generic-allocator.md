@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Make SCHED_CLASS_EXT select GENERIC_ALLOCATOR'
 id: sched-20260815-002
 date: 2026-08-15
 subsystem: sched

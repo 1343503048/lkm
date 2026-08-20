@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: 修复 core scheduling 下的 rq 锁释放与 core_pick 损坏'
 date: 2026-08-08
 series: sched-ext-core-scheduling-fixes
 version: v1

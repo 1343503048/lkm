@@ -1,4 +1,5 @@
 ---
+subject: sched debug per cpu debugfs files
 id: sched-20260805-009
 date: '2026-08-05'
 title: sched debug per cpu debugfs files

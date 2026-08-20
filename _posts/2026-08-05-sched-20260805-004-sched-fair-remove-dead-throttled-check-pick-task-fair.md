@@ -1,4 +1,5 @@
 ---
+subject: sched fair remove dead throttled check pick task fair
 id: sched-20260805-004
 date: '2026-08-05'
 title: sched fair remove dead throttled check pick task fair

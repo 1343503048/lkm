@@ -1,5 +1,6 @@
 ---
 id: sched-20260818-004
+subject: 'sched_ext: allow ops.cgroup_set_bandwidth() to be sleepable'
 date: 2026-08-18
 subsystem: sched
 type: feature

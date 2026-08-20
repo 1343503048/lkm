@@ -1,5 +1,6 @@
 ---
 id: sched-20260818-002
+subject: 'sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)'
 date: 2026-08-18
 subsystem: sched
 type: feature

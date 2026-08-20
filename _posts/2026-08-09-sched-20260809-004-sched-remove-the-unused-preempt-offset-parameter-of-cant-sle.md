@@ -1,4 +1,5 @@
 ---
+subject: 'sched: Remove the unused preempt_offset parameter of __cant_sleep()'
 id: sched-20260809-004
 date: 2026-08-09
 subsystem: sched

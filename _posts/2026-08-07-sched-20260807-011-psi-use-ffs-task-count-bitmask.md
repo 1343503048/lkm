@@ -1,4 +1,5 @@
 ---
+subject: 'psi: 用 __ffs() 遍历 task count 位图'
 date: 2026-08-07
 series: psi-use-ffs
 version: v2

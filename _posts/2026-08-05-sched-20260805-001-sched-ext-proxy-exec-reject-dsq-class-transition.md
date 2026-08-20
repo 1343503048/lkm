@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Block proxy donors across scheduler transitions'
 id: sched-20260805-001
 date: '2026-08-05'
 title: 'sched_ext: Block proxy donors across scheduler transitions'

@@ -1,4 +1,5 @@
 ---
+subject: 'arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS'
 id: sched-20260805-012
 date: '2026-08-05'
 title: 'arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS'

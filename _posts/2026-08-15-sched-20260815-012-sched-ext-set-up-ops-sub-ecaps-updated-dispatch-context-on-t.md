@@ -1,4 +1,6 @@
 ---
+subject: 'sched_ext: Set up ops.sub_ecaps_updated() dispatch context on the executing
+  CPU'
 id: sched-20260815-012
 date: 2026-08-15
 subsystem: sched

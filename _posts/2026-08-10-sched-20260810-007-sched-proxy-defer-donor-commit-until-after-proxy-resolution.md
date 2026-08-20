@@ -1,4 +1,5 @@
 ---
+subject: 'sched/proxy: Defer donor commit until after proxy resolution'
 id: sched-20260810-007
 date: 2026-08-10
 subsystem: sched

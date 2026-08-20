@@ -1,4 +1,5 @@
 ---
+subject: 'sched/cache: 在 active load balance 中落实 migrate_llc_task 语义'
 date: 2026-08-07
 series: sched-cache-active-lb-migrate-llc
 version: v1

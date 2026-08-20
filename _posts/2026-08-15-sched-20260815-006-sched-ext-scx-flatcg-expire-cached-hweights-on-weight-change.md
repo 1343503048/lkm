@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext/scx_flatcg: expire cached hweights on weight changes'
 id: sched-20260815-006
 date: 2026-08-15
 subsystem: sched

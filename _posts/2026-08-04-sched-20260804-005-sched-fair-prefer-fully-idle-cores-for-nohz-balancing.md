@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Allow load balancing between CPUs of identical capacity'
 id: sched-20260804-005
 date: 2026-08-04
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'psi: 防止 rtpoll 拆除后陈旧定时器被重新武装'
 date: 2026-08-07
 series: psi-rtpoll-teardown
 version: v1

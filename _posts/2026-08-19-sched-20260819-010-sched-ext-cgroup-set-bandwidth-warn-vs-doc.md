@@ -46,8 +46,9 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc
+title: 原 RFC 提议：当 cgroup 配了有限 cpu.max 配额但当前 BPF 调度器未实现 cgroup_set_bandwidth 回调时，打印一次性警告...
 layout: article
+subject: 原 RFC 提议：当 cgroup 配了有限 cpu.max 配额但当前 BPF 调度器未实现 cgroup_set_bandwidth 回调时，打印一次性警告...
 ---
 
 

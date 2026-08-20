@@ -1,4 +1,5 @@
 ---
+subject: 'selftests/cpuidle: add idle-state disable selftest'
 id: sched-20260729-008
 date: 2026-07-29
 subsystem: sched

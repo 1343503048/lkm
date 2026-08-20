@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: intel_pstate: Consolidate HWP P-states initialization'
 id: sched-20260804-021
 date: 2026-08-04
 subsystem: cpufreq

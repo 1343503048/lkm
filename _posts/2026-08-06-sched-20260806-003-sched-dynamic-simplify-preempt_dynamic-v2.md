@@ -1,4 +1,5 @@
 ---
+subject: 'sched: dynamic: Simplify preempt_schedule{,_notrace}()'
 id: sched-20260806-003
 date: '2026-08-06'
 title: 'sched: dynamic: Simplify preempt_schedule{,_notrace}()'

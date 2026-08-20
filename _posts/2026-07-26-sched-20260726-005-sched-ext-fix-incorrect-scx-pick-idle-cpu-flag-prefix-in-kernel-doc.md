@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Fix incorrect SCX_PICK_IDLE_CPU_* flag prefix in kernel-doc'
 id: sched-20260726-005
 date: 2026-07-26
 subsystem: sched

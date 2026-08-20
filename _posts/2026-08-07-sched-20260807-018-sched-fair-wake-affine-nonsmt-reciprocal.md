@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: 在非 SMT 互逆关系下保留 wake-affine CPU'
 date: 2026-08-07
 series: sched-fair-wake-affine
 version: v4

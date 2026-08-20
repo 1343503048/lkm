@@ -1,4 +1,5 @@
 ---
+subject: sched psi skip cpus zero non idle delta
 id: sched-20260804-016
 date: 2026-08-04
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Make scx_bpf_events() read the calling scheduler''s counters'
 id: sched-20260815-004
 date: 2026-08-15
 subsystem: sched

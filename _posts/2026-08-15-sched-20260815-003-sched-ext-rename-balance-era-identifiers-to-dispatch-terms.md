@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Rename balance-era identifiers to dispatch terms'
 id: sched-20260815-003
 date: 2026-08-15
 subsystem: sched

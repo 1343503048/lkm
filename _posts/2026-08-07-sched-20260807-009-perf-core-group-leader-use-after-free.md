@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: 修复 sibling detach 后 group leader 的 use-after-free'
 date: 2026-08-07
 series: perf-core-group-leader-uaf
 version: v1

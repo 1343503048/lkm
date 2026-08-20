@@ -1,4 +1,5 @@
 ---
+subject: 'sched/isolation: Defer freeing of cpumask memblock memory to initcall'
 id: sched-20260730-007
 date: 2026-07-30
 subsystem: sched

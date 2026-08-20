@@ -1,4 +1,5 @@
 ---
+subject: 'nohz: replace dead select with choice default'
 id: sched-20260802-005
 date: 2026-08-02
 subsystem: sched

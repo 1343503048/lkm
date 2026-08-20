@@ -1,4 +1,6 @@
 ---
+subject: 'sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio
+  workloads (dd29c017aed6)'
 id: sched-20260815-013
 date: 2026-08-15
 subsystem: sched

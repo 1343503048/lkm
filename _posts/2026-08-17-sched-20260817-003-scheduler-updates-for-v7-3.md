@@ -1,4 +1,5 @@
 ---
+subject: Scheduler updates for v7.3
 id: sched-20260817-003
 date: 2026-08-17
 subsystem: sched

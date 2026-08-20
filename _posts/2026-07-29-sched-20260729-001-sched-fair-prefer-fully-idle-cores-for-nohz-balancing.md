@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Prefer fully idle cores for NOHZ balancing'
 id: sched-20260729-001
 date: 2026-07-29
 subsystem: sched

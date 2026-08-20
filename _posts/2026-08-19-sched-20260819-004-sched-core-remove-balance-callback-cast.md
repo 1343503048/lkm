@@ -36,8 +36,9 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched/core
-title: sched-20260819-004-sched-core-remove-balance-callback-cast
+title: do_balance_callbacks() 中显式函数指针类型转换 (void (*)(struct rq *))head->func 是多余的——它不会改变...
 layout: article
+subject: do_balance_callbacks() 中显式函数指针类型转换 (void (*)(struct rq *))head->func 是多余的——它不会改变...
 ---
 
 

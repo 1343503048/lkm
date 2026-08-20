@@ -1,4 +1,5 @@
 ---
+subject: 'Proxy Execution: Sleeping Owner Handling (v31, resend)'
 date: 2026-08-07
 series: proxy-execution
 version: v31

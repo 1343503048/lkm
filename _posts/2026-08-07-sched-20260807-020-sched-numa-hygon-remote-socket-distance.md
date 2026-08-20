@@ -1,4 +1,5 @@
 ---
+subject: 'sched/numa: 为 Hygon model 7 应用远端 socket 距离平均'
 date: 2026-08-07
 series: sched-numa-hygon
 version: v3

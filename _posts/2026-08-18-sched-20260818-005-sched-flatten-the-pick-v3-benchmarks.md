@@ -1,5 +1,6 @@
 ---
 id: sched-20260818-005
+subject: 'sched: Flatten the pick — v3 s390 benchmark results'
 date: 2026-08-18
 subsystem: sched
 type: feature

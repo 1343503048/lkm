@@ -5,9 +5,9 @@ title: "标签: sched_ext"
 article_count: 55
 ---
 
-- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
-- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo
-- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc
+- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-ext 文档两连修：(1) 把 cpu.max / cpu.max.burst / cpu.idle 的描述从'仅影响 fair-class'改为'...
+- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — 把 scx 仓库中领先内核副本的 tools/sched_ext/include/scx 头文件同步回内核树：__COMPAT_read_enum() 现可在 ...
+- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — 原 RFC 提议：当 cgroup 配了有限 cpu.max 配额但当前 BPF 调度器未实现 cgroup_set_bandwidth 回调时，打印一次性警告...
 - [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
 - [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — [GIT PULL] sched_ext: Changes for v7.3
 - [sched-20260818-004](/lkm/2026/08/18/sched-20260818-004-sched-ext-allow-ops-cgroup-set-bandwidth-to-be-sleepable.html) `feature/medium/under_review` — sched_ext: allow ops.cgroup_set_bandwidth() to be sleepable

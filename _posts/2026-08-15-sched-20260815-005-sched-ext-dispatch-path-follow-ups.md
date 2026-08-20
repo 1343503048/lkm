@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Dispatch path follow-ups'
 id: sched-20260815-005
 date: 2026-08-15
 subsystem: sched

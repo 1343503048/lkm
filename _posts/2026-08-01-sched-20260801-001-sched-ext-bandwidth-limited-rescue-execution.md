@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Sync tools autogen enum headers'
 id: sched-20260801-001
 date: 2026-08-01
 subsystem: sched

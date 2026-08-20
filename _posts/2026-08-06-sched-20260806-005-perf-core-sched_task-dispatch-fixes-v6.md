@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: sched_task() dispatch and branch entry fixes'
 id: sched-20260806-005
 date: '2026-08-06'
 title: 'perf/core: sched_task() dispatch and branch entry fixes'

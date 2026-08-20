@@ -1,4 +1,5 @@
 ---
+subject: sched psi fix 32 bit overflow in trigger window
 id: sched-20260728-008
 date: 2026-07-28
 subsystem: sched

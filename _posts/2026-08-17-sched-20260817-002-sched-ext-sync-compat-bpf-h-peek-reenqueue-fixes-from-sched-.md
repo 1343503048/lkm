@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: sync compat.bpf.h peek/reenqueue fixes from sched-ext/scx'
 id: sched-20260817-002
 date: 2026-08-17
 subsystem: sched

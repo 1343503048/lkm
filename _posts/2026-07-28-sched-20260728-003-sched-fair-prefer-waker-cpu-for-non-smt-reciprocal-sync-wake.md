@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups'
 id: sched-20260728-003
 date: 2026-07-28
 subsystem: sched

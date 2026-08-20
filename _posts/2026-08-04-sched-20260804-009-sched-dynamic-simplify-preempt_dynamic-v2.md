@@ -1,4 +1,5 @@
 ---
+subject: 'sched: dynamic: Simplify PREEMPT_DYNAMIC'
 id: sched-20260804-009
 date: 2026-08-04
 subsystem: sched

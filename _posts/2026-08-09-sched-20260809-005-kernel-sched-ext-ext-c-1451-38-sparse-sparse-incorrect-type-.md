@@ -1,4 +1,6 @@
 ---
+subject: 'kernel/sched/ext/ext.c:1451:38: sparse: sparse: incorrect type in initializer
+  (different address spaces)'
 id: sched-20260809-005
 date: 2026-08-09
 subsystem: sched

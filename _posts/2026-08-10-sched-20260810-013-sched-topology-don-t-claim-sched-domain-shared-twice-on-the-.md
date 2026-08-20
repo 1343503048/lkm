@@ -1,4 +1,5 @@
 ---
+subject: 'sched/topology: don''t claim sched_domain_shared twice on the same domain'
 id: sched-20260810-013
 date: 2026-08-10
 subsystem: sched

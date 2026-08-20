@@ -1,4 +1,5 @@
 ---
+subject: 'sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff'
 id: sched-20260817-005
 date: 2026-08-17
 subsystem: sched

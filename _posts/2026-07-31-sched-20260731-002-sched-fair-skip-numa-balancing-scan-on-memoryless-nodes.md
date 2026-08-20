@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Skip NUMA balancing scan on memoryless nodes'
 id: sched-20260731-002
 date: 2026-07-31
 subsystem: sched

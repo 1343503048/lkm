@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Fix exit_task leak on fork failure during enable'
 id: sched-20260815-009
 date: 2026-08-15
 subsystem: sched

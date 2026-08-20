@@ -1,4 +1,5 @@
 ---
+subject: scheduler fix
 id: sched-20260802-004
 date: 2026-08-02
 subsystem: sched

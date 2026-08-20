@@ -1,4 +1,5 @@
 ---
+subject: 'cgroup: Fixes for v7.2-rc6'
 id: sched-20260803-003
 date: 2026-08-03
 subsystem: sched

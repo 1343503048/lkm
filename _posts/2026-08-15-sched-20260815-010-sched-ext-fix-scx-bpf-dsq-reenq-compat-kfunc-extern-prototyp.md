@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Fix scx_bpf_dsq_reenq___compat kfunc extern prototype'
 id: sched-20260815-010
 date: 2026-08-15
 subsystem: sched

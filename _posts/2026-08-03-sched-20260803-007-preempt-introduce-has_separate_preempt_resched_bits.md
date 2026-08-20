@@ -1,4 +1,5 @@
 ---
+subject: 'preempt: Introduce HAS_SEPARATE_PREEMPT_RESCHED_BITS'
 id: sched-20260803-007
 date: 2026-08-03
 subsystem: sched

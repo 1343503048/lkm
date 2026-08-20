@@ -1,4 +1,5 @@
 ---
+subject: 'sched/numa: Apply remote socket distance averaging for Hygon CPUs'
 id: sched-20260806-014
 date: '2026-08-06'
 title: 'sched/numa: Apply remote socket distance averaging for Hygon CPUs'

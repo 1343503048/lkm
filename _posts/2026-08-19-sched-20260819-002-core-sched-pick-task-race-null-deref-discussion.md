@@ -47,8 +47,10 @@ tags:
 - sched/core
 - crash
 - proxy_execution
-title: sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
+title: Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放 core-w...
 layout: article
+subject: Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放
+  core-w...
 ---
 
 

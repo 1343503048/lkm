@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Bound per-task reenqueues and eject the owning scheduler'
 id: sched-20260726-002
 date: 2026-07-26
 subsystem: sched

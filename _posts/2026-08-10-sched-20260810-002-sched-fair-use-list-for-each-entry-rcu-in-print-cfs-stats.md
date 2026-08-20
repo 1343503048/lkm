@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Use list_for_each_entry_rcu() in print_cfs_stats()'
 id: sched-20260810-002
 date: 2026-08-10
 subsystem: sched

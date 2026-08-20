@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Fix flat hierarchy'
 id: sched-20260814-001
 date: 2026-08-14
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Add selftest for blocked donor admission'
 id: sched-20260728-001
 date: 2026-07-28
 subsystem: sched

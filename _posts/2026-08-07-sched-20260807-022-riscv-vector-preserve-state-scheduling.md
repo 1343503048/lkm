@@ -1,4 +1,5 @@
 ---
+subject: 'riscv: 在非零 Vector 嵌套深度调度时保留 Vector 状态'
 date: 2026-08-07
 series: riscv-vector-preserve-state
 version: v1

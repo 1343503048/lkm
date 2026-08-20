@@ -5,7 +5,7 @@ title: "标签: preempt"
 article_count: 19
 ---
 
-- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
+- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — 将调度子系统中直接使用的 raw static_key / static_key_{true,false}() 及 __cfs_bandwidth_used、p...
 - [sched-20260810-015](/lkm/2026/08/10/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `cleanup/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt: 简化 PREEMPT_DYNAMIC（v2）

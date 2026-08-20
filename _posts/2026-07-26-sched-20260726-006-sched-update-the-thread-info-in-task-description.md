@@ -1,4 +1,5 @@
 ---
+subject: 'sched: Update the THREAD_INFO_IN_TASK description'
 id: sched-20260726-006
 date: 2026-07-26
 subsystem: sched

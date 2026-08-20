@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Fix idle CPU state initialization and validation'
 id: sched-20260804-003
 date: 2026-08-04
 subsystem: sched

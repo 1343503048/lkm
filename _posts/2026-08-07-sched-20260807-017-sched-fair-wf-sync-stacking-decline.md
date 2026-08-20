@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: 当 waker 的 LLC 是瓶颈时拒绝 WF_SYNC 堆叠'
 date: 2026-08-07
 series: sched-fair-wf-sync-stacking
 version: v1

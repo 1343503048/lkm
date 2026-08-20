@@ -1,4 +1,5 @@
 ---
+subject: sched ext set errno on enabling to enabled transition failure
 id: sched-20260728-009
 date: 2026-07-28
 subsystem: sched

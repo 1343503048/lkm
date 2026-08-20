@@ -1,4 +1,5 @@
 ---
+subject: sched rt minor cleanups
 id: sched-20260804-008
 date: 2026-08-04
 subsystem: sched

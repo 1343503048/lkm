@@ -1,4 +1,5 @@
 ---
+subject: 'perf sched latency: Refine outputs, unit scaling, and histogram support'
 id: sched-20260802-003
 date: 2026-08-02
 subsystem: sched

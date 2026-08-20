@@ -1,4 +1,6 @@
 ---
+subject: 'sched/wake_q: Add helper to call wake_up_q after unlock with preemption
+  disabled'
 id: sched-20260806-011
 date: '2026-08-06'
 title: 'sched/wake_q: Add helper to call wake_up_q after unlock with preemption disabled'

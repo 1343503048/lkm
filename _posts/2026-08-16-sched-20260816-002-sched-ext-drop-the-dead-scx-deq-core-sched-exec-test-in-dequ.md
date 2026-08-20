@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Drop the dead SCX_DEQ_CORE_SCHED_EXEC test in dequeue_task_scx()'
 id: sched-20260816-002
 date: 2026-08-16
 subsystem: sched

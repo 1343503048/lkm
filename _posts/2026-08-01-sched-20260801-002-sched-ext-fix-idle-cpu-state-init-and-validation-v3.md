@@ -1,4 +1,5 @@
 ---
+subject: 'selftests/sched_ext: Make allowed_cpus idle validation race-free'
 id: sched-20260801-002
 date: 2026-08-01
 subsystem: sched

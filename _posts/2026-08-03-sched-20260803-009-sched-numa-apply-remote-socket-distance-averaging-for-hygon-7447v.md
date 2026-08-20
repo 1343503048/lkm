@@ -1,4 +1,5 @@
 ---
+subject: 'sched/numa: Apply remote socket distance averaging for Hygon 7447V'
 id: sched-20260803-009
 date: 2026-08-03
 subsystem: sched

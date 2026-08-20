@@ -1,4 +1,6 @@
 ---
+subject: '-- DO NOT APPLY!!! -- sched/cache/debug: Add trace event and sched feature
+  to track scan cost'
 id: sched-20260731-006
 date: 2026-07-31
 subsystem: sched

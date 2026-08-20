@@ -37,8 +37,9 @@ related_articles: []
 tags:
 - rt
 - sched/core
-title: sched-20260819-006-sched-rt-cpupri-remove-count-field
+title: 从 struct cpupri_vec 中删除 count 字段。该字段未被使用（早期 UP 计数用途已无引用），属死代码清理。
 layout: article
+subject: 从 struct cpupri_vec 中删除 count 字段。该字段未被使用（早期 UP 计数用途已无引用），属死代码清理。
 ---
 
 

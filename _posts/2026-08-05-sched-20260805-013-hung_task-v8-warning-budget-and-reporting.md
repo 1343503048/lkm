@@ -1,4 +1,5 @@
 ---
+subject: 'hung_task: Improve warning budget handling and task reporting'
 id: sched-20260805-013
 date: '2026-08-05'
 title: 'hung_task: Improve warning budget handling and task reporting'

@@ -1,4 +1,5 @@
 ---
+subject: 'perf sched latency: v9 改进已合入 perf-tools-next'
 date: 2026-08-08
 series: perf-sched-latency-v9
 version: v9

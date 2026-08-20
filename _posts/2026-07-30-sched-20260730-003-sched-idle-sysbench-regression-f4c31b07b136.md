@@ -1,4 +1,5 @@
 ---
+subject: 'sched/idle: Sysbench threads regression after f4c31b07b136'
 id: sched-20260730-003
 date: 2026-07-30
 subsystem: sched

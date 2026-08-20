@@ -1,4 +1,5 @@
 ---
+subject: 'sched/debug: Validate writes to the scan_size_mb debugfs knob'
 id: sched-20260810-003
 date: 2026-08-10
 subsystem: sched

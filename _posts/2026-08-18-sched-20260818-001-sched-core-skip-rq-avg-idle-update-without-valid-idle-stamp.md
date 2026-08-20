@@ -1,5 +1,6 @@
 ---
 id: sched-20260818-001
+subject: 'sched/core: Skip rq->avg_idle update without a valid idle_stamp'
 date: 2026-08-18
 subsystem: sched
 type: fix

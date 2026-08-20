@@ -5,8 +5,8 @@ title: "标签: core_sched"
 article_count: 13
 ---
 
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放 core-w...
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — 目标系列：移除 sched_class::balance() 回调（0/2）。8/19 可见多封 Re: 该系列的回复，讨论焦点集中在与 core_sched ...
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3
 - [sched-20260816-002](/lkm/2026/08/16/sched-20260816-002-sched-ext-drop-the-dead-scx-deq-core-sched-exec-test-in-dequ.html) `fix/medium/merged_tip` — sched_ext: Drop the dead SCX_DEQ_CORE_SCHED_EXEC test in dequeue_task_scx()
 - [sched-20260815-012](/lkm/2026/08/15/sched-20260815-012-sched-ext-set-up-ops-sub-ecaps-updated-dispatch-context-on-t.html) `feature/low/under_review` — sched_ext: Set up ops.sub_ecaps_updated() dispatch context on the executing CPU

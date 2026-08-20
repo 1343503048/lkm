@@ -1,4 +1,5 @@
 ---
+subject: sched ext fix stale cgroup id in sched ext ops kernel doc
 id: sched-20260731-004
 date: 2026-07-31
 subsystem: sched

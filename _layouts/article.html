@@ -2,73 +2,149 @@
 layout: default
 ---
 <article class="article-page">
+  <div class="reading-progress" id="reading-progress"></div>
   <nav class="breadcrumbs">
-    <a href="{{ '/' | relative_url }}">首页</a> › 
-    <span>{{ page.title | truncate: 50 }}</span>
+    <a href="{{ '/' | relative_url }}">首页</a> ›
+    <span>{{ page.subject | default: page.title | truncate: 60 }}</span>
   </nav>
   <div class="article-layout">
-    <aside class="toc-sidebar"><h4>目录</h4><div id="toc"></div></aside>
+    <aside class="toc-sidebar">
+      <h4>目录</h4>
+      <div id="toc"></div>
+    </aside>
     <div class="article-content">
       <header class="article-header">
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page.subject | default: page.title }}</h1>
         <div class="article-meta">
-          <span class="meta-date">{{ page.date | date: "%Y-%m-%d" }}</span>
+          <span class="meta-date"> {{ page.date | date: "%Y-%m-%d" }}</span>
           <span class="badge type-{{ page.type }}">{{ page.type }}</span>
           <span class="badge status-{{ page.status }}">{{ page.status | replace: '_', ' ' }}</span>
           {% if page.severity and page.severity != 'none' %}
           <span class="badge severity-{{ page.severity }}">{{ page.severity }}</span>
           {% endif %}
-          {% if page.current_version %}<span class="meta-version">{{ page.current_version }}</span>{% endif %}
+          {% if page.current_version %}<span class="badge version-badge">{{ page.current_version }}</span>{% endif %}
         </div>
         <div class="article-authors">
           {% if page.authors %}<span><strong>作者:</strong> {{ page.authors | join: ', ' }}</span>{% endif %}
           {% if page.maintainers_involved %}<span><strong>维护者:</strong> {{ page.maintainers_involved | join: ', ' }}</span>{% endif %}
         </div>
       </header>
-      <details class="metadata-card">
-        <summary>详细元数据</summary>
-        <div class="metadata-grid">
-          <div><strong>ID:</strong> {{ page.id }}</div>
-          {% if page.lore_url %}<div><strong>LoRE:</strong> <a href="{{ page.lore_url }}" target="_blank">{{ page.lore_url | truncate: 60 }}</a></div>{% endif %}
-          {% if page.upstream_commit %}<div><strong>Commit:</strong> {{ page.upstream_commit }}</div>{% endif %}
+
+      <!-- Merge Assessment - 关键信息前置 -->
+      {% if page.merge_assessment %}
+      <div class="merge-assessment-card">
+        <div class="merge-assessment-header">
+          <span class="merge-icon"></span>
+          <strong>合入评估</strong>
         </div>
-        {% if page.merge_assessment %}
-        <div class="merge-assessment">
-          <h4>合入评估</h4>
-          <p>可能性: <span class="badge likelihood-{{ page.merge_assessment.likelihood }}">{{ page.merge_assessment.likelihood }}</span></p>
-          {% if page.merge_assessment.next_action %}<p><strong>下一步:</strong> {{ page.merge_assessment.next_action }}</p>{% endif %}
+        <div class="merge-assessment-body">
+          <p class="merge-likelihood">
+            可能性: <span class="badge likelihood-{{ page.merge_assessment.likelihood }}">{{ page.merge_assessment.likelihood }}</span>
+          </p>
+          {% if page.merge_assessment.next_action %}
+          <p class="merge-next"><strong>下一步:</strong> {{ page.merge_assessment.next_action }}</p>
+          {% endif %}
+          {% if page.merge_assessment.blocking_issues and page.merge_assessment.blocking_issues.size > 0 %}
+          <details class="merge-blocking">
+            <summary>阻塞问题 ({{ page.merge_assessment.blocking_issues.size }})</summary>
+            <ul>
+              {% for issue in page.merge_assessment.blocking_issues %}
+              <li>{{ issue }}</li>
+              {% endfor %}
+            </ul>
+          </details>
+          {% endif %}
         </div>
-        {% endif %}
-      </details>
+      </div>
+      {% endif %}
+
+      <!-- Tags - 移到正文前 -->
       <div class="article-tags">
         {% for tag in page.tags %}
-        <a href="{{ '/pages/tags/' | append: tag | replace: '/', '_' | append: '.html' | relative_url }}" class="tag-link">{{ tag }}</a>
+        {% assign safe_tag = tag | replace: '/', '_' %}
+        <a href="{{ '/pages/tags/' | append: safe_tag | append: '.html' | relative_url }}" class="tag-link">{{ tag }}</a>
         {% endfor %}
       </div>
+
+      <!-- Lore Link - 单独一行 -->
+      {% if page.lore_url and page.lore_url != '未获取到' and page.lore_url != 'unknown' %}
+      <div class="lore-link">
+        <a href="{{ page.lore_url }}" target="_blank" rel="noopener">🔗 查看 LKML 原始讨论线程</a>
+      </div>
+      {% endif %}
+
       <div class="article-body">{{ content }}</div>
+
+      <!-- Footer metadata - 精简版 -->
+      <footer class="article-footer">
+        <div class="footer-meta">
+          {% if page.upstream_commit %}
+          <span><strong>Commit:</strong> <code>{{ page.upstream_commit }}</code></span>
+          {% endif %}
+          {% if page.fixes_commit %}
+          <span><strong>Fixes:</strong> <code>{{ page.fixes_commit }}</code></span>
+          {% endif %}
+          {% if page.merged_branch %}
+          <span><strong>分支:</strong> <code>{{ page.merged_branch }}</code></span>
+          {% endif %}
+        </div>
+        <div class="footer-id">
+          <small>ID: {{ page.id }} · 来源邮件数: {{ page.source_email_count }}</small>
+        </div>
+      </footer>
     </div>
     <aside class="related-sidebar">
       {% if page.related_articles and page.related_articles.size > 0 %}
       <h3>相关文章</h3>
       <ul>{% for rel_id in page.related_articles %}<li>{{ rel_id }}</li>{% endfor %}</ul>
+      {% else %}
+      <div class="sidebar-placeholder"></div>
       {% endif %}
     </aside>
   </div>
 </article>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // ── TOC 生成 ──
   var body = document.querySelector('.article-body');
   var toc = document.getElementById('toc');
   if (!body || !toc) return;
   var headings = body.querySelectorAll('h2, h3');
   var html = '<ul>';
   headings.forEach(function(h) {
-    var id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    var id = h.textContent.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-').replace(/^-|-$/g, '');
     h.id = id;
     var cls = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
-    html += '<li class="' + cls + '"><a href="#' + id + '">' + h.textContent + '</a></li>';
+    html += '<li class="' + cls + '"><a href="#' + id + '" data-target="' + id + '">' + h.textContent + '</a></li>';
   });
   html += '</ul>';
   toc.innerHTML = html;
+
+  // ── 滚动进度条 ──
+  var progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', function() {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+  }
+
+  // ─ TOC Active 高亮（Scroll Spy）──
+  var tocLinks = toc.querySelectorAll('a[data-target]');
+  if (tocLinks.length > 0) {
+    var observerOptions = { rootMargin: '-80px 0px -70% 0px', threshold: 0 };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(link) { link.classList.remove('active'); });
+          var activeLink = toc.querySelector('a[data-target="' + entry.target.id + '"]');
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, observerOptions);
+    headings.forEach(function(h) { observer.observe(h); });
+  }
 });
 </script>

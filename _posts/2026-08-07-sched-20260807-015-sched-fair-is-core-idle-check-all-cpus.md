@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: 让 is_core_idle() 检查核心内所有 CPU'
 date: 2026-08-07
 series: sched-fair-is-core-idle
 version: v1

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/numa: Prevent race on sysctl_numa_balancing static key'
 id: sched-20260804-015
 date: 2026-08-04
 subsystem: sched

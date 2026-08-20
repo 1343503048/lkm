@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: 修复 sched_task() 在纯 CPU-wide 事件下 NULL pmu_ctx 解引用'
 date: 2026-08-07
 series: perf-core-sched-task-cpu-wide
 version: v6

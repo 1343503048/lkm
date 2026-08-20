@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: Skip rq->avg_idle update without a valid idle_stamp'
 id: sched-20260729-004
 date: 2026-07-29
 subsystem: sched

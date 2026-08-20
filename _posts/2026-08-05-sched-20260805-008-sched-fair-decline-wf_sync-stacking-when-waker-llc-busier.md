@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: decline WF_SYNC stacking when waker LLC is the busier share'
 id: sched-20260805-008
 date: '2026-08-05'
 title: 'sched/fair: decline WF_SYNC stacking when waker LLC is the busier share'

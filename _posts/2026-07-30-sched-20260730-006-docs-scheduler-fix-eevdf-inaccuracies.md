@@ -1,4 +1,5 @@
 ---
+subject: 'docs/scheduler: fix EEVDF-related inaccuracies in the scheduler docs'
 id: sched-20260730-006
 date: 2026-07-30
 subsystem: sched

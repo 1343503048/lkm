@@ -1,4 +1,5 @@
 ---
+subject: sched fix two misspellings in linux sched h
 id: sched-20260801-010
 date: 2026-08-01
 subsystem: sched

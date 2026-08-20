@@ -1,4 +1,5 @@
 ---
+subject: sched adjust cfs_bandwidth layout to save memory
 id: sched-20260803-008
 date: 2026-08-03
 subsystem: sched

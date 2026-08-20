@@ -1,4 +1,5 @@
 ---
+subject: perf sched latency refine outputs unit scaling histogram v7
 id: sched-20260803-010
 date: 2026-08-03
 subsystem: perf

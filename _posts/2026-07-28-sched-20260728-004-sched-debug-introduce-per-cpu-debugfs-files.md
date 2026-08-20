@@ -1,4 +1,5 @@
 ---
+subject: 'sched/debug: Introduce per-CPU debugfs files'
 id: sched-20260728-004
 date: 2026-07-28
 subsystem: sched

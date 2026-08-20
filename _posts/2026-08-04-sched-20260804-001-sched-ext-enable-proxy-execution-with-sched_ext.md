@@ -1,4 +1,5 @@
 ---
+subject: 'sched: Allow enabling proxy exec with sched_ext'
 id: sched-20260804-001
 date: 2026-08-04
 subsystem: sched

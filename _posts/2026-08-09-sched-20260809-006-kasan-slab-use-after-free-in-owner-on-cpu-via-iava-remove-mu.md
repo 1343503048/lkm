@@ -1,4 +1,6 @@
 ---
+subject: 'KASAN: slab-use-after-free in owner_on_cpu via iava_remove (mutex optimistic
+  spin) [iavf] [syzkaller]'
 id: sched-20260809-006
 date: 2026-08-09
 subsystem: sched

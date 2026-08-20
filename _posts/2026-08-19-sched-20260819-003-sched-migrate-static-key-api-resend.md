@@ -39,8 +39,9 @@ tags:
 - sched/core
 - sched/fair
 - preempt
-title: sched-20260819-003-sched-migrate-static-key-api-resend
+title: 将调度子系统中直接使用的 raw static_key / static_key_{true,false}() 及 __cfs_bandwidth_used、p...
 layout: article
+subject: 将调度子系统中直接使用的 raw static_key / static_key_{true,false}() 及 __cfs_bandwidth_used、p...
 ---
 
 

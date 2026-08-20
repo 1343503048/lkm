@@ -1,4 +1,5 @@
 ---
+subject: 'cgroup, sched: add BPF kfuncs to read a cpu cgroup''s stats'
 id: sched-20260814-008
 date: 2026-08-14
 subsystem: sched

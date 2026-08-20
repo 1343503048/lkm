@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: schedutil: Fix rate limit overflow'
 id: sched-20260816-004
 date: 2026-08-16
 subsystem: sched

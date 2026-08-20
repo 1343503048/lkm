@@ -1,4 +1,5 @@
 ---
+subject: 'preempt: 简化 PREEMPT_DYNAMIC（v2）'
 date: 2026-08-07
 series: preempt-dynamic-simplify
 version: v2

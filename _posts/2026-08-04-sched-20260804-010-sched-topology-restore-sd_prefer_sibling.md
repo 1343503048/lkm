@@ -1,4 +1,5 @@
 ---
+subject: 'sched/topology: Restore SD_PREFER_SIBLING in domains with asymmetric capacity'
 id: sched-20260804-010
 date: 2026-08-04
 subsystem: sched

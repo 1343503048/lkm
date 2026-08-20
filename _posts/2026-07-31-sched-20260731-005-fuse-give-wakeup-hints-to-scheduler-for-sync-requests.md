@@ -1,4 +1,5 @@
 ---
+subject: '[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests'
 id: sched-20260731-005
 date: 2026-07-31
 subsystem: sched

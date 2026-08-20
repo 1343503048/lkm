@@ -1,4 +1,5 @@
 ---
+subject: 'selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk'
 id: sched-20260814-010
 date: 2026-08-14
 subsystem: sched

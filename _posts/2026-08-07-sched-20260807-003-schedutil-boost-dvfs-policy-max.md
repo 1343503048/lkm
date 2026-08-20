@@ -1,4 +1,5 @@
 ---
+subject: 'schedutil: 让 DVFS 请求可达 boost 频率上限'
 date: 2026-08-07
 series: schedutil-boost-dvfs
 version: v1

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: Don''t pin the idle task in migrate_disable_switch()'
 id: sched-20260806-004
 date: '2026-08-06'
 title: 'sched/core: Don''t pin the idle task in migrate_disable_switch()'

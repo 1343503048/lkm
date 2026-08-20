@@ -1,4 +1,5 @@
 ---
+subject: 'docs: accounting/psi: drop stale 500ms window minimum from trigger docs'
 id: sched-20260728-007
 date: 2026-07-28
 subsystem: sched

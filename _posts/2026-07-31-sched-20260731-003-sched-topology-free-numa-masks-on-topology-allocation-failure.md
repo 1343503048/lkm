@@ -1,4 +1,5 @@
 ---
+subject: 'sched/topology: Free NUMA masks on topology allocation failure'
 id: sched-20260731-003
 date: 2026-07-31
 subsystem: sched

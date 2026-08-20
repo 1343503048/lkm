@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors'
 id: sched-20260817-001
 date: 2026-08-16
 subsystem: sched

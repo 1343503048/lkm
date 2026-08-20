@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Add bandwidth-limited rescue execution for stranded tasks'
 id: sched-20260804-002
 date: 2026-08-04
 subsystem: sched

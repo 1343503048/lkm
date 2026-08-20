@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: CPPC 在热插拔/挂起恢复间保留 OSPM 设置的寄存器'
 date: 2026-08-07
 series: cpufreq-cppc-preserve-registers
 version: v4

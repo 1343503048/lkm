@@ -1,4 +1,6 @@
 ---
+subject: 'sched/cache: Fix a thread aggregation conflict when there is one runnable
+  task'
 id: sched-20260810-010
 date: 2026-08-10
 subsystem: sched

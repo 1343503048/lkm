@@ -1,4 +1,5 @@
 ---
+subject: 'intel_idle: Avoid using deep idle states during initialization'
 id: sched-20260804-022
 date: 2026-08-04
 subsystem: idle

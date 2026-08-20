@@ -1,4 +1,5 @@
 ---
+subject: 'kcov: 抑制定时器与调度器覆盖泄漏'
 date: 2026-08-08
 series: kcov-scheduler-coverage-leaks
 version: v1

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Make is_core_idle() check all cpus in a core'
 id: sched-20260809-003
 date: 2026-08-09
 subsystem: sched

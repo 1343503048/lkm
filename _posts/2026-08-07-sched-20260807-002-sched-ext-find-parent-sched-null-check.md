@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: find_parent_sched() 健壮性修复（NULL 检查争议）'
 date: 2026-08-07
 series: sched-ext-find-parent-sched
 version: v1

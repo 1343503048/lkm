@@ -1,5 +1,6 @@
 ---
 id: sched-20260818-003
+subject: '[GIT PULL] sched_ext: Changes for v7.3'
 date: 2026-08-18
 subsystem: sched
 type: feature

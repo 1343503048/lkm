@@ -63,8 +63,16 @@ def process_article(src_path: Path, dest_dir: Path):
     if fm is None:
         return None  # 非标准文章，跳过
 
-    # 标题：优先用 frontmatter 的 subject，否则用正文第一行 #
-    title = fm.get('subject') or extract_title(body) or src_path.stem
+    # 标题：优先用 frontmatter 的 subject，否则用正文标题，最后用 patch_series 摘要
+    title = fm.get('subject') or extract_title(body)
+    if not title:
+        # 从 patch_series 第一条 summary 生成标题
+        ps = fm.get('patch_series', [])
+        if ps and isinstance(ps, list) and ps[0].get('summary'):
+            summary = ps[0]['summary']
+            title = summary[:80] + ('...' if len(summary) > 80 else '')
+    if not title:
+        title = src_path.stem
     date = str(fm.get('date', ''))
     if not date:
         # 从文件名提取日期
@@ -85,7 +93,8 @@ def process_article(src_path: Path, dest_dir: Path):
     fm_out = dict(fm)
     fm_out['title'] = title
     fm_out['layout'] = 'article'
-    fm_out.pop('subject', None)
+    fm_out['subject'] = title  # readable title for article layout
+    # Keep subject for article layout display (readable title)
 
     # 确保 tags 是列表
     if isinstance(fm_out.get('tags'), str):

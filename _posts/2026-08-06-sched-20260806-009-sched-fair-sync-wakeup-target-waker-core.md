@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Let sync wakeups target the waker''s core'
 id: sched-20260806-009
 date: '2026-08-06'
 title: 'sched/fair: Let sync wakeups target the waker''s core'

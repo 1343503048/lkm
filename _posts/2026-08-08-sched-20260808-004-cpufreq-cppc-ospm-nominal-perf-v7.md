@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: CPPC 增加 OSPM nominal perf 支持（v7）'
 date: 2026-08-08
 series: cpufreq-cppc-ospm-nominal-perf
 version: v7

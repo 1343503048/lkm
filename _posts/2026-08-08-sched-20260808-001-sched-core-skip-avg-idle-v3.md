@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: 无有效 idle_stamp 时跳过 rq->avg_idle 更新（v3）'
 date: 2026-08-08
 series: sched-core-skip-avg-idle
 version: v3

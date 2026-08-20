@@ -49,8 +49,11 @@ tags:
 - cgroup
 - crash
 - regression
-title: sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix
+title: 配套修复补丁 tg_cpus() 在 cpuset 为空时返回 0，使 shares_max 归零绕过 MIN_SHARES 下限，导致 group
+  se 的 ...
 layout: article
+subject: 配套修复补丁 tg_cpus() 在 cpuset 为空时返回 0，使 shares_max 归零绕过 MIN_SHARES 下限，导致 group
+  se 的 ...
 ---
 
 

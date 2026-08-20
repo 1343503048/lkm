@@ -1,4 +1,6 @@
 ---
+subject: '[PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven
+  vCPU backoff'
 id: sched-20260814-004
 date: 2026-08-14
 subsystem: sched

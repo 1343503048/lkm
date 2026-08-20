@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: scx_qmap: Add proxy execution support'
 id: sched-20260806-010
 date: '2026-08-06'
 title: 'sched_ext: scx_qmap: Add proxy execution support'

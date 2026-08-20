@@ -1,4 +1,5 @@
 ---
+subject: 'sched/cache: honor migrate_llc_task semantics in active load balance'
 id: sched-20260805-005
 date: '2026-08-05'
 title: 'sched/cache: honor migrate_llc_task semantics in active load balance'

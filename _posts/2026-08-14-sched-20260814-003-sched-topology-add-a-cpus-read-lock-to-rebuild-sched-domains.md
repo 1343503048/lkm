@@ -1,4 +1,5 @@
 ---
+subject: 'sched/topology: Add a cpus_read_lock to rebuild_sched_domains()'
 id: sched-20260814-003
 date: 2026-08-14
 subsystem: sched

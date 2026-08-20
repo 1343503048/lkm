@@ -5,8 +5,8 @@ title: "标签: crash"
 article_count: 11
 ---
 
-- [sched-20260819-001](/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html) `bug/critical/under_review` — sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
+- [sched-20260819-001](/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html) `bug/critical/under_review` — 配套修复补丁 tg_cpus() 在 cpuset 为空时返回 0，使 shares_max 归零绕过 MIN_SHARES 下限，导致 group se 的 ...
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — Peter 在 8/19 回复 Aaron Lu 7/2 报告的 core_sched pick_task() 竞态：pick_task() 释放 core-w...
 - [sched-20260815-005](/lkm/2026/08/15/sched-20260815-005-sched-ext-dispatch-path-follow-ups.html) `fix/medium/under_review` — sched_ext: Dispatch path follow-ups
 - [sched-20260815-008](/lkm/2026/08/15/sched-20260815-008-sched-ext-don-t-rehome-a-dead-task-in-scx-cgroup-task-migrat.html) `fix/medium/stale` — sched_ext: don't rehome a dead task in scx_cgroup_task_migrated
 - [sched-20260815-009](/lkm/2026/08/15/sched-20260815-009-sched-ext-fix-exit-task-leak-on-fork-failure-during-enable.html) `fix/medium/merged_tip` — sched_ext: Fix exit_task leak on fork failure during enable

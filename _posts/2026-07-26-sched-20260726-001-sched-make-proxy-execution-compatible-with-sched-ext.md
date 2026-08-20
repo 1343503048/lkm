@@ -1,4 +1,5 @@
 ---
+subject: 'sched/core: Avoid false migration warning for proxy donors'
 id: sched-20260726-001
 date: 2026-07-26
 subsystem: sched

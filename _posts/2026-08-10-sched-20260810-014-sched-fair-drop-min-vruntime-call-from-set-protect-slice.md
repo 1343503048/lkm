@@ -1,4 +1,5 @@
 ---
+subject: 'sched/fair: Drop min_vruntime() call from set_protect_slice()'
 id: sched-20260810-014
 date: 2026-08-10
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched: 清理 preempt_count 的 __cant_migrate/__cant_sleep 参数'
 date: 2026-08-07
 series: sched-preempt-count-cant-migrate-sleep
 version: v5

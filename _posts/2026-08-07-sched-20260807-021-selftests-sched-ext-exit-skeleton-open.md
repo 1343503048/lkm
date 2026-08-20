@@ -1,4 +1,5 @@
 ---
+subject: 'selftests/sched_ext: 检查 exit 测试骨架打开失败'
 date: 2026-08-07
 series: selftests-sched-ext-exit
 version: v1

@@ -1,4 +1,5 @@
 ---
+subject: 'perf/core: sched_task() dispatch and branch entry fixes'
 id: sched-20260810-004
 date: 2026-08-10
 subsystem: sched

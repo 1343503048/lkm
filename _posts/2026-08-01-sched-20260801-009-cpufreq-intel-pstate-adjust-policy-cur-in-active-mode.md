@@ -1,4 +1,5 @@
 ---
+subject: 'cpufreq: intel_pstate: Adjust policy->cur in active mode to policy'
 id: sched-20260801-009
 date: 2026-08-01
 subsystem: sched

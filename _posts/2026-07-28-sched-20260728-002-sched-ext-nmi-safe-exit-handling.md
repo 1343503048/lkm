@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Make exit claiming lock-free'
 id: sched-20260728-002
 date: 2026-07-28
 subsystem: sched

@@ -1,4 +1,5 @@
 ---
+subject: 'sched/idle: Stop the tick when no cpuidle driver is available'
 id: sched-20260729-003
 date: 2026-07-29
 subsystem: sched

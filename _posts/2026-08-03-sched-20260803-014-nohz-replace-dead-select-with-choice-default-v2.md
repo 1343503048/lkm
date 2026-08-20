@@ -1,4 +1,5 @@
 ---
+subject: nohz replace dead select with choice default v2
 id: sched-20260803-014
 date: 2026-08-03
 subsystem: sched

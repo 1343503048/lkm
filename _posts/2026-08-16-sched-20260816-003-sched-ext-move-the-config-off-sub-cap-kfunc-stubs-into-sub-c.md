@@ -1,4 +1,5 @@
 ---
+subject: 'sched_ext: Move the config-off sub-cap kfunc stubs into sub.c'
 id: sched-20260816-003
 date: 2026-08-16
 subsystem: sched

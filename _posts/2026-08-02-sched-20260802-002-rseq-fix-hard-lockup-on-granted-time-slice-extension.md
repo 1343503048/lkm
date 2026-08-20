@@ -1,4 +1,5 @@
 ---
+subject: 'rseq: fix hard lockup on granted time slice extension'
 id: sched-20260802-002
 date: 2026-08-02
 subsystem: sched
