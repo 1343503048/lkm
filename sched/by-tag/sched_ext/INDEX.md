@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 7 篇
+共 10 篇
 
+- [sched-20260824-005-sched-lift-cgroup-locking-core](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review` — cgroup 调度相关的更新锁原本分散在 fair/rt 等具体类中，导致 sched_ext 等路径
+- [sched-20260824-003-docs-sched_ext-cgroup-knobs](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `fix/low/under_review` — sched_ext 允许每个 cgroup 设置调度器相关的 CPU 参数（scheduler-dependent knobs），
+- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle](../../2026/08/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md) `fix/low/under_review` — sched_ext 的 cgroup 支持在向调度器传递 cgroup 初始化参数（scx_cgroup_init_args）时，
 - [sched-20260823-008](../../2026/08/sched-20260823-008.md) `fix/low/merged_tip` — `sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_disables_migration` 默认值与「err high」注释不一致，在 cherry-pick 8e4f0b1ebcf2 的内核上 `is_migration_disabled(current)` 会少报。Changwoo 已在 scx 侧提 PR scx#3766 修正，Tejun 将 re-sync。属头同步系列的后续打磨。
 - [sched-20260823-006](../../2026/08/sched-20260823-006.md) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。
 - [sched-20260823-005](../../2026/08/sched-20260823-005.md) `fix/medium/merged_tip` — Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races` Applied 到 `sched_ext/for-7.3-fixes`。修复 DSQ 所有权变更竞态下 `scx_bpf_dsq_move()` 的虚假中止。已 merged，合入可能性 merged。

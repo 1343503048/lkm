@@ -1,7 +1,9 @@
 # tag: compatibility
 
-共 3 篇
+共 5 篇
 
+- [sched-20260824-006-sched-fair-null-deref-v4.19](../../2026/08/sched-20260824-006-sched-fair-null-deref-v4.19.md) `bug/high/under_review` — 在基于 v4.19 的厂商内核上，`pick_next_task_fair()` 中触发了空指针解引用
+- [sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle](../../2026/08/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md) `fix/medium/under_review` — 在进入 tickless idle（NOHZ idle）之前，调度器与 cpufreq 之间的协调存在窗口：
 - [sched-20260823-008](../../2026/08/sched-20260823-008.md) `fix/low/merged_tip` — `sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_disables_migration` 默认值与「err high」注释不一致，在 cherry-pick 8e4f0b1ebcf2 的内核上 `is_migration_disabled(current)` 会少报。Changwoo 已在 scx 侧提 PR scx#3766 修正，Tejun 将 re-sync。属头同步系列的后续打磨。
 - [sched-20260823-004](../../2026/08/sched-20260823-004.md) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock，导致 steal 间隔被错误计入。修复为抢占期间把 delta 累积到 `deferred_clock_task`，待 vCPU 重入时一并折回 irq/steal 记账。RFC 阶段，合入概率 medium。
 - [sched-20260820-002](../../2026/08/sched-20260820-002.md) `feature/low/under_review` — Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `PTR_UNTRUSTED` 改为 `PTR_TRUSTED`，因为 ops 调用上下文已保证其可信。用户写 BPF 调度器时不再被迫加冗余检查。已通过 bpf CI，合入概率高。
