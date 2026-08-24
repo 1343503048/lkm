@@ -11,7 +11,7 @@ body {
 a { color: #2563eb; text-decoration: none; transition: color 0.15s; }
 a:hover { color: #1d4ed8; text-decoration: underline; }
 
-.container { max-width: 100%; margin: 0 auto; padding: 0 0.5rem; }
+.container { max-width: 75%; margin: 0 auto; padding: 0 0.5rem; }
 
 /* ── Reading Progress Bar ── */
 .reading-progress {
