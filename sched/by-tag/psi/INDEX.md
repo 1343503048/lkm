@@ -2,4 +2,4 @@
 
 共 1 篇
 
-- [sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3](../../2026/08/sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3.md) `feature/low/under_review` — Tao Cui 为 cgroup selftests 增加 `test_psi.c`，覆盖 PSI 压力触发与 `cgroup.pressure` 显隐切换，v3 按 review 拆分成 per-resource case 并提升健壮性。纯测试覆盖增强，合入概率高。
+- [sched-20260823-007](../../2026/08/sched-20260823-007.md) `feature/low/under_review` — Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETUP/TEARDOWN），并把「poll 超时未触发」从 SKIP 改为 FAIL。已迭代四轮，合入概率高。
