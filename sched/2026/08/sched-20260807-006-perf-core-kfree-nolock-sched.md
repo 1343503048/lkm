@@ -1,4 +1,4 @@
-# perf core kfree nolock sched
+# sched: use kfree_nolock() instead of kfree_rcu()
 
 ## 概述
 

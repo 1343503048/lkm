@@ -39,7 +39,7 @@ tags:
 - posix_cpu_timer
 - uaf
 - mm
-title: posix cpu timers use after free in exec failure path
+title: 'posix-cpu-timers: use-after-free in exec failure path'
 layout: article
 ---
 

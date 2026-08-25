@@ -1,4 +1,4 @@
-# Vladimir Zapolskiy 移除 `do_balance_callbacks()` 中多余的函数指针类型转换
+# sched/core remove balance callback cast
 
 
 ## TL;DR

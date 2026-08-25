@@ -794,7 +794,7 @@
     "tldr": "sched_ext 的 built-in idle mask 在初始化时把所有 online CPU 一律标记为 idle，但真正的 idle 跟踪要等调度器完全启用后才开始，导致 `ops.init()` 期间以及某些 CPU 下一次 idle 转换之前，繁忙 CPU 被错误地宣称为 idle。v3 把跟踪时机提前并顺带修掉了一个 selftest 的固有竞态，方案已按 review 意见收敛，接近可合入状态。"
   },
   {
-    "title": "sched/fair: Let sync wakeups target the waker's core",
+    "title": "sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups",
     "id": "sched-20260801-003",
     "date": "2026-08-01",
     "type": "feature",
@@ -853,7 +853,7 @@
     "tldr": "Andrea Righi 让 NOHZ idle load balancer 优先挑选整个 core 都空闲的 CPU，避免 ILB 跑在繁忙 SMT core 的空闲兄弟线程上而挤占其算力。方案本身简单合理、已经过三轮 reviewer 打磨，但**三个版本自始至终没有给出任何效果数据**，这是它目前唯一的明显短板。"
   },
   {
-    "title": "sched cache honor migrate llc task in active load balance",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260801-006",
     "date": "2026-08-01",
     "type": "fix",
@@ -924,7 +924,7 @@
     "tldr": "`intel_pstate` 在 performance policy 下把 CPU 钉到固定 pstate 后，却又把 `policy->cur` 覆写成 `policy->min`，导致 nohz_full 隔离 CPU 因为拿不到新的 APERF/MPERF 采样而**永远上报频率下限**。修复很直接：把 `policy->cur` 设为实际钉住的频率。Rafael 与 Srinivas 均已介入讨论。"
   },
   {
-    "title": "sched fix two misspellings in linux sched h",
+    "title": "sched: fix two misspellings",
     "id": "sched-20260801-010",
     "date": "2026-08-01",
     "type": "fix",
@@ -978,7 +978,7 @@
     "tldr": "`rseq` 的时间片扩展（Time Slice Extension，TSE）在**开中断**状态下调用了要求**关中断**的 `hrtimer_rearm_deferred_tif()`，造成 `hrtimer_bases.lock` 的中断上下文锁反转，重负载使用 TSE 时会硬死锁。修复只有一行 `guard(irq)()`。有 lockdep 实证、有真实死锁现象，严重度 critical，合入基本无悬念。"
   },
   {
-    "title": "perf sched latency: Refine outputs, unit scaling, and histogram support",
+    "title": "perf sched latency: Add histogram and time interval options",
     "id": "sched-20260802-003",
     "date": "2026-08-02",
     "type": "feature",
@@ -995,7 +995,7 @@
     "tldr": "**本文为增量更新** —— 完整背景见 `related_articles` 中的 `sched-20260731-009` 与 `sched-20260801-008`。v6 的核心变化是响应 Namhyung Kim 的 review：把 pipe 模式处理从 Patch 1 拆出成独立 patch（系列 3→4 个），补上 `Fixes:` 标签，并在 commit log 中加入表头格式的 before/after 图示。作为工具侧改进，合入可能性高。"
   },
   {
-    "title": "scheduler fix",
+    "title": "sched/deadline use revised wakeup rule only for running dl server",
     "id": "sched-20260802-004",
     "date": "2026-08-02",
     "type": "fix",
@@ -1063,7 +1063,7 @@
     "tldr": "sched_ext 内置 idle 掩码初始化时把全部 online CPU 误标为 idle，导致 busy CPU 被错误广播。改为保守地初始为空，待 bypass 解除后由真实 idle 转换填充。修复方向已获 Tejun 认可，合入概率高。"
   },
   {
-    "title": "cgroup: Fixes for v7.2-rc6",
+    "title": "sched_ext: Fixes for v7.2-rc6",
     "id": "sched-20260803-003",
     "date": "2026-08-03",
     "type": "fix",
@@ -1082,7 +1082,7 @@
     "tldr": "Tejun 发出 sched_ext 的 7.2-rc6 fixes pull，修复子调度器生命周期中的多处 UAF / 死锁 / 错误状态，其中 sync wakeup 把 waker CPU 误标 idle 与 002 号文章（idle 掩码初始化）属同一正确性主题。已以 tag 提交，合入可能性=merged。"
   },
   {
-    "title": "sched fair prefer waker cpu for non smt reciprocal sync wakeups",
+    "title": "sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups",
     "id": "sched-20260803-004",
     "date": "2026-08-03",
     "type": "discussion",
@@ -1101,7 +1101,7 @@
     "tldr": "`sched/fair` 的「非 SMT  reciprocal sync wakeup 优先选 waker CPU」补丁（v3）引发更深层的讨论：review 要求先定义 sync wakeup 的整体策略，而非零散修补。合入取决于策略共识，目前 medium。"
   },
   {
-    "title": "sched cache honor migrate_llc_task semantics in active load balance",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260803-005",
     "date": "2026-08-03",
     "type": "fix",
@@ -1153,7 +1153,7 @@
     "tldr": "`preempt` 引入 `HAS_SEPARATE_PREEMPT_RESCHED_BITS`，允许架构把 PREEMPT 与 NEED_RESCHED 位拆分存储，缓解 TIF 位紧张。Peter Zijlstra 要求合并前两 patch，s390 已给 Reviewed-by。合入可能性高。"
   },
   {
-    "title": "sched adjust cfs_bandwidth layout to save memory",
+    "title": "sched_ext: Fixes for v7.2-rc6",
     "id": "sched-20260803-008",
     "date": "2026-08-03",
     "type": "fix",
@@ -1189,7 +1189,7 @@
     "tldr": "`sched/numa` 针对 Hygon 7447V 的模块化布局，把远程 socket 节点距离取平均以区分 intra/inter-socket 远程代价。已获 Ingo Acked-by，合入可能性高。"
   },
   {
-    "title": "perf sched latency refine outputs unit scaling histogram v7",
+    "title": "perf sched latency: Refine outputs, unit scaling, and histogram support",
     "id": "sched-20260803-010",
     "date": "2026-08-03",
     "type": "feature",
@@ -1206,7 +1206,7 @@
     "tldr": "`perf sched latency` 在 v6（08-02）基础上发 v7，仅修正直方图中位数计算的零点偏差。属工具侧打磨，已迭代 7 版，合入可能性高。这是 08-02 系列 003 的后续版本。"
   },
   {
-    "title": "posix cpu timers use after free in exec failure path",
+    "title": "posix-cpu-timers: use-after-free in exec failure path",
     "id": "sched-20260803-011",
     "date": "2026-08-03",
     "type": "bug",
@@ -1259,7 +1259,7 @@
     "tldr": "`sched/isolation` 推迟释放 bootmem housekeeping cpumask（08-02 系列 001）在 08-03 进入释放时机的讨论：应将释放推迟到 bootmem 回收阶段而非即刻 `memblock_free`。低严重度，合入可能性高。"
   },
   {
-    "title": "nohz replace dead select with choice default v2",
+    "title": "nohz: replace dead select with choice default",
     "id": "sched-20260803-014",
     "date": "2026-08-03",
     "type": "fix",
@@ -1296,7 +1296,7 @@
     "tldr": "Andrea Righi 的 15-patch 系列把内核主流的 SCHED_PROXY_EXEC（代理执行）机制带到 sched_ext：互斥锁/RT 阻塞的任务可被同调度类或更早调度类的高优先级任务「代理执行」，从而缓解优先级反转。Tejun 评价「Nice.」并指出两处需澄清的语义。属大型 feature，合入可能性高，仍处 review。"
   },
   {
-    "title": "sched_ext: Add bandwidth-limited rescue execution for stranded tasks",
+    "title": "sched_ext: Fixes for v7.2-rc6",
     "id": "sched-20260804-002",
     "date": "2026-08-04",
     "type": "feature",
@@ -1408,7 +1408,7 @@
     "tldr": "active load balance 未尊重 `migrate_llc_task`（仅本地 LLC 内迁移）语义的修复在 08-04 推进到 v4，Peter Zijlstra 要求把 LLC 语义 helper 合入 `task_can_migrate()` 消除两条路径分叉。这是 08-03-005 的延续，合入可能性 high。"
   },
   {
-    "title": "sched rt minor cleanups",
+    "title": "sched: minor cleanups",
     "id": "sched-20260804-008",
     "date": "2026-08-04",
     "type": "cleanup",
@@ -1550,7 +1550,7 @@
     "tldr": "`sysctl_numa_balancing` 静态键切换竞态（UAF/use-after-uninit，附 syzkaller repro + Fixes）在 08-04 继续推进。这是 08-03-006 的延续，合入可能性 high。"
   },
   {
-    "title": "sched psi skip cpus zero non idle delta",
+    "title": "sched/psi: Skip CPUs with zero non-idle delta in per-CPU aggregation",
     "id": "sched-20260804-016",
     "date": "2026-08-04",
     "type": "feature",
@@ -1586,7 +1586,7 @@
     "tldr": "Shrikanth Hegde 把 `cpu_preferred_mask`（per-task 偏好的大/小核子集，用于节能与缓存热）概念文档化，作为 cpu_preferred_mask 系列（v9→v10）的一部分。作者公开表示仍在等待一组 benchmark 数字支撑合入。合入可能性 medium——明确等数据。"
   },
   {
-    "title": "rseq fix hard lockup granted time slice extension v3",
+    "title": "rseq: fix hard lockup on granted time slice extension",
     "id": "sched-20260804-018",
     "date": "2026-08-04",
     "type": "bug",
@@ -1717,7 +1717,7 @@
     "tldr": ""
   },
   {
-    "title": "sched dynamic simplify preempt_dynamic v2",
+    "title": "sched: dynamic: Simplify PREEMPT_DYNAMIC",
     "id": "sched-20260805-003",
     "date": "2026-08-05",
     "type": "feature",
@@ -1734,7 +1734,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair remove dead throttled check pick task fair",
+    "title": "sched/fair: Remove dead throttled check in pick_task_fair()",
     "id": "sched-20260805-004",
     "date": "2026-08-05",
     "type": "cleanup",
@@ -1829,7 +1829,7 @@
     "tldr": ""
   },
   {
-    "title": "sched debug per cpu debugfs files",
+    "title": "sched/debug: Introduce per-CPU debugfs files",
     "id": "sched-20260805-009",
     "date": "2026-08-05",
     "type": "feature",
@@ -1847,7 +1847,7 @@
     "tldr": ""
   },
   {
-    "title": "cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled",
+    "title": "cpufreq: schedutil: Fix rate limit overflow",
     "id": "sched-20260805-010",
     "date": "2026-08-05",
     "type": "fix",
@@ -2142,7 +2142,7 @@
     "tldr": ""
   },
   {
-    "title": "[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests",
+    "title": "fuse: give wakeup hints to the scheduler for synchronous requests",
     "id": "sched-20260806-012",
     "date": "2026-08-06",
     "type": "feature",
@@ -2201,7 +2201,7 @@
     "tldr": ""
   },
   {
-    "title": "proxy execution sleeping owner v31",
+    "title": "[PATCH v31 0/9] Sleeping Owner Handling for Proxy Execution (v31)",
     "id": "sched-20260807-001-proxy-execution-sleeping-owner-v31",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2217,7 +2217,7 @@
     "tldr": ""
   },
   {
-    "title": "sched ext find parent sched null check",
+    "title": "sched_ext: Add NULL check in find_parent_sched()",
     "id": "sched-20260807-002-sched-ext-find-parent-sched-null-check",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2232,7 +2232,7 @@
     "tldr": ""
   },
   {
-    "title": "schedutil boost dvfs policy max",
+    "title": "cpufreq: allow cpuinfo max to decrease when boost is disabled",
     "id": "sched-20260807-003-schedutil-boost-dvfs-policy-max",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2247,7 +2247,7 @@
     "tldr": ""
   },
   {
-    "title": "cpufreq cppc preserve registers hotplug",
+    "title": "cpufreq: CPPC: Preserve OSPM-set registers across suspend/resume",
     "id": "sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2262,7 +2262,7 @@
     "tldr": ""
   },
   {
-    "title": "cpufreq cppc highest perf update limits",
+    "title": "cpufreq: cppc: Refactor autonomous perf bounds into helper",
     "id": "sched-20260807-005-cpufreq-cppc-highest-perf-update-limits",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2276,7 +2276,7 @@
     "tldr": ""
   },
   {
-    "title": "perf core kfree nolock sched",
+    "title": "sched: use kfree_nolock() instead of kfree_rcu()",
     "id": "sched-20260807-006-perf-core-kfree-nolock-sched",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2291,7 +2291,7 @@
     "tldr": ""
   },
   {
-    "title": "perf core sched task cpu wide null pmu ctx",
+    "title": "perf/core: Fix NULL pmu_ctx passed to pmu->sched_task()",
     "id": "sched-20260807-007-perf-core-sched-task-cpu-wide-null-pmu-ctx",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2307,7 +2307,7 @@
     "tldr": ""
   },
   {
-    "title": "perf core sched task dispatch branch fixes",
+    "title": "perf/core: sched_task() dispatch and branch entry fixes",
     "id": "sched-20260807-008-perf-core-sched-task-dispatch-branch-fixes",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2322,7 +2322,7 @@
     "tldr": ""
   },
   {
-    "title": "perf core group leader use after free",
+    "title": "perf/core: Fix group leader use-after-free after sibling detach",
     "id": "sched-20260807-009-perf-core-group-leader-use-after-free",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2337,7 +2337,7 @@
     "tldr": ""
   },
   {
-    "title": "sched cache active lb migrate llc task",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260807-010-sched-cache-active-lb-migrate-llc-task",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2353,7 +2353,7 @@
     "tldr": ""
   },
   {
-    "title": "psi use ffs task count bitmask",
+    "title": "sched/psi: use __ffs() to walk task-count bitmasks in psi_group_change()",
     "id": "sched-20260807-011-psi-use-ffs-task-count-bitmask",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2368,7 +2368,7 @@
     "tldr": ""
   },
   {
-    "title": "psi rtpoll teardown stale timer",
+    "title": "sched/psi: Prevent stale timer rearm after rtpoll teardown",
     "id": "sched-20260807-012-psi-rtpoll-teardown-stale-timer",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2382,7 +2382,7 @@
     "tldr": ""
   },
   {
-    "title": "sched preserve reset on fork",
+    "title": "sched: Preserve reset-on-fork across concurrent sched_setparam()",
     "id": "sched-20260807-013-sched-preserve-reset-on-fork",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2397,7 +2397,7 @@
     "tldr": ""
   },
   {
-    "title": "preempt dynamic simplify v2",
+    "title": "sched: dynamic: Simplify PREEMPT_DYNAMIC",
     "id": "sched-20260807-014-preempt-dynamic-simplify-v2",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2412,7 +2412,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair is core idle check all cpus",
+    "title": "sched/fair: Make is_core_idle() check all cpus in a core",
     "id": "sched-20260807-015-sched-fair-is-core-idle-check-all-cpus",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2428,7 +2428,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair nohz fully idle cores",
+    "title": "sched/fair: Prefer fully idle cores for NOHZ balancing",
     "id": "sched-20260807-016-sched-fair-nohz-fully-idle-cores",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2444,7 +2444,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair wf sync stacking decline",
+    "title": "sched/fair: decline WF_SYNC stacking when waker LLC is the busier share",
     "id": "sched-20260807-017-sched-fair-wf-sync-stacking-decline",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2460,7 +2460,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair wake affine nonsmt reciprocal",
+    "title": "sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups",
     "id": "sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2475,7 +2475,7 @@
     "tldr": ""
   },
   {
-    "title": "sched core skip avg idle no idle stamp",
+    "title": "sched/core: Skip rq->avg_idle update without a valid idle_stamp",
     "id": "sched-20260807-019-sched-core-skip-avg-idle-no-idle-stamp",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2490,7 +2490,7 @@
     "tldr": ""
   },
   {
-    "title": "sched numa hygon remote socket distance",
+    "title": "sched/numa: Apply remote socket distance averaging for Hygon CPUs",
     "id": "sched-20260807-020-sched-numa-hygon-remote-socket-distance",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2506,7 +2506,7 @@
     "tldr": ""
   },
   {
-    "title": "selftests sched ext exit skeleton open",
+    "title": "selftests/sched_ext: Check skeleton open failure in exit test",
     "id": "sched-20260807-021-selftests-sched-ext-exit-skeleton-open",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2521,7 +2521,7 @@
     "tldr": ""
   },
   {
-    "title": "riscv vector preserve state scheduling",
+    "title": "riscv: vector: preserve state when scheduling at nonzero depth",
     "id": "sched-20260807-022-riscv-vector-preserve-state-scheduling",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2536,7 +2536,7 @@
     "tldr": ""
   },
   {
-    "title": "sched wake q unlock wake helper 6 12y",
+    "title": "arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS",
     "id": "sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2551,7 +2551,7 @@
     "tldr": ""
   },
   {
-    "title": "sched preempt count cant migrate sleep cleanup",
+    "title": "sched: Avoid signed comparison of preempt_count() in __cant_migrate()",
     "id": "sched-20260807-024-sched-preempt-count-cant-migrate-sleep-cleanup",
     "date": "2026-08-07",
     "type": "unknown",
@@ -2566,7 +2566,7 @@
     "tldr": ""
   },
   {
-    "title": "sched core skip avg idle v3",
+    "title": "sched/core: Skip rq->avg_idle update without a valid idle_stamp",
     "id": "sched-20260808-001-sched-core-skip-avg-idle-v3",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2581,7 +2581,7 @@
     "tldr": ""
   },
   {
-    "title": "kcov scheduler coverage leaks",
+    "title": "kcov: suppress timer and scheduler coverage leaks",
     "id": "sched-20260808-002-kcov-scheduler-coverage-leaks",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2596,7 +2596,7 @@
     "tldr": ""
   },
   {
-    "title": "sched ext core scheduling fixes",
+    "title": "sched_ext: Fix rq->core_pick corruption under core scheduling",
     "id": "sched-20260808-003-sched-ext-core-scheduling-fixes",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2611,7 +2611,7 @@
     "tldr": ""
   },
   {
-    "title": "cpufreq cppc ospm nominal perf v7",
+    "title": "cpufreq: CPPC: Reflect the OSPM nominal in boost and limits",
     "id": "sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2625,7 +2625,7 @@
     "tldr": ""
   },
   {
-    "title": "perf sched latency v9 applied",
+    "title": "perf sched latency: Refine outputs, unit scaling, and histogram support",
     "id": "sched-20260808-005-perf-sched-latency-v9-applied",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2639,7 +2639,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair asym capacity load balance merged",
+    "title": "sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings",
     "id": "sched-20260808-006-sched-fair-asym-capacity-load-balance-merged",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2655,7 +2655,7 @@
     "tldr": ""
   },
   {
-    "title": "sched fair nohz fully idle cores merged",
+    "title": "sched/fair: Prefer fully idle cores for NOHZ balancing",
     "id": "sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged",
     "date": "2026-08-08",
     "type": "unknown",
@@ -2689,7 +2689,7 @@
     "tldr": "Aaron Tomlin 第三版提交「按 CPU 暴露调度调试信息」系列，把原本集中在 `/proc/sched_debug` 的部分内容下放到 per-CPU debugfs 文件，并修正了并发读取潜在的 UAF。目前处于 under_review，暂无维护者明确表态。"
   },
   {
-    "title": "sched cache honor migrate llc task semantics in active load",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260809-002",
     "date": "2026-08-09",
     "type": "fix",
@@ -3087,7 +3087,7 @@
     "tldr": "K Prateek Nayak（Valentin Schneider 等参与）修复 sched/topology 的 `sd->shared` 重复分配/泄漏：当 `sd_llc` 与 `sd_asym_cpucapacity` 指向同一域时，`init_sched_domain_shared()` 会覆盖并泄漏先前分配。同时涉及 NUMA masks 释放、rebuild 加锁等关联修复。属内存泄漏修复，合入可能性 high。"
   },
   {
-    "title": "[PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
+    "title": "Re: [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
     "id": "sched-20260814-004",
     "date": "2026-08-14",
     "type": "feature",
@@ -3527,7 +3527,7 @@
     "tldr": "Hui Su 的 v3（延续 08-07 系列 006）修复 `schedutil` 在 32 位平台的频率限制溢出：`rate_limit_us`（unsigned int）乘 `NSEC_PER_USEC`(1000L) 在 32 位下以 32 位无符号算术进行，写大值（如 4294968）会让 `freq_update_delay_ns` 从 4294968000ns 溢出为 704ns，使 schedutil 远超预期频率更新。Rafael 已 apply 为 7.3 material（Reviewed-by: Zhongqiu Han）。"
   },
   {
-    "title": "sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors",
+    "title": "sched_ext: Add selftest for blocked donor admission",
     "id": "sched-20260817-001",
     "date": "2026-08-16",
     "type": "feature",
@@ -3640,7 +3640,7 @@
     "tldr": "Shubhang Kaushik 的 `sched/core` 小修 v3（本日 gentle ping）：`update_rq_avg_idle()` 在 `rq->idle_stamp == 0` 时跳过 avg_idle 更新，避免任务经 `sched_balance_newidle()`/`ttwu_pending` 进入空闲却无有效 idle_stamp 时写出错误值。已有 `Reviewed-by: K Prateek Nayak` + `Acked-by: John Stultz`，hackbench 多轮无实质回退。待 maintainer apply。"
   },
   {
-    "title": "sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)",
+    "title": "sched_ext: Delegate proxy donor admission to BPF schedulers",
     "id": "sched-20260818-002",
     "date": "2026-08-18",
     "type": "feature",
@@ -3658,7 +3658,7 @@
     "tldr": "本文为增量更新。Andrea Righi 的 v12 proxy-exec + sched_ext 共存系列（17 patch）本日继续收到 Tejun Heo 对 patch 12/17（remote DSQ transfers）和 14/17（proxy donor admission）的详细 review，Andrea 逐条回应并承诺调整。关键进展：Tejun 同意去掉 `SCX_TASK_ENQ_WAKEUP`、改用 `WF_ON_RQ` 直接传递；reject_dsq 处理讨论引入 generic deferred work flag 话题。完整背景见前日文章。"
   },
   {
-    "title": "[GIT PULL] sched_ext: Changes for v7.3",
+    "title": "sched_ext: Changes for v7.3",
     "id": "sched-20260818-003",
     "date": "2026-08-18",
     "type": "feature",
@@ -3693,7 +3693,7 @@
     "tldr": "Changwoo Min 提交单 patch 将 `ops.cgroup_set_bandwidth()` 加入 sched_ext cgroup 操作的 sleepable 白名单，使 BPF 调度器在 cgroup 获得 cpu.max 限制时可按需分配内存，而非预保留。Tejun Heo review 要求加 `__retain`、统一 marker 前缀并集中放置。"
   },
   {
-    "title": "sched: Flatten the pick — v3 s390 benchmark results",
+    "title": "sched: Flatten the pick",
     "id": "sched-20260818-005",
     "date": "2026-08-18",
     "type": "feature",
@@ -3711,7 +3711,7 @@
     "tldr": "Szabina 在 s390 LPAR（32 vCPU）上对 \"Flatten the pick\" v3 系列做了详细 benchmark（schbench、sysbench、hackbench），含 stress-ng 并行负载。关键发现：无并行负载时结果普遍正面（高线程数最高 -9.55%），但 stress-ng 并行时低线程数场景出现回退（最高 +2.36%），且 stress-ng 自身也回退。K Prateek Nayak 询问测试基线 commit。"
   },
   {
-    "title": "tip `sched/core` 的 flat-hierarchy rework 在 enqueue 路径触发 `#DE` 除零 panic（group ...",
+    "title": "sched/fair flat hierarchy tgcps divide zero fix",
     "id": "sched-20260819-001",
     "date": "2026-08-19",
     "type": "bug",
@@ -3731,7 +3731,7 @@
     "tldr": "tip `sched/core` 的 flat-hierarchy rework 在 enqueue 路径触发 `#DE` 除零 panic（group se 的 `load.weight==0`，`__calc_prop_weight()` 除 `cfs_rq->load.weight`），由 `tg_cpus()` 未对 0 做下限导致；同日配套补丁把 `tg_cpus()` 下限取到 1。critical 级崩溃，但仅影响尚未进主线、由发行版（CachyOS）带入的 tip 系列。"
   },
   {
-    "title": "core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续",
+    "title": "core-sched/pick task race null deref discussion",
     "id": "sched-20260819-002",
     "date": "2026-08-19",
     "type": "discussion",
@@ -3752,7 +3752,7 @@
     "tldr": "core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续，造成 `rqX->core_pick` 被对端置 NULL 后空指针解引用。Peter 8/19 回复承认这是个漂亮竞态，但尚无好修复，且 sched_ext 参与让问题更复杂。属于 08-17→08-18 core_sched/proxy_exec 讨论线的延续。"
   },
   {
-    "title": "Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch...",
+    "title": "sched/migrate static key api resend",
     "id": "sched-20260819-003",
     "date": "2026-08-19",
     "type": "fix",
@@ -3770,7 +3770,7 @@
     "tldr": "Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch_*` API（含 `sched_feat` 数组用 union 包装 true/false 两种类型），无功能变化。RESEND 已拆成独立补丁、paravirt 部分拿到 Ack。纯清理，合入概率高。"
   },
   {
-    "title": "Vladimir Zapolskiy 移除 `do_balance_callbacks()` 中多余的函数指针类型转换",
+    "title": "sched/core remove balance callback cast",
     "id": "sched-20260819-004",
     "date": "2026-08-19",
     "type": "fix",
@@ -3786,7 +3786,7 @@
     "tldr": "Vladimir Zapolskiy 移除 `do_balance_callbacks()` 中多余的函数指针类型转换，属 trivial 非功能清理。"
   },
   {
-    "title": "Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotp...",
+    "title": "sched/topology cpus read lock rebuild sched/domains",
     "id": "sched-20260819-005",
     "date": "2026-08-19",
     "type": "fix",
@@ -3805,7 +3805,7 @@
     "tldr": "Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotplug_lock` 触发的 backtrace，v2 把 `cpus_read_lock` 上移到 `rebuild_sched_domains()`。同时顺带修好 EAS 在 CPUfreq governor 切换时的同类问题。"
   },
   {
-    "title": "从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段",
+    "title": "sched/rt cpupri remove count field",
     "id": "sched-20260819-006",
     "date": "2026-08-19",
     "type": "fix",
@@ -3822,7 +3822,7 @@
     "tldr": "从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段，纯死代码清理。"
   },
   {
-    "title": "Tao Cui 为 cgroup selftests 增加 `test_psi.c`",
+    "title": "selftests/cgroup add psi pressure tests",
     "id": "sched-20260819-007",
     "date": "2026-08-19",
     "type": "feature",
@@ -3839,7 +3839,7 @@
     "tldr": "Tao Cui 为 cgroup selftests 增加 `test_psi.c`，覆盖 PSI 压力触发与 `cgroup.pressure` 显隐切换，v3 按 review 拆分成 per-resource case 并提升健壮性。纯测试覆盖增强，合入概率高。"
   },
   {
-    "title": "Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idl...",
+    "title": "sched/ext documentation fixes cgroup knobs exit kind",
     "id": "sched-20260819-008",
     "date": "2026-08-19",
     "type": "fix",
@@ -3857,7 +3857,7 @@
     "tldr": "Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idle` 应说明也作用于实现了对应回调的 BPF 调度器；sched-ext.rst 示例 `ei->type` 应为 `ei->kind`。纯文档，合入概率高。"
   },
   {
-    "title": "Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`）",
+    "title": "sched/ext sync tools headers from scx repo",
     "id": "sched-20260819-009",
     "date": "2026-08-19",
     "type": "fix",
@@ -3874,7 +3874,7 @@
     "tldr": "Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`），修复 64 位 enum 恢复、v6.18+ `is_migration_disabled()` 少报等问题。已基于 `sched_ext/for-7.3-fixes`，属常规同步。"
   },
   {
-    "title": "关于 \"sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警\" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.w...",
+    "title": "sched/ext cgroup set bandwidth warn vs doc",
     "id": "sched-20260819-010",
     "date": "2026-08-19",
     "type": "discussion",
@@ -3894,7 +3894,7 @@
     "tldr": "关于 \"sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警\" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.weight 前车之鉴），倾向用文档说明 \"knob 仅当调度器实现对应回调才生效\"。作者改为投文档补丁。属 08-18 带宽讨论的延续。"
   },
   {
-    "title": "`[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复",
+    "title": "sched/remove sched/class balance core-sched/discussion",
     "id": "sched-20260819-011",
     "date": "2026-08-19",
     "type": "feature",
@@ -3912,7 +3912,7 @@
     "tldr": "`[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复，讨论焦点是与 core_sched 的交互正确性（在 pick 内做 balance 可能错移任务、core-sched 下 RETRY_TASK 语义存疑）。本次抓取未拿到原始 cover，方案全貌与作者待补；合入前景 medium，受同日 core_sched 竞态分析（article 002）牵连。"
   },
   {
-    "title": "Zhe Liu 修一个 CFS 带宽配置顺序陷阱：先 `cpu.max.burst` 配大值、再设有限 `cpu.max` quota 时",
+    "title": "sched/fair: Reset incompatible burst on quota change",
     "id": "sched-20260820-001",
     "date": "2026-08-20",
     "type": "fix",
@@ -3930,7 +3930,7 @@
     "tldr": "Zhe Liu 修一个 CFS 带宽配置顺序陷阱：先 `cpu.max.burst` 配大值、再设有限 `cpu.max` quota 时，因旧 burst 校验不通过导致 quota 写入直接 EINVAL。修复为「改 quota 不兼容则把 burst 清零」，附文档与 selftest。Michal Koutny 倾向改成 clamp 到 quota，分歧待解。"
   },
   {
-    "title": "Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `P...",
+    "title": "bpf: sched_ext: Mark ops argument container pointer fields as trusted",
     "id": "sched-20260820-002",
     "date": "2026-08-20",
     "type": "feature",
@@ -3947,7 +3947,7 @@
     "tldr": "Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `PTR_UNTRUSTED` 改为 `PTR_TRUSTED`，因为 ops 调用上下文已保证其可信。用户写 BPF 调度器时不再被迫加冗余检查。已通过 bpf CI，合入概率高。"
   },
   {
-    "title": "Michal Koutny（与同日 Liang Luo v2）把 08-19 的「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」讨论落到了...",
+    "title": "docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent",
     "id": "sched-20260820-003",
     "date": "2026-08-20",
     "type": "fix",
@@ -3965,7 +3965,7 @@
     "tldr": "Michal Koutny（与同日 Liang Luo v2）把 08-19 的「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」讨论落到了文档方案：cgroup-v2.rst 明确 cpu.max/cpu.idle 等 knob 仅在加载的 BPF 调度器实现了对应回调时才对相关任务生效。纯文档，合入概率高。"
   },
   {
-    "title": "LKP sparse 在 `kernel/sched/fair.c:2004`（enqueue 路径判断 `cfs_rq->nr_running`）发出静...",
+    "title": "kernel/sched/fair.c:2004:38: sparse: incorrect type in initializer",
     "id": "sched-20260820-004",
     "date": "2026-08-20",
     "type": "bug",
@@ -3982,7 +3982,7 @@
     "tldr": "LKP sparse 在 `kernel/sched/fair.c:2004`（enqueue 路径判断 `cfs_rq->nr_running`）发出静态检查告警，疑似近期 commit `85570f10a4c6`（EEVDF single runqueue 合并）引入。无修复补丁，仅自动报告。"
   },
   {
-    "title": "两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-...",
+    "title": "[tip: sched/urgent] sched/topology: cpus_read_lock() rebuild_sched_domains()",
     "id": "sched-20260820-005",
     "date": "2026-08-20",
     "type": "fix",
@@ -4003,7 +4003,7 @@
     "tldr": "两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-19 005）；② `tg_cpus()` floor at 1（对应 08-19 001 flat-hierarchy 除零崩溃修复）。tip-bot 8/20 自动应用。"
   },
   {
-    "title": "`struct cpupri_vec` 的 `count` 字段删除从 08-19 的 v1 推进到 08-20 的 v2：RT 优先级队列死代码清理",
+    "title": "sched/cpupri: Remove count field from struct cpupri_vec",
     "id": "sched-20260820-006",
     "date": "2026-08-20",
     "type": "fix",
@@ -4020,7 +4020,7 @@
     "tldr": "`struct cpupri_vec` 的 `count` 字段删除从 08-19 的 v1 推进到 08-20 的 v2：RT 优先级队列死代码清理，讨论收敛，合入概率高。"
   },
   {
-    "title": "`paravirt_steal` 静态键迁移到 `static_branch_*` 的 RESEND 在 08-20 收到 Reviewed-by",
+    "title": "sched: Convert paravirt_steal to new static key APIs",
     "id": "sched-20260820-007",
     "date": "2026-08-20",
     "type": "fix",
@@ -4038,7 +4038,7 @@
     "tldr": "`paravirt_steal` 静态键迁移到 `static_branch_*` 的 RESEND 在 08-20 收到 Reviewed-by。这是 08-19 003 系列（调度子系统弃用 raw static_key API）的延续，paravirt 部分此前已获 Juergen Gross Acked-by。"
   },
   {
-    "title": "08-19 的 sched_ext 文档两连修在 08-20 推进：① `ei->type → ei->kind` 示例修复已 Applied 到 `sc...",
+    "title": "sched_ext: Documentation fixes (cgroup knobs, exit kind)",
     "id": "sched-20260820-008",
     "date": "2026-08-20",
     "type": "fix",
@@ -4057,7 +4057,7 @@
     "tldr": "08-19 的 sched_ext 文档两连修在 08-20 推进：① `ei->type → ei->kind` 示例修复已 Applied 到 `sched_ext/for-7.3-fixes`（Fixes `fa48e8d2c7b5`）；② `cgroup CPU knobs are scheduler-dependent` 文档补丁发 v2。"
   },
   {
-    "title": "Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」",
+    "title": "sched/fair: Prefer fully idle cores for NOHZ balancing",
     "id": "sched-20260820-009",
     "date": "2026-08-20",
     "type": "fix",
@@ -4075,7 +4075,7 @@
     "tldr": "Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」，以保留空闲 SMT 兄弟供单线程突发。属 08-09 009 线的延续。"
   },
   {
-    "title": "flat-hierarchy 除零崩溃（08-19 001）的 08-20 诊断更新：报告者打开 CONFIG_DEBUG 后 diagnosis WAR...",
+    "title": "sched/fair: flat-hierarchy tg_cpus() divide-by-zero diagnosis update",
     "id": "sched-20260820-010",
     "date": "2026-08-20",
     "type": "bug",
@@ -4094,7 +4094,7 @@
     "tldr": "flat-hierarchy 除零崩溃（08-19 001）的 08-20 诊断更新：报告者打开 CONFIG_DEBUG 后 diagnosis WARN 确实触发，确认根因走 cpuset 路径（非仅发行版），uptime 21.4h 复现。配套 fix（tg_cpus floor at 1）已合入 tip（见 08-20 005）。"
   },
   {
-    "title": "`Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...",
+    "title": "sched: Remove sched_class::balance()",
     "id": "sched-20260820-011",
     "date": "2026-08-20",
     "type": "discussion",
@@ -4115,7 +4115,7 @@
     "tldr": "`Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter 给出 core_seq 跟踪多 pick 的 sketch、Tejun 确认 SCX 下锁丢弃可前进、idle pick 传 NULL rf。forward-progress（活锁）保证仍未敲定，原始 cover 仍缺。属 08-19 011/002 延续。"
   },
   {
-    "title": "并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致",
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
     "id": "sched-20260821-001",
     "date": "2026-08-21",
     "type": "fix",
@@ -4134,7 +4134,7 @@
     "tldr": "并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致。v2 方案将 CFS 锁提升到 core 层，让 CFS 和 SCX 回调在同一把锁下原子执行，PeterZ 已认可方向。"
   },
   {
-    "title": "PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep(...",
+    "title": "sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.",
     "id": "sched-20260821-002",
     "date": "2026-08-21",
     "type": "fix",
@@ -4152,7 +4152,7 @@
     "tldr": "PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep() 告警。Sebastian 的修复为 `__might_resched()` 增加 `sleeping_lock` 参数区分正常调度与 sleeping lock 调度，David Woodhouse 已 ack。"
   },
   {
-    "title": "PeterZ 的\"sched: Flatten the pick\"系列 v3 讨论继续",
+    "title": "sched: Flatten the pick",
     "id": "sched-20260821-003",
     "date": "2026-08-21",
     "type": "discussion",
@@ -4170,7 +4170,7 @@
     "tldr": "PeterZ 的\"sched: Flatten the pick\"系列 v3 讨论继续，IBM 工程师在 tip:sched/core 最新基线上重复了 benchmark，对比扁平 pick 层级与当前实现的性能差异。系列仍在 review 中。"
   },
   {
-    "title": "cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity",
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
     "id": "sched-20260821-004",
     "date": "2026-08-21",
     "type": "fix",
@@ -4188,7 +4188,7 @@
     "tldr": "cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。"
   },
   {
-    "title": "PeterZ 提议移除 `sched_class::balance()` 回调",
+    "title": "sched: Remove sched_class::balance()",
     "id": "sched-20260821-005",
     "date": "2026-08-21",
     "type": "discussion",
@@ -4205,7 +4205,7 @@
     "tldr": "PeterZ 提议移除 `sched_class::balance()` 回调，这是 core_sched 重构的一部分。ByteDance 的 Xuewen Yan 提供了带宽测试脚本帮助验证，讨论仍在进行中。"
   },
   {
-    "title": "并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx....",
+    "title": "sched_ext: Serialize concurrent cpu.max writers in scx_group_set_bandwidth()",
     "id": "sched-20260821-006",
     "date": "2026-08-21",
     "type": "fix",
@@ -4223,7 +4223,7 @@
     "tldr": "并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx.bw_*` 缓存值交错，Changwoo Min 引入 `scx_cgroup_set_bw_mutex` 串行化 SCX 侧更新，作为 CFS `cfs_constraints_mutex` 的 SCX 对等物。"
   },
   {
-    "title": "sched_ext 的 ops 参数容器指针字段被标记为 trusted",
+    "title": "bpf: sched_ext: Mark ops argument container pointer fields as trusted",
     "id": "sched-20260821-007",
     "date": "2026-08-21",
     "type": "feature",
@@ -4240,7 +4240,7 @@
     "tldr": "sched_ext 的 ops 参数容器指针字段被标记为 trusted，允许 BPF 调度器安全地解引用这些指针。补丁已被 bpf/bpf-next.git 合入。"
   },
   {
-    "title": "sched_ext v7.3 的变更已被合入 torvalds/linux.git",
+    "title": "Re: [GIT PULL] sched_ext: Changes for v7.3",
     "id": "sched-20260821-008",
     "date": "2026-08-21",
     "type": "feature",
@@ -4256,7 +4256,7 @@
     "tldr": "sched_ext v7.3 的变更已被合入 torvalds/linux.git。Tejun Heo 的 pull request 于 8 月 17 日发出，8 月 21 日确认合入主线。"
   },
   {
-    "title": "PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警",
+    "title": "futex: Fix might_sleep() warning in futex_pivot_pending()",
     "id": "sched-20260821-009",
     "date": "2026-08-21",
     "type": "fix",
@@ -4273,7 +4273,7 @@
     "tldr": "PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警，已合入 `tip: locking/urgent` 分支。commit `d8aa5dd97944`。"
   },
   {
-    "title": "v2 补丁尝试在 CPU 已有 IPI 中断挂起时阻止进入 idle 状态",
+    "title": "cpuidle: Deny idle entry when CPU already have IPI interrupt pending",
     "id": "sched-20260821-010",
     "date": "2026-08-21",
     "type": "fix",
@@ -4290,7 +4290,7 @@
     "tldr": "v2 补丁尝试在 CPU 已有 IPI 中断挂起时阻止进入 idle 状态，但 Daniel Lezcano 认为这应该在 idle loop 而非 cpuidle 框架中处理，Maulik Shah 的 v2 方案方向受到质疑。"
   },
   {
-    "title": "`dt_idle_pd_alloc()` 中 `pd->name` 指向 `kasprintf()` 分配内存的中间位置（`kbasename()` 偏移）",
+    "title": "cpuidle: dt_idle_genpd: kfree() the original name allocation",
     "id": "sched-20260821-011",
     "date": "2026-08-21",
     "type": "fix",
@@ -4307,7 +4307,7 @@
     "tldr": "`dt_idle_pd_alloc()` 中 `pd->name` 指向 `kasprintf()` 分配内存的中间位置（`kbasename()` 偏移），`kfree()` 时触发内存错误。Linkai Gong 的修复改为直接 `kstrdup(kbasename(...))` 复制基名字符串。"
   },
   {
-    "title": "Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径",
+    "title": "sched/fair: Use update_curr_eevdf() for remaining root cfs_rq callers",
     "id": "sched-20260822-001",
     "date": "2026-08-22",
     "type": "fix",
@@ -4324,7 +4324,7 @@
     "tldr": "Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。"
   },
   {
-    "title": "`sched/core: WARN_ON(is_migration_disabled())` 触发告警",
+    "title": "sched/core: WARN_ON(is_migration_disabled()) triggers",
     "id": "sched-20260822-002",
     "date": "2026-08-22",
     "type": "bug",
@@ -4341,7 +4341,7 @@
     "tldr": "`sched/core: WARN_ON(is_migration_disabled())` 触发告警，表明任务在迁移被禁用时出现了意外的调度路径。需要调查触发条件。"
   },
   {
-    "title": "steal_governor v10 系列收到 Yury 的独立测试：steal ratio 成功收敛",
+    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
     "id": "sched-20260822-003",
     "date": "2026-08-22",
     "type": "discussion",
@@ -4359,7 +4359,7 @@
     "tldr": "steal_governor v10 系列收到 Yury 的独立测试：steal ratio 成功收敛，但整体性能比基线差 3-5%。作者需要调查性能回退原因。"
   },
   {
-    "title": "Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配）",
+    "title": "sched_ext: Fix spurious aborts in scx_bpf_dsq_move()",
     "id": "sched-20260822-004",
     "date": "2026-08-22",
     "type": "fix",
@@ -4376,7 +4376,7 @@
     "tldr": "Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配），但早期所有权检查将这些良性竞态升级为调度器中止。修复将所有权检查移到 cursor-lost 检查之后。已合入 `sched_ext/for-7.3-fixes`。"
   },
   {
-    "title": "本文是 sched-20260821-001 的增量更新",
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
     "id": "sched-20260822-005",
     "date": "2026-08-22",
     "type": "fix",
@@ -4394,7 +4394,7 @@
     "tldr": "本文是 sched-20260821-001 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。"
   },
   {
-    "title": "两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致",
+    "title": "sched_ext: Sync headers and docs (applied to for-7.3-fixes)",
     "id": "sched-20260822-006",
     "date": "2026-08-22",
     "type": "fix",
@@ -4411,7 +4411,7 @@
     "tldr": "两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致；2) cgroup v2 文档增加 BPF 调度器回调（cpu.max/cpu.idle）说明。"
   },
   {
-    "title": "Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝",
+    "title": "sched/debug: Reject invalid writes to numa_balancing scan_size_mb",
     "id": "sched-20260822-007",
     "date": "2026-08-22",
     "type": "fix",
@@ -4428,7 +4428,7 @@
     "tldr": "Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝。v2 改用 `debugfs_create_file_unsafe` 并重写了 commit message。"
   },
   {
-    "title": "Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时",
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
     "id": "sched-20260823-001",
     "date": "2026-08-23",
     "type": "fix",
@@ -4446,7 +4446,7 @@
     "tldr": "Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时，CFS 内部锁在调 SCX 回调前释放，允许多线程穿插，使 CFS 记录值、SCX 簿记、BPF 调度器三者拿到不同参数。v3 把锁上移到 core 层统一串行化。合入概率高。"
   },
   {
-    "title": "两个生产环境（aarch64 Kunpeng 920、vendor 4.19.90）在长 uptime 后各自崩溃于 `pick_next_task_fa...",
+    "title": "sched/fair: NULL deref in pick_next_task_fair (v4.19)",
     "id": "sched-20260823-002",
     "date": "2026-08-23",
     "type": "bug",
@@ -4464,7 +4464,7 @@
     "tldr": "两个生产环境（aarch64 Kunpeng 920、vendor 4.19.90）在长 uptime 后各自崩溃于 `pick_next_task_fair()` 解引用 NULL：root cfs_rq 的 `nr_running` 被污染成 0xFFFFFFFF（-1），使 idle 判定失效、从空 rb 树取到 NULL。签名一致，疑似 nr_running 计数损坏。基于 vendor 4.19，是否主线程可复现待定。"
   },
   {
-    "title": "arm64 长运行服务器上偶发 `rq->curr != current`（rq 上记录的当前任务与实际 current 不一致）",
+    "title": "sched/core: sporadic stale rq->curr causing scheduler crashes on arm64",
     "id": "sched-20260823-003",
     "date": "2026-08-23",
     "type": "bug",
@@ -4481,7 +4481,7 @@
     "tldr": "arm64 长运行服务器上偶发 `rq->curr != current`（rq 上记录的当前任务与实际 current 不一致），引发调度器崩溃。生产环境报告，触发条件与内核版本细节待补。属新出现的 crash 报告。"
   },
   {
-    "title": "Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock",
+    "title": "sched/core: Defer preempted remote vCPU task clock updates",
     "id": "sched-20260823-004",
     "date": "2026-08-23",
     "type": "fix",
@@ -4499,7 +4499,7 @@
     "tldr": "Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock，导致 steal 间隔被错误计入。修复为抢占期间把 delta 累积到 `deferred_clock_task`，待 vCPU 重入时一并折回 irq/steal 记账。RFC 阶段，合入概率 medium。"
   },
   {
-    "title": "Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership c...",
+    "title": "sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races",
     "id": "sched-20260823-005",
     "date": "2026-08-23",
     "type": "fix",
@@ -4515,7 +4515,7 @@
     "tldr": "Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races` Applied 到 `sched_ext/for-7.3-fixes`。修复 DSQ 所有权变更竞态下 `scx_bpf_dsq_move()` 的虚假中止。已 merged，合入可能性 merged。"
   },
   {
-    "title": "Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Sch...",
+    "title": "docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent",
     "id": "sched-20260823-006",
     "date": "2026-08-23",
     "type": "fix",
@@ -4533,7 +4533,7 @@
     "tldr": "Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。"
   },
   {
-    "title": "Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETU...",
+    "title": "selftests/cgroup: Add PSI pressure tests",
     "id": "sched-20260823-007",
     "date": "2026-08-23",
     "type": "feature",
@@ -4550,7 +4550,7 @@
     "tldr": "Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETUP/TEARDOWN），并把「poll 超时未触发」从 SKIP 改为 FAIL。已迭代四轮，合入概率高。"
   },
   {
-    "title": "`sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_di...",
+    "title": "sched_ext: Sync common and compat headers from the scx repo",
     "id": "sched-20260823-008",
     "date": "2026-08-23",
     "type": "fix",
@@ -4568,7 +4568,7 @@
     "tldr": "`sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_disables_migration` 默认值与「err high」注释不一致，在 cherry-pick 8e4f0b1ebcf2 的内核上 `is_migration_disabled(current)` 会少报。Changwoo 已在 scx 侧提 PR scx#3766 修正，Tejun 将 re-sync。属头同步系列的后续打磨。"
   },
   {
-    "title": "`sched/fair: Only apply cpufreq pressure where frequency is invariant` 的讨论继续：...",
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
     "id": "sched-20260823-009",
     "date": "2026-08-23",
     "type": "fix",
@@ -4586,7 +4586,7 @@
     "tldr": "`sched/fair: Only apply cpufreq pressure where frequency is invariant` 的讨论继续：cpufreq pressure 按「可达最高频率/当前可达最高频率」降 capacity，但 utilization 仅在频率不变架构才带匹配 scaling，导致语义不一致。焦点在「是否仅在不 invariant 场景施加 pressure」。合入概率 medium。"
   },
   {
-    "title": "`sched/cache: honor migrate_llc_task semantics in active load balance` v3 已获 ...",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260823-010",
     "date": "2026-08-23",
     "type": "fix",
@@ -4604,7 +4604,7 @@
     "tldr": "`sched/cache: honor migrate_llc_task semantics in active load balance` v3 已获 Tim Chen、Chen Yu 的 Reviewed-by，8/23 为 gentle ping 请 Peter 收下。核心是 active load balance 的迁移类型遵循 `migrate_llc_task` 语义，避免影响 delayed-dequeue 任务的 `migration_type` 含义。合入概率 high。"
   },
   {
-    "title": "`sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...",
+    "title": "sched: Flatten the pick",
     "id": "sched-20260823-011",
     "date": "2026-08-23",
     "type": "discussion",
@@ -4625,7 +4625,7 @@
     "tldr": "`sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierarchy fix (68e3748781) 还是 single-runqueue (85570f10a4c6)；并提醒 0day 曾 pin 该系列 patch 6/7 导致网络吞吐回退（ksoftirqd 更少运行）。报告者用 0day 复现脚本成功复现回退，分析 `wake_affine_weight()` 在 concur 模式下因 wakee 权重增大而更少选 this_cpu。属 core_sched/proxy_exec 线延续。"
   },
   {
-    "title": "sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态",
+    "title": "sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args",
     "id": "sched-20260824-001",
     "date": "2026-08-24",
     "type": "fix",
@@ -4643,7 +4643,7 @@
     "tldr": "sched_ext cgroup 初始化时遗漏了 cpu.idle 状态传递，导致已配置为 idle 的 cgroup 在调度器加载后被误报为 non-idle；v2 修复后获得 Andrea Righi Reviewed-by，合入前景良好。"
   },
   {
-    "title": "sched/cpufreq: 在进入 tickless idle 前重新评估频率",
+    "title": "sched/cpufreq: Reevaluate frequency before tickless idle",
     "id": "sched-20260824-002",
     "date": "2026-08-24",
     "type": "fix",
@@ -4661,7 +4661,7 @@
     "tldr": "`sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。"
   },
   {
-    "title": "docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）",
+    "title": "docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent",
     "id": "sched-20260824-003",
     "date": "2026-08-24",
     "type": "discussion",
@@ -4679,7 +4679,7 @@
     "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。"
   },
   {
-    "title": "sched/fair: cpufreq pressure 频率不变性讨论（增量更新）",
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
     "id": "sched-20260824-004",
     "date": "2026-08-24",
     "type": "discussion",
@@ -4697,7 +4697,7 @@
     "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。作者承认原始 commit message 基于频率不变性的解释不正确，实际问题源自 `d2d5c129d07e` 引入的 `cpuinfo.max_freq` fallback 逻辑。讨论仍在继续。"
   },
   {
-    "title": "sched: 提升 cgroup 更新锁到核心层（增量更新）",
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
     "id": "sched-20260824-005",
     "date": "2026-08-24",
     "type": "fix",
@@ -4716,7 +4716,7 @@
     "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。"
   },
   {
-    "title": "sched/fair: pick_next_task_fair NULL 解引用（v4.19 生产环境）",
+    "title": "sched/fair: NULL deref in pick_next_task_fair (v4.19)",
     "id": "sched-20260824-006",
     "date": "2026-08-24",
     "type": "bug",
@@ -4734,7 +4734,7 @@
     "tldr": "两个独立生产环境（HiSilicon Kunpeng 920 ARM64，v4.19 内核）报告了相同的 `pick_next_task_fair()` NULL 解引用崩溃：`nr_running` 为 -1（0xFFFFFFFF），导致非零检查通过但红黑树为空，`rb_leftmost` 返回 NULL。超长运行时间（290-738 天）后才触发。"
   },
   {
-    "title": "sched/core: ARM64 服务器偶发 rq->curr 过期导致调度器崩溃",
+    "title": "sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler crashes on long-running arm64 servers",
     "id": "sched-20260824-007",
     "date": "2026-08-24",
     "type": "bug",
@@ -4752,7 +4752,7 @@
     "tldr": "超过十台 HiSilicon Kunpeng 920 ARM64 生产服务器报告了偶发内核崩溃，共同特征：`rq->curr != current`——CPU 已切换到 idle 但 `rq->curr` 仍指向旧任务。怀疑 `__schedule()` 中的 `rq->curr = next` 更新未生效或被回退。运行 23-300 天后触发。"
   },
   {
-    "title": "sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）",
+    "title": "sched/core: Defer preempted remote vCPU task clock updates",
     "id": "sched-20260824-008",
     "date": "2026-08-24",
     "type": "feature",
@@ -4769,7 +4769,7 @@
     "tldr": "KVM 客户机中，当 vCPU A 为被抢占的 vCPU B 做记账时，由于 KVM host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 无法观察到 steal 时间，错误地将 stolen 区间计入任务运行时间。RFC 提出延迟远程 CPU 对已标记为 preempted 的 vCPU 的 `clock_task` 更新。"
   },
   {
-    "title": "sched: Flatten the pick v3 性能回退分析（增量更新）",
+    "title": "sched: Flatten the pick",
     "id": "sched-20260824-009",
     "date": "2026-08-24",
     "type": "discussion",
@@ -4788,7 +4788,7 @@
     "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在继续排查。"
   },
   {
-    "title": "sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）",
+    "title": "sched/cache: honor migrate_llc_task semantics in active load balance",
     "id": "sched-20260824-010",
     "date": "2026-08-24",
     "type": "fix",
@@ -4806,7 +4806,7 @@
     "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。"
   },
   {
-    "title": "sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算",
+    "title": "sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()",
     "id": "sched-20260824-011",
     "date": "2026-08-24",
     "type": "fix",

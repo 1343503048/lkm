@@ -1,4 +1,4 @@
-# `sched/core: WARN_ON(is_migration_disabled())` 触发告警
+# sched/core: WARN_ON(is_migration_disabled()) triggers
 
 ## TL;DR
 

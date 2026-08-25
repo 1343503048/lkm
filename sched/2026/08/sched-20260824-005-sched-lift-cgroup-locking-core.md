@@ -1,4 +1,4 @@
-# sched: 提升 cgroup 更新锁到核心层（增量更新）
+# sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 
 ## TL;DR
 本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。

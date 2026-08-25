@@ -13,7 +13,7 @@ emails:
 - uid: 25792
   subject: 'Re: [PATCH v4] sched/fair: preserve wake-affine CPU for non-SMT reciprocal
     scenario'
-title: sched fair wake affine nonsmt reciprocal
+title: 'sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups'
 layout: article
 ---
 

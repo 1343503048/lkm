@@ -1,4 +1,4 @@
-# perf core group leader use after free
+# perf/core: Fix group leader use-after-free after sibling detach
 
 ## 概述
 

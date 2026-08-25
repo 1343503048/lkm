@@ -1,4 +1,4 @@
-# PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep(...
+# sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.
 
 ## TL;DR
 

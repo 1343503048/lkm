@@ -1,4 +1,4 @@
-# sched core skip avg idle no idle stamp
+# sched/core: Skip rq->avg_idle update without a valid idle_stamp
 
 ## 概述
 

@@ -1,4 +1,4 @@
-# cpufreq cppc highest perf update limits
+# cpufreq: cppc: Refactor autonomous perf bounds into helper
 
 ## 概述
 

@@ -5,8 +5,8 @@ title: "标签: eevdf"
 article_count: 8
 ---
 
-- [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算
-- [sched-20260822-001](/lkm/2026/08/22/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.html) `fix/low/under_review` — Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径
+- [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
+- [sched-20260822-001](/lkm/2026/08/22/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for remaining root cfs_rq callers
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3
 - [sched-20260817-004](/lkm/2026/08/17/sched-20260817-004-sched-urgent-for-v7-2.html) `fix/medium/merged_tip` — sched/urgent for v7.2
 - [sched-20260815-014](/lkm/2026/08/15/sched-20260815-014-sched-fair-fix-flat-hierarchy.html) `fix/low/merged_tip` — sched/fair: Fix flat hierarchy

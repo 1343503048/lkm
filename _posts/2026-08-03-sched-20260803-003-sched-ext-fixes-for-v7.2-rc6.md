@@ -37,7 +37,7 @@ tags:
 - sched_ext
 - cgroup
 - idle
-title: 'cgroup: Fixes for v7.2-rc6'
+title: 'sched_ext: Fixes for v7.2-rc6'
 layout: article
 ---
 

@@ -1,4 +1,4 @@
-# sched ext find parent sched null check
+# sched_ext: Add NULL check in find_parent_sched()
 
 ## 概述
 

@@ -16,7 +16,7 @@ emails:
   subject: '[PATCH] sched_ext: Fix NULL dereference in find_parent_sched()'
 - uid: 26779
   subject: 'Re: [PATCH] sched_ext: Fix NULL dereference in find_parent_sched()'
-title: sched ext find parent sched null check
+title: 'sched_ext: Add NULL check in find_parent_sched()'
 layout: article
 ---
 

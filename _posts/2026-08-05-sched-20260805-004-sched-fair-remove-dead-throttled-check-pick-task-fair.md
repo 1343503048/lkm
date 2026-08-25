@@ -2,7 +2,7 @@
 subject: sched fair remove dead throttled check pick task fair
 id: sched-20260805-004
 date: '2026-08-05'
-title: sched fair remove dead throttled check pick task fair
+title: 'sched/fair: Remove dead throttled check in pick_task_fair()'
 series: Remove dead throttled check in pick_task_fair()
 type: cleanup
 status: superseded

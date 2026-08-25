@@ -1,4 +1,4 @@
-# sched_ext v7.3 的变更已被合入 torvalds/linux.git
+# Re: [GIT PULL] sched_ext: Changes for v7.3
 
 ## TL;DR
 

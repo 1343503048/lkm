@@ -1,4 +1,4 @@
-# sched ext core scheduling fixes
+# sched_ext: Fix rq->core_pick corruption under core scheduling
 
 ## 概述
 

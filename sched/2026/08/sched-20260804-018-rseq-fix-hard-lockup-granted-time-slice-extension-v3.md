@@ -1,4 +1,4 @@
-# rseq fix hard lockup granted time slice extension v3
+# rseq: fix hard lockup on granted time slice extension
 
 # rseq: 硬死锁修复（v3 reflow 定稿）
 

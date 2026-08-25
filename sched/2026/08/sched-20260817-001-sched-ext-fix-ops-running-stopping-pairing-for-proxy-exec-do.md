@@ -1,4 +1,4 @@
-# sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors
+# sched_ext: Add selftest for blocked donor admission
 
 ## TL;DR
 Andrea Righi 的 v12（17 patch，2024 行）让 **proxy execution 与 sched_ext 共存**——此前二者在构建期互斥（`CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_SCHED_CLASS_EXT` 不能同时开）。通过新增 per-scheduler 能力 `SCX_OPS_ENQ_BLOCKED`，BPF 调度器可控制是否把 mutex-blocked donor 保持为 runnable 并经 `ops.enqueue()` 带 `SCX_ENQ_BLOCKED` 接收，从而精确控制 donor 的接纳与排序。含 scx_qmap `-X` 选项与 enq_blocked kselftest（实测 proxy 开启后 same-cpu 等待时间降 ~20%、cross-cpu 降 ~13%）。仍在 Tejun 详细 review 中。

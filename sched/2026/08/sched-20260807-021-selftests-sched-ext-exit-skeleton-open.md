@@ -1,4 +1,4 @@
-# selftests sched ext exit skeleton open
+# selftests/sched_ext: Check skeleton open failure in exit test
 
 ## 概述
 

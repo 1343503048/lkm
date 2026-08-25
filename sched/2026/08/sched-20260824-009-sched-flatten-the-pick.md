@@ -1,4 +1,4 @@
-# sched: Flatten the pick v3 性能回退分析（增量更新）
+# sched: Flatten the pick
 
 ## TL;DR
 本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在继续排查。

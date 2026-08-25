@@ -1,4 +1,4 @@
-# sched preserve reset on fork
+# sched: Preserve reset-on-fork across concurrent sched_setparam()
 
 ## 概述
 

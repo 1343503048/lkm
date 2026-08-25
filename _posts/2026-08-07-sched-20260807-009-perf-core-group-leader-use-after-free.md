@@ -16,7 +16,7 @@ emails:
   subject: 'Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach'
 - uid: 26209
   subject: 'Re: [PATCH] perf/core: Fix group leader use-after-free after sibling detach'
-title: perf core group leader use after free
+title: 'perf/core: Fix group leader use-after-free after sibling detach'
 layout: article
 ---
 

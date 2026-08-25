@@ -15,7 +15,7 @@ emails:
   subject: '[PATCH] sched/fair: make is_core_idle() check all CPUs in a core'
 - uid: 26028
   subject: 'Re: [PATCH] sched/fair: make is_core_idle() check all CPUs in a core'
-title: sched fair is core idle check all cpus
+title: 'sched/fair: Make is_core_idle() check all cpus in a core'
 layout: article
 ---
 

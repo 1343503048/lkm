@@ -1,4 +1,4 @@
-# Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径
+# sched/fair: Use update_curr_eevdf() for remaining root cfs_rq callers
 
 ## TL;DR
 

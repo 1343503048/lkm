@@ -1,4 +1,4 @@
-# PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警
+# futex: Fix might_sleep() warning in futex_pivot_pending()
 
 ## TL;DR
 

@@ -1,4 +1,4 @@
-# Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝
+# sched/debug: Reject invalid writes to numa_balancing scan_size_mb
 
 ## TL;DR
 

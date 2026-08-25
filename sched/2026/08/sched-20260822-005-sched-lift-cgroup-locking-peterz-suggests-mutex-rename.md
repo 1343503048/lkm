@@ -1,4 +1,4 @@
-# 本文是 sched-20260821-001 的增量更新
+# sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 
 ## TL;DR
 

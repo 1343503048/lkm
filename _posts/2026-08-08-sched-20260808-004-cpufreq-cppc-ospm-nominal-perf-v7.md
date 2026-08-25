@@ -16,7 +16,7 @@ emails:
   subject: '[PATCH v7 2/3] cpufreq: CPPC: Add ospm_nominal_freq attribute'
 - uid: 27765
   subject: '[PATCH v7 3/3] cpufreq: CPPC: Reflect the OSPM nominal in boost and limits'
-title: cpufreq cppc ospm nominal perf v7
+title: 'cpufreq: CPPC: Reflect the OSPM nominal in boost and limits'
 layout: article
 ---
 

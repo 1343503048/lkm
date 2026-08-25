@@ -37,7 +37,7 @@ tags:
 - sched/fair
 - cfs
 - race_condition
-title: 'sched/fair: pick_next_task_fair NULL 解引用（v4.19 生产环境）'
+title: 'sched/fair: NULL deref in pick_next_task_fair (v4.19)'
 layout: article
 ---
 

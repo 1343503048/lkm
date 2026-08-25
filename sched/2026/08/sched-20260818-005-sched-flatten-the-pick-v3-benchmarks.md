@@ -1,4 +1,4 @@
-# sched: Flatten the pick — v3 s390 benchmark results
+# sched: Flatten the pick
 
 ## TL;DR
 Szabina 在 s390 LPAR（32 vCPU）上对 "Flatten the pick" v3 系列做了详细 benchmark（schbench、sysbench、hackbench），含 stress-ng 并行负载。关键发现：无并行负载时结果普遍正面（高线程数最高 -9.55%），但 stress-ng 并行时低线程数场景出现回退（最高 +2.36%），且 stress-ng 自身也回退。K Prateek Nayak 询问测试基线 commit。

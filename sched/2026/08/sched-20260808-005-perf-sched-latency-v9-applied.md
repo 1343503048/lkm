@@ -1,4 +1,4 @@
-# perf sched latency v9 applied
+# perf sched latency: Refine outputs, unit scaling, and histogram support
 
 ## 概述
 

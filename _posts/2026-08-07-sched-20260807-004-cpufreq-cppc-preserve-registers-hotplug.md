@@ -18,7 +18,7 @@ emails:
   subject: '[PATCH v4 2/4] ... preserve across suspend/resume'
 - uid: 25522
   subject: '[PATCH v4 3/4] ... cover/related'
-title: cpufreq cppc preserve registers hotplug
+title: 'cpufreq: CPPC: Preserve OSPM-set registers across suspend/resume'
 layout: article
 ---
 

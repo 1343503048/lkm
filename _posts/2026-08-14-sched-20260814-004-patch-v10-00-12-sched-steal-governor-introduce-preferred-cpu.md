@@ -48,8 +48,8 @@ related_articles:
 tags:
 - sched/core
 - affinity
-title: '[PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven
-  vCPU backoff'
+title: 'Re: [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and
+  steal-driven vCPU backoff'
 layout: article
 ---
 

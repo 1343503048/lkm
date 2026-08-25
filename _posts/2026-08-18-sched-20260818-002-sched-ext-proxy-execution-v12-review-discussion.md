@@ -43,7 +43,7 @@ tags:
 - proxy_execution
 - sched_ext
 - sched/core
-title: 'sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)'
+title: 'sched_ext: Delegate proxy donor admission to BPF schedulers'
 layout: article
 ---
 

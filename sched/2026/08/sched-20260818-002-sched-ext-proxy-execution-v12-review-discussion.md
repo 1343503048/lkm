@@ -1,4 +1,4 @@
-# sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
+# sched_ext: Delegate proxy donor admission to BPF schedulers
 
 ## TL;DR
 本文为增量更新。Andrea Righi 的 v12 proxy-exec + sched_ext 共存系列（17 patch）本日继续收到 Tejun Heo 对 patch 12/17（remote DSQ transfers）和 14/17（proxy donor admission）的详细 review，Andrea 逐条回应并承诺调整。关键进展：Tejun 同意去掉 `SCX_TASK_ENQ_WAKEUP`、改用 `WF_ON_RQ` 直接传递；reject_dsq 处理讨论引入 generic deferred work flag 话题。完整背景见前日文章。

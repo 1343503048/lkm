@@ -31,7 +31,7 @@ related_articles: []
 tags:
 - sched_ext
 - documentation
-title: 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致
+title: 'sched_ext: Sync headers and docs (applied to for-7.3-fixes)'
 layout: article
 ---
 

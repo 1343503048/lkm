@@ -1,4 +1,4 @@
-# sched dynamic simplify preempt_dynamic v2
+# sched: dynamic: Simplify PREEMPT_DYNAMIC
 
 # sched: 简化 PREEMPT_DYNAMIC（v2 0/6 与 2/6 收尾）
 

@@ -39,7 +39,7 @@ tags:
 - cgroup
 - sched_ext
 - race_condition
-title: 'sched: 提升 cgroup 更新锁到核心层（增量更新）'
+title: 'sched: Lift cgroup update locking to core to prevent CFS/SCX divergence'
 layout: article
 ---
 

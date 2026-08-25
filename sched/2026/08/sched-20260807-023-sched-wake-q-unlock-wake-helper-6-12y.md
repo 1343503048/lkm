@@ -1,4 +1,4 @@
-# sched wake q unlock wake helper 6 12y
+# arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS
 
 ## 概述
 

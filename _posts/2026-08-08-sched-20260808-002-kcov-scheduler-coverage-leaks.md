@@ -18,7 +18,7 @@ emails:
   subject: '[PATCH 4/5] sched: pause KCOV in try_to_wake_up()'
 - uid: 27679
   subject: '[PATCH 5/5] sched: pause KCOV in wake_up_new_task()'
-title: kcov scheduler coverage leaks
+title: 'kcov: suppress timer and scheduler coverage leaks'
 layout: article
 ---
 

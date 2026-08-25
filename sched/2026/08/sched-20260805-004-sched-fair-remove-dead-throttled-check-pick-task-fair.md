@@ -1,4 +1,4 @@
-# sched fair remove dead throttled check pick task fair
+# sched/fair: Remove dead throttled check in pick_task_fair()
 
 # sched/fair: 删除 pick_task_fair() 中失效的 throttled 检查
 

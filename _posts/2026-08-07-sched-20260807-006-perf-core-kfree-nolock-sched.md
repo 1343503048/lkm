@@ -14,7 +14,7 @@ emails:
   subject: '[PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()'
 - uid: 27200
   subject: 'Re: [PATCH RFC 5/5] sched: use kfree_nolock() instead of kfree_rcu()'
-title: perf core kfree nolock sched
+title: 'sched: use kfree_nolock() instead of kfree_rcu()'
 layout: article
 ---
 

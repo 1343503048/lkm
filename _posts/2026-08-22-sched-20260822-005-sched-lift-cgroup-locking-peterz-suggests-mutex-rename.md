@@ -34,7 +34,7 @@ tags:
 - sched/core
 - sched_ext
 - cgroup
-title: 本文是 sched-20260821-001 的增量更新
+title: 'sched: Lift cgroup update locking to core to prevent CFS/SCX divergence'
 layout: article
 ---
 

@@ -1,4 +1,4 @@
-# sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算
+# sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
 
 ## TL;DR
 两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。

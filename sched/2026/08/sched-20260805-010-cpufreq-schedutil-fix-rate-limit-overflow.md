@@ -1,4 +1,4 @@
-# cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled
+# cpufreq: schedutil: Fix rate limit overflow
 
 # cpufreq: schedutil 修复频率限幅时的 rate_limit 溢出
 

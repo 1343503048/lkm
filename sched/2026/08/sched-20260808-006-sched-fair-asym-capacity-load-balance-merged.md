@@ -1,4 +1,4 @@
-# sched fair asym capacity load balance merged
+# sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings
 
 ## 概述
 

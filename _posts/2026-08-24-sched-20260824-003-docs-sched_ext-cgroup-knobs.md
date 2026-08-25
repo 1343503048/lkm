@@ -40,7 +40,7 @@ tags:
 - sched_ext
 - cgroup
 - docs
-title: 'docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）'
+title: 'docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent'
 layout: article
 ---
 

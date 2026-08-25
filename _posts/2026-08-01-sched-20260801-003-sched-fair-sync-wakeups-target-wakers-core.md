@@ -49,7 +49,7 @@ tags:
 - load_balance
 - perf
 - hyperthreading
-title: 'sched/fair: Let sync wakeups target the waker''s core'
+title: 'sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups'
 layout: article
 ---
 

@@ -1,4 +1,4 @@
-# [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+# Re: [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 
 ## TL;DR
 Shrikanth Hegde 的 steal_governor v10（12 patches，preferred CPUs + steal-driven vCPU backoff）在 8/14 与 Mete 讨论架构特定抽象（s390 计划采用并可能自带 governor 模块）。决定先简单合入、post-merge 再拆框架。under_review。

@@ -1,4 +1,4 @@
-# `dt_idle_pd_alloc()` 中 `pd->name` 指向 `kasprintf()` 分配内存的中间位置（`kbasename()` 偏移）
+# cpuidle: dt_idle_genpd: kfree() the original name allocation
 
 ## TL;DR
 

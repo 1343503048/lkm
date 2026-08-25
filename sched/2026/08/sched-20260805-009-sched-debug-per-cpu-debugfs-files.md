@@ -1,4 +1,4 @@
-# sched debug per cpu debugfs files
+# sched/debug: Introduce per-CPU debugfs files
 
 # sched/debug: 引入 per-CPU 的 debugfs 文件
 

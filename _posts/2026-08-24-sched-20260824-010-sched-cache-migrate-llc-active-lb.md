@@ -36,7 +36,7 @@ tags:
 - sched/core
 - load_balance
 - topology
-title: 'sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）'
+title: 'sched/cache: honor migrate_llc_task semantics in active load balance'
 layout: article
 ---
 

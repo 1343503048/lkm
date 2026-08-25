@@ -35,7 +35,7 @@ related_articles: []
 tags:
 - sched/core
 - virtualization
-title: 'sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）'
+title: 'sched/core: Defer preempted remote vCPU task clock updates'
 layout: article
 ---
 

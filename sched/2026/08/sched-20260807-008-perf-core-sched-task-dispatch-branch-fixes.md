@@ -1,4 +1,4 @@
-# perf core sched task dispatch branch fixes
+# perf/core: sched_task() dispatch and branch entry fixes
 
 ## 概述
 

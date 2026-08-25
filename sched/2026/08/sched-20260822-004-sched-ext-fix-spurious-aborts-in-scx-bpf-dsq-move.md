@@ -1,4 +1,4 @@
-# Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配）
+# sched_ext: Fix spurious aborts in scx_bpf_dsq_move()
 
 ## TL;DR
 

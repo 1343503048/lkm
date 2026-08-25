@@ -1,4 +1,4 @@
-# perf sched latency refine outputs unit scaling histogram v7
+# perf sched latency: Refine outputs, unit scaling, and histogram support
 
 # perf sched latency: v7 直方图中位数零点修正
 

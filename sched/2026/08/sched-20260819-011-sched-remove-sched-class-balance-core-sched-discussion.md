@@ -1,4 +1,4 @@
-# `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复
+# sched/remove sched/class balance core-sched/discussion
 
 
 ## TL;DR

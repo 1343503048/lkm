@@ -1,4 +1,4 @@
-# sched cache honor migrate_llc_task semantics in active load balance
+# sched/cache: honor migrate_llc_task semantics in active load balance
 
 # sched/cache: active load balance 尊重 migrate_llc_task 语义
 

@@ -1,4 +1,4 @@
-# sched rt minor cleanups
+# sched: minor cleanups
 
 # sched/rt: 琐碎清理（无功能影响）
 

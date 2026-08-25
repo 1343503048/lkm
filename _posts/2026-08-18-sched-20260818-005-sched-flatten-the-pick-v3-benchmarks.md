@@ -40,7 +40,7 @@ tags:
 - sched/fair
 - cgroup
 - load_balance
-title: 'sched: Flatten the pick — v3 s390 benchmark results'
+title: 'sched: Flatten the pick'
 layout: article
 ---
 

@@ -40,7 +40,7 @@ tags:
 - cfs
 - performance
 - load_balance
-title: 'sched: Flatten the pick v3 性能回退分析（增量更新）'
+title: 'sched: Flatten the pick'
 layout: article
 ---
 

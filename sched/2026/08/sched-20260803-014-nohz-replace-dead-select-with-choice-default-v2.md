@@ -1,4 +1,4 @@
-# nohz replace dead select with choice default v2
+# nohz: replace dead select with choice default
 
 # nohz: 用 choice/default 替换失效 select（Reviewed-by）
 

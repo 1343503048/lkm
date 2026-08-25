@@ -39,7 +39,7 @@ tags:
 - psi
 - idle
 - sched_debug
-title: sched psi skip cpus zero non idle delta
+title: 'sched/psi: Skip CPUs with zero non-idle delta in per-CPU aggregation'
 layout: article
 ---
 

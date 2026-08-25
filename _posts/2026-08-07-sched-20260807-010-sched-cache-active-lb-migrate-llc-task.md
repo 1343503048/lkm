@@ -19,7 +19,7 @@ emails:
 - uid: 26191
   subject: 'Re: [PATCH] sched/cache: honor migrate_llc_task semantics in active load
     balance'
-title: sched cache active lb migrate llc task
+title: 'sched/cache: honor migrate_llc_task semantics in active load balance'
 layout: article
 ---
 

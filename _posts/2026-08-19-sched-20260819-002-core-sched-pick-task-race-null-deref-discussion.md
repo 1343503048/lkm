@@ -47,7 +47,7 @@ tags:
 - sched/core
 - crash
 - proxy_execution
-title: core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
+title: core-sched/pick task race null deref discussion
 layout: article
 ---
 

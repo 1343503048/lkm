@@ -36,7 +36,7 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched/core
-title: Vladimir Zapolskiy 移除 `do_balance_callbacks()` 中多余的函数指针类型转换
+title: sched/core remove balance callback cast
 layout: article
 ---
 

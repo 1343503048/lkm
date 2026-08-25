@@ -34,7 +34,7 @@ related_articles: []
 tags:
 - rt
 - cleanup
-title: sched rt minor cleanups
+title: 'sched: minor cleanups'
 layout: article
 ---
 

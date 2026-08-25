@@ -1,4 +1,4 @@
-# sched psi skip cpus zero non idle delta
+# sched/psi: Skip CPUs with zero non-idle delta in per-CPU aggregation
 
 # sched/psi: 跳过非 idle 增量为 0 的 CPU
 

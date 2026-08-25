@@ -1,4 +1,4 @@
-# cpufreq cppc preserve registers hotplug
+# cpufreq: CPPC: Preserve OSPM-set registers across suspend/resume
 
 ## 概述
 

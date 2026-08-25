@@ -35,7 +35,7 @@ related_articles: []
 tags:
 - sched_ext
 - sched/core
-title: '[GIT PULL] sched_ext: Changes for v7.3'
+title: 'sched_ext: Changes for v7.3'
 layout: article
 ---
 

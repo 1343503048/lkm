@@ -2,7 +2,7 @@
 subject: 'cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled'
 id: sched-20260805-010
 date: '2026-08-05'
-title: 'cpufreq: intel_pstate: Avoid using DESIRED_PERF when DEC is enabled'
+title: 'cpufreq: schedutil: Fix rate limit overflow'
 series: 'schedutil: Fix rate limit overflow when clamping frequency'
 type: fix
 status: under_review

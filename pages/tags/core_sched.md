@@ -5,18 +5,18 @@ title: "标签: core_sched"
 article_count: 16
 ---
 
-- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...
-- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — PeterZ 提议移除 `sched_class::balance()` 回调
-- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — `Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched: Flatten the pick
+- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched: Remove sched_class::balance()
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched: Remove sched_class::balance()
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core-sched/pick task race null deref discussion
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched/remove sched/class balance core-sched/discussion
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3
 - [sched-20260816-002](/lkm/2026/08/16/sched-20260816-002-sched-ext-drop-the-dead-scx-deq-core-sched-exec-test-in-dequ.html) `fix/medium/merged_tip` — sched_ext: Drop the dead SCX_DEQ_CORE_SCHED_EXEC test in dequeue_task_scx()
 - [sched-20260815-012](/lkm/2026/08/15/sched-20260815-012-sched-ext-set-up-ops-sub-ecaps-updated-dispatch-context-on-t.html) `feature/low/under_review` — sched_ext: Set up ops.sub_ecaps_updated() dispatch context on the executing CPU
 - [sched-20260810-006](/lkm/2026/08/10/sched-20260810-006-sched-core-make-core-sched-flips-wait-for-in-flight-selectio.html) `fix/medium/under_review` — sched/core: Make core-sched flips wait for in-flight selections
 - [sched-20260809-003](/lkm/2026/08/09/sched-20260809-003-sched-fair-make-is-core-idle-check-all-cpus-in-a-core.html) `discussion/low/under_review` — sched/fair: Make is_core_idle() check all cpus in a core
-- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched ext core scheduling fixes
-- [sched-20260807-001-proxy-execution-sleeping-owner-v31](/lkm/2026/08/07/sched-20260807-001-proxy-execution-sleeping-owner-v31.html) `unknown/none/in-review` — proxy execution sleeping owner v31
+- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched_ext: Fix rq->core_pick corruption under core scheduling
+- [sched-20260807-001-proxy-execution-sleeping-owner-v31](/lkm/2026/08/07/sched-20260807-001-proxy-execution-sleeping-owner-v31.html) `unknown/none/in-review` — [PATCH v31 0/9] Sleeping Owner Handling for Proxy Execution (v31)
 - [sched-20260806-010](/lkm/2026/08/06/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.html) `feature/none/under_review` — sched_ext: scx_qmap: Add proxy execution support
 - [sched-20260806-011](/lkm/2026/08/06/sched-20260806-011-sched-wake_q-stable-6.12y-helper.html) `fix/low/under_review` — sched/wake_q: Add helper to call wake_up_q after unlock with preemption disabled
 - [sched-20260805-001](/lkm/2026/08/05/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.html) `feature/none/under_review` — sched_ext: Block proxy donors across scheduler transitions

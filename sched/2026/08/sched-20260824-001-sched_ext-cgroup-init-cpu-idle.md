@@ -1,4 +1,4 @@
-# sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态
+# sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
 
 ## TL;DR
 sched_ext cgroup 初始化时遗漏了 cpu.idle 状态传递，导致已配置为 idle 的 cgroup 在调度器加载后被误报为 non-idle；v2 修复后获得 Andrea Righi Reviewed-by，合入前景良好。

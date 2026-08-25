@@ -1,4 +1,4 @@
-# sched/fair: Let sync wakeups target the waker's core
+# sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups
 
 ## TL;DR
 

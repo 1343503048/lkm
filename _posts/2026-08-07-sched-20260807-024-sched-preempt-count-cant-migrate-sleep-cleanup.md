@@ -15,7 +15,7 @@ emails:
 - uid: 26240
   subject: '[PATCH v5 10/18] sched: remove the unused preempt offset parameter of
     __cant_sleep()'
-title: sched preempt count cant migrate sleep cleanup
+title: 'sched: Avoid signed comparison of preempt_count() in __cant_migrate()'
 layout: article
 ---
 

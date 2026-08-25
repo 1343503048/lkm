@@ -39,7 +39,7 @@ tags:
 - sched_ext
 - cgroup
 - cpuidle
-title: 'sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态'
+title: 'sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args'
 layout: article
 ---
 

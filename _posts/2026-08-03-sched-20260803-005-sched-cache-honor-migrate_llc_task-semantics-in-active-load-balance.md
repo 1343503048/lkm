@@ -44,7 +44,7 @@ tags:
 - cfs
 - load_balance
 - affinity
-title: sched cache honor migrate_llc_task semantics in active load balance
+title: 'sched/cache: honor migrate_llc_task semantics in active load balance'
 layout: article
 ---
 

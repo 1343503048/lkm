@@ -1,4 +1,4 @@
-# scheduler fix
+# sched/deadline use revised wakeup rule only for running dl server
 
 # sched/deadline: revised wakeup rule 仅用于 running 状态的 dl_server（已进 tip/sched/urgent）
 

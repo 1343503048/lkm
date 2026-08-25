@@ -2,7 +2,7 @@
 subject: '[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests'
 id: sched-20260806-012
 date: '2026-08-06'
-title: '[RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests'
+title: 'fuse: give wakeup hints to the scheduler for synchronous requests'
 series: 'FUSE: Pass wakeup hints to the scheduler'
 type: feature
 status: draft

@@ -36,7 +36,7 @@ related_articles: []
 tags:
 - cpuidle
 - ipi
-title: v2 补丁尝试在 CPU 已有 IPI 中断挂起时阻止进入 idle 状态
+title: 'cpuidle: Deny idle entry when CPU already have IPI interrupt pending'
 layout: article
 ---
 

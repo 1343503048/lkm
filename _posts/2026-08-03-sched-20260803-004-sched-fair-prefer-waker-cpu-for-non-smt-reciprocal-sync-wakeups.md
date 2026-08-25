@@ -44,7 +44,7 @@ tags:
 - load_balance
 - topology
 - hyperthreading
-title: sched fair prefer waker cpu for non smt reciprocal sync wakeups
+title: 'sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups'
 layout: article
 ---
 

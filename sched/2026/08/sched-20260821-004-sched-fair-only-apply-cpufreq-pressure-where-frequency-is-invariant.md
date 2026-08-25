@@ -1,4 +1,4 @@
-# cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity
+# sched/fair: Only apply cpufreq pressure where frequency is invariant
 
 ## TL;DR
 

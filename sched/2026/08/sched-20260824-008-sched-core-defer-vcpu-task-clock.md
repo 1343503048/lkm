@@ -1,4 +1,4 @@
-# sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）
+# sched/core: Defer preempted remote vCPU task clock updates
 
 ## TL;DR
 KVM 客户机中，当 vCPU A 为被抢占的 vCPU B 做记账时，由于 KVM host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 无法观察到 steal 时间，错误地将 stolen 区间计入任务运行时间。RFC 提出延迟远程 CPU 对已标记为 preempted 的 vCPU 的 `clock_task` 更新。

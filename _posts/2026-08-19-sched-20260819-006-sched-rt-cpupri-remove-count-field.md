@@ -37,7 +37,7 @@ related_articles: []
 tags:
 - rt
 - sched/core
-title: 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段
+title: sched/rt cpupri remove count field
 layout: article
 ---
 

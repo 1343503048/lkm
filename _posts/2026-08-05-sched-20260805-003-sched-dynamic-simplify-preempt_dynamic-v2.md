@@ -2,7 +2,7 @@
 subject: sched dynamic simplify preempt_dynamic v2
 id: sched-20260805-003
 date: '2026-08-05'
-title: sched dynamic simplify preempt_dynamic v2
+title: 'sched: dynamic: Simplify PREEMPT_DYNAMIC'
 series: Simplify PREEMPT_DYNAMIC
 type: feature
 status: under_review

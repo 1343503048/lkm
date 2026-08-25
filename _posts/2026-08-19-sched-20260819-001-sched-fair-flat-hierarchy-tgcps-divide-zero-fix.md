@@ -49,8 +49,7 @@ tags:
 - cgroup
 - crash
 - regression
-title: tip `sched/core` 的 flat-hierarchy rework 在 enqueue 路径触发 `#DE` 除零 panic（group
-  ...
+title: sched/fair flat hierarchy tgcps divide zero fix
 layout: article
 ---
 

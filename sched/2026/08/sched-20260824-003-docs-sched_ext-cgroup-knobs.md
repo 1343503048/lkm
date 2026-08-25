@@ -1,4 +1,4 @@
-# docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）
+# docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
 
 ## TL;DR
 本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。

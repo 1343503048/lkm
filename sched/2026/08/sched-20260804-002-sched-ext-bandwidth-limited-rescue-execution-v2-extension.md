@@ -1,4 +1,4 @@
-# sched_ext: Add bandwidth-limited rescue execution for stranded tasks
+# sched_ext: Fixes for v7.2-rc6
 
 # sched_ext: rescue 执行 v2 扩展（与 proxy execution 联动）
 

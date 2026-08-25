@@ -68,7 +68,7 @@ related_articles:
 tags:
 - sched_debug
 - perf
-title: 'perf sched latency: Refine outputs, unit scaling, and histogram support'
+title: 'perf sched latency: Add histogram and time interval options'
 layout: article
 ---
 

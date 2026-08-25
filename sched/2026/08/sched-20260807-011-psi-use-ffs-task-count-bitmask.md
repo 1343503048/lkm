@@ -1,4 +1,4 @@
-# psi use ffs task count bitmask
+# sched/psi: use __ffs() to walk task-count bitmasks in psi_group_change()
 
 ## 概述
 

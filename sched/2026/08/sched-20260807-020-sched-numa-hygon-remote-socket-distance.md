@@ -1,4 +1,4 @@
-# sched numa hygon remote socket distance
+# sched/numa: Apply remote socket distance averaging for Hygon CPUs
 
 ## 概述
 

@@ -38,7 +38,7 @@ tags:
 - steal_governor
 - virtualization
 - performance
-title: steal_governor v10 系列收到 Yury 的独立测试：steal ratio 成功收敛
+title: 'sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff'
 layout: article
 ---
 

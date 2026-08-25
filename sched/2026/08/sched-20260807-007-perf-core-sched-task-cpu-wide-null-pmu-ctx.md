@@ -1,4 +1,4 @@
-# perf core sched task cpu wide null pmu ctx
+# perf/core: Fix NULL pmu_ctx passed to pmu->sched_task()
 
 ## 概述
 

@@ -13,7 +13,7 @@ emails:
   subject: '[PATCH 1/3] psi: prevent stale timer rearm after rtpoll teardown'
 - uid: 26539
   subject: '[PATCH 2/3] ... (related psi fix)'
-title: psi rtpoll teardown stale timer
+title: 'sched/psi: Prevent stale timer rearm after rtpoll teardown'
 layout: article
 ---
 

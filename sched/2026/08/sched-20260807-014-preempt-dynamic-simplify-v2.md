@@ -1,4 +1,4 @@
-# preempt dynamic simplify v2
+# sched: dynamic: Simplify PREEMPT_DYNAMIC
 
 ## 概述
 

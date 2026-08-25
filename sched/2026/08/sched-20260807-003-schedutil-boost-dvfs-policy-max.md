@@ -1,4 +1,4 @@
-# schedutil boost dvfs policy max
+# cpufreq: allow cpuinfo max to decrease when boost is disabled
 
 ## 概述
 

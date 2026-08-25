@@ -39,7 +39,7 @@ related_articles:
 tags:
 - sched_ext
 - affinity
-title: 'sched_ext: Add bandwidth-limited rescue execution for stranded tasks'
+title: 'sched_ext: Fixes for v7.2-rc6'
 layout: article
 ---
 

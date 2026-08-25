@@ -39,7 +39,7 @@ related_articles: []
 tags:
 - cfs
 - bandwidth_control
-title: sched adjust cfs_bandwidth layout to save memory
+title: 'sched_ext: Fixes for v7.2-rc6'
 layout: article
 ---
 

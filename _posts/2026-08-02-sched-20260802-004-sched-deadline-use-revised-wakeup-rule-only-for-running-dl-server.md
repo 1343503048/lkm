@@ -36,7 +36,7 @@ related_articles: []
 tags:
 - deadline
 - dl_server
-title: scheduler fix
+title: sched/deadline use revised wakeup rule only for running dl server
 layout: article
 ---
 

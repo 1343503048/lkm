@@ -1,4 +1,4 @@
-# sched adjust cfs_bandwidth layout to save memory
+# sched_ext: Fixes for v7.2-rc6
 
 # sched: 重排 cfs_bandwidth 布局以节省内存
 

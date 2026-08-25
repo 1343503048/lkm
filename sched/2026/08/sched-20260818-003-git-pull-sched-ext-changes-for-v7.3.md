@@ -1,4 +1,4 @@
-# [GIT PULL] sched_ext: Changes for v7.3
+# sched_ext: Changes for v7.3
 
 ## TL;DR
 Tejun Heo 发出 sched_ext for v7.3 的 GIT PULL 请求。本轮主要完成层级子调度（hierarchical sub-scheduling）的 CPU 委派功能，使 sub-scheduler 功能完整：root BPF 调度器可将 cgroup 子树连同可撤销 CPU 授予交给嵌套子调度器。依赖 BPF 树的 arena argument 支持，需在 scheduler core 和 BPF pull 之后合入。

@@ -1,4 +1,4 @@
-# perf sched latency: Refine outputs, unit scaling, and histogram support
+# perf sched latency: Add histogram and time interval options
 
 # perf sched latency v6: 输出精修、单位自动缩放与直方图支持
 

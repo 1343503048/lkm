@@ -5,7 +5,7 @@ title: "标签: numa"
 article_count: 9
 ---
 
-- [sched-20260822-007](/lkm/2026/08/22/sched-20260822-007-sched-debug-reject-invalid-writes-to-numa-balancing-scan-size-mb.html) `fix/low/under_review` — Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝
+- [sched-20260822-007](/lkm/2026/08/22/sched-20260822-007-sched-debug-reject-invalid-writes-to-numa-balancing-scan-size-mb.html) `fix/low/under_review` — sched/debug: Reject invalid writes to numa_balancing scan_size_mb
 - [sched-20260817-005](/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260806-014](/lkm/2026/08/06/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.html) `fix/medium/under_review` — sched/numa: Apply remote socket distance averaging for Hygon CPUs
 - [sched-20260804-012](/lkm/2026/08/04/sched-20260804-012-sched-topology-free-numa-masks-on-alloc-failure.html) `fix/low/under_review` — sched/numa: Fix scan period for remote private faults

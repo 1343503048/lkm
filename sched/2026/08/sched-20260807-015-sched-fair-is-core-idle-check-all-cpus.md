@@ -1,4 +1,4 @@
-# sched fair is core idle check all cpus
+# sched/fair: Make is_core_idle() check all cpus in a core
 
 ## 概述
 

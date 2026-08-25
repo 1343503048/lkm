@@ -1,4 +1,4 @@
-# psi rtpoll teardown stale timer
+# sched/psi: Prevent stale timer rearm after rtpoll teardown
 
 ## 概述
 

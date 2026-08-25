@@ -37,7 +37,8 @@ tags:
 - sched/core
 - race_condition
 - memory_safety
-title: 'sched/core: ARM64 服务器偶发 rq->curr 过期导致调度器崩溃'
+title: 'sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler
+  crashes on long-running arm64 servers'
 layout: article
 ---
 

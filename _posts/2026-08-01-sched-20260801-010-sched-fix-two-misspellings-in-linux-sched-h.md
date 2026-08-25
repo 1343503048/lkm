@@ -38,7 +38,7 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched_debug
-title: sched fix two misspellings in linux sched h
+title: 'sched: fix two misspellings'
 layout: article
 ---
 

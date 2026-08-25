@@ -47,7 +47,7 @@ tags:
 - nohz
 - kconfig
 - x86
-title: nohz replace dead select with choice default v2
+title: 'nohz: replace dead select with choice default'
 layout: article
 ---
 

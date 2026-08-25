@@ -15,7 +15,7 @@ emails:
   subject: '[PATCH resend v31 0/9] Sleeping Owner Handling for Proxy Execution, v31'
 - uid: 26036
   subject: '[PATCH resend v31 1/9] sched/deadline: Ignore proxy exec sched deadline'
-title: proxy execution sleeping owner v31
+title: '[PATCH v31 0/9] Sleeping Owner Handling for Proxy Execution (v31)'
 layout: article
 ---
 

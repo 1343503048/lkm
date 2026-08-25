@@ -1,4 +1,4 @@
-# [RFC PATCH] fuse: give wakeup hints to the scheduler for synchronous requests
+# fuse: give wakeup hints to the scheduler for synchronous requests
 
 # fuse: 唤醒 hint 透传给调度器（RFC，ping Miklos）
 

@@ -1,4 +1,4 @@
-# cpufreq cppc ospm nominal perf v7
+# cpufreq: CPPC: Reflect the OSPM nominal in boost and limits
 
 ## 概述
 

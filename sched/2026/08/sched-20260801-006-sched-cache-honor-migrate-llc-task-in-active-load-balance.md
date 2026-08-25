@@ -1,4 +1,4 @@
-# sched cache honor migrate llc task in active load balance
+# sched/cache: honor migrate_llc_task semantics in active load balance
 
 ## TL;DR
 

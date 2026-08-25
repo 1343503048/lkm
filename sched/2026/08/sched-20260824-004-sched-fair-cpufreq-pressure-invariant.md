@@ -1,4 +1,4 @@
-# sched/fair: cpufreq pressure 频率不变性讨论（增量更新）
+# sched/fair: Only apply cpufreq pressure where frequency is invariant
 
 ## TL;DR
 本文为增量更新，完整背景见 related_articles 中的文章。作者承认原始 commit message 基于频率不变性的解释不正确，实际问题源自 `d2d5c129d07e` 引入的 `cpuinfo.max_freq` fallback 逻辑。讨论仍在继续。

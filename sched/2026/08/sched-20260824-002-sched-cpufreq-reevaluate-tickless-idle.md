@@ -1,4 +1,4 @@
-# sched/cpufreq: 在进入 tickless idle 前重新评估频率
+# sched/cpufreq: Reevaluate frequency before tickless idle
 
 ## TL;DR
 `sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。

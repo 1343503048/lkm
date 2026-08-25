@@ -1,4 +1,4 @@
-# sched fair wf sync stacking decline
+# sched/fair: decline WF_SYNC stacking when waker LLC is the busier share
 
 ## 概述
 

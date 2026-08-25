@@ -37,7 +37,7 @@ tags:
 - sched/cpufreq
 - cpuidle
 - idle
-title: 'sched/cpufreq: 在进入 tickless idle 前重新评估频率'
+title: 'sched/cpufreq: Reevaluate frequency before tickless idle'
 layout: article
 ---
 

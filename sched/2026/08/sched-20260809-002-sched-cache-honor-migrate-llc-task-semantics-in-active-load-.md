@@ -1,4 +1,4 @@
-# sched cache honor migrate llc task semantics in active load 
+# sched/cache: honor migrate_llc_task semantics in active load balance
 
 ## TL;DR
 Lu Wang 提交 v2，让 active load balance 尊重 `migrate_llc_task` 的缓存感知迁移语义，避免把被标记 prefer-LLC 的任务不必要地跨 LLC 搬移。处于 under_review。

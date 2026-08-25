@@ -43,7 +43,7 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idl...
+title: sched/ext documentation fixes cgroup knobs exit kind
 layout: article
 ---
 

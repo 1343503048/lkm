@@ -34,7 +34,7 @@ tags:
 - sched/fair
 - eevdf
 - cleanup
-title: 'sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算'
+title: 'sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()'
 layout: article
 ---
 

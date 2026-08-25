@@ -45,7 +45,7 @@ tags:
 - sched/core
 - load_balance
 - core_sched
-title: '`[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复'
+title: sched/remove sched/class balance core-sched/discussion
 layout: article
 ---
 

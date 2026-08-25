@@ -25,7 +25,7 @@ emails:
   subject: '[PATCH 5/6] sched_ext: Count rq lock releases in rq->scx.lock_drop_seq'
 - uid: 27689
   subject: '[PATCH 6/6] sched_ext: Fix rq->core_pick corruption under core scheduling'
-title: sched ext core scheduling fixes
+title: 'sched_ext: Fix rq->core_pick corruption under core scheduling'
 layout: article
 ---
 

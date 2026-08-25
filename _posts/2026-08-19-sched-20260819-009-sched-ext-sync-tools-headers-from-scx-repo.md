@@ -40,7 +40,7 @@ related_articles:
 tags:
 - sched_ext
 - compatibility
-title: Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`）
+title: sched/ext sync tools headers from scx repo
 layout: article
 ---
 

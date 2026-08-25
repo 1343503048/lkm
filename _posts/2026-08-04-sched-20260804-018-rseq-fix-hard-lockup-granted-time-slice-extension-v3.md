@@ -52,7 +52,7 @@ tags:
 - rseq
 - hang
 - preempt
-title: rseq fix hard lockup granted time slice extension v3
+title: 'rseq: fix hard lockup on granted time slice extension'
 layout: article
 ---
 

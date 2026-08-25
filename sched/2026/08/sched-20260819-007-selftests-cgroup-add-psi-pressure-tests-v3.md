@@ -1,4 +1,4 @@
-# Tao Cui 为 cgroup selftests 增加 `test_psi.c`
+# selftests/cgroup add psi pressure tests
 
 
 ## TL;DR

@@ -13,7 +13,7 @@ submitter: 社区
 emails:
 - uid: 26834
   subject: 'Re: [PATCH v4] sched/fair: prefer fully idle cores for NOHZ balancing'
-title: sched fair nohz fully idle cores
+title: 'sched/fair: Prefer fully idle cores for NOHZ balancing'
 layout: article
 ---
 

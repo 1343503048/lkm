@@ -17,7 +17,7 @@ emails:
   subject: '[PATCH v6 2/3] ... Run sched_task() for PMUs with only CPU-wide events'
 - uid: 26587
   subject: '[PATCH v6 1/3] ... sched_task() dispatch and branch entry fixes'
-title: perf core sched task cpu wide null pmu ctx
+title: 'perf/core: Fix NULL pmu_ctx passed to pmu->sched_task()'
 layout: article
 ---
 

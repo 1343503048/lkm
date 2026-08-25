@@ -1,4 +1,4 @@
-# cgroup: Fixes for v7.2-rc6
+# sched_ext: Fixes for v7.2-rc6
 
 # sched_ext: 7.2-rc6 fixes pull（UAF/死锁/状态错误）
 

@@ -1,4 +1,4 @@
-# sched/fair: pick_next_task_fair NULL 解引用（v4.19 生产环境）
+# sched/fair: NULL deref in pick_next_task_fair (v4.19)
 
 ## TL;DR
 两个独立生产环境（HiSilicon Kunpeng 920 ARM64，v4.19 内核）报告了相同的 `pick_next_task_fair()` NULL 解引用崩溃：`nr_running` 为 -1（0xFFFFFFFF），导致非零检查通过但红黑树为空，`rb_leftmost` 返回 NULL。超长运行时间（290-738 天）后才触发。

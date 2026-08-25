@@ -1,4 +1,4 @@
-# tip `sched/core` 的 flat-hierarchy rework 在 enqueue 路径触发 `#DE` 除零 panic（group ...
+# sched/fair flat hierarchy tgcps divide zero fix
 
 
 ## TL;DR

@@ -30,7 +30,7 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched_ext
-title: sched_ext v7.3 的变更已被合入 torvalds/linux.git
+title: 'Re: [GIT PULL] sched_ext: Changes for v7.3'
 layout: article
 ---
 

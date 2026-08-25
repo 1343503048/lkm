@@ -1,4 +1,4 @@
-# sched fair wake affine nonsmt reciprocal
+# sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
 
 ## 概述
 

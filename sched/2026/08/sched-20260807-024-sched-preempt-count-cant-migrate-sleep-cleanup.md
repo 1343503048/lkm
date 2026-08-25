@@ -1,4 +1,4 @@
-# sched preempt count cant migrate sleep cleanup
+# sched: Avoid signed comparison of preempt_count() in __cant_migrate()
 
 ## 概述
 

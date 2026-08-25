@@ -1,4 +1,4 @@
-# sched fix two misspellings in linux sched h
+# sched: fix two misspellings
 
 ## TL;DR
 

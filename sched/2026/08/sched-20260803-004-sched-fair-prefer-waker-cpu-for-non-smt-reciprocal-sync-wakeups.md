@@ -1,4 +1,4 @@
-# sched fair prefer waker cpu for non smt reciprocal sync wakeups
+# sched/fair: Prefer waker CPU for non-SMT reciprocal sync wakeups
 
 # sched/fair: 非 SMT reciprocal sync wakeup 优先选 waker CPU（待定义策略）
 

@@ -45,7 +45,7 @@ tags:
 - cfs
 - load_balance
 - topology
-title: sched cache honor migrate llc task in active load balance
+title: 'sched/cache: honor migrate_llc_task semantics in active load balance'
 layout: article
 ---
 

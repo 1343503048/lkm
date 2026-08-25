@@ -1,4 +1,4 @@
-# sched/core: ARM64 服务器偶发 rq->curr 过期导致调度器崩溃
+# sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler crashes on long-running arm64 servers
 
 ## TL;DR
 超过十台 HiSilicon Kunpeng 920 ARM64 生产服务器报告了偶发内核崩溃，共同特征：`rq->curr != current`——CPU 已切换到 idle 但 `rq->curr` 仍指向旧任务。怀疑 `__schedule()` 中的 `rq->curr = next` 更新未生效或被回退。运行 23-300 天后触发。

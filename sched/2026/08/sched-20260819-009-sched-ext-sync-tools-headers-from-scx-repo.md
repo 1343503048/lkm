@@ -1,4 +1,4 @@
-# Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`）
+# sched/ext sync tools headers from scx repo
 
 
 ## TL;DR

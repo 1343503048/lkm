@@ -2,7 +2,7 @@
 subject: sched debug per cpu debugfs files
 id: sched-20260805-009
 date: '2026-08-05'
-title: sched debug per cpu debugfs files
+title: 'sched/debug: Introduce per-CPU debugfs files'
 series: Introduce per-CPU debugfs files
 type: feature
 status: under_review

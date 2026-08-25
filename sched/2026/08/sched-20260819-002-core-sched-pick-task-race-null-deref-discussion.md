@@ -1,4 +1,4 @@
-# core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
+# core-sched/pick task race null deref discussion
 
 
 ## TL;DR

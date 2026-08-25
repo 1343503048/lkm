@@ -5,19 +5,19 @@ title: "标签: affinity"
 article_count: 21
 ---
 
-- [sched-20260814-004](/lkm/2026/08/14/sched-20260814-004-patch-v10-00-12-sched-steal-governor-introduce-preferred-cpu.html) `feature/none/under_review` — [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260814-004](/lkm/2026/08/14/sched-20260814-004-patch-v10-00-12-sched-steal-governor-introduce-preferred-cpu.html) `feature/none/under_review` — Re: [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260810-008](/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
-- [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched cache active lb migrate llc task
-- [sched-20260807-017-sched-fair-wf-sync-stacking-decline](/lkm/2026/08/07/sched-20260807-017-sched-fair-wf-sync-stacking-decline.html) `unknown/none/in-review` — sched fair wf sync stacking decline
-- [sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal](/lkm/2026/08/07/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.html) `unknown/none/in-review` — sched fair wake affine nonsmt reciprocal
-- [sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y](/lkm/2026/08/07/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.html) `unknown/none/in-review` — sched wake q unlock wake helper 6 12y
+- [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched/cache: honor migrate_llc_task semantics in active load balance
+- [sched-20260807-017-sched-fair-wf-sync-stacking-decline](/lkm/2026/08/07/sched-20260807-017-sched-fair-wf-sync-stacking-decline.html) `unknown/none/in-review` — sched/fair: decline WF_SYNC stacking when waker LLC is the busier share
+- [sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal](/lkm/2026/08/07/sched-20260807-018-sched-fair-wake-affine-nonsmt-reciprocal.html) `unknown/none/in-review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
+- [sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y](/lkm/2026/08/07/sched-20260807-023-sched-wake-q-unlock-wake-helper-6-12y.html) `unknown/none/in-review` — arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS
 - [sched-20260806-008](/lkm/2026/08/06/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.html) `fix/medium/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260805-005](/lkm/2026/08/05/sched-20260805-005-sched-cache-honor-migrate_llc_task-active-lb.html) `fix/medium/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
-- [sched-20260804-002](/lkm/2026/08/04/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.html) `feature/none/under_review` — sched_ext: Add bandwidth-limited rescue execution for stranded tasks
+- [sched-20260804-002](/lkm/2026/08/04/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.html) `feature/none/under_review` — sched_ext: Fixes for v7.2-rc6
 - [sched-20260804-007](/lkm/2026/08/04/sched-20260804-007-sched-cache-honor-migrate_llc_task-active-lb-v2.html) `fix/medium/under_review` — sched/fair: Allow load balancing between CPUs of identical capacity
 - [sched-20260804-017](/lkm/2026/08/04/sched-20260804-017-sched-docs-document-cpu_preferred_mask.html) `feature/none/under_review` — sched/docs: Document cpu_preferred_mask and Preferred CPU concept
 - [sched-20260803-001](/lkm/2026/08/03/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.html) `feature/none/under_review` — sched_ext: Bandwidth-limited rescue execution for stranded tasks
-- [sched-20260803-005](/lkm/2026/08/03/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.html) `fix/medium/under_review` — sched cache honor migrate_llc_task semantics in active load balance
+- [sched-20260803-005](/lkm/2026/08/03/sched-20260803-005-sched-cache-honor-migrate_llc_task-semantics-in-active-load-balance.html) `fix/medium/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260803-013](/lkm/2026/08/03/sched-20260803-013-sched-isolation-defer-freeing-of-bootmem-housekeeping-cpumasks-v2.html) `fix/low/under_review` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260802-001](/lkm/2026/08/02/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/low/under_review` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260801-001](/lkm/2026/08/01/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.html) `feature/none/under_review` — sched_ext: Sync tools autogen enum headers

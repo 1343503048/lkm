@@ -41,7 +41,7 @@ related_articles: []
 tags:
 - psi
 - cgroup
-title: Tao Cui 为 cgroup selftests 增加 `test_psi.c`
+title: selftests/cgroup add psi pressure tests
 layout: article
 ---
 

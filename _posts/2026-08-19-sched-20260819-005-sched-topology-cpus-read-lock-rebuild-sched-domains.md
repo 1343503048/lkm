@@ -46,7 +46,7 @@ tags:
 - topology
 - rt
 - sched/cache
-title: Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotp...
+title: sched/topology cpus read lock rebuild sched/domains
 layout: article
 ---
 

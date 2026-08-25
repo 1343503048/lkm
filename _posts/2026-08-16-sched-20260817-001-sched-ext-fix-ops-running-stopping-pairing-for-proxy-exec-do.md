@@ -45,7 +45,7 @@ tags:
 - proxy_execution
 - sched_ext
 - sched/core
-title: 'sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors'
+title: 'sched_ext: Add selftest for blocked donor admission'
 layout: article
 ---
 

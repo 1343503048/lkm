@@ -46,7 +46,7 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: 关于 "sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.w...
+title: sched/ext cgroup set bandwidth warn vs doc
 layout: article
 ---
 

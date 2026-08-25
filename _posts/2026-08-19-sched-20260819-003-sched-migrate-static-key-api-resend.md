@@ -39,7 +39,7 @@ tags:
 - sched/core
 - sched/fair
 - preempt
-title: Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch...
+title: sched/migrate static key api resend
 layout: article
 ---
 

@@ -1,4 +1,4 @@
-# sched_ext 的 ops 参数容器指针字段被标记为 trusted
+# bpf: sched_ext: Mark ops argument container pointer fields as trusted
 
 ## TL;DR
 

@@ -1,4 +1,4 @@
-# kcov scheduler coverage leaks
+# kcov: suppress timer and scheduler coverage leaks
 
 ## 概述
 

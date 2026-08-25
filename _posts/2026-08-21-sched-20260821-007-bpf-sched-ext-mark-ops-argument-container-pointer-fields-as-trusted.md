@@ -32,7 +32,7 @@ related_articles: []
 tags:
 - sched_ext
 - bpf
-title: sched_ext 的 ops 参数容器指针字段被标记为 trusted
+title: 'bpf: sched_ext: Mark ops argument container pointer fields as trusted'
 layout: article
 ---
 

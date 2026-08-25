@@ -38,7 +38,7 @@ tags:
 - sched/fair
 - sched/cpufreq
 - frequency_invariance
-title: 'sched/fair: cpufreq pressure 频率不变性讨论（增量更新）'
+title: 'sched/fair: Only apply cpufreq pressure where frequency is invariant'
 layout: article
 ---
 

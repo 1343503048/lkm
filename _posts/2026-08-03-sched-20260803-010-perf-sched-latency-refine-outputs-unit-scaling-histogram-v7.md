@@ -42,7 +42,7 @@ related_articles:
 tags:
 - perf
 - histogram
-title: perf sched latency refine outputs unit scaling histogram v7
+title: 'perf sched latency: Refine outputs, unit scaling, and histogram support'
 layout: article
 ---
 

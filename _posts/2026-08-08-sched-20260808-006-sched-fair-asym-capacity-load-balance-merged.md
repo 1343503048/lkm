@@ -28,7 +28,7 @@ emails:
     CPU cannot help'
 - uid: 28236
   subject: '[tip: sched/core] sched/fair: Also gate overloaded status update for SD_ASYM_CPUCAPACITY'
-title: sched fair asym capacity load balance merged
+title: 'sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings'
 layout: article
 ---
 

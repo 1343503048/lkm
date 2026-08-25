@@ -1,4 +1,4 @@
-# PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续
+# sched: Flatten the pick
 
 ## TL;DR
 

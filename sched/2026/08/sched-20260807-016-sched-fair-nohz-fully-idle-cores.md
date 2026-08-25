@@ -1,4 +1,4 @@
-# sched fair nohz fully idle cores
+# sched/fair: Prefer fully idle cores for NOHZ balancing
 
 ## 概述
 

@@ -1,4 +1,4 @@
-# sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
+# sched/cache: honor migrate_llc_task semantics in active load balance
 
 ## TL;DR
 本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。

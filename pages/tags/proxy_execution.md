@@ -5,15 +5,15 @@ title: "标签: proxy_execution"
 article_count: 12
 ---
 
-- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...
-- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — `Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
-- [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
-- [sched-20260817-001](/lkm/2026/08/16/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html) `feature/high/under_review` — sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched: Flatten the pick
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched: Remove sched_class::balance()
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core-sched/pick task race null deref discussion
+- [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: Delegate proxy donor admission to BPF schedulers
+- [sched-20260817-001](/lkm/2026/08/16/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html) `feature/high/under_review` — sched_ext: Add selftest for blocked donor admission
 - [sched-20260810-001](/lkm/2026/08/10/sched-20260810-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260810-007](/lkm/2026/08/10/sched-20260810-007-sched-proxy-defer-donor-commit-until-after-proxy-resolution.html) `feature/none/under_review` — sched/proxy: Defer donor commit until after proxy resolution
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
-- [sched-20260807-001-proxy-execution-sleeping-owner-v31](/lkm/2026/08/07/sched-20260807-001-proxy-execution-sleeping-owner-v31.html) `unknown/none/in-review` — proxy execution sleeping owner v31
+- [sched-20260807-001-proxy-execution-sleeping-owner-v31](/lkm/2026/08/07/sched-20260807-001-proxy-execution-sleeping-owner-v31.html) `unknown/none/in-review` — [PATCH v31 0/9] Sleeping Owner Handling for Proxy Execution (v31)
 - [sched-20260806-010](/lkm/2026/08/06/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.html) `feature/none/under_review` — sched_ext: scx_qmap: Add proxy execution support
 - [sched-20260805-001](/lkm/2026/08/05/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.html) `feature/none/under_review` — sched_ext: Block proxy donors across scheduler transitions
 - [sched-20260804-001](/lkm/2026/08/04/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.html) `feature/none/under_review` — sched: Allow enabling proxy exec with sched_ext

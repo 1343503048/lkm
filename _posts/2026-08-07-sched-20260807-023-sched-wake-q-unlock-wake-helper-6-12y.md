@@ -12,7 +12,7 @@ submitter: 社区（6.12.y stable backport 评审）
 emails:
 - uid: 25292
   subject: 'Re: [PATCH 6.12.y 1/2] locking: Add raw_spin_unlock*_wake() helpers'
-title: sched wake q unlock wake helper 6 12y
+title: 'arm64: sched/preempt: Enable HAS_SEPARATE_PREEMPT_RESCHED_BITS'
 layout: article
 ---
 

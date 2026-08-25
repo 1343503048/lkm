@@ -1,4 +1,4 @@
-# PeterZ 提议移除 `sched_class::balance()` 回调
+# sched: Remove sched_class::balance()
 
 ## TL;DR
 

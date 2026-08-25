@@ -1,4 +1,4 @@
-# riscv vector preserve state scheduling
+# riscv: vector: preserve state when scheduling at nonzero depth
 
 ## 概述
 

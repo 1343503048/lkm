@@ -5,34 +5,34 @@ title: "标签: sched_ext"
 article_count: 72
 ---
 
-- [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态
-- [sched-20260824-003](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `discussion/none/under_review` — docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）
-- [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: 提升 cgroup 更新锁到核心层（增量更新）
-- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时
-- [sched-20260823-005](/lkm/2026/08/23/sched-20260823-005.html) `fix/medium/merged_tip` — Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership c...
-- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Sch...
-- [sched-20260823-008](/lkm/2026/08/23/sched-20260823-008.html) `fix/low/merged_tip` — `sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_di...
-- [sched-20260822-004](/lkm/2026/08/22/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.html) `fix/medium/merged_tip` — Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配）
-- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — 本文是 sched-20260821-001 的增量更新
-- [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致
-- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — 并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致
-- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — 并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx....
-- [sched-20260821-007](/lkm/2026/08/21/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.html) `feature/none/merged_tip` — sched_ext 的 ops 参数容器指针字段被标记为 trusted
-- [sched-20260821-008](/lkm/2026/08/21/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.html) `feature/none/merged_tip` — sched_ext v7.3 的变更已被合入 torvalds/linux.git
-- [sched-20260820-002](/lkm/2026/08/20/sched-20260820-002.html) `feature/low/under_review` — Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `P...
-- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — Michal Koutny（与同日 Liang Luo v2）把 08-19 的「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」讨论落到了...
-- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — 08-19 的 sched_ext 文档两连修在 08-20 推进：① `ei->type → ei->kind` 示例修复已 Applied 到 `sc...
-- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idl...
-- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`）
-- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — 关于 "sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.w...
-- [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
-- [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — [GIT PULL] sched_ext: Changes for v7.3
+- [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
+- [sched-20260824-003](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `discussion/none/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
+- [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260823-005](/lkm/2026/08/23/sched-20260823-005.html) `fix/medium/merged_tip` — sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races
+- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
+- [sched-20260823-008](/lkm/2026/08/23/sched-20260823-008.html) `fix/low/merged_tip` — sched_ext: Sync common and compat headers from the scx repo
+- [sched-20260822-004](/lkm/2026/08/22/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.html) `fix/medium/merged_tip` — sched_ext: Fix spurious aborts in scx_bpf_dsq_move()
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — sched_ext: Sync headers and docs (applied to for-7.3-fixes)
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — sched_ext: Serialize concurrent cpu.max writers in scx_group_set_bandwidth()
+- [sched-20260821-007](/lkm/2026/08/21/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.html) `feature/none/merged_tip` — bpf: sched_ext: Mark ops argument container pointer fields as trusted
+- [sched-20260821-008](/lkm/2026/08/21/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.html) `feature/none/merged_tip` — Re: [GIT PULL] sched_ext: Changes for v7.3
+- [sched-20260820-002](/lkm/2026/08/20/sched-20260820-002.html) `feature/low/under_review` — bpf: sched_ext: Mark ops argument container pointer fields as trusted
+- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
+- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — sched_ext: Documentation fixes (cgroup knobs, exit kind)
+- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched/ext documentation fixes cgroup knobs exit kind
+- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — sched/ext sync tools headers from scx repo
+- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — sched/ext cgroup set bandwidth warn vs doc
+- [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: Delegate proxy donor admission to BPF schedulers
+- [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — sched_ext: Changes for v7.3
 - [sched-20260818-004](/lkm/2026/08/18/sched-20260818-004-sched-ext-allow-ops-cgroup-set-bandwidth-to-be-sleepable.html) `feature/medium/under_review` — sched_ext: allow ops.cgroup_set_bandwidth() to be sleepable
 - [sched-20260817-002](/lkm/2026/08/17/sched-20260817-002-sched-ext-sync-compat-bpf-h-peek-reenqueue-fixes-from-sched-.html) `fix/medium/under_review` — sched_ext: sync compat.bpf.h peek/reenqueue fixes from sched-ext/scx
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3
 - [sched-20260816-002](/lkm/2026/08/16/sched-20260816-002-sched-ext-drop-the-dead-scx-deq-core-sched-exec-test-in-dequ.html) `fix/medium/merged_tip` — sched_ext: Drop the dead SCX_DEQ_CORE_SCHED_EXEC test in dequeue_task_scx()
 - [sched-20260816-003](/lkm/2026/08/16/sched-20260816-003-sched-ext-move-the-config-off-sub-cap-kfunc-stubs-into-sub-c.html) `cleanup/low/merged_tip` — sched_ext: Move the config-off sub-cap kfunc stubs into sub.c
-- [sched-20260817-001](/lkm/2026/08/16/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html) `feature/high/under_review` — sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors
+- [sched-20260817-001](/lkm/2026/08/16/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html) `feature/high/under_review` — sched_ext: Add selftest for blocked donor admission
 - [sched-20260815-002](/lkm/2026/08/15/sched-20260815-002-sched-ext-make-sched-class-ext-select-generic-allocator.html) `fix/low/merged_tip` — sched_ext: Make SCHED_CLASS_EXT select GENERIC_ALLOCATOR
 - [sched-20260815-003](/lkm/2026/08/15/sched-20260815-003-sched-ext-rename-balance-era-identifiers-to-dispatch-terms.html) `fix/low/under_review` — sched_ext: Rename balance-era identifiers to dispatch terms
 - [sched-20260815-004](/lkm/2026/08/15/sched-20260815-004-sched-ext-make-scx-bpf-events-read-the-calling-scheduler-s-c.html) `fix/medium/under_review` — sched_ext: Make scx_bpf_events() read the calling scheduler's counters
@@ -53,18 +53,18 @@ article_count: 72
 - [sched-20260814-010](/lkm/2026/08/14/sched-20260814-010-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib-.html) `cleanup/low/under_review` — selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk
 - [sched-20260810-001](/lkm/2026/08/10/sched-20260810-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260809-005](/lkm/2026/08/09/sched-20260809-005-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type-.html) `fix/low/under_review` — kernel/sched/ext/ext.c:1451:38: sparse: sparse: incorrect type in initializer (different address spaces)
-- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched ext core scheduling fixes
-- [sched-20260807-002-sched-ext-find-parent-sched-null-check](/lkm/2026/08/07/sched-20260807-002-sched-ext-find-parent-sched-null-check.html) `unknown/none/in-review` — sched ext find parent sched null check
-- [sched-20260807-021-selftests-sched-ext-exit-skeleton-open](/lkm/2026/08/07/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.html) `unknown/none/in-review` — selftests sched ext exit skeleton open
+- [sched-20260808-003-sched-ext-core-scheduling-fixes](/lkm/2026/08/08/sched-20260808-003-sched-ext-core-scheduling-fixes.html) `unknown/none/in-review` — sched_ext: Fix rq->core_pick corruption under core scheduling
+- [sched-20260807-002-sched-ext-find-parent-sched-null-check](/lkm/2026/08/07/sched-20260807-002-sched-ext-find-parent-sched-null-check.html) `unknown/none/in-review` — sched_ext: Add NULL check in find_parent_sched()
+- [sched-20260807-021-selftests-sched-ext-exit-skeleton-open](/lkm/2026/08/07/sched-20260807-021-selftests-sched-ext-exit-skeleton-open.html) `unknown/none/in-review` — selftests/sched_ext: Check skeleton open failure in exit test
 - [sched-20260806-010](/lkm/2026/08/06/sched-20260806-010-sched-ext-proxy-execution-conservative-terminate.html) `feature/none/under_review` — sched_ext: scx_qmap: Add proxy execution support
 - [sched-20260805-001](/lkm/2026/08/05/sched-20260805-001-sched-ext-proxy-exec-reject-dsq-class-transition.html) `feature/none/under_review` — sched_ext: Block proxy donors across scheduler transitions
 - [sched-20260804-001](/lkm/2026/08/04/sched-20260804-001-sched-ext-enable-proxy-execution-with-sched_ext.html) `feature/none/under_review` — sched: Allow enabling proxy exec with sched_ext
-- [sched-20260804-002](/lkm/2026/08/04/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.html) `feature/none/under_review` — sched_ext: Add bandwidth-limited rescue execution for stranded tasks
+- [sched-20260804-002](/lkm/2026/08/04/sched-20260804-002-sched-ext-bandwidth-limited-rescue-execution-v2-extension.html) `feature/none/under_review` — sched_ext: Fixes for v7.2-rc6
 - [sched-20260804-003](/lkm/2026/08/04/sched-20260804-003-sched-ext-fix-idle-cpu-state-init-v4-applied.html) `fix/medium/merged` — sched_ext: Fix idle CPU state initialization and validation
 - [sched-20260804-004](/lkm/2026/08/04/sched-20260804-004-sched-ext-fixes-for-v7.2-rc6-pull.html) `fix/high/merged_tip` — sched_ext: Fix idle CPU state initialization and validation
 - [sched-20260803-001](/lkm/2026/08/03/sched-20260803-001-sched-ext-bandwidth-limited-rescue-execution-for-stranded-tasks.html) `feature/none/under_review` — sched_ext: Bandwidth-limited rescue execution for stranded tasks
 - [sched-20260803-002](/lkm/2026/08/03/sched-20260803-002-sched-ext-initialize-idle-masks-as-busy.html) `fix/medium/under_review` — sched_ext: Initialize idle masks as busy
-- [sched-20260803-003](/lkm/2026/08/03/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.html) `fix/high/merged_tip` — cgroup: Fixes for v7.2-rc6
+- [sched-20260803-003](/lkm/2026/08/03/sched-20260803-003-sched-ext-fixes-for-v7.2-rc6.html) `fix/high/merged_tip` — sched_ext: Fixes for v7.2-rc6
 - [sched-20260801-001](/lkm/2026/08/01/sched-20260801-001-sched-ext-bandwidth-limited-rescue-execution.html) `feature/none/under_review` — sched_ext: Sync tools autogen enum headers
 - [sched-20260801-002](/lkm/2026/08/01/sched-20260801-002-sched-ext-fix-idle-cpu-state-init-and-validation-v3.html) `fix/medium/under_review` — selftests/sched_ext: Make allowed_cpus idle validation race-free
 - [sched-20260731-001](/lkm/2026/07/31/sched-20260731-001-sched-ext-fix-idle-cpu-state-initialization-v2.html) `fix/medium/under_review` — selftests/sched_ext: Make allowed_cpus idle validation race-free

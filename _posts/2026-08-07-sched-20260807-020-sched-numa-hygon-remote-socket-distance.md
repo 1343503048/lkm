@@ -16,7 +16,7 @@ emails:
     Hygon'
 - uid: 25980
   subject: '[PATCH v3 1/2] ... (related)'
-title: sched numa hygon remote socket distance
+title: 'sched/numa: Apply remote socket distance averaging for Hygon CPUs'
 layout: article
 ---
 
