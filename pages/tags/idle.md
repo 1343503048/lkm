@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 23
+article_count: 24
 ---
 
+- [sched-20260824-002](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/low/under_review` — sched/cpufreq: 在进入 tickless idle 前重新评估频率
 - [sched-20260818-001](/lkm/2026/08/18/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.html) `fix/low/under_review` — sched/core: Skip rq->avg_idle update without a valid idle_stamp
 - [sched-20260817-005](/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core

@@ -2,10 +2,9 @@
 layout: default
 tag: "documentation"
 title: "标签: documentation"
-article_count: 7
+article_count: 6
 ---
 
-- [sched-20260824-003-docs-sched_ext-cgroup-knobs](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `fix/low/under_review` — sched-20260824-003-docs-sched_ext-cgroup-knobs
 - [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — sched-20260823-006
 - [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes
 - [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — sched-20260820-003

@@ -2,14 +2,12 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 37
+article_count: 35
 ---
 
-- [sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/medium/under_review` — sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle
-- [sched-20260824-004-sched-fair-cpufreq-pressure-invariant](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `fix/medium/under_review` — sched-20260824-004-sched-fair-cpufreq-pressure-invariant
-- [sched-20260824-006-sched-fair-null-deref-v4.19](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/high/under_review` — sched-20260824-006-sched-fair-null-deref-v4.19
-- [sched-20260824-009-sched-flatten-the-pick](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/medium/discussion` — sched-20260824-009-sched-flatten-the-pick
-- [sched-20260824-011-sched-fair-reuse-enqueue-delayed](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/low/under_review` — sched-20260824-011-sched-fair-reuse-enqueue-delayed
+- [sched-20260824-004](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `discussion/low/under_review` — sched/fair: cpufreq pressure 频率不变性讨论（增量更新）
+- [sched-20260824-006](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/critical/under_review` — sched/fair: pick_next_task_fair NULL 解引用（v4.19 生产环境）
+- [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算
 - [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched-20260823-002
 - [sched-20260823-009](/lkm/2026/08/23/sched-20260823-009.html) `fix/low/under_review` — sched-20260823-009
 - [sched-20260822-001](/lkm/2026/08/22/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.html) `fix/low/under_review` — sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers

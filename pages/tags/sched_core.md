@@ -2,13 +2,14 @@
 layout: default
 tag: "sched/core"
 title: "标签: sched/core"
-article_count: 55
+article_count: 56
 ---
 
-- [sched-20260824-005-sched-lift-cgroup-locking-core](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched-20260824-005-sched-lift-cgroup-locking-core
-- [sched-20260824-007-sched-core-stale-rq-curr-arm64](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched-20260824-007-sched-core-stale-rq-curr-arm64
-- [sched-20260824-008-sched-core-defer-vcpu-task-clock](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `fix/medium/under_review` — sched-20260824-008-sched-core-defer-vcpu-task-clock
-- [sched-20260824-009-sched-flatten-the-pick](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/medium/discussion` — sched-20260824-009-sched-flatten-the-pick
+- [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: 提升 cgroup 更新锁到核心层（增量更新）
+- [sched-20260824-007](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched/core: ARM64 服务器偶发 rq->curr 过期导致调度器崩溃
+- [sched-20260824-008](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `feature/low/rfc` — sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）
+- [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick v3 性能回退分析（增量更新）
+- [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
 - [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
 - [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched-20260823-003
 - [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004

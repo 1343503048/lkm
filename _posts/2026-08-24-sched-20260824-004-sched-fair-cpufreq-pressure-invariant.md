@@ -1,36 +1,76 @@
 ---
-title: sched-20260824-004-sched-fair-cpufreq-pressure-invariant
+id: sched-20260824-004
 date: 2026-08-24
-tags:
-- schedutil
-- sched/fair
-- regression
-series: cpufreq pressure invariant freq only
-type: fix
-severity: medium
+subsystem: sched
+type: discussion
 status: under_review
-lore: ''
+severity: low
+thread_root_msgid: <unknown>
+lore_url: 未获取到
+authors:
+- unknown
+maintainers_involved:
+- Vincent Guittot
+- Hongyan Xia
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <unknown>
+  date: 2026-08-21
+  summary: 限制 cpufreq pressure 只在频率不变平台生效
+  review_outcome: 被质疑表述不准确
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+  - 原始问题描述被推翻，需重新定位
+  next_action: 作者需要重新描述问题根因并发 v2
+contribution_opportunities:
+- kind: review
+  description: 帮忙分析 arch_scale_freq_ref() 在不同架构上的实现
+generated_at: '2026-08-25T10:40:00'
+source_email_count: 2
+related_articles:
+- sched-20260821-004
+tags:
+- sched/fair
+- sched/cpufreq
+- frequency_invariance
+title: 'sched/fair: cpufreq pressure 频率不变性讨论（增量更新）'
 layout: article
 ---
 
-## 概述
+## TL;DR
+本文为增量更新，完整背景见 related_articles 中的文章。作者承认原始 commit message 基于频率不变性的解释不正确，实际问题源自 `d2d5c129d07e` 引入的 `cpuinfo.max_freq` fallback 逻辑。讨论仍在继续。
 
-cpufreq 压力（cpufreq pressure）用于向调度器反馈由于频率受限带来的算力损失。
-此前在频率为非不变量（frequency not invariant）平台上也会施加压力，可能引入
-不准确的利用率估计与回归。本线程（Re: UID 54189 / 55200）讨论将 cpufreq 压力
-的施加范围限制到“频率为不变量”的场景。
+## 版本演进与当前进展
+作者在回复中澄清：
+> My original commit message did not clearly describe the concrete issue being fixed, and its explanation based on frequency invariance was not correct. After looking into this further, I found that the issue I observed has a different cause: the cpuinfo.max_freq fallback added by d2d5c129d07e.
 
-## 改动内容 / 核心补丁
+实际问题：`cpufreq_update_pressure()` 在缺少 `arch_scale_freq_ref()` 时会 fallback 到 `cpuinfo.max_freq`，但这不是真正的最大可持续频率，导致压力计算不准确。
 
-- 调整 cpufreq 压力的计算/传播条件，仅在频率是不变量时才计入压力。
-- 避免在频率非不变平台上产生误导性的利用率压缩。
+## Maintainer 意见与讨论焦点
+- **Vincent Guittot / Hongyan Xia**（之前回复）：质疑"频率不变性"的表述是否准确，要求更具体的问题描述
+- **作者回应**：承认表述不当，重新定位问题根因为 `cpuinfo.max_freq` fallback
+- **Vincent 追问**：质疑"utilization 超过 capacity"的具体含义——"anything that is always-running without idle time under PELT will reach 1024 eventually regardless of invariance"
 
-## 状态与讨论
+分歧点：作者需要更精确地描述问题场景和修复效果，不能依赖"频率不变性"这个宽泛概念。
 
-- 当前状态：**under_review / 讨论中**（以 Re: 形式推进）。
-- 属于持续性讨论（往日已有相关 RFC/补丁），本期为针对主线的回复与修订。
+## 合入评估
+合入可能性 **medium**：
+- 原始解释被推翻，需要重新定位问题
+- 需要更精确的 commit message 和复现数据
+- `blocking_issues`：作者需要重新描述问题和修复方案
+- `next_action`：作者需要发 v2 重新描述问题，或证明当前方案确实解决了 `cpuinfo.max_freq` fallback 的问题
 
-## 关联
+## 效果评估
+暂无效果数据；作者尚未提供具体的性能影响或测试数据。
 
-- 002 sched/cpufreq：tickless idle 前重新评估频率
-- 009 sched：cgroup 更新锁上提到 core
+## 我可以参与的点
+- 如果了解 `arch_scale_freq_ref()` 在不同架构上的实现情况，可以帮忙分析哪些平台会触发此问题
+- 可以帮忙验证 `cpuinfo.max_freq` fallback 在特定平台上的实际影响
+
+## 参考链接
+- lore thread: 未获取到

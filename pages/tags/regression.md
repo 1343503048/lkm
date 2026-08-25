@@ -2,10 +2,9 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 10
+article_count: 9
 ---
 
-- [sched-20260824-004-sched-fair-cpufreq-pressure-invariant](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `fix/medium/under_review` — sched-20260824-004-sched-fair-cpufreq-pressure-invariant
 - [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched-20260823-002
 - [sched-20260820-004](/lkm/2026/08/20/sched-20260820-004.html) `bug/low/under_review` — sched-20260820-004
 - [sched-20260820-010](/lkm/2026/08/20/sched-20260820-010.html) `bug/critical/under_review` — sched-20260820-010

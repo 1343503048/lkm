@@ -2,10 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 41
+article_count: 42
 ---
 
-- [sched-20260824-010-sched-cache-migrate-llc-active-lb](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/medium/under_review` — sched-20260824-010-sched-cache-migrate-llc-active-lb
+- [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick v3 性能回退分析（增量更新）
+- [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
 - [sched-20260823-010](/lkm/2026/08/23/sched-20260823-010.html) `fix/medium/under_review` — sched-20260823-010
 - [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
 - [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — sched-20260820-009

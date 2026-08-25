@@ -2,10 +2,9 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 22
+article_count: 21
 ---
 
-- [sched-20260824-008-sched-core-defer-vcpu-task-clock](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `fix/medium/under_review` — sched-20260824-008-sched-core-defer-vcpu-task-clock
 - [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004
 - [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
 - [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend

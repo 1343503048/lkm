@@ -2,7 +2,7 @@
 
 共 9 篇
 
-- [sched-20260824-011-sched-fair-reuse-enqueue-delayed.md](../../2026/08/sched-20260824-011-sched-fair-reuse-enqueue-delayed.md) `fix/low/under_review`
+- [sched-20260824-011](../../2026/08/sched-20260824-011-sched-fair-reuse-enqueue-delayed.md) `fix/under_review` — 两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。
 - [sched-20260822-001](../../2026/08/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.md) `fix/low/under_review` — Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。
 - [sched-20260817-004](../../2026/08/sched-20260817-004-sched-urgent-for-v7-2.md) `fix/medium/merged_tip` — Peter Zijlstra 的 `sched/urgent` 修复（Edgar E. Iglesias 报告）：组调度实体在 `sched_slice()` 中用**两任务 vruntime 差**而非 `cfs_rq->min_vruntime` 作基准，修复被延迟实体（DELAY_DEQUEUE）时间更新不正确的问题（`Fixes: f0f12c9b0e3e`）。Borislav 已发 PR
 - [sched-20260817-003](../../2026/08/sched-20260817-003-scheduler-updates-for-v7-3.md) `feature/high/merged_tip` — Ingo Molnar 发出 v7.3 合并窗口的 **Scheduler updates for v7.3** PR，规模巨大：flatten-the-pick cgroup 调度（扁平权重、运行在 per-CPU 队列而非 cgroup 层级）、EEVDF 核心拆解到单 run queue（CFS 去掉每 cgroup 内部队列）、short-slice 延迟优化、RT 抢占下限、scx 的 

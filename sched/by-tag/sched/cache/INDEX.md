@@ -1,8 +1,7 @@
 # tag: sched/cache
 
-共 9 篇
+共 8 篇
 
-- [sched-20260824-010-sched-cache-migrate-llc-active-lb.md](../../../2026/08/sched-20260824-010-sched-cache-migrate-llc-active-lb.md) `fix/medium/under_review`
 - [sched-20260823-010](../../../2026/08/sched-20260823-010.md) `fix/medium/under_review` — `sched/cache: honor migrate_llc_task semantics in active load balance` v3 已获 Tim Chen、Chen Yu 的 Reviewed-by，8/23 为 gentle ping 请 Peter 收下。核心是 active load balance 的迁移类型遵循 `migrate_llc_task` 语义，避免影响 del
 - [sched-20260820-005](../../../2026/08/sched-20260820-005.md) `fix/medium/merged_tip` — 两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-19 005）；② `tg_cpus()` floor at 1（对应 08-19 001 flat-hierarchy 除零崩溃修复）。tip-bot 8/20 自动应用。
 - [sched-20260819-005](../../../2026/08/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.md) `fix/medium/under_review` — Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotplug_lock` 触发的 backtrace，v2 把 `cpus_read_lock` 上移到 `rebuild_sched_domains()`。同时顺带修好 EAS 在 CPUfreq governor 切换时的同类问题。

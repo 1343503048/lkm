@@ -5,9 +5,9 @@ title: "标签: cgroup"
 article_count: 30
 ---
 
-- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched-20260824-001-sched_ext-cgroup-init-cpu-idle
-- [sched-20260824-003-docs-sched_ext-cgroup-knobs](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `fix/low/under_review` — sched-20260824-003-docs-sched_ext-cgroup-knobs
-- [sched-20260824-005-sched-lift-cgroup-locking-core](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched-20260824-005-sched-lift-cgroup-locking-core
+- [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态
+- [sched-20260824-003](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `discussion/none/under_review` — docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）
+- [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: 提升 cgroup 更新锁到核心层（增量更新）
 - [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
 - [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — sched-20260823-006
 - [sched-20260823-007](/lkm/2026/08/23/sched-20260823-007.html) `feature/low/under_review` — sched-20260823-007

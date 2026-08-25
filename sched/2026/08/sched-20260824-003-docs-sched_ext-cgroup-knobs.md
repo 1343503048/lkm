@@ -1,32 +1,68 @@
-## 概述
+# docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）
 
-sched_ext 允许每个 cgroup 设置调度器相关的 CPU 参数（scheduler-dependent knobs），
-但文档缺失，用户难以知晓可用参数与含义。v3（UID 54704）与 v4（UID 55221）持续
-完善这部分文档，补充参数说明与示例。
+## TL;DR
+本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。
 
-## 改动内容 / 核心补丁
+## 版本演进与当前进展
+- **v3**（Tao Cui）：描述 fair class 与 sched_ext 对 cgroup knobs 的不同处理方式
+- **v4**（Tao Cui）：根据 Andrea 建议重写，明确提到 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 回调
 
-- 在 Documentation/sched-ext 中新增/扩充 cgroup CPU 可调参数的说明。
-- 阐明哪些参数依赖具体调度器实现、如何读取与设置、以及缺省行为。
+v3 → v4 的关键改动：
+> Rephrase per Andrea's suggestion: mention ops.cgroup_init() and ops.cgroup_set_*() callbacks
 
-## 状态与讨论
+## Maintainer 意见与讨论焦点
+- **Andrea Righi**（v3 review）：建议措辞调整，明确提及回调接口名称
+- v4 已采纳建议，等待进一步确认
 
-- 当前状态：**under_review**（v4 已发）。
-- 与 001（传递 cpu.idle 到 scx_cgroup_init_args）配套，共同完善 sched_ext 的
-  cgroup 能力面。
+## 合入评估
+合入可能性 **high**：纯文档改进，已根据 reviewer 意见修改，无技术争议。
+- `next_action`：等待 Tejun Heo 确认合入
 
-## 关联
+## 效果评估
+纯文档改进，无性能影响。
 
-- 001 sched_ext：传递初始 cpu.idle 状态
-- 005 sched：cgroup 更新锁上提到 core
+## 我可以参与的点
+当前阶段暂无明显参与空间。
+
+## 参考链接
+- lore thread: 未获取到
 
 ---
-title: "docs/sched_ext：文档化 cgroup CPU 可调参数（scheduler-dependent）"
+id: sched-20260824-003
 date: 2026-08-24
-tags: [sched_ext, documentation, cgroup]
-series: "document sched_ext cgroup cpu knobs"
-type: fix
-severity: low
+subsystem: sched
+type: discussion
 status: under_review
-lore: ""
+severity: none
+thread_root_msgid: "<unknown>"
+lore_url: "未获取到"
+authors:
+- Tao Cui
+maintainers_involved:
+- Andrea Righi
+- Tejun Heo
+current_version: v4
+patch_series:
+  - version: v3
+    msgid: "<unknown>"
+    date: 2026-08-24
+    summary: "文档化 cgroup knobs 的调度器依赖性"
+    review_outcome: "Andrea 建议修改措辞"
+  - version: v4
+    msgid: "<unknown>"
+    date: 2026-08-24
+    summary: "按建议重写，明确 ops.cgroup_init/set_* 回调"
+    review_outcome: "待确认"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 Tejun Heo 确认合入"
+contribution_opportunities: []
+generated_at: "2026-08-25T10:40:00"
+source_email_count: 5
+related_articles: [sched-20260820-003]
+tags: [sched_ext, cgroup, docs]
 ---

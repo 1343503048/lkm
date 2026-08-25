@@ -2,9 +2,9 @@
 
 共 30 篇
 
-- [sched-20260824-005-sched-lift-cgroup-locking-core.md](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review`
-- [sched-20260824-003-docs-sched_ext-cgroup-knobs.md](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `fix/low/under_review`
-- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md](../../2026/08/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md) `fix/low/under_review`
+- [sched-20260824-005](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。
+- [sched-20260824-003](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `discussion/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。
+- [sched-20260824-001](../../2026/08/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md) `fix/low/under_review` — sched_ext cgroup 初始化时遗漏了 cpu.idle 状态传递，导致已配置为 idle 的 cgroup 在调度器加载后被误报为 non-idle；v2 修复后获得 Andrea Righi Reviewed-by，合入前景良好。
 - [sched-20260823-007](../../2026/08/sched-20260823-007.md) `feature/low/under_review` — Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETUP/TEARDOWN），并把「poll 超时未触发」从 SKIP 改为 FAIL。已迭代四轮，合入概率高。
 - [sched-20260823-006](../../2026/08/sched-20260823-006.md) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。
 - [sched-20260823-001](../../2026/08/sched-20260823-001.md) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时，CFS 内部锁在调 SCX 回调前释放，允许多线程穿插，使 CFS 记录值、SCX 簿记、BPF 调度器三者拿到不同参数。v3 把锁上移到 core 层统一串行化。合入概率高。

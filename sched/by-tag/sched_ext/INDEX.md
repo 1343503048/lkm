@@ -2,9 +2,9 @@
 
 共 72 篇
 
-- [sched-20260824-005-sched-lift-cgroup-locking-core.md](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review`
-- [sched-20260824-003-docs-sched_ext-cgroup-knobs.md](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `fix/low/under_review`
-- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md](../../2026/08/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md) `fix/low/under_review`
+- [sched-20260824-005](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。
+- [sched-20260824-003](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `discussion/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。
+- [sched-20260824-001](../../2026/08/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.md) `fix/low/under_review` — sched_ext cgroup 初始化时遗漏了 cpu.idle 状态传递，导致已配置为 idle 的 cgroup 在调度器加载后被误报为 non-idle；v2 修复后获得 Andrea Righi Reviewed-by，合入前景良好。
 - [sched-20260823-008](../../2026/08/sched-20260823-008.md) `fix/low/merged_tip` — `sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_disables_migration` 默认值与「err high」注释不一致，在 cherry-pick 8e4f0b1ebcf2 的内核上 `is_migration_disabled(current)` 会少报。Changwoo 已在 scx 
 - [sched-20260823-006](../../2026/08/sched-20260823-006.md) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。
 - [sched-20260823-005](../../2026/08/sched-20260823-005.md) `fix/medium/merged_tip` — Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races` Applied 到 `sched_ext/for-7.3-fixes`。修复 DSQ 所有权变更竞态下 `scx_bpf_dsq_move()` 的虚假中止。已 merged，合入可能性 merged。

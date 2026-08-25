@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 40 篇
+共 42 篇
 
+- [sched-20260824-009](../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/high/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在
+- [sched-20260824-006](../../2026/08/sched-20260824-006-sched-fair-null-deref-v4.19.md) `bug/critical/under_review` — 两个独立生产环境（HiSilicon Kunpeng 920 ARM64，v4.19 内核）报告了相同的 `pick_next_task_fair()` NULL 解引用崩溃：`nr_running` 为 -1（0xFFFFFFFF），导致非零检查通过但红黑树为空，`rb_leftmost` 返回 NULL。超长运行时间（290-738 天）后才触发。
 - [sched-20260821-003](../../2026/08/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.md) `discussion/under_review` — PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续，IBM 工程师在 tip:sched/core 最新基线上重复了 benchmark，对比扁平 pick 层级与当前实现的性能差异。系列仍在 review 中。
 - [sched-20260806-014](../../2026/08/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.md) `fix/medium/under_review`
 - [sched-20260806-013](../../2026/08/sched-20260806-013-sched-fair-load-balance-identical-capacity-v6.md) `feature/under_review`

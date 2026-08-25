@@ -1,7 +1,8 @@
 # tag: topology
 
-共 33 篇
+共 34 篇
 
+- [sched-20260824-010](../../2026/08/sched-20260824-010-sched-cache-migrate-llc-active-lb.md) `fix/low/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。
 - [sched-20260820-005](../../2026/08/sched-20260820-005.md) `fix/medium/merged_tip` — 两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-19 005）；② `tg_cpus()` floor at 1（对应 08-19 001 flat-hierarchy 除零崩溃修复）。tip-bot 8/20 自动应用。
 - [sched-20260819-005](../../2026/08/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.md) `fix/medium/under_review` — Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotplug_lock` 触发的 backtrace，v2 把 `cpus_read_lock` 上移到 `rebuild_sched_domains()`。同时顺带修好 EAS 在 CPUfreq governor 切换时的同类问题。
 - [sched-20260814-003](../../2026/08/sched-20260814-003-sched-topology-add-a-cpus-read-lock-to-rebuild-sched-domains.md) `fix/medium/under_review` — K Prateek Nayak（Valentin Schneider 等参与）修复 sched/topology 的 `sd->shared` 重复分配/泄漏：当 `sd_llc` 与 `sd_asym_cpucapacity` 指向同一域时，`init_sched_domain_shared()` 会覆盖并泄漏先前分配。同时涉及 NUMA masks 释放、rebuild 加锁等关联修复。属内存

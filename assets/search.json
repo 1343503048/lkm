@@ -4625,175 +4625,202 @@
     "tldr": "`sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierarchy fix (68e3748781) 还是 single-runqueue (85570f10a4c6)；并提醒 0day 曾 pin 该系列 patch 6/7 导致网络吞吐回退（ksoftirqd 更少运行）。报告者用 0day 复现脚本成功复现回退，分析 `wake_affine_weight()` 在 concur 模式下因 wakee 权重增大而更少选 this_cpu。属 core_sched/proxy_exec 线延续。"
   },
   {
-    "title": "sched-20260824-001-sched_ext-cgroup-init-cpu-idle",
-    "id": "sched-20260824-001-sched_ext-cgroup-init-cpu-idle",
+    "title": "sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态",
+    "id": "sched-20260824-001",
     "date": "2026-08-24",
     "type": "fix",
     "status": "under_review",
     "severity": "low",
     "tags": [
       "sched_ext",
-      "cgroup"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html",
-    "tldr": ""
-  },
-  {
-    "title": "sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle",
-    "id": "sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle",
-    "date": "2026-08-24",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "medium",
-    "tags": [
-      "schedutil",
-      "sched/fair",
-      "compatibility"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html",
-    "tldr": ""
-  },
-  {
-    "title": "sched-20260824-003-docs-sched_ext-cgroup-knobs",
-    "id": "sched-20260824-003-docs-sched_ext-cgroup-knobs",
-    "date": "2026-08-24",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "low",
-    "tags": [
-      "sched_ext",
-      "documentation",
-      "cgroup"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html",
-    "tldr": ""
-  },
-  {
-    "title": "sched-20260824-004-sched-fair-cpufreq-pressure-invariant",
-    "id": "sched-20260824-004-sched-fair-cpufreq-pressure-invariant",
-    "date": "2026-08-24",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "medium",
-    "tags": [
-      "schedutil",
-      "sched/fair",
-      "regression"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html",
-    "tldr": ""
-  },
-  {
-    "title": "sched-20260824-005-sched-lift-cgroup-locking-core",
-    "id": "sched-20260824-005-sched-lift-cgroup-locking-core",
-    "date": "2026-08-24",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "medium",
-    "tags": [
       "cgroup",
-      "sched/core",
-      "sched_ext"
+      "cpuidle"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html",
-    "tldr": ""
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html",
+    "tldr": "sched_ext cgroup 初始化时遗漏了 cpu.idle 状态传递，导致已配置为 idle 的 cgroup 在调度器加载后被误报为 non-idle；v2 修复后获得 Andrea Righi Reviewed-by，合入前景良好。"
   },
   {
-    "title": "sched-20260824-006-sched-fair-null-deref-v4.19",
-    "id": "sched-20260824-006-sched-fair-null-deref-v4.19",
+    "title": "sched/cpufreq: 在进入 tickless idle 前重新评估频率",
+    "id": "sched-20260824-002",
     "date": "2026-08-24",
-    "type": "bug",
+    "type": "fix",
     "status": "under_review",
-    "severity": "high",
+    "severity": "low",
     "tags": [
-      "crash",
-      "sched/fair",
-      "compatibility"
+      "sched/cpufreq",
+      "cpuidle",
+      "idle"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html",
-    "tldr": ""
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html",
+    "tldr": "`sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。"
   },
   {
-    "title": "sched-20260824-007-sched-core-stale-rq-curr-arm64",
-    "id": "sched-20260824-007-sched-core-stale-rq-curr-arm64",
+    "title": "docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）",
+    "id": "sched-20260824-003",
+    "date": "2026-08-24",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup",
+      "docs"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。Tao Cui 的文档补丁从 v3 推进到 v4，根据 Andrea Righi 的建议修改了措辞，明确了 `ops.cgroup_init()` 和 `ops.cgroup_set_*()` 的传递机制。"
+  },
+  {
+    "title": "sched/fair: cpufreq pressure 频率不变性讨论（增量更新）",
+    "id": "sched-20260824-004",
+    "date": "2026-08-24",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched/fair",
+      "sched/cpufreq",
+      "frequency_invariance"
+    ],
+    "authors": [
+      "unknown"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。作者承认原始 commit message 基于频率不变性的解释不正确，实际问题源自 `d2d5c129d07e` 引入的 `cpuinfo.max_freq` fallback 逻辑。讨论仍在继续。"
+  },
+  {
+    "title": "sched: 提升 cgroup 更新锁到核心层（增量更新）",
+    "id": "sched-20260824-005",
+    "date": "2026-08-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched/core",
+      "cgroup",
+      "sched_ext",
+      "race_condition"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。"
+  },
+  {
+    "title": "sched/fair: pick_next_task_fair NULL 解引用（v4.19 生产环境）",
+    "id": "sched-20260824-006",
     "date": "2026-08-24",
     "type": "bug",
     "status": "under_review",
     "severity": "critical",
     "tags": [
-      "crash",
-      "sched/core"
+      "sched/fair",
+      "cfs",
+      "race_condition"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html",
-    "tldr": ""
+    "authors": [
+      "unknown reporter"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html",
+    "tldr": "两个独立生产环境（HiSilicon Kunpeng 920 ARM64，v4.19 内核）报告了相同的 `pick_next_task_fair()` NULL 解引用崩溃：`nr_running` 为 -1（0xFFFFFFFF），导致非零检查通过但红黑树为空，`rb_leftmost` 返回 NULL。超长运行时间（290-738 天）后才触发。"
   },
   {
-    "title": "sched-20260824-008-sched-core-defer-vcpu-task-clock",
-    "id": "sched-20260824-008-sched-core-defer-vcpu-task-clock",
+    "title": "sched/core: ARM64 服务器偶发 rq->curr 过期导致调度器崩溃",
+    "id": "sched-20260824-007",
     "date": "2026-08-24",
-    "type": "fix",
+    "type": "bug",
     "status": "under_review",
-    "severity": "medium",
+    "severity": "critical",
     "tags": [
-      "preempt",
       "sched/core",
-      "proxy_execution"
+      "race_condition",
+      "memory_safety"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html",
-    "tldr": ""
+    "authors": [
+      "Li Wanwu"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html",
+    "tldr": "超过十台 HiSilicon Kunpeng 920 ARM64 生产服务器报告了偶发内核崩溃，共同特征：`rq->curr != current`——CPU 已切换到 idle 但 `rq->curr` 仍指向旧任务。怀疑 `__schedule()` 中的 `rq->curr = next` 更新未生效或被回退。运行 23-300 天后触发。"
   },
   {
-    "title": "sched-20260824-009-sched-flatten-the-pick",
-    "id": "sched-20260824-009-sched-flatten-the-pick",
+    "title": "sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）",
+    "id": "sched-20260824-008",
+    "date": "2026-08-24",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "low",
+    "tags": [
+      "sched/core",
+      "virtualization"
+    ],
+    "authors": [
+      "Dongli Zhang"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html",
+    "tldr": "KVM 客户机中，当 vCPU A 为被抢占的 vCPU B 做记账时，由于 KVM host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 无法观察到 steal 时间，错误地将 stolen 区间计入任务运行时间。RFC 提出延迟远程 CPU 对已标记为 preempted 的 vCPU 的 `clock_task` 更新。"
+  },
+  {
+    "title": "sched: Flatten the pick v3 性能回退分析（增量更新）",
+    "id": "sched-20260824-009",
     "date": "2026-08-24",
     "type": "discussion",
-    "status": "discussion",
-    "severity": "medium",
+    "status": "under_review",
+    "severity": "high",
     "tags": [
       "sched/core",
-      "sched/fair",
-      "discussion"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html",
-    "tldr": ""
-  },
-  {
-    "title": "sched-20260824-010-sched-cache-migrate-llc-active-lb",
-    "id": "sched-20260824-010-sched-cache-migrate-llc-active-lb",
-    "date": "2026-08-24",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "medium",
-    "tags": [
-      "sched/cache",
+      "cfs",
+      "performance",
       "load_balance"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html",
-    "tldr": ""
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在继续排查。"
   },
   {
-    "title": "sched-20260824-011-sched-fair-reuse-enqueue-delayed",
-    "id": "sched-20260824-011-sched-fair-reuse-enqueue-delayed",
+    "title": "sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）",
+    "id": "sched-20260824-010",
     "date": "2026-08-24",
     "type": "fix",
     "status": "under_review",
     "severity": "low",
     "tags": [
-      "sched/fair",
-      "eevdf"
+      "sched/core",
+      "load_balance",
+      "topology"
     ],
-    "authors": [],
+    "authors": [
+      "Lu"
+    ],
+    "url": "/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。"
+  },
+  {
+    "title": "sched/fair: EEVDF 入队路径清理——复用 ENQUEUE_DELAYED 与避免重复计算",
+    "id": "sched-20260824-011",
+    "date": "2026-08-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched/fair",
+      "eevdf",
+      "cleanup"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
     "url": "/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html",
-    "tldr": ""
+    "tldr": "两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。"
   }
 ]

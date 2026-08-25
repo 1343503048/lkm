@@ -1,11 +1,12 @@
 # tag: sched/core
 
-共 55 篇
+共 56 篇
 
-- [sched-20260824-009-sched-flatten-the-pick.md](../../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/medium/discussion`
-- [sched-20260824-008-sched-core-defer-vcpu-task-clock.md](../../../2026/08/sched-20260824-008-sched-core-defer-vcpu-task-clock.md) `fix/medium/under_review`
-- [sched-20260824-007-sched-core-stale-rq-curr-arm64.md](../../../2026/08/sched-20260824-007-sched-core-stale-rq-curr-arm64.md) `bug/critical/under_review`
-- [sched-20260824-005-sched-lift-cgroup-locking-core.md](../../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review`
+- [sched-20260824-010](../../../2026/08/sched-20260824-010-sched-cache-migrate-llc-active-lb.md) `fix/low/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。
+- [sched-20260824-009](../../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/high/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在
+- [sched-20260824-008](../../../2026/08/sched-20260824-008-sched-core-defer-vcpu-task-clock.md) `feature/low/rfc` — KVM 客户机中，当 vCPU A 为被抢占的 vCPU B 做记账时，由于 KVM host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 无法观察到 steal 时间，错误地将 stolen 区间计入任务运行时间。RFC 提出延迟远程 CPU 对已标记为 preempted 的 vCPU 的 `clock_task` 更新。
+- [sched-20260824-007](../../../2026/08/sched-20260824-007-sched-core-stale-rq-curr-arm64.md) `bug/critical/under_review` — 超过十台 HiSilicon Kunpeng 920 ARM64 生产服务器报告了偶发内核崩溃，共同特征：`rq->curr != current`——CPU 已切换到 idle 但 `rq->curr` 仍指向旧任务。怀疑 `__schedule()` 中的 `rq->curr = next` 更新未生效或被回退。运行 23-300 天后触发。
+- [sched-20260824-005](../../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。v3 获得 Andrea Righi 的 `Reviewed-by`，但 Andrea 指出带宽参数的并发序列化问题仍存在（不阻塞本补丁），建议后续单独处理。
 - [sched-20260823-011](../../../2026/08/sched-20260823-011.md) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierarchy fix (68e3748781) 还是 single-runqueue (85570f10a4c6)；并提醒 0day 曾 pin 该系列 patch 6/7 导致网络吞吐回退（ksoftirqd 更少运行）。报告者用 0day 复现脚本
 - [sched-20260823-004](../../../2026/08/sched-20260823-004.md) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock，导致 steal 间隔被错误计入。修复为抢占期间把 delta 累积到 `deferred_clock_task`，待 vCPU 重入时一并折回 irq/steal 记账。RFC 阶段，合入概率 medium。
 - [sched-20260823-003](../../../2026/08/sched-20260823-003.md) `bug/critical/under_review` — arm64 长运行服务器上偶发 `rq->curr != current`（rq 上记录的当前任务与实际 current 不一致），引发调度器崩溃。生产环境报告，触发条件与内核版本细节待补。属新出现的 crash 报告。

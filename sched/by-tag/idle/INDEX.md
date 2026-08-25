@@ -1,7 +1,8 @@
 # tag: idle
 
-共 23 篇
+共 24 篇
 
+- [sched-20260824-002](../../2026/08/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md) `fix/low/under_review` — `sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。
 - [sched-20260818-001](../../2026/08/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.md) `fix/low/under_review` — Shubhang Kaushik 的 `sched/core` 小修 v3（本日 gentle ping）：`update_rq_avg_idle()` 在 `rq->idle_stamp == 0` 时跳过 avg_idle 更新，避免任务经 `sched_balance_newidle()`/`ttwu_pending` 进入空闲却无有效 idle_stamp 时写出错误值。已有 `Revie
 - [sched-20260817-005](../../2026/08/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/medium/under_review` — `steal_governor` v10 的讨论回复（Shrikanth Hegde，接 Prateek/K Prateek/J Joel 等 review）：系列引入"preferred CPUs"与"steal-driven vCPU backoff"，让空闲/轻载 CPU 从忙 CPU 偷取任务以减少空闲时间。本日回复集中回应三处缺陷——① 32 位 ARM64 上 `atomic_long
 - [sched-20260810-009](../../2026/08/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。
