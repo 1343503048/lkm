@@ -1,38 +1,3 @@
----
-id: sched-20260821-010
-date: 2026-08-21
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "未获取到"
-lore_url: "未获取到"
-authors: ["Maulik Shah"]
-maintainers_involved: ["Daniel Lezcano", "Sudeep Holla"]
-current_version: v2
-patch_series:
-  - version: v2
-    msgid: "未获取到"
-    date: 2026-08-21
-    summary: "在 cpuidle_enter_state() 中检查 IPI pending 阻止 idle 进入"
-    review_outcome: "Daniel Lezcano 认为应在 idle loop 层面处理"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: low
-  blocking_issues:
-    - "Daniel Lezcano 认为方案位置不对，应在 idle loop 而非 cpuidle"
-  next_action: "重新定位到 idle loop 或提供更强理由"
-contribution_opportunities:
-  - kind: discussion
-    description: "提供 IPI pending 在 idle 路径上的影响数据"
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 4
-related_articles: []
-tags: ["cpuidle", "ipi"]
----
-
 ## TL;DR
 
 v2 补丁尝试在 CPU 已有 IPI 中断挂起时阻止进入 idle 状态，但 Daniel Lezcano 认为这应该在 idle loop 而非 cpuidle 框架中处理，Maulik Shah 的 v2 方案方向受到质疑。
@@ -75,3 +40,38 @@ v2 在 cpuidle 框架中增加 IPI pending 检查。Daniel Lezcano (Qualcomm) �
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-010
+date: 2026-08-21
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "未获取到"
+lore_url: "未获取到"
+authors: ["Maulik Shah"]
+maintainers_involved: ["Daniel Lezcano", "Sudeep Holla"]
+current_version: v2
+patch_series:
+  - version: v2
+    msgid: "未获取到"
+    date: 2026-08-21
+    summary: "在 cpuidle_enter_state() 中检查 IPI pending 阻止 idle 进入"
+    review_outcome: "Daniel Lezcano 认为应在 idle loop 层面处理"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: low
+  blocking_issues:
+    - "Daniel Lezcano 认为方案位置不对，应在 idle loop 而非 cpuidle"
+  next_action: "重新定位到 idle loop 或提供更强理由"
+contribution_opportunities:
+  - kind: discussion
+    description: "提供 IPI pending 在 idle 路径上的影响数据"
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 4
+related_articles: []
+tags: ["cpuidle", "ipi"]
+---

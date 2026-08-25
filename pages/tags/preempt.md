@@ -2,9 +2,12 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 19
+article_count: 22
 ---
 
+- [sched-20260824-008-sched-core-defer-vcpu-task-clock](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `fix/medium/under_review` — sched-20260824-008-sched-core-defer-vcpu-task-clock
+- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004
+- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
 - [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
 - [sched-20260810-015](/lkm/2026/08/10/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `cleanup/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()

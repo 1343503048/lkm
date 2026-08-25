@@ -1,40 +1,3 @@
----
-id: sched-20260822-003
-date: 2026-08-22
-subsystem: sched
-type: discussion
-status: under_review
-severity: none
-thread_root_msgid: "<20260812054033.95658-1-sshegde@linux.ibm.com>"
-lore_url: "https://lore.kernel.org/lkml/20260812054033.95658-1-sshegde@linux.ibm.com/"
-authors: ["Shrikanth Hegde"]
-maintainers_involved: ["Yury Norov"]
-current_version: v10
-patch_series:
-  - version: v10
-    msgid: "<20260812054033.95658-1-sshegde@linux.ibm.com>"
-    date: 2026-08-12
-    summary: "v10 preferred CPUs + steal-driven vCPU backoff"
-    review_outcome: "Yury 独立测试显示 3-5% 性能回退"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: low
-  blocking_issues:
-    - "3-5% 性能回退需要解释和修复"
-  next_action: "作者调查性能回退原因"
-contribution_opportunities:
-  - kind: testing
-    description: "在不同虚拟化环境下复现测试确认性能回退"
-  - kind: review
-    description: "分析 steal governor 算法中导致吞吐下降的路径"
-generated_at: "2026-08-22T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: ["steal_governor", "virtualization", "performance"]
----
-
 ## TL;DR
 
 steal_governor v10 系列收到 Yury 的独立测试：steal ratio 成功收敛，但整体性能比基线差 3-5%。作者需要调查性能回退原因。
@@ -86,3 +49,40 @@ Steal ratio 收敛成功，但吞吐下降 3-5%。Yury 指出结果与作者之�
 - lore thread: https://lore.kernel.org/lkml/20260812054033.95658-1-sshegde@linux.ibm.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260822-003
+date: 2026-08-22
+subsystem: sched
+type: discussion
+status: under_review
+severity: none
+thread_root_msgid: "<20260812054033.95658-1-sshegde@linux.ibm.com>"
+lore_url: "https://lore.kernel.org/lkml/20260812054033.95658-1-sshegde@linux.ibm.com/"
+authors: ["Shrikanth Hegde"]
+maintainers_involved: ["Yury Norov"]
+current_version: v10
+patch_series:
+  - version: v10
+    msgid: "<20260812054033.95658-1-sshegde@linux.ibm.com>"
+    date: 2026-08-12
+    summary: "v10 preferred CPUs + steal-driven vCPU backoff"
+    review_outcome: "Yury 独立测试显示 3-5% 性能回退"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: low
+  blocking_issues:
+    - "3-5% 性能回退需要解释和修复"
+  next_action: "作者调查性能回退原因"
+contribution_opportunities:
+  - kind: testing
+    description: "在不同虚拟化环境下复现测试确认性能回退"
+  - kind: review
+    description: "分析 steal governor 算法中导致吞吐下降的路径"
+generated_at: "2026-08-22T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: ["steal_governor", "virtualization", "performance"]
+---

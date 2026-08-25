@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 6
+article_count: 7
 ---
 
+- [sched-20260823-007](/lkm/2026/08/23/sched-20260823-007.html) `feature/low/under_review` — sched-20260823-007
 - [sched-20260819-007](/lkm/2026/08/19/sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3.html) `feature/low/under_review` — sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3
 - [sched-20260807-011-psi-use-ffs-task-count-bitmask](/lkm/2026/08/07/sched-20260807-011-psi-use-ffs-task-count-bitmask.html) `unknown/none/in-review` — psi use ffs task count bitmask
 - [sched-20260807-012-psi-rtpoll-teardown-stale-timer](/lkm/2026/08/07/sched-20260807-012-psi-rtpoll-teardown-stale-timer.html) `unknown/none/in-review` — psi rtpoll teardown stale timer

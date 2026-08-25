@@ -1,38 +1,3 @@
----
-id: sched-20260821-003
-date: 2026-08-21
-subsystem: sched
-type: discussion
-status: under_review
-severity: none
-thread_root_msgid: "<20260818091649.GC1247881@noisy.programming.kicks-ass.net>"
-lore_url: "https://lore.kernel.org/lkml/20260818091649.GC1247881@noisy.programming.kicks-ass.net/"
-authors: ["Peter Zijlstra"]
-maintainers_involved: ["Peter Zijlstra", "Srikar Dronamraju"]
-current_version: v3
-patch_series:
-  - version: v3
-    msgid: "<20260818091649.GC1247881@noisy.programming.kicks-ass.net>"
-    date: 2026-08-18
-    summary: "v3 benchmark 验证，IBM 在 tip:sched/core 上重复测试"
-    review_outcome: "IBM 提供 benchmark 结果，Xuewen Yan 提供测试脚本"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues:
-    - "需要更多硬件/负载场景的 benchmark 验证"
-  next_action: "继续收集社区 benchmark 反馈"
-contribution_opportunities:
-  - kind: testing
-    description: "在不同硬件上运行 sched messaging benchmark 并分享结果"
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["sched/core", "cfs", "performance"]
----
-
 ## TL;DR
 
 PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续，IBM 工程师在 tip:sched/core 最新基线上重复了 benchmark，对比扁平 pick 层级与当前实现的性能差异。系列仍在 review 中。
@@ -74,3 +39,38 @@ IBM 的 benchmark 使用 `coresched new -t pid -- perf bench sched messaging` �
 - lore thread: https://lore.kernel.org/lkml/20260818091649.GC1247881@noisy.programming.kicks-ass.net/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-003
+date: 2026-08-21
+subsystem: sched
+type: discussion
+status: under_review
+severity: none
+thread_root_msgid: "<20260818091649.GC1247881@noisy.programming.kicks-ass.net>"
+lore_url: "https://lore.kernel.org/lkml/20260818091649.GC1247881@noisy.programming.kicks-ass.net/"
+authors: ["Peter Zijlstra"]
+maintainers_involved: ["Peter Zijlstra", "Srikar Dronamraju"]
+current_version: v3
+patch_series:
+  - version: v3
+    msgid: "<20260818091649.GC1247881@noisy.programming.kicks-ass.net>"
+    date: 2026-08-18
+    summary: "v3 benchmark 验证，IBM 在 tip:sched/core 上重复测试"
+    review_outcome: "IBM 提供 benchmark 结果，Xuewen Yan 提供测试脚本"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+    - "需要更多硬件/负载场景的 benchmark 验证"
+  next_action: "继续收集社区 benchmark 反馈"
+contribution_opportunities:
+  - kind: testing
+    description: "在不同硬件上运行 sched messaging benchmark 并分享结果"
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched/core", "cfs", "performance"]
+---

@@ -1,35 +1,3 @@
----
-id: sched-20260821-011
-date: 2026-08-21
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260821075728.273004-1-gonglinkai@kylinos.cn>"
-lore_url: "https://lore.kernel.org/lkml/20260821075728.273004-1-gonglinkai@kylinos.cn/"
-authors: ["Linkai Gong"]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260821075728.273004-1-gonglinkai@kylinos.cn>"
-    date: 2026-08-21
-    summary: "修复 dt_idle_genpd kfree 释放非分配起始地址的问题"
-    review_outcome: "暂无 review 意见"
-upstream_commit: null
-fixes_commit: "9d976d6721df"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 review"
-contribution_opportunities: []
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["cpuidle", "memory_safety"]
----
-
 ## TL;DR
 
 `dt_idle_pd_alloc()` 中 `pd->name` 指向 `kasprintf()` 分配内存的中间位置（`kbasename()` 偏移），`kfree()` 时触发内存错误。Linkai Gong 的修复改为直接 `kstrdup(kbasename(...))` 复制基名字符串。
@@ -73,3 +41,35 @@ v1 刚发出，暂无 review 意见。
 - lore thread: https://lore.kernel.org/lkml/20260821075728.273004-1-gonglinkai@kylinos.cn/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-011
+date: 2026-08-21
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260821075728.273004-1-gonglinkai@kylinos.cn>"
+lore_url: "https://lore.kernel.org/lkml/20260821075728.273004-1-gonglinkai@kylinos.cn/"
+authors: ["Linkai Gong"]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260821075728.273004-1-gonglinkai@kylinos.cn>"
+    date: 2026-08-21
+    summary: "修复 dt_idle_genpd kfree 释放非分配起始地址的问题"
+    review_outcome: "暂无 review 意见"
+upstream_commit: null
+fixes_commit: "9d976d6721df"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 review"
+contribution_opportunities: []
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["cpuidle", "memory_safety"]
+---

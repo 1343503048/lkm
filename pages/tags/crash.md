@@ -2,9 +2,15 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 11
+article_count: 17
 ---
 
+- [sched-20260824-006-sched-fair-null-deref-v4.19](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/high/under_review` — sched-20260824-006-sched-fair-null-deref-v4.19
+- [sched-20260824-007-sched-core-stale-rq-curr-arm64](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched-20260824-007-sched-core-stale-rq-curr-arm64
+- [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched-20260823-002
+- [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched-20260823-003
+- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — sched-20260820-005
+- [sched-20260820-010](/lkm/2026/08/20/sched-20260820-010.html) `bug/critical/under_review` — sched-20260820-010
 - [sched-20260819-001](/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html) `bug/critical/under_review` — sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix
 - [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
 - [sched-20260815-005](/lkm/2026/08/15/sched-20260815-005-sched-ext-dispatch-path-follow-ups.html) `fix/medium/under_review` — sched_ext: Dispatch path follow-ups

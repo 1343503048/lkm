@@ -1,37 +1,3 @@
----
-id: sched-20260822-001
-date: 2026-08-22
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<20260822105930.2352761-1-zhanxusheng1024@gmail.com>"
-lore_url: "https://lore.kernel.org/lkml/20260822105930.2352761-1-zhanxusheng1024@gmail.com/"
-authors: ["Zhan Xusheng"]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260822105930.2352761-1-zhanxusheng1024@gmail.com>"
-    date: 2026-08-22
-    summary: "统一 root cfs_rq 调用者使用 update_curr_eevdf()"
-    review_outcome: "暂无 review 意见"
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues: []
-  next_action: "等待 review"
-contribution_opportunities:
-  - kind: review
-    description: "审查代码变更确认所有路径已覆盖"
-generated_at: "2026-08-22T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["sched/fair", "eevdf"]
----
-
 ## TL;DR
 
 Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。
@@ -72,3 +38,37 @@ v1 刚发出，暂无 review 意见。
 - lore thread: https://lore.kernel.org/lkml/20260822105930.2352761-1-zhanxusheng1024@gmail.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260822-001
+date: 2026-08-22
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<20260822105930.2352761-1-zhanxusheng1024@gmail.com>"
+lore_url: "https://lore.kernel.org/lkml/20260822105930.2352761-1-zhanxusheng1024@gmail.com/"
+authors: ["Zhan Xusheng"]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260822105930.2352761-1-zhanxusheng1024@gmail.com>"
+    date: 2026-08-22
+    summary: "统一 root cfs_rq 调用者使用 update_curr_eevdf()"
+    review_outcome: "暂无 review 意见"
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues: []
+  next_action: "等待 review"
+contribution_opportunities:
+  - kind: review
+    description: "审查代码变更确认所有路径已覆盖"
+generated_at: "2026-08-22T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched/fair", "eevdf"]
+---

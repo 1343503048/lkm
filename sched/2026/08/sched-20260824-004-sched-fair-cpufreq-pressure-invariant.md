@@ -1,14 +1,3 @@
----
-title: "sched/fair：仅在频率为不变量时施加 cpufreq 压力"
-date: 2026-08-24
-tags: [schedutil, sched/fair, regression]
-series: "cpufreq pressure invariant freq only"
-type: fix
-severity: medium
-status: under_review
-lore: ""
----
-
 ## 概述
 
 cpufreq 压力（cpufreq pressure）用于向调度器反馈由于频率受限带来的算力损失。
@@ -30,3 +19,14 @@ cpufreq 压力（cpufreq pressure）用于向调度器反馈由于频率受限�
 
 - 002 sched/cpufreq：tickless idle 前重新评估频率
 - 009 sched：cgroup 更新锁上提到 core
+
+---
+title: "sched/fair：仅在频率为不变量时施加 cpufreq 压力"
+date: 2026-08-24
+tags: [schedutil, sched/fair, regression]
+series: "cpufreq pressure invariant freq only"
+type: fix
+severity: medium
+status: under_review
+lore: ""
+---

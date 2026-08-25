@@ -2,9 +2,27 @@
 layout: default
 tag: "sched/core"
 title: "标签: sched/core"
-article_count: 37
+article_count: 55
 ---
 
+- [sched-20260824-005-sched-lift-cgroup-locking-core](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched-20260824-005-sched-lift-cgroup-locking-core
+- [sched-20260824-007-sched-core-stale-rq-curr-arm64](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched-20260824-007-sched-core-stale-rq-curr-arm64
+- [sched-20260824-008-sched-core-defer-vcpu-task-clock](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `fix/medium/under_review` — sched-20260824-008-sched-core-defer-vcpu-task-clock
+- [sched-20260824-009-sched-flatten-the-pick](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/medium/discussion` — sched-20260824-009-sched-flatten-the-pick
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
+- [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched-20260823-003
+- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
+- [sched-20260822-002](/lkm/2026/08/22/sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers.html) `bug/medium/under_review` — sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
+- [sched-20260821-002](/lkm/2026/08/21/sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block.html) `fix/low/under_review` — sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block
+- [sched-20260821-003](/lkm/2026/08/21/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.html) `discussion/none/under_review` — sched-20260821-003-sched-flatten-the-pick-v3-benchmark
+- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched-20260821-005-sched-remove-sched-class-balance
+- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — sched-20260820-005
+- [sched-20260820-006](/lkm/2026/08/20/sched-20260820-006.html) `fix/low/under_review` — sched-20260820-006
+- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
 - [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
 - [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
 - [sched-20260819-004](/lkm/2026/08/19/sched-20260819-004-sched-core-remove-balance-callback-cast.html) `fix/low/under_review` — sched-20260819-004-sched-core-remove-balance-callback-cast

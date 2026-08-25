@@ -1,14 +1,3 @@
----
-title: "sched/cache：active load balance 中尊重 migrate_llc_task 语义"
-date: 2026-08-24
-tags: [sched/cache, load_balance]
-series: "migrate_llc_task active load balance"
-type: fix
-severity: medium
-status: under_review
-lore: ""
----
-
 ## 概述
 
 `migrate_llc_task` 提供了一种在 LLC 域内迁移任务的语义/提示。v3（Re: UID 54128）
@@ -29,3 +18,14 @@ lore: ""
 
 - 009 sched：Flatten the pick
 - 011 sched/fair：ENQUEUE_DELAYED / place_entity
+
+---
+title: "sched/cache：active load balance 中尊重 migrate_llc_task 语义"
+date: 2026-08-24
+tags: [sched/cache, load_balance]
+series: "migrate_llc_task active load balance"
+type: fix
+severity: medium
+status: under_review
+lore: ""
+---

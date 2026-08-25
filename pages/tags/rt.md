@@ -2,9 +2,11 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 6
+article_count: 8
 ---
 
+- [sched-20260820-001](/lkm/2026/08/20/sched-20260820-001.html) `fix/medium/under_review` — echo 100000000 > cpu.max.burst          # 先设超大 burst（带宽无限）
+- [sched-20260820-006](/lkm/2026/08/20/sched-20260820-006.html) `fix/low/under_review` — sched-20260820-006
 - [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains
 - [sched-20260819-006](/lkm/2026/08/19/sched-20260819-006-sched-rt-cpupri-remove-count-field.html) `fix/low/under_review` — sched-20260819-006-sched-rt-cpupri-remove-count-field
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3

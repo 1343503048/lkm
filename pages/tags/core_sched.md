@@ -2,9 +2,12 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 13
+article_count: 16
 ---
 
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
+- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched-20260821-005-sched-remove-sched-class-balance
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
 - [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
 - [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3

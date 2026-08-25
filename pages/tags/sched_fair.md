@@ -2,9 +2,24 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 22
+article_count: 37
 ---
 
+- [sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/medium/under_review` — sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle
+- [sched-20260824-004-sched-fair-cpufreq-pressure-invariant](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `fix/medium/under_review` — sched-20260824-004-sched-fair-cpufreq-pressure-invariant
+- [sched-20260824-006-sched-fair-null-deref-v4.19](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/high/under_review` — sched-20260824-006-sched-fair-null-deref-v4.19
+- [sched-20260824-009-sched-flatten-the-pick](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/medium/discussion` — sched-20260824-009-sched-flatten-the-pick
+- [sched-20260824-011-sched-fair-reuse-enqueue-delayed](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/low/under_review` — sched-20260824-011-sched-fair-reuse-enqueue-delayed
+- [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched-20260823-002
+- [sched-20260823-009](/lkm/2026/08/23/sched-20260823-009.html) `fix/low/under_review` — sched-20260823-009
+- [sched-20260822-001](/lkm/2026/08/22/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.html) `fix/low/under_review` — sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers
+- [sched-20260821-004](/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant
+- [sched-20260820-001](/lkm/2026/08/20/sched-20260820-001.html) `fix/medium/under_review` — echo 100000000 > cpu.max.burst          # 先设超大 burst（带宽无限）
+- [sched-20260820-004](/lkm/2026/08/20/sched-20260820-004.html) `bug/low/under_review` — sched-20260820-004
+- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — sched-20260820-005
+- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
+- [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — sched-20260820-009
+- [sched-20260820-010](/lkm/2026/08/20/sched-20260820-010.html) `bug/critical/under_review` — sched-20260820-010
 - [sched-20260819-001](/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html) `bug/critical/under_review` — sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix
 - [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
 - [sched-20260818-005](/lkm/2026/08/18/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.html) `feature/medium/under_review` — sched: Flatten the pick — v3 s390 benchmark results

@@ -1,35 +1,3 @@
----
-id: sched-20260821-007
-date: 2026-08-21
-subsystem: sched
-type: feature
-status: merged_tip
-severity: none
-thread_root_msgid: "未获取到"
-lore_url: "未获取到"
-authors: ["unknown"]
-maintainers_involved: ["Kumar Kartikeya Dwivedi"]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "未获取到"
-    date: 2026-08-21
-    summary: "标记 sched_ext ops 容器指针字段为 trusted"
-    review_outcome: "已合入 bpf-next"
-upstream_commit: "aed1bf1a352a"
-fixes_commit: null
-merged_branch: "bpf/bpf-next"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入"
-contribution_opportunities: []
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["sched_ext", "bpf"]
----
-
 ## TL;DR
 
 sched_ext 的 ops 参数容器指针字段被标记为 trusted，允许 BPF 调度器安全地解引用这些指针。补丁已被 bpf/bpf-next.git 合入。
@@ -69,3 +37,35 @@ v1 已合入 bpf/bpf-next.git (master)。
 - lore thread: 未获取到
 - bpf-next commit: https://git.kernel.org/bpf/bpf-next/c/aed1bf1a352a
 - stable backport: 未获取到
+
+---
+id: sched-20260821-007
+date: 2026-08-21
+subsystem: sched
+type: feature
+status: merged_tip
+severity: none
+thread_root_msgid: "未获取到"
+lore_url: "未获取到"
+authors: ["unknown"]
+maintainers_involved: ["Kumar Kartikeya Dwivedi"]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "未获取到"
+    date: 2026-08-21
+    summary: "标记 sched_ext ops 容器指针字段为 trusted"
+    review_outcome: "已合入 bpf-next"
+upstream_commit: "aed1bf1a352a"
+fixes_commit: null
+merged_branch: "bpf/bpf-next"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入"
+contribution_opportunities: []
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched_ext", "bpf"]
+---

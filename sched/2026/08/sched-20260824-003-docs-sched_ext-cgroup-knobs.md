@@ -1,14 +1,3 @@
----
-title: "docs/sched_ext：文档化 cgroup CPU 可调参数（scheduler-dependent）"
-date: 2026-08-24
-tags: [sched_ext, documentation, cgroup]
-series: "document sched_ext cgroup cpu knobs"
-type: fix
-severity: low
-status: under_review
-lore: ""
----
-
 ## 概述
 
 sched_ext 允许每个 cgroup 设置调度器相关的 CPU 参数（scheduler-dependent knobs），
@@ -30,3 +19,14 @@ sched_ext 允许每个 cgroup 设置调度器相关的 CPU 参数（scheduler-de
 
 - 001 sched_ext：传递初始 cpu.idle 状态
 - 005 sched：cgroup 更新锁上提到 core
+
+---
+title: "docs/sched_ext：文档化 cgroup CPU 可调参数（scheduler-dependent）"
+date: 2026-08-24
+tags: [sched_ext, documentation, cgroup]
+series: "document sched_ext cgroup cpu knobs"
+type: fix
+severity: low
+status: under_review
+lore: ""
+---

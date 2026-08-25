@@ -1,35 +1,3 @@
----
-id: sched-20260821-002
-date: 2026-08-21
-subsystem: sched
-type: fix
-status: under_review
-severity: low
-thread_root_msgid: "<20260821095755.am1-Segb@linutronix.de>"
-lore_url: "https://lore.kernel.org/lkml/20260821095755.am1-Segb@linutronix.de/"
-authors: ["Sebastian Andrzej Siewior"]
-maintainers_involved: ["David Woodhouse"]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260821095755.am1-Segb@linutronix.de>"
-    date: 2026-08-21
-    summary: "为 __might_resched() 增加 sleeping_lock 参数区分 RT sleeping lock"
-    review_outcome: "David Woodhouse acked"
-upstream_commit: null
-fixes_commit: "312364f3534c"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 syzbot Tested-by"
-contribution_opportunities: []
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: ["PREEMPT_RT", "sched/core", "locking"]
----
-
 ## TL;DR
 
 PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep() 告警。Sebastian 的修复为 `__might_resched()` 增加 `sleeping_lock` 参数区分正常调度与 sleeping lock 调度，David Woodhouse 已 ack。
@@ -77,3 +45,35 @@ Fixes 标签指向 `312364f3534c ("kernel.h: Add non_block_start/end()")`。
 - lore thread: https://lore.kernel.org/lkml/20260821095755.am1-Segb@linutronix.de/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-002
+date: 2026-08-21
+subsystem: sched
+type: fix
+status: under_review
+severity: low
+thread_root_msgid: "<20260821095755.am1-Segb@linutronix.de>"
+lore_url: "https://lore.kernel.org/lkml/20260821095755.am1-Segb@linutronix.de/"
+authors: ["Sebastian Andrzej Siewior"]
+maintainers_involved: ["David Woodhouse"]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260821095755.am1-Segb@linutronix.de>"
+    date: 2026-08-21
+    summary: "为 __might_resched() 增加 sleeping_lock 参数区分 RT sleeping lock"
+    review_outcome: "David Woodhouse acked"
+upstream_commit: null
+fixes_commit: "312364f3534c"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 syzbot Tested-by"
+contribution_opportunities: []
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: ["PREEMPT_RT", "sched/core", "locking"]
+---

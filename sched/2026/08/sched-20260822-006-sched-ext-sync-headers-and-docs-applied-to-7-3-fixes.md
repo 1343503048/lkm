@@ -1,35 +1,3 @@
----
-id: sched-20260822-006
-date: 2026-08-22
-subsystem: sched
-type: fix
-status: merged_tip
-severity: low
-thread_root_msgid: "未获取到"
-lore_url: "未获取到"
-authors: ["unknown"]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "未获取到"
-    date: 2026-08-22
-    summary: "同步 sched_ext tools headers + cgroup v2 文档更新"
-    review_outcome: "已合入 sched_ext/for-7.3-fixes"
-upstream_commit: null
-fixes_commit: null
-merged_branch: "sched_ext/for-7.3-fixes"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入"
-contribution_opportunities: []
-generated_at: "2026-08-22T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: ["sched_ext", "documentation"]
----
-
 ## TL;DR
 
 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致；2) cgroup v2 文档增加 BPF 调度器回调（cpu.max/cpu.idle）说明。
@@ -69,3 +37,35 @@ sched_ext 工具的 headers 需要与 scx 上游仓库保持同步，否则可�
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260822-006
+date: 2026-08-22
+subsystem: sched
+type: fix
+status: merged_tip
+severity: low
+thread_root_msgid: "未获取到"
+lore_url: "未获取到"
+authors: ["unknown"]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "未获取到"
+    date: 2026-08-22
+    summary: "同步 sched_ext tools headers + cgroup v2 文档更新"
+    review_outcome: "已合入 sched_ext/for-7.3-fixes"
+upstream_commit: null
+fixes_commit: null
+merged_branch: "sched_ext/for-7.3-fixes"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入"
+contribution_opportunities: []
+generated_at: "2026-08-22T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: ["sched_ext", "documentation"]
+---

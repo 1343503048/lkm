@@ -1,35 +1,3 @@
----
-id: sched-20260821-008
-date: 2026-08-21
-subsystem: sched
-type: feature
-status: merged_tip
-severity: none
-thread_root_msgid: "未获取到"
-lore_url: "未获取到"
-authors: ["Tejun Heo"]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "未获取到"
-    date: 2026-08-17
-    summary: "sched_ext v7.3 变更合入主线"
-    review_outcome: "已合入 torvalds/linux"
-upstream_commit: "11260c335ec6071af5543aef73000b28f041c124"
-fixes_commit: null
-merged_branch: "torvalds/linux"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入"
-contribution_opportunities: []
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["sched_ext"]
----
-
 ## TL;DR
 
 sched_ext v7.3 的变更已被合入 torvalds/linux.git。Tejun Heo 的 pull request 于 8 月 17 日发出，8 月 21 日确认合入主线。
@@ -71,3 +39,35 @@ Pull request 包含 sched_ext 框架的增量改进。具体内容需参考 pull
 - torvalds/linux commit: https://git.kernel.org/torvalds/c/11260c335ec6071af5543aef73000b28f041c124
 - lore thread: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-008
+date: 2026-08-21
+subsystem: sched
+type: feature
+status: merged_tip
+severity: none
+thread_root_msgid: "未获取到"
+lore_url: "未获取到"
+authors: ["Tejun Heo"]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "未获取到"
+    date: 2026-08-17
+    summary: "sched_ext v7.3 变更合入主线"
+    review_outcome: "已合入 torvalds/linux"
+upstream_commit: "11260c335ec6071af5543aef73000b28f041c124"
+fixes_commit: null
+merged_branch: "torvalds/linux"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入"
+contribution_opportunities: []
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched_ext"]
+---

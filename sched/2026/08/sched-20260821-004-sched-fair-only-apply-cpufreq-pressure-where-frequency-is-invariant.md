@@ -1,38 +1,3 @@
----
-id: sched-20260821-004
-date: 2026-08-21
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
-lore_url: "https://lore.kernel.org/lkml/20260821073927.455475-1-wujianyong@hygon.cn/"
-authors: ["Wu Jianyong"]
-maintainers_involved: ["Vincent Guittot"]
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
-    date: 2026-08-21
-    summary: "仅在频率不变架构上应用 cpufreq pressure"
-    review_outcome: "Vincent Guittot 质疑修复必要性"
-upstream_commit: null
-fixes_commit: "d2d5c129d07e"
-merged_branch: null
-merge_assessment:
-  likelihood: medium
-  blocking_issues:
-    - "需要回应 Vincent 关于频率不变性与 utilization 关系的质疑"
-  next_action: "作者需解释具体触发场景和数据"
-contribution_opportunities:
-  - kind: testing
-    description: "在非频率不变架构上测试 cpufreq pressure 对调度的影响"
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 2
-related_articles: []
-tags: ["sched/fair", "cpufreq", "frequency_invariance"]
----
-
 ## TL;DR
 
 cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。
@@ -83,3 +48,38 @@ Vincent Guittot 对修复的必要性提出质疑，认为即使有频率不变�
 - lore thread: https://lore.kernel.org/lkml/20260821073927.455475-1-wujianyong@hygon.cn/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-004
+date: 2026-08-21
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
+lore_url: "https://lore.kernel.org/lkml/20260821073927.455475-1-wujianyong@hygon.cn/"
+authors: ["Wu Jianyong"]
+maintainers_involved: ["Vincent Guittot"]
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
+    date: 2026-08-21
+    summary: "仅在频率不变架构上应用 cpufreq pressure"
+    review_outcome: "Vincent Guittot 质疑修复必要性"
+upstream_commit: null
+fixes_commit: "d2d5c129d07e"
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+    - "需要回应 Vincent 关于频率不变性与 utilization 关系的质疑"
+  next_action: "作者需解释具体触发场景和数据"
+contribution_opportunities:
+  - kind: testing
+    description: "在非频率不变架构上测试 cpufreq pressure 对调度的影响"
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 2
+related_articles: []
+tags: ["sched/fair", "cpufreq", "frequency_invariance"]
+---

@@ -1,14 +1,3 @@
----
-title: "sched：Flatten the pick —— 调度选核路径扁平化讨论"
-date: 2026-08-24
-tags: [sched/core, sched/fair, discussion]
-series: "flatten the pick"
-type: discussion
-severity: medium
-status: discussion
-lore: ""
----
-
 ## 概述
 
 “Flatten the pick”是一轮关于把调度器选核（pick）路径从多层嵌套调用扁平化、
@@ -30,3 +19,14 @@ lore: ""
 - 005 sched：cgroup 更新锁上提到 core
 - 011 sched/fair：ENQUEUE_DELAYED / place_entity 调整
 - 009 sched/cache：active load balance 中尊重 migrate_llc_task
+
+---
+title: "sched：Flatten the pick —— 调度选核路径扁平化讨论"
+date: 2026-08-24
+tags: [sched/core, sched/fair, discussion]
+series: "flatten the pick"
+type: discussion
+severity: medium
+status: discussion
+lore: ""
+---

@@ -1,35 +1,3 @@
----
-id: sched-20260822-004
-date: 2026-08-22
-subsystem: sched
-type: fix
-status: merged_tip
-severity: medium
-thread_root_msgid: "<7b3b7e35d462fe061105f09de3a2eba9@kernel.org>"
-lore_url: "未获取到"
-authors: ["Tejun Heo"]
-maintainers_involved: []
-current_version: v1
-patch_series:
-  - version: v1
-    msgid: "<7b3b7e35d462fe061105f09de3a2eba9@kernel.org>"
-    date: 2026-08-22
-    summary: "修复 scx_bpf_dsq_move() 虚假中止，将所有权检查移到 cursor-lost 检查之后"
-    review_outcome: "已合入 sched_ext/for-7.3-fixes"
-upstream_commit: null
-fixes_commit: "bb4d9fd55158"
-merged_branch: "sched_ext/for-7.3-fixes"
-merge_assessment:
-  likelihood: merged
-  blocking_issues: []
-  next_action: "已合入"
-contribution_opportunities: []
-generated_at: "2026-08-22T10:00:00"
-source_email_count: 1
-related_articles: []
-tags: ["sched_ext", "bpf"]
----
-
 ## TL;DR
 
 Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配），但早期所有权检查将这些良性竞态升级为调度器中止。修复将所有权检查移到 cursor-lost 检查之后。已合入 `sched_ext/for-7.3-fixes`。
@@ -70,3 +38,35 @@ v1 已合入 `sched_ext/for-7.3-fixes`。
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260822-004
+date: 2026-08-22
+subsystem: sched
+type: fix
+status: merged_tip
+severity: medium
+thread_root_msgid: "<7b3b7e35d462fe061105f09de3a2eba9@kernel.org>"
+lore_url: "未获取到"
+authors: ["Tejun Heo"]
+maintainers_involved: []
+current_version: v1
+patch_series:
+  - version: v1
+    msgid: "<7b3b7e35d462fe061105f09de3a2eba9@kernel.org>"
+    date: 2026-08-22
+    summary: "修复 scx_bpf_dsq_move() 虚假中止，将所有权检查移到 cursor-lost 检查之后"
+    review_outcome: "已合入 sched_ext/for-7.3-fixes"
+upstream_commit: null
+fixes_commit: "bb4d9fd55158"
+merged_branch: "sched_ext/for-7.3-fixes"
+merge_assessment:
+  likelihood: merged
+  blocking_issues: []
+  next_action: "已合入"
+contribution_opportunities: []
+generated_at: "2026-08-22T10:00:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched_ext", "bpf"]
+---

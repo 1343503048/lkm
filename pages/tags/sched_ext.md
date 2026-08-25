@@ -2,9 +2,26 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 55
+article_count: 72
 ---
 
+- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched-20260824-001-sched_ext-cgroup-init-cpu-idle
+- [sched-20260824-003-docs-sched_ext-cgroup-knobs](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `fix/low/under_review` — sched-20260824-003-docs-sched_ext-cgroup-knobs
+- [sched-20260824-005-sched-lift-cgroup-locking-core](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched-20260824-005-sched-lift-cgroup-locking-core
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
+- [sched-20260823-005](/lkm/2026/08/23/sched-20260823-005.html) `fix/medium/merged_tip` — sched-20260823-005
+- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — sched-20260823-006
+- [sched-20260823-008](/lkm/2026/08/23/sched-20260823-008.html) `fix/low/merged_tip` — sched-20260823-008
+- [sched-20260822-004](/lkm/2026/08/22/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.html) `fix/medium/merged_tip` — sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
+- [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
+- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth
+- [sched-20260821-007](/lkm/2026/08/21/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.html) `feature/none/merged_tip` — sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted
+- [sched-20260821-008](/lkm/2026/08/21/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.html) `feature/none/merged_tip` — sched-20260821-008-git-pull-sched-ext-changes-for-v7-3
+- [sched-20260820-002](/lkm/2026/08/20/sched-20260820-002.html) `feature/low/under_review` — sched-20260820-002
+- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — sched-20260820-003
+- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — sched-20260820-008
 - [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
 - [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo
 - [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc

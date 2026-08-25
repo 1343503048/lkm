@@ -1,14 +1,3 @@
----
-title: "sched/cpufreq：进入 tickless idle 前重新评估频率"
-date: 2026-08-24
-tags: [schedutil, sched/fair, compatibility]
-series: "reevaluate cpufreq before tickless idle"
-type: fix
-severity: medium
-status: under_review
-lore: ""
----
-
 ## 概述
 
 在进入 tickless idle（NOHZ idle）之前，调度器与 cpufreq 之间的协调存在窗口：
@@ -32,3 +21,14 @@ lore: ""
 
 - 004 sched/fair：仅在频率为不变量时施加 cpufreq 压力
 - 009 sched：将 cgroup 更新锁上提到 core
+
+---
+title: "sched/cpufreq：进入 tickless idle 前重新评估频率"
+date: 2026-08-24
+tags: [schedutil, sched/fair, compatibility]
+series: "reevaluate cpufreq before tickless idle"
+type: fix
+severity: medium
+status: under_review
+lore: ""
+---

@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 10
+article_count: 13
 ---
 
+- [sched-20260824-008-sched-core-defer-vcpu-task-clock](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `fix/medium/under_review` — sched-20260824-008-sched-core-defer-vcpu-task-clock
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
 - [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
 - [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
 - [sched-20260817-001](/lkm/2026/08/16/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html) `feature/high/under_review` — sched_ext: Fix ops.running/stopping() pairing for proxy-exec donors

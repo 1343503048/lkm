@@ -1,14 +1,3 @@
----
-title: "sched/fair：复用 ENQUEUE_DELAYED 并避免重复计算 curr 状态"
-date: 2026-08-24
-tags: [sched/fair, eevdf]
-series: "reuse ENQUEUE_DELAYED avoid recalc curr"
-type: fix
-severity: low
-status: under_review
-lore: ""
----
-
 ## 概述
 
 EEVDF 路径中，实体入队（enqueue）时涉及 `ENQUEUE_DELAYED` 标志与 `curr` 状态
@@ -33,3 +22,14 @@ EEVDF 路径中，实体入队（enqueue）时涉及 `ENQUEUE_DELAYED` 标志与
 
 - 009 sched：Flatten the pick
 - 006 sched/fair：v4.19 NULL deref
+
+---
+title: "sched/fair：复用 ENQUEUE_DELAYED 并避免重复计算 curr 状态"
+date: 2026-08-24
+tags: [sched/fair, eevdf]
+series: "reuse ENQUEUE_DELAYED avoid recalc curr"
+type: fix
+severity: low
+status: under_review
+lore: ""
+---

@@ -1,14 +1,3 @@
----
-title: "sched：将 cgroup 更新锁上提到 core"
-date: 2026-08-24
-tags: [cgroup, sched/core, sched_ext]
-series: "lift cgroup update locking to core"
-type: fix
-severity: medium
-status: under_review
-lore: ""
----
-
 ## 概述
 
 cgroup 调度相关的更新锁原本分散在 fair/rt 等具体类中，导致 sched_ext 等路径
@@ -29,3 +18,14 @@ cgroup 调度相关的更新锁原本分散在 fair/rt 等具体类中，导致 
 
 - 001 / 003 sched_ext cgroup 相关能力
 - 009 sched/fair： cpufreq 压力
+
+---
+title: "sched：将 cgroup 更新锁上提到 core"
+date: 2026-08-24
+tags: [cgroup, sched/core, sched_ext]
+series: "lift cgroup update locking to core"
+type: fix
+severity: medium
+status: under_review
+lore: ""
+---

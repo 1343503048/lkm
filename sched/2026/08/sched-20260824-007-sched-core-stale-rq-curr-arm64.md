@@ -1,14 +1,3 @@
----
-title: "sched/core：arm64 上偶发的 rq->curr 过期（stale rq->curr）"
-date: 2026-08-24
-tags: [crash, sched/core]
-series: "stale rq->curr arm64"
-type: bug
-severity: critical
-status: under_review
-lore: ""
----
-
 ## 概述
 
 在 arm64 平台上偶发地观测到运行队列 `rq->curr` 指向已过期/无效的任务，引发
@@ -30,3 +19,14 @@ lore: ""
 
 - 006 sched/fair：v4.19 NULL deref
 - 008 sched/core：推迟被抢占远端 vCPU task clock 更新
+
+---
+title: "sched/core：arm64 上偶发的 rq->curr 过期（stale rq->curr）"
+date: 2026-08-24
+tags: [crash, sched/core]
+series: "stale rq->curr arm64"
+type: bug
+severity: critical
+status: under_review
+lore: ""
+---

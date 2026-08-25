@@ -1,42 +1,3 @@
----
-id: sched-20260821-001
-date: 2026-08-21
-subsystem: sched
-type: fix
-status: under_review
-severity: medium
-thread_root_msgid: "<20260820160956.910663-1-michalblk@google.com>"
-lore_url: "https://lore.kernel.org/lkml/20260821140818.1559100-1-michalblk@google.com/"
-authors: ["Michal Blaszczyk"]
-maintainers_involved: ["Peter Zijlstra"]
-current_version: v2
-patch_series:
-  - version: v1
-    msgid: "<20260820160956.910663-1-michalblk@google.com>"
-    date: 2026-08-20
-    summary: "引入新全局 mutex 串行化 cgroup 更新"
-    review_outcome: "PeterZ 建议复用已有 CFS 锁而非引入新锁"
-  - version: v2
-    msgid: "<20260821140818.1559100-1-michalblk@google.com>"
-    date: 2026-08-21
-    summary: "将 CFS 已有锁提升到 core 层，确保 CFS/SCX 回调原子执行"
-    review_outcome: "PeterZ 认可方向"
-upstream_commit: null
-fixes_commit: "819513666966"
-merged_branch: null
-merge_assessment:
-  likelihood: high
-  blocking_issues: []
-  next_action: "等待 PeterZ 正式 ack"
-contribution_opportunities:
-  - kind: testing
-    description: "在 SCX 场景下测试并发 cgroup 写入验证修复"
-generated_at: "2026-08-21T10:00:00"
-source_email_count: 3
-related_articles: []
-tags: ["sched/core", "sched_ext", "cgroup", "race_condition"]
----
-
 ## TL;DR
 
 并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致。v2 方案将 CFS 锁提升到 core 层，让 CFS 和 SCX 回调在同一把锁下原子执行，PeterZ 已认可方向。
@@ -87,3 +48,42 @@ Fixes 标签指向 `819513666966 ("sched_ext: Add cgroup support")`，属于对�
 - lore thread (v1): https://lore.kernel.org/lkml/20260820160956.910663-1-michalblk@google.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
+
+---
+id: sched-20260821-001
+date: 2026-08-21
+subsystem: sched
+type: fix
+status: under_review
+severity: medium
+thread_root_msgid: "<20260820160956.910663-1-michalblk@google.com>"
+lore_url: "https://lore.kernel.org/lkml/20260821140818.1559100-1-michalblk@google.com/"
+authors: ["Michal Blaszczyk"]
+maintainers_involved: ["Peter Zijlstra"]
+current_version: v2
+patch_series:
+  - version: v1
+    msgid: "<20260820160956.910663-1-michalblk@google.com>"
+    date: 2026-08-20
+    summary: "引入新全局 mutex 串行化 cgroup 更新"
+    review_outcome: "PeterZ 建议复用已有 CFS 锁而非引入新锁"
+  - version: v2
+    msgid: "<20260821140818.1559100-1-michalblk@google.com>"
+    date: 2026-08-21
+    summary: "将 CFS 已有锁提升到 core 层，确保 CFS/SCX 回调原子执行"
+    review_outcome: "PeterZ 认可方向"
+upstream_commit: null
+fixes_commit: "819513666966"
+merged_branch: null
+merge_assessment:
+  likelihood: high
+  blocking_issues: []
+  next_action: "等待 PeterZ 正式 ack"
+contribution_opportunities:
+  - kind: testing
+    description: "在 SCX 场景下测试并发 cgroup 写入验证修复"
+generated_at: "2026-08-21T10:00:00"
+source_email_count: 3
+related_articles: []
+tags: ["sched/core", "sched_ext", "cgroup", "race_condition"]
+---

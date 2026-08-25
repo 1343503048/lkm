@@ -2,9 +2,22 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 17
+article_count: 30
 ---
 
+- [sched-20260824-001-sched_ext-cgroup-init-cpu-idle](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched-20260824-001-sched_ext-cgroup-init-cpu-idle
+- [sched-20260824-003-docs-sched_ext-cgroup-knobs](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `fix/low/under_review` — sched-20260824-003-docs-sched_ext-cgroup-knobs
+- [sched-20260824-005-sched-lift-cgroup-locking-core](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched-20260824-005-sched-lift-cgroup-locking-core
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
+- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — sched-20260823-006
+- [sched-20260823-007](/lkm/2026/08/23/sched-20260823-007.html) `feature/low/under_review` — sched-20260823-007
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
+- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth
+- [sched-20260820-001](/lkm/2026/08/20/sched-20260820-001.html) `fix/medium/under_review` — echo 100000000 > cpu.max.burst          # 先设超大 burst（带宽无限）
+- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — sched-20260820-003
+- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — sched-20260820-008
+- [sched-20260820-010](/lkm/2026/08/20/sched-20260820-010.html) `bug/critical/under_review` — sched-20260820-010
 - [sched-20260819-001](/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html) `bug/critical/under_review` — sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix
 - [sched-20260819-007](/lkm/2026/08/19/sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3.html) `feature/low/under_review` — sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3
 - [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind

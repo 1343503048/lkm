@@ -1,14 +1,3 @@
----
-title: "sched_ext：传递初始 cpu.idle 状态到 scx_cgroup_init_args"
-date: 2026-08-24
-tags: [sched_ext, cgroup]
-series: "scx_cgroup_init_args cpu.idle"
-type: fix
-severity: low
-status: under_review
-lore: ""
----
-
 ## 概述
 
 sched_ext 的 cgroup 支持在向调度器传递 cgroup 初始化参数（scx_cgroup_init_args）时，
@@ -31,3 +20,14 @@ v1（UID 55269）首发后被反馈需要补充说明，v2（UID 55403）跟进�
 
 - 003 docs/sched_ext：cgroup CPU 可调参数文档化
 - 005 sched：cgroup 更新锁上提到 core
+
+---
+title: "sched_ext：传递初始 cpu.idle 状态到 scx_cgroup_init_args"
+date: 2026-08-24
+tags: [sched_ext, cgroup]
+series: "scx_cgroup_init_args cpu.idle"
+type: fix
+severity: low
+status: under_review
+lore: ""
+---

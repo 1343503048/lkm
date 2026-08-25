@@ -1,14 +1,3 @@
----
-title: "sched/fair：v4.19 厂商内核中 pick_next_task_fair 空指针解引用"
-date: 2026-08-24
-tags: [crash, sched/fair, compatibility]
-series: "NULL deref pick_next_task_fair v4.19"
-type: bug
-severity: high
-status: under_review
-lore: ""
----
-
 ## 概述
 
 在基于 v4.19 的厂商内核上，`pick_next_task_fair()` 中触发了空指针解引用
@@ -30,3 +19,14 @@ lore: ""
 
 - 007 sched/core：arm64 偶发 stale rq->curr
 - 011 sched/fair：ENQUEUE_DELAYED / place_entity 调整
+
+---
+title: "sched/fair：v4.19 厂商内核中 pick_next_task_fair 空指针解引用"
+date: 2026-08-24
+tags: [crash, sched/fair, compatibility]
+series: "NULL deref pick_next_task_fair v4.19"
+type: bug
+severity: high
+status: under_review
+lore: ""
+---

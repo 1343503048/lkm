@@ -1,14 +1,3 @@
----
-title: "sched/core + KVM：推迟被抢占的远端 vCPU task clock 更新（RFC）"
-date: 2026-08-24
-tags: [preempt, sched/core, proxy_execution]
-series: "defer preempted remote vcpu task clock"
-type: fix
-severity: medium
-status: under_review
-lore: ""
----
-
 ## 概述
 
 当远端 vCPU 被抢占时，其 task clock 的更新若立即进行会带来额外的跨核开销与
@@ -33,3 +22,14 @@ lore: ""
 
 - 007 sched/core：stale rq->curr
 - 002 / 004 cpufreq 与频率/压力评估
+
+---
+title: "sched/core + KVM：推迟被抢占的远端 vCPU task clock 更新（RFC）"
+date: 2026-08-24
+tags: [preempt, sched/core, proxy_execution]
+series: "defer preempted remote vcpu task clock"
+type: fix
+severity: medium
+status: under_review
+lore: ""
+---

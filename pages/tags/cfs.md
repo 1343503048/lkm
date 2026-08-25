@@ -2,9 +2,10 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 39
+article_count: 40
 ---
 
+- [sched-20260821-003](/lkm/2026/08/21/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.html) `discussion/none/under_review` — sched-20260821-003-sched-flatten-the-pick-v3-benchmark
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260806-008](/lkm/2026/08/06/sched-20260806-008-sched-cache-honor-migrate_llc_task-active-lb.html) `fix/medium/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260806-009](/lkm/2026/08/06/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.html) `feature/none/under_review` — sched/fair: Let sync wakeups target the waker's core
