@@ -1,6 +1,6 @@
 # tag: sched_ext
 
-共 69 篇
+共 72 篇
 
 - [sched-20260824-005-sched-lift-cgroup-locking-core.md](../../2026/08/sched-20260824-005-sched-lift-cgroup-locking-core.md) `fix/medium/under_review`
 - [sched-20260824-003-docs-sched_ext-cgroup-knobs.md](../../2026/08/sched-20260824-003-docs-sched_ext-cgroup-knobs.md) `fix/low/under_review`
@@ -9,6 +9,9 @@
 - [sched-20260823-006](../../2026/08/sched-20260823-006.md) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。
 - [sched-20260823-005](../../2026/08/sched-20260823-005.md) `fix/medium/merged_tip` — Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership change races` Applied 到 `sched_ext/for-7.3-fixes`。修复 DSQ 所有权变更竞态下 `scx_bpf_dsq_move()` 的虚假中止。已 merged，合入可能性 merged。
 - [sched-20260823-001](../../2026/08/sched-20260823-001.md) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时，CFS 内部锁在调 SCX 回调前释放，允许多线程穿插，使 CFS 记录值、SCX 簿记、BPF 调度器三者拿到不同参数。v3 把锁上移到 core 层统一串行化。合入概率高。
+- [sched-20260822-006](../../2026/08/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.md) `fix/low/merged_tip` — 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致；2) cgroup v2 文档增加 BPF 调度器回调（cpu.max/cpu.idle）说明。
+- [sched-20260822-005](../../2026/08/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.md) `fix/low/under_review` — 本文是 sched-20260821-001 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。
+- [sched-20260822-004](../../2026/08/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.md) `fix/medium/merged_tip` — Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配），但早期所有权检查将这些良性竞态升级为调度器中止。修复将所有权检查移到 cursor-lost 检查之后。已合入 `sched_ext/for-7.3-fixes`。
 - [sched-20260821-008](../../2026/08/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.md) `feature/merged_tip` — sched_ext v7.3 的变更已被合入 torvalds/linux.git。Tejun Heo 的 pull request 于 8 月 17 日发出，8 月 21 日确认合入主线。
 - [sched-20260821-007](../../2026/08/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.md) `feature/merged_tip` — sched_ext 的 ops 参数容器指针字段被标记为 trusted，允许 BPF 调度器安全地解引用这些指针。补丁已被 bpf/bpf-next.git 合入。
 - [sched-20260821-006](../../2026/08/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.md) `fix/medium/under_review` — 并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx.bw_*` 缓存值交错，Changwoo Min 引入 `scx_cgroup_set_bw_mutex` 串行化 SCX 侧更新，作为 CFS `cfs_constraints_mutex` 的 SCX 对等物。

@@ -1,6 +1,6 @@
 # tag: sched/core
 
-共 53 篇
+共 55 篇
 
 - [sched-20260824-009-sched-flatten-the-pick.md](../../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/medium/discussion`
 - [sched-20260824-008-sched-core-defer-vcpu-task-clock.md](../../../2026/08/sched-20260824-008-sched-core-defer-vcpu-task-clock.md) `fix/medium/under_review`
@@ -10,6 +10,8 @@
 - [sched-20260823-004](../../../2026/08/sched-20260823-004.md) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock，导致 steal 间隔被错误计入。修复为抢占期间把 delta 累积到 `deferred_clock_task`，待 vCPU 重入时一并折回 irq/steal 记账。RFC 阶段，合入概率 medium。
 - [sched-20260823-003](../../../2026/08/sched-20260823-003.md) `bug/critical/under_review` — arm64 长运行服务器上偶发 `rq->curr != current`（rq 上记录的当前任务与实际 current 不一致），引发调度器崩溃。生产环境报告，触发条件与内核版本细节待补。属新出现的 crash 报告。
 - [sched-20260823-001](../../../2026/08/sched-20260823-001.md) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时，CFS 内部锁在调 SCX 回调前释放，允许多线程穿插，使 CFS 记录值、SCX 簿记、BPF 调度器三者拿到不同参数。v3 把锁上移到 core 层统一串行化。合入概率高。
+- [sched-20260822-005](../../../2026/08/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.md) `fix/low/under_review` — 本文是 sched-20260821-001 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。
+- [sched-20260822-002](../../../2026/08/sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers.md) `bug/medium/under_review` — `sched/core: WARN_ON(is_migration_disabled())` 触发告警，表明任务在迁移被禁用时出现了意外的调度路径。需要调查触发条件。
 - [sched-20260821-005](../../../2026/08/sched-20260821-005-sched-remove-sched-class-balance.md) `discussion/under_review` — PeterZ 提议移除 `sched_class::balance()` 回调，这是 core_sched 重构的一部分。ByteDance 的 Xuewen Yan 提供了带宽测试脚本帮助验证，讨论仍在进行中。
 - [sched-20260821-003](../../../2026/08/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.md) `discussion/under_review` — PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续，IBM 工程师在 tip:sched/core 最新基线上重复了 benchmark，对比扁平 pick 层级与当前实现的性能差异。系列仍在 review 中。
 - [sched-20260821-002](../../../2026/08/sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block.md) `fix/low/under_review` — PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep() 告警。Sebastian 的修复为 `__might_resched()` 增加 `sleeping_lock` 参数区分正常调度与 sleeping lock 调度，David Woodhouse 已 ack。

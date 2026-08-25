@@ -1,8 +1,9 @@
 # tag: eevdf
 
-共 8 篇
+共 9 篇
 
 - [sched-20260824-011-sched-fair-reuse-enqueue-delayed.md](../../2026/08/sched-20260824-011-sched-fair-reuse-enqueue-delayed.md) `fix/low/under_review`
+- [sched-20260822-001](../../2026/08/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.md) `fix/low/under_review` — Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。
 - [sched-20260817-004](../../2026/08/sched-20260817-004-sched-urgent-for-v7-2.md) `fix/medium/merged_tip` — Peter Zijlstra 的 `sched/urgent` 修复（Edgar E. Iglesias 报告）：组调度实体在 `sched_slice()` 中用**两任务 vruntime 差**而非 `cfs_rq->min_vruntime` 作基准，修复被延迟实体（DELAY_DEQUEUE）时间更新不正确的问题（`Fixes: f0f12c9b0e3e`）。Borislav 已发 PR
 - [sched-20260817-003](../../2026/08/sched-20260817-003-scheduler-updates-for-v7-3.md) `feature/high/merged_tip` — Ingo Molnar 发出 v7.3 合并窗口的 **Scheduler updates for v7.3** PR，规模巨大：flatten-the-pick cgroup 调度（扁平权重、运行在 per-CPU 队列而非 cgroup 层级）、EEVDF 核心拆解到单 run queue（CFS 去掉每 cgroup 内部队列）、short-slice 延迟优化、RT 抢占下限、scx 的 
 - [sched-20260815-014](../../2026/08/sched-20260815-014-sched-fair-fix-flat-hierarchy.md) `fix/low/merged_tip` — Vincent Guittot 的 EEVDF cgroup 权重修复由 tip-bot 合入 `sched/core`：把子权重"扁平化"，使 CPU 时间按权重比例分配，而非被层级结构过度约束。属于 08-14 系列 001（EEVDF/cgroup 权重扁平化）的延续/定稿。

@@ -1,6 +1,6 @@
 # tag: sched/fair
 
-共 38 篇
+共 39 篇
 
 - [sched-20260824-011-sched-fair-reuse-enqueue-delayed.md](../../../2026/08/sched-20260824-011-sched-fair-reuse-enqueue-delayed.md) `fix/low/under_review`
 - [sched-20260824-009-sched-flatten-the-pick.md](../../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/medium/discussion`
@@ -9,6 +9,7 @@
 - [sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md](../../../2026/08/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md) `fix/medium/under_review`
 - [sched-20260823-009](../../../2026/08/sched-20260823-009.md) `fix/low/under_review` — `sched/fair: Only apply cpufreq pressure where frequency is invariant` 的讨论继续：cpufreq pressure 按「可达最高频率/当前可达最高频率」降 capacity，但 utilization 仅在频率不变架构才带匹配 scaling，导致语义不一致。焦点在「是否仅在不 invariant 场景施加 pressure」
 - [sched-20260823-002](../../../2026/08/sched-20260823-002.md) `bug/high/under_review` — 两个生产环境（aarch64 Kunpeng 920、vendor 4.19.90）在长 uptime 后各自崩溃于 `pick_next_task_fair()` 解引用 NULL：root cfs_rq 的 `nr_running` 被污染成 0xFFFFFFFF（-1），使 idle 判定失效、从空 rb 树取到 NULL。签名一致，疑似 nr_running 计数损坏。基于 vendor 
+- [sched-20260822-001](../../../2026/08/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.md) `fix/low/under_review` — Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。
 - [sched-20260821-004](../../../2026/08/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。
 - [sched-20260820-010](../../../2026/08/sched-20260820-010.md) `bug/critical/under_review` — flat-hierarchy 除零崩溃（08-19 001）的 08-20 诊断更新：报告者打开 CONFIG_DEBUG 后 diagnosis WARN 确实触发，确认根因走 cpuset 路径（非仅发行版），uptime 21.4h 复现。配套 fix（tg_cpus floor at 1）已合入 tip（见 08-20 005）。
 - [sched-20260820-009](../../../2026/08/sched-20260820-009.md) `fix/low/under_review` — Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」，以保留空闲 SMT 兄弟供单线程突发。属 08-09 009 线的延续。

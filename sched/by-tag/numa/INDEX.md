@@ -1,7 +1,8 @@
 # tag: numa
 
-共 8 篇
+共 9 篇
 
+- [sched-20260822-007](../../2026/08/sched-20260822-007-sched-debug-reject-invalid-writes-to-numa-balancing-scan-size-mb.md) `fix/low/under_review` — Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝。v2 改用 `debugfs_create_file_unsafe` 并重写了 commit message。
 - [sched-20260817-005](../../2026/08/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/medium/under_review` — `steal_governor` v10 的讨论回复（Shrikanth Hegde，接 Prateek/K Prateek/J Joel 等 review）：系列引入"preferred CPUs"与"steal-driven vCPU backoff"，让空闲/轻载 CPU 从忙 CPU 偷取任务以减少空闲时间。本日回复集中回应三处缺陷——① 32 位 ARM64 上 `atomic_long
 - [sched-20260806-014](../../2026/08/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.md) `fix/medium/under_review`
 - [sched-20260804-015](../../2026/08/sched-20260804-015-sched-numa-prevent-race-sysctl-static-key-v2.md) `bug/high/under_review` — `sysctl_numa_balancing` 静态键切换竞态（UAF/use-after-uninit，附 syzkaller repro + Fixes）在 08-04 继续推进。这是 08-03-006 的延续，合入可能性 high。
