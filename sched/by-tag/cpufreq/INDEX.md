@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 11 篇
+共 12 篇
 
+- [sched-20260821-004](../../2026/08/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。
 - [sched-20260816-004](../../2026/08/sched-20260816-004-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/medium/merged_tip` — Hui Su 的 v3（延续 08-07 系列 006）修复 `schedutil` 在 32 位平台的频率限制溢出：`rate_limit_us`（unsigned int）乘 `NSEC_PER_USEC`(1000L) 在 32 位下以 32 位无符号算术进行，写大值（如 4294968）会让 `freq_update_delay_ns` 从 4294968000ns 溢出为 704ns，使
 - [sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md](../../2026/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md) `in-review`
 - [sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md) `in-review`
