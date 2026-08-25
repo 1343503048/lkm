@@ -1,3 +1,5 @@
+# 本文是 sched-20260821-001 的增量更新
+
 ## TL;DR
 
 本文是 sched-20260821-001 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。

@@ -1,3 +1,5 @@
+# PeterZ 提议移除 `sched_class::balance()` 回调
+
 ## TL;DR
 
 PeterZ 提议移除 `sched_class::balance()` 回调，这是 core_sched 重构的一部分。ByteDance 的 Xuewen Yan 提供了带宽测试脚本帮助验证，讨论仍在进行中。

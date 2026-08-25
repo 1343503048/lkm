@@ -31,7 +31,7 @@ related_articles: []
 tags:
 - sched/debug
 - numa
-title: sched-20260822-007-sched-debug-reject-invalid-writes-to-numa-balancing-scan-size-mb
+title: Lirongqing 的 v2 补丁为 `sched/debug` 增加对 `numa_balancing scan_size_mb` 无效写入的拒绝
 layout: article
 ---
 

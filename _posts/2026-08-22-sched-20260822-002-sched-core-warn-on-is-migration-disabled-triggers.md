@@ -34,7 +34,7 @@ related_articles: []
 tags:
 - sched/core
 - migration
-title: sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers
+title: '`sched/core: WARN_ON(is_migration_disabled())` 触发告警'
 layout: article
 ---
 

@@ -5,11 +5,11 @@ title: "标签: core_sched"
 article_count: 16
 ---
 
-- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
-- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched-20260821-005-sched-remove-sched-class-balance
-- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...
+- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — PeterZ 提议移除 `sched_class::balance()` 回调
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — `Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复
 - [sched-20260817-003](/lkm/2026/08/17/sched-20260817-003-scheduler-updates-for-v7-3.html) `feature/high/merged_tip` — Scheduler updates for v7.3
 - [sched-20260816-002](/lkm/2026/08/16/sched-20260816-002-sched-ext-drop-the-dead-scx-deq-core-sched-exec-test-in-dequ.html) `fix/medium/merged_tip` — sched_ext: Drop the dead SCX_DEQ_CORE_SCHED_EXEC test in dequeue_task_scx()
 - [sched-20260815-012](/lkm/2026/08/15/sched-20260815-012-sched-ext-set-up-ops-sub-ecaps-updated-dispatch-context-on-t.html) `feature/low/under_review` — sched_ext: Set up ops.sub_ecaps_updated() dispatch context on the executing CPU

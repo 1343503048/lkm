@@ -41,7 +41,7 @@ tags:
 - sched_ext
 - cgroup
 - race_condition
-title: sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
+title: 并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致
 layout: article
 ---
 

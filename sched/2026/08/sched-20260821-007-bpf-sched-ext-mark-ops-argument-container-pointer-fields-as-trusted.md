@@ -1,3 +1,5 @@
+# sched_ext 的 ops 参数容器指针字段被标记为 trusted
+
 ## TL;DR
 
 sched_ext 的 ops 参数容器指针字段被标记为 trusted，允许 BPF 调度器安全地解引用这些指针。补丁已被 bpf/bpf-next.git 合入。

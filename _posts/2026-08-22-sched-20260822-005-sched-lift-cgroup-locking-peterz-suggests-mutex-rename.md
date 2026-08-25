@@ -34,7 +34,7 @@ tags:
 - sched/core
 - sched_ext
 - cgroup
-title: sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
+title: 本文是 sched-20260821-001 的增量更新
 layout: article
 ---
 

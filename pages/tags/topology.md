@@ -6,8 +6,8 @@ article_count: 34
 ---
 
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
-- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — sched-20260820-005
-- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains
+- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — 两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-...
+- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotp...
 - [sched-20260814-003](/lkm/2026/08/14/sched-20260814-003-sched-topology-add-a-cpus-read-lock-to-rebuild-sched-domains.html) `fix/medium/under_review` — sched/topology: Add a cpus_read_lock to rebuild_sched_domains()
 - [sched-20260810-013](/lkm/2026/08/10/sched-20260810-013-sched-topology-don-t-claim-sched-domain-shared-twice-on-the-.html) `fix/low/under_review` — sched/topology: don't claim sched_domain_shared twice on the same domain
 - [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched fair asym capacity load balance merged

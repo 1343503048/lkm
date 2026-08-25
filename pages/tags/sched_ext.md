@@ -8,23 +8,23 @@ article_count: 72
 - [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: 在 scx_cgroup_init_args 中传递初始 cpu.idle 状态
 - [sched-20260824-003](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `discussion/none/under_review` — docs/sched_ext: 文档化 cgroup CPU knobs 的调度器依赖性（增量更新）
 - [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: 提升 cgroup 更新锁到核心层（增量更新）
-- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
-- [sched-20260823-005](/lkm/2026/08/23/sched-20260823-005.html) `fix/medium/merged_tip` — sched-20260823-005
-- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — sched-20260823-006
-- [sched-20260823-008](/lkm/2026/08/23/sched-20260823-008.html) `fix/low/merged_tip` — sched-20260823-008
-- [sched-20260822-004](/lkm/2026/08/22/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.html) `fix/medium/merged_tip` — sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move
-- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
-- [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes
-- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
-- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth
-- [sched-20260821-007](/lkm/2026/08/21/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.html) `feature/none/merged_tip` — sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted
-- [sched-20260821-008](/lkm/2026/08/21/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.html) `feature/none/merged_tip` — sched-20260821-008-git-pull-sched-ext-changes-for-v7-3
-- [sched-20260820-002](/lkm/2026/08/20/sched-20260820-002.html) `feature/low/under_review` — sched-20260820-002
-- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — sched-20260820-003
-- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — sched-20260820-008
-- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
-- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo
-- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时
+- [sched-20260823-005](/lkm/2026/08/23/sched-20260823-005.html) `fix/medium/merged_tip` — Tejun 已将 `sched_ext: Fix spurious aborts in scx_bpf_dsq_move() on ownership c...
+- [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Sch...
+- [sched-20260823-008](/lkm/2026/08/23/sched-20260823-008.html) `fix/low/merged_tip` — `sched_ext Sync common/compat headers` 系列（08-19 009）的跟进回复：确认 `__scx_prolog_di...
+- [sched-20260822-004](/lkm/2026/08/22/sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move.html) `fix/medium/merged_tip` — Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配）
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — 本文是 sched-20260821-001 的增量更新
+- [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — 并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致
+- [sched-20260821-006](/lkm/2026/08/21/sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth.html) `fix/medium/under_review` — 并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx....
+- [sched-20260821-007](/lkm/2026/08/21/sched-20260821-007-bpf-sched-ext-mark-ops-argument-container-pointer-fields-as-trusted.html) `feature/none/merged_tip` — sched_ext 的 ops 参数容器指针字段被标记为 trusted
+- [sched-20260821-008](/lkm/2026/08/21/sched-20260821-008-git-pull-sched-ext-changes-for-v7-3.html) `feature/none/merged_tip` — sched_ext v7.3 的变更已被合入 torvalds/linux.git
+- [sched-20260820-002](/lkm/2026/08/20/sched-20260820-002.html) `feature/low/under_review` — Daniel T. Lee 把 sched_ext ops 的几个 container 指针参数（cs/cpuc/dsq/task 的 kptr）从 `P...
+- [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — Michal Koutny（与同日 Liang Luo v2）把 08-19 的「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」讨论落到了...
+- [sched-20260820-008](/lkm/2026/08/20/sched-20260820-008.html) `fix/low/merged_tip` — 08-19 的 sched_ext 文档两连修在 08-20 推进：① `ei->type → ei->kind` 示例修复已 Applied 到 `sc...
+- [sched-20260819-008](/lkm/2026/08/19/sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind.html) `fix/low/under_review` — Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idl...
+- [sched-20260819-009](/lkm/2026/08/19/sched-20260819-009-sched-ext-sync-tools-headers-from-scx-repo.html) `fix/low/merged_tip` — Tejun 把 scx 仓库领先内核的工具头文件同步回内核树（`tools/sched_ext/include/scx`）
+- [sched-20260819-010](/lkm/2026/08/19/sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc.html) `discussion/low/under_review` — 关于 "sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.w...
 - [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
 - [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — [GIT PULL] sched_ext: Changes for v7.3
 - [sched-20260818-004](/lkm/2026/08/18/sched-20260818-004-sched-ext-allow-ops-cgroup-set-bandwidth-to-be-sleepable.html) `feature/medium/under_review` — sched_ext: allow ops.cgroup_set_bandwidth() to be sleepable

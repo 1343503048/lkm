@@ -31,7 +31,7 @@ related_articles: []
 tags:
 - futex
 - locking
-title: sched-20260821-009-futex-fix-might-sleep-warning-in-futex-pivot-pending
+title: PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警
 layout: article
 ---
 

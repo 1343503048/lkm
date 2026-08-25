@@ -1,3 +1,5 @@
+# Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径
+
 ## TL;DR
 
 Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。

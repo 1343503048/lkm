@@ -46,10 +46,9 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: sched-20260819-010-sched-ext-cgroup-set-bandwidth-warn-vs-doc
+title: 关于 "sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.w...
 layout: article
 ---
-
 
 ## TL;DR
 关于 "sched_ext 下 cpu.max 配额未被 BPF 调度器强制时是否告警" 的讨论：Tejun NAK 了运行时一次性警告（参照 cpu.weight 前车之鉴），倾向用文档说明 "knob 仅当调度器实现对应回调才生效"。作者改为投文档补丁。属 08-18 带宽讨论的延续。

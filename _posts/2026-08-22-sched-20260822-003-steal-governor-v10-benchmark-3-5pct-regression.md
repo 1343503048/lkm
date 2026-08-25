@@ -38,7 +38,7 @@ tags:
 - steal_governor
 - virtualization
 - performance
-title: sched-20260822-003-steal-governor-v10-benchmark-3-5pct-regression
+title: steal_governor v10 系列收到 Yury 的独立测试：steal ratio 成功收敛
 layout: article
 ---
 

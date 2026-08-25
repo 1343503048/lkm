@@ -33,7 +33,7 @@ tags:
 - PREEMPT_RT
 - sched/core
 - locking
-title: sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block
+title: PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep(...
 layout: article
 ---
 

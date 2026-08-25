@@ -7,11 +7,11 @@ article_count: 42
 
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick v3 性能回退分析（增量更新）
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
-- [sched-20260823-010](/lkm/2026/08/23/sched-20260823-010.html) `fix/medium/under_review` — sched-20260823-010
-- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
-- [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — sched-20260820-009
-- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
+- [sched-20260823-010](/lkm/2026/08/23/sched-20260823-010.html) `fix/medium/under_review` — `sched/cache: honor migrate_llc_task semantics in active load balance` v3 已获 ...
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...
+- [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — `Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复
 - [sched-20260818-005](/lkm/2026/08/18/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.html) `feature/medium/under_review` — sched: Flatten the pick — v3 s390 benchmark results
 - [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched fair asym capacity load balance merged
 - [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched fair nohz fully idle cores merged

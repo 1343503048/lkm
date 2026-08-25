@@ -36,7 +36,7 @@ tags:
 - sched/fair
 - cpufreq
 - frequency_invariance
-title: sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant
+title: cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity
 layout: article
 ---
 

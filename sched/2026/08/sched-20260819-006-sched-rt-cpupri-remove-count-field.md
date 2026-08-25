@@ -1,3 +1,5 @@
+# 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段
+
 
 ## TL;DR
 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段，纯死代码清理。

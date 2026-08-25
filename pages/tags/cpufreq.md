@@ -5,7 +5,7 @@ title: "标签: cpufreq"
 article_count: 12
 ---
 
-- [sched-20260821-004](/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant
+- [sched-20260821-004](/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity
 - [sched-20260816-004](/lkm/2026/08/16/sched-20260816-004-cpufreq-schedutil-fix-rate-limit-overflow.html) `fix/medium/merged_tip` — cpufreq: schedutil: Fix rate limit overflow
 - [sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7](/lkm/2026/08/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.html) `unknown/none/in-review` — cpufreq cppc ospm nominal perf v7
 - [sched-20260807-003-schedutil-boost-dvfs-policy-max](/lkm/2026/08/07/sched-20260807-003-schedutil-boost-dvfs-policy-max.html) `unknown/none/in-review` — schedutil boost dvfs policy max

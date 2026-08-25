@@ -5,9 +5,9 @@ title: "标签: preempt"
 article_count: 21
 ---
 
-- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004
-- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
-- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
+- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock
+- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — `paravirt_steal` 静态键迁移到 `static_branch_*` 的 RESEND 在 08-20 收到 Reviewed-by
+- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch...
 - [sched-20260810-015](/lkm/2026/08/10/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `cleanup/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — preempt dynamic simplify v2

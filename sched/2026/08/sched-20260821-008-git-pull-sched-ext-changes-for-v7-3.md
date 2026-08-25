@@ -1,3 +1,5 @@
+# sched_ext v7.3 的变更已被合入 torvalds/linux.git
+
 ## TL;DR
 
 sched_ext v7.3 的变更已被合入 torvalds/linux.git。Tejun Heo 的 pull request 于 8 月 17 日发出，8 月 21 日确认合入主线。

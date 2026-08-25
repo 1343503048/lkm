@@ -43,10 +43,9 @@ tags:
 - sched_ext
 - cgroup
 - documentation
-title: sched-20260819-008-sched-ext-documentation-fixes-cgroup-knobs-exit-kind
+title: Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idl...
 layout: article
 ---
-
 
 ## TL;DR
 Liang Luo 修两处 sched-ext 文档：cgroup-v2.rst 里 `cpu.max`/`cpu.max.burst`/`cpu.idle` 应说明也作用于实现了对应回调的 BPF 调度器；sched-ext.rst 示例 `ei->type` 应为 `ei->kind`。纯文档，合入概率高。

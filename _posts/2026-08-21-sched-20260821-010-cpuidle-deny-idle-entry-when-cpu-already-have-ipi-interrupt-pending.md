@@ -36,7 +36,7 @@ related_articles: []
 tags:
 - cpuidle
 - ipi
-title: sched-20260821-010-cpuidle-deny-idle-entry-when-cpu-already-have-ipi-interrupt-pending
+title: v2 补丁尝试在 CPU 已有 IPI 中断挂起时阻止进入 idle 状态
 layout: article
 ---
 

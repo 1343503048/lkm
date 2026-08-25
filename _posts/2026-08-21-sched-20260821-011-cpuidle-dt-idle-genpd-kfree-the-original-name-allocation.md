@@ -31,7 +31,8 @@ related_articles: []
 tags:
 - cpuidle
 - memory_safety
-title: sched-20260821-011-cpuidle-dt-idle-genpd-kfree-the-original-name-allocation
+title: '`dt_idle_pd_alloc()` 中 `pd->name` 指向 `kasprintf()` 分配内存的中间位置（`kbasename()`
+  偏移）'
 layout: article
 ---
 

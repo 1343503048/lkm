@@ -33,7 +33,7 @@ related_articles: []
 tags:
 - sched/fair
 - eevdf
-title: sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers
+title: Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径
 layout: article
 ---
 

@@ -37,7 +37,7 @@ tags:
 - sched/core
 - cfs
 - performance
-title: sched-20260821-003-sched-flatten-the-pick-v3-benchmark
+title: 'PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续'
 layout: article
 ---
 

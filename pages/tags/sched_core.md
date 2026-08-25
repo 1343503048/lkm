@@ -10,26 +10,26 @@ article_count: 56
 - [sched-20260824-008](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `feature/low/rfc` — sched/core: 延迟被抢占远程 vCPU 的 task clock 更新（RFC）
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick v3 性能回退分析（增量更新）
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: 在 active load balance 中遵守 migrate_llc_task 语义（增量更新）
-- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — sched-20260823-001
-- [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched-20260823-003
-- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched-20260823-004
-- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched-20260823-011
-- [sched-20260822-002](/lkm/2026/08/22/sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers.html) `bug/medium/under_review` — sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers
-- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename
-- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence
-- [sched-20260821-002](/lkm/2026/08/21/sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block.html) `fix/low/under_review` — sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block
-- [sched-20260821-003](/lkm/2026/08/21/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.html) `discussion/none/under_review` — sched-20260821-003-sched-flatten-the-pick-v3-benchmark
-- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched-20260821-005-sched-remove-sched-class-balance
-- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — sched-20260820-005
-- [sched-20260820-006](/lkm/2026/08/20/sched-20260820-006.html) `fix/low/under_review` — sched-20260820-006
-- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched-20260820-007
-- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched-20260820-011
-- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — sched-20260819-002-core-sched-pick-task-race-null-deref-discussion
-- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched-20260819-003-sched-migrate-static-key-api-resend
-- [sched-20260819-004](/lkm/2026/08/19/sched-20260819-004-sched-core-remove-balance-callback-cast.html) `fix/low/under_review` — sched-20260819-004-sched-core-remove-balance-callback-cast
-- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains
-- [sched-20260819-006](/lkm/2026/08/19/sched-20260819-006-sched-rt-cpupri-remove-count-field.html) `fix/low/under_review` — sched-20260819-006-sched-rt-cpupri-remove-count-field
-- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion
+- [sched-20260823-001](/lkm/2026/08/23/sched-20260823-001.html) `fix/medium/under_review` — Michal Blaszczyk 修一个 CFS/SCX cgroup 参数「三视图发散」竞态：并发写 cpu.shares 等控制文件时
+- [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — arm64 长运行服务器上偶发 `rq->curr != current`（rq 上记录的当前任务与实际 current 不一致）
+- [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock
+- [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierar...
+- [sched-20260822-002](/lkm/2026/08/22/sched-20260822-002-sched-core-warn-on-is-migration-disabled-triggers.html) `bug/medium/under_review` — `sched/core: WARN_ON(is_migration_disabled())` 触发告警
+- [sched-20260822-005](/lkm/2026/08/22/sched-20260822-005-sched-lift-cgroup-locking-peterz-suggests-mutex-rename.html) `fix/low/under_review` — 本文是 sched-20260821-001 的增量更新
+- [sched-20260821-001](/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html) `fix/medium/under_review` — 并发写入 cgroup 控制文件（如 cpu.shares/cpu.weight）会导致 CFS 与 SCX 之间的状态不一致
+- [sched-20260821-002](/lkm/2026/08/21/sched-20260821-002-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-block.html) `fix/low/under_review` — PREEMPT_RT 下 non_block_start()/end() 区间内获取 sleeping spinlock 会触发 might_sleep(...
+- [sched-20260821-003](/lkm/2026/08/21/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.html) `discussion/none/under_review` — PeterZ 的"sched: Flatten the pick"系列 v3 讨论继续
+- [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — PeterZ 提议移除 `sched_class::balance()` 回调
+- [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — 两封 sched/urgent 已合入 tip：① `rebuild_sched_domains()` 加 `cpus_read_lock`（对应 08-...
+- [sched-20260820-006](/lkm/2026/08/20/sched-20260820-006.html) `fix/low/under_review` — `struct cpupri_vec` 的 `count` 字段删除从 08-19 的 v1 推进到 08-20 的 v2：RT 优先级队列死代码清理
+- [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — `paravirt_steal` 静态键迁移到 `static_branch_*` 的 RESEND 在 08-20 收到 Reviewed-by
+- [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — `Remove sched_class::balance()` 系列与 core_sched pick_task 竞态在 08-20 继续交织：Peter...
+- [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core_sched 在 `pick_task()` 释放 core-wide 锁后未触发 `RETRY_TASK` 而继续
+- [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch...
+- [sched-20260819-004](/lkm/2026/08/19/sched-20260819-004-sched-core-remove-balance-callback-cast.html) `fix/low/under_review` — Vladimir Zapolskiy 移除 `do_balance_callbacks()` 中多余的函数指针类型转换
+- [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — Sebastian Siewior 修复 `CONFIG_CPUSETS=n` 下读 `sched_rt_runtime_us` 因缺 `cpu_hotp...
+- [sched-20260819-006](/lkm/2026/08/19/sched-20260819-006-sched-rt-cpupri-remove-count-field.html) `fix/low/under_review` — 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段
+- [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — `[PATCH 0/2] sched: Remove sched_class::balance()` 系列在 8/19 有多封回复
 - [sched-20260818-001](/lkm/2026/08/18/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.html) `fix/low/under_review` — sched/core: Skip rq->avg_idle update without a valid idle_stamp
 - [sched-20260818-002](/lkm/2026/08/18/sched-20260818-002-sched-ext-proxy-execution-v12-review-discussion.html) `feature/high/under_review` — sched_ext: proxy execution v12 — review discussion (patches 12/17, 14/17)
 - [sched-20260818-003](/lkm/2026/08/18/sched-20260818-003-git-pull-sched-ext-changes-for-v7.3.html) `feature/high/merged_tip` — [GIT PULL] sched_ext: Changes for v7.3

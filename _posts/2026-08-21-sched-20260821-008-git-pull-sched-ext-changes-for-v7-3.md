@@ -30,7 +30,7 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched_ext
-title: sched-20260821-008-git-pull-sched-ext-changes-for-v7-3
+title: sched_ext v7.3 的变更已被合入 torvalds/linux.git
 layout: article
 ---
 

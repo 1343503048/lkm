@@ -31,7 +31,7 @@ related_articles: []
 tags:
 - sched_ext
 - bpf
-title: sched-20260822-004-sched-ext-fix-spurious-aborts-in-scx-bpf-dsq-move
+title: Tejun Heo 修复 `scx_bpf_dsq_move()` 中的虚假调度器中止：任务在迭代过程中可能合法地失去所有权（退出或被重新分配）
 layout: article
 ---
 

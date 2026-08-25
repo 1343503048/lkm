@@ -35,7 +35,7 @@ tags:
 - sched_ext
 - cgroup
 - race_condition
-title: sched-20260821-006-sched-ext-serialize-concurrent-cpu-max-writers-in-scx-group-set-bandwidth
+title: 并发写入同一 cgroup 的 cpu.max 会导致 SCX 侧的 `ops.cgroup_set_bandwidth()` 回调和 `tg->scx....
 layout: article
 ---
 

@@ -1,3 +1,5 @@
+# PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警
+
 ## TL;DR
 
 PeterZ 修复 `futex_pivot_pending()` 中的 `might_sleep()` 告警，已合入 `tip: locking/urgent` 分支。commit `d8aa5dd97944`。

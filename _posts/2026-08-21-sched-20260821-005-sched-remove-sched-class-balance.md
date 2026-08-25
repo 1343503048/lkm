@@ -35,7 +35,7 @@ related_articles: []
 tags:
 - sched/core
 - core_sched
-title: sched-20260821-005-sched-remove-sched-class-balance
+title: PeterZ 提议移除 `sched_class::balance()` 回调
 layout: article
 ---
 
