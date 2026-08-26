@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 34
+article_count: 35
 ---
 
+- [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — [tip: sched/urgent] sched/topology: cpus_read_lock() rebuild_sched_domains()
 - [sched-20260819-005](/lkm/2026/08/19/sched-20260819-005-sched-topology-cpus-read-lock-rebuild-sched-domains.html) `fix/medium/under_review` — sched/topology cpus read lock rebuild sched/domains

@@ -2,12 +2,9 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 38
+article_count: 35
 ---
 
-- [sched-20260825-006](/lkm/2026/08/25/sched-20260825-006-sched-fair-cpufreq-pressure-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
-- [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-question-combine-detach-dequeue-guest-hang.html) `bug/high/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
-- [sched-20260825-011](/lkm/2026/08/25/sched-20260825-011-sched-fair-update-curr-eevdf-root-cfs-rq.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
 - [sched-20260824-004](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `discussion/low/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260824-006](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/critical/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()

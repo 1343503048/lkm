@@ -4824,34 +4824,38 @@
     "tldr": "两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。"
   },
   {
-    "title": "sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args",
+    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
     "id": "sched-20260825-001",
-    "date": "2026-08-25",
-    "type": "fix",
-    "status": "under_review",
-    "severity": "medium",
-    "tags": [
-      "sched_ext",
-      "cgroup"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-001-sched_ext-cgroup-init-sched-idle-v3.html",
-    "tldr": "（基于邮件缓存自动生成）"
-  },
-  {
-    "title": "sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable",
-    "id": "sched-20260825-002",
     "date": "2026-08-25",
     "type": "feature",
     "status": "under_review",
-    "severity": "medium",
+    "severity": "none",
     "tags": [
-      "sched_ext",
-      "cgroup"
+      "load_balance",
+      "topology",
+      "perf"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-002-sched_ext-cgroup-set-sleepable.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html",
+    "tldr": "steal_governor 系列推进到 **v11**（12 个 patch），引入 \"preferred CPU\" 机制：在虚拟化环境中，当某些 vCPU 的 steal time 显著高于其他 vCPU 时，调度器优先在低 steal time 的 CPU 上运行任务，减少因 vCPU 被抢占导致的锁持有者抢占、TLB/cache 失效等代价。作者明确表示系列已收敛，请求 Peter/Ingo 考虑在 7.3-rc 期间纳入 sched/core，目标 7.4 合入。"
+  },
+  {
+    "title": "sched: Replace nr_pinned offset hack with a dedicated per-CPU counter",
+    "id": "sched-20260825-002",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "fangqiurong"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-002-sched-replace-nr-pinned-offset-hack-percpu-counter.html",
+    "tldr": "Qiurong Fang 发出 RFC，用简单的 per-CPU 变量替代 `rq->nr_pinned` 的 generated offset 访问方式，消除 `rq-offsets.c`、Kbuild 规则和全局生成头文件。这是纯代码清理，不修复 bug，删除 53 行、新增 6 行。"
   },
   {
     "title": "sched_ext: Serialize cgroup knob updates",
@@ -4864,116 +4868,129 @@
       "sched_ext",
       "cgroup"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-003-sched_ext-serialize-cgroup-knob-updates.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html",
+    "tldr": "Andrea Righi 发出 sched_ext/for-7.3-fixes 分支的修复 patch：为每个 task_group 引入 `knob_mutex`，串行化 cgroup 权重/空闲/带宽的更新操作，防止并发 cgroup knob 写入导致 sched_ext 通知与核心调度器状态不一致。由 Sashiko bot 报告的竞态问题触发。"
   },
   {
-    "title": "sched_ext: Fix missing @slice and @vtime descriptions in finish_dispatch() kernel-doc",
+    "title": "sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable",
     "id": "sched-20260825-004",
     "date": "2026-08-25",
-    "type": "fix",
+    "type": "feature",
     "status": "under_review",
-    "severity": "low",
+    "severity": "none",
     "tags": [
       "sched_ext",
-      "documentation"
+      "cgroup"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-004-sched_ext-fix-kernel-doc-finish-dispatch.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.html",
+    "tldr": "Tao Cui 提议将 `ops.cgroup_set_weight()` 和 `ops.cgroup_set_idle()` 加入 sched_ext 的 sleepable 回调白名单，使 BPF 调度器可以在这些回调中执行可睡眠操作（如动态分配 DSQ）。Andrea Righi 认可方向但指出需先解决并发竞态（已发出独立的 serialize patch），建议在此修复之上再合入本 patch。"
   },
   {
-    "title": "sched/cpufreq: Reevaluate frequency before tickless idle",
+    "title": "sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args",
     "id": "sched-20260825-005",
     "date": "2026-08-25",
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
     "tags": [
-      "sched/cpufreq",
-      "nohz"
+      "sched_ext",
+      "cgroup"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-005-sched-cpufreq-reevaluate-tickless-idle.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html",
+    "tldr": "Tao Cui 的 v3 修复了 sched_ext cgroup 初始化时不传递 `cpu.idle` 状态的缺陷：已在调度器加载前配置为 idle 的 cgroup，BPF 调度器在 `ops.cgroup_init()` 中看不到其 idle 状态。v3 按 Tejun Heo 建议将新字段命名为 `sched_idle`，并获 Andrea Righi Reviewed-by。2-patch 系列：patch 1 是修复，patch 2 是配套重命名。"
   },
   {
-    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "title": "sched_ext: Fix missing @slice and @vtime descriptions in finish_dispatch() kernel-doc",
     "id": "sched-20260825-006",
     "date": "2026-08-25",
     "type": "fix",
     "status": "under_review",
-    "severity": "medium",
+    "severity": "low",
     "tags": [
-      "sched/fair",
-      "schedutil"
+      "sched_ext"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-006-sched-fair-cpufreq-pressure-invariant.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "luoliang"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-006-sched-ext-fix-missing-slice-vtime-finish-dispatch-kernel-doc.html",
+    "tldr": "luoliang@kylinos.cn 发出单 patch 修复 `finish_dispatch()` 的 kernel-doc 警告：commit 13f1eae3b662 添加了 `@slice` 和 `@vtime` 参数但未更新 kernel-doc，导致编译时产生两个 \"function parameter not described\" 警告。修复方式是用 `dispatch_to_local_dsq()` 中相同参数的措辞来描述。"
   },
   {
-    "title": "sched: Replace nr_pinned offset hack with a dedicated per-CPU counter",
+    "title": "docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent",
     "id": "sched-20260825-007",
     "date": "2026-08-25",
-    "type": "feature",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-007-docs-sched-ext-document-cgroup-cpu-knobs-scheduler-dependent-v4.html",
+    "tldr": "sched_ext cgroup CPU 接口文档 patch 推进到 v4，Tejun Heo 已将其 apply 到 `sched_ext/for-7.3-fixes` 分支。该文档澄清 sched_ext 下 cgroup CPU 接口（`cpu.weight`、`cpu.idle` 等）的行为取决于 BPF 调度器的实现，而非核心调度器的固定语义。"
+  },
+  {
+    "title": "kernel/sched/topology.c:2606:24: sparse: incorrect type in assignment (different address spaces)",
+    "id": "sched-20260825-008",
+    "date": "2026-08-25",
+    "type": "discussion",
     "status": "under_review",
     "severity": "low",
     "tags": [
-      "sched/core",
-      "migration"
+      "sched_debug"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-007-sched-replace-nr-pinned-percpu.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-008-kernel-sched-topology-c-sparse-warning-rcu-assignment.html",
+    "tldr": "kernel test robot 报告 `kernel/sched/topology.c` 中一个 sparse 警告，bisect 到 commit 5a7b576b3ec1 (\"sched/topology: Extract \"imb_numa_nr\" calculation into a separate helper\")，该 commit 来自约 5 个月前。警告涉及 `__rcu` 地址空间不匹配的指针赋值。同时 `kernel/sched/debug.c:730` 也有类似的 `__rcu` 注解问题。"
   },
   {
-    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
-    "id": "sched-20260825-008",
-    "date": "2026-08-25",
-    "type": "feature",
-    "status": "under_review",
-    "severity": "high",
-    "tags": [
-      "sched/core",
-      "virtualization",
-      "steal_time"
-    ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-008-sched-steal-governor-v11.html",
-    "tldr": "（基于邮件缓存自动生成）"
-  },
-  {
-    "title": "[Question] Userspace throttling + \"sched/fair: Combine detach into dequeue when migrating task\" causes guest boot hang",
+    "title": "sched/cpufreq: Reevaluate frequency before tickless idle",
     "id": "sched-20260825-009",
     "date": "2026-08-25",
-    "type": "bug",
+    "type": "discussion",
     "status": "under_review",
-    "severity": "high",
+    "severity": "none",
     "tags": [
-      "sched/fair",
-      "bug",
-      "virtualization"
+      "cpufreq",
+      "nohz"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-009-question-combine-detach-dequeue-guest-hang.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Christian Loehle",
+      "Hongyan Xia"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html",
+    "tldr": "关于 schedutil 在 CPU 进入 tickless idle 前是否应该最后一次重新评估频率的讨论。Christian Loehle 正在开发一个基于 irq_work 的方案来处理 `sugov_hold_freq()` 场景，Hongyan Xia 表示 LGTM 但指出 Sashiko 报告的并发问题需要先解决。核心争议：hold_freq 和 blocked utilization 是两个独立问题但可能有相似的解决方案。"
   },
   {
-    "title": "sched/debug: Introduce per-CPU debugfs files",
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
     "id": "sched-20260825-010",
     "date": "2026-08-25",
-    "type": "feature",
+    "type": "discussion",
     "status": "under_review",
-    "severity": "medium",
+    "severity": "none",
     "tags": [
-      "sched/debug",
-      "debugfs"
+      "cpufreq",
+      "cfs"
     ],
-    "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-010-sched-debug-percpu-debugfs-v5.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "authors": [
+      "Hongyan Xia"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html",
+    "tldr": "Hongyan Xia 的 patch 讨论：当 CPU 的频率不变性（frequency invariance）不成立时，不应施加 cpufreq pressure。讨论中澄清了问题本质可能不是频率不变性问题，而是 boost 频率与 `policy->max`/`cpuinfo.max_freq` 的定义差异导致误判。"
   },
   {
     "title": "sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers",
@@ -4983,11 +5000,28 @@
     "status": "under_review",
     "severity": "low",
     "tags": [
-      "sched/fair",
-      "eevdf"
+      "eevdf",
+      "cfs"
     ],
     "authors": [],
-    "url": "/lkm/2026/08/25/sched-20260825-011-sched-fair-update-curr-eevdf-root-cfs-rq.html",
-    "tldr": "（基于邮件缓存自动生成）"
+    "url": "/lkm/2026/08/25/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.html",
+    "tldr": "单 patch 修复，将 `sched/fair` 中剩余的 root cfs_rq 调用者统一使用 `update_curr_eevdf()` 而非旧接口。已获 Vincent Guittot Reviewed-by。"
+  },
+  {
+    "title": "cpuidle: Deny idle entry when CPU already have IPI interrupt pending",
+    "id": "sched-20260825-012",
+    "date": "2026-08-25",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "idle",
+      "arm64"
+    ],
+    "authors": [
+      "Maulik Shah"
+    ],
+    "url": "/lkm/2026/08/25/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.html",
+    "tldr": "Maulik Shah（Qualcomm）的 v2 讨论：当 CPU 已有 IPI 中断挂起时，应拒绝进入 idle 状态，避免延迟响应。提供了详细的 LeMans SoC（8 CPU）上的 trace 数据，展示 menu governor 在 `get_typical_interval()` 循环中收到 IPI 但仍预测深度 idle 的时序。"
   }
 ]

@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 42
+article_count: 44
 ---
 
+- [sched-20260825-010](/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html) `discussion/none/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260825-011](/lkm/2026/08/25/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
 - [sched-20260824-006](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/critical/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick
 - [sched-20260821-003](/lkm/2026/08/21/sched-20260821-003-sched-flatten-the-pick-v3-benchmark.html) `discussion/none/under_review` — sched: Flatten the pick

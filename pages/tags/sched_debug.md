@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 27
+article_count: 29
 ---
 
+- [sched-20260825-002](/lkm/2026/08/25/sched-20260825-002-sched-replace-nr-pinned-offset-hack-percpu-counter.html) `fix/low/under_review` — sched: Replace nr_pinned offset hack with a dedicated per-CPU counter
+- [sched-20260825-008](/lkm/2026/08/25/sched-20260825-008-kernel-sched-topology-c-sparse-warning-rcu-assignment.html) `discussion/low/under_review` — kernel/sched/topology.c:2606:24: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260810-002](/lkm/2026/08/10/sched-20260810-002-sched-fair-use-list-for-each-entry-rcu-in-print-cfs-stats.html) `fix/medium/under_review` — sched/fair: Use list_for_each_entry_rcu() in print_cfs_stats()
 - [sched-20260810-003](/lkm/2026/08/10/sched-20260810-003-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260809-001](/lkm/2026/08/09/sched-20260809-001-sched-debug-introduce-per-cpu-debugfs-files.html) `feature/none/under_review` — sched/debug: Introduce per-CPU debugfs files

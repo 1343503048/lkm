@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 30
+article_count: 31
 ---
 
+- [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260810-004](/lkm/2026/08/10/sched-20260810-004-perf-core-sched-task-dispatch-and-branch-entry-fixes.html) `fix/medium/under_review` — perf/core: sched_task() dispatch and branch entry fixes
 - [sched-20260810-005](/lkm/2026/08/10/sched-20260810-005-perf-core-fix-group-leader-use-after-free-after-sibling-deta.html) `fix/high/merged_tip` — perf/core: Fix group leader use-after-free after sibling detach
 - [sched-20260808-005-perf-sched-latency-v9-applied](/lkm/2026/08/08/sched-20260808-005-perf-sched-latency-v9-applied.html) `unknown/none/merged` — perf sched latency: Refine outputs, unit scaling, and histogram support

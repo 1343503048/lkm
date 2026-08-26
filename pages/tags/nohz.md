@@ -5,7 +5,7 @@ title: "标签: nohz"
 article_count: 17
 ---
 
-- [sched-20260825-005](/lkm/2026/08/25/sched-20260825-005-sched-cpufreq-reevaluate-tickless-idle.html) `fix/medium/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
+- [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
 - [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core
 - [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched/fair: Prefer fully idle cores for NOHZ balancing

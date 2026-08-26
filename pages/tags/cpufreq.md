@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 12
+article_count: 14
 ---
 
+- [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
+- [sched-20260825-010](/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html) `discussion/none/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260821-004](/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260816-004](/lkm/2026/08/16/sched-20260816-004-cpufreq-schedutil-fix-rate-limit-overflow.html) `fix/medium/merged_tip` — cpufreq: schedutil: Fix rate limit overflow
 - [sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7](/lkm/2026/08/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.html) `unknown/none/in-review` — cpufreq: CPPC: Reflect the OSPM nominal in boost and limits

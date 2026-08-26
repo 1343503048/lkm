@@ -2,12 +2,13 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 33
+article_count: 34
 ---
 
-- [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched_ext-cgroup-init-sched-idle-v3.html) `fix/medium/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
-- [sched-20260825-002](/lkm/2026/08/25/sched-20260825-002-sched_ext-cgroup-set-sleepable.html) `feature/medium/under_review` — sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable
-- [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched_ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates
+- [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates
+- [sched-20260825-004](/lkm/2026/08/25/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.html) `feature/none/under_review` — sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable
+- [sched-20260825-005](/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html) `fix/medium/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
+- [sched-20260825-007](/lkm/2026/08/25/sched-20260825-007-docs-sched-ext-document-cgroup-cpu-knobs-scheduler-dependent-v4.html) `fix/none/merged_tip` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
 - [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
 - [sched-20260824-003](/lkm/2026/08/24/sched-20260824-003-docs-sched_ext-cgroup-knobs.html) `discussion/none/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
 - [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence

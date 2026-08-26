@@ -2,11 +2,9 @@
 layout: default
 tag: "sched/core"
 title: "标签: sched/core"
-article_count: 58
+article_count: 56
 ---
 
-- [sched-20260825-007](/lkm/2026/08/25/sched-20260825-007-sched-replace-nr-pinned-percpu.html) `feature/low/under_review` — sched: Replace nr_pinned offset hack with a dedicated per-CPU counter
-- [sched-20260825-008](/lkm/2026/08/25/sched-20260825-008-sched-steal-governor-v11.html) `feature/high/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260824-007](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler crashes on long-running arm64 servers
 - [sched-20260824-008](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `feature/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
