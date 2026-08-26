@@ -1,38 +1,64 @@
+# [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
+
+## TL;DR
+
+（基于邮件缓存自动生成）
+
+## 背景与问题
+
+（待补充：基于邮件正文分析）
+
+## 技术方案
+
+（待补充：基于邮件正文分析）
+
+## 版本演进与当前进展
+
+（待补充）
+
+## Maintainer 意见与讨论焦点
+
+（待补充）
+
+## 合入评估
+
+（待补充）
+
+## 效果评估
+
+暂无效果数据。
+
+## 我可以参与的点
+
+（待补充）
+
+## 参考链接
+
+- lore thread: https://lore.kernel.org/r/20260825115530.2471479-1-chenjinghuang2@huawei.com
+
 ---
-title: "[Question] 用户态限流 + 「Combine detach into dequeue」导致 guest 启动挂起"
+id: sched-20260825-009
 date: 2026-08-25
-tags: [sched/fair, crash, regression]
-series: "combine detach dequeue guest boot hang"
+subsystem: sched
 type: bug
-severity: high
 status: under_review
-lore: ""
+severity: high
+thread_root_msgid: "<20260825115530.2471479-1-chenjinghuang2@huawei.com>"
+lore_url: "https://lore.kernel.org/r/20260825115530.2471479-1-chenjinghuang2@huawei.com"
+authors: []
+maintainers_involved: []
+current_version: v1
+patch_series: []
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: []
+  next_action: ""
+contribution_opportunities: []
+generated_at: "2026-08-26T09:45:00"
+source_email_count: 3
+related_articles: []
+tags: ["sched/fair", "bug", "virtualization"]
 ---
-
-## 概述
-
-报告者（UID 57212 / 57225 / 57402）反馈：在开启用户态限流（userspace throttling，
-如 cgroup cpu 限流）的场景下，配合主线提交 `sched/fair: Combine detach into dequeue
-when migrating task`，会导致 **guest（虚拟机）启动挂起（boot hang）**。
-
-怀疑点：该提交改变了迁移任务时的 detach/dequeue 合并行为，在受限流影响的 cgroup
-下，detach 与 dequeue 合并后的时序/锁顺序变化，使 guest 引导路径上的某个任务迁移
-陷入等待，最终表现为启动卡死。
-
-## 触发条件
-
-- 配置：对 guest 相关 cgroup 施加 userspace/CPU 限流（throttling）。
-- 内核：含 `Combine detach into dequeue when migrating task` 的较新主线。
-- 现象：guest 启动过程中挂起，无继续进展。
-
-## 状态与讨论
-
-- 当前状态：**under_review / 问题报告阶段**（以 `[Question]` 形式提出，等待维护者
-  确认是否与目标提交存在因果）。
-- 严重度：**high**（guest 无法启动，影响可用性）。
-- 需确认：是否为该提交的回归、是否主线可稳定复现、是否有最小复现脚本。
-
-## 关联
-
-- 011 sched/fair：update_curr_eevdf 用于剩余 root cfs_rq 调用方（EEVDF 清理）
-- 007 sched：nr_pinned per-CPU 计数器（迁移相关）

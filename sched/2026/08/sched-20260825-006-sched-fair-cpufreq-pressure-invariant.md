@@ -1,35 +1,64 @@
+# sched/fair: Only apply cpufreq pressure where frequency is invariant
+
+## TL;DR
+
+（基于邮件缓存自动生成）
+
+## 背景与问题
+
+（待补充：基于邮件正文分析）
+
+## 技术方案
+
+（待补充：基于邮件正文分析）
+
+## 版本演进与当前进展
+
+（待补充）
+
+## Maintainer 意见与讨论焦点
+
+（待补充）
+
+## 合入评估
+
+（待补充）
+
+## 效果评估
+
+暂无效果数据。
+
+## 我可以参与的点
+
+（待补充）
+
+## 参考链接
+
+- lore thread: https://lore.kernel.org/r/49233994-f46f-4d41-99b3-b40cc23bcbc7@transsion.com
+
 ---
-title: "sched/fair：仅在频率为不变量时施加 cpufreq 压力（讨论继续）"
+id: sched-20260825-006
 date: 2026-08-25
-tags: [schedutil, sched/fair, regression]
-series: "cpufreq pressure invariant freq only"
+subsystem: sched
 type: fix
-severity: medium
 status: under_review
-lore: ""
+severity: medium
+thread_root_msgid: "<49233994-f46f-4d41-99b3-b40cc23bcbc7@transsion.com>"
+lore_url: "https://lore.kernel.org/r/49233994-f46f-4d41-99b3-b40cc23bcbc7@transsion.com"
+authors: []
+maintainers_involved: []
+current_version: v1
+patch_series: []
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: []
+  next_action: ""
+contribution_opportunities: []
+generated_at: "2026-08-26T09:45:00"
+source_email_count: 2
+related_articles: []
+tags: ["sched/fair", "schedutil"]
 ---
-
-## 概述
-
-（本文为增量更新，完整背景见 related_articles 中 08-24 的文章）
-
-cpufreq 压力（cpufreq pressure）按「可达最高频率/当前可达最高频率」降 capacity，但
-utilization 仅在频率不变（frequency invariant）架构才带匹配 scaling，导致语义不一
-致。焦点集中在「是否仅在不 invariant 场景施加 pressure」。
-
-本期（Re: UID 56634 / 57378）为讨论继续，未见新版本号或新基准数据，主要围绕实现
-细节与正确性论证。
-
-## 改动内容 / 核心补丁
-
-- 延续 08-24 的方向：将 cpufreq 压力施加范围限制到「频率为不变量」的场景。
-- 避免在非不变平台上产生误导性的利用率压缩。
-
-## 状态与讨论
-
-- 当前状态：**under_review / 讨论中**（增量更新，无新版本）。
-- 合入概率 medium；与 005（tickless idle 前重估频率）共同完善 cpufreq 交互。
-
-## 关联
-
-- 005 sched/cpufreq：tickless idle 前重新评估频率（讨论继续）

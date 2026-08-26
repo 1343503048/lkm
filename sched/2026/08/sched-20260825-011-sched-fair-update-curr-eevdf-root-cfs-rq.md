@@ -1,34 +1,64 @@
+# sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
+
+## TL;DR
+
+（基于邮件缓存自动生成）
+
+## 背景与问题
+
+（待补充：基于邮件正文分析）
+
+## 技术方案
+
+（待补充：基于邮件正文分析）
+
+## 版本演进与当前进展
+
+（待补充）
+
+## Maintainer 意见与讨论焦点
+
+（待补充）
+
+## 合入评估
+
+（待补充）
+
+## 效果评估
+
+暂无效果数据。
+
+## 我可以参与的点
+
+（待补充）
+
+## 参考链接
+
+- lore thread: https://lore.kernel.org/r/CAKfTPtCg78iZ=LYxVVtGm3QMqtHSX9jeqKhkU8QT1S_5aUYjgQ@mail.gmail.com
+
 ---
-title: "sched/fair：对剩余 root cfs_rq 调用方改用 update_curr_eevdf()"
+id: sched-20260825-011
 date: 2026-08-25
-tags: [sched/fair, eevdf]
-series: "update_curr_eevdf root cfs_rq callers"
+subsystem: sched
 type: fix
+status: under_review
 severity: low
-status: discussion
-lore: ""
+thread_root_msgid: "<CAKfTPtCg78iZ=LYxVVtGm3QMqtHSX9jeqKhkU8QT1S_5aUYjgQ@mail.gmail.com>"
+lore_url: "https://lore.kernel.org/r/CAKfTPtCg78iZ=LYxVVtGm3QMqtHSX9jeqKhkU8QT1S_5aUYjgQ@mail.gmail.com"
+authors: []
+maintainers_involved: []
+current_version: v1
+patch_series: []
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues: []
+  next_action: ""
+contribution_opportunities: []
+generated_at: "2026-08-26T09:45:00"
+source_email_count: 1
+related_articles: []
+tags: ["sched/fair", "eevdf"]
 ---
-
-## 概述
-
-EEVDF 路径中，仍有部分直接操作 `root cfs_rq` 的调用点未统一走 `update_curr_eevdf()`
-的当前语义。本期讨论（Re: UID 55669 线程，主题为 `sched/fair: Use update_curr_eevdf()
-for the remaining root cfs_rq callers`）提议把这些剩余调用方统一改为使用
-`update_curr_eevdf()`，以收敛 EEVDF 的当前运行实体更新逻辑。
-
-## 改动内容 / 核心补丁
-
-- 识别并替换剩余的 root cfs_rq 调用点，使其与 `update_curr_eevdf()` 保持一致。
-- 属于 EEVDF 内部一致性的持续清理（与 08-24 的「复用 ENQUEUE_DELAYED / 避免重算
-  curr」同源方向）。
-
-## 状态与讨论
-
-- 当前状态：**discussion / under_review**（以 Re: 形式推进，未见独立 v1 封面）。
-- 合入概率 medium；与 009（guest boot hang 涉及 detach/dequeue）无直接关联，但同属
-  sched/fair 当期活跃话题。
-
-## 关联
-
-- 009 [Question] Combine detach into dequeue 导致 guest 启动挂起
-- （前日）011 sched/fair：复用 ENQUEUE_DELAYED 避免重算 curr

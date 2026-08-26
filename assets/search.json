@@ -4822,5 +4822,172 @@
     ],
     "url": "/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html",
     "tldr": "两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。"
+  },
+  {
+    "title": "sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args",
+    "id": "sched-20260825-001",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-001-sched_ext-cgroup-init-sched-idle-v3.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable",
+    "id": "sched-20260825-002",
+    "date": "2026-08-25",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-002-sched_ext-cgroup-set-sleepable.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched_ext: Serialize cgroup knob updates",
+    "id": "sched-20260825-003",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-003-sched_ext-serialize-cgroup-knob-updates.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched_ext: Fix missing @slice and @vtime descriptions in finish_dispatch() kernel-doc",
+    "id": "sched-20260825-004",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "documentation"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-004-sched_ext-fix-kernel-doc-finish-dispatch.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched/cpufreq: Reevaluate frequency before tickless idle",
+    "id": "sched-20260825-005",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched/cpufreq",
+      "nohz"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-005-sched-cpufreq-reevaluate-tickless-idle.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "id": "sched-20260825-006",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched/fair",
+      "schedutil"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-006-sched-fair-cpufreq-pressure-invariant.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched: Replace nr_pinned offset hack with a dedicated per-CPU counter",
+    "id": "sched-20260825-007",
+    "date": "2026-08-25",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched/core",
+      "migration"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-007-sched-replace-nr-pinned-percpu.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
+    "id": "sched-20260825-008",
+    "date": "2026-08-25",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched/core",
+      "virtualization",
+      "steal_time"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-008-sched-steal-governor-v11.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "[Question] Userspace throttling + \"sched/fair: Combine detach into dequeue when migrating task\" causes guest boot hang",
+    "id": "sched-20260825-009",
+    "date": "2026-08-25",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched/fair",
+      "bug",
+      "virtualization"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-009-question-combine-detach-dequeue-guest-hang.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched/debug: Introduce per-CPU debugfs files",
+    "id": "sched-20260825-010",
+    "date": "2026-08-25",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched/debug",
+      "debugfs"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-010-sched-debug-percpu-debugfs-v5.html",
+    "tldr": "（基于邮件缓存自动生成）"
+  },
+  {
+    "title": "sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers",
+    "id": "sched-20260825-011",
+    "date": "2026-08-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched/fair",
+      "eevdf"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/08/25/sched-20260825-011-sched-fair-update-curr-eevdf-root-cfs-rq.html",
+    "tldr": "（基于邮件缓存自动生成）"
   }
 ]

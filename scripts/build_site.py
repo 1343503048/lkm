@@ -63,8 +63,11 @@ def process_article(src_path: Path, dest_dir: Path):
     if fm is None:
         return None  # 非标准文章，跳过
 
-    # 标题：优先用正文第一行 # 标题，否则用文件名 slug
-    title = extract_title(body) or src_path.stem
+    # 标题：优先用正文第一行 # 标题，否则用文件名 slug（打警告：标题应为邮件真实 subject）
+    title = extract_title(body)
+    if title is None:
+        print(f"[warn] 缺少 `# 标题` 行，回退为文件名：{src_path.name}", file=sys.stderr)
+        title = src_path.stem
     date = str(fm.get('date', ''))
     if not date:
         # 从文件名提取日期
