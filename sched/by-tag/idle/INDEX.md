@@ -1,7 +1,8 @@
 # tag: idle
 
-共 25 篇
+共 26 篇
 
+- [sched-20260826-007](../../2026/08/sched-20260826-007-cpuidle-psci-fix-support-probe-deferral-dropping-faux-device.md) `fix/medium/under_review` — Ulf Hansson (Qualcomm) 提交补丁修复 cpuidle-psci 驱动的 probe deferral 支持问题。当前实现使用 faux device，但在 probe deferral 场景下无法正确处理。方案改为直接丢弃 faux device 并在 DT 匹配时处理 deferral。Abel Vesa (Qualcomm) 已给出 Reviewed-by。与 PSCI 
 - [sched-20260825-012](../../2026/08/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.md) `discussion/medium/under_review` — Maulik Shah（Qualcomm）的 v2 讨论：当 CPU 已有 IPI 中断挂起时，应拒绝进入 idle 状态，避免延迟响应。提供了详细的 LeMans SoC（8 CPU）上的 trace 数据，展示 menu governor 在 `get_typical_interval()` 循环中收到 IPI 但仍预测深度 idle 的时序。
 - [sched-20260824-002](../../2026/08/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md) `fix/low/under_review` — `sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。
 - [sched-20260818-001](../../2026/08/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.md) `fix/low/under_review` — Shubhang Kaushik 的 `sched/core` 小修 v3（本日 gentle ping）：`update_rq_avg_idle()` 在 `rq->idle_stamp == 0` 时跳过 avg_idle 更新，避免任务经 `sched_balance_newidle()`/`ttwu_pending` 进入空闲却无有效 idle_stamp 时写出错误值。已有 `Revie

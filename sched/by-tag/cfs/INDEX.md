@@ -1,7 +1,13 @@
 # tag: cfs
 
-共 44 篇
+共 50 篇
 
+- [sched-20260826-010](../../2026/08/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.md) `fix/medium/under_review` — Tim Chen (Intel) 提交补丁修复 cache-aware 负载均衡在非对称 CPU 容量系统（如 big.LITTLE）上创建 misfit 任务的问题。当 cache-aware 迁移将任务拉向目标 LLC 时，目标 LLC 中的 CPU 可能容量不足，导致任务从 fit 变为 misfit——用缓存局部性收益换取了更大的容量损失。补丁在 `can_migrate_llc_task
+- [sched-20260826-009](../../2026/08/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik (Ampere) 提交补丁修复 same-task repick 后 hrtick 未重新设置的问题。当 `pick_next_task_fair()` 选择同一任务时（例如经过 `put_prev_task` + `pick_next_task` 循环），已有的 hrtick 定时器可能未被重新设置，导致该任务的调度时间片不受 hrtick 约束。Zhan Xu
+- [sched-20260826-008](../../2026/08/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.md) `fix/medium/under_review` — Zhe Liu (Kylinos) 提交了修复 CFS bandwidth 中 burst 与 quota 不兼容的问题。当 burst 值大于 quota 时，当前验证逻辑会在写入顺序不同时产生 `EINVAL`。Michal Koutný 建议在执行时 clamp 而非在验证时拒绝。作者同意并计划发 v2：保留配置的 burst 值，在 `__refill_cfs_bandwidth_runt
+- [sched-20260826-004](../../2026/08/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.md) `discussion/medium/under_review` — chenjinghuang (Huawei) 报告了一个问题：在启用 userspace throttling（`cpu.max` 配置）的环境下，`sched/fair: Combine detach into dequeue when migrating task` 补丁导致 guest 启动挂起。Aaron Lu (ByteDance) 参与了讨论。这是一个调试/问题报告，非补丁系列。
+- [sched-20260826-003](../../2026/08/sched-20260826-003-sched-document-wf-sync-wakeup-placement-semantics.md) `discussion/under_review` — Shubhang Kaushik (Ampere) 提交 RFC 文档补丁，为 `WF_SYNC` 在 CFS wakeup 路径中的放置语义补充文档。新增 `Documentation/scheduler/sched-wake-affinity.rst`，明确记录 `WF_SYNC` 不绕过 `wake_wide()`、不使 `wake_affine()` 的目标成为最终决定、不要求 wakee
+- [sched-20260826-002](../../2026/08/sched-20260826-002-sched-fair-reduce-repeated-work-in-enqueue-path.md) `fix/under_review` — Kayra Cizmeci 提交了 v2 版本的 2 篇清理补丁，减少 `enqueue_task_fair()` 中的重复计算：将 `ENQUEUE_DELAYED` 检查集中为一个 bool，并将 `curr == se` 的判断结果传递给 `place_entity()` 和 `requeue_delayed_entity()` 避免重复计算。K Prateek Nayak 对变量命名提出了
 - [sched-20260825-011](../../2026/08/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.md) `fix/low/under_review` — 单 patch 修复，将 `sched/fair` 中剩余的 root cfs_rq 调用者统一使用 `update_curr_eevdf()` 而非旧接口。已获 Vincent Guittot Reviewed-by。
 - [sched-20260825-010](../../2026/08/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.md) `discussion/under_review` — Hongyan Xia 的 patch 讨论：当 CPU 的频率不变性（frequency invariance）不成立时，不应施加 cpufreq pressure。讨论中澄清了问题本质可能不是频率不变性问题，而是 boost 频率与 `policy->max`/`cpuinfo.max_freq` 的定义差异导致误判。
 - [sched-20260824-009](../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/high/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在

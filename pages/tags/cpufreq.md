@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 14
+article_count: 16
 ---
 
+- [sched-20260826-005](/lkm/2026/08/26/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.html) `fix/medium/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
+- [sched-20260826-006](/lkm/2026/08/26/sched-20260826-006-cpufreq-loongson3-driver-improvements.html) `fix/low/under_review` — cpufreq: loongson3: driver improvements
 - [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
 - [sched-20260825-010](/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html) `discussion/none/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260821-004](/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant

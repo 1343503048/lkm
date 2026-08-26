@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 44
+article_count: 50
 ---
 
+- [sched-20260826-002](/lkm/2026/08/26/sched-20260826-002-sched-fair-reduce-repeated-work-in-enqueue-path.html) `fix/none/under_review` — sched/fair: reduce repeated work in enqueue path
+- [sched-20260826-003](/lkm/2026/08/26/sched-20260826-003-sched-document-wf-sync-wakeup-placement-semantics.html) `discussion/none/under_review` — sched: Document WF_SYNC wakeup placement semantics
+- [sched-20260826-004](/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html) `discussion/medium/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
+- [sched-20260826-008](/lkm/2026/08/26/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.html) `fix/medium/under_review` — sched/fair: Reset incompatible burst on quota change
+- [sched-20260826-009](/lkm/2026/08/26/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched/fair: Restart hrtick after same-task repicks
+- [sched-20260826-010](/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260825-010](/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html) `discussion/none/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260825-011](/lkm/2026/08/25/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
 - [sched-20260824-006](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/critical/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)

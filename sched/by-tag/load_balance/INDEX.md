@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 44 篇
+共 45 篇
 
+- [sched-20260826-010](../../2026/08/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.md) `fix/medium/under_review` — Tim Chen (Intel) 提交补丁修复 cache-aware 负载均衡在非对称 CPU 容量系统（如 big.LITTLE）上创建 misfit 任务的问题。当 cache-aware 迁移将任务拉向目标 LLC 时，目标 LLC 中的 CPU 可能容量不足，导致任务从 fit 变为 misfit——用缓存局部性收益换取了更大的容量损失。补丁在 `can_migrate_llc_task
 - [sched-20260825-001](../../2026/08/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.md) `feature/under_review` — steal_governor 系列推进到 **v11**（12 个 patch），引入 "preferred CPU" 机制：在虚拟化环境中，当某些 vCPU 的 steal time 显著高于其他 vCPU 时，调度器优先在低 steal time 的 CPU 上运行任务，减少因 vCPU 被抢占导致的锁持有者抢占、TLB/cache 失效等代价。作者明确表示系列已收敛，请求 Peter/Ing
 - [sched-20260824-010](../../2026/08/sched-20260824-010-sched-cache-migrate-llc-active-lb.md) `fix/low/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。作者发出 gentle ping，指出 v3 已获得 Tim Chen 和 Chen Yu 的 Reviewed-by，询问 Peter Zijlstra 是否可以合入。
 - [sched-20260824-009](../../2026/08/sched-20260824-009-sched-flatten-the-pick.md) `discussion/high/under_review` — 本文为增量更新，完整背景见 related_articles 中的文章。社区成员在类似硬件上成功复现了 0day 报告的性能回退，定位到 `wake_affine_weight()` 在 concur 模式下因 `task_h_load()` 返回值增大而改变了负载均衡决策，导致 L2 miss 率上升和吞吐量下降。Peter Zijlstra 表示 `task_h_load()` 行为异常，正在

@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 25
+article_count: 26
 ---
 
+- [sched-20260826-007](/lkm/2026/08/26/sched-20260826-007-cpuidle-psci-fix-support-probe-deferral-dropping-faux-device.html) `fix/medium/under_review` — cpuidle: psci: Fix support for probe deferral by dropping the faux device
 - [sched-20260825-012](/lkm/2026/08/25/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.html) `discussion/medium/under_review` — cpuidle: Deny idle entry when CPU already have IPI interrupt pending
 - [sched-20260824-002](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/low/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
 - [sched-20260818-001](/lkm/2026/08/18/sched-20260818-001-sched-core-skip-rq-avg-idle-update-without-valid-idle-stamp.html) `fix/low/under_review` — sched/core: Skip rq->avg_idle update without a valid idle_stamp

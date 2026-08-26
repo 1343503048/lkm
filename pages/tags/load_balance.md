@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 43
+article_count: 44
 ---
 
+- [sched-20260826-010](/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance

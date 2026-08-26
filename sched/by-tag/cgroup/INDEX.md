@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 34 篇
+共 36 篇
 
+- [sched-20260826-008](../../2026/08/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.md) `fix/medium/under_review` — Zhe Liu (Kylinos) 提交了修复 CFS bandwidth 中 burst 与 quota 不兼容的问题。当 burst 值大于 quota 时，当前验证逻辑会在写入顺序不同时产生 `EINVAL`。Michal Koutný 建议在执行时 clamp 而非在验证时拒绝。作者同意并计划发 v2：保留配置的 burst 值，在 `__refill_cfs_bandwidth_runt
+- [sched-20260826-004](../../2026/08/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.md) `discussion/medium/under_review` — chenjinghuang (Huawei) 报告了一个问题：在启用 userspace throttling（`cpu.max` 配置）的环境下，`sched/fair: Combine detach into dequeue when migrating task` 补丁导致 guest 启动挂起。Aaron Lu (ByteDance) 参与了讨论。这是一个调试/问题报告，非补丁系列。
 - [sched-20260825-007](../../2026/08/sched-20260825-007-docs-sched-ext-document-cgroup-cpu-knobs-scheduler-dependent-v4.md) `fix/merged_tip` — sched_ext cgroup CPU 接口文档 patch 推进到 v4，Tejun Heo 已将其 apply 到 `sched_ext/for-7.3-fixes` 分支。该文档澄清 sched_ext 下 cgroup CPU 接口（`cpu.weight`、`cpu.idle` 等）的行为取决于 BPF 调度器的实现，而非核心调度器的固定语义。
 - [sched-20260825-005](../../2026/08/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.md) `fix/medium/under_review` — Tao Cui 的 v3 修复了 sched_ext cgroup 初始化时不传递 `cpu.idle` 状态的缺陷：已在调度器加载前配置为 idle 的 cgroup，BPF 调度器在 `ops.cgroup_init()` 中看不到其 idle 状态。v3 按 Tejun Heo 建议将新字段命名为 `sched_idle`，并获 Andrea Righi Reviewed-by。2-patc
 - [sched-20260825-004](../../2026/08/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.md) `feature/under_review` — Tao Cui 提议将 `ops.cgroup_set_weight()` 和 `ops.cgroup_set_idle()` 加入 sched_ext 的 sleepable 回调白名单，使 BPF 调度器可以在这些回调中执行可睡眠操作（如动态分配 DSQ）。Andrea Righi 认可方向但指出需先解决并发竞态（已发出独立的 serialize patch），建议在此修复之上再合入本 pat

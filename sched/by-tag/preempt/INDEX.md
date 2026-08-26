@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 22 篇
+共 23 篇
 
+- [sched-20260826-001](../../2026/08/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.md) `feature/rfc` — K Prateek Nayak (AMD) 提交了一套 16 篇的 RFC，提出 proxy exec 中 sleeping-owner 处理的替代方案。核心思路是将 John Stultz 的大补丁拆分为更小的模块，引入 `p->is_linked` 状态 + `__task_rq_lock()` 方案来减少锁弹跳，并为不需要 chain-wakeup 的任务提供无额外锁的快路径。Andrea 
 - [sched-20260823-004](../../2026/08/sched-20260823-004.md) `fix/medium/under_review` — Dongli Zhang（Oracle）RFC：远程 CPU 更新 rq 时可能在 owner vCPU 仍被 host 抢占期间推进 rq->clock，导致 steal 间隔被错误计入。修复为抢占期间把 delta 累积到 `deferred_clock_task`，待 vCPU 重入时一并折回 irq/steal 记账。RFC 阶段，合入概率 medium。
 - [sched-20260820-007](../../2026/08/sched-20260820-007.md) `fix/low/under_review` — `paravirt_steal` 静态键迁移到 `static_branch_*` 的 RESEND 在 08-20 收到 Reviewed-by。这是 08-19 003 系列（调度子系统弃用 raw static_key API）的延续，paravirt 部分此前已获 Juergen Gross Acked-by。
 - [sched-20260819-003](../../2026/08/sched-20260819-003-sched-migrate-static-key-api-resend.md) `fix/low/under_review` — Hongyan Xia 把调度子系统里残留的 deprecated raw `static_key` API 统一迁移到新的 `static_branch_*` API（含 `sched_feat` 数组用 union 包装 true/false 两种类型），无功能变化。RESEND 已拆成独立补丁、paravirt 部分拿到 Ack。纯清理，合入概率高。

@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 34
+article_count: 36
 ---
 
+- [sched-20260826-004](/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html) `discussion/medium/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
+- [sched-20260826-008](/lkm/2026/08/26/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.html) `fix/medium/under_review` — sched/fair: Reset incompatible burst on quota change
 - [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates
 - [sched-20260825-004](/lkm/2026/08/25/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.html) `feature/none/under_review` — sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable
 - [sched-20260825-005](/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html) `fix/medium/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args

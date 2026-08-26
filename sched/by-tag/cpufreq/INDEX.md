@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 14 篇
+共 16 篇
 
+- [sched-20260826-006](../../2026/08/sched-20260826-006-cpufreq-loongson3-driver-improvements.md) `fix/low/under_review` — Huacai Chen 提交了 5 篇 Loongson3 cpufreq 驱动改进补丁：添加 `MACH_LOONGSON64` 依赖、调整 SMC 参数宽度、将 per-package mutex 替换为 per-node、使用全局物理 CPU ID 进行频率操作、将 IOCSR 读写替换为 MMIO。Zhongqiu Han (Qualcomm) 给出了详细 review。所有补丁标记了 `
+- [sched-20260826-005](../../2026/08/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.md) `fix/medium/under_review` — Sumit Gupta 提交了 v4 版本的 4 篇补丁，解决 CPPC cpufreq 驱动在 CPU hotplug 和驱动卸载时丢失 OSPM 设置的寄存器值（EPP、Autonomous Activity Window、Autonomous Selection）的问题。方案添加 `online()/offline()` 回调保持 policy 存活，并引入表驱动的 save/restore
 - [sched-20260825-010](../../2026/08/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.md) `discussion/under_review` — Hongyan Xia 的 patch 讨论：当 CPU 的频率不变性（frequency invariance）不成立时，不应施加 cpufreq pressure。讨论中澄清了问题本质可能不是频率不变性问题，而是 boost 频率与 `policy->max`/`cpuinfo.max_freq` 的定义差异导致误判。
 - [sched-20260825-009](../../2026/08/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.md) `discussion/under_review` — 关于 schedutil 在 CPU 进入 tickless idle 前是否应该最后一次重新评估频率的讨论。Christian Loehle 正在开发一个基于 irq_work 的方案来处理 `sugov_hold_freq()` 场景，Hongyan Xia 表示 LGTM 但指出 Sashiko 报告的并发问题需要先解决。核心争议：hold_freq 和 blocked utilizatio
 - [sched-20260821-004](../../2026/08/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。

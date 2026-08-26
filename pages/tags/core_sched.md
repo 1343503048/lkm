@@ -2,9 +2,10 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 16
+article_count: 17
 ---
 
+- [sched-20260826-001](/lkm/2026/08/26/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched: Flatten the pick
 - [sched-20260821-005](/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html) `discussion/none/under_review` — sched: Remove sched_class::balance()
 - [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched: Remove sched_class::balance()
