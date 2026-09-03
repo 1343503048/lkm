@@ -1,20 +1,5 @@
 # tag: cpufreq
 
-共 16 篇
+共 1 篇
 
-- [sched-20260826-006](../../2026/08/sched-20260826-006-cpufreq-loongson3-driver-improvements.md) `fix/low/under_review` — Huacai Chen 提交了 5 篇 Loongson3 cpufreq 驱动改进补丁：添加 `MACH_LOONGSON64` 依赖、调整 SMC 参数宽度、将 per-package mutex 替换为 per-node、使用全局物理 CPU ID 进行频率操作、将 IOCSR 读写替换为 MMIO。Zhongqiu Han (Qualcomm) 给出了详细 review。所有补丁标记了 `
-- [sched-20260826-005](../../2026/08/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.md) `fix/medium/under_review` — Sumit Gupta 提交了 v4 版本的 4 篇补丁，解决 CPPC cpufreq 驱动在 CPU hotplug 和驱动卸载时丢失 OSPM 设置的寄存器值（EPP、Autonomous Activity Window、Autonomous Selection）的问题。方案添加 `online()/offline()` 回调保持 policy 存活，并引入表驱动的 save/restore
-- [sched-20260825-010](../../2026/08/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.md) `discussion/under_review` — Hongyan Xia 的 patch 讨论：当 CPU 的频率不变性（frequency invariance）不成立时，不应施加 cpufreq pressure。讨论中澄清了问题本质可能不是频率不变性问题，而是 boost 频率与 `policy->max`/`cpuinfo.max_freq` 的定义差异导致误判。
-- [sched-20260825-009](../../2026/08/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.md) `discussion/under_review` — 关于 schedutil 在 CPU 进入 tickless idle 前是否应该最后一次重新评估频率的讨论。Christian Loehle 正在开发一个基于 irq_work 的方案来处理 `sugov_hold_freq()` 场景，Hongyan Xia 表示 LGTM 但指出 Sashiko 报告的并发问题需要先解决。核心争议：hold_freq 和 blocked utilizatio
-- [sched-20260821-004](../../2026/08/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — cpufreq pressure 在非频率不变架构上会错误地降低 CPU capacity，导致利用率计算失衡。Wu Jianyong 的修复仅在 `arch_scale_freq_invariant()` 为真时应用 pressure，但 Vincent Guittot 质疑修复的必要性。
-- [sched-20260816-004](../../2026/08/sched-20260816-004-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/medium/merged_tip` — Hui Su 的 v3（延续 08-07 系列 006）修复 `schedutil` 在 32 位平台的频率限制溢出：`rate_limit_us`（unsigned int）乘 `NSEC_PER_USEC`(1000L) 在 32 位下以 32 位无符号算术进行，写大值（如 4294968）会让 `freq_update_delay_ns` 从 4294968000ns 溢出为 704ns，使
-- [sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md](../../2026/08/sched-20260808-004-cpufreq-cppc-ospm-nominal-perf-v7.md) `in-review`
-- [sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md](../../2026/08/sched-20260807-005-cpufreq-cppc-highest-perf-update-limits.md) `in-review`
-- [sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md](../../2026/08/sched-20260807-004-cpufreq-cppc-preserve-registers-hotplug.md) `in-review`
-- [sched-20260807-003-schedutil-boost-dvfs-policy-max.md](../../2026/08/sched-20260807-003-schedutil-boost-dvfs-policy-max.md) `in-review`
-- [sched-20260806-007](../../2026/08/sched-20260806-007-cpufreq-schedutil-fix-rate-limit-overflow-v3.md) `fix/high/under_review`
-- [sched-20260806-006](../../2026/08/sched-20260806-006-sched-cpufreq-schedutil-boost-freq-handling.md) `fix/high/under_review`
-- [sched-20260805-010](../../2026/08/sched-20260805-010-cpufreq-schedutil-fix-rate-limit-overflow.md) `fix/high/under_review`
-- [sched-20260804-021](../../2026/08/sched-20260804-021-cpufreq-cppc-resource-priority-sysfs.md) `feature/under_review` — CPPC v4（Resource Priority）新增 sysfs 接口，允许设置每个 CPU 的 CPPC 资源优先级，与 sched 的 uclamp/latency 偏好呼应，在共享电源域下影响硬件调度决策。v4 整合多轮反馈，合入可能性 medium（sysfs ABI 待确认）。
-- [sched-20260804-020](../../2026/08/sched-20260804-020-cpufreq-intel_pstate-consolidate-hwp-init.md) `cleanup/low/under_review` — Rafael 重构 intel_pstate 的 HWP P-state 初始化：引入 `intel_pstate_get_hwp_pstates()` 统一 HWP 专属初始化，移除冗余的 `intel_pstate_hybrid_hwp_adjust()` 及其 kerneldoc。声明无功能影响，低严重度清理，合入可能性 high。
-- [sched-20260801-009](../../2026/08/sched-20260801-009-cpufreq-intel-pstate-adjust-policy-cur-in-active-mode.md) `fix/low/under_review` — `intel_pstate` 在 performance policy 下把 CPU 钉到固定 pstate 后，却又把 `policy->cur` 覆写成 `policy->min`，导致 nohz_full 隔离 CPU 因为拿不到新的 APERF/MPERF 采样而**永远上报频率下限**。修复很直接：把 `policy->cur` 设为实际钉住的频率。Rafael 与 Srinivas 均
+- [sched-20260903-010](../../2026/09/sched-20260903-010.md) `patch_series/medium/under_review` — cpufreq 压力（`cpu.capacity` 因频率限制而下降）用于让调度器感知降频带来的算力损失。本系列延续 09-02 的 cpufreq pressure 讨论：仅在频率「不变（invariant）」的 CPU 上施加 cpufreq 压力，避免在频率本身随负载变化的平台上重复/错误地折算算力，导致任务放置与频率选择相互放大。
