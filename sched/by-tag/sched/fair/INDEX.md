@@ -1,7 +1,12 @@
 # tag: sched/fair
 
-共 9 篇
+共 14 篇
 
+- [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
+- [sched-20260904-006](../../2026/09/sched-20260904-006.md) `patch_series/medium/merged` — 提交 `f0d243a96f26` "sched/fair: Avoid creating misfits during cache-aware balancing" 已进入 `tip/sched/urgent`，并通过 0day 58 个 config 构建（BUILD SUCCESS，elapsed ~2817m）。该修复针对 cache-aware 负载均衡中引入 misfit 任务的问题（与 `migrate_llc_task` / `sched/cache` 辅助框架相关），避免不必要的跨域迁移抖动。
+- [sched-20260904-004](../../2026/09/sched-20260904-004.md) `patch_series/medium/under_review` — CFS CPU 带宽的 quota 与 burst 控制当前使内核态写入顺序变得重要：在 quota 无限时配置 burst，会阻止后续有限 quota 安装；先增 burst 再增 quota（burst-first）会以 EINVAL 失败。本系列让配置的 burst 值与当前 quota 解耦，在 CFS 补充运行时间时再施加 quota 相对钳制，并加 selftest + 文档。
+- [sched-20260904-002](../../2026/09/sched-20260904-002.md) `patch_series/medium/under_review` — NVIDIA Olympus 以两个对称 PE 实现 SMT：仅一个 PE 活跃时核为单线程模式、可用全部资源；两个 PE 活跃则共享资源。且 sibling 空闲后从双线程回到单线程模式并非即时。本系列（v2，含封面 79146 + 2/2 "Honor asymmetric SMT priority in idle selection"）让空闲 CPU 选择尊重 `SD_ASYM_PACKING`，优先把任务放到更优 SMT 兄弟，避免短暂激活空闲兄弟造成的持久性能损失。
+- [sched-20260904-001](../../2026/09/sched-20260904-001.md) `patch_series/medium/under_review` — 延续 09-03 系列，本系列把 NUMA 与 cache 的执行上下文 tick 处理从 `task_tick_fair()` 移到 `sched_tick()`，并在 `rq->curr` 为 fair 任务时调用，使代理执行（proxy execution）下这些 hook 能正确基于执行上下文运行，而其余 fair-class tick 记账仍归属调度上下文（`rq->donor`）。
 - [sched-20260903-016](../../2026/09/sched-20260903-016.md) `patch_series/low/rfc` — `WF_SYNC` 是唤醒标志，用于表达「唤醒者即将睡眠、被唤醒者应立即在就近 CPU 运行」的放置意图。scx 调度类对该标志的放置语义此前缺乏明确文档。本系列（RFC）补上 `WF_SYNC` 在 scx 下的唤醒放置语义说明，帮助 BPF 调度器作者正确实现 `select_cpu` / `enqueue`。
 - [sched-20260903-010](../../2026/09/sched-20260903-010.md) `patch_series/medium/under_review` — cpufreq 压力（`cpu.capacity` 因频率限制而下降）用于让调度器感知降频带来的算力损失。本系列延续 09-02 的 cpufreq pressure 讨论：仅在频率「不变（invariant）」的 CPU 上施加 cpufreq 压力，避免在频率本身随负载变化的平台上重复/错误地折算算力，导致任务放置与频率选择相互放大。
 - [sched-20260903-009](../../2026/09/sched-20260903-009.md) `patch_series/medium/under_review` — `SD_ASYM_PACKING` 会对共享 SMT 核的 CPU 排序，但空闲 CPU 选择（wakeup idle selection）并不参考该顺序，任务可落到任意兄弟线程并停留到负载均衡纠正。在「切换活跃兄弟会重新划分核资源」的 SMT 实现上，初始选择会造成巨大且持续的性能损失。

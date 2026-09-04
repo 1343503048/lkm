@@ -1,7 +1,10 @@
 # tag: proxy_execution
 
-共 4 篇
+共 7 篇
 
+- [sched-20260904-007](../../2026/09/sched-20260904-007.md) `patch_series/high/under_review` — 让代理执行（proxy execution）与 sched_ext 兼容的系列推进到 v13。Tejun 从 scx 视角给出 "looks okay ... ready to merge and iterate in tree"，并询问 Peter Zijlstra 的意见，等待其拍板。
+- [sched-20260904-003](../../2026/09/sched-20260904-003.md) `patch_series/medium/under_review` — 代理执行分离调度上下文与执行上下文。提交 `aa4f74dfd42b`（"sched: Fix runtime accounting w/ split exec & sched contexts"）使 per-task/线程组运行时间记账跟随真实执行任务，但 cgroup CPU usage 仍记到 donor。当 donor 与执行任务分属不同 cgroup 时，任务执行时间被算到不同 cgroup。本补丁主张 **cgroup CPU usage 应跟随执行上下文**（`rq->curr`），与 per-task/tg/cgroup user/system 记账一致；调度状态仍关联 donor，但 cgroup CPU usage 记到 `rq->curr`。
+- [sched-20260904-001](../../2026/09/sched-20260904-001.md) `patch_series/medium/under_review` — 延续 09-03 系列，本系列把 NUMA 与 cache 的执行上下文 tick 处理从 `task_tick_fair()` 移到 `sched_tick()`，并在 `rq->curr` 为 fair 任务时调用，使代理执行（proxy execution）下这些 hook 能正确基于执行上下文运行，而其余 fair-class tick 记账仍归属调度上下文（`rq->donor`）。
 - [sched-20260903-008](../../2026/09/sched-20260903-008.md) `patch_series/medium/under_review` — 代理执行分离调度上下文与执行上下文。调度器运行时间记账将 cgroup 时间记到 donor，而 tick 与 vtime 记账在更新 cgroup 字段时却使用执行任务。当 donor 与执行任务分属不同 cgroup 时，会把 donor cgroup 的 `cpu.stat` usage 记给 donor，而 user/system 字段记给执行任务 cgroup，造成统计错乱（donor cgroup 凭空获得 usage 时间，执行 cgroup 获得 system 时间）。
 - [sched-20260903-005](../../2026/09/sched-20260903-005.md) `patch_series/high/under_review` — 代理执行下 `task_tick_rt()` 针对调度上下文 `rq->donor` 调用，而 `rq->curr` 才是真正执行任务。RT watchdog 通过 `task` 参数查 `RLIMIT_RTTIME` 并更新该任务的 `rt.timeout` 与 `posix_cputimers` 状态；但运行时间记账记到 `rq->curr`，`run_posix_cpu_timers()` 检查 `current`。若不传 `rq->curr`，watchdog 状态更新会跟随错误的（donor）上下文，导致 `RLIMIT_RTTIME` 误触发/漏触发与 posix 定时器状态错乱。
 - [sched-20260903-001](../../2026/09/sched-20260903-001.md) `patch_series/medium/under_review` — 代理执行（proxy execution）把调度上下文（`rq->donor`）与执行上下文（`rq->curr`）分离。周期性 tick 中仍有部分记账/扫描以 donor 触发，导致 NUMA 周期扫描、`cache` 任务 tick、以及 workqueue 的 `wq_worker_tick()` 都基于「`sum_exec_runtime` 未被代理执行推进」的 donor 任务，造成 NUMA 扫描错位、cache tick 错配与 kworker 记账丢失。本系列把这几类周期行为改到基于 `rq->curr` 的真实执行上下文。

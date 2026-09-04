@@ -1,7 +1,11 @@
 # tag: sched/core
 
-共 14 篇
+共 18 篇
 
+- [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
+- [sched-20260904-005](../../2026/09/sched-20260904-005.md) `patch_series/low/under_review` — 将 `cpufreq_schedutil`（位于 `kernel/sched/cpufreq_schedutil.c`）从废弃的 `kthread_run(kthread_worker_fn)` 模式改用 `kthread_create_worker()`。新 API 在 worker 启动前设置 `worker->task`，规避旧模式潜在的竞态。
+- [sched-20260904-003](../../2026/09/sched-20260904-003.md) `patch_series/medium/under_review` — 代理执行分离调度上下文与执行上下文。提交 `aa4f74dfd42b`（"sched: Fix runtime accounting w/ split exec & sched contexts"）使 per-task/线程组运行时间记账跟随真实执行任务，但 cgroup CPU usage 仍记到 donor。当 donor 与执行任务分属不同 cgroup 时，任务执行时间被算到不同 cgroup。本补丁主张 **cgroup CPU usage 应跟随执行上下文**（`rq->curr`），与 per-task/tg/cgroup user/system 记账一致；调度状态仍关联 donor，但 cgroup CPU usage 记到 `rq->curr`。
+- [sched-20260904-001](../../2026/09/sched-20260904-001.md) `patch_series/medium/under_review` — 延续 09-03 系列，本系列把 NUMA 与 cache 的执行上下文 tick 处理从 `task_tick_fair()` 移到 `sched_tick()`，并在 `rq->curr` 为 fair 任务时调用，使代理执行（proxy execution）下这些 hook 能正确基于执行上下文运行，而其余 fair-class tick 记账仍归属调度上下文（`rq->donor`）。
 - [sched-20260903-013](../../2026/09/sched-20260903-013.md) `patch_series/medium/under_review` — 在 09-02 已合入的 PREEMPT_DYNAMIC 简化基础上，本系列（v2，0/6）进一步清理与精简 PREEMPT_DYNAMIC 的实现与静态分支选择逻辑，降低维护成本并移除遗留分支。
 - [sched-20260903-008](../../2026/09/sched-20260903-008.md) `patch_series/medium/under_review` — 代理执行分离调度上下文与执行上下文。调度器运行时间记账将 cgroup 时间记到 donor，而 tick 与 vtime 记账在更新 cgroup 字段时却使用执行任务。当 donor 与执行任务分属不同 cgroup 时，会把 donor cgroup 的 `cpu.stat` usage 记给 donor，而 user/system 字段记给执行任务 cgroup，造成统计错乱（donor cgroup 凭空获得 usage 时间，执行 cgroup 获得 system 时间）。
 - [sched-20260903-007](../../2026/09/sched-20260903-007.md) `patch_series/low/under_review` — 原始 static key 没有类型信息，无法防止误配（如在默认 TRUE 的 key 上用 `static_key_false()`），且 `static_key_{true/false}()` 命名易混淆，故已被废弃。此前已转换多数站点，本系列转换调度器内最后一批废弃 static key API，完成后调度器代码零废弃 static key 用法。
