@@ -1,7 +1,10 @@
 # tag: sched/cache
 
-共 9 篇
+共 12 篇
 
+- [sched-20260905-007](../../2026/09/sched-20260905-007.md) `discussion/low/discussion` — 一封反馈邮件（Re: "Cache-aware scheduling does not work well with amd big/little cores"）引用 Tim Chen 与 Klaus Kusche 的对话：两补丁组合「看起来达到了预期效果」，长运行 CPU 密集进程会在快核空闲时迁移到快核，LTO 编译「明显更快完成」。即 cache-aware / 偏好 CPU 调度在 AMD big/little 上总体有效，但仍存在可调优点（主题中的 "does not work well" 指向具体边界情形）。
+- [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
+- [sched-20260905-001](../../2026/09/sched-20260905-001.md) `patch_series/medium/under_review` — 延续前几日的系列，本日 v3 收到多封复审（Re v2 1/2：81773/80952/80942/80406；以及 v3 1/2：80559），讨论集中在 NUMA task tick 从执行上下文驱动、在 fair 任务替 RT/deadline donor 执行时的正确性。
 - [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
 - [sched-20260904-006](../../2026/09/sched-20260904-006.md) `patch_series/medium/merged` — 提交 `f0d243a96f26` "sched/fair: Avoid creating misfits during cache-aware balancing" 已进入 `tip/sched/urgent`，并通过 0day 58 个 config 构建（BUILD SUCCESS，elapsed ~2817m）。该修复针对 cache-aware 负载均衡中引入 misfit 任务的问题（与 `migrate_llc_task` / `sched/cache` 辅助框架相关），避免不必要的跨域迁移抖动。
 - [sched-20260904-001](../../2026/09/sched-20260904-001.md) `patch_series/medium/under_review` — 延续 09-03 系列，本系列把 NUMA 与 cache 的执行上下文 tick 处理从 `task_tick_fair()` 移到 `sched_tick()`，并在 `rq->curr` 为 fair 任务时调用，使代理执行（proxy execution）下这些 hook 能正确基于执行上下文运行，而其余 fair-class tick 记账仍归属调度上下文（`rq->donor`）。

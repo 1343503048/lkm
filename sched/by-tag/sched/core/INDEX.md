@@ -1,7 +1,11 @@
 # tag: sched/core
 
-共 18 篇
+共 22 篇
 
+- [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
+- [sched-20260905-004](../../2026/09/sched-20260905-004.md) `patch_series/low/merged` — 提交 `ef9293b3b797` "sched: dynamic: Fix preemption model strings" 进入 `tip/sched/core`，并通过 0day 74 个 config 构建（BUILD SUCCESS）。该修复修正 PREEMPT_DYNAMIC 下抢占模型字符串的显示/取值问题，属 PREEMPT_DYNAMIC 简化工作的后续收尾。
+- [sched-20260905-003](../../2026/09/sched-20260905-003.md) `patch_series/medium/under_review` — `select_fallback_rq()` 先查本地节点，再按任务亲和性掩码的数值顺序扫描。在超过两个 NUMA 节点的系统上，可能选中比必要更远（跨更多 hop）的 CPU。本补丁改为遍历调度器的 NUMA hop 掩码，每次只考察新到达的 CPU，在整段 fallback 搜索中保持 locality；并在亲和性放宽后保持同样顺序。
+- [sched-20260905-001](../../2026/09/sched-20260905-001.md) `patch_series/medium/under_review` — 延续前几日的系列，本日 v3 收到多封复审（Re v2 1/2：81773/80952/80942/80406；以及 v3 1/2：80559），讨论集中在 NUMA task tick 从执行上下文驱动、在 fair 任务替 RT/deadline donor 执行时的正确性。
 - [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
 - [sched-20260904-005](../../2026/09/sched-20260904-005.md) `patch_series/low/under_review` — 将 `cpufreq_schedutil`（位于 `kernel/sched/cpufreq_schedutil.c`）从废弃的 `kthread_run(kthread_worker_fn)` 模式改用 `kthread_create_worker()`。新 API 在 worker 启动前设置 `worker->task`，规避旧模式潜在的竞态。
 - [sched-20260904-003](../../2026/09/sched-20260904-003.md) `patch_series/medium/under_review` — 代理执行分离调度上下文与执行上下文。提交 `aa4f74dfd42b`（"sched: Fix runtime accounting w/ split exec & sched contexts"）使 per-task/线程组运行时间记账跟随真实执行任务，但 cgroup CPU usage 仍记到 donor。当 donor 与执行任务分属不同 cgroup 时，任务执行时间被算到不同 cgroup。本补丁主张 **cgroup CPU usage 应跟随执行上下文**（`rq->curr`），与 per-task/tg/cgroup user/system 记账一致；调度状态仍关联 donor，但 cgroup CPU usage 记到 `rq->curr`。

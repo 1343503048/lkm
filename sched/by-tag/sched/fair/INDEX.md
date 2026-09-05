@@ -1,7 +1,9 @@
 # tag: sched/fair
 
-共 14 篇
+共 16 篇
 
+- [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
+- [sched-20260905-001](../../2026/09/sched-20260905-001.md) `patch_series/medium/under_review` — 延续前几日的系列，本日 v3 收到多封复审（Re v2 1/2：81773/80952/80942/80406；以及 v3 1/2：80559），讨论集中在 NUMA task tick 从执行上下文驱动、在 fair 任务替 RT/deadline donor 执行时的正确性。
 - [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
 - [sched-20260904-006](../../2026/09/sched-20260904-006.md) `patch_series/medium/merged` — 提交 `f0d243a96f26` "sched/fair: Avoid creating misfits during cache-aware balancing" 已进入 `tip/sched/urgent`，并通过 0day 58 个 config 构建（BUILD SUCCESS，elapsed ~2817m）。该修复针对 cache-aware 负载均衡中引入 misfit 任务的问题（与 `migrate_llc_task` / `sched/cache` 辅助框架相关），避免不必要的跨域迁移抖动。
 - [sched-20260904-004](../../2026/09/sched-20260904-004.md) `patch_series/medium/under_review` — CFS CPU 带宽的 quota 与 burst 控制当前使内核态写入顺序变得重要：在 quota 无限时配置 burst，会阻止后续有限 quota 安装；先增 burst 再增 quota（burst-first）会以 EINVAL 失败。本系列让配置的 burst 值与当前 quota 解耦，在 CFS 补充运行时间时再施加 quota 相对钳制，并加 selftest + 文档。

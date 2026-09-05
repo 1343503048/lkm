@@ -1,7 +1,10 @@
 # tag: topology
 
-共 4 篇
+共 7 篇
 
+- [sched-20260905-007](../../2026/09/sched-20260905-007.md) `discussion/low/discussion` — 一封反馈邮件（Re: "Cache-aware scheduling does not work well with amd big/little cores"）引用 Tim Chen 与 Klaus Kusche 的对话：两补丁组合「看起来达到了预期效果」，长运行 CPU 密集进程会在快核空闲时迁移到快核，LTO 编译「明显更快完成」。即 cache-aware / 偏好 CPU 调度在 AMD big/little 上总体有效，但仍存在可调优点（主题中的 "does not work well" 指向具体边界情形）。
+- [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
+- [sched-20260905-003](../../2026/09/sched-20260905-003.md) `patch_series/medium/under_review` — `select_fallback_rq()` 先查本地节点，再按任务亲和性掩码的数值顺序扫描。在超过两个 NUMA 节点的系统上，可能选中比必要更远（跨更多 hop）的 CPU。本补丁改为遍历调度器的 NUMA hop 掩码，每次只考察新到达的 CPU，在整段 fallback 搜索中保持 locality；并在亲和性放宽后保持同样顺序。
 - [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。
 - [sched-20260904-002](../../2026/09/sched-20260904-002.md) `patch_series/medium/under_review` — NVIDIA Olympus 以两个对称 PE 实现 SMT：仅一个 PE 活跃时核为单线程模式、可用全部资源；两个 PE 活跃则共享资源。且 sibling 空闲后从双线程回到单线程模式并非即时。本系列（v2，含封面 79146 + 2/2 "Honor asymmetric SMT priority in idle selection"）让空闲 CPU 选择尊重 `SD_ASYM_PACKING`，优先把任务放到更优 SMT 兄弟，避免短暂激活空闲兄弟造成的持久性能损失。
 - [sched-20260903-009](../../2026/09/sched-20260903-009.md) `patch_series/medium/under_review` — `SD_ASYM_PACKING` 会对共享 SMT 核的 CPU 排序，但空闲 CPU 选择（wakeup idle selection）并不参考该顺序，任务可落到任意兄弟线程并停留到负载均衡纠正。在「切换活跃兄弟会重新划分核资源」的 SMT 实现上，初始选择会造成巨大且持续的性能损失。
