@@ -1,7 +1,9 @@
 # tag: sched/core
 
-共 22 篇
+共 24 篇
 
+- [sched-20260906-006](../../2026/09/sched-20260906-006.md) `fix/medium/under_review` — Jiayuan Chen 的 bpf v2 修复：在 BPF 迭代上下文（rcu_read_lock 下）调用 `bpf_sock_destroy()` 命中带子连接的 listener 时，`inet_csk_listen_stop()` 内的 `cond_resched()` 会触发 invalid-context BUG。本日 patch 在 BPF 上下文下跳过该 `cond_resched()`。属跨子系统修复，涉及调度原语 `cond_resched()` 的调用语义，纳入本摘要跟踪。
+- [sched-20260906-004](../../2026/09/sched-20260906-004.md) `discussion/none/merged_tip` — Ingo 向 Linus 发出 sched/urgent 修复拉取（顶端 `f0d243a96f26`），含 3 个调度修复：fair 类时间戳 bug、RT/DL push 候选跳过 migrate-disabled 任务、avg_idle 在无 idle_stamp 时跳过更新。属紧急修复，已基本合入主线。
 - [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
 - [sched-20260905-004](../../2026/09/sched-20260905-004.md) `patch_series/low/merged` — 提交 `ef9293b3b797` "sched: dynamic: Fix preemption model strings" 进入 `tip/sched/core`，并通过 0day 74 个 config 构建（BUILD SUCCESS）。该修复修正 PREEMPT_DYNAMIC 下抢占模型字符串的显示/取值问题，属 PREEMPT_DYNAMIC 简化工作的后续收尾。
 - [sched-20260905-003](../../2026/09/sched-20260905-003.md) `patch_series/medium/under_review` — `select_fallback_rq()` 先查本地节点，再按任务亲和性掩码的数值顺序扫描。在超过两个 NUMA 节点的系统上，可能选中比必要更远（跨更多 hop）的 CPU。本补丁改为遍历调度器的 NUMA hop 掩码，每次只考察新到达的 CPU，在整段 fallback 搜索中保持 locality；并在亲和性放宽后保持同样顺序。

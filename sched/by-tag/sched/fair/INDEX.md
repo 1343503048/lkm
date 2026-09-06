@@ -1,7 +1,8 @@
 # tag: sched/fair
 
-共 16 篇
+共 17 篇
 
+- [sched-20260906-004](../../2026/09/sched-20260906-004.md) `discussion/none/merged_tip` — Ingo 向 Linus 发出 sched/urgent 修复拉取（顶端 `f0d243a96f26`），含 3 个调度修复：fair 类时间戳 bug、RT/DL push 候选跳过 migrate-disabled 任务、avg_idle 在无 idle_stamp 时跳过更新。属紧急修复，已基本合入主线。
 - [sched-20260905-005](../../2026/09/sched-20260905-005.md) `patch_series/medium/under_review` — 延续 steal_governor v12（13 补丁）。本日收到 v12 08/13 "sched/core: Push current task from non preferred CPU" 的复审（Re 81260），以及关于 `sched/fair` 中 `nr_pref_llc_running` 应与哪些任务比较的讨论（Re 80977）。
 - [sched-20260905-001](../../2026/09/sched-20260905-001.md) `patch_series/medium/under_review` — 延续前几日的系列，本日 v3 收到多封复审（Re v2 1/2：81773/80952/80942/80406；以及 v3 1/2：80559），讨论集中在 NUMA task tick 从执行上下文驱动、在 fair 任务替 RT/deadline donor 执行时的正确性。
 - [sched-20260904-012](../../2026/09/sched-20260904-012.md) `patch_series/medium/under_review` — 延续 09-03 002 的 steal_governor v12（13 补丁系列），本日收到第 01/13 补丁 "sched/cputime: Add kcpustat_field_total helper" 的复审（Re）。该 helper 供 steal_governor 统计 steal time 总量使用，便于在虚拟化场景对 vCPU steal time 设上限并驱动更优的 CPU 选择。

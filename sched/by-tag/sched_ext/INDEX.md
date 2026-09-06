@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 12 篇
+共 15 篇
 
+- [sched-20260906-003](../../2026/09/sched-20260906-003.md) `fix/low/under_review` — Tianyi Chen 修 sched_ext selftest runner：被 SIGINT/SIGTERM 中断的运行若已完成测试都未失败会误报成功。把 exit_req 纳入失败判定即可区分「中断」与「成功」。纯测试树修复，severity 低。
+- [sched-20260906-002](../../2026/09/sched-20260906-002.md) `fix/low/under_review` — Tianyi Chen 修 sched_ext selftest 的 CPU hotplug 测试缺陷：写 CPU 状态失败时丢弃返回值，导致测试可能无限等待。纯测试树修复，severity 低，合入可能性高。
+- [sched-20260906-001](../../2026/09/sched-20260906-001.md) `bug/medium/under_review` — Tejun 在 `sched_ext/for-7.3-fixes` 上贴出 4 片 PATCHSET，修两类 sub-scheduler / scx_qmap 放置 bug（keep-last 决策用错调度器导致 WARN+可能 stall、rescue insert 加 IMMED 导致与 REENQ 互踢）。属于 fixes 分支内容，合入可能性高，值得用 scx_nitosis 跑 scx_qmap 复现验证。
 - [sched-20260904-011](../../2026/09/sched-20260904-011.md) `patch_series/high/under_review` — 延续 09-03 004，sub-sched 错误路径 NULL deref 修复进入 v3，本日收到复审（Re）。错误路径（open/enable 失败回滚）访问已释放/未初始化的 `sched` 对象，可能触发 NULL deref crash。
 - [sched-20260904-010](../../2026/09/sched-20260904-010.md) `patch_series/high/under_review` — 延续 09-03 003 的 NMI kfunc 审计，本日收到 0/2 封面的复审（Re）。该系列补齐 NMI 上下文下调用会拿锁/未加保护的 kfunc 路径，防止 NMI 与正常上下文并发访问产生数据竞争或死锁。
 - [sched-20260904-009](../../2026/09/sched-20260904-009.md) `bug/low/under_review` — 0day/LKP 在 torvalds `master`（head `940de590b839`）上报告 sparse 告警：`kernel/sched/ext/sub.c:288` 参数 1 地址空间不一致（different address spaces）。该告警针对已合入提交 `bb70e4fb626b` "sched_ext: Eject the top rescue consumer on overload"（约 4 周前）。
