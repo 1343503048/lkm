@@ -1,8 +1,9 @@
 # tag: sched_debug
 
-共 30 篇
+共 31 篇
 
-- [sched-20260905-002](../../2026/09/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — scan_size_mb 在 task_scan_max() 中作为除数使用，而 debugfs_create_u32() 对写入值不做校验。目前v2 RESEND，作者重发以推进审阅。- 严重度 high：普通 debugfs 写入即可触发内核 panic，影响可测试性/稳定性。
+- [sched-20260905-002](../../2026/09/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — `scan_size_mb` 在 `task_scan_min()` 和 `task_nr_scan_windows()` 里都是除数，而 `debugfs_create_u32()` 对写入值一律接受，所以两类取值直接把内核打死：写 0 触发 divide error Oops，写 2^24 的倍数在 4K 页上让 `MB_TO_PAGES()` 的 32 位移位绕回 0 再触发一次除零。作者 
+- [sched-20260831-010](../../2026/08/sched-20260831-010-sched-add-task-enqueue-dequeue-trace-points.md) `feature/rfc` — Gabriele Monaco（Red Hat）8/31 发出 20 补丁 RFC，第 1 篇在通用入队/出队路径 `enqueue_task()`/`dequeue_task()`/`__block_task()` 上加一对新 tracepoint `sched_enqueue`/`sched_dequeue`，并 `EXPORT_TRACEPOINT_SYMBOL_GPL` 导出。补丁带 `S
 - [sched-20260825-008](../../2026/08/sched-20260825-008-kernel-sched-topology-c-sparse-warning-rcu-assignment.md) `discussion/low/under_review` — kernel test robot 报告 `kernel/sched/topology.c` 中一个 sparse 警告，bisect 到 commit 5a7b576b3ec1 ("sched/topology: Extract "imb_numa_nr" calculation into a separate helper")，该 commit 来自约 5 个月前。警告涉及 `__rcu` 地
 - [sched-20260825-002](../../2026/08/sched-20260825-002-sched-replace-nr-pinned-offset-hack-percpu-counter.md) `fix/low/under_review` — Qiurong Fang 发出 RFC，用简单的 per-CPU 变量替代 `rq->nr_pinned` 的 generated offset 访问方式，消除 `rq-offsets.c`、Kbuild 规则和全局生成头文件。这是纯代码清理，不修复 bug，删除 53 行、新增 6 行。
 - [sched-20260810-003](../../2026/08/sched-20260810-003-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — Zhan Xusheng 提交 v2「sched/debug: Validate writes to scan_size_mb」。该值被写成 0 会在 NUMA 平衡扫描逻辑中触发 divide error panic（由 Chen Yu 指出）。v2 增加写入校验与 sysctl 文档。属 high 严重度崩溃修复，合入可能性高。

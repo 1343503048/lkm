@@ -3,7 +3,7 @@
 共 8 篇
 
 - [sched-20260902-016](../../2026/09/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.md) `fix/low/under_review` — Karl Mehltretter 的 kcov 系列已推进到 v2（0/6），用可嵌套的 `KCOV_PAUSED` 位抑制定时器与调度路径的 覆盖污染。kcov 维护者 Alexander Potapenko 9/2 回了封面，调度侧尚未表态。跟调度器开发相关但优先级不高。
-- [sched-20260902-005](../../2026/09/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.md) `fix/low/under_review` — Tao Cui 把 sched_ext vtime 排序的两条隐含前提显式化：同一 DSQ 内的 vtime 差必须小于 2^63， `scx_flatcg` 的 `cgv_node_less()` 必须回绕安全。9/2 出 v3，Tejun Heo 逐补丁回过 v2 也回了 v3 封面， 但缓存里看不到 v3 的结论性意见。
+- [sched-20260902-005](../../2026/09/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.md) `fix/low/merged_tip` — `sched_ext` 的 vtime 排序用的是 **回绕语义的 `time_before64()`**，而不是普通无符号比较：只要同一个 DSQ 里的两个值相差不到 `2^63` 就成立，否则顺序会翻。Tao Cui 把这条隐含契约写进 kdoc（1/2）， 并修掉 `scx_flatcg` 里唯一违反它的比较器（2/2，`cgv_node_less()` 的 `plain <` → `tim
 - [sched-20260823-006](../../2026/08/sched-20260823-006.md) `fix/low/under_review` — Tao Cui 把 08-19「cpu.max 配额未被 BPF 调度器强制时该告警还是文档」的裁定落地到 sched-ext.rst：v3 新增「Scheduler-Dependent Knobs」小节，说明 knob 经由 ops.cgroup_set_*() 透传、是否生效取决于调度器。纯文档，合入概率高。
 - [sched-20260822-006](../../2026/08/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.md) `fix/low/merged_tip` — 两个 sched_ext 补丁被合入 `sched_ext/for-7.3-fixes`：1) 同步 tools headers 与 scx 仓库保持一致；2) cgroup v2 文档增加 BPF 调度器回调（cpu.max/cpu.idle）说明。
 - [sched-20260820-008](../../2026/08/sched-20260820-008.md) `fix/low/merged_tip` — 08-19 的 sched_ext 文档两连修在 08-20 推进：① `ei->type → ei->kind` 示例修复已 Applied 到 `sched_ext/for-7.3-fixes`（Fixes `fa48e8d2c7b5`）；② `cgroup CPU knobs are scheduler-dependent` 文档补丁发 v2。

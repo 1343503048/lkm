@@ -2,24 +2,29 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 92
+article_count: 97
 ---
 
-- [sched-20260906-001](/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html) `bug/medium/under_review` — sched_ext: Fix keep-last for sub-scheduler tasks and two scx_qmap placement loops
+- [sched-20260906-001](/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html) `bug/medium/merged_tip` — sched_ext: Fix keep-last for sub-scheduler tasks and two scx_qmap placement loops
 - [sched-20260906-002](/lkm/2026/09/06/sched-20260906-002-selftests-sched-ext-handle-cpu-hotplug-write-failures.html) `fix/low/under_review` — selftests/sched_ext: Handle CPU hotplug write failures
 - [sched-20260906-003](/lkm/2026/09/06/sched-20260906-003-selftests-sched-ext-fail-interrupted-test-runs.html) `fix/low/under_review` — selftests/sched_ext: Fail interrupted test runs
 - [sched-20260904-007](/lkm/2026/09/04/sched-20260904-007-sched-make-proxy-execution-compatible-with-sched-ext.html) `discussion/high/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260904-008](/lkm/2026/09/04/sched-20260904-008-sched-ext-generalize-the-reject-dsq-reenqueue-path.html) `discussion/medium/under_review` — sched_ext: Generalize the reject DSQ reenqueue path
 - [sched-20260904-009](/lkm/2026/09/04/sched-20260904-009-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-in-argument.html) `bug/low/under_review` — kernel/sched/ext/sub.c:288:16: sparse: sparse: incorrect type in argument 1 (different address spaces)
-- [sched-20260904-010](/lkm/2026/09/04/sched-20260904-010-sched-ext-two-more-context-safety-fixes-found-in-the-nmi-kfunc-audit.html) `fix/high/under_review` — sched_ext: two more context-safety fixes found in the NMI kfunc audit
-- [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/under_review` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
-- [sched-20260903-003](/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html) `fix/high/under_review` — sched_ext: Reject NMI calls to lock-taking kfuncs
+- [sched-20260904-010](/lkm/2026/09/04/sched-20260904-010-sched-ext-two-more-context-safety-fixes-found-in-the-nmi-kfunc-audit.html) `fix/high/merged_tip` — sched_ext: two more context-safety fixes found in the NMI kfunc audit
+- [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/merged_tip` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
+- [sched-20260903-003](/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html) `fix/high/merged_tip` — sched_ext: Reject NMI calls to lock-taking kfuncs
 - [sched-20260903-004](/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/under_review` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
-- [sched-20260903-014](/lkm/2026/09/03/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.html) `discussion/low/under_review` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
+- [sched-20260903-014](/lkm/2026/09/03/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.html) `discussion/low/merged_tip` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
 - [sched-20260903-016](/lkm/2026/09/03/sched-20260903-016-sched-document-wf-sync-wakeup-placement-semantics.html) `discussion/low/rfc` — sched: Document WF_SYNC wakeup placement semantics
-- [sched-20260902-004](/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html) `fix/medium/under_review` — sched_ext: Reject NMI calls to lock-taking kfuncs
-- [sched-20260902-005](/lkm/2026/09/02/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.html) `fix/low/under_review` — sched_ext: document and enforce vtime ordering constraints
-- [sched-20260902-006](/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html) `bug/high/under_review` — sched_ext: Fix NULL sched deref in select_cpu_and sub-sched error path
+- [sched-20260902-004](/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html) `fix/medium/merged_tip` — sched_ext: Reject NMI calls to lock-taking kfuncs
+- [sched-20260902-005](/lkm/2026/09/02/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.html) `fix/low/merged_tip` — sched_ext: document and enforce vtime ordering constraints
+- [sched-20260902-006](/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html) `bug/high/merged_tip` — sched_ext: Fix NULL sched deref in select_cpu_and sub-sched error path
+- [sched-20260901-003](/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260901-008](/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html) `fix/low/under_review` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
+- [sched-20260901-009](/lkm/2026/09/01/sched-20260901-009-sched-ext-fix-vtime-priority-queue-inversion-on-wide-vtime-s.html) `bug/medium/under_review` — sched_ext: fix vtime priority queue inversion on wide vtime spread
+- [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260831-002](/lkm/2026/08/31/sched-20260831-002-sched-core-alternate-approach-to-sleeping-owner-handling-in-proxy-exec.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates
 - [sched-20260825-004](/lkm/2026/08/25/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.html) `feature/none/under_review` — sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable
 - [sched-20260825-005](/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html) `fix/medium/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args

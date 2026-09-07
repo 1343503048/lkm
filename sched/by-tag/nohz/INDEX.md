@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 17 篇
+共 19 篇
 
+- [sched-20260831-011](../../2026/08/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md) `fix/medium/superseded` — 本文为增量更新（见 sched-20260802-001 / sched-20260803-013）。这条追查了大半个月的 nohz_full 启动期 cpumask 释放问题**当天正式收尾**：Ionut Nechita（Wind River）宣布撤回自己的补丁——同一问题早已被 Waiman Long 的 `2b58c749b8c5` ("sched/isolation: Defer fre
+- [sched-20260831-001](../../2026/08/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新（完整背景见 related_articles）。Andrea Righi 在 8/31 21:42 发出 v13（18 patch，标记 `sched_ext/for-7.4`），把 Tejun Heo 对 v12 的四类意见全部落地：新增 `WF_ON_RQ` 唤醒标志替代 `SCX_TASK_ENQ_WAKEUP`、reject DSQ 排空逻辑收进 core 并改用 `SCX
 - [sched-20260825-009](../../2026/08/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.md) `discussion/under_review` — 关于 schedutil 在 CPU 进入 tickless idle 前是否应该最后一次重新评估频率的讨论。Christian Loehle 正在开发一个基于 irq_work 的方案来处理 `sugov_hold_freq()` 场景，Hongyan Xia 表示 LGTM 但指出 Sashiko 报告的并发问题需要先解决。核心争议：hold_freq 和 blocked utilizatio
 - [sched-20260820-009](../../2026/08/sched-20260820-009.md) `fix/low/under_review` — Andrea Righi 的 NOHZ idle 平衡系列推进到 v4：优先把任务搬到「完全空闲核心」而非「仅部分兄弟线程空闲的核心」，以保留空闲 SMT 兄弟供单线程突发。属 08-09 009 线的延续。
 - [sched-20260810-009](../../2026/08/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.md) `feature/under_review` — Andrea Righi 提交 v5「Prefer fully idle cores for NOHZ balancing」。NOHZ 均衡选核时优先选「所有兄弟线程都空闲」的 core，减少 SMT 干扰。Peter 在 8/10 报告已 pull v4 进 tip/sched/core，v5 待整理。合入可能性高。

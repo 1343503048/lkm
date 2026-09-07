@@ -2,12 +2,15 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 24
+article_count: 27
 ---
 
 - [sched-20260904-002](/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `discussion/medium/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260903-009](/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `discussion/medium/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260903-011](/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html) `discussion/medium/under_review` — sched/cache: Honor migrate_llc_task semantics in active load balance
+- [sched-20260901-010](/lkm/2026/09/01/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
+- [sched-20260831-007](/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
+- [sched-20260831-011](/lkm/2026/08/31/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/medium/superseded` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260814-004](/lkm/2026/08/14/sched-20260814-004-patch-v10-00-12-sched-steal-governor-introduce-preferred-cpu.html) `feature/none/under_review` — Re: [PATCH v10 00/12] sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260810-008](/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
 - [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched/cache: honor migrate_llc_task semantics in active load balance

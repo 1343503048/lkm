@@ -2,11 +2,14 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 18
+article_count: 21
 ---
 
 - [sched-20260904-005](/lkm/2026/09/04/sched-20260904-005-cpufreq-schedutil-convert-to-kthread-create-worker.html) `discussion/low/under_review` — cpufreq: schedutil: convert to kthread_create_worker
 - [sched-20260903-010](/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `discussion/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260831-012](/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html) `fix/medium/under_review` — cpufreq: initialize policy rwsem before sysfs publication
+- [sched-20260831-013](/lkm/2026/08/31/sched-20260831-013-cpufreq-amd-pstate-add-epp-tunings-for-zen6-client-platforms.html) `feature/none/under_review` — cpufreq/amd-pstate: Add EPP tunings for Zen6 client platforms
+- [sched-20260831-014](/lkm/2026/08/31/sched-20260831-014-cpufreq-tegra194-fix-double-pointer-error-in-get-cpu-ndiv.html) `fix/medium/merged_tip` — cpufreq: tegra194: fix double-pointer error in get_cpu_ndiv
 - [sched-20260826-005](/lkm/2026/08/26/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.html) `fix/medium/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20260826-006](/lkm/2026/08/26/sched-20260826-006-cpufreq-loongson3-driver-improvements.html) `fix/low/under_review` — cpufreq: loongson3: driver improvements
 - [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle

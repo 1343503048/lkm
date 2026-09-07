@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 50 篇
+共 55 篇
 
+- [sched-20260901-011](../../2026/09/sched-20260901-011-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.md) `fix/medium/under_review` — Tim Chen 在 09-01 按 Peter Zijlstra 的意见重发了「cache-aware 负载均衡不要制造 misfit 任务」的补丁（内容不变，只是补 SoB 与标题大小写），同一线程里还挂着一件更要紧的事：**AMD 大小核平台上的实测者 Klaus Kusche 说没有 debugfs 就完全看不到大核/小核调度**，Tim 直接问他换用默认 `aggr_tolerance`
+- [sched-20260901-003](../../2026/09/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新（完整背景见 related_articles）。Michal Blaszczyk 的 `[PATCH v3]` 在 09-01 拿到 Tejun Heo 的 `Acked-by`，并且 Tejun 当场**否决了 Andrea Righi 并行的 `sched_ext: Serialize cgroup knob updates` 方案**（"This is the same ra
+- [sched-20260901-002](../../2026/09/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/under_review` — Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径上漏改的两处 `cfs_rq->curr`：`throttle_cfs_rq()` 因此对中间层级永远判不到「该层有运行实体」，配额耗尽时既不申请整 slice 也不布防 deferred throttle，任务可以**持续超出所属 cgroup 的 `cpu.max` 配
+- [sched-20260831-004](../../2026/08/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/under_review` — Wanwu Li（kylinos）8/31 18:11 发出 2 补丁：EEVDF 单 runqueue 改造（`85570f10a4c6`）把"本层级是否有实体在跑"从 `cfs_rq->curr` 迁到 `cfs_rq->h_curr` 后，**CFS 带宽路径漏改了两处**，导致中间层 cgroup 的 `throttle_cfs_rq()` 永远拿不到一整份 `sched_cfs_band
+- [sched-20260831-003](../../2026/08/sched-20260831-003-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — Peter Zijlstra 8/28 发的 4 补丁系列中 `4/4` 重做 `task_h_load()`，8/31 当天只剩一处注释措辞的分歧：Vincent Guittot 要求为"两个参数可以为 NULL"补注释并说"rework 我看是好"（测试留到本周），Peter 立刻给出注释稿、Vincent 回 `s/then/when/`，Peter "Just so, typing har
 - [sched-20260826-010](../../2026/08/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.md) `fix/medium/under_review` — Tim Chen (Intel) 提交补丁修复 cache-aware 负载均衡在非对称 CPU 容量系统（如 big.LITTLE）上创建 misfit 任务的问题。当 cache-aware 迁移将任务拉向目标 LLC 时，目标 LLC 中的 CPU 可能容量不足，导致任务从 fit 变为 misfit——用缓存局部性收益换取了更大的容量损失。补丁在 `can_migrate_llc_task
 - [sched-20260826-009](../../2026/08/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik (Ampere) 提交补丁修复 same-task repick 后 hrtick 未重新设置的问题。当 `pick_next_task_fair()` 选择同一任务时（例如经过 `put_prev_task` + `pick_next_task` 循环），已有的 hrtick 定时器可能未被重新设置，导致该任务的调度时间片不受 hrtick 约束。Zhan Xu
 - [sched-20260826-008](../../2026/08/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.md) `fix/medium/under_review` — Zhe Liu (Kylinos) 提交了修复 CFS bandwidth 中 burst 与 quota 不兼容的问题。当 burst 值大于 quota 时，当前验证逻辑会在写入顺序不同时产生 `EINVAL`。Michal Koutný 建议在执行时 clamp 而非在验证时拒绝。作者同意并计划发 v2：保留配置的 burst 值，在 `__refill_cfs_bandwidth_runt

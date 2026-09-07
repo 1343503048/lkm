@@ -2,13 +2,17 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 19
+article_count: 23
 ---
 
-- [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/under_review` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
+- [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/merged_tip` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
 - [sched-20260903-004](/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/under_review` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
 - [sched-20260902-003](/lkm/2026/09/02/sched-20260902-003-sched-cache-fix-use-after-free-mm-access-in-account-mm-sched.html) `bug/high/under_review` — sched/cache: Fix use after free mm access in account_mm_sched()
-- [sched-20260902-006](/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html) `bug/high/under_review` — sched_ext: Fix NULL sched deref in select_cpu_and sub-sched error path
+- [sched-20260902-006](/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html) `bug/high/merged_tip` — sched_ext: Fix NULL sched deref in select_cpu_and sub-sched error path
+- [sched-20260901-001](/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260831-009](/lkm/2026/08/31/sched-20260831-009-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260831-011](/lkm/2026/08/31/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/medium/superseded` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
+- [sched-20260831-012](/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html) `fix/medium/under_review` — cpufreq: initialize policy rwsem before sysfs publication
 - [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched/core: sporadic stale rq->curr causing scheduler crashes on arm64
 - [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — [tip: sched/urgent] sched/topology: cpus_read_lock() rebuild_sched_domains()

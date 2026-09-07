@@ -2,9 +2,9 @@
 
 共 11 篇
 
-- [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/merged_tip` — Ingo 向 Linus 发出 sched/urgent 修复拉取（顶端 `f0d243a96f26`），含 3 个调度修复：fair 类时间戳 bug、RT/DL push 候选跳过 migrate-disabled 任务、avg_idle 在无 idle_stamp 时跳过更新。属紧急修复，已基本合入主线。
-- [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/under_review` — 提交 dd29c017aed6（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）在非 PREEMPT_RT 桌面引入可复现的多秒级音频掉帧。目前已被标记为 tracked regression。- 受影响对象为普通非 PREEMPT_RT 桌面（音频实时性敏感负载）。
-- [sched-20260903-005](../../2026/09/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.md) `fix/high/under_review` — 代理执行下 task_tick_rt() 针对调度上下文 rq->donor 调用，而 rq->curr 才是真正执行任务。目前单 patch，重点修正在代理执行下 RT 限额与 posix CPU 定时器的一致性。
+- [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
+- [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/stalled` — `dd29c017aed6`（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）使非 PREEMPT_RT 系统在 RT 任务位于其他 CPU 上被释放/提升时不再发 RT push IPI，专业音频（DAW）用户据此报告了多秒级的 PI-boost 饥饿。 本日唯一的动静是回归追踪者 Thorsten Leemhuis 
+- [sched-20260903-005](../../2026/09/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.md) `fix/high/under_review` — 代理执行下 `task_tick_rt()` 是替调度上下文 `rq->donor` 跑的，但运行时间记在 `rq->curr` 上，于是 `RLIMIT_RTTIME` 的 `rt.timeout` 累计与 posix CPU 定时器状态更新都落在了错误的任务上。Hui Su 的单补丁把 `watchdog()` 改传 `rq->curr`，并为「非 RT 执行任务借用 RT donor」的情形
 - [sched-20260820-006](../../2026/08/sched-20260820-006.md) `fix/low/under_review` — `struct cpupri_vec` 的 `count` 字段删除从 08-19 的 v1 推进到 08-20 的 v2：RT 优先级队列死代码清理，讨论收敛，合入概率高。
 - [sched-20260820-001](../../2026/08/sched-20260820-001.md) `fix/medium/under_review` — Zhe Liu 修一个 CFS 带宽配置顺序陷阱：先 `cpu.max.burst` 配大值、再设有限 `cpu.max` quota 时，因旧 burst 校验不通过导致 quota 写入直接 EINVAL。修复为「改 quota 不兼容则把 burst 清零」，附文档与 selftest。Michal Koutny 倾向改成 clamp 到 quota，分歧待解。
 - [sched-20260819-006](../../2026/08/sched-20260819-006-sched-rt-cpupri-remove-count-field.md) `fix/low/under_review` — 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段，纯死代码清理。

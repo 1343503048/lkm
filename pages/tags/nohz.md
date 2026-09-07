@@ -2,9 +2,11 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 17
+article_count: 19
 ---
 
+- [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260831-011](/lkm/2026/08/31/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/medium/superseded` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
 - [sched-20260820-009](/lkm/2026/08/20/sched-20260820-009.html) `fix/low/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core

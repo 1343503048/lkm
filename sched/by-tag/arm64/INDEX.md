@@ -1,7 +1,10 @@
 # tag: arm64
 
-共 6 篇
+共 9 篇
 
+- [sched-20260901-010](../../2026/09/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.md) `feature/under_review` — 增量更新（完整方案见 sched-20260831-007 / sched-20260810-008）。Shrikanth Hegde 的 preferred-CPU / steal_governor v11 系列中，`05/12` 关于「要不要只在实测过的架构上启用」的争论在 09-01 收口：Vincent Guittot 与 Dietmar Eggemann 都认为无需为 arm64 单独设
+- [sched-20260831-014](../../2026/08/sched-20260831-014-cpufreq-tegra194-fix-double-pointer-error-in-get-cpu-ndiv.md) `fix/medium/merged_tip` — Xueqin Luo（Kylinos）8/31 的一行补丁修掉 `tegra194_get_cpu_ndiv()` 里 `smp_call_function_single()` 传参的**双重指针错误**：形参 `ndiv` 本身已经是 `u64 *`，却又传了 `&ndiv`，于是被调回调写的是"指针变量自己的栈槽"，调用方的 `u64` 永远读到未初始化值。维护者 Viresh Kumar 在
+- [sched-20260831-007](../../2026/08/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.md) `feature/under_review` — 本文为增量更新（完整背景见 sched-20260810-008）。Shrikanth Hegde（IBM）的 preferred-CPU / steal-governor 系列已到 **v11（12 补丁）**，`05/12` 让 `is_cpu_allowed()`/`select_fallback_rq()` 在受限时优先挑仍被允许的 preferred CPU。8/31 的争点从代码本身转
 - [sched-20260825-012](../../2026/08/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.md) `discussion/medium/under_review` — Maulik Shah（Qualcomm）的 v2 讨论：当 CPU 已有 IPI 中断挂起时，应拒绝进入 idle 状态，避免延迟响应。提供了详细的 LeMans SoC（8 CPU）上的 trace 数据，展示 menu governor 在 `get_typical_interval()` 循环中收到 IPI 但仍预测深度 idle 的时序。
 - [sched-20260810-015](../../2026/08/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.md) `cleanup/low/merged_tip` — Boqun Feng 的 3 个抢占/锁相关清理 commit 已由 tip-bot 合入 `tip/locking/core`（2026-08-10 报告）：移除未使用的 `preempt_offset` 参数、避免有符号比较、arm64 启用 `HAS_SEPARATE_PREEMPT_RESCHED_BITS`。merged_tip。
 - [sched-20260805-012](../../2026/08/sched-20260805-012-arm64-separate-preempt-resched-bits.md) `feature/under_review`

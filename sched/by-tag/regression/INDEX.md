@@ -1,9 +1,10 @@
 # tag: regression
 
-共 12 篇
+共 13 篇
 
-- [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/under_review` — 提交 dd29c017aed6（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）在非 PREEMPT_RT 桌面引入可复现的多秒级音频掉帧。目前已被标记为 tracked regression。- 受影响对象为普通非 PREEMPT_RT 桌面（音频实时性敏感负载）。
-- [sched-20260902-008](../../2026/09/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — cpufreq pressure 只在频率不变的平台施加。补丁自 8 月进入评审以来仍未收口，9/2 是 Jianyong Wu 与 Hongyan Xia 就「概念到底该怎么表述」往返，没有新版本、没有新数据。
+- [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/stalled` — `dd29c017aed6`（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）使非 PREEMPT_RT 系统在 RT 任务位于其他 CPU 上被释放/提升时不再发 RT push IPI，专业音频（DAW）用户据此报告了多秒级的 PI-boost 饥饿。 本日唯一的动静是回归追踪者 Thorsten Leemhuis 
+- [sched-20260902-008](../../2026/09/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的单补丁：只在 `arch_scale_freq_invariant()` 为真时才把 cpufreq pressure 计入 `get_actual_cpu_capacity()`。9/2 这天的实质结论是**作者承认标题里的因果口径错了**——他对 Hongyan Xia 说 "I will re-phrase the problem statement i
+- [sched-20260831-006](../../2026/08/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.md) `bug/high/under_review` — 用户报告（Klaus Kusche，AMD Ryzen HX 370）：开启 cache-aware scheduling 后，一个跑在小核上的长时 LTO 链接进程**即使大核全空闲也不会迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，CAS 的判定压过了大/LITTLE 容量调度。Chen Yu 确认"当前代码里 CAS 覆盖了非对称调度策略"，并指向 Tim Chen 8/
 - [sched-20260823-002](../../2026/08/sched-20260823-002.md) `bug/high/under_review` — 两个生产环境（aarch64 Kunpeng 920、vendor 4.19.90）在长 uptime 后各自崩溃于 `pick_next_task_fair()` 解引用 NULL：root cfs_rq 的 `nr_running` 被污染成 0xFFFFFFFF（-1），使 idle 判定失效、从空 rb 树取到 NULL。签名一致，疑似 nr_running 计数损坏。基于 vendor 
 - [sched-20260820-010](../../2026/08/sched-20260820-010.md) `bug/critical/under_review` — flat-hierarchy 除零崩溃（08-19 001）的 08-20 诊断更新：报告者打开 CONFIG_DEBUG 后 diagnosis WARN 确实触发，确认根因走 cpuset 路径（非仅发行版），uptime 21.4h 复现。配套 fix（tg_cpus floor at 1）已合入 tip（见 08-20 005）。
 - [sched-20260820-004](../../2026/08/sched-20260820-004.md) `bug/low/under_review` — LKP sparse 在 `kernel/sched/fair.c:2004`（enqueue 路径判断 `cfs_rq->nr_running`）发出静态检查告警，疑似近期 commit `85570f10a4c6`（EEVDF single runqueue 合并）引入。无修复补丁，仅自动报告。

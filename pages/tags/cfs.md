@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 50
+article_count: 55
 ---
 
+- [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
+- [sched-20260901-003](/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20260901-011](/lkm/2026/09/01/sched-20260901-011-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
+- [sched-20260831-003](/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
+- [sched-20260831-004](/lkm/2026/08/31/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
 - [sched-20260826-002](/lkm/2026/08/26/sched-20260826-002-sched-fair-reduce-repeated-work-in-enqueue-path.html) `fix/none/under_review` — sched/fair: reduce repeated work in enqueue path
 - [sched-20260826-003](/lkm/2026/08/26/sched-20260826-003-sched-document-wf-sync-wakeup-placement-semantics.html) `discussion/none/under_review` — sched: Document WF_SYNC wakeup placement semantics
 - [sched-20260826-004](/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html) `discussion/medium/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang

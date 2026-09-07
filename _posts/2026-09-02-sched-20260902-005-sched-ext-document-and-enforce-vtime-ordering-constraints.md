@@ -4,32 +4,35 @@ date: '2026-09-02'
 subject: 'sched_ext: document and enforce vtime ordering constraints'
 subsystem: sched
 type: fix
-status: under_review
+status: merged_tip
 severity: low
-thread_root_msgid: null
-lore_url: null
+thread_root_msgid: <20260902024812.794879-1-cui.tao@linux.dev>
+lore_url: https://lore.kernel.org/all/20260902024812.794879-1-cui.tao@linux.dev/
 upstream_commit: null
-fixes_commit: null
-merged_branch: null
+fixes_commit: a4103eacc2ab
+merged_branch: sched_ext/for-7.4
 current_version: v3
-generated_at: null
+generated_at: '2026-09-07'
 authors:
-- Tejun Heo
 - Tao Cui
-maintainers_involved: []
-patch_series: []
+maintainers_involved:
+- Tejun Heo
+- Andrea Righi
+patch_series:
+- 'sched_ext: document the rolling-cursor requirement for dsq_vtime'
+- 'sched_ext/scx_flatcg: make cgv_node_less() wraparound-safe'
 merge_assessment:
-  likelihood: medium
+  likelihood: likely
   blocking_issues:
-  - v3 未见维护者结论性意见（缓存正文缺失），是否还需下一轮不明
-  - 1/2 仅文档化，无运行时强制手段，是否满足 enforce 的目标存疑
-  - 无回绕场景的测试或线上案例支撑
-  next_action: 补一个 cvtime 回绕的可复现测试，并在 v3 线程追问 Tejun Heo 的结论
+  - 无：Tejun Heo 9/2 14:42 已 "Applied 1-2 to sched_ext/for-7.4 with the subjects capitalized"
+  - v1 里「内核 priq 比较器也改成回绕比较」那一刀被 Andrea/Tejun 否决，内核侧目前仅靠文档约束，缺 lag/lead 界的使用者仍有隐患
+  next_action: 关注是否有调度器在内核 priq 上需要强制回绕界；把该契约用于自研 sched_ext 比较器体检
 contribution_opportunities:
-- 编写 scx_flatcg cvtime 回绕的 kselftest/压测，验证 cgv_node_less() 修复
-- 建议把 dsq_vtime 的 2^63 约束从注释升级为 debug 期检查
-- 在 v3 封面线程推动维护者给出明确结论
-source_email_count: 2
+- 审计自研 sched_ext 调度器中所有 vtime/cvtime 的裸 < 比较，按新增 kdoc 契约整改
+- 把 scx_flatcg 的 lag/lead 界形式化成可复用说明或 helper，供其它 time_before64() 排序的 DSQ 自检
+- 跟踪 sashiko-bot 在 sched_ext 的其余报告（与 004 的 NMI 审计同源）
+- 按「每 CPU 每次 pick 记一整个 slice」估算长稳容器场景下 scx_flatcg 的回绕点并做验证
+source_email_count: 7
 related_articles: []
 tags:
 - sched_ext
@@ -40,59 +43,103 @@ layout: article
 
 ## TL;DR
 
-Tao Cui 把 sched_ext vtime 排序的两条隐含前提显式化：同一 DSQ 内的 vtime 差必须小于 2^63，
-`scx_flatcg` 的 `cgv_node_less()` 必须回绕安全。9/2 出 v3，Tejun Heo 逐补丁回过 v2 也回了 v3 封面，
-但缓存里看不到 v3 的结论性意见。
+`sched_ext` 的 vtime 排序用的是 **回绕语义的 `time_before64()`**，而不是普通无符号比较：只要同一个
+DSQ 里的两个值相差不到 `2^63` 就成立，否则顺序会翻。Tao Cui 把这条隐含契约写进 kdoc（1/2），
+并修掉 `scx_flatcg` 里唯一违反它的比较器（2/2，`cgv_node_less()` 的 `plain <` → `time_before()`）。
+**上一轮本文写的「缓存里看不到 v3 的结论性意见」是错的：Tejun Heo 当日 14:42 就回复
+"Applied 1-2 to sched_ext/for-7.4 with the subjects capitalized."** 从 v1 到进树不到 16 小时，
+是观察「sched_ext 小修复如何被 maintainer 当场塑形」的干净样本。
 
 ## 背景与问题
 
-sched_ext 的 dsq（调度队列）按虚拟时间（vtime）排序，其中 `dsq_vtime` 依赖
-rolling-cursor 的取序要求；`scx_flatcg` 的 `cgv_node_less()` 在 vtime 回绕（wraparound）
-时也存在比较错误风险。本期 v3 把这两点文档化并加强制/修复。
+`scx_bpf_dsq_insert_vtime()` 的排序按 `time_before64()`，"which considers wrapping. A numerically
+larger vtime may indicate an earlier position in the ordering and vice-versa."——这是 vtime 型调度器的
+天然写法，但**约束「同一 DSQ 内的值必须彼此相差小于 `2^63`」在代码和文档里都没写出来**。
+`scx_flatcg` 的 BPF 红黑树比较器 `cgv_node_less()` 恰好用了朴素 `<`：一旦 `cvtime` 回绕，
+回绕节点会被排到树最前，未回绕的全体卡在它后面。
 
 ## 技术方案
 
-系列 `sched_ext: document and enforce vtime ordering constraints`（v3，UID 72766 0/2
-封面）：
-- 1/2 `sched_ext: document the rolling-cursor requirement for dsq_vtime`（72767）
-- 2/2 `sched_ext/scx_flatcg: make cgv_node_less() wraparound-safe`（72781）
-- 演进：v2（UID 72288 1/2、72291 2/2）→ v3；Re: 72648（v3 2/2）、73048（v3 0/2）。
+- **1/2 `sched_ext: document the rolling-cursor requirement for dsq_vtime`**
+  （`kernel/sched/ext/ext.c`，+3/-1）在 kdoc 里补：
+  "vtime is a rolling cursor and values used for ordering within a given DSQ should stay less than
+  `2^63` apart for `time_before64()` ordering to remain well-defined."
+- **2/2 `sched_ext/scx_flatcg: make cgv_node_less() wraparound-safe`**
+  （`tools/sched_ext/scx_flatcg.bpf.c`，1 行）：
+  `return cgc_a->cvtime < cgc_b->cvtime;` → `return time_before(cgc_a->cvtime, cgc_b->cvtime);`
+  并给出为什么这里可以安全使用回绕比较：`cgrp_cap_budget()` 约束住 `cvtime_now` 之后的 **lag**，
+  而 **lead** 由「每次 pick 给 cgroup 记一整个 slice」的 slice charge 加上重新入队时 pending 的
+  `cvtime_delta` 约束，两者都远小于 `2^63`。
+
+标签：`Fixes: a4103eacc2ab ("sched_ext: Add a cgroup scheduler which uses flattened hierarchy")`、
+`Reported-by: Sashiko <sashiko-bot@kernel.org>`。
 
 ## 版本演进与当前进展
 
-- 当前状态：**under_review**（v3）。
-- 合入可能性 medium/high；文档 + 回绕安全的明确修复。
-- 与 004（NMI 拒绝）、006（NULL deref）同为当日 sched_ext 集群。
+v1（9/1，含 3 个补丁）→ Tejun 逐条评审 v2（9/1 22:03）→ 作者 9/2 09:21 汇总接受 →
+**v3 9/2 10:48 → Tejun 14:42 applied**。
+
+v1→v2 的实质变化最有信息量：**删掉「把内核 priq 比较器也改成回绕比较」那一刀**。作者在封面 changelog
+里写的原因："the cyclic ordering is the documented contract; a plain comparison causes unbounded
+starvation at the natural wrap (Andrea, Tejun)"——即内核侧的 priq 不能改成回绕比较，
+因为内核没有像 `cgrp_cap_budget()` 那样的 lag/lead 界；改法只能是「把契约写下来」而不是「全面强制」。
+
+v2→v3 全部是 Tejun 的修正（封面逐条列出）：
+1. 界要写成 **"less than `2^63` apart"** 而不是 "within"——"Two values exactly 2^63 apart are before
+   each other in both directions"；
+2. 回绕后果方向写反了：不是未回绕的卡在前面，而是 "Plain < puts the wrapped node at the front.
+   The unwrapped ones get stuck behind it."；
+3. 回绕时间尺度比想象近得多："each CPU picking a cgroup charges it a full slice, so the wrap is
+   closer than weeks."；
+4. 只讲 lag 不够，**lead 也要有界**："cgrp_cap_budget() only bounds the lag. The lead is bounded by
+   the slice charge plus pending cvtime_delta on re-insertion."；
+5. `Fixes:` 指向的 commit 不在主线，正确上游 hash 是 `a4103eacc2ab`；
+6. 比较器直接用 `time_before()`，把那行注释删掉。
 
 ## Maintainer 意见与讨论焦点
 
-- 唯一的 reviewer 就是维护者本人：Tejun Heo 对 v2 的两个补丁分别回帖（72287 针对 1/2、72288 针对 2/2），
-  Tao Cui 9/2 09:21 针对 2/2 作答（72646），当天 10:48 出 v3，Tejun 又回了 v3 封面（73043）。三轮往返都
-  只有这两人参与，没有第三方（sched_ext 其它 maintainer、BPF 侧）介入。
-- Tejun 抓的点在数值边界表述上：1/2 新增注释里 "should stay within half the u64 range (2^63) of each other
-  so that time_before64() ordering remains well-defined." 被直接引用回问；2/2 里 "long-running host. At the
-  wrap instant the plain comparison puts the wrapped node behind everything else permanently." 同样是引文。
-- 缓存中这些回帖仅存 200 字节引文头，看不到 ack/reviewed-by，也看不到反对意见——既无认可证据也无 NAK 证据。
+- **Tejun Heo** 是唯一评审者，也是 committer；六条意见全是「正确性表述」而非风格，且当天就 applied
+  （只把 subject 首字母大写）。这说明 sched_ext 小修的门槛在于**技术表述必须精确**，而不是在于要多少
+  Acked-by。
+- **Andrea Righi** 参与的是 v1 那一刀被撤的决定（changelog 记名 "Andrea, Tejun"）。
+- 报告者是 **sashiko-bot**（`Reported-by: Sashiko <sashiko-bot@kernel.org>`），
+  原始发现贴 `3f1ce004-e259-4e72-a5f7-14a5050053bd@linux.dev` 已作为 `Link:` 写进补丁。
+  也就是说，这次是自动审查机器人发现 → 人写补丁 → 人纠正表述 → 进树。
+- 作者身份细节值得注意：邮件从 `Tao Cui <cui.tao@linux.dev>` 发出，`From:`/`Signed-off-by:`
+  是 `Tao Cui <cuitao@kylinos.cn>`。
 
 ## 合入评估
 
-**中**。文档 + 一个比较器修复，体量小、方向无争议，理论上不该慢；卡点是 v3 之后还需不需要第四轮
-（v2→v3 已经是第二轮修改），以及 1/2 只加注释、没有配套运行时断言，Tejun 是否接受「靠文档约束 BPF 作者」
-这一点在缓存中看不到答案。
+**likelihood: likely（事实已完成）**——两个补丁 9/2 即进 `sched_ext/for-7.4`，无遗留卡点。
+唯一「没做」的是内核侧 priq 比较器，被明确判定为不该做（缺 lag/lead 界），后续若要强制，
+需要为内核 priq 的使用者补上同样的界。
 
 ## 效果评估
 
-暂无效果数据。作者给的是机理推演而非测量（72767）："cgv_node_less() compares cvtimes with a plain <,
-which misorders once cvtime wraps: the wrapped node lands at the front of the tree while the unwrapped
-ones get stuck…"——回绕后被包裹节点永久排在最前。属作者判断，未见测试数据，也没人报告过线上真实回绕案例。
+1 行比较器修复，无性能影响，属正确性。严重性完全由「界有多近」决定，而这正是 Tejun 纠正的地方：
+每个 CPU 每次 pick 一个 cgroup 就记一整个 slice，因此回绕不是「几周」量级，而是随 CPU 数与调度频率
+线性逼近；一旦回绕，未回绕的 cgroup 全体排在回绕节点之后 → 对 `scx_flatcg` 是**无界饥饿**，
+不是误差。这也解释了为什么 v1 想改内核 priq 会被拦下：同样的改动在没有 lag/lead 界的地方会把
+「不常见但有限」的误差换成「不可控的饥饿」。
 
 ## 我可以参与的点
 
-- 写一个把 cvtime 推到 u64 边界附近的 scx_flatcg 测试：这是全线程最缺的东西，双方都只在推演。
-- 就 1/2 提出：仅文档化不够，是否应在 `scx_bpf_dsq_insert_vtime()` 加一次 2^63 距离检查（或 debug 下 WARN）。
-- v3 的实质结论仍空缺，可以直接在 73043 之后追问 Tejun 是否接受，推动收口。
+- 给自家 sched_ext 调度器做同类体检：所有自定义比较器里 `vtime`/`cvtime`/`dsq_vtime` 的裸 `<`
+  都是同一类 bug；这条契约现在写进了内核 kdoc，可以直接引用作为依据。
+- 顺着「界从哪来」做一件更值钱的事：把 `scx_flatcg` 的 lag/lead 界形式化成一份可复用的说明或
+  helper，供其它使用 `time_before64()` 排序的 DSQ 检查自己是否满足前提。
+- 关注 sashiko-bot 的其余报告：`scx_bpf_task_set_slice()` 的竞争正是同一批审计的产物
+  （见 [[sched-20260902-004]]）。
+- cgroup 视角：`scx_flatcg` 是扁平层级 cgroup 调度器，这条回绕修复影响长时间运行的容器场景，
+  做 cgroup CPU 公平性测试时可以按「每 CPU 每次 pick 记一整个 slice」来估算回绕点。
 
 ## 参考链接
 
-- 004 sched_ext：拒绝 NMI 调用会拿锁 kfuncs
-- 006 sched_ext：修复 select_cpu_and 空指针解引用
+- https://lore.kernel.org/all/20260902024812.794879-1-cui.tao@linux.dev/ （v3 0/2 封面，含完整 changelog）
+- https://lore.kernel.org/all/20260902024812.794879-2-cui.tao@linux.dev/ （v3 1/2 kdoc）
+- https://lore.kernel.org/all/20260902024812.794879-3-cui.tao@linux.dev/ （v3 2/2 flatcg）
+- Tejun 的 v2 评审：https://lore.kernel.org/all/0cbe2f233f77f013361d4593a88bac38@kernel.org/ 、
+  https://lore.kernel.org/all/beadefcfd5ae112a703b2514f6eebf34@kernel.org/ ；
+  applied：https://lore.kernel.org/all/752cd2e42b6161465a7644c3085ce924@kernel.org/
+- sashiko 原始报告（补丁 `Link:`）：https://lore.kernel.org/all/3f1ce004-e259-4e72-a5f7-14a5050053bd@linux.dev/
+- 相关：[[sched-20260902-004]]、[[sched-20260902-006]]

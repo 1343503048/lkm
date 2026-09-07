@@ -2,10 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 10
+article_count: 12
 ---
 
-- [sched-20260902-010](/lkm/2026/09/02/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.html) `fix/low/merged_tip` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
+- [sched-20260902-010](/lkm/2026/09/02/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.html) `fix/medium/merged_tip` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
+- [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
+- [sched-20260831-004](/lkm/2026/08/31/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
 - [sched-20260825-011](/lkm/2026/08/25/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
 - [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
 - [sched-20260822-001](/lkm/2026/08/22/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.html) `fix/low/under_review` — sched/fair: Use update_curr_eevdf() for remaining root cfs_rq callers
