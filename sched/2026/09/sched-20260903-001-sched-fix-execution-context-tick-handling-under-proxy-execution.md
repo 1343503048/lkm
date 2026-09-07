@@ -99,7 +99,7 @@ patch_series:
 - "sched/numa: Drive NUMA task tick from execution context"
 - "sched/cache: Drive cache task tick from execution context"
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "Chen Yu 关于 task_tick_core() 是否同样需要上移的追问无人回答，可能扩大系列范围"
   - "本日无 Acked-by/Reviewed-by，整个 proxy-execution 修正簇的合入路由未定"

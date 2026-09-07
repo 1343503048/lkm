@@ -2,7 +2,7 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 23
+article_count: 28
 ---
 
 - [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/merged_tip` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
@@ -13,6 +13,11 @@ article_count: 23
 - [sched-20260831-009](/lkm/2026/08/31/sched-20260831-009-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
 - [sched-20260831-011](/lkm/2026/08/31/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/medium/superseded` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260831-012](/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html) `fix/medium/under_review` — cpufreq: initialize policy rwsem before sysfs publication
+- [sched-20260830-002](/lkm/2026/08/30/sched-20260830-002-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260830-005](/lkm/2026/08/30/sched-20260830-005-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html) `fix/medium/under_review` — cpufreq: initialize policy rwsem before sysfs publication
+- [sched-20260830-006](/lkm/2026/08/30/sched-20260830-006-rust-cpufreq-reject-null-from-cpufreq-cpu-get.html) `fix/high/under_review` — rust: cpufreq: reject NULL from cpufreq_cpu_get()
+- [sched-20260829-001](/lkm/2026/08/29/sched-20260829-001-bug-general-protection-fault-in-cpuset-cpus-allowed.html) `bug/high/under_review` — [BUG] general protection fault in cpuset_cpus_allowed
+- [sched-20260828-002](/lkm/2026/08/28/sched-20260828-002-bug-general-protection-fault-in-cpuset-cpus-allowed.html) `bug/high/under_review` — [BUG] general protection fault in cpuset_cpus_allowed
 - [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260823-003](/lkm/2026/08/23/sched-20260823-003.html) `bug/critical/under_review` — sched/core: sporadic stale rq->curr causing scheduler crashes on arm64
 - [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — [tip: sched/urgent] sched/topology: cpus_read_lock() rebuild_sched_domains()

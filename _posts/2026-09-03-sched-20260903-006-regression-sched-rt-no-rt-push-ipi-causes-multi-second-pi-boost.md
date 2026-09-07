@@ -20,7 +20,7 @@ maintainers_involved:
 - Thorsten Leemhuis
 patch_series: []
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 无修复补丁，且 Steven Rostedt 截至 09-03 未回复催办
   - 原始报告的复现与量化数据未保留在邮件缓存中，问题边界不清

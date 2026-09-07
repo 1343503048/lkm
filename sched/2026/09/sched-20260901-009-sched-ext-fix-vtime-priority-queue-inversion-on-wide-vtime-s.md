@@ -39,7 +39,7 @@ v2 在本日尚无 review 回帖。
 
 ## 合入评估
 
-`likelihood = likely`。v2 两片：一片纯 kdoc、一片 1 行且被两位评审人明确认可过其必要性（Andrea 与 Tejun 都要求保留回绕语义，而 flatcg 是唯一与此矛盾的比较器）。作者身份与该修法都在 sched_ext 的既有收口节奏内（同一天 Tejun 刚把 v7.3-rc1 的 fixes pull 发出去，见 sched-20260901-018）。剩余障碍只有 `Fixes:` 标签是否更正，以及是否作为 `for-7.3-fixes` 还是 `for-7.4` 收——**flatcg 在 `tools/` 下，不进 stable，通常走下个合并窗口**。
+`likelihood = high`。v2 两片：一片纯 kdoc、一片 1 行且被两位评审人明确认可过其必要性（Andrea 与 Tejun 都要求保留回绕语义，而 flatcg 是唯一与此矛盾的比较器）。作者身份与该修法都在 sched_ext 的既有收口节奏内（同一天 Tejun 刚把 v7.3-rc1 的 fixes pull 发出去，见 sched-20260901-018）。剩余障碍只有 `Fixes:` 标签是否更正，以及是否作为 `for-7.3-fixes` 还是 `for-7.4` 收——**flatcg 在 `tools/` 下，不进 stable，通常走下个合并窗口**。
 
 ## 效果评估
 
@@ -96,7 +96,7 @@ upstream_commit: null
 fixes_commit: '06e51be3d5e7'
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 'Fixes: 7b742aa2c2c9 被 bot+bpf-ci 质疑应为 a4103eacc2ab4，作者未回应'
   - '2/2 仅有 compile test + VM smoke test，未走 bpf-ci 完整回归'

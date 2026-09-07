@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 10
+article_count: 11
 ---
 
+- [sched-20260828-001](/lkm/2026/08/28/sched-20260828-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260805-002](/lkm/2026/08/05/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260804-005](/lkm/2026/08/04/sched-20260804-005-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.html) `feature/none/under_review` — sched/fair: Allow load balancing between CPUs of identical capacity

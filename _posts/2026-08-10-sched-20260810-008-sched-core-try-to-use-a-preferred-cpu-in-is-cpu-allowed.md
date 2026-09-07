@@ -6,7 +6,7 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: <20260809120449.xxxxxx-shrikanth@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Shrikanth Rao
@@ -19,7 +19,7 @@ maintainers_involved:
 current_version: v9
 patch_series:
 - version: v9
-  msgid: <20260809120449.xxxxxx-shrikanth@kernel.org>
+  msgid: null
   date: 2026-08-09
   summary: v9 11-patch 系列中的 PATCH 04/11：在 is_cpu_allowed() 中尝试使用任务的 preferred CPU（亲和性扩展），让受限任务优先留在偏好的核上。
   review_outcome: Mete Durlu 在 8/10 针对 preferred CPU 与 is_cpu_allowed 的交互给出反馈；讨论 preferred

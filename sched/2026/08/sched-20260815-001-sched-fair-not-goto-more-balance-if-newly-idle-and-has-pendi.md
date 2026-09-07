@@ -66,7 +66,7 @@ patch_series:
   - version: v1
     msgid: "<uid-41479@qq-imap>"
     date: 2026-08-15
-    summary: "10 个 patch 实现 LB_PROMOTE 特性：在低 HZ（如 CONFIG_HZ_250）嵌入式平台上降低 CFS 任务"不合理 CPU 空闲"事件，提升实时性。"
+    summary: '10 个 patch 实现 LB_PROMOTE 特性：在低 HZ（如 CONFIG_HZ_250）嵌入式平台上降低 CFS 任务"不合理 CPU 空闲"事件，提升实时性。'
     review_outcome: "v1 刚发出，暂无 review 意见。"
 upstream_commit: null
 fixes_commit: null

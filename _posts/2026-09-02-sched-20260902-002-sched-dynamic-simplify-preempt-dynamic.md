@@ -32,7 +32,7 @@ patch_series:
 - 'sched: dynamic: Simplify preempt model accessors'
 - 'sched: dynamic: Fix preemption model strings'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - preempt_modes[] 与 enum preempt_dynamic 仍是两份定义，Mark 自陈 consistent-by-construction
     还需 rework，同类回归可能复发

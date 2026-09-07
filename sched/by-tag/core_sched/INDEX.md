@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 17 篇
+共 18 篇
 
+- [sched-20260828-001](../../2026/08/sched-20260828-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — Peter Zijlstra 8/28 发出 7 补丁系列，一次性处理 core scheduling 的三类问题：`pick_next_task()` 在 `pick_task()` 放掉 rq->lock 期间被兄弟 CPU 重入、core-wide 任务选择状态被踩踏（可致 NULL deref）；core-sched 下 newidle balance 被整条关掉造成的漏平衡；以及 `sc
 - [sched-20260826-001](../../2026/08/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.md) `feature/rfc` — K Prateek Nayak (AMD) 提交了一套 16 篇的 RFC，提出 proxy exec 中 sleeping-owner 处理的替代方案。核心思路是将 John Stultz 的大补丁拆分为更小的模块，引入 `p->is_linked` 状态 + `__task_rq_lock()` 方案来减少锁弹跳，并为不需要 chain-wakeup 的任务提供无额外锁的快路径。Andrea 
 - [sched-20260823-011](../../2026/08/sched-20260823-011.md) `discussion/medium/under_review` — `sched: Flatten the pick` (v3 0/7) 后续讨论：Peter 让报告者确认 flat_cg 数是基于 flat-hierarchy fix (68e3748781) 还是 single-runqueue (85570f10a4c6)；并提醒 0day 曾 pin 该系列 patch 6/7 导致网络吞吐回退（ksoftirqd 更少运行）。报告者用 0day 复现脚本
 - [sched-20260821-005](../../2026/08/sched-20260821-005-sched-remove-sched-class-balance.md) `discussion/under_review` — PeterZ 提议移除 `sched_class::balance()` 回调，这是 core_sched 重构的一部分。ByteDance 的 Xuewen Yan 提供了带宽测试脚本帮助验证，讨论仍在进行中。

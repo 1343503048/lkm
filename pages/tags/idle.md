@@ -2,9 +2,13 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 26
+article_count: 30
 ---
 
+- [sched-20260901-016](/lkm/2026/09/01/sched-20260901-016-sched-ext-use-atomic-cpumask-clear-cpu-in-scx-idle-test-and.html) `fix/low/stalled` — sched_ext: Use atomic cpumask_clear_cpu in scx_idle_test_and_clear_cpu()
+- [sched-20260828-008](/lkm/2026/08/28/sched-20260828-008-cpuidle-teo-do-not-return-a-disabled-idle-state.html) `bug/medium/under_review` — cpuidle: teo: Do not return a disabled idle state
+- [sched-20260827-014](/lkm/2026/08/27/sched-20260827-014-cpuidle-teo-do-not-return-a-disabled-idle-state.html) `bug/medium/under_review` — cpuidle: teo: Do not return a disabled idle state
+- [sched-20260827-015](/lkm/2026/08/27/sched-20260827-015-cpuidle-menu-do-not-return-a-disabled-idle-state.html) `bug/medium/under_review` — cpuidle: menu: Do not return a disabled idle state
 - [sched-20260826-007](/lkm/2026/08/26/sched-20260826-007-cpuidle-psci-fix-support-probe-deferral-dropping-faux-device.html) `fix/medium/under_review` — cpuidle: psci: Fix support for probe deferral by dropping the faux device
 - [sched-20260825-012](/lkm/2026/08/25/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.html) `discussion/medium/under_review` — cpuidle: Deny idle entry when CPU already have IPI interrupt pending
 - [sched-20260824-002](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/low/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle

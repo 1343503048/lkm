@@ -25,7 +25,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - Vincent Guittot 承诺的功能/性能测试尚未回帖
   - 线程内无 Reviewed-by/Acked-by，也未讨论是否需要 Fixes 标签

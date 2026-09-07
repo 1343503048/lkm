@@ -36,14 +36,14 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: "<20260810xxxxxx-madadi@kernel.org>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Madadi Vineeth Reddy, Kayra Cizmeci]
 maintainers_involved: [Peter Zijlstra, Vincent Guittot, Ingo Molnar, K Prateek Nayak]
 current_version: v1
 patch_series:
   - version: v1
-    msgid: "<20260810xxxxxx-madadi@kernel.org>"
+    msgid: null
     date: 2026-08-10
     summary: "让同步唤醒（sync wakeup）的目标优先落在唤醒者（waker）所在的 core，提升缓存/内存局部性；附 x86 实测数据。"
     review_outcome: "Kayra Cizmeci 在 8/10 提供 x86 实测数据（部分负载下 IPC/延迟改善），讨论是否对所有架构/负载通用。"

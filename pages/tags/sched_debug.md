@@ -2,11 +2,16 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 31
+article_count: 36
 ---
 
 - [sched-20260905-002](/lkm/2026/09/05/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260831-010](/lkm/2026/08/31/sched-20260831-010-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/rfc` — sched: Add task enqueue/dequeue trace points
+- [sched-20260828-003](/lkm/2026/08/28/sched-20260828-003-sched-fair-rework-tash-h-load.html) `fix/medium/under_review` — sched/fair: Rework tash_h_load()
+- [sched-20260828-005](/lkm/2026/08/28/sched-20260828-005-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.html) `fix/medium/under_review` — sched: Annotate rq->rd with __rcu and update lockless readers
+- [sched-20260828-009](/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html) `feature/medium/under_review` — sched: Add support for long task name
+- [sched-20260827-001](/lkm/2026/08/27/sched-20260827-001-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.html) `fix/medium/under_review` — sched: Annotate rq->rd with __rcu and update lockless readers
+- [sched-20260827-008](/lkm/2026/08/27/sched-20260827-008-sched-core-fix-overflow-in-resched-latency-warning-threshold.html) `fix/low/under_review` — sched/core: Fix overflow in resched latency warning threshold
 - [sched-20260825-002](/lkm/2026/08/25/sched-20260825-002-sched-replace-nr-pinned-offset-hack-percpu-counter.html) `fix/low/under_review` — sched: Replace nr_pinned offset hack with a dedicated per-CPU counter
 - [sched-20260825-008](/lkm/2026/08/25/sched-20260825-008-kernel-sched-topology-c-sparse-warning-rcu-assignment.html) `discussion/low/under_review` — kernel/sched/topology.c:2606:24: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260810-002](/lkm/2026/08/10/sched-20260810-002-sched-fair-use-list-for-each-entry-rcu-in-print-cfs-stats.html) `fix/medium/under_review` — sched/fair: Use list_for_each_entry_rcu() in print_cfs_stats()

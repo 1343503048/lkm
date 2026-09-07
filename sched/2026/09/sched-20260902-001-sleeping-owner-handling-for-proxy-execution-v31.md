@@ -178,7 +178,7 @@ patch_series:
 - 'sched: Add deactivated (sleeping) owner handling to find_proxy_task()'
 - 'sched: Distinguish proxy activations from wakeups'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 8/9 sleeping owner handling 与 9/9 未进树，补丁自陈锁设计 awkward 并公开求 review，全系列零回帖
   - 1/9 需 DL 侧继续背书；9/9 与 Andrea Righi 的 sched_ext/PE 系列存在两行交叉依赖

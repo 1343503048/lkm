@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: medium
-thread_root_msgid: <20260809164109.xxxxxx-tejun@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Tejun Heo
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: v1
 patch_series:
 - version: v1
-  msgid: <20260809164109.xxxxxx-tejun@kernel.org>
+  msgid: null
   date: 2026-08-09
   summary: 6 patches 系列：core-sched 翻转（core-sched flips）等待在途选择完成，并处理 pick_task() 释放
     rq 锁的竞态。

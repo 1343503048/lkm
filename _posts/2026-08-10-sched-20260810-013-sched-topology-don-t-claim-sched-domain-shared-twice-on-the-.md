@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: low
-thread_root_msgid: <20260810xxxxxx-breno@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Breno Leitao
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: v1
 patch_series:
 - version: v1
-  msgid: <20260810xxxxxx-breno@kernel.org>
+  msgid: null
   date: 2026-08-10
   summary: 修复 sched_domain_shared 在部分构建/配置下被重复 claim 导致的引用计数残留/内存泄漏问题。
   review_outcome: v1 发出，等待维护者对 shared domain 生命周期的反馈。

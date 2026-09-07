@@ -124,7 +124,7 @@ patch_series:
 - "virt/steal_governor: Implement steal_governor policy loop"
 - "virt/steal_governor: Enable the driver"
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "Peter Zijlstra / Ingo Molnar 截至 09-03 未表态，13 patch 中无 Acked-by"
   - "仅 FAIR 类生效且 stopper 只推 current 任务，机制语义不完整"

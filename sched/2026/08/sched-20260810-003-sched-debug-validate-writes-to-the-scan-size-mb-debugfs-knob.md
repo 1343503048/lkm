@@ -38,19 +38,19 @@ subsystem: sched
 type: fix
 status: under_review
 severity: high
-thread_root_msgid: "<20260809144911.xxxxxx-zhan@kernel.org>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Zhan Xusheng]
 maintainers_involved: [Peter Zijlstra, Mel Gorman, Ingo Molnar, Chen Yu]
 current_version: v2
 patch_series:
   - version: v1
-    msgid: "<20260809144911.xxxxxx-zhan@kernel.org>"
+    msgid: null
     date: 2026-08-09
     summary: "首次提出对 debugfs 写入 scan_size_mb 做校验，防止被写成 0。"
     review_outcome: "Chen Yu 在 v1 指出 0 值会触发 divide error panic。"
   - version: v2
-    msgid: "<20260810025820.xxxxxx-zhan@kernel.org>"
+    msgid: null
     date: 2026-08-10
     summary: "v2 增加 sysctl 文档说明与更严格的写入校验（拒绝 <=0 的 scan_size_mb），并修正一个除零相关的潜在 Oops。"
     review_outcome: "v2 发出，Chen Yu 与 Libo 继续讨论校验边界。"

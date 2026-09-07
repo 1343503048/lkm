@@ -22,7 +22,7 @@ v1（09-06 21:54，msgid `<20260906135507.749280-1-hi@tychen.cc>`）首次发出
 
 ## 合入评估
 
-`likelihood=likely`。依据：单行、方向明确（把中断显式视为非成功）、带 `Fixes:` 指向引入该行为的那个 commit、且给出了四种注入场景的前后对比。改动不可能引入内核侧回归，测试树维护者可直接 take。卡点：本日前无人回帖；唯一可能的分歧是「被中断」是否应该与「失败」共用同一个退出码 1（而非用独立的 exit code 区分），邮件中未见这类讨论。
+`likelihood=high`。依据：单行、方向明确（把中断显式视为非成功）、带 `Fixes:` 指向引入该行为的那个 commit、且给出了四种注入场景的前后对比。改动不可能引入内核侧回归，测试树维护者可直接 take。卡点：本日前无人回帖；唯一可能的分歧是「被中断」是否应该与「失败」共用同一个退出码 1（而非用独立的 exit code 区分），邮件中未见这类讨论。
 
 ## 效果评估
 
@@ -66,7 +66,7 @@ patch_series:
   summary: 'selftests/sched_ext/runner.c：SIGINT/SIGTERM 置 exit_req 使 runner 提前停止，但退出码只反映 failed 计数，被中断且已完成用例全通过时返回 0。改为 return failed > 0 || exit_req ? 1 : 0，让调用方能区分被中断与成功；结果计数仍只统计实际跑过的用例。runner.c 单行改动（+1/-1）。'
   review_outcome: 截至本日无回帖、无 Acked-by/Reviewed-by
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 本日前无人回帖，仍缺维护者 ack
   - 潜在分歧：被中断是否应与真实失败共用退出码 1，邮件中未见讨论

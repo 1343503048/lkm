@@ -45,7 +45,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - v13 刚发出，Tejun Heo 尚未对新版表态
   - reject DSQ 的 proxy 专属 SCX_RQ_PROXY_RETRY 与 core-sched 通用 deferred work 问题未合并解决，可能被要求重构

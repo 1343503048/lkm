@@ -88,7 +88,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
     - "SoB 链需作者补正、subject 冒号后需大写，未发 v2"
     - "修复只覆盖 misfit 子集，报告者提出的长时任务空闲大核优先级问题无人接手"

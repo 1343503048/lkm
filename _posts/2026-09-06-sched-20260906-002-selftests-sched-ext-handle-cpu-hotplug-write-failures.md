@@ -26,7 +26,7 @@ patch_series:
     CPU 失败同样判 FAIL。+23/-11。
   review_outcome: 截至本日无回帖、无 Acked-by/Reviewed-by
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 本日前无任何维护者 review 背书
   - 改变了既有用例的失败语义（挂住变成返回 1、恢复 CPU 失败也算 FAIL），可能需说明对 CI 的影响
@@ -69,7 +69,7 @@ v1（09-06 21:55，msgid `<20260906135534.749534-1-hi@tychen.cc>`）首次发出
 
 ## 合入评估
 
-`likelihood=possible`。有利因素：改动完全局限在 `tools/testing/selftests/sched_ext/`，带 `Fixes: a5db7817af78 ("sched_ext: Add selftests")`，且给出了可复现的注入式验证。卡点：本日前无任何 review；该补丁会改变既有用例的失败语义（原本挂住的场景开始返回 1、恢复 CPU 失败也算 FAIL），维护者可能要求同时说明 CI 上是否会出现新的红灯。属测试树小修，通常由 sched_ext 维护者直接收，无需 tip 流程。
+`likelihood=medium`。有利因素：改动完全局限在 `tools/testing/selftests/sched_ext/`，带 `Fixes: a5db7817af78 ("sched_ext: Add selftests")`，且给出了可复现的注入式验证。卡点：本日前无任何 review；该补丁会改变既有用例的失败语义（原本挂住的场景开始返回 1、恢复 CPU 失败也算 FAIL），维护者可能要求同时说明 CI 上是否会出现新的红灯。属测试树小修，通常由 sched_ext 维护者直接收，无需 tip 流程。
 
 ## 效果评估
 

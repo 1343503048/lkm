@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched: dynamic: Fix preemption model strings'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无：已合入 tip/sched/core 并通过 74 config 构建
   next_action: 跟踪其随 sched/core 进入 mainline；确认 9650ce11f2e3 是否需要 -stable

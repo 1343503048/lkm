@@ -21,7 +21,7 @@ maintainers_involved:
 - Mario Limonciello
 patch_series: []
 merge_assessment:
-  likelihood: unlikely
+  likelihood: low
   blocking_issues:
   - 本日为纯反馈邮件，无补丁可合
   - 实测仅一台 Ryzen HX 370、两个 build 负载、time 级别方法学，作者自评精度不足

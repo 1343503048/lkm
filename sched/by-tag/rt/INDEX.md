@@ -1,10 +1,14 @@
 # tag: rt
 
-共 11 篇
+共 15 篇
 
 - [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/stalled` — `dd29c017aed6`（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）使非 PREEMPT_RT 系统在 RT 任务位于其他 CPU 上被释放/提升时不再发 RT push IPI，专业音频（DAW）用户据此报告了多秒级的 PI-boost 饥饿。 本日唯一的动静是回归追踪者 Thorsten Leemhuis 
 - [sched-20260903-005](../../2026/09/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.md) `fix/high/under_review` — 代理执行下 `task_tick_rt()` 是替调度上下文 `rq->donor` 跑的，但运行时间记在 `rq->curr` 上，于是 `RLIMIT_RTTIME` 的 `rt.timeout` 累计与 posix CPU 定时器状态更新都落在了错误的任务上。Hui Su 的单补丁把 `watchdog()` 改传 `rq->curr`，并为「非 RT 执行任务借用 RT donor」的情形
+- [sched-20260830-001](../../2026/08/sched-20260830-001-sched-rt-dl-skip-migrate-disabled-tasks-when-picking-a-push-candidate.md) `bug/high/under_review` — Seiji Nishikawa（Red Hat）单补丁：`migrate_disable()` 过的 RT/DL 任务**仍留在该 CPU 的 pushable 列表里、且 rq 仍被标为 overloaded**，于是 RT 均衡器反复试图把它推走；推不动时 `push_rt_task()` 会退化成用 per-CPU stopper 去推 `rq->curr`，而这条回退路径的复检（`task
+- [sched-20260828-005](../../2026/08/sched-20260828-005-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.md) `fix/medium/under_review` — **本文为增量更新**（完整背景见 sched-20260827-001）。Aaron Tomlin 的 6 补丁系列在一天之内连发 **v8 与 v9**：给 `struct rq->rd` 补上 `__rcu` 标注，并把 `kernel/sched/` 里所有无锁直读 `rq->rd` 的地方换成统一 helper。v8 按 Peter Zijlstra 对 v7 的意见引入 `rcu_de
+- [sched-20260828-001](../../2026/08/sched-20260828-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — Peter Zijlstra 8/28 发出 7 补丁系列，一次性处理 core scheduling 的三类问题：`pick_next_task()` 在 `pick_task()` 放掉 rq->lock 期间被兄弟 CPU 重入、core-wide 任务选择状态被踩踏（可致 NULL deref）；core-sched 下 newidle balance 被整条关掉造成的漏平衡；以及 `sc
+- [sched-20260827-001](../../2026/08/sched-20260827-001-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.md) `fix/medium/under_review` — Aaron Tomlin 发出 v7（6 补丁）：给 `struct rq::rd` 补上 `__rcu` 注解，并把 kernel/sched/ 各处无锁直读 `rq->rd` 的路径改为规范的 RCU 解引用。v7 当天就得到 Peter Zijlstra 的实质 review 并当场收敛了实现细节（改用现有 `rcu_dereference_sched_domain()` 或别名），方向无争
 - [sched-20260820-006](../../2026/08/sched-20260820-006.md) `fix/low/under_review` — `struct cpupri_vec` 的 `count` 字段删除从 08-19 的 v1 推进到 08-20 的 v2：RT 优先级队列死代码清理，讨论收敛，合入概率高。
 - [sched-20260820-001](../../2026/08/sched-20260820-001.md) `fix/medium/under_review` — Zhe Liu 修一个 CFS 带宽配置顺序陷阱：先 `cpu.max.burst` 配大值、再设有限 `cpu.max` quota 时，因旧 burst 校验不通过导致 quota 写入直接 EINVAL。修复为「改 quota 不兼容则把 burst 清零」，附文档与 selftest。Michal Koutny 倾向改成 clamp 到 quota，分歧待解。
 - [sched-20260819-006](../../2026/08/sched-20260819-006-sched-rt-cpupri-remove-count-field.md) `fix/low/under_review` — 从 RT 优先级队列 `struct cpupri_vec` 中删除未使用的 `count` 字段，纯死代码清理。

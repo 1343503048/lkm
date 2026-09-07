@@ -1,10 +1,12 @@
 # tag: eevdf
 
-共 13 篇
+共 15 篇
 
 - [sched-20260902-010](../../2026/09/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.md) `fix/medium/merged_tip` — Zhan Xusheng（Xiaomi）的一行级修复已被 Peter Zijlstra 于 9/2 09:17(+0200) 合入 **tip/sched/urgent** （Commit-ID `1719d035a6fa90b7467b6daf45a573f5180013b2`）。内容：`pick_task_fair()` 与 `yield_task_fair()` 里的 `update_cur
-- [sched-20260901-002](../../2026/09/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/under_review` — Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径上漏改的两处 `cfs_rq->curr`：`throttle_cfs_rq()` 因此对中间层级永远判不到「该层有运行实体」，配额耗尽时既不申请整 slice 也不布防 deferred throttle，任务可以**持续超出所属 cgroup 的 `cpu.max` 配
+- [sched-20260901-002](../../2026/09/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/merged_tip` — Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径上漏改的两处 `cfs_rq->curr`：`throttle_cfs_rq()` 因此对中间层级永远判不到「该层有运行实体」，配额耗尽时既不申请整 slice 也不布防 deferred throttle，任务可以**持续超出所属 cgroup 的 `cpu.max` 配
 - [sched-20260831-004](../../2026/08/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/under_review` — Wanwu Li（kylinos）8/31 18:11 发出 2 补丁：EEVDF 单 runqueue 改造（`85570f10a4c6`）把"本层级是否有实体在跑"从 `cfs_rq->curr` 迁到 `cfs_rq->h_curr` 后，**CFS 带宽路径漏改了两处**，导致中间层 cgroup 的 `throttle_cfs_rq()` 永远拿不到一整份 `sched_cfs_band
+- [sched-20260828-007](../../2026/08/sched-20260828-007-sched-fair-fix-stale-comment-on-task-is-ineligible-on-dst-cpu.md) `fix/low/under_review` — Zhan Xusheng（Xiaomi）的 2 补丁**纯注释修复**，对象是负载均衡里两处"读代码时真正会去看的注释"：`task_is_ineligible_on_dst_cpu()` 的函数头注释和 `can_migrate_task()` 的否决清单。两处注释都与代码脱节已久——前者写的判据是 `dst_cfs_rq->nr_queued > 1`，而代码从 `873199d27bb2` 
+- [sched-20260827-019](../../2026/08/sched-20260827-019-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.md) `discussion/under_review` — 本文为增量更新（完整背景见 related_articles）。Kayra Cizmeci 的 enqueue 路径清理系列在 08-26 被 K Prateek Nayak（AMD）提了个 nit——引入局部 `bool delayed` 后可读性变差（"not delayed or delayed?"），建议要么改名 `wakeup_delayed` 要么直接沿用宏；08-27 作者反问：为什
 - [sched-20260825-011](../../2026/08/sched-20260825-011-sched-fair-use-update-curr-eevdf-remaining-root-cfs-rq.md) `fix/low/under_review` — 单 patch 修复，将 `sched/fair` 中剩余的 root cfs_rq 调用者统一使用 `update_curr_eevdf()` 而非旧接口。已获 Vincent Guittot Reviewed-by。
 - [sched-20260824-011](../../2026/08/sched-20260824-011-sched-fair-reuse-enqueue-delayed.md) `fix/under_review` — 两个小补丁清理 `enqueue_task_fair()` 路径：(1) 将分散的 `flags & ENQUEUE_DELAYED` 检查统一为一个 `delayed` 布尔变量；(2) 避免 `place_entity()` 和 `requeue_delayed_entity()` 对 `curr` 状态的重复计算。无功能变更，纯代码质量改进。
 - [sched-20260822-001](../../2026/08/sched-20260822-001-sched-fair-use-update-curr-eevdf-for-remaining-root-cfs-rq-callers.md) `fix/low/under_review` — Zhan Xusheng 提出将 `update_curr_eevdf()` 统一应用于剩余的 root cfs_rq 调用路径，确保 EEVDF 时间更新在所有路径上一致。v1 刚发出。

@@ -30,21 +30,21 @@ Peter 在权衡：直接 revert（简单、稳）vs 精确修复（保留改进�
 - 关联 commit: 6d71a9c61604
 
 ---
-subject: "sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement bug causing scheduling lag")"
+subject: 'sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement bug causing scheduling lag")'
 id: sched-20260810-011
 date: 2026-08-10
 subsystem: sched
 type: regression
 status: under_review
 severity: high
-thread_root_msgid: "<20260810xxxxxx-jose@kernel.org>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Jose Souza, John Stultz]
 maintainers_involved: [Peter Zijlstra, Ingo Molnar, Vincent Guittot, Dietmar Eggemann]
 current_version: "stable 6.18"
 patch_series:
   - version: "stable 6.18"
-    msgid: "<20260810xxxxxx-jose@kernel.org>"
+    msgid: null
     date: 2026-08-10
     summary: "针对 6.18 稳定分支，Revert commit 6d71a9c61604（EEVDF 实体放置相关改动），修复因该提交引入的调度延迟回归/任务饥饿。"
     review_outcome: "Peter 在 8/10 对该 revert 给出反馈（讨论是否应 revert 还是给更精确的修复）。"

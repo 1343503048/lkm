@@ -6,7 +6,7 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: <20260809203020.xxxxxx-righi@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Andrea Righi
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: v5
 patch_series:
 - version: v5
-  msgid: <20260809203020.xxxxxx-righi@kernel.org>
+  msgid: null
   date: 2026-08-09
   summary: v5：NOHZ 负载均衡在选核时优先选择「完全空闲」的 core（所有兄弟线程均空闲），降低把任务放到尚有兄弟线程运行的核上带来的 SMT 干扰。
   review_outcome: Peter 在 8/10 报告已 pull v4 进入 tip/sched/core，等待 v5 后续整理。

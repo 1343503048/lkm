@@ -26,7 +26,7 @@ upstream_commit: null
 fixes_commit: 2fc3384dc75b
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 'Fixes: 标签当前指向错误 commit，需改为 2fc3384dc75b 后合入（直接影响 stable 回合目标）'
   - 无复现证据，仅有代码语义论证

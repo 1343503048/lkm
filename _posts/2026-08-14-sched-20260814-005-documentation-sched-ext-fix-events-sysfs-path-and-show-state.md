@@ -16,7 +16,7 @@ maintainers_involved:
 current_version: v2
 patch_series:
 - version: v1
-  msgid: <20260813xxxxxx.scx_docs@tao>
+  msgid: null
   date: 2026-08-13
   summary: sched_ext 文档与注释的小修复（events sysfs 路径、show_state 示例、stale 引用）。
   review_outcome: Tejun review 后 v2 调整。

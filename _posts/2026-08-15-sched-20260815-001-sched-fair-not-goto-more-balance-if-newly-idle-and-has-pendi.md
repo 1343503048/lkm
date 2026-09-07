@@ -1,4 +1,51 @@
 ---
+subject: 'sched/fair: Not goto more_balance if newly idle and has pending task when
+  LBF_NEED_BREAK'
+id: sched-20260815-001
+date: 2026-08-15
+subsystem: sched
+type: feature
+status: under_review
+severity: medium
+thread_root_msgid: <uid-41479@qq-imap>
+lore_url: 未获取到
+authors:
+- Xin Zhao
+maintainers_involved:
+- Peter Zijlstra
+- Vincent Guittot
+- Dietmar Eggemann
+current_version: v1
+patch_series:
+- version: v1
+  msgid: <uid-41479@qq-imap>
+  date: 2026-08-15
+  summary: 10 个 patch 实现 LB_PROMOTE 特性：在低 HZ（如 CONFIG_HZ_250）嵌入式平台上降低 CFS 任务"不合理 CPU
+    空闲"事件，提升实时性。
+  review_outcome: v1 刚发出，暂无 review 意见。
+upstream_commit: null
+fixes_commit: null
+merged_branch: null
+merge_assessment:
+  likelihood: unknown
+  blocking_issues:
+  - 需要 maintainer 评估新增 sched feature 的通用性价值
+  - 仅在低 HZ 嵌入式场景收益明显，需更通用场景数据
+  next_action: 等待 maintainer 对 LB_PROMOTE 作为 sched feature 是否值得合入的反馈；补充非嵌入式/高 HZ 场景对比数据。
+contribution_opportunities:
+- kind: testing
+  description: 在 CONFIG_HZ_250 之外的场景（如服务器高 HZ、NOHZ_FULL）测试 LB_PROMOTE 对 sys% 与尾延迟的影响，验证通用性。
+- kind: review
+  description: 评审 patch 2/3 的 prerequisite 改动是否真的独立于 LB_PROMOTE，以及 select_task_rq_fair_thin()
+    是否引入与现有 wake_affine 逻辑的冲突。
+generated_at: '2026-08-16T00:10:00'
+source_email_count: 10
+related_articles: []
+tags:
+- sched/fair
+- load_balance
+- preempt
+- perf
 title: 'sched/fair: Not goto more_balance if newly idle and has pending task when
   LBF_NEED_BREAK'
 layout: article

@@ -122,7 +122,7 @@ maintainers_involved:
 patch_series:
 - '[PATCH] sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues: []
   next_action: 已合入 tip/sched/urgent；关注其随紧急修复窗口进主线，以及是否补 Cc stable（线程未提）
 contribution_opportunities:

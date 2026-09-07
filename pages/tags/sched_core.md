@@ -24,11 +24,11 @@ article_count: 80
 - [sched-20260902-001](/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html) `feature/medium/merged_tip` — Sleeping Owner Handling for Proxy Execution (v31)
 - [sched-20260902-002](/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html) `fix/low/merged_tip` — sched: dynamic: Simplify PREEMPT_DYNAMIC
 - [sched-20260902-011](/lkm/2026/09/02/sched-20260902-011-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stamp.html) `fix/medium/merged_tip` — sched/core: Skip rq->avg_idle update without a valid idle_stamp
-- [sched-20260902-012](/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/low/under_review` — sched/core: Call wq_worker_tick() for the execution context
-- [sched-20260902-013](/lkm/2026/09/02/sched-20260902-013-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html) `feature/low/under_review` — sched_clock: Add option to use absolute time against hardware clock reset
+- [sched-20260902-012](/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/medium/under_review` — sched/core: Call wq_worker_tick() for the execution context
+- [sched-20260902-013](/lkm/2026/09/02/sched-20260902-013-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html) `feature/low/stalled` — sched_clock: Add option to use absolute time against hardware clock reset
 - [sched-20260902-014](/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
-- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/low/under_review` — sched: Remove sched_class::balance()
-- [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: suppress timer and scheduler coverage leaks
+- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/medium/under_review` — sched: Remove sched_class::balance()
+- [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
 - [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260824-007](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler crashes on long-running arm64 servers
 - [sched-20260824-008](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `feature/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates

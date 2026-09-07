@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched_ext: Reject NMI calls to lock-taking kfuncs'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - sched_ext/for-7.4 尚未进入 tip 主线，最终拉取由 sched 维护者决定
   - 后续 scx_locked_rq()/irqsave 两点在另一 2 patch 系列中，本线程不闭合

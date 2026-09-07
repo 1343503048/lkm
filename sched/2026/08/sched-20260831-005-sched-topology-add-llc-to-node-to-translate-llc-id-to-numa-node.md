@@ -102,7 +102,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
     - "02/23 去重算法选用贪心、唯一距离数量多于实际需要，作者尚未回应是否换算法"
     - "07/23 与 NUMA balancing preferred node 的优先级关系未决"

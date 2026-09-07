@@ -43,7 +43,7 @@ enq_blocked selftest（16 contenders，owner nice +19 / donor -20）：
 - 评审：reject DSQ 远程迁移 race 处理与 `SCX_TASK_ENQ_WAKEUP` 语义简化。
 
 ## 参考链接
-- lore v12 thread: https://lore.kernel.org/all/20260817013458.xxxxxxx-arighi@nvidia.com/
+- lore v12 thread: https://lore.kernel.org/all/20260816173732.17162-1-arighi@nvidia.com/
 - git tree: git://git.kernel.org/pub/scm/linux/kernel/git/arighi/linux.git scx-proxy-exec
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
@@ -57,7 +57,7 @@ type: feature
 status: under_review
 severity: high
 thread_root_msgid: "<uid-42300@qq-imap>"
-lore_url: "https://lore.kernel.org/all/20260817013458.xxxxxxx-arighi@nvidia.com/"
+lore_url: "https://lore.kernel.org/all/20260816173732.17162-1-arighi@nvidia.com/"
 authors: [Andrea Righi]
 maintainers_involved: [Tejun Heo, Peter Zijlstra, John Stultz, K Prateek Nayak]
 current_version: v12

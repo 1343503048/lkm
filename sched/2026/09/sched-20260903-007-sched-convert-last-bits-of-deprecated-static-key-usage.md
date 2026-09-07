@@ -75,7 +75,7 @@ maintainers_involved: []
 patch_series:
 - "sched: Convert last bits of deprecated static key usage"
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "09-03 内无回帖、无 Acked-by/Reviewed-by"
   - "core.c 部分与 PREEMPT_DYNAMIC 精简系列争用同一区域，v2 已因此需修大冲突"

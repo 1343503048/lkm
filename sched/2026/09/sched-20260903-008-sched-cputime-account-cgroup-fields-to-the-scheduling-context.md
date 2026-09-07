@@ -85,7 +85,7 @@ maintainers_involved: []
 patch_series:
 - "sched/cputime: Account cgroup fields to the scheduling context"
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "线程内零评审，197 行全部落在 cputime/vtime 并发敏感区"
   - "cgroup 维护者 Tejun Heo 未确认 cgroup 字段按调度上下文这一新对外口径"

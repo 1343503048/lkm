@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched: Account cgroup CPU time to the execution context'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 等待 Tejun 点名的 John 认可「cgroup usage 跟随执行上下文」这一方向
   - 缓存中未见调度器侧维护者（Peter Zijlstra / Ingo Molnar）表态

@@ -32,13 +32,13 @@ patch_series:
     debugfs。diffstat 5 files, +64/-22。'
   review_outcome: 正式 pull request，无讨论线程；tip 侧内容已定，本日邮件中未见 Linus 合并确认
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无技术卡点；本邮件中未获取到 Linus 的合并确认与 stable 标记，进主线时点与是否回合 stable 待跟踪
   next_action: 确认该 pull 被合入哪个 -rc，并跟踪 sched/urgent 各 commit 的 stable 回合队列；优先自查 single-runqueue
     转换 + h_curr 两片在自有分支的完整性
 contribution_opportunities:
-- kind: backport
+- kind: new_patch
   description: 若分支已带 single-runqueue/h_curr 转换，核对 throttle_cfs_rq() 与 distribute_cfs_runtime()
     是否也已改用 cfs_rq->h_curr（cgroup cpu.max 节流与带宽重分配路径）
 - kind: testing
@@ -83,7 +83,7 @@ Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urge
 
 ## 合入评估
 
-`likelihood=likely`。依据：这是发给 Linus 的正式 pull request，分支内容与顶端 commit 均已确定，urgent 拉取通常会被直接合并。卡点：无。需要注意的两点判断依据：一是合并动作本身本日尚未出现在邮件里（未获取到）；二是是否走 `Cc: stable` 由 Linus/维护者决定，本邮件中未见 stable 标记，逐个 commit 的 `Fixes:` 情况需到 tip 树里看。
+`likelihood=merged`。依据：这是发给 Linus 的正式 pull request，分支内容与顶端 commit 均已确定，urgent 拉取通常会被直接合并。卡点：无。需要注意的两点判断依据：一是合并动作本身本日尚未出现在邮件里（未获取到）；二是是否走 `Cc: stable` 由 Linus/维护者决定，本邮件中未见 stable 标记，逐个 commit 的 `Fixes:` 情况需到 tip 树里看。
 
 ## 效果评估
 

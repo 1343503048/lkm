@@ -30,7 +30,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 无任何 benchmark/功耗数据支撑 64/115 这组具体数值
   - 1/2 混入大量清理并含一处 sysfs 对外行为变更，可能被要求拆分

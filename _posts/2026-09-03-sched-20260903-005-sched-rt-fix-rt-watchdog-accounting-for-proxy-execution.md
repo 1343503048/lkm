@@ -19,7 +19,7 @@ maintainers_involved: []
 patch_series:
 - 'sched/rt: Fix RT watchdog accounting for proxy execution'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 09-03 内零回帖、零 tag，RT 侧维护者未确认 rt.timeout 生命周期
   - __schedule() 快路径新增两处无条件判断，可能被要求收拢

@@ -6,7 +6,7 @@ article_count: 8
 ---
 
 - [sched-20260902-005](/lkm/2026/09/02/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.html) `fix/low/merged_tip` — sched_ext: document and enforce vtime ordering constraints
-- [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: suppress timer and scheduler coverage leaks
+- [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
 - [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent
 - [sched-20260822-006](/lkm/2026/08/22/sched-20260822-006-sched-ext-sync-headers-and-docs-applied-to-7-3-fixes.html) `fix/low/merged_tip` — sched_ext: Sync headers and docs (applied to for-7.3-fixes)
 - [sched-20260820-003](/lkm/2026/08/20/sched-20260820-003.html) `fix/low/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent

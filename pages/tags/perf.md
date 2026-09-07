@@ -2,11 +2,13 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 32
+article_count: 34
 ---
 
 - [sched-20260901-001](/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260901-013](/lkm/2026/09/01/sched-20260901-013-sched-ext-skip-per-cpu-data-allocation-for-built-in-dsqs.html) `fix/low/under_review` — sched_ext: Skip per-CPU data allocation for built-in DSQs
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260815-001](/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html) `feature/medium/under_review` — sched/fair: Not goto more_balance if newly idle and has pending task when LBF_NEED_BREAK
 - [sched-20260810-004](/lkm/2026/08/10/sched-20260810-004-perf-core-sched-task-dispatch-and-branch-entry-fixes.html) `fix/medium/under_review` — perf/core: sched_task() dispatch and branch entry fixes
 - [sched-20260810-005](/lkm/2026/08/10/sched-20260810-005-perf-core-fix-group-leader-use-after-free-after-sibling-deta.html) `fix/high/merged_tip` — perf/core: Fix group leader use-after-free after sibling detach
 - [sched-20260808-005-perf-sched-latency-v9-applied](/lkm/2026/08/08/sched-20260808-005-perf-sched-latency-v9-applied.html) `unknown/none/merged` — perf sched latency: Refine outputs, unit scaling, and histogram support

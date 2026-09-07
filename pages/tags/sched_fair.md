@@ -2,7 +2,7 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 52
+article_count: 54
 ---
 
 - [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
@@ -40,11 +40,13 @@ article_count: 52
 - [sched-20260818-005](/lkm/2026/08/18/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.html) `feature/medium/under_review` — sched: Flatten the pick
 - [sched-20260817-004](/lkm/2026/08/17/sched-20260817-004-sched-urgent-for-v7-2.html) `fix/medium/merged_tip` — sched/urgent for v7.2
 - [sched-20260817-005](/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260815-001](/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html) `feature/medium/under_review` — sched/fair: Not goto more_balance if newly idle and has pending task when LBF_NEED_BREAK
 - [sched-20260815-014](/lkm/2026/08/15/sched-20260815-014-sched-fair-fix-flat-hierarchy.html) `fix/low/merged_tip` — sched/fair: Fix flat hierarchy
 - [sched-20260814-001](/lkm/2026/08/14/sched-20260814-001-sched-fair-fix-flat-hierarchy.html) `fix/medium/merged_tip` — sched/fair: Fix flat hierarchy
 - [sched-20260810-002](/lkm/2026/08/10/sched-20260810-002-sched-fair-use-list-for-each-entry-rcu-in-print-cfs-stats.html) `fix/medium/under_review` — sched/fair: Use list_for_each_entry_rcu() in print_cfs_stats()
 - [sched-20260810-009](/lkm/2026/08/10/sched-20260810-009-sched-ext-move-reject-dsq-draining-into-core.html) `feature/none/under_review` — sched_ext: Move reject DSQ draining into core
 - [sched-20260810-010](/lkm/2026/08/10/sched-20260810-010-sched-cache-fix-a-thread-aggregation-conflict-when-there-is-.html) `fix/low/under_review` — sched/cache: Fix a thread aggregation conflict when there is one runnable task
+- [sched-20260810-011](/lkm/2026/08/10/sched-20260810-011-sched-fair-revert-6d71a9c61604-sched-fair-fix-eevdf-entity-p.html) `regression/high/under_review` — sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement bug causing scheduling lag")
 - [sched-20260810-012](/lkm/2026/08/10/sched-20260810-012-sched-fair-let-sync-wakeups-target-the-waker-s-core.html) `feature/none/under_review` — sched/fair: Let sync wakeups target the waker's core
 - [sched-20260810-014](/lkm/2026/08/10/sched-20260810-014-sched-fair-drop-min-vruntime-call-from-set-protect-slice.html) `discussion/low/under_review` — sched/fair: Drop min_vruntime() call from set_protect_slice()
 - [sched-20260809-001](/lkm/2026/08/09/sched-20260809-001-sched-debug-introduce-per-cpu-debugfs-files.html) `feature/none/under_review` — sched/debug: Introduce per-CPU debugfs files

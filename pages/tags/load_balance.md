@@ -2,25 +2,38 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 60
+article_count: 74
 ---
 
 - [sched-20260904-006](/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260903-011](/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html) `discussion/medium/under_review` — sched/cache: Honor migrate_llc_task semantics in active load balance
 - [sched-20260903-012](/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html) `discussion/medium/rfc` — sched/cache: Introduce helpers for task migration decisions
 - [sched-20260902-009](/lkm/2026/09/02/sched-20260902-009-sched-cache-introduce-helpers-for-task-migration-decisions.html) `feature/medium/under_review` — sched/cache: Introduce helpers for task migration decisions
-- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/low/under_review` — sched: Remove sched_class::balance()
+- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/medium/under_review` — sched: Remove sched_class::balance()
 - [sched-20260901-001](/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
 - [sched-20260901-004](/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260901-005](/lkm/2026/09/01/sched-20260901-005-sched-cache-introduce-rq-affinity-gain-calculation.html) `feature/none/rfc` — sched/cache: Introduce rq affinity gain calculation
 - [sched-20260901-006](/lkm/2026/09/01/sched-20260901-006-sched-cache-prioritize-preferred-numa-node-selection-over-llc-selection.html) `feature/none/rfc` — sched/cache: Prioritize preferred NUMA node selection over LLC selection
 - [sched-20260901-007](/lkm/2026/09/01/sched-20260901-007-sched-cache-introduce-helpers-for-task-migration-decisions.html) `feature/none/rfc` — sched/cache: Introduce helpers for task migration decisions
 - [sched-20260901-011](/lkm/2026/09/01/sched-20260901-011-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
+- [sched-20260901-015](/lkm/2026/09/01/sched-20260901-015-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
 - [sched-20260831-003](/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20260831-005](/lkm/2026/08/31/sched-20260831-005-sched-topology-add-llc-to-node-to-translate-llc-id-to-numa-node.html) `feature/none/rfc` — sched/topology: Add llc_to_node() to translate LLC id to NUMA node
 - [sched-20260831-006](/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html) `bug/high/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260831-008](/lkm/2026/08/31/sched-20260831-008-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html) `feature/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
 - [sched-20260831-009](/lkm/2026/08/31/sched-20260831-009-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260830-002](/lkm/2026/08/30/sched-20260830-002-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
+- [sched-20260830-003](/lkm/2026/08/30/sched-20260830-003-sched-fair-which-tasks-should-nr-pref-llc-running-be-compared-against.html) `discussion/medium/under_review` — sched/fair: which tasks should nr_pref_llc_running be compared against?
+- [sched-20260829-002](/lkm/2026/08/29/sched-20260829-002-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html) `feature/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
+- [sched-20260829-003](/lkm/2026/08/29/sched-20260829-003-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html) `bug/high/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260828-001](/lkm/2026/08/28/sched-20260828-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
+- [sched-20260828-003](/lkm/2026/08/28/sched-20260828-003-sched-fair-rework-tash-h-load.html) `fix/medium/under_review` — sched/fair: Rework tash_h_load()
+- [sched-20260828-004](/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
+- [sched-20260828-006](/lkm/2026/08/28/sched-20260828-006-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `discussion/medium/rfc` — sched/core: Try to use a preferred CPU in is_cpu_allowed
+- [sched-20260828-007](/lkm/2026/08/28/sched-20260828-007-sched-fair-fix-stale-comment-on-task-is-ineligible-on-dst-cpu.html) `fix/low/under_review` — sched/fair: Fix stale comment on task_is_ineligible_on_dst_cpu()
+- [sched-20260828-010](/lkm/2026/08/28/sched-20260828-010-sched-cache-judge-migration-eligibility-in-llc-granularity.html) `feature/medium/rfc` — sched/cache: Judge migration eligibility in LLC granularity
+- [sched-20260827-002](/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
+- [sched-20260827-018](/lkm/2026/08/27/sched-20260827-018-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html) `discussion/medium/stalled` — sched/fair: which tasks should nr_pref_llc_running be compared against?
 - [sched-20260826-010](/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick
@@ -31,6 +44,7 @@ article_count: 60
 - [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched: Remove sched_class::balance()
 - [sched-20260819-011](/lkm/2026/08/19/sched-20260819-011-sched-remove-sched-class-balance-core-sched-discussion.html) `feature/low/under_review` — sched/remove sched/class balance core-sched/discussion
 - [sched-20260818-005](/lkm/2026/08/18/sched-20260818-005-sched-flatten-the-pick-v3-benchmarks.html) `feature/medium/under_review` — sched: Flatten the pick
+- [sched-20260815-001](/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html) `feature/medium/under_review` — sched/fair: Not goto more_balance if newly idle and has pending task when LBF_NEED_BREAK
 - [sched-20260808-006-sched-fair-asym-capacity-load-balance-merged](/lkm/2026/08/08/sched-20260808-006-sched-fair-asym-capacity-load-balance-merged.html) `unknown/none/merged` — sched/fair: Do not skip CPUs of similar capacity with busy SMT siblings
 - [sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged](/lkm/2026/08/08/sched-20260808-007-sched-fair-nohz-fully-idle-cores-merged.html) `unknown/none/merged` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260807-010-sched-cache-active-lb-migrate-llc-task](/lkm/2026/08/07/sched-20260807-010-sched-cache-active-lb-migrate-llc-task.html) `unknown/none/in-review` — sched/cache: honor migrate_llc_task semantics in active load balance

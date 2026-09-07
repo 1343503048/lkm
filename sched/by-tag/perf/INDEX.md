@@ -1,7 +1,8 @@
 # tag: perf
 
-共 33 篇
+共 34 篇
 
+- [sched-20260901-013](../../2026/09/sched-20260901-013-sched-ext-skip-per-cpu-data-allocation-for-built-in-dsqs.md) `fix/low/under_review` — Qiurong Fang（KylinOS）去掉 built-in DSQ 上无用的 `nr_cpu_ids` 个 per-CPU 结构：deferred reenqueue 只对 user DSQ 有意义，而 `scx_init_dsq()` 过去给每个 DSQ 都 `alloc_percpu(struct scx_dsq_pcpu)`。v2 已按 Tejun Heo 要求把 `->pcpu` 改
 - [sched-20260901-001](../../2026/09/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.md) `bug/high/under_review` — Hyunwoo Kim 报告并修复 cache-aware 调度统计（`mm->sc_stat`）在 exec 换 mm 时的 slab-use-after-free：`account_mm_sched()` 在 rq 锁下读的 `p->mm` 没有任何生命周期保护，exec 路径可以把它释放掉。v2 用 `synchronize_rcu()` 兜底并 `Cc: stable`，但 Tim Che
 - [sched-20260825-001](../../2026/08/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.md) `feature/under_review` — steal_governor 系列推进到 **v11**（12 个 patch），引入 "preferred CPU" 机制：在虚拟化环境中，当某些 vCPU 的 steal time 显著高于其他 vCPU 时，调度器优先在低 steal time 的 CPU 上运行任务，减少因 vCPU 被抢占导致的锁持有者抢占、TLB/cache 失效等代价。作者明确表示系列已收敛，请求 Peter/Ing
 - [sched-20260815-001](../../2026/08/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.md) `feature/medium/under_review` — Xin Zhao 提交 10 个 patch 引入 `LB_PROMOTE` 调度特性，目标是在 `CONFIG_HZ_250` 等低 HZ 嵌入式平台上消除 CFS 任务的"不合理 CPU 空闲"事件（>4ms 调度延迟），提升实时性。目前 v1 刚发出，尚无 maintainer 意见，合入价值取决于通用性论证。

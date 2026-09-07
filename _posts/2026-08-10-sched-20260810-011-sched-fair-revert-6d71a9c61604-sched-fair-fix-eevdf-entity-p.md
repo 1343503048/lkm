@@ -1,4 +1,49 @@
 ---
+subject: 'sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement
+  bug causing scheduling lag")'
+id: sched-20260810-011
+date: 2026-08-10
+subsystem: sched
+type: regression
+status: under_review
+severity: high
+thread_root_msgid: null
+lore_url: 未获取到
+authors:
+- Jose Souza
+- John Stultz
+maintainers_involved:
+- Peter Zijlstra
+- Ingo Molnar
+- Vincent Guittot
+- Dietmar Eggemann
+current_version: stable 6.18
+patch_series:
+- version: stable 6.18
+  msgid: null
+  date: 2026-08-10
+  summary: 针对 6.18 稳定分支，Revert commit 6d71a9c61604（EEVDF 实体放置相关改动），修复因该提交引入的调度延迟回归/任务饥饿。
+  review_outcome: Peter 在 8/10 对该 revert 给出反馈（讨论是否应 revert 还是给更精确的修复）。
+upstream_commit: null
+fixes_commit: 6d71a9c61604
+merged_branch: null
+merge_assessment:
+  likelihood: medium
+  blocking_issues:
+  - Peter 讨论是否直接 revert 还是给更精确修复
+  next_action: 等待维护者决定：直接 revert 6.18 还是只修主线 + 稳定分支择机回退。
+contribution_opportunities:
+- kind: testing
+  description: 在 6.18 内核上对比 revert 前后调度延迟/饥饿指标。
+- kind: review
+  description: 评审 revert 与更精确修复两种方案的取舍。
+generated_at: '2026-08-11T00:15:00'
+source_email_count: 2
+related_articles: []
+tags:
+- sched/fair
+- eevdf
+- regression
 title: 'sched/fair: Revert 6d71a9c61604 ("sched/fair: Fix EEVDF entity placement bug
   causing scheduling lag")'
 layout: article

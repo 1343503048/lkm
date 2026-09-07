@@ -2,7 +2,7 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 97
+article_count: 105
 ---
 
 - [sched-20260906-001](/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html) `bug/medium/merged_tip` — sched_ext: Fix keep-last for sub-scheduler tasks and two scx_qmap placement loops
@@ -23,8 +23,16 @@ article_count: 97
 - [sched-20260901-003](/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260901-008](/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html) `fix/low/under_review` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
 - [sched-20260901-009](/lkm/2026/09/01/sched-20260901-009-sched-ext-fix-vtime-priority-queue-inversion-on-wide-vtime-s.html) `bug/medium/under_review` — sched_ext: fix vtime priority queue inversion on wide vtime spread
+- [sched-20260901-012](/lkm/2026/09/01/sched-20260901-012-git-pull-sched-ext-fixes-for-v7-3-rc1.html) `fix/high/merged_tip` — [GIT PULL] sched_ext: Fixes for v7.3-rc1
+- [sched-20260901-013](/lkm/2026/09/01/sched-20260901-013-sched-ext-skip-per-cpu-data-allocation-for-built-in-dsqs.html) `fix/low/under_review` — sched_ext: Skip per-CPU data allocation for built-in DSQs
+- [sched-20260901-016](/lkm/2026/09/01/sched-20260901-016-sched-ext-use-atomic-cpumask-clear-cpu-in-scx-idle-test-and.html) `fix/low/stalled` — sched_ext: Use atomic cpumask_clear_cpu in scx_idle_test_and_clear_cpu()
+- [sched-20260901-017](/lkm/2026/09/01/sched-20260901-017-sched-ext-pass-the-initial-cpu-idle-state-in-scx-cgroup-init.html) `fix/medium/merged_tip` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
 - [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260831-002](/lkm/2026/08/31/sched-20260831-002-sched-core-alternate-approach-to-sleeping-owner-handling-in-proxy-exec.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
+- [sched-20260829-004](/lkm/2026/08/29/sched-20260829-004-tools-sched-ext-extend-the-prolog-migration-probe-to-cid-form-schedulers.html) `fix/medium/under_review` — tools/sched_ext: Extend the prolog migration probe to cid-form schedulers
+- [sched-20260827-011](/lkm/2026/08/27/sched-20260827-011-sched-ext-fix-timer-pinning-and-return-value-in-scx-central.html) `fix/medium/under_review` — sched_ext: Fix timer pinning and return value in scx_central
+- [sched-20260827-012](/lkm/2026/08/27/sched-20260827-012-sched-ext-fix-several-comment-issues.html) `fix/none/under_review` — sched_ext: Fix several comment issues
+- [sched-20260827-013](/lkm/2026/08/27/sched-20260827-013-sched-ext-skip-per-cpu-data-allocation-for-built-in-dsqs.html) `fix/low/under_review` — sched_ext: Skip per-CPU data allocation for built-in DSQs
 - [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates
 - [sched-20260825-004](/lkm/2026/08/25/sched-20260825-004-sched-ext-allow-ops-cgroup-set-weight-idle-sleepable.html) `feature/none/under_review` — sched_ext: Allow ops.cgroup_set_weight/idle() to be sleepable
 - [sched-20260825-005](/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html) `fix/medium/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args

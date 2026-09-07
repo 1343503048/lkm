@@ -37,14 +37,14 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: "<20260810093631.xxxxxx-xukai@kernel.org>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Xukai Wang]
 maintainers_involved: [Peter Zijlstra, Juri Lelli, Joel Fernandes, Valentin Schneider]
 current_version: "RFC v2"
 patch_series:
   - version: "RFC v2"
-    msgid: "<20260810093631.xxxxxx-xukai@kernel.org>"
+    msgid: null
     date: 2026-08-10
     summary: "RFC v2：将 donor（代理执行）任务的 commit（正式成为 rq->curr）推迟到 proxy 解析完成之后，避免中途状态暴露给负载均衡/调度统计。"
     review_outcome: "RFC 阶段，等待 proxy execution 维护者对延迟 commit 语义的评审。"

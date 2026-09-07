@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched: Document WF_SYNC wakeup placement semantics (RFC 1/2)'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - Vineeth 指出文档逐字复述实现会静默过期，需按契约/实现分层重写
   - 仍是 RFC，无 sched 维护者表态、无任何 tag

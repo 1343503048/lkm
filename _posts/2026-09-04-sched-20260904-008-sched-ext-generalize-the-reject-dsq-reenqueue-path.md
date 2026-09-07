@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched_ext: Generalize the reject DSQ reenqueue path'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - Tejun 要求把 SCX_TASK_REENQ_REASON_MASK 的清理收敛到统一出口标签，当前实现散落且重复清理
   - diff 中不必要的花括号（风格问题）

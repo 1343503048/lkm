@@ -26,7 +26,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - synchronize_rcu() 是否可替代 this_rq_lock_irq() 尚无结论（涉及 account_mm_sched() 的 preemption-disabled
     上下文语义）

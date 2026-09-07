@@ -42,7 +42,7 @@ v1 一次成型，无重发，本日即完成 review 与 apply（时间均为 +0
 
 ## 合入评估
 
-`likelihood=likely`。依据：4 片已由维护者 apply 进 `sched_ext/for-7.3-fixes`（09-06 06:25），并带 Andrea 的 Reviewed-by；2/4 标注 `Fixes: 88234b075c3f ("sched_ext: Introduce scx_task_sched[_rcu]()")`，属 fixes 分支内容，随后随该分支进 Linus 树是常规路径。卡点：本系列已无技术卡点，追加的 handoff fix 也已获 R-b、只差 apply 确认。两点未获取到：本日邮件中没有 tip-bot / 向 Linus pull 的记录，也未见 `Cc: stable`，因此进入主线的具体时点与是否回合 stable 无法判断。对回合工作而言，真正的内核侧改动只有 2/4 的判定归属（1/4 仅改名），3/4、4/4 与追加片都在 `tools/sched_ext/`。
+`likelihood=merged`。依据：4 片已由维护者 apply 进 `sched_ext/for-7.3-fixes`（09-06 06:25），并带 Andrea 的 Reviewed-by；2/4 标注 `Fixes: 88234b075c3f ("sched_ext: Introduce scx_task_sched[_rcu]()")`，属 fixes 分支内容，随后随该分支进 Linus 树是常规路径。卡点：本系列已无技术卡点，追加的 handoff fix 也已获 R-b、只差 apply 确认。两点未获取到：本日邮件中没有 tip-bot / 向 Linus pull 的记录，也未见 `Cc: stable`，因此进入主线的具体时点与是否回合 stable 无法判断。对回合工作而言，真正的内核侧改动只有 2/4 的判定归属（1/4 仅改名），3/4、4/4 与追加片都在 `tools/sched_ext/`。
 
 ## 效果评估
 
@@ -104,13 +104,13 @@ patch_series:
   summary: '追加单片 sched_ext: scx_qmap: Fix pending partition work handoff：qmap 可能把 partition work 留在无人执行的状态（effective-cap 回调在抢 part_busy 失败后才 publish、redistribute() 在释放 part_busy 后才检查 pending）。改为请求先 publish、释放 guard 后再检查 pending，所有 holder（含 stats flush）都调 execute_partition() 排空，并用 PART_REFRESH/PART_REDISTRIBUTE 区分掩码刷新与重分区。Fixes: e9151ed5c944，Reported-by: Andrea Righi。'
   review_outcome: 22:02 Andrea Righi Reviewed-by；是否已 apply 到 for-7.3-fixes 本日邮件未获取到
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 本系列已 apply 进 sched_ext/for-7.3-fixes，无技术卡点；追加的 handoff fix 已获 Reviewed-by，只差 apply 确认
   - '本日邮件中未见向 Linus 的 pull 或 tip-bot 记录，进主线时点未获取到；也未见 Cc: stable，是否回合 stable 无法判断'
   next_action: 跟踪 sched_ext/for-7.3-fixes 的下一轮 pull request；若分支含 88234b075c3f 的 sub-scheduler 抽象，评估把 2/4 的内核侧修复回合到 OLK-6.6
 contribution_opportunities:
-- kind: backport
+- kind: new_patch
   description: 排查自有分支里 dispatch_one() 的两处 keep 判定是否仍读 root 调度器的 SCX_OPS_ENQ_LAST/scx_bypassing；只要带了 88234b075c3f 的 scx_task_sched() 语义就同样需要 2/4 这一处判定改动，并注意每次判定时重读 sched 而不是缓存指针
 - kind: review
   description: 3/4 只在 scx_qmap 去掉了 RESCUE|IMMED 组合；扫一遍其它 example/自研 scheduler（含 scx_nitosis）是否还有同样的 rescue 插入会被内核当成合法放置并 REENQ 弹回

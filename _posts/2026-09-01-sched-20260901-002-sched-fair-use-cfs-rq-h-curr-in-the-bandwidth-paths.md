@@ -4,7 +4,7 @@ id: sched-20260901-002
 date: '2026-09-01'
 subsystem: sched
 type: bug
-status: under_review
+status: merged_tip
 severity: high
 thread_root_msgid: <20260831101141.391382-1-liwanwu@kylinos.cn>
 lore_url: https://lore.kernel.org/all/20260831101141.391382-1-liwanwu@kylinos.cn/
@@ -13,6 +13,7 @@ authors:
 - Aaron Lu
 maintainers_involved:
 - Aaron Lu
+- Ingo Molnar
 current_version: v1
 patch_series:
 - version: v1
@@ -20,26 +21,24 @@ patch_series:
   date: '2026-08-31'
   summary: 2 片：throttle_cfs_rq() 与 distribute_cfs_runtime() 改读 cfs_rq->h_curr，补齐 85570f10a4c6
     single-runqueue 转换的漏改；作者审计 fair.c 全部 cfs_rq->curr 引用后确认只有这 2 处仍逐层执行
-  review_outcome: Aaron Lu 给整系列 Reviewed-by + Tested-by（单 CPU 绑 nop 可观测到用超配额，打补丁后消失）；无人反对，无人要求改动
-upstream_commit: null
-fixes_commit: null
-merged_branch: null
+  review_outcome: Aaron Lu 给整系列 Reviewed-by + Tested-by（单 CPU 绑 nop 可观测到用超配额，打补丁后消失）；无人反对，无人要求改动；09-06
+    由 Ingo Molnar 收进 tip/sched/urgent，09-07 合入 mainline
+upstream_commit: 88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8
+fixes_commit: 85570f10a4c6
+merged_branch: tip/sched/urgent (tag sched-urgent-2026-09-06) -> torvalds/linux.git
 merge_assessment:
-  likelihood: likely
-  blocking_issues:
-  - 本日尚无调度维护者（Peter Zijlstra / Vincent Guittot / Ingo Molnar）Acked-by，未进 tip
-  - '逐片的 Fixes: 标签与是否需要 Cc: stable 在本日邮件中未讨论'
-  next_action: 等 tip/sched/urgent 或 sched/core 收取；作者可补 Fixes 标签指向 85570f10a4c6 并请求
-    stable 回合
+  likelihood: merged
+  blocking_issues: []
+  next_action: 确认两片在自家分支的回合顺序（须先有 single-runqueue/h_curr 转换）；如需 stable 覆盖，可补一份可量化的超用数据回帖
 contribution_opportunities:
-- kind: backport
+- kind: new_patch
   description: 核对自有分支在引入 single-runqueue/h_curr 转换后，throttle_cfs_rq() 与 distribute_cfs_runtime()
     是否同步改用 cfs_rq->h_curr（直接影响 cgroup cpu.max 节流与带宽重分配）
 - kind: testing
   description: 把 Aaron Lu 的单 CPU nop 观察升级为多层级嵌套配额的自动化回归测试，量化超用比例并回帖
 - kind: review
   description: 延伸审计 cfs_bandwidth 与 burst 组合路径下是否还有同类漏改点
-source_email_count: 3
+source_email_count: 5
 related_articles:
 - sched-20260831-004
 - sched-20260831-003
@@ -88,9 +87,13 @@ Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径�
 
 ## 合入评估
 
-`likelihood = likely`。依据：修复动机由上游转换（`85570f10a4c6`）自身造成、语义是恢复既有意图、改动面小、已拿到 `Reviewed-by` + `Tested-by`，且 `2/2` 作者自己说明「今天还不构成正确性洞」——这种诚实定级反而更容易被接受。卡点：本日尚无 `Acked-by`/调度维护者表态，也未见 `Fixes:` 标签讨论（正文里未获取到逐片的 Fixes 指向），需要 Peter Zijlstra / Vincent Guittot 把它们收进 `tip/sched/urgent` 或 `sched/core`。
+`likelihood = merged`（已合入 mainline，非预测）。**09-01 当日的确还没有维护者表态**，这一点当天判断正确；但补跑时按后续缓存核对，两片已经走完全程：
 
-补跑时按后续缓存补充的进展：`09-06` Ingo 发给 Linus 的 `[GIT PULL] scheduler fixes`（`tip/sched/urgent`）中，这两片以 Wanwu Li 的名义出现，且 Ingo 明确写它们是由 recent single-runqueue conversion 引起的回归修复——即本判断已在上游得到印证。
+- 两片**都自带** `Fixes: 85570f10a4c6 ("sched/eevdf: Move to a single runqueue")`（`1/2` `<20260831101141.391382-2-liwanwu@kylinos.cn>`、`2/2` `<20260831101141.391382-3-liwanwu@kylinos.cn>`），因此不存在「缺 Fixes 指向」的问题；但两片也**没有** `Cc: stable`。
+- **09-06 19:22** Ingo Molnar 的 `[GIT PULL] scheduler fixes`（`<ap1NEllrD8nMsFiB@gmail.com>`）从 `tip/sched/urgent` 拉出 `sched-urgent-2026-09-06`，`Wanwu Li (2)` 列出 `sched/fair: Use cfs_rq->h_curr in throttle_cfs_rq()` 与 `... in distribute_cfs_runtime()`；Ingo 给 Linus 的摘要里把两者写成 "Fix throttling/bandwidth calculation bug ..., caused by the recent single-runqueue conversion"——即回归定性由维护者背书，而非作者自陈。
+- **09-07 02:11** pr-tracker-bot 确认该 pull 已合入 `torvalds/linux.git`，merge commit `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`。
+
+也就是说：无需 Peter Zijlstra / Vincent Guittot 另行收取，`tip/sched/urgent` 路径已经走完；剩下的唯一悬空点是 stable——由于没有 `Cc: stable`，是否回合取决于 stable 维护者是否自己从 `Fixes:` 追下来。
 
 ## 效果评估
 
@@ -107,5 +110,7 @@ Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径�
 - cover letter: https://lore.kernel.org/all/20260831101141.391382-1-liwanwu@kylinos.cn/
 - Aaron Lu 的 Reviewed-by + Tested-by: https://lore.kernel.org/all/20260901023851.GA4059187@bytedance.com/
 - 作者确认现象吻合: https://lore.kernel.org/all/20260901040927.773631-1-liwanwu@kylinos.cn/
-- tip-bot commit: 未获取到（09-01 尚未合入）
-- stable backport: 未获取到
+- Ingo Molnar 09-06 的 tip/sched/urgent pull: https://lore.kernel.org/all/ap1NEllrD8nMsFiB@gmail.com/
+- 09-07 pr-tracker-bot 合入确认（mainline merge commit `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`）: https://lore.kernel.org/all/178871829440.1639575.4127304395444817583.pr-tracker-bot@kernel.org/
+- tip-bot 逐片 commit hash: 未获取到（缓存内只有 pull 的 merge commit）
+- stable backport: 未获取到（两片带 `Fixes: 85570f10a4c6` 但无 `Cc: stable`）

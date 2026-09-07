@@ -1,10 +1,11 @@
 # tag: x86
 
-共 8 篇
+共 9 篇
 
 - [sched-20260831-013](../../2026/08/sched-20260831-013-cpufreq-amd-pstate-add-epp-tunings-for-zen6-client-platforms.md) `feature/under_review` — Mario Limonciello（AMD）8/31 13:46 发 2 补丁：1/2 给 amd-pstate 建立 **per-SoC / per-core-type 的 EPP 表**（`x86_cpu_id` 匹配，缺 SoC 则回落 legacy 常量），2/2 用它给 Zen6 客户端写入第一组调优值。核心手法是把 `power` 档从"所有核一个 0xFF"改成"大核 64、小核/低
 - [sched-20260831-006](../../2026/08/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.md) `bug/high/under_review` — 用户报告（Klaus Kusche，AMD Ryzen HX 370）：开启 cache-aware scheduling 后，一个跑在小核上的长时 LTO 链接进程**即使大核全空闲也不会迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，CAS 的判定压过了大/LITTLE 容量调度。Chen Yu 确认"当前代码里 CAS 覆盖了非对称调度策略"，并指向 Tim Chen 8/
 - [sched-20260831-005](../../2026/08/sched-20260831-005-sched-topology-add-llc-to-node-to-translate-llc-id-to-numa-node.md) `feature/rfc` — Jianyong Wu（Hygon）的 23 补丁 RFC v2 把 cache-aware scheduling（CAS）从"LLC 单层"扩成"NUMA 节点 + LLC 两级"偏好：先给 BIOS 的 NUMA 距离矩阵做**行内去重**得到唯一距离、再据此生成每节点/每 LLC 的亲和序列，让线程按序列跨节点、跨 LLC 聚拢。8/31 Peter Zijlstra 连发 6 帖，逐条质疑
+- [sched-20260829-003](../../2026/08/sched-20260829-003-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.md) `bug/high/under_review` — Klaus Kusche（8/29 新线程）报告：AMD Ryzen HX 370（Zen 混合架构）上，一个跑满数分钟的 LTO 链接进程**即使大核全空闲也不会被迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，任务一旦起在小核域就把它当成了 preferred LLC，CAS 的局部性判定压过了大/小核容量调度。诉求很直接：**长时任务遇到空闲大核时，容量应压过缓存局部性**
 - [sched-20260803-014](../../2026/08/sched-20260803-014-nohz-replace-dead-select-with-choice-default-v2.md) `fix/low/under_review` — `nohz` 用 `choice/default` 替换失效的 `select` 依赖（08-02 系列 005）在 08-03 收到 Reviewed-by，确认语义等价。低严重度，合入可能性高；仍缺 `.config` 对比数据（明确参与点）。
 - [sched-20260803-009](../../2026/08/sched-20260803-009-sched-numa-apply-remote-socket-distance-averaging-for-hygon-7447v.md) `feature/under_review` — `sched/numa` 针对 Hygon 7447V 的模块化布局，把远程 socket 节点距离取平均以区分 intra/inter-socket 远程代价。已获 Ingo Acked-by，合入可能性高。
 - [sched-20260802-002](../../2026/08/sched-20260802-002-rseq-fix-hard-lockup-on-granted-time-slice-extension.md) `bug/critical/under_review` — `rseq` 的时间片扩展（Time Slice Extension，TSE）在**开中断**状态下调用了要求**关中断**的 `hrtimer_rearm_deferred_tif()`，造成 `hrtimer_bases.lock` 的中断上下文锁反转，重负载使用 TSE 时会硬死锁。修复只有一行 `guard(irq)()`。有 lockdep 实证、有真实死锁现象，严重度 critical

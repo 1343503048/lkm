@@ -82,7 +82,7 @@ maintainers_involved: []
 patch_series:
 - 'sched/core: Make fallback CPU selection NUMA-aware'
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - '无 Fixes/Reported-by，也无任何实测数据，维护者会按 placement 优化对待'
   - 'select_fallback_rq() 在 wakeup 兜底路径上，hop 掩码逐层遍历开销未量化'

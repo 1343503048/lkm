@@ -22,7 +22,7 @@ patch_series:
 - 'sched_ext: document the rolling-cursor requirement for dsq_vtime'
 - 'sched_ext/scx_flatcg: make cgv_node_less() wraparound-safe'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无：Tejun Heo 9/2 14:42 已 "Applied 1-2 to sched_ext/for-7.4 with the subjects capitalized"
   - v1 里「内核 priq 比较器也改成回绕比较」那一刀被 Andrea/Tejun 否决，内核侧目前仅靠文档约束，缺 lag/lead 界的使用者仍有隐患

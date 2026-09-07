@@ -175,7 +175,7 @@ maintainers_involved:
 patch_series:
 - '[PATCH v3] sched/core: Skip rq->avg_idle update without a valid idle_stamp'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues: []
   next_action: 已合入 tip/sched/urgent；线程中无 Cc stable，可提议补标签
 contribution_opportunities:

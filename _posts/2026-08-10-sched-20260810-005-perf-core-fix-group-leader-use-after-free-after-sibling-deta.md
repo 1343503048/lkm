@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: merged_tip
 severity: high
-thread_root_msgid: <tip.1754812xxxx.perf.urgent@bot>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Aditya Chillara
@@ -16,7 +16,7 @@ maintainers_involved:
 current_version: merged
 patch_series:
 - version: merged
-  msgid: <tip.1754812xxxx.perf.urgent@bot>
+  msgid: null
   date: 2026-08-10
   summary: tip-bot 报告已合入 tip/perf/urgent：修复 perf 事件组 leader 在并发关闭下被释放后其余 sibling 仍引用导致的
     use-after-free。

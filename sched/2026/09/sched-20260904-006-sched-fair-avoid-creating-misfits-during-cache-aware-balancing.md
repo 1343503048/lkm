@@ -98,7 +98,7 @@ maintainers_involved:
 patch_series:
 - 'sched/fair: avoid creating misfits during cache-aware balancing'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 仅剩常规流程：sched/urgent 需由 Ingo Molnar 向主线发 pull
   - 0day 明示后续可能测更多 config，新平台若报回归可能回退

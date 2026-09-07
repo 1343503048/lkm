@@ -22,7 +22,7 @@ patch_series:
 - 'sched/numa: Drive NUMA task tick from execution context'
 - 'sched/cache: Drive cache task tick from execution context'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - sched_tick_exec_ctx() 放 core.c 还是 fair.c 的位置 nit（Tim Chen 09-05 提出，非阻塞）
   - 缓存中未见调度器维护者（Peter Zijlstra / Ingo Molnar）的 Acked-by 或排队动作

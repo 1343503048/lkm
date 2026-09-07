@@ -22,7 +22,7 @@ patch_series:
 - 'sched/numa: Drive NUMA task tick from execution context'
 - 'sched/cache: Drive cache task tick from execution context'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - Chen Yu 承诺的测试结果尚未回帖
   - Reviewed-by 只打在 v3 1/2 上，2/2 无独立 tag

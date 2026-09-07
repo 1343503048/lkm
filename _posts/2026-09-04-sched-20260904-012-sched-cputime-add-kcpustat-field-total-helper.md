@@ -34,7 +34,7 @@ patch_series:
 - 'virt/steal_governor: Implement steal_governor policy loop'
 - 'virt/steal_governor: Enable the driver'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 第 1 片本身标签已齐（Acked-by + 两个 Reviewed-by），但合入路径与 13 片系列绑定
   - 缓存中未见 Peter Zijlstra / Ingo Molnar 对 v12 的回应，sched/core 排队 7.4 的请求尚未有人接

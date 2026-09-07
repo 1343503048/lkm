@@ -124,7 +124,7 @@ patch_series:
 - 'sched_ext: scx_qmap: Add proxy execution support'
 - 'sched: Allow enabling proxy exec with sched_ext'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - Peter Zijlstra 被 Tejun 点名后尚未表态，而系列大量改动落在 kernel/sched/core.c
   - Tejun 的 nits 未清空，最具体一条在 12/18（reject reason 清理分散且重复，要求统一出口标签）

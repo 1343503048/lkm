@@ -20,7 +20,7 @@ maintainers_involved:
 patch_series:
 - 'sched/debug: Validate writes to the scan_size_mb debugfs knob'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 与 Li RongQing 的同问题补丁撞车，维护者需二选一
   - 三周无人收树，缺 tip 维护者表态

@@ -6,7 +6,7 @@ subsystem: sched
 type: cleanup
 status: merged_tip
 severity: low
-thread_root_msgid: <tip.1754823xxxx.locking@bot>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Boqun Feng
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: merged
 patch_series:
 - version: merged
-  msgid: <tip.1754823xxxx.locking@bot>
+  msgid: null
   date: 2026-08-10
   summary: tip-bot 报告 3 个已合入 tip/locking/core 的 commit：(1) 移除 __cant_sleep() 未使用的
     preempt_offset 参数；(2) 避免 sched 中一处有符号比较；(3) arm64 启用 HAS_SEPARATE_PREEMPT_RESCHED_BITS。

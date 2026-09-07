@@ -85,7 +85,7 @@ maintainers_involved: []
 patch_series:
 - 'cpufreq: schedutil: convert to kthread_create_worker'
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 缓存中无任何回帖，cpufreq 维护者（Viresh Kumar / Rafael J. Wysocki）未表态
   - 所属 v2 5 补丁系列的封面与其余 4 个补丁不在缓存中，依赖与排队方式未知

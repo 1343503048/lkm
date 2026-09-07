@@ -97,7 +97,7 @@ maintainers_involved:
 patch_series:
 - "sched_clock: Add option to use absolute time against hardware clock reset"
 merge_assessment:
-  likelihood: unlikely
+  likelihood: low
   blocking_issues:
   - "Marc 认为该时钟定义上不可靠，且 EL2 软件可任意 offset 计数器"
   - "abs_sched_clock 打破 sched_clock() handover 连续性，作者本日仍未回应"

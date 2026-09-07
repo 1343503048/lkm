@@ -26,7 +26,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unlikely
+  likelihood: low
   blocking_issues:
   - 系列自述不可 bisect，属 PoC 性质
   - idle 作为临时 owner 标记后 find_proxy_task() 可能建立 idle->blocked_donor，正确性无人给出结论

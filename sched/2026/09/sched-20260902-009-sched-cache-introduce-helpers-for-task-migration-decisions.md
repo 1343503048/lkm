@@ -150,7 +150,7 @@ patch_series:
 - '[RFC PATCH v2 17/23] sched/fair: Fine-granularity NUMA balancing'
 - '[RFC PATCH v2 20/23] sched/cache: Estimate utilization of the whole thread group'
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - RFC 阶段：Peter Zijlstra 的 14 条意见只换到解释与「下一版改」，无任何认可标签
   - 11/23 单独编译失败（dst_pre undeclared），跨补丁依赖未清理，作者承诺 v3 squash 并逐补丁编译测试

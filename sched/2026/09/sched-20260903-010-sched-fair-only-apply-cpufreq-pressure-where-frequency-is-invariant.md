@@ -97,7 +97,7 @@ maintainers_involved:
 patch_series:
 - "sched/fair: Only apply cpufreq pressure where frequency is invariant"
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - "Guittot 关于 util 同样能超容量、以及要修什么问题的追问至今未被正面回答"
   - "根因被重新定性到 cpufreq policy 字段语义，调度器侧门控可能被判定为错误层次"

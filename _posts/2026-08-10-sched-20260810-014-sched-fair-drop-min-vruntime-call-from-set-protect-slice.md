@@ -6,7 +6,7 @@ subsystem: sched
 type: discussion
 status: under_review
 severity: low
-thread_root_msgid: <20260810145422.xxxxxx-kayra@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Kayra Cizmeci
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: v1
 patch_series:
 - version: v1
-  msgid: <20260810145422.xxxxxx-kayra@kernel.org>
+  msgid: null
   date: 2026-08-10
   summary: Kayra 提案：从 set_protect_slice() 中去掉 min_vruntime() 调用，因该比较总是取计算值（更小）。Zhan
     Xusheng 在 8/10 反驳：在自定义 slice 场景下 @vprot 可能越过 se->deadline，盲目赋值会让 protect_slice

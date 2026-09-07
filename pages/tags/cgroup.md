@@ -2,23 +2,34 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 50
+article_count: 61
 ---
 
 - [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context
 - [sched-20260904-004](/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html) `discussion/medium/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260903-008](/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html) `fix/medium/under_review` — sched/cputime: Account cgroup fields to the scheduling context
 - [sched-20260903-014](/lkm/2026/09/03/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.html) `discussion/low/merged_tip` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
-- [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
+- [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/merged_tip` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
 - [sched-20260901-003](/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260901-008](/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html) `fix/low/under_review` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
 - [sched-20260901-009](/lkm/2026/09/01/sched-20260901-009-sched-ext-fix-vtime-priority-queue-inversion-on-wide-vtime-s.html) `bug/medium/under_review` — sched_ext: fix vtime priority queue inversion on wide vtime spread
 - [sched-20260901-010](/lkm/2026/09/01/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
+- [sched-20260901-012](/lkm/2026/09/01/sched-20260901-012-git-pull-sched-ext-fixes-for-v7-3-rc1.html) `fix/high/merged_tip` — [GIT PULL] sched_ext: Fixes for v7.3-rc1
+- [sched-20260901-017](/lkm/2026/09/01/sched-20260901-017-sched-ext-pass-the-initial-cpu-idle-state-in-scx-cgroup-init.html) `fix/medium/merged_tip` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
 - [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260831-003](/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20260831-004](/lkm/2026/08/31/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/under_review` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
 - [sched-20260831-007](/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
 - [sched-20260831-008](/lkm/2026/08/31/sched-20260831-008-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html) `feature/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
+- [sched-20260829-001](/lkm/2026/08/29/sched-20260829-001-bug-general-protection-fault-in-cpuset-cpus-allowed.html) `bug/high/under_review` — [BUG] general protection fault in cpuset_cpus_allowed
+- [sched-20260829-002](/lkm/2026/08/29/sched-20260829-002-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html) `feature/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
+- [sched-20260828-002](/lkm/2026/08/28/sched-20260828-002-bug-general-protection-fault-in-cpuset-cpus-allowed.html) `bug/high/under_review` — [BUG] general protection fault in cpuset_cpus_allowed
+- [sched-20260828-003](/lkm/2026/08/28/sched-20260828-003-sched-fair-rework-tash-h-load.html) `fix/medium/under_review` — sched/fair: Rework tash_h_load()
+- [sched-20260828-005](/lkm/2026/08/28/sched-20260828-005-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.html) `fix/medium/under_review` — sched: Annotate rq->rd with __rcu and update lockless readers
+- [sched-20260828-006](/lkm/2026/08/28/sched-20260828-006-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `discussion/medium/rfc` — sched/core: Try to use a preferred CPU in is_cpu_allowed
+- [sched-20260827-002](/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
+- [sched-20260827-005](/lkm/2026/08/27/sched-20260827-005-question-userspace-throttling-sched-fair-combine-detach-into.html) `bug/high/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
+- [sched-20260827-011](/lkm/2026/08/27/sched-20260827-011-sched-ext-fix-timer-pinning-and-return-value-in-scx-central.html) `fix/medium/under_review` — sched_ext: Fix timer pinning and return value in scx_central
 - [sched-20260826-004](/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html) `discussion/medium/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
 - [sched-20260826-008](/lkm/2026/08/26/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.html) `fix/medium/under_review` — sched/fair: Reset incompatible burst on quota change
 - [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates

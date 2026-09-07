@@ -31,7 +31,7 @@ v11（12 片）阶段，本日 3 封回帖全部集中在架构启用问题上�
 
 ## 合入评估
 
-`likelihood = possible`。整个 v11 系列的瓶颈不在 05/12 的这条小改动，而在 steal_governor 主线本身（见 sched-20260817-005 / sched-20260825-001 记录的 v10/v11 演进与基准回退讨论）。本日争论向「全架构默认启用」收敛，若作者按此发 v12，本片不需要额外工作；`Reviewed-by` 仍未出现。
+`likelihood = medium`。整个 v11 系列的瓶颈不在 05/12 的这条小改动，而在 steal_governor 主线本身（见 sched-20260817-005 / sched-20260825-001 记录的 v10/v11 演进与基准回退讨论）。本日争论向「全架构默认启用」收敛，若作者按此发 v12，本片不需要额外工作；`Reviewed-by` 仍未出现。
 
 ## 效果评估
 
@@ -75,7 +75,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - '本片争论已收敛，但整个 v11 steal_governor 主线尚未稳定（历史上有基准回退争议）'
   - '无 Reviewed-by/Acked-by'

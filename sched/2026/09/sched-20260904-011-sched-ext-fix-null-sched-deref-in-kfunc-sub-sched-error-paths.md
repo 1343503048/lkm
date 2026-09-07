@@ -121,7 +121,7 @@ maintainers_involved:
 patch_series:
 - 'sched_ext: Fix NULL sched deref in kfunc sub-sched error paths'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无技术卡点，仅剩 for-7.3-fixes 向主线发 fixes pull 的流程
   - stable 派发范围由维护者手工改为 v7.1+，需按该口径而非作者原始 Cc stable

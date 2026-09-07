@@ -40,7 +40,7 @@ Hyunwoo Kim 报告并修复 cache-aware 调度统计（`mm->sc_stat`）在 exec 
 
 ## 合入评估
 
-`likelihood = possible`。判断依据：问题真实且有 KASAN 证据、`Fixes:` 指向 `df0d98475954`、`Cc: stable`，作为独立修复的技术门槛很低，所以**存在一条明确的近期合入路径**（直接收 v2）。卡点是路线未定：Tim（该子模块最活跃的 Intel 维护者之一）不想要 exec 路径上的 `synchronize_rcu()`，希望由 prctl 系列前 2 片承载修复，而那个系列当天还是 RFC 且未获 ack；Peter Zijlstra 被点名后未表态。要推进需要其中之一发生：Peter/Tim 明确接受 v2 作为 fix 先走 stable、重构随后；或者 Tim 把 prctl 前 2 片从 RFC 里拆出来单独发 fix 版（他自己已提议 "We should probably prioritize to merge the first couple of patches from that series now"，并已向 Hyunwoo 索要 `Reported-by`，说明这条路已经在准备中）。
+`likelihood = medium`。判断依据：问题真实且有 KASAN 证据、`Fixes:` 指向 `df0d98475954`、`Cc: stable`，作为独立修复的技术门槛很低，所以**存在一条明确的近期合入路径**（直接收 v2）。卡点是路线未定：Tim（该子模块最活跃的 Intel 维护者之一）不想要 exec 路径上的 `synchronize_rcu()`，希望由 prctl 系列前 2 片承载修复，而那个系列当天还是 RFC 且未获 ack；Peter Zijlstra 被点名后未表态。要推进需要其中之一发生：Peter/Tim 明确接受 v2 作为 fix 先走 stable、重构随后；或者 Tim 把 prctl 前 2 片从 RFC 里拆出来单独发 fix 版（他自己已提议 "We should probably prioritize to merge the first couple of patches from that series now"，并已向 Hyunwoo 索要 `Reported-by`，说明这条路已经在准备中）。
 
 ## 效果评估
 
@@ -92,7 +92,7 @@ upstream_commit: null
 fixes_commit: df0d98475954
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "修复路线未定：v2 的 synchronize_rcu() 被 Tim Chen 认为会在 exec 路径引入一个完整 grace period 的延迟"
   - "替代路线（sc_stat 与 mm 解耦）目前仍是 RFC 状态的 prctl 系列前 2 片，未单独作为 fix 发出"
@@ -101,7 +101,7 @@ merge_assessment:
 contribution_opportunities:
   - kind: testing
     description: "在 exec 密集型负载 + KASAN 下验证 prctl 系列前 2 片，回帖补 Tim Chen 明确索要的 Tested-by"
-  - kind: backport
+  - kind: new_patch
     description: "自查 OLK 分支是否含 df0d98475954 引入的 account_mm_sched()/mm->sc_stat 路径；若有，先用 v2 的 sched_cache_exec_done() 最小止血，再决定是否跟进 sc_stat 解耦重构"
   - kind: new_patch
     description: "把 anon_pipe_write 唤醒撞 execve 的竞争整理成自包含确定性复现脚本，量化 exec 路径 synchronize_rcu() 的实际延迟代价"

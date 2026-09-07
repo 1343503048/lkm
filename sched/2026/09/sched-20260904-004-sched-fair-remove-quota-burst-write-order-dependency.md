@@ -105,7 +105,7 @@ patch_series:
 - 'selftests: cgroup: Test CPU quota and burst write order'
 - 'Documentation: describe CPU quota and burst ordering'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - v2 删掉 burst_us + quota_us <= max_bw_runtime_us 校验后，period 倍增路径下 quota + min(burst, quota) 会 u64 回绕为 0，导致该组 refill 恒得 0 运行时
   - 需要发 v3 只删 burst_us > quota_us 一项比较并保留求和检查

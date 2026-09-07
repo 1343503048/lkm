@@ -36,7 +36,7 @@ Andrea 那份 `knob_mutex` 方案因此被归为同一竞态的重复实现，�
 
 ## 合入评估
 
-`likelihood = likely`。依据：sched_ext 一侧的所有权已由 Tejun 明确表态（`Acked-by` + 请 Peter 收取），并且竞争方案（Andrea 的 `knob_mutex`）已被同一位维护者公开让路，社区不存在遗留反对意见。卡点纯粹在 sched/core 侧：Peter Zijlstra / Ingo Molnar 是否接受把 fair 的更新锁上移到 core 写处理函数，以及是否要求就锁顺序与睡眠安全性补充说明。需要满足的条件：Peter 的 `Acked-by`/`Reviewed-by` 或他直接 pick；如果 sched_ext 的 `ops.cgroup_set_*()` 需要 sleepable（Tao Cui 的相关补丁依赖这个竞态先修好），两侧顺序也要一并确认。
+`likelihood = high`。依据：sched_ext 一侧的所有权已由 Tejun 明确表态（`Acked-by` + 请 Peter 收取），并且竞争方案（Andrea 的 `knob_mutex`）已被同一位维护者公开让路，社区不存在遗留反对意见。卡点纯粹在 sched/core 侧：Peter Zijlstra / Ingo Molnar 是否接受把 fair 的更新锁上移到 core 写处理函数，以及是否要求就锁顺序与睡眠安全性补充说明。需要满足的条件：Peter 的 `Acked-by`/`Reviewed-by` 或他直接 pick；如果 sched_ext 的 `ops.cgroup_set_*()` 需要 sleepable（Tao Cui 的相关补丁依赖这个竞态先修好），两侧顺序也要一并确认。
 
 ## 效果评估
 
@@ -85,7 +85,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - "sched_ext 侧已 Acked-by，但 sched/core 侧 Peter Zijlstra 被点名后本日未回复，尚未进 tip"
   - "上移后的锁顺序与睡眠安全性（与 cpuset/cgroup_threadgroup_rwsem 的嵌套）在邮件里未展开讨论"
@@ -93,7 +93,7 @@ merge_assessment:
 contribution_opportunities:
   - kind: review
     description: "从 cpuset/cgroup 控制器视角走查上移后的锁嵌套顺序与持锁睡眠约束，在 Peter 回复前回帖补充"
-  - kind: backport
+  - kind: new_patch
     description: "评估该改动对已回合 sched_ext 的自有分支的侵入（改在 core 而非 ext），并清理自家可能存在的 knob_mutex 变体"
   - kind: discussion
     description: "跟踪依赖本竞态修复的 ops.cgroup_set_weight/idle() sleepable 补丁（Tao Cui）"

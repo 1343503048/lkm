@@ -97,7 +97,7 @@ maintainers_involved:
 patch_series:
 - "sched_ext: Don't deliver duplicate ops.cgroup_set_idle() for same value"
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - "for-7.3-fixes 与 for-7.4 上字段名分裂（scx.idle vs scx.sched_idle），合并时比较会被切换，并行改动需预期冲突"
   - "无 selftest 锁定“等值写入不产生回调”这条约定"

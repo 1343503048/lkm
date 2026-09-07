@@ -21,7 +21,7 @@ maintainers_involved:
 patch_series:
 - 'sched/cache: Honor migrate_llc_task semantics in active load balance'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 本线程无 Peter Zijlstra/Ingo Molnar 痕迹，作为独立 fix 还是并入 CAS 系列分发未定
   - v1~v4 均无量化验证数据，误迁移的实际影响面只有场景推演

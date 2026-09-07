@@ -21,7 +21,7 @@ patch_series:
 - 'arm64: topology: Prefer PE0 on NVIDIA Olympus SMT cores'
 - 'sched/fair: Honor asymmetric SMT priority in idle selection'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - v2 尚未获得任何 Acked-by/Reviewed-by
   - Dietmar Eggemann 未确认 select_idle_smt() hook 为 POWER7 SMT4 保留的论证

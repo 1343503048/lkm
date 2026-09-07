@@ -95,7 +95,7 @@ maintainers_involved:
 patch_series:
 - "sched/cache: Introduce helpers for task migration decisions (RFC v2 11/23)"
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - "patch 11 单独编译不过（dst_pre 作用域），修复留在 patch 20，系列不满足逐 commit 可二分"
   - "与 can_migrate_llc() 的行为差异（!get_llc_stats 提前返回、src_util 扣截断）与 !p 合法性未获 PZ 认可"

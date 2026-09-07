@@ -28,7 +28,7 @@ upstream_commit: null
 fixes_commit: 0839ed1fd7ac
 merged_branch: cpufreq（Viresh 树；Applied 回复未说明具体分支）
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无技术阻力，维护者已 apply；仅剩随 pull 进入主线的时序
   - '是否回合 stable 未定：补丁带 Fixes: 但线程内无人显式 Cc: stable，当日也无 AUTOSEL 通知'

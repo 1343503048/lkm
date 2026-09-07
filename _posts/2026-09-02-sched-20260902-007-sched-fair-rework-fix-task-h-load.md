@@ -22,7 +22,7 @@ maintainers_involved:
 patch_series:
 - '[PATCH 4/4] sched/fair: Rework/fix task_h_load()'
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - Peter 只说 "I'll fold it in"，9/2 之后未重发版本、也无 tip-bot 合入通告
   - Vincent 指出遍历同样 clobber se，建议 save pse = p->se，尚未落地

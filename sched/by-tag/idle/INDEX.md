@@ -1,7 +1,11 @@
 # tag: idle
 
-共 26 篇
+共 30 篇
 
+- [sched-20260901-016](../../2026/09/sched-20260901-016-sched-ext-use-atomic-cpumask-clear-cpu-in-scx-idle-test-and.md) `fix/low/stalled` — Michal Blaszczyk（Google）把 `kernel/sched/ext/idle.c` 里对共享 `idle_smts` 掩码的一次 `__cpumask_clear_cpu()` 换成原子的 `cpumask_clear_cpu()`，理由是 `__cpumask_*` 是非原子 RMW，同字（word）内的并发清位会丢更新。补丁只改 1 行，带 `Fixes: 48849271
+- [sched-20260828-008](../../2026/08/sched-20260828-008-cpuidle-teo-do-not-return-a-disabled-idle-state.md) `bug/medium/under_review` — **本文为增量更新**（完整背景见 sched-20260827-014）。Xueqin Luo（KylinOS）8/28 发出的 **v2 逐字采纳了 Rafael J. Wysocki 8/27 的替代写法**：不再在决策完成后"事后回退到最浅启用状态"，而是在约束钳制之前先把下界抬高——`if (constraint_idx < idx0) constraint_idx = idx0;`，其
+- [sched-20260827-015](../../2026/08/sched-20260827-015-cpuidle-menu-do-not-return-a-disabled-idle-state.md) `bug/medium/under_review` — Xueqin Luo 本日第二封同型修复：menu governor 在 `latency_req == 0` 且 state 0 被禁用时，`menu_select()` 的提前返回分支**短路了 disable 检查**，直接返回禁用的 state 0。修法是把 `!disable` 提为整个提前返回条件的前提。与 teo 那封（sched-20260827-014）是同一 bug 类在两个 
+- [sched-20260827-014](../../2026/08/sched-20260827-014-cpuidle-teo-do-not-return-a-disabled-idle-state.md) `bug/medium/under_review` — Xueqin Luo 修复 teo governor 的一个边界 bug：idle state 0 被禁用且没有其它启用状态满足 PM QoS 延迟约束时，`teo_select()` 把 `constraint_idx` 停在初值 0 并把**已禁用的 state 0** 返回给核心层执行。补丁当日获 Rafael J. Wysocki 回复并给出一条更简洁的替代写法（把 idx0 纳入 con
 - [sched-20260826-007](../../2026/08/sched-20260826-007-cpuidle-psci-fix-support-probe-deferral-dropping-faux-device.md) `fix/medium/under_review` — Ulf Hansson (Qualcomm) 提交补丁修复 cpuidle-psci 驱动的 probe deferral 支持问题。当前实现使用 faux device，但在 probe deferral 场景下无法正确处理。方案改为直接丢弃 faux device 并在 DT 匹配时处理 deferral。Abel Vesa (Qualcomm) 已给出 Reviewed-by。与 PSCI 
 - [sched-20260825-012](../../2026/08/sched-20260825-012-cpuidle-deny-idle-entry-when-cpu-have-ipi-pending-v2.md) `discussion/medium/under_review` — Maulik Shah（Qualcomm）的 v2 讨论：当 CPU 已有 IPI 中断挂起时，应拒绝进入 idle 状态，避免延迟响应。提供了详细的 LeMans SoC（8 CPU）上的 trace 数据，展示 menu governor 在 `get_typical_interval()` 循环中收到 IPI 但仍预测深度 idle 的时序。
 - [sched-20260824-002](../../2026/08/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.md) `fix/low/under_review` — `sugov_hold_freq()` 可能在 runqueue 转空时保持 UCLAMP_MIN 驱动的高频率，若随后 cpuidle 停掉 tick，CPU 将在整个 idle 期间维持不必要的高电压；此补丁在 tick 停止前发出最后一次频率更新。

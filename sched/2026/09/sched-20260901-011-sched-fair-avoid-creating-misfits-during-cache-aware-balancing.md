@@ -43,7 +43,7 @@ cache-aware 负载均衡（`CONFIG_SCHED_CACHE`）会把任务往其偏好 LLC �
 
 ## 合入评估
 
-`likelihood = likely`。已有 `Reviewed-by: Ricardo Neri`、`Reviewed-by: Chen Yu`、`Tested-by: Ricardo Neri`，主评审人只要求流程修正且当日已修好，门控保证对称系统零影响。剩余不确定性是 Peter 尚未对重发版表态，以及 AMD 平台的反馈仍在收集（不成合入障碍，但可能引出后续 tuning 补丁）。
+`likelihood = high`。已有 `Reviewed-by: Ricardo Neri`、`Reviewed-by: Chen Yu`、`Tested-by: Ricardo Neri`，主评审人只要求流程修正且当日已修好，门控保证对称系统零影响。剩余不确定性是 Peter 尚未对重发版表态，以及 AMD 平台的反馈仍在收集（不成合入障碍，但可能引出后续 tuning 补丁）。
 
 ## 效果评估
 
@@ -95,7 +95,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 'Peter Zijlstra 尚未对修正重发版表态'
   - 'AMD/非 Intel 异构平台上的行为仍在向外部测试者收集数据（aggr_tolerance 默认值下的表现）'

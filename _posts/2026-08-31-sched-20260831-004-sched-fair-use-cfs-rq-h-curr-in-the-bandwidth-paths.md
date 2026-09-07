@@ -23,7 +23,7 @@ upstream_commit: null
 fixes_commit: 85570f10a4c6
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 无人回复，缺 reproducer 与量化数据
   - 2/2 恢复的是当前已非正确性必需的检查（28ad5427682b 后 unthrottle 无条件补账），可能被评为死代码清理

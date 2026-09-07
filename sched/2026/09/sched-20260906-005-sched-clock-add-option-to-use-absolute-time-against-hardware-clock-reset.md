@@ -31,7 +31,7 @@ Feng Tang（09-02）给 `kernel/time/sched_clock.c` 加了个 `abs_sched_clock` 
 
 ## 合入评估
 
-`likelihood=unlikely`。依据：clocksource/timekeeping 维护者明确 NAK，arm64 时间源维护者此前已给出「定义上不可靠」+「破坏 sched_clock handover」两条实质性反对，作者本人也承认这不是好的做法，本日无 v2、无第三方救援。卡点不是代码质量而是定位：它服务的是特定固件调试场景，且要跨 arch 定义「硬件计数器复位绝对时间」的能力与语义。若非要往上游推，必须先重新定位为 timekeeping 层的通用能力（能力检查 + handover 连续性语义），而不是一个 `core_param` 开关——但按 tglx 的表态，这种重写也不会由这个线程承接。
+`likelihood=low`。依据：clocksource/timekeeping 维护者明确 NAK，arm64 时间源维护者此前已给出「定义上不可靠」+「破坏 sched_clock handover」两条实质性反对，作者本人也承认这不是好的做法，本日无 v2、无第三方救援。卡点不是代码质量而是定位：它服务的是特定固件调试场景，且要跨 arch 定义「硬件计数器复位绝对时间」的能力与语义。若非要往上游推，必须先重新定位为 timekeeping 层的通用能力（能力检查 + handover 连续性语义），而不是一个 `core_param` 开关——但按 tglx 的表态，这种重写也不会由这个线程承接。
 
 ## 效果评估
 
@@ -81,14 +81,14 @@ patch_series:
   summary: kernel/time/sched_clock.c 新增 abs_sched_clock core_param(bool, 0400)；sched_clock_register() 在该参数开启时把 epoch 直接用 ns = cyc_to_ns(new_epoch & new_mask, new_mult, new_shift) 表示自硬件计数器复位起的绝对时间，不再累加旧 clock 的 epoch_ns。动机是把 kernel/SCP firmware/ATF 的日志对到同一时间线以追 RAS 问题。+11/-3。
   review_outcome: Marc Zyngier 质疑（一次性采样+后处理即可、EL2 可任意偏移所以并不绝对、不愿内核承担定义上不可靠之物、破坏 sched_clock handover）；09-06 Thomas Gleixner 明确 NAK，称其为 firmware debug hack。本日无 v2。
 merge_assessment:
-  likelihood: unlikely
+  likelihood: low
   blocking_issues:
   - timekeeping/clocksource 维护者 Thomas Gleixner 明确 NAK，且未给出可操作的修改方向
   - Marc Zyngier 的两条实质反对：EL2 软件可任意偏移使「绝对」不成立；该改动破坏 sched_clock handover（新时钟不从旧时钟结束处继续），非 arm64 的 arch 会受影响
   - 定位问题：服务特定固件调试场景，作者已自行降级为 debug-only option 并承认 runtime 操纵 sched_clock 不太好
   next_action: 不再跟进该线程；若有同类内部需求，按 out-of-tree debug 补丁或「启动早期采样 + 日志后处理对齐」自行实现；要上游则需在 timekeeping 层重新设计（能力检查 + handover 连续性）并先与维护者沟通
 contribution_opportunities:
-- kind: design
+- kind: new_patch
   description: 补齐邮件里被指出但未解决的两块：arch 能声明计数器「自复位连续、恒定频率、wrap 足够长」的能力检查接口（作者称 sched_clock.c 里拿不到 CLOCK_SOURCE_SUSPEND_NONSTOP），以及 abs 模式下 clocksource 中途切换时 epoch 跳变的处理
 - kind: review
   description: Sashiko 指出的 cyc_to_ns() 精度/溢出问题应改用 mul_u64_u64_div_u64()；自有分支中涉及高频计数器到 ns 的换算处可对照检查

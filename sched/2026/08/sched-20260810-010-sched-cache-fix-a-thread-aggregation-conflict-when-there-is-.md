@@ -37,14 +37,14 @@ subsystem: sched
 type: fix
 status: under_review
 severity: low
-thread_root_msgid: "<20260810xxxxxx-chenyu@kernel.org>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Chen Yu]
 maintainers_involved: [Peter Zijlstra, Vincent Guittot, Dietmar Eggemann, Lu Wang]
 current_version: v2
 patch_series:
   - version: v2
-    msgid: "<20260810xxxxxx-chenyu@kernel.org>"
+    msgid: null
     date: 2026-08-10
     summary: "v2：修复当某 LLC 内仅有一个可运行任务时，active load balance（LLB）把该唯一任务错误地聚合/搬移，造成线程冲突与不必要的迁移。"
     review_outcome: "v2 发出，等待维护者对 LLB 唯一可运行任务判定的反馈。"

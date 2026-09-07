@@ -39,7 +39,7 @@ Peter Zijlstra 全部意见都指向「与既有实现的对齐」，按分量�
 
 ## 合入评估
 
-`likelihood = unclear`。这一片是打分/放置决策的入口，逻辑密度高却与既有 `can_migrate_llc()` 并存而非替换，Peter 的跟读结论倾向于「先证明两者为何不能合并成一函数」。其中第 2 条（跳过 nearest 节点又用 nearest 节点否决）如果不成立，片子的行为会与设计意图相反，属必须修正项。当日无 `Reviewed-by`/`Acked-by`，也无 NAK。
+`likelihood = unknown`。这一片是打分/放置决策的入口，逻辑密度高却与既有 `can_migrate_llc()` 并存而非替换，Peter 的跟读结论倾向于「先证明两者为何不能合并成一函数」。其中第 2 条（跳过 nearest 节点又用 nearest 节点否决）如果不成立，片子的行为会与设计意图相反，属必须修正项。当日无 `Reviewed-by`/`Acked-by`，也无 NAK。
 
 ## 效果评估
 
@@ -88,7 +88,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 'can_migrate_node() 与 can_migrate_llc() 并存且统计口径分叉，主评审人要求解释为何不能只用一份实现'
   - 'get_src 跳过 anchor→src 之间节点，与后续"更近 LLC 可否决迁移"的逻辑直接冲突，需给出结论'

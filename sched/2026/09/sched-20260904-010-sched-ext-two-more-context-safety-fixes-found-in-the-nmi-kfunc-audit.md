@@ -95,7 +95,7 @@ patch_series:
 - 'sched_ext: Make scx_locked_rq() return NULL from NMI'
 - 'sched_ext: Protect the idle-search scratch nodemask with irqsave'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无技术卡点，仅剩 sched_ext/for-7.4 向主线发 pull 的常规流程
   - 可见正文中 2/2 未附 Fixes 标签，不会自动派生 stable 回合

@@ -37,14 +37,14 @@ subsystem: sched
 type: fix
 status: merged_tip
 severity: low
-thread_root_msgid: "<tip.1754732xxxx.locking@bot>"
+thread_root_msgid: null
 lore_url: "未获取到"
 authors: [Boqun Feng]
 maintainers_involved: [Peter Zijlstra, Ingo Molnar, Thomas Gleixner]
 current_version: merged
 patch_series:
   - version: merged
-    msgid: "<tip.1754732xxxx.locking@bot>"
+    msgid: null
     date: 2026-08-09
     summary: "tip-bot 自动报告 3 个已合入 tip/locking/core 的 commit，均为 sched 侧的抢占相关清理/修复：调整 preempt 计数与抢占检查路径，统一若干调用点语义。"
     review_outcome: "已由 tip 机器人合入 tip/locking/core，无需额外 review。"

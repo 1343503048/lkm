@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: medium
-thread_root_msgid: <20260809174520.xxxxxx-puranjay@kernel.org>
+thread_root_msgid: null
 lore_url: 未获取到
 authors:
 - Puranjay Mohan
@@ -18,7 +18,7 @@ maintainers_involved:
 current_version: v7
 patch_series:
 - version: v7
-  msgid: <20260809174520.xxxxxx-puranjay@kernel.org>
+  msgid: null
   date: 2026-08-09
   summary: 0/3 + 3 patches：为 perf 的 sched_task() 在调度路径加 RCU 保护，并把分支入口回调交由 sched/core
     调用，避免分支跟踪在任务切换时被跳过或访问已释放数据。

@@ -161,7 +161,7 @@ patch_series:
 - 'sched_ext: Reject NMI calls to lock-taking kfuncs'
 - 'sched_ext: two more context-safety fixes found in the NMI kfunc audit'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 无：v3 已于 9/3 applied 到 sched_ext/for-7.4，追加的 2 个上下文安全修复 9/4 也 applied
   - Andrea 提出的 per-kfunc tracing 可见性（STRUCT_OPS-only 集合）被明确挂起，未解决

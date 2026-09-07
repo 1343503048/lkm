@@ -34,7 +34,7 @@ patch_series:
 - 'virt/steal_governor: Implement steal_governor policy loop'
 - 'virt/steal_governor: Enable the driver'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 缓存正文里没有 Peter Zijlstra / Ingo Molnar 对 v12 的表态，也没有 tip-bot 收树迹象
   - 08/13 的 4 条意见要到 09-07 才有回应，字段位置与命名仍未定，预计需要 v13

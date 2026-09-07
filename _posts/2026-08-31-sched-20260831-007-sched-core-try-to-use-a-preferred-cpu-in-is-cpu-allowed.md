@@ -29,7 +29,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - arm64 是否现在就使能该 driver 存在维护者分歧（Vincent Guittot vs Yury Norov）
   - Dietmar Eggemann 提出的 arm64 32 位 EL0 execve() 窗口未有结论，可能演变为正确性问题

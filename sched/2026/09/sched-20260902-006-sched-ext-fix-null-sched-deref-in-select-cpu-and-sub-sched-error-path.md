@@ -132,7 +132,7 @@ maintainers_involved:
 patch_series:
 - 'sched_ext: Fix NULL sched deref in kfunc sub-sched error paths'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - '无：v3 已于 9/4 applied 到 sched_ext/for-7.3-fixes，并由 Tejun 加 # v7.1+ 进 stable Cc'
   - Tejun 否定了「NULL 时退回 root sched 并 scx_error」的语义，改为 root sched 打标记 + warn once（或忽略），该语义是否最优仍可在后续讨论

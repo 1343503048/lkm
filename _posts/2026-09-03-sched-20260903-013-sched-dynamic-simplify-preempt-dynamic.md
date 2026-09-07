@@ -28,7 +28,7 @@ patch_series:
 - 'sched: dynamic: Simplify preempt model accessors'
 - 'sched: dynamic: Fix preemption model strings'
 merge_assessment:
-  likelihood: likely
+  likelihood: merged
   blocking_issues:
   - 枚举与 preempt_modes[] 字符串表的一致性仍是手工维护，Mark 认为需要 by construction 的后续重构
   - Jinjie Ruan 本日催问的 08-07 问题尚无回答（原文正文未保留）

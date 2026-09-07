@@ -19,7 +19,7 @@ authors:
 maintainers_involved: []
 patch_series: []
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 缓存中无任何回帖，无法判断维护者是否会单独出修复补丁
   - 仅 sparc-randconfig + W=1 复现，常规构建不受影响，缺少处理压力

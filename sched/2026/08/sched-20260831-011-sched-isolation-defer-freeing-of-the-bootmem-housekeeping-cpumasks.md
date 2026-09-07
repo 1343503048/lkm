@@ -77,7 +77,7 @@ upstream_commit: "2b58c749b8c5"
 fixes_commit: null
 merged_branch: "sched/urgent"
 merge_assessment:
-  likelihood: unlikely
+  likelihood: low
   blocking_issues:
     - "作者主动撤回：主线已有等价修复 2b58c749b8c5（v7.3-rc1）"
   next_action: "无（本补丁终止）；下游应核对是否已回合 2b58c749b8c5"

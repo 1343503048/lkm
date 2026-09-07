@@ -158,7 +158,7 @@ maintainers_involved:
 patch_series:
 - '[PATCH] sched/fair: Only apply cpufreq pressure where frequency is invariant'
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 作者已承认问题描述口径错误（frequency invariant 并非真正病根），标题与实现都需要重做
   - Vincent Guittot 自 8/21 起未认可前提，9/2 对作者新方案也未表态

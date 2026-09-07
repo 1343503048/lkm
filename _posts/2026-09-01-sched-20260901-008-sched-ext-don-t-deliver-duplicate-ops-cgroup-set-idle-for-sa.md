@@ -32,7 +32,7 @@ upstream_commit: null
 fixes_commit: 347ed2d566da
 merged_branch: null
 merge_assessment:
-  likelihood: likely
+  likelihood: high
   blocking_issues:
   - 等待 Tejun Heo 应用到 sched_ext/for-7.3-fixes（本日尚无回帖）
   - 等值判断依赖同 tg 旋钮写入已被序列化，该前提与 sched-20260901-003 的锁层改动相关，尚未有人明确说明
@@ -100,7 +100,7 @@ v2 在本日尚未看到 Tejun Heo 的应用回帖。
 
 ## 合入评估
 
-`likelihood = likely`。改动 1 行、有 `Fixes:` 标签（`347ed2d566da ("sched/ext: Implement cgroup_set_idle() callback")`）、有 `Reviewed-by`、维护者当日无其他要求，且 sched_ext 的 `for-7.3-fixes` 通道正在收小修（同一天 Tejun 在该分支应用了 4 个同类补丁并发了 v7.3-rc1 的 pull，见 sched-20260901-018）。剩下唯一风险是被 003/序列化那条线顺带覆盖——如果旋钮更新最终统一挪到 core 层锁内，这片仍可作为独立修复存在，因为它改的是回调语义而非锁。
+`likelihood = high`。改动 1 行、有 `Fixes:` 标签（`347ed2d566da ("sched/ext: Implement cgroup_set_idle() callback")`）、有 `Reviewed-by`、维护者当日无其他要求，且 sched_ext 的 `for-7.3-fixes` 通道正在收小修（同一天 Tejun 在该分支应用了 4 个同类补丁并发了 v7.3-rc1 的 pull，见 sched-20260901-018）。剩下唯一风险是被 003/序列化那条线顺带覆盖——如果旋钮更新最终统一挪到 core 层锁内，这片仍可作为独立修复存在，因为它改的是回调语义而非锁。
 
 ## 效果评估
 

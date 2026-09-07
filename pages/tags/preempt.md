@@ -2,7 +2,7 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 29
+article_count: 34
 ---
 
 - [sched-20260906-006](/lkm/2026/09/06/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.html) `fix/medium/under_review` — tcp: Skip cond_resched() in inet_csk_listen_stop() under BPF context
@@ -12,10 +12,15 @@ article_count: 29
 - [sched-20260902-014](/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260831-002](/lkm/2026/08/31/sched-20260831-002-sched-core-alternate-approach-to-sleeping-owner-handling-in-proxy-exec.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
+- [sched-20260827-003](/lkm/2026/08/27/sched-20260827-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
+- [sched-20260827-004](/lkm/2026/08/27/sched-20260827-004-sched-proxy-defer-donor-commit-until-after-proxy-resolution.html) `fix/medium/under_review` — sched/proxy: Defer donor commit until after proxy resolution
+- [sched-20260827-008](/lkm/2026/08/27/sched-20260827-008-sched-core-fix-overflow-in-resched-latency-warning-threshold.html) `fix/low/under_review` — sched/core: Fix overflow in resched latency warning threshold
+- [sched-20260827-010](/lkm/2026/08/27/sched-20260827-010-sched-core-convert-remaining-bug-on-instances-to-warn-on-onc.html) `fix/low/stalled` — sched/core: Convert remaining BUG_ON() instances to WARN_ON_ONCE()
 - [sched-20260826-001](/lkm/2026/08/26/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched: Convert paravirt_steal to new static key APIs
 - [sched-20260819-003](/lkm/2026/08/19/sched-20260819-003-sched-migrate-static-key-api-resend.html) `fix/low/under_review` — sched/migrate static key api resend
+- [sched-20260815-001](/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html) `feature/medium/under_review` — sched/fair: Not goto more_balance if newly idle and has pending task when LBF_NEED_BREAK
 - [sched-20260810-015](/lkm/2026/08/10/sched-20260810-015-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `cleanup/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260809-004](/lkm/2026/08/09/sched-20260809-004-sched-remove-the-unused-preempt-offset-parameter-of-cant-sle.html) `fix/low/merged_tip` — sched: Remove the unused preempt_offset parameter of __cant_sleep()
 - [sched-20260807-014-preempt-dynamic-simplify-v2](/lkm/2026/08/07/sched-20260807-014-preempt-dynamic-simplify-v2.html) `unknown/none/in-review` — sched: dynamic: Simplify PREEMPT_DYNAMIC

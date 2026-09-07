@@ -84,7 +84,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
     - "接口层级未定：用例本质是 per-cgroup，方案是 per-task prctl"
     - "维护者尚未评价 prctl vs QoS 属性、kernel-owned cookie、always/advise/never 模型"

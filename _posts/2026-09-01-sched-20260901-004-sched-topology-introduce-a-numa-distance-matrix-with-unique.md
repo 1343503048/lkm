@@ -33,7 +33,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - 23 片架构性 RFC，Peter Zijlstra 自述仍在通读（"I'll continue trying to digest the series"），未给出任何
     ack
@@ -102,7 +102,7 @@ v2 于 2026-08-27 发出（23 片），08-31 起 Peter 开始逐片回帖，09-0
 
 ## 合入评估
 
-`likelihood = unclear`。这是 23 片规模、带新 CONFIG、改 `struct sched_domain` 布局与 enqueue/dequeue 热路径的架构性 RFC，v2 才刚开始被主评审人逐片读懂，距离可合入还差至少：v3 落实本日这批结构性改动、给出跨平台（不只海光）收益数据、以及 Peter 那句「continue trying to digest」所暗示的完整评审。09-01 当天唯一的确定性进展是**评审节奏很快、意见可执行**——这是正向信号，但不构成合入依据。要推进，作者下一版必须回答的是：删掉 `numa_counts[]` 后 NUMA 层打分的开销与形态、着色算法是否换、以及 `__build_all_zonelists()` 这条 mm 侧联动是否要做（涉及 mm 维护者 ack）。
+`likelihood = unknown`。这是 23 片规模、带新 CONFIG、改 `struct sched_domain` 布局与 enqueue/dequeue 热路径的架构性 RFC，v2 才刚开始被主评审人逐片读懂，距离可合入还差至少：v3 落实本日这批结构性改动、给出跨平台（不只海光）收益数据、以及 Peter 那句「continue trying to digest」所暗示的完整评审。09-01 当天唯一的确定性进展是**评审节奏很快、意见可执行**——这是正向信号，但不构成合入依据。要推进，作者下一版必须回答的是：删掉 `numa_counts[]` 后 NUMA 层打分的开销与形态、着色算法是否换、以及 `__build_all_zonelists()` 这条 mm 侧联动是否要做（涉及 mm 维护者 ack）。
 
 ## 效果评估
 

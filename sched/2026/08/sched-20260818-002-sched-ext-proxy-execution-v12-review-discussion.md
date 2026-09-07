@@ -42,7 +42,7 @@
 - 在开启 CONFIG_SCHED_PROXY_EXEC + CONFIG_SCHED_CLASS_EXT 的内核上跑 enq_blocked selftest 验证 v13。
 
 ## 参考链接
-- lore thread (v12): https://lore.kernel.org/r/20260817013458.xxxxxxx-arighi@nvidia.com
+- lore thread (v12): https://lore.kernel.org/all/20260816173732.17162-1-arighi@nvidia.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
 
@@ -55,13 +55,13 @@ type: feature
 status: under_review
 severity: high
 thread_root_msgid: "<aoJ5q7HbSUOxlC1H@slm.duckdns.org>"
-lore_url: "https://lore.kernel.org/r/20260817013458.xxxxxxx-arighi@nvidia.com"
+lore_url: "https://lore.kernel.org/all/20260816173732.17162-1-arighi@nvidia.com/"
 authors: [Andrea Righi]
 maintainers_involved: [Tejun Heo]
 current_version: v12
 patch_series:
   - version: v12
-    msgid: "<20260817013458.xxxxxxx-arighi@nvidia.com>"
+    msgid: null
     date: 2026-08-17
     summary: "17 patch 系列：让 proxy execution 与 sched_ext 共存，通过 SCX_OPS_ENQ_BLOCKED 逐调度器能力把 blocked donor 交给 BPF 调度器。"
     review_outcome: "Tejun 对 patch 12/17 和 14/17 详细 review；Andrea 逐条回应并同意多项调整。"

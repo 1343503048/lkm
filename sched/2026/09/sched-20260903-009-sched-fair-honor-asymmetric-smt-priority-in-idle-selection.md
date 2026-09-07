@@ -92,7 +92,7 @@ patch_series:
 - "arm64: topology: Prefer PE0 on NVIDIA Olympus SMT cores"
 - "sched/fair: Honor asymmetric SMT priority in idle selection"
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - "Eggemann 指出 select_idle_smt() 在 SMT2 上是未被测试覆盖的死路径，需删除或补 POWER7 SMT4 实测"
   - "1/2 落在 arch/arm64 拓扑代码，尚无 arm64 维护者表态，合入路由未定"

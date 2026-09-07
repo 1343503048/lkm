@@ -47,7 +47,7 @@ v2（2026-08-27 发出）在本日于 4 个补丁上产生结论：
 
 ## 合入评估
 
-`likelihood = unclear`，且本日出现了系列发出以来第一条方向性反对意见。17/23 被 Peter 用「NUMA 优先于 LLC」的第一性原理正面否定，而 07/23 的两级偏好选择正是建立在这个次序被模糊处理的基础上：作者的「把 NUMA 偏好节点当候选、让占用量决定」策略与 Peter 的原则冲突，作者给出的 per-task/per-process 粒度反驳当日没有得到回应。加上 08/23 的 `numa_counts[]` 已被要求删除、11/23 被逐行质疑（另见 sched-20260901-007），v3 面对的不是修修补补而是要重排优先级模型。无任何 `Reviewed-by`/`Acked-by`。
+`likelihood = unknown`，且本日出现了系列发出以来第一条方向性反对意见。17/23 被 Peter 用「NUMA 优先于 LLC」的第一性原理正面否定，而 07/23 的两级偏好选择正是建立在这个次序被模糊处理的基础上：作者的「把 NUMA 偏好节点当候选、让占用量决定」策略与 Peter 的原则冲突，作者给出的 per-task/per-process 粒度反驳当日没有得到回应。加上 08/23 的 `numa_counts[]` 已被要求删除、11/23 被逐行质疑（另见 sched-20260901-007），v3 面对的不是修修补补而是要重排优先级模型。无任何 `Reviewed-by`/`Acked-by`。
 
 ## 效果评估
 
@@ -101,7 +101,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - '17/23 的前提被主评审人以"NUMA 迁移始终优先于 LLC"否定，作者当日未回应'
   - 'per-task 的 numa_preferred_nid 与 per-process 的 mm->sc_stat.cpu 粒度冲突无解，直接阻碍 Peter 所要求的 NUMA 硬优先'

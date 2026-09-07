@@ -40,7 +40,7 @@ v2 于 2026-08-27 发出，Peter 09-01 对本片回帖 2 条，作者当日回 2
 
 ## 合入评估
 
-`likelihood = unclear`。本片本身是纯新增的计算函数，改动局部、可测试，但它是 23 片 RFC 的第 12 片，依赖 02/23（去重距离矩阵）、08/23/09/23（`llc_counts[]`/`numa_counts[]` 记账）、10/23（per-sd scratch）全部先落地；而其中 08/23 的 `numa_counts[]` 已被要求删除，意味着本片的 NUMA 层循环还没定型。当日没有任何 `Reviewed-by`/`Acked-by`，Peter 仍在逐片精读阶段。要推进，作者需要先把「记账 vs 按需累加」这一层定下来，再谈打分本身。
+`likelihood = unknown`。本片本身是纯新增的计算函数，改动局部、可测试，但它是 23 片 RFC 的第 12 片，依赖 02/23（去重距离矩阵）、08/23/09/23（`llc_counts[]`/`numa_counts[]` 记账）、10/23（per-sd scratch）全部先落地；而其中 08/23 的 `numa_counts[]` 已被要求删除，意味着本片的 NUMA 层循环还没定型。当日没有任何 `Reviewed-by`/`Acked-by`，Peter 仍在逐片精读阶段。要推进，作者需要先把「记账 vs 按需累加」这一层定下来，再谈打分本身。
 
 ## 效果评估
 
@@ -92,7 +92,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: unclear
+  likelihood: unknown
   blocking_issues:
   - '23 片 RFC 的第 12 片，依赖 02/08/09/10/23 全部前置；其中 numa_counts[] 已被要求删除，本片 NUMA 层循环尚未定型'
   - '待落实：以 base sd->llc_max 作参数下传替代 max_lid；删除多余 memset()'
@@ -104,7 +104,7 @@ contribution_opportunities:
     description: '质疑并帮助标定 clamp(src-dist, 1, 1024) 与 clamp(src-dist, 4, 1024) 两组常数：1:4 的 LLC/NUMA 权重比与 1024 上限从何而来，去重矩阵下距离差是否可达上限'
   - kind: review
     description: '检查 int score 累加 llc_counts[]（任务数）× 距离增益在千任务 rq 上的溢出风险'
-  - kind: code
+  - kind: new_patch
     description: '把 "llc_max 仅在 base sched domain 有效、env->sd 上为 0" 这一约束写入 commit message 或注释，避免后续 per-sd LLC 数组消费者重复踩坑'
 source_email_count: 4
 related_articles: [sched-20260901-004, sched-20260831-005]

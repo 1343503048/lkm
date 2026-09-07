@@ -21,7 +21,7 @@ maintainers_involved:
 patch_series:
 - 'sched_ext: Fix NULL sched deref in kfunc sub-sched error paths'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - v3 尚无维护者回应，已有的 Reviewed-by 停留在 v2
   - v3 采用静默拒绝而非 Tejun 提的 root sched 标志 + 一次性告警，取舍未确认

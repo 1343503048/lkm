@@ -26,7 +26,7 @@ upstream_commit: null
 fixes_commit: null
 merged_branch: null
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 整个 20 补丁系列的动机（cover 与其余补丁）当日未取到，无法判断终态用途
   - tracepoint 携带字段过少（仅 tsk 与 cpu），语义边界（DEQUEUE_SLEEP 排除 vs __block_task 计入）未与维护者确认

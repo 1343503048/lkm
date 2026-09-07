@@ -21,7 +21,7 @@ patch_series:
 - 'sched/cache: Decouple sched_cache_group from mm'
 - 'sched/cache: Introduce task_struct->sched_cache_grp'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 整条 0/2 线程到 9/7 零回帖，无任何 maintainer Acked-by/Reviewed-by
   - 改动跨 scheduler 与 mm（mm_struct/fs/exec.c/kernel/fork.c/kernel/exit.c），缺 mm 侧 ack

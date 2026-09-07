@@ -100,7 +100,7 @@ patch_series:
 - 'sched/numa: do not let the per-VMA PID filter gate promotion'
 - 'sched/numa: scan read-only file mappings in tiering mode'
 merge_assessment:
-  likelihood: possible
+  likelihood: medium
   blocking_issues:
   - 'v1 被 sashiko 测出 slow_only 无条件复位导致 VMA 被提前重新纳入，作者已确认待发 v2'
   - '无任何人类维护者回帖，需 mm 与调度两侧同时认可'
