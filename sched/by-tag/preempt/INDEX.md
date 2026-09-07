@@ -1,7 +1,9 @@
 # tag: preempt
 
-共 34 篇
+共 36 篇
 
+- [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
+- [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c
 - [sched-20260906-006](../../2026/09/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.md) `fix/medium/under_review` — Jiayuan Chen 的 `bpf,tcp: Fix bpf_sock_destroy() on TIME_WAIT and listener socks` 系列于 09-06 15:41 以 `[PATCH bpf v2 0/3]` 重发，本篇对应的 2/3 是相对上一版新增的一片：`bpf_sock_destroy()` 在 tcp iterator 的 `rcu_read_lock()`
 - [sched-20260905-004](../../2026/09/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — Mark Rutland 的单补丁修掉 PREEMPT_DYNAMIC 简化留下的收尾问题：枚举值 `preempt_dynamic_none` / `preempt_dynamic_voluntary` 被删掉后 `preempt_modes[]` 没同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空。Peter Zijlstra
 - [sched-20260903-013](../../2026/09/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.md) `discussion/medium/merged_tip` — Mark Rutland 的 `sched: dynamic` 精简系列 v2（0/6，08-04 投递）在 09-02 已被 Peter Zijlstra 全部合入 tip:sched/core，本日（09-03）线程里只剩 Jinjie Ruan 把自己的 08-07 提问顶起来催问「Hi Mark, What do you think?」。真正有信息量的是这个 ping 之前发生的事：Jin

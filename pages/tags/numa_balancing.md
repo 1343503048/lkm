@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 17
+article_count: 18
 ---
 
+- [sched-20260907-009](/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html) `bug/high/under_review` — sched/numa: scan read-only file mappings in tiering mode
 - [sched-20260905-002](/lkm/2026/09/05/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/low/under_review` — sched/core: Make fallback CPU selection NUMA-aware
 - [sched-20260905-006](/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `feature/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion

@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 36 篇
+共 38 篇
 
+- [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
+- [sched-20260907-004](../../2026/09/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — Ye Liu 在 09-07 16:13 发出 v2（8 补丁）：在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把 RCU 读锁作用域绑
 - [sched-20260905-002](../../2026/09/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — `scan_size_mb` 在 `task_scan_min()` 和 `task_nr_scan_windows()` 里都是除数，而 `debugfs_create_u32()` 对写入值一律接受，所以两类取值直接把内核打死：写 0 触发 divide error Oops，写 2^24 的倍数在 4K 页上让 `MB_TO_PAGES()` 的 32 位移位绕回 0 再触发一次除零。作者 
 - [sched-20260831-010](../../2026/08/sched-20260831-010-sched-add-task-enqueue-dequeue-trace-points.md) `feature/rfc` — Gabriele Monaco（Red Hat）8/31 发出 20 补丁 RFC，第 1 篇在通用入队/出队路径 `enqueue_task()`/`dequeue_task()`/`__block_task()` 上加一对新 tracepoint `sched_enqueue`/`sched_dequeue`，并 `EXPORT_TRACEPOINT_SYMBOL_GPL` 导出。补丁带 `S
 - [sched-20260828-009](../../2026/08/sched-20260828-009-sched-add-support-for-long-task-name.md) `feature/medium/under_review` — André Almeida（Igalia）8/27 深夜发出 **v5**：把 `struct task_struct` 的 `comm` 从 16 字节扩到 **64**（`TASK_COMM_EXT_LEN`），但**所有既有用户态接口保持 16 字节**（`prctl(PR_SET_NAME/PR_GET_NAME)`，以及 `/proc` 侧由 `proc_task_name()` 生成的

@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 34
+article_count: 36
 ---
 
+- [sched-20260907-002](/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `bug/medium/rfc` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
+- [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260904-002](/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `discussion/medium/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260903-009](/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `discussion/medium/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260903-011](/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html) `discussion/medium/under_review` — sched/cache: Honor migrate_llc_task semantics in active load balance

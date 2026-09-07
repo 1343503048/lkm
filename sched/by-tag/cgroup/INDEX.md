@@ -1,7 +1,11 @@
 # tag: cgroup
 
-共 61 篇
+共 65 篇
 
+- [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin
+- [sched-20260907-010](../../2026/09/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.md) `fix/low/merged_tip` — Tejun Heo 09-06 给自己维护的示例/自测调度器 `scx_qmap` 打了一个时序补丁：qmap 的分区（partition）更新采用「单 runner + pending 标志」的同步方式，但**请求的发布时机**和**runner 的检查时机**互相错开，存在一个把分区工作留在「有 pending、无 runner」状态的空窗，结果是这次分区更新要等到 round-robin 定
+- [sched-20260907-008](../../2026/09/sched-20260907-008-sched-fair-remove-the-write-order-dependency-between-cpu-max.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 [[sched-20260904-004]]（该文以 v2 的 cover 标题 `sched/fair: remove quota/burst write-order dependency` 为题，本篇是 v2 中 1/3 这一补丁本体的标题）。09-07 的进展是决定性的：cpu controller 维护者 Michal Koutný（SUSE）给出 `Revie
+- [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260904-004](../../2026/09/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.md) `discussion/medium/under_review` — CFS 带宽的 `cpu.max` 与 `cpu.max.burst` 目前写入顺序敏感：quota 无限时配了大 burst，之后写有限 quota 会 EINVAL；先增 burst 再增 quota 同样失败。Zhe Liu 的 v2（3 补丁）改成「配置的 burst 与当前 quota 解耦，在 refill 时钳到 `quota + min(burst, quota)`」，并补两种写入
 - [sched-20260904-003](../../2026/09/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.md) `fix/medium/under_review` — 代理执行下 `cgroup_account_cputime()` 把 CPU 时间记到 donor，而 per-task / thread-group / cgroup 的 user/system 字段已记到实际执行任务，donor 与执行任务分属不同 cgroup 时用量会被算到别的组。Hui Su 的 v2 沿用 Tejun Heo 的意见，改成 cgroup CPU usage 跟随执行上下
 - [sched-20260903-014](../../2026/09/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.md) `discussion/low/merged_tip` — `ops.cgroup_set_idle()` 的文档语义是「cgroup 在 idle 与非 idle 之间转换时调用」，同族的 `scx_group_set_weight()` 也已经跳过等值写入，但 `scx_group_set_idle()` 对每次写入都无条件下发回调——重复写一个已经正确的 `cpu.idle` 值也会喂给 BPF 调度器一次转换事件，依赖 toggle 或计数的调度器

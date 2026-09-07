@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 36
+article_count: 38
 ---
 
+- [sched-20260907-004](/lkm/2026/09/07/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/none/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock
+- [sched-20260907-012](/lkm/2026/09/07/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.html) `fix/low/merged_tip` — sched: dynamic: Fix preemption model strings
 - [sched-20260905-002](/lkm/2026/09/05/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260831-010](/lkm/2026/08/31/sched-20260831-010-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/rfc` — sched: Add task enqueue/dequeue trace points
 - [sched-20260828-003](/lkm/2026/08/28/sched-20260828-003-sched-fair-rework-tash-h-load.html) `fix/medium/under_review` — sched/fair: Rework tash_h_load()

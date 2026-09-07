@@ -1,7 +1,10 @@
 # tag: topology
 
-共 53 篇
+共 56 篇
 
+- [sched-20260907-011](../../2026/09/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 
+- [sched-20260907-005](../../2026/09/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 本文为增量更新，完整背景见 [[sched-20260903-009]]。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_r
+- [sched-20260907-003](../../2026/09/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — Oleg Keri 在 09-07 00:37 发出 2 补丁系列：Snapdragon X2 Elite（Glymur）是他见到的第一颗 boost OPP（4723200 kHz）越过 4194304 kHz 的 arm64 笔记本芯片，这条线正好是 `2^32 / SCHED_CAPACITY_SCALE`，于是一次性暴露两个独立 bug——`arch_freq_get_on_cpu()` 
 - [sched-20260905-007](../../2026/09/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.md) `discussion/low/under_review` — 这不是一条补丁，而是 Intel 与 AMD 双方 cache-aware 调度（CAS）从业者共同参与的实测反馈线。Klaus Kusche 在 09-05 给出了他在这个线程里的**第一份量化数据**，结论与 08-31 那条「两个补丁组合看起来达到预期效果」的直觉判断并不一致：在 AMD Ryzen HX 370 上，两个 build 负载里 **完全关掉 CAS 反而可复现地比开着好 2–
 - [sched-20260905-005](../../2026/09/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.md) `discussion/medium/under_review` — Steal governor v12（13 补丁，Shrikanth Hegde / IBM）把「非偏好 CPU 上主动用 stopper 把当前任务推走」作为 tick 侧的执行手段，作者明确请求 Peter/Ingo 把它排进 `sched/core`、目标合并窗口 **7.4**。本日两件事：Yury Norov 对 08/13 提了 4 条具体意见（锁竞争窗口、per-CPU 变量命名、`
 - [sched-20260905-003](../../2026/09/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.md) `discussion/low/under_review` — Yury Norov（NVIDIA）的单补丁改动 `select_fallback_rq()`：原实现先查本地节点、再按任务亲和性掩码的**数值顺序**扫描，在超过两个 NUMA 节点的系统上可能挑到比必要更远的 CPU；改成遍历调度器的 NUMA hop 掩码、每个新到达的 CPU 只考察一次，从而在整段 fallback 搜索和亲和性放宽之后都保持局部性。09-05 首发，正文里**没有 be

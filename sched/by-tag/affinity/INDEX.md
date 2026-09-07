@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 34 篇
+共 36 篇
 
+- [sched-20260907-011](../../2026/09/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 
+- [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c
 - [sched-20260904-002](../../2026/09/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `discussion/medium/under_review` — NVIDIA Olympus/Vera 用两个对称 PE 实现 SMT2，短暂激活空闲 sibling 会让核退回两线程模式，且回到单线程模式并非即时。Andrea Righi 的 v2（2 补丁）把 PE0 标成 preferred sibling（`SD_ASYM_PACKING`），并让 fair 调度器的全部空闲 CPU 选择路径尊重这个优先级，在 Vera 的 88 核 GEMM 上把约
 - [sched-20260903-011](../../2026/09/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.md) `discussion/medium/under_review` — CAS 用 `migrate_llc_task` 把任务推向它的 preferred LLC，但被动负载均衡回落到主动负载均衡（ALB）时这个语义会丢：ALB 里的 CPU stopper 会重建一个不继承 `migration_type` 的 `lb_env`，于是 `can_migrate_task()` 在 `env->flags & LBF_ACTIVE_LB` 分支里对任何任务直接 `r
 - [sched-20260903-009](../../2026/09/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `discussion/medium/under_review` — NVIDIA Olympus 的 SMT 两个 PE 稳态容量相等，但从双线程模式回到全资源单线程模式并不即时（Vera 实测需要兄弟空闲约 10 Ki cycles 的 qualification interval），因此反复切换活跃 PE 的代价被放大。Andrea Righi 的 2 patch 系列把 PE0 通过 `SD_ASYM_PACKING` 设成 Olympus 核的 prefe

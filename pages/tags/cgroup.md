@@ -2,9 +2,13 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 61
+article_count: 65
 ---
 
+- [sched-20260907-008](/lkm/2026/09/07/sched-20260907-008-sched-fair-remove-the-write-order-dependency-between-cpu-max.html) `fix/medium/under_review` — sched/fair: Remove the write-order dependency between cpu.max and cpu.max.burst
+- [sched-20260907-010](/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html) `fix/low/merged_tip` — sched_ext: scx_qmap: Fix pending partition work handoff
+- [sched-20260907-013](/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context
 - [sched-20260904-004](/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html) `discussion/medium/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260903-008](/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html) `fix/medium/under_review` — sched/cputime: Account cgroup fields to the scheduling context

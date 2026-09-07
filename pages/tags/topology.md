@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 53
+article_count: 56
 ---
 
+- [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
+- [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/low/under_review` — sched/core: Make fallback CPU selection NUMA-aware
 - [sched-20260905-005](/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html) `discussion/medium/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260905-007](/lkm/2026/09/05/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html) `discussion/low/under_review` — Cache-aware scheduling does not work well with amd big/little cores

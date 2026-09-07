@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 24
+article_count: 27
 ---
 
+- [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
+- [sched-20260907-006](/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260907-007](/lkm/2026/09/07/sched-20260907-007-cpufreq-conservative-ignore-idle-periods-when-a-policy-cpu-i.html) `discussion/low/under_review` — cpufreq: conservative: Ignore idle periods when a policy CPU is busy
 - [sched-20260904-005](/lkm/2026/09/04/sched-20260904-005-cpufreq-schedutil-convert-to-kthread-create-worker.html) `discussion/low/under_review` — cpufreq: schedutil: convert to kthread_create_worker
 - [sched-20260903-010](/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `discussion/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260831-012](/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html) `fix/medium/under_review` — cpufreq: initialize policy rwsem before sysfs publication

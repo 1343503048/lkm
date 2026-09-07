@@ -2,10 +2,9 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 54
+article_count: 53
 ---
 
-- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
 - [sched-20260905-005](/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html) `discussion/medium/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260904-001](/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution

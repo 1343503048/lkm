@@ -1,9 +1,7 @@
 # tag: sched/core
 
-共 80 篇
+共 78 篇
 
-- [sched-20260906-006](../../../2026/09/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.md) `fix/medium/under_review` — Jiayuan Chen 的 `bpf,tcp: Fix bpf_sock_destroy() on TIME_WAIT and listener socks` 系列于 09-06 15:41 以 `[PATCH bpf v2 0/3]` 重发，本篇对应的 2/3 是相对上一版新增的一片：`bpf_sock_destroy()` 在 tcp iterator 的 `rcu_read_lock()`
-- [sched-20260906-004](../../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260905-005](../../../2026/09/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.md) `discussion/medium/under_review` — Steal governor v12（13 补丁，Shrikanth Hegde / IBM）把「非偏好 CPU 上主动用 stopper 把当前任务推走」作为 tick 侧的执行手段，作者明确请求 Peter/Ingo 把它排进 `sched/core`、目标合并窗口 **7.4**。本日两件事：Yury Norov 对 08/13 提了 4 条具体意见（锁竞争窗口、per-CPU 变量命名、`
 - [sched-20260905-004](../../../2026/09/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — Mark Rutland 的单补丁修掉 PREEMPT_DYNAMIC 简化留下的收尾问题：枚举值 `preempt_dynamic_none` / `preempt_dynamic_voluntary` 被删掉后 `preempt_modes[]` 没同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空。Peter Zijlstra
 - [sched-20260905-003](../../../2026/09/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.md) `discussion/low/under_review` — Yury Norov（NVIDIA）的单补丁改动 `select_fallback_rq()`：原实现先查本地节点、再按任务亲和性掩码的**数值顺序**扫描，在超过两个 NUMA 节点的系统上可能挑到比必要更远的 CPU；改成遍历调度器的 NUMA hop 掩码、每个新到达的 CPU 只考察一次，从而在整段 fallback 搜索和亲和性放宽之后都保持局部性。09-05 首发，正文里**没有 be

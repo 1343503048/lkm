@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 64
+article_count: 71
 ---
 
+- [sched-20260907-001](/lkm/2026/09/07/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice
+- [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260907-006](/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260907-008](/lkm/2026/09/07/sched-20260907-008-sched-fair-remove-the-write-order-dependency-between-cpu-max.html) `fix/medium/under_review` — sched/fair: Remove the write-order dependency between cpu.max and cpu.max.burst
+- [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
+- [sched-20260907-013](/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/merged_tip` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths
 - [sched-20260901-003](/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260901-011](/lkm/2026/09/01/sched-20260901-011-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing

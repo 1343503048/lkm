@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 11
+article_count: 12
 ---
 
+- [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260828-001](/lkm/2026/08/28/sched-20260828-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20260806-002](/lkm/2026/08/06/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing
 - [sched-20260805-002](/lkm/2026/08/05/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.html) `feature/none/under_review` — sched/fair: Prefer fully idle cores for NOHZ balancing

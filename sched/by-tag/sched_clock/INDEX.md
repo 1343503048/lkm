@@ -1,7 +1,8 @@
 # tag: sched_clock
 
-共 5 篇
+共 6 篇
 
+- [sched-20260907-014](../../2026/09/sched-20260907-014-sched-clock-add-option-to-use-absolute-time-against-hardware.md) `discussion/stalled` — 本文为增量更新，完整背景见 sched-20260906-005（Thomas Gleixner 09-06 的明确 NAK）与 sched-20260903-015（Marc Zyngier 的三条反对）。本日是这条线程的**收尾**：Feng Tang 09-07 17:05 接受「补丁 hacky」的判断，放弃改 epoch 的原方案，转而按 Marc 的建议拿出一个形状完全不同的 diff
 - [sched-20260906-005](../../2026/09/sched-20260906-005-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.md) `discussion/stalled` — Feng Tang（09-02）给 `kernel/time/sched_clock.c` 加了个 `abs_sched_clock` core_param，让注册新 clocksource 时将 `epoch_ns` 直接算成「自硬件计数器复位以来的绝对时间」，以便 kernel / SCP firmware / ATF 的日志落在同一条时间线上追 RAS 问题。09-06 04:39 Thom
 - [sched-20260903-015](../../2026/09/sched-20260903-015-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.md) `discussion/low/under_review` — 这不是「时钟复位后补偿跳变」的功能，而是一个纯调试用途的启动选项：arm64 服务器上一次 nasty bug 往往要同时对齐 SCP 固件、ATF 与 Linux 三方日志，而三方都能读同一个硬件定时器，于是 Feng Tang 增加 `core_param(abs_sched_clock, ...)`，让 `sched_clock_register()` 在建立 epoch 时直接把计数器当前
 - [sched-20260826-009](../../2026/08/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik (Ampere) 提交补丁修复 same-task repick 后 hrtick 未重新设置的问题。当 `pick_next_task_fair()` 选择同一任务时（例如经过 `put_prev_task` + `pick_next_task` 循环），已有的 hrtick 定时器可能未被重新设置，导致该任务的调度时间片不受 hrtick 约束。Zhan Xu

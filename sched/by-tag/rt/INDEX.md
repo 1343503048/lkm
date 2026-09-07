@@ -1,7 +1,8 @@
 # tag: rt
 
-共 15 篇
+共 16 篇
 
+- [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin
 - [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260903-006](../../2026/09/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.md) `bug/high/stalled` — `dd29c017aed6`（"sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT"）使非 PREEMPT_RT 系统在 RT 任务位于其他 CPU 上被释放/提升时不再发 RT push IPI，专业音频（DAW）用户据此报告了多秒级的 PI-boost 饥饿。 本日唯一的动静是回归追踪者 Thorsten Leemhuis 
 - [sched-20260903-005](../../2026/09/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.md) `fix/high/under_review` — 代理执行下 `task_tick_rt()` 是替调度上下文 `rq->donor` 跑的，但运行时间记在 `rq->curr` 上，于是 `RLIMIT_RTTIME` 的 `rt.timeout` 累计与 posix CPU 定时器状态更新都落在了错误的任务上。Hui Su 的单补丁把 `watchdog()` 改传 `rq->curr`，并为「非 RT 执行任务借用 RT donor」的情形

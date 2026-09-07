@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 17 篇
+共 18 篇
 
+- [sched-20260907-009](../../2026/09/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.md) `bug/high/under_review` — Gregory Price（Meta）把 NUMA balancing 的一个老例外拿到内存分层下重新审视：`task_numa_work()` 见到只读 file-backed VMA 就 `continue`（打点 `NUMAB_SKIP_SHARED_RO`），这条判断由 `4591ce4f2d22`（"sched/numa: Do not trap hinting faults for s
 - [sched-20260905-006](../../2026/09/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `feature/medium/under_review` — Gregory Price（Meta）的 2 补丁系列指出 NUMA balancing 的 VMA 级扫描过滤器在内存分层场景下语义已经变了：分层模式下 hint fault 不是「socket 驻留信号」而是**提升机制本身**，被扫描排除的 VMA 会被永久排除在提升之外。他不移除任何过滤器，而是新增 `vma->numab_state->slow_only`，让被拒的 VMA 也扫、但只把
 - [sched-20260905-003](../../2026/09/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.md) `discussion/low/under_review` — Yury Norov（NVIDIA）的单补丁改动 `select_fallback_rq()`：原实现先查本地节点、再按任务亲和性掩码的**数值顺序**扫描，在超过两个 NUMA 节点的系统上可能挑到比必要更远的 CPU；改成遍历调度器的 NUMA hop 掩码、每个新到达的 CPU 只考察一次，从而在整段 fallback 搜索和亲和性放宽之后都保持局部性。09-05 首发，正文里**没有 be
 - [sched-20260905-002](../../2026/09/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — `scan_size_mb` 在 `task_scan_min()` 和 `task_nr_scan_windows()` 里都是除数，而 `debugfs_create_u32()` 对写入值一律接受，所以两类取值直接把内核打死：写 0 触发 divide error Oops，写 2^24 的倍数在 4K 页上让 `MB_TO_PAGES()` 的 32 位移位绕回 0 再触发一次除零。作者 

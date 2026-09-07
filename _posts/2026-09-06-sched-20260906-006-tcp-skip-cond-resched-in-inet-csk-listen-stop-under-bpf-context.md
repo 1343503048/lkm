@@ -57,7 +57,6 @@ contribution_opportunities:
 source_email_count: 6
 related_articles: []
 tags:
-- sched/core
 - preempt
 title: 'tcp: Skip cond_resched() in inet_csk_listen_stop() under BPF context'
 layout: article

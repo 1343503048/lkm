@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 105 篇
+共 107 篇
 
+- [sched-20260907-016](../../2026/09/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.md) `fix/low/under_review` — Hemanth Selam 在 09-07 14:49 发出一个 2 补丁的注释修正系列：`kernel/sched/ext/ext.c` 里两处 `upto` → `up to`（`bypass_lb_node()` 的负载均衡注释、`scx_bpf_dispatch` kfunc 注释），以及 `tools/sched_ext/include/scx/common.bpf.h` 里重复的 `b
+- [sched-20260907-010](../../2026/09/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.md) `fix/low/merged_tip` — Tejun Heo 09-06 给自己维护的示例/自测调度器 `scx_qmap` 打了一个时序补丁：qmap 的分区（partition）更新采用「单 runner + pending 标志」的同步方式，但**请求的发布时机**和**runner 的检查时机**互相错开，存在一个把分区工作留在「有 pending、无 runner」状态的空窗，结果是这次分区更新要等到 round-robin 定
 - [sched-20260906-003](../../2026/09/sched-20260906-003-selftests-sched-ext-fail-interrupted-test-runs.md) `fix/low/under_review` — Tianyi Chen 修 `tools/testing/selftests/sched_ext/runner.c` 的一行退出码逻辑：SIGINT/SIGTERM 会置 `exit_req` 让 runner 提前停止，但退出状态只反映失败用例数，于是「被中断且已跑完的用例都没失败」会返回 0，被调用方（CI）当成通过。改成 `failed > 0 || exit_req` 即返回 1。v1 于
 - [sched-20260906-002](../../2026/09/sched-20260906-002-selftests-sched-ext-handle-cpu-hotplug-write-failures.md) `fix/low/under_review` — Tianyi Chen 修 `tools/testing/selftests/sched_ext/hotplug.c`：`toggle_online_status()` 会打印 CPU 状态变更失败的日志，但把 write 的返回值丢掉，于是一次失败的 offline 写永远不会触发测试在等的调度器退出，用例无限挂住。改为返回 write 结果、在必需的 CPU 状态变更失败时同时终止两个 hot
 - [sched-20260906-001](../../2026/09/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.md) `bug/medium/merged_tip` — Tejun 把 scx_qmap 当作 scx_nitosis 的 sub-scheduler 跑，暴露出 1 个内核侧 bug 和 2 个 scx_qmap 放置 bug：`dispatch_one()` 用 **root** 调度器的 `SCX_OPS_ENQ_LAST`/bypass 状态决定是否 keep 运行 `@prev`，而这两个属性其实属于 `@prev` 自己的调度器，判错时会把

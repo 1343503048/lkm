@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 105
+article_count: 107
 ---
 
+- [sched-20260907-010](/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html) `fix/low/merged_tip` — sched_ext: scx_qmap: Fix pending partition work handoff
+- [sched-20260907-016](/lkm/2026/09/07/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.html) `fix/low/under_review` — sched: fix typos and repeated words in comments
 - [sched-20260906-001](/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html) `bug/medium/merged_tip` — sched_ext: Fix keep-last for sub-scheduler tasks and two scx_qmap placement loops
 - [sched-20260906-002](/lkm/2026/09/06/sched-20260906-002-selftests-sched-ext-handle-cpu-hotplug-write-failures.html) `fix/low/under_review` — selftests/sched_ext: Handle CPU hotplug write failures
 - [sched-20260906-003](/lkm/2026/09/06/sched-20260906-003-selftests-sched-ext-fail-interrupted-test-runs.html) `fix/low/under_review` — selftests/sched_ext: Fail interrupted test runs

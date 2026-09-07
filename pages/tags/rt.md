@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 15
+article_count: 16
 ---
 
+- [sched-20260907-013](/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260903-005](/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html) `fix/high/under_review` — sched/rt: Fix RT watchdog accounting for proxy execution
 - [sched-20260903-006](/lkm/2026/09/03/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.html) `bug/high/stalled` — [REGRESSION] sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)

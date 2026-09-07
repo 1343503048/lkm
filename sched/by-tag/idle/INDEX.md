@@ -1,7 +1,9 @@
 # tag: idle
 
-共 30 篇
+共 32 篇
 
+- [sched-20260907-007](../../2026/09/sched-20260907-007-cpufreq-conservative-ignore-idle-periods-when-a-policy-cpu-i.md) `discussion/low/under_review` — Shengming Hu（ZTE）的单补丁修的是一个真实的行为缺陷：共享 policy 里一个长期空闲 CPU 记录的 deferred idle periods，会把一个满载 CPU 所在的 policy 频率一路拉到最低（他实测卡在约 530 MHz，而 CPU 2 一直 100%）。做法是把 `dbs_update()` 里的 `policy_dbs->idle_periods` 改成「只有
+- [sched-20260907-005](../../2026/09/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 本文为增量更新，完整背景见 [[sched-20260903-009]]。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_r
 - [sched-20260901-016](../../2026/09/sched-20260901-016-sched-ext-use-atomic-cpumask-clear-cpu-in-scx-idle-test-and.md) `fix/low/stalled` — Michal Blaszczyk（Google）把 `kernel/sched/ext/idle.c` 里对共享 `idle_smts` 掩码的一次 `__cpumask_clear_cpu()` 换成原子的 `cpumask_clear_cpu()`，理由是 `__cpumask_*` 是非原子 RMW，同字（word）内的并发清位会丢更新。补丁只改 1 行，带 `Fixes: 48849271
 - [sched-20260828-008](../../2026/08/sched-20260828-008-cpuidle-teo-do-not-return-a-disabled-idle-state.md) `bug/medium/under_review` — **本文为增量更新**（完整背景见 sched-20260827-014）。Xueqin Luo（KylinOS）8/28 发出的 **v2 逐字采纳了 Rafael J. Wysocki 8/27 的替代写法**：不再在决策完成后"事后回退到最浅启用状态"，而是在约束钳制之前先把下界抬高——`if (constraint_idx < idx0) constraint_idx = idx0;`，其
 - [sched-20260827-015](../../2026/08/sched-20260827-015-cpuidle-menu-do-not-return-a-disabled-idle-state.md) `bug/medium/under_review` — Xueqin Luo 本日第二封同型修复：menu governor 在 `latency_req == 0` 且 state 0 被禁用时，`menu_select()` 的提前返回分支**短路了 disable 检查**，直接返回禁用的 state 0。修法是把 `!disable` 提为整个提前返回条件的前提。与 teo 那封（sched-20260827-014）是同一 bug 类在两个 

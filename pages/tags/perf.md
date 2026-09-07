@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 34
+article_count: 35
 ---
 
+- [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260901-001](/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec
 - [sched-20260901-013](/lkm/2026/09/01/sched-20260901-013-sched-ext-skip-per-cpu-data-allocation-for-built-in-dsqs.html) `fix/low/under_review` — sched_ext: Skip per-CPU data allocation for built-in DSQs
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff

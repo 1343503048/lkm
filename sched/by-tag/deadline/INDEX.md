@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 12 篇
+共 13 篇
 
+- [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin
 - [sched-20260906-004](../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260830-001](../../2026/08/sched-20260830-001-sched-rt-dl-skip-migrate-disabled-tasks-when-picking-a-push-candidate.md) `bug/high/under_review` — Seiji Nishikawa（Red Hat）单补丁：`migrate_disable()` 过的 RT/DL 任务**仍留在该 CPU 的 pushable 列表里、且 rq 仍被标为 overloaded**，于是 RT 均衡器反复试图把它推走；推不动时 `push_rt_task()` 会退化成用 per-CPU stopper 去推 `rq->curr`，而这条回退路径的复检（`task
 - [sched-20260828-005](../../2026/08/sched-20260828-005-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.md) `fix/medium/under_review` — **本文为增量更新**（完整背景见 sched-20260827-001）。Aaron Tomlin 的 6 补丁系列在一天之内连发 **v8 与 v9**：给 `struct rq->rd` 补上 `__rcu` 标注，并把 `kernel/sched/` 里所有无锁直读 `rq->rd` 的地方换成统一 helper。v8 按 Peter Zijlstra 对 v7 的意见引入 `rcu_de

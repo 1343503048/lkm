@@ -1,8 +1,7 @@
 # tag: sched/fair
 
-共 54 篇
+共 53 篇
 
-- [sched-20260906-004](../../../2026/09/sched-20260906-004-git-pull-scheduler-fixes.md) `discussion/medium/merged_tip` — Ingo 于 09-06 19:22 向 Linus 发出 `sched/urgent` 拉取（分支 `sched-urgent-2026-09-06`，顶端 `f0d243a96f2684ad771d678767d17972cf840bd7`），共 **7 个修复、6 位提交者**，覆盖 fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的缺陷、RT/
 - [sched-20260905-005](../../../2026/09/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.md) `discussion/medium/under_review` — Steal governor v12（13 补丁，Shrikanth Hegde / IBM）把「非偏好 CPU 上主动用 stopper 把当前任务推走」作为 tick 侧的执行手段，作者明确请求 Peter/Ingo 把它排进 `sched/core`、目标合并窗口 **7.4**。本日两件事：Yury Norov 对 08/13 提了 4 条具体意见（锁竞争窗口、per-CPU 变量命名、`
 - [sched-20260905-001](../../../2026/09/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.md) `fix/medium/under_review` — Hui Su 的 2 补丁系列把 NUMA / cache 的 task tick 从调度上下文（`rq->donor`）改挂到执行上下文（`rq->curr`），使 fair 任务替 RT/deadline donor 代理执行时 `task_tick_numa()` / `task_tick_cache()` 仍能运行。v3（09-04 发出）已在 09-05 拿到 Tim Chen 的 `R
 - [sched-20260904-012](../../../2026/09/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.md) `discussion/low/under_review` — Shrikanth Hegde 的 steal_governor v12（13 补丁）第 1 片在 `include/linux/kernel_stat.h` 加了一个 `kcpustat_field_total(usage, cpus)`，把「按 cpumask 累加某类 cpu_usage_stat」这件事收成一个 inline，并立即替换 `arch/s390/kernel/hiperdis

@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 12
+article_count: 13
 ---
 
+- [sched-20260907-013](/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260830-001](/lkm/2026/08/30/sched-20260830-001-sched-rt-dl-skip-migrate-disabled-tasks-when-picking-a-push-candidate.html) `bug/high/under_review` — sched/rt,dl: Skip migrate-disabled tasks when picking a push candidate
 - [sched-20260828-001](/lkm/2026/08/28/sched-20260828-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing

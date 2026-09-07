@@ -1,7 +1,9 @@
 # tag: arm64
 
-共 14 篇
+共 16 篇
 
+- [sched-20260907-015](../../2026/09/sched-20260907-015-sched-update-the-thread-info-in-task-description.md) `fix/stalled` — 本文为增量更新，完整背景见 sched-20260726-006（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing
+- [sched-20260907-003](../../2026/09/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — Oleg Keri 在 09-07 00:37 发出 2 补丁系列：Snapdragon X2 Elite（Glymur）是他见到的第一颗 boost OPP（4723200 kHz）越过 4194304 kHz 的 arm64 笔记本芯片，这条线正好是 `2^32 / SCHED_CAPACITY_SCALE`，于是一次性暴露两个独立 bug——`arch_freq_get_on_cpu()` 
 - [sched-20260901-010](../../2026/09/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.md) `feature/under_review` — 增量更新（完整方案见 sched-20260831-007 / sched-20260810-008）。Shrikanth Hegde 的 preferred-CPU / steal_governor v11 系列中，`05/12` 关于「要不要只在实测过的架构上启用」的争论在 09-01 收口：Vincent Guittot 与 Dietmar Eggemann 都认为无需为 arm64 单独设
 - [sched-20260831-014](../../2026/08/sched-20260831-014-cpufreq-tegra194-fix-double-pointer-error-in-get-cpu-ndiv.md) `fix/medium/merged_tip` — Xueqin Luo（Kylinos）8/31 的一行补丁修掉 `tegra194_get_cpu_ndiv()` 里 `smp_call_function_single()` 传参的**双重指针错误**：形参 `ndiv` 本身已经是 `u64 *`，却又传了 `&ndiv`，于是被调回调写的是"指针变量自己的栈槽"，调用方的 `u64` 永远读到未初始化值。维护者 Viresh Kumar 在
 - [sched-20260831-007](../../2026/08/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.md) `feature/under_review` — 本文为增量更新（完整背景见 sched-20260810-008）。Shrikanth Hegde（IBM）的 preferred-CPU / steal-governor 系列已到 **v11（12 补丁）**，`05/12` 让 `is_cpu_allowed()`/`select_fallback_rq()` 在受限时优先挑仍被允许的 preferred CPU。8/31 的争点从代码本身转

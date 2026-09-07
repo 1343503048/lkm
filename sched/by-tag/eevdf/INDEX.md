@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 15 篇
+共 16 篇
 
+- [sched-20260907-001](../../2026/09/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/under_review` — Vincent Guittot 在 09-07 20:38 发出单补丁：`__enqueue_entity()` 里只把 `se->min_slice` 初始化成 `se->slice`，漏了同样初始化 `se->max_slice`，于是新入队实体会带着上一次作为红树内部节点时被算大的 `max_slice`，并被 augment 回调沿路径传播上去，使 `cfs_rq_max_slice()`
 - [sched-20260902-010](../../2026/09/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.md) `fix/medium/merged_tip` — Zhan Xusheng（Xiaomi）的一行级修复已被 Peter Zijlstra 于 9/2 09:17(+0200) 合入 **tip/sched/urgent** （Commit-ID `1719d035a6fa90b7467b6daf45a573f5180013b2`）。内容：`pick_task_fair()` 与 `yield_task_fair()` 里的 `update_cur
 - [sched-20260901-002](../../2026/09/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/merged_tip` — Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径上漏改的两处 `cfs_rq->curr`：`throttle_cfs_rq()` 因此对中间层级永远判不到「该层有运行实体」，配额耗尽时既不申请整 slice 也不布防 deferred throttle，任务可以**持续超出所属 cgroup 的 `cpu.max` 配
 - [sched-20260831-004](../../2026/08/sched-20260831-004-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/under_review` — Wanwu Li（kylinos）8/31 18:11 发出 2 补丁：EEVDF 单 runqueue 改造（`85570f10a4c6`）把"本层级是否有实体在跑"从 `cfs_rq->curr` 迁到 `cfs_rq->h_curr` 后，**CFS 带宽路径漏改了两处**，导致中间层 cgroup 的 `throttle_cfs_rq()` 永远拿不到一整份 `sched_cfs_band

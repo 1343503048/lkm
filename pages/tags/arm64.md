@@ -2,9 +2,11 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 14
+article_count: 16
 ---
 
+- [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
+- [sched-20260907-015](/lkm/2026/09/07/sched-20260907-015-sched-update-the-thread-info-in-task-description.html) `fix/none/stalled` — sched: Update the THREAD_INFO_IN_TASK description
 - [sched-20260901-010](/lkm/2026/09/01/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
 - [sched-20260831-007](/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed
 - [sched-20260831-014](/lkm/2026/08/31/sched-20260831-014-cpufreq-tegra194-fix-double-pointer-error-in-get-cpu-ndiv.html) `fix/medium/merged_tip` — cpufreq: tegra194: fix double-pointer error in get_cpu_ndiv

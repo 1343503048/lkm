@@ -2,11 +2,9 @@
 layout: default
 tag: "sched/core"
 title: "标签: sched/core"
-article_count: 80
+article_count: 78
 ---
 
-- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/medium/merged_tip` — [GIT PULL] scheduler fixes
-- [sched-20260906-006](/lkm/2026/09/06/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.html) `fix/medium/under_review` — tcp: Skip cond_resched() in inet_csk_listen_stop() under BPF context
 - [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
 - [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/low/under_review` — sched/core: Make fallback CPU selection NUMA-aware
 - [sched-20260905-004](/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html) `fix/low/merged_tip` — sched: dynamic: Fix preemption model strings

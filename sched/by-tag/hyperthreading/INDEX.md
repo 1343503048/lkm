@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 11 篇
+共 12 篇
 
+- [sched-20260907-005](../../2026/09/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 本文为增量更新，完整背景见 [[sched-20260903-009]]。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_r
 - [sched-20260828-001](../../2026/08/sched-20260828-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — Peter Zijlstra 8/28 发出 7 补丁系列，一次性处理 core scheduling 的三类问题：`pick_next_task()` 在 `pick_task()` 放掉 rq->lock 期间被兄弟 CPU 重入、core-wide 任务选择状态被踩踏（可致 NULL deref）；core-sched 下 newidle balance 被整条关掉造成的漏平衡；以及 `sc
 - [sched-20260806-002](../../2026/08/sched-20260806-002-sched-fair-nohz-fully-idle-core-v5.md) `feature/under_review`
 - [sched-20260805-002](../../2026/08/sched-20260805-002-sched-fair-prefer-fully-idle-cores-nohz-v3-v4.md) `feature/under_review`

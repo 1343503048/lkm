@@ -46,10 +46,10 @@ contribution_opportunities:
 source_email_count: 1
 related_articles: []
 tags:
-- sched/fair
+- cfs
 - rt
 - deadline
-- sched/core
+- cgroup
 title: '[GIT PULL] scheduler fixes'
 layout: article
 ---

@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 30
+article_count: 32
 ---
 
+- [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260907-007](/lkm/2026/09/07/sched-20260907-007-cpufreq-conservative-ignore-idle-periods-when-a-policy-cpu-i.html) `discussion/low/under_review` — cpufreq: conservative: Ignore idle periods when a policy CPU is busy
 - [sched-20260901-016](/lkm/2026/09/01/sched-20260901-016-sched-ext-use-atomic-cpumask-clear-cpu-in-scx-idle-test-and.html) `fix/low/stalled` — sched_ext: Use atomic cpumask_clear_cpu in scx_idle_test_and_clear_cpu()
 - [sched-20260828-008](/lkm/2026/08/28/sched-20260828-008-cpuidle-teo-do-not-return-a-disabled-idle-state.html) `bug/medium/under_review` — cpuidle: teo: Do not return a disabled idle state
 - [sched-20260827-014](/lkm/2026/08/27/sched-20260827-014-cpuidle-teo-do-not-return-a-disabled-idle-state.html) `bug/medium/under_review` — cpuidle: teo: Do not return a disabled idle state

@@ -7429,10 +7429,10 @@
     "status": "merged_tip",
     "severity": "medium",
     "tags": [
-      "sched/fair",
+      "cfs",
       "rt",
       "deadline",
-      "sched/core"
+      "cgroup"
     ],
     "authors": [
       "Ingo Molnar"
@@ -7464,7 +7464,6 @@
     "status": "under_review",
     "severity": "medium",
     "tags": [
-      "sched/core",
       "preempt"
     ],
     "authors": [
@@ -7472,5 +7471,285 @@
     ],
     "url": "/lkm/2026/09/06/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.html",
     "tldr": "Jiayuan Chen 的 `bpf,tcp: Fix bpf_sock_destroy() on TIME_WAIT and listener socks` 系列于 09-06 15:41 以 `[PATCH bpf v2 0/3]` 重发，本篇对应的 2/3 是相对上一版新增的一片：`bpf_sock_destroy()` 在 tcp iterator 的 `rcu_read_lock()` 下对「accept 队列里仍有子连接」的 listener 调 `tcp_abort()`，走到 `inet_csk_listen_stop()` 里那个 `cond_resched()` 时报出 "
+  },
+  {
+    "title": "sched/eevdf: Fix augmented max_slice",
+    "id": "sched-20260907-001",
+    "date": "2026-09-07",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.html",
+    "tldr": "Vincent Guittot 在 09-07 20:38 发出单补丁：`__enqueue_entity()` 里只把 `se->min_slice` 初始化成 `se->slice`，漏了同样初始化 `se->max_slice`，于是新入队实体会带着上一次作为红树内部节点时被算大的 `max_slice`，并被 augment 回调沿路径传播上去，使 `cfs_rq_max_slice()` 偏大、`entity_lag()` 的 clamp 上界被放松。补丁 +2 行，`Fixes: 6e3c0a4e1ad1 (\"sched/fair: Fix lag clamp\")`。刚发出、本日无"
+  },
+  {
+    "title": "sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()",
+    "id": "sched-20260907-002",
+    "date": "2026-09-07",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [
+      "affinity",
+      "preempt",
+      "hang",
+      "syzbot"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html",
+    "tldr": "Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_cpu_allowed()` 拒掉后返回当前 rq，结果任务所在 CPU 与 `task_struct::cpus_mask` 不再匹配，后续 `migrate_enable()` 会去改亲和性而 `a"
+  },
+  {
+    "title": "arm64/cpufreq: report and track frequencies above 4.19 GHz",
+    "id": "sched-20260907-003",
+    "date": "2026-09-07",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "arm64",
+      "topology"
+    ],
+    "authors": [
+      "Oleg Keri"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html",
+    "tldr": "Oleg Keri 在 09-07 00:37 发出 2 补丁系列：Snapdragon X2 Elite（Glymur）是他见到的第一颗 boost OPP（4723200 kHz）越过 4194304 kHz 的 arm64 笔记本芯片，这条线正好是 `2^32 / SCHED_CAPACITY_SCALE`，于是一次性暴露两个独立 bug——`arch_freq_get_on_cpu()` 里 u64 乘积在右移之前被截成 `unsigned int` 而回绕，以及 `capacity_freq_ref` 只在 `CPUFREQ_CREATE_POLICY` 时锁存一次、开机时 boos"
+  },
+  {
+    "title": "sched: introduce for_each_process_rculock and for_each_thread_rculock",
+    "id": "sched-20260907-004",
+    "date": "2026-09-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Ye Liu"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.html",
+    "tldr": "Ye Liu 在 09-07 16:13 发出 v2（8 补丁）：在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把 RCU 读锁作用域绑到循环本身，`break`/`goto`/`return` 退出都自动释放；其余 7 个补丁把 mm/、kernel/、fs/、lib/、security/ 里手写的 `rcu_read_lock()"
+  },
+  {
+    "title": "sched/fair: Honor asymmetric SMT priority in idle selection",
+    "id": "sched-20260907-005",
+    "date": "2026-09-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "idle",
+      "hyperthreading",
+      "topology"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html",
+    "tldr": "本文为增量更新，完整背景见 [[sched-20260903-009]]。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_rq(cpu)->sd` 解引用和 `cpumask_test_cpu()`；并抛出两个更实质的问题：宽 SMT（SMT-4/SMT-8）上核已经忙时 rank 排序还值不值得那点额外搜索开销，以及既然"
+  },
+  {
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "id": "sched-20260907-006",
+    "date": "2026-09-07",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "cfs",
+      "x86"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html",
+    "tldr": "本文为增量更新，完整背景见 [[sched-20260902-008]] 与 [[sched-20260903-010]]。09-07 这个线程第一次出现了**实测数字**：Hongyan Xia（Transsion）在 AMD 5900X 上用 `trace_printk` 打出 cpufreq pressure 更新，`amd_pstate` + boost 时 `policy->cpuinfo.max_freq` 与 `policy->max` 相同（4683471 vs 4683471，不产生压力），强制关掉 pstate、改用 ACPI OPP + schedutil 而仍开 boo"
+  },
+  {
+    "title": "cpufreq: conservative: Ignore idle periods when a policy CPU is busy",
+    "id": "sched-20260907-007",
+    "date": "2026-09-07",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "idle"
+    ],
+    "authors": [
+      "Shengming Hu"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-007-cpufreq-conservative-ignore-idle-periods-when-a-policy-cpu-i.html",
+    "tldr": "Shengming Hu（ZTE）的单补丁修的是一个真实的行为缺陷：共享 policy 里一个长期空闲 CPU 记录的 deferred idle periods，会把一个满载 CPU 所在的 policy 频率一路拉到最低（他实测卡在约 530 MHz，而 CPU 2 一直 100%）。做法是把 `dbs_update()` 里的 `policy_dbs->idle_periods` 改成「只有 policy 内每个 CPU 都满足 long-idle 条件才保留，否则置 `UINT_MAX`」。Zhongqiu Han（Qualcomm）09-06 认可问题但认为判据选错——「不满足 lo"
+  },
+  {
+    "title": "sched/fair: Remove the write-order dependency between cpu.max and cpu.max.burst",
+    "id": "sched-20260907-008",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs"
+    ],
+    "authors": [
+      "Zhe Liu"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-008-sched-fair-remove-the-write-order-dependency-between-cpu-max.html",
+    "tldr": "本文为增量更新，完整背景见 [[sched-20260904-004]]（该文以 v2 的 cover 标题 `sched/fair: remove quota/burst write-order dependency` 为题，本篇是 v2 中 1/3 这一补丁本体的标题）。09-07 的进展是决定性的：cpu controller 维护者 Michal Koutný（SUSE）给出 `Reviewed-by`，原话是「The change makes sense to me and it should've been like that from the beginning」，但附带一个必须"
+  },
+  {
+    "title": "sched/numa: scan read-only file mappings in tiering mode",
+    "id": "sched-20260907-009",
+    "date": "2026-09-07",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html",
+    "tldr": "Gregory Price（Meta）把 NUMA balancing 的一个老例外拿到内存分层下重新审视：`task_numa_work()` 见到只读 file-backed VMA 就 `continue`（打点 `NUMAB_SKIP_SHARED_RO`），这条判断由 `4591ce4f2d22`（\"sched/numa: Do not trap hinting faults for shared libraries\"）写下，理由是这类页预期被 cache 复制、会在访问结点间来回搬，「If we are never going to migrate the page, it is "
+  },
+  {
+    "title": "sched_ext: scx_qmap: Fix pending partition work handoff",
+    "id": "sched-20260907-010",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html",
+    "tldr": "Tejun Heo 09-06 给自己维护的示例/自测调度器 `scx_qmap` 打了一个时序补丁：qmap 的分区（partition）更新采用「单 runner + pending 标志」的同步方式，但**请求的发布时机**和**runner 的检查时机**互相错开，存在一个把分区工作留在「有 pending、无 runner」状态的空窗，结果是这次分区更新要等到 round-robin 定时器下一次 tick 才生效。修复确立三条规则：请求**先发布再去抢 runner**、**释放 part_busy 之后再检查是否还有活**、**所有拿到过 runner 的人释放后都要排空 pen"
+  },
+  {
+    "title": "sched/core: Push current task from non preferred CPU",
+    "id": "sched-20260907-011",
+    "date": "2026-09-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "affinity",
+      "topology",
+      "perf"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 与后续 `rq_lock()` 之间的窗口是安全的（绝大多数情况根本不会拿 rq 锁，即使任务在拿锁前被负载均衡拉走，`task_rq(p) == rq` 会兜住并 bail out）；接受改名 `n"
+  },
+  {
+    "title": "sched: dynamic: Fix preemption model strings",
+    "id": "sched-20260907-012",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "preempt",
+      "sched_debug"
+    ],
+    "authors": [
+      "Mark Rutland"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`）。本日新增的只是**第一个运行时功能验证**：Mete Durlu（IBM）在 s390 上实测 `preempt` 节点读写，输出已正确（`echo full > preempt` 后读回 `(f"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20260907-013",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "rt",
+      "deadline",
+      "cgroup",
+      "x86"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html",
+    "tldr": "本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/linux.git`**，bot 给出的落地链接是 `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`——从发出到进主线不到 7 小时（13:22:58 +0200 发出，"
+  },
+  {
+    "title": "sched_clock: Add option to use absolute time against hardware clock reset",
+    "id": "sched-20260907-014",
+    "date": "2026-09-07",
+    "type": "discussion",
+    "status": "stalled",
+    "severity": "none",
+    "tags": [
+      "sched_clock"
+    ],
+    "authors": [
+      "Feng Tang"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-014-sched-clock-add-option-to-use-absolute-time-against-hardware.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260906-005（Thomas Gleixner 09-06 的明确 NAK）与 sched-20260903-015（Marc Zyngier 的三条反对）。本日是这条线程的**收尾**：Feng Tang 09-07 17:05 接受「补丁 hacky」的判断，放弃改 epoch 的原方案，转而按 Marc 的建议拿出一个形状完全不同的 diff——不新增 cmdline 开关、不动 epoch，只在 `sched_clock_register()` 已有的那行 `pr_info` 里多打一个「计数器自复位以来已运行多少 ns」的字段；Mar"
+  },
+  {
+    "title": "sched: Update the THREAD_INFO_IN_TASK description",
+    "id": "sched-20260907-015",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "stalled",
+    "severity": "none",
+    "tags": [
+      "arm64",
+      "x86",
+      "riscv"
+    ],
+    "authors": [
+      "Huacai Chen"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-015-sched-update-the-thread-info-in-task-description.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260726-006（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing this?`。没有任何 review 意见、没有版本变化（仍是 V2）、没有新代码。补丁从 06-09 起算已经挂了整整三个月无人处理，而它改的内容本身争议为零。"
+  },
+  {
+    "title": "sched: fix typos and repeated words in comments",
+    "id": "sched-20260907-016",
+    "date": "2026-09-07",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Hemanth Selam"
+    ],
+    "url": "/lkm/2026/09/07/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.html",
+    "tldr": "Hemanth Selam 在 09-07 14:49 发出一个 2 补丁的注释修正系列：`kernel/sched/ext/ext.c` 里两处 `upto` → `up to`（`bypass_lb_node()` 的负载均衡注释、`scx_bpf_dispatch` kfunc 注释），以及 `tools/sched_ext/include/scx/common.bpf.h` 里重复的 `be`。作者自陈「Nothing outside comments changes」，给出的验证方法是把注释删掉、字符串字面量替换成占位符、压缩空白后比较前后编译产物；来源是 `scripts/chec"
   }
 ]

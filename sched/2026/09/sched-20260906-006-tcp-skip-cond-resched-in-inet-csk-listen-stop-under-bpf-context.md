@@ -110,6 +110,5 @@ contribution_opportunities:
 source_email_count: 6
 related_articles: []
 tags:
-- sched/core
 - preempt
 ---

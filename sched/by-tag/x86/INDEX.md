@@ -1,7 +1,10 @@
 # tag: x86
 
-共 9 篇
+共 12 篇
 
+- [sched-20260907-015](../../2026/09/sched-20260907-015-sched-update-the-thread-info-in-task-description.md) `fix/stalled` — 本文为增量更新，完整背景见 sched-20260726-006（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing
+- [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin
+- [sched-20260907-006](../../2026/09/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 [[sched-20260902-008]] 与 [[sched-20260903-010]]。09-07 这个线程第一次出现了**实测数字**：Hongyan Xia（Transsion）在 AMD 5900X 上用 `trace_printk` 打出 cpufreq pressure 更新，`amd_pstate` + boost 时 `policy->cpuinf
 - [sched-20260831-013](../../2026/08/sched-20260831-013-cpufreq-amd-pstate-add-epp-tunings-for-zen6-client-platforms.md) `feature/under_review` — Mario Limonciello（AMD）8/31 13:46 发 2 补丁：1/2 给 amd-pstate 建立 **per-SoC / per-core-type 的 EPP 表**（`x86_cpu_id` 匹配，缺 SoC 则回落 legacy 常量），2/2 用它给 Zen6 客户端写入第一组调优值。核心手法是把 `power` 档从"所有核一个 0xFF"改成"大核 64、小核/低
 - [sched-20260831-006](../../2026/08/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.md) `bug/high/under_review` — 用户报告（Klaus Kusche，AMD Ryzen HX 370）：开启 cache-aware scheduling 后，一个跑在小核上的长时 LTO 链接进程**即使大核全空闲也不会迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，CAS 的判定压过了大/LITTLE 容量调度。Chen Yu 确认"当前代码里 CAS 覆盖了非对称调度策略"，并指向 Tim Chen 8/
 - [sched-20260831-005](../../2026/08/sched-20260831-005-sched-topology-add-llc-to-node-to-translate-llc-id-to-numa-node.md) `feature/rfc` — Jianyong Wu（Hygon）的 23 补丁 RFC v2 把 cache-aware scheduling（CAS）从"LLC 单层"扩成"NUMA 节点 + LLC 两级"偏好：先给 BIOS 的 NUMA 距离矩阵做**行内去重**得到唯一距离、再据此生成每节点/每 LLC 的亲和序列，让线程按序列跨节点、跨 LLC 聚拢。8/31 Peter Zijlstra 连发 6 帖，逐条质疑
