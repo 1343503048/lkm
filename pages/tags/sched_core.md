@@ -2,9 +2,33 @@
 layout: default
 tag: "sched/core"
 title: "标签: sched/core"
-article_count: 56
+article_count: 80
 ---
 
+- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/none/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260906-006](/lkm/2026/09/06/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.html) `fix/medium/under_review` — tcp: Skip cond_resched() in inet_csk_listen_stop() under BPF context
+- [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/medium/under_review` — sched/core: Make fallback CPU selection NUMA-aware
+- [sched-20260905-004](/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html) `fix/low/merged_tip` — sched: dynamic: Fix preemption model strings
+- [sched-20260905-005](/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html) `discussion/medium/under_review` — sched/core: Push current task from non preferred CPU
+- [sched-20260904-001](/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context
+- [sched-20260904-005](/lkm/2026/09/04/sched-20260904-005-cpufreq-schedutil-convert-to-kthread-create-worker.html) `discussion/low/under_review` — cpufreq: schedutil: convert to kthread_create_worker
+- [sched-20260904-012](/lkm/2026/09/04/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.html) `discussion/medium/under_review` — sched/cputime: Add kcpustat_field_total helper
+- [sched-20260903-001](/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260903-002](/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260903-005](/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html) `fix/high/under_review` — sched/rt: Fix RT watchdog accounting for proxy execution
+- [sched-20260903-007](/lkm/2026/09/03/sched-20260903-007-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
+- [sched-20260903-008](/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html) `fix/medium/under_review` — sched/cputime: Account cgroup fields to the scheduling context
+- [sched-20260903-013](/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html) `discussion/medium/under_review` — sched: dynamic: Simplify PREEMPT_DYNAMIC
+- [sched-20260902-001](/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html) `feature/medium/merged_tip` — Sleeping Owner Handling for Proxy Execution (v31)
+- [sched-20260902-002](/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html) `fix/low/merged_tip` — sched: dynamic: Simplify PREEMPT_DYNAMIC
+- [sched-20260902-011](/lkm/2026/09/02/sched-20260902-011-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stamp.html) `fix/medium/merged_tip` — sched/core: Skip rq->avg_idle update without a valid idle_stamp
+- [sched-20260902-012](/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/low/under_review` — sched/core: Call wq_worker_tick() for the execution context
+- [sched-20260902-013](/lkm/2026/09/02/sched-20260902-013-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html) `feature/low/under_review` — sched_clock: Add option to use absolute time against hardware clock reset
+- [sched-20260902-014](/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/low/under_review` — sched: Remove sched_class::balance()
+- [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: suppress timer and scheduler coverage leaks
 - [sched-20260824-005](/lkm/2026/08/24/sched-20260824-005-sched-lift-cgroup-locking-core.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20260824-007](/lkm/2026/08/24/sched-20260824-007-sched-core-stale-rq-curr-arm64.html) `bug/critical/under_review` — sched/core: sporadic stale rq->curr (rq->curr != current) causing scheduler crashes on long-running arm64 servers
 - [sched-20260824-008](/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html) `feature/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates

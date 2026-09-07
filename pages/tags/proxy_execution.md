@@ -2,9 +2,17 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 12
+article_count: 20
 ---
 
+- [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260904-001](/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context
+- [sched-20260904-007](/lkm/2026/09/04/sched-20260904-007-sched-make-proxy-execution-compatible-with-sched-ext.html) `discussion/high/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260903-001](/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260903-005](/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html) `fix/high/under_review` — sched/rt: Fix RT watchdog accounting for proxy execution
+- [sched-20260903-008](/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html) `fix/medium/under_review` — sched/cputime: Account cgroup fields to the scheduling context
+- [sched-20260902-001](/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html) `feature/medium/merged_tip` — Sleeping Owner Handling for Proxy Execution (v31)
 - [sched-20260823-011](/lkm/2026/08/23/sched-20260823-011.html) `discussion/medium/under_review` — sched: Flatten the pick
 - [sched-20260820-011](/lkm/2026/08/20/sched-20260820-011.html) `discussion/medium/under_review` — sched: Remove sched_class::balance()
 - [sched-20260819-002](/lkm/2026/08/19/sched-20260819-002-core-sched-pick-task-race-null-deref-discussion.html) `discussion/high/under_review` — core-sched/pick task race null deref discussion

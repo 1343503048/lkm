@@ -2,9 +2,14 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 44
+article_count: 49
 ---
 
+- [sched-20260904-006](/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/merged_tip` — sched/fair: Avoid creating misfits during cache-aware balancing
+- [sched-20260903-011](/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html) `discussion/medium/under_review` — sched/cache: Honor migrate_llc_task semantics in active load balance
+- [sched-20260903-012](/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html) `discussion/medium/rfc` — sched/cache: Introduce helpers for task migration decisions
+- [sched-20260902-009](/lkm/2026/09/02/sched-20260902-009-sched-cache-introduce-helpers-for-task-migration-decisions.html) `feature/medium/under_review` — sched/cache: Introduce helpers for task migration decisions
+- [sched-20260902-015](/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html) `fix/low/under_review` — sched: Remove sched_class::balance()
 - [sched-20260826-010](/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/under_review` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-009](/lkm/2026/08/24/sched-20260824-009-sched-flatten-the-pick.html) `discussion/high/under_review` — sched: Flatten the pick

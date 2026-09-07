@@ -2,9 +2,13 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 3
+article_count: 7
 ---
 
+- [sched-20260905-002](/lkm/2026/09/05/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
+- [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/medium/under_review` — sched/core: Make fallback CPU selection NUMA-aware
+- [sched-20260905-006](/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `feature/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion
+- [sched-20260903-012](/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html) `discussion/medium/rfc` — sched/cache: Introduce helpers for task migration decisions
 - [sched-20260807-020-sched-numa-hygon-remote-socket-distance](/lkm/2026/08/07/sched-20260807-020-sched-numa-hygon-remote-socket-distance.html) `unknown/none/in-review` — sched/numa: Apply remote socket distance averaging for Hygon CPUs
 - [sched-20260731-002](/lkm/2026/07/31/sched-20260731-002-sched-fair-skip-numa-balancing-scan-on-memoryless-nodes.html) `bug/high/under_review` — sched/fair: Skip NUMA balancing scan on memoryless nodes
 - [sched-20260731-003](/lkm/2026/07/31/sched-20260731-003-sched-topology-free-numa-masks-on-topology-allocation-failure.html) `fix/medium/under_review` — sched/topology: Free NUMA masks on topology allocation failure

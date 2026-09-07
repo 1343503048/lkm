@@ -2,9 +2,14 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 22
+article_count: 27
 ---
 
+- [sched-20260906-006](/lkm/2026/09/06/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.html) `fix/medium/under_review` — tcp: Skip cond_resched() in inet_csk_listen_stop() under BPF context
+- [sched-20260905-004](/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html) `fix/low/merged_tip` — sched: dynamic: Fix preemption model strings
+- [sched-20260903-013](/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html) `discussion/medium/under_review` — sched: dynamic: Simplify PREEMPT_DYNAMIC
+- [sched-20260902-002](/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html) `fix/low/merged_tip` — sched: dynamic: Simplify PREEMPT_DYNAMIC
+- [sched-20260902-014](/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260826-001](/lkm/2026/08/26/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260823-004](/lkm/2026/08/23/sched-20260823-004.html) `fix/medium/under_review` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260820-007](/lkm/2026/08/20/sched-20260820-007.html) `fix/low/under_review` — sched: Convert paravirt_steal to new static key APIs

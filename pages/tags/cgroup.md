@@ -2,9 +2,13 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 36
+article_count: 40
 ---
 
+- [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context
+- [sched-20260904-004](/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html) `discussion/medium/under_review` — sched/fair: remove quota/burst write-order dependency
+- [sched-20260903-008](/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html) `fix/medium/under_review` — sched/cputime: Account cgroup fields to the scheduling context
+- [sched-20260903-014](/lkm/2026/09/03/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.html) `discussion/low/under_review` — sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value
 - [sched-20260826-004](/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html) `discussion/medium/under_review` — [Question] Userspace throttling + "sched/fair: Combine detach into dequeue when migrating task" causes guest boot hang
 - [sched-20260826-008](/lkm/2026/08/26/sched-20260826-008-sched-fair-reset-incompatible-burst-on-quota-change.html) `fix/medium/under_review` — sched/fair: Reset incompatible burst on quota change
 - [sched-20260825-003](/lkm/2026/08/25/sched-20260825-003-sched-ext-serialize-cgroup-knob-updates.html) `fix/medium/under_review` — sched_ext: Serialize cgroup knob updates

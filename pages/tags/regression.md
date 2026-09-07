@@ -2,9 +2,11 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 9
+article_count: 11
 ---
 
+- [sched-20260903-006](/lkm/2026/09/03/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.html) `bug/high/under_review` — [REGRESSION] sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)
+- [sched-20260902-008](/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260823-002](/lkm/2026/08/23/sched-20260823-002.html) `bug/high/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260820-004](/lkm/2026/08/20/sched-20260820-004.html) `bug/low/under_review` — kernel/sched/fair.c:2004:38: sparse: incorrect type in initializer
 - [sched-20260820-010](/lkm/2026/08/20/sched-20260820-010.html) `bug/critical/under_review` — sched/fair: flat-hierarchy tg_cpus() divide-by-zero diagnosis update

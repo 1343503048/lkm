@@ -2,9 +2,16 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 35
+article_count: 42
 ---
 
+- [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/medium/under_review` — sched/core: Make fallback CPU selection NUMA-aware
+- [sched-20260905-005](/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html) `discussion/medium/under_review` — sched/core: Push current task from non preferred CPU
+- [sched-20260905-007](/lkm/2026/09/05/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html) `discussion/low/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260904-002](/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `discussion/medium/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260904-012](/lkm/2026/09/04/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.html) `discussion/medium/under_review` — sched/cputime: Add kcpustat_field_total helper
+- [sched-20260903-002](/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260903-009](/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `discussion/medium/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260825-001](/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-010](/lkm/2026/08/24/sched-20260824-010-sched-cache-migrate-llc-active-lb.html) `fix/low/under_review` — sched/cache: honor migrate_llc_task semantics in active load balance
 - [sched-20260820-005](/lkm/2026/08/20/sched-20260820-005.html) `fix/medium/merged_tip` — [tip: sched/urgent] sched/topology: cpus_read_lock() rebuild_sched_domains()

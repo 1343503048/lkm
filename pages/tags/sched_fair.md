@@ -2,9 +2,26 @@
 layout: default
 tag: "sched/fair"
 title: "标签: sched/fair"
-article_count: 35
+article_count: 52
 ---
 
+- [sched-20260906-004](/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html) `discussion/none/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260905-005](/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html) `discussion/medium/under_review` — sched/core: Push current task from non preferred CPU
+- [sched-20260904-001](/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260904-002](/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `discussion/medium/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260904-004](/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html) `discussion/medium/under_review` — sched/fair: remove quota/burst write-order dependency
+- [sched-20260904-006](/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/merged_tip` — sched/fair: Avoid creating misfits during cache-aware balancing
+- [sched-20260904-012](/lkm/2026/09/04/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.html) `discussion/medium/under_review` — sched/cputime: Add kcpustat_field_total helper
+- [sched-20260903-001](/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
+- [sched-20260903-002](/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260903-009](/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `discussion/medium/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260903-010](/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `discussion/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260903-016](/lkm/2026/09/03/sched-20260903-016-sched-document-wf-sync-wakeup-placement-semantics.html) `discussion/low/rfc` — sched: Document WF_SYNC wakeup placement semantics
+- [sched-20260902-007](/lkm/2026/09/02/sched-20260902-007-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
+- [sched-20260902-008](/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260902-010](/lkm/2026/09/02/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.html) `fix/low/merged_tip` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
+- [sched-20260902-014](/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260824-004](/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html) `discussion/low/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260824-006](/lkm/2026/08/24/sched-20260824-006-sched-fair-null-deref-v4.19.html) `bug/critical/under_review` — sched/fair: NULL deref in pick_next_task_fair (v4.19)
 - [sched-20260824-011](/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html) `fix/none/under_review` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
