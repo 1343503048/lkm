@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 16 篇
+共 19 篇
 
+- [sched-20260908-011](../../2026/09/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.md) `discussion/stalled` — 本文为增量更新，方案背景见 [[sched-20260824-011]] 与 [[sched-20260826-002]]，命名之争的经过见 [[sched-20260827-019]]。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: R
+- [sched-20260908-005](../../2026/09/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/under_review` — 本文为增量更新，完整背景与代码分析见 related_articles 中的 sched-20260907-001。09-08 该补丁拿到 K Prateek Nayak 的 `Reviewed-by`，评审面已无异议；同一天作者另发了一条同源的独立补丁 `sched/eevdf: fix rb augmented with multi fields`（本文不覆盖，见 sched-20260908
+- [sched-20260908-004](../../2026/09/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/under_review` — Vincent Guittot 09-08 21:55 发出的单补丁，补的是他前一天 `sched/eevdf: Fix augmented max_slice`（见 related_articles）背后的**同类根因**：EEVDF 运行树增广了 3 个字段（`min_vruntime`/`min_slice`/`max_slice`），但 `RB_DECLARE_CALLBACKS` 只支持
 - [sched-20260907-001](../../2026/09/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/under_review` — Vincent Guittot 在 09-07 20:38 发出单补丁：`__enqueue_entity()` 里只把 `se->min_slice` 初始化成 `se->slice`，漏了同样初始化 `se->max_slice`，于是新入队实体会带着上一次作为红树内部节点时被算大的 `max_slice`，并被 augment 回调沿路径传播上去，使 `cfs_rq_max_slice()`
 - [sched-20260902-010](../../2026/09/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.md) `fix/medium/merged_tip` — Zhan Xusheng（Xiaomi）的一行级修复已被 Peter Zijlstra 于 9/2 09:17(+0200) 合入 **tip/sched/urgent** （Commit-ID `1719d035a6fa90b7467b6daf45a573f5180013b2`）。内容：`pick_task_fair()` 与 `yield_task_fair()` 里的 `update_cur
 - [sched-20260901-002](../../2026/09/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.md) `bug/high/merged_tip` — Wanwu Li 修 single-runqueue 转换（`85570f10a4c6`）在 CFS bandwidth 路径上漏改的两处 `cfs_rq->curr`：`throttle_cfs_rq()` 因此对中间层级永远判不到「该层有运行实体」，配额耗尽时既不申请整 slice 也不布防 deferred throttle，任务可以**持续超出所属 cgroup 的 `cpu.max` 配

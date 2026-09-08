@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 16
+article_count: 19
 ---
 
+- [sched-20260908-004](/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields
+- [sched-20260908-005](/lkm/2026/09/08/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice
+- [sched-20260908-011](/lkm/2026/09/08/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.html) `discussion/none/stalled` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
 - [sched-20260907-001](/lkm/2026/09/07/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice
 - [sched-20260902-010](/lkm/2026/09/02/sched-20260902-010-sched-fair-use-update-curr-eevdf-for-the-remaining-root-cfs-rq-callers.html) `fix/medium/merged_tip` — sched/fair: Use update_curr_eevdf() for the remaining root cfs_rq callers
 - [sched-20260901-002](/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html) `bug/high/merged_tip` — sched/fair: Use cfs_rq->h_curr in the bandwidth paths

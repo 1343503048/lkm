@@ -2,9 +2,12 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 18
+article_count: 21
 ---
 
+- [sched-20260908-001](/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html) `bug/medium/under_review` — sched/numa: Drive NUMA task tick from execution context
+- [sched-20260908-007](/lkm/2026/09/08/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
+- [sched-20260908-010](/lkm/2026/09/08/sched-20260908-010-sched-cache-estimate-utilization-of-the-whole-thread-group.html) `feature/none/rfc` — sched/cache: Estimate utilization of the whole thread group
 - [sched-20260907-009](/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html) `bug/high/under_review` — sched/numa: scan read-only file mappings in tiering mode
 - [sched-20260905-002](/lkm/2026/09/05/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.html) `fix/high/under_review` — sched/debug: Validate writes to the scan_size_mb debugfs knob
 - [sched-20260905-003](/lkm/2026/09/05/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.html) `discussion/low/under_review` — sched/core: Make fallback CPU selection NUMA-aware

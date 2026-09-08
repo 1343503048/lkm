@@ -2,9 +2,10 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 16
+article_count: 17
 ---
 
+- [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
 - [sched-20260907-015](/lkm/2026/09/07/sched-20260907-015-sched-update-the-thread-info-in-task-description.html) `fix/none/stalled` — sched: Update the THREAD_INFO_IN_TASK description
 - [sched-20260901-010](/lkm/2026/09/01/sched-20260901-010-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html) `feature/none/under_review` — sched/core: Try to use a preferred CPU in is_cpu_allowed

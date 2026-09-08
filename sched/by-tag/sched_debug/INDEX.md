@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 38 篇
+共 39 篇
 
+- [sched-20260908-009](../../2026/09/sched-20260908-009-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — 本文为增量更新，完整背景与 v1→v2 的差异见 [[sched-20260907-004]]。09-08 本线程只有一封新邮件：SJ Park 在 05:20 给 patch 1/8 打上 `Reviewed-by`，条件是 Lorenzo Stoakes 提的缩进要求被采纳（「Assuming Lorenzo's indentation change requests are accepted
 - [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
 - [sched-20260907-004](../../2026/09/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — Ye Liu 在 09-07 16:13 发出 v2（8 补丁）：在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把 RCU 读锁作用域绑
 - [sched-20260905-002](../../2026/09/sched-20260905-002-sched-debug-validate-writes-to-the-scan-size-mb-debugfs-knob.md) `fix/high/under_review` — `scan_size_mb` 在 `task_scan_min()` 和 `task_nr_scan_windows()` 里都是除数，而 `debugfs_create_u32()` 对写入值一律接受，所以两类取值直接把内核打死：写 0 触发 divide error Oops，写 2^24 的倍数在 4K 页上让 `MB_TO_PAGES()` 的 32 位移位绕回 0 再触发一次除零。作者 

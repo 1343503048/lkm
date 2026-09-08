@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 14
+article_count: 15
 ---
 
+- [sched-20260908-006](/lkm/2026/09/08/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260903-006](/lkm/2026/09/03/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.html) `bug/high/stalled` — [REGRESSION] sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)
 - [sched-20260902-008](/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260831-006](/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html) `bug/high/under_review` — Cache-aware scheduling does not work well with amd big/little cores

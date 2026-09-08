@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 19
+article_count: 20
 ---
 
+- [sched-20260908-001](/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html) `bug/medium/under_review` — sched/numa: Drive NUMA task tick from execution context
 - [sched-20260831-001](/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260831-011](/lkm/2026/08/31/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html) `fix/medium/superseded` — sched/isolation: Defer freeing of the bootmem housekeeping cpumasks
 - [sched-20260825-009](/lkm/2026/08/25/sched-20260825-009-sched-cpufreq-reevaluate-frequency-before-tickless-idle.html) `discussion/none/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle

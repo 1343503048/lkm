@@ -2,9 +2,17 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 71
+article_count: 79
 ---
 
+- [sched-20260908-001](/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html) `bug/medium/under_review` — sched/numa: Drive NUMA task tick from execution context
+- [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260908-004](/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields
+- [sched-20260908-005](/lkm/2026/09/08/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice
+- [sched-20260908-007](/lkm/2026/09/08/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
+- [sched-20260908-008](/lkm/2026/09/08/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260908-010](/lkm/2026/09/08/sched-20260908-010-sched-cache-estimate-utilization-of-the-whole-thread-group.html) `feature/none/rfc` — sched/cache: Estimate utilization of the whole thread group
+- [sched-20260908-011](/lkm/2026/09/08/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.html) `discussion/none/stalled` — sched/fair: reuse the ENQUEUE_DELAYED calculation in enqueue_task_fair()
 - [sched-20260907-001](/lkm/2026/09/07/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice
 - [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-006](/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant

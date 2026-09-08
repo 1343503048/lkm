@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 27 篇
+共 29 篇
 
+- [sched-20260908-008](../../2026/09/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景与三条互斥修法的对比见 [[sched-20260907-006]]、[[sched-20260903-010]]、[[sched-20260902-008]]。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__
+- [sched-20260908-006](../../2026/09/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — Ananthu C V（Qualcomm）在 09-08 16:30 发出 v2 两补丁，修 schedutil 打不到 boost 频率、以及 boost 关掉后频率上限回不来这两头问题：patch 1 在 policy 上线前用「含 boost 的最大可用频率」为 `capacity_freq_ref` 播种，patch 2 在 freq table 里额外跟踪最高非 boost 频率 `ma
 - [sched-20260907-007](../../2026/09/sched-20260907-007-cpufreq-conservative-ignore-idle-periods-when-a-policy-cpu-i.md) `discussion/low/under_review` — Shengming Hu（ZTE）的单补丁修的是一个真实的行为缺陷：共享 policy 里一个长期空闲 CPU 记录的 deferred idle periods，会把一个满载 CPU 所在的 policy 频率一路拉到最低（他实测卡在约 530 MHz，而 CPU 2 一直 100%）。做法是把 `dbs_update()` 里的 `policy_dbs->idle_periods` 改成「只有
 - [sched-20260907-006](../../2026/09/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 [[sched-20260902-008]] 与 [[sched-20260903-010]]。09-07 这个线程第一次出现了**实测数字**：Hongyan Xia（Transsion）在 AMD 5900X 上用 `trace_printk` 打出 cpufreq pressure 更新，`amd_pstate` + boost 时 `policy->cpuinf
 - [sched-20260907-003](../../2026/09/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — Oleg Keri 在 09-07 00:37 发出 2 补丁系列：Snapdragon X2 Elite（Glymur）是他见到的第一颗 boost OPP（4723200 kHz）越过 4194304 kHz 的 arm64 笔记本芯片，这条线正好是 `2^32 / SCHED_CAPACITY_SCALE`，于是一次性暴露两个独立 bug——`arch_freq_get_on_cpu()` 

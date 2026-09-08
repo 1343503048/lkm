@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 107 篇
+共 108 篇
 
+- [sched-20260908-003](../../2026/09/sched-20260908-003-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260904-007 / sched-20260904-008 / sched-20260831-001。09-08 是这个 18 补丁的 v13 系列开始「解冻」的一天：Peter Zijlstra 首次表态（本周会看，粗略看"do indeed seem fine"），作者 Andrea Righi 在同一天集
 - [sched-20260907-016](../../2026/09/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.md) `fix/low/under_review` — Hemanth Selam 在 09-07 14:49 发出一个 2 补丁的注释修正系列：`kernel/sched/ext/ext.c` 里两处 `upto` → `up to`（`bypass_lb_node()` 的负载均衡注释、`scx_bpf_dispatch` kfunc 注释），以及 `tools/sched_ext/include/scx/common.bpf.h` 里重复的 `b
 - [sched-20260907-010](../../2026/09/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.md) `fix/low/merged_tip` — Tejun Heo 09-06 给自己维护的示例/自测调度器 `scx_qmap` 打了一个时序补丁：qmap 的分区（partition）更新采用「单 runner + pending 标志」的同步方式，但**请求的发布时机**和**runner 的检查时机**互相错开，存在一个把分区工作留在「有 pending、无 runner」状态的空窗，结果是这次分区更新要等到 round-robin 定
 - [sched-20260906-003](../../2026/09/sched-20260906-003-selftests-sched-ext-fail-interrupted-test-runs.md) `fix/low/under_review` — Tianyi Chen 修 `tools/testing/selftests/sched_ext/runner.c` 的一行退出码逻辑：SIGINT/SIGTERM 会置 `exit_req` 让 runner 提前停止，但退出状态只反映失败用例数，于是「被中断且已跑完的用例都没失败」会返回 0，被调用方（CI）当成通过。改成 `failed > 0 || exit_req` 即返回 1。v1 于

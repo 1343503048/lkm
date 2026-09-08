@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 107
+article_count: 108
 ---
 
+- [sched-20260908-003](/lkm/2026/09/08/sched-20260908-003-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260907-010](/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html) `fix/low/merged_tip` — sched_ext: scx_qmap: Fix pending partition work handoff
 - [sched-20260907-016](/lkm/2026/09/07/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.html) `fix/low/under_review` — sched: fix typos and repeated words in comments
 - [sched-20260906-001](/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html) `bug/medium/merged_tip` — sched_ext: Fix keep-last for sub-scheduler tasks and two scx_qmap placement loops

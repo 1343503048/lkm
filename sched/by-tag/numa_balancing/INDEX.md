@@ -1,7 +1,10 @@
 # tag: numa_balancing
 
-共 18 篇
+共 21 篇
 
+- [sched-20260908-010](../../2026/09/sched-20260908-010-sched-cache-estimate-utilization-of-the-whole-thread-group.md) `feature/rfc` — 本文为增量更新，20/23 的算法本身（线程组整体利用率的非对称 EWMA 估算）与前因见 [[sched-20260828-010]]，Peter 那条建议的出处见 [[sched-20260901-006]]，整套 RFC 的方案背景见 [[sched-20260827-002]]。09-08 本线程只有一封新邮件，内容是一处代码生成层面的小收尾：作者 Jianyong Wu 在 15:43 
+- [sched-20260908-007](../../2026/09/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — Li Zhe（ByteDance）在 09-08 20:24 发出 4 补丁（无 v 前缀，即 v1）：给自动 NUMA 平衡加一个 **prctl 级别的 per-process 开关**，让个别进程能整体退出 NUMA 扫描与调度侧 locality 统计，同时把 `kernel.numa_balancing` 保留为管理员的硬总闸。设计上刻意选了「弱且可预测」的形状：两态、无 default
+- [sched-20260908-001](../../2026/09/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not 
 - [sched-20260907-009](../../2026/09/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.md) `bug/high/under_review` — Gregory Price（Meta）把 NUMA balancing 的一个老例外拿到内存分层下重新审视：`task_numa_work()` 见到只读 file-backed VMA 就 `continue`（打点 `NUMAB_SKIP_SHARED_RO`），这条判断由 `4591ce4f2d22`（"sched/numa: Do not trap hinting faults for s
 - [sched-20260905-006](../../2026/09/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `feature/medium/under_review` — Gregory Price（Meta）的 2 补丁系列指出 NUMA balancing 的 VMA 级扫描过滤器在内存分层场景下语义已经变了：分层模式下 hint fault 不是「socket 驻留信号」而是**提升机制本身**，被扫描排除的 VMA 会被永久排除在提升之外。他不移除任何过滤器，而是新增 `vma->numab_state->slow_only`，让被拒的 VMA 也扫、但只把
 - [sched-20260905-003](../../2026/09/sched-20260905-003-sched-core-make-fallback-cpu-selection-numa-aware.md) `discussion/low/under_review` — Yury Norov（NVIDIA）的单补丁改动 `select_fallback_rq()`：原实现先查本地节点、再按任务亲和性掩码的**数值顺序**扫描，在超过两个 NUMA 节点的系统上可能挑到比必要更远的 CPU；改成遍历调度器的 NUMA hop 掩码、每个新到达的 CPU 只考察一次，从而在整段 fallback 搜索和亲和性放宽之后都保持局部性。09-05 首发，正文里**没有 be
