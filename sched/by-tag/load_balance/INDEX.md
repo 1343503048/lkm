@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 79 篇
+共 83 篇
 
+- [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评
+- [sched-20260910-011](../../2026/09/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.md) `discussion/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-015 / sched-20260830-003。09-09 Chen Yu 对「用 cfs.h_nr_queued 作分母」与「Lu Wang 的 ALB guard 是否已覆盖该场景」的两连问，09-10 由 Tim Chen 给出完整回答：用 T1/T2 反例论证 h_nr_queued 作分母
+- [sched-20260910-010](../../2026/09/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 
+- [sched-20260910-001](../../2026/09/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/rfc` — Xin Zhao 重发（RESEND）了 10 补丁的 RFC 系列，引入 LB_PROMOTE 特性以消除低 HZ（CONFIG_HZ_250）嵌入式平台上 CFS 任务的「不合理 CPU 空闲」事件（>4ms 的调度延迟可完全消除），本次收到了 Vincent Guittot 与 K Prateek Nayak 的实质性评审：核心补丁 05/10（select_task_rq_fair_thi
 - [sched-20260909-016](../../2026/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `discussion/rfc` — 本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把
 - [sched-20260909-015](../../2026/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.md) `discussion/medium/under_review` — 本文为增量更新，计数口径之争的前几轮见 related_articles 中的 sched-20260830-003 / sched-20260828-004 / sched-20260827-018。09-09 19:40 Chen Yu（Intel）在认可当前版本「looks good now」之后，提出了**第三种候选口径**：拿 `env->src_rq->cfs.h_nr_queued`
 - [sched-20260909-014](../../2026/09/sched-20260909-014-sched-fair-preserve-newidle-cost-decay-across-domains.md) `bug/medium/under_review` — Li RongQing（百度）09-09 17:45 发出的单行修复：`sched_balance_domains()` 里 `need_decay` 在遍历调度域的循环中被**逐次赋值**而非累积，于是前面某个域报告的 decay 会被后面不需要 decay 的域覆盖掉，导致本应更新的 `rq->max_idle_balance_cost` 被跳过。修法就是把 `=` 换成 `|=`，`Fixe

@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 19 篇
+共 21 篇
 
+- [sched-20260910-014](../../2026/09/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.md) `fix/under_review` — Yury Norov 的单补丁清理：把 `pick_task_fair()` 里「从 rq 上挑任务」的那段抽成静态 helper `pick_task_fair_rq()`，并用 `while` / `do-while` 取代 `again:` / `idle:` 两个 goto 标签。自陈 "No functional changes intended"，GCC 15.2.0 + `x86_6
+- [sched-20260910-003](../../2026/09/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-001。Hui Su 的 5 补丁 v4 系列在 09-09 收到 Peter Zijlstra 对 3/5 的重排要求和对 4/5 的明确 NAK 后，09-10 作者对全部四条意见给出了实质性回应：3/5 已按单 donor 块 + 单 curr 块重排、4/5 整个推翻原设计改为 sched_c
 - [sched-20260909-001](../../2026/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 sched-20260908-001 / sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁
 - [sched-20260828-001](../../2026/08/sched-20260828-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — Peter Zijlstra 8/28 发出 7 补丁系列，一次性处理 core scheduling 的三类问题：`pick_next_task()` 在 `pick_task()` 放掉 rq->lock 期间被兄弟 CPU 重入、core-wide 任务选择状态被踩踏（可致 NULL deref）；core-sched 下 newidle balance 被整条关掉造成的漏平衡；以及 `sc
 - [sched-20260826-001](../../2026/08/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.md) `feature/rfc` — K Prateek Nayak (AMD) 提交了一套 16 篇的 RFC，提出 proxy exec 中 sleeping-owner 处理的替代方案。核心思路是将 John Stultz 的大补丁拆分为更小的模块，引入 `p->is_linked` 状态 + `__task_rq_lock()` 方案来减少锁弹跳，并为不需要 chain-wakeup 的任务提供无额外锁的快路径。Andrea 

@@ -2,9 +2,14 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 62
+article_count: 67
 ---
 
+- [sched-20260910-001](/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/none/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260910-007](/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260910-008](/lkm/2026/09/10/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260910-010](/lkm/2026/09/10/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260910-015](/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html) `fix/low/superseded` — sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser
 - [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260909-009](/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260909-012](/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant

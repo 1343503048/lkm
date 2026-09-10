@@ -8238,5 +8238,355 @@
     ],
     "url": "/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
     "tldr": "Wei Yang（腾讯，邮件显示名 `albin_yang@163.com`）09-09 21:33 发出的单行修复：在 `DELAY_DEQUEUE` 下，一个正在睡觉（`se.sched_delayed`）的任务被普通迁移路径搬走时，`sched_info_enqueue()` 会把 `last_queued` 重新设成迁移时刻，于是真正唤醒时无法再复位，整段睡眠时间被折叠进 `run_delay`。修法是给这个重新设值加一个 `!t->se.sched_delayed` 条件，`Fixes: 152e11f6df29`（实现 delayed dequeue 的那枚）。我核对了本地主线：`"
+  },
+  {
+    "title": "sched/fair: A series of load balance patches to improve real-time performance of CFS tasks",
+    "id": "sched-20260910-001",
+    "date": "2026-09-10",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Xin Zhao"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html",
+    "tldr": "Xin Zhao 重发（RESEND）了 10 补丁的 RFC 系列，引入 LB_PROMOTE 特性以消除低 HZ（CONFIG_HZ_250）嵌入式平台上 CFS 任务的「不合理 CPU 空闲」事件（>4ms 的调度延迟可完全消除），本次收到了 Vincent Guittot 与 K Prateek Nayak 的实质性评审：核心补丁 05/10（select_task_rq_fair_thin）被 Vincent 明确拒绝思路，03/10 的 commit message 论证被 Prateek 质疑，但讨论给出了可落地的替代方向（放宽小 LLC 场景的 nr_idle_scan），值得"
+  },
+  {
+    "title": "sched: Make proxy execution compatible with sched_ext",
+    "id": "sched-20260910-002",
+    "date": "2026-09-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "preempt",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/18、14/18 的前提被指「不可能发生」，但 15/18 他给出了明确可接受的改法。v14 的工作量已经清晰。"
+  },
+  {
+    "title": "sched: Handle split scheduling and execution contexts in task ticks",
+    "id": "sched-20260910-003",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "core_sched",
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-001。Hui Su 的 5 补丁 v4 系列在 09-09 收到 Peter Zijlstra 对 3/5 的重排要求和对 4/5 的明确 NAK 后，09-10 作者对全部四条意见给出了实质性回应：3/5 已按单 donor 块 + 单 curr 块重排、4/5 整个推翻原设计改为 sched_class 生命周期回调、5/5 改用 task-clock 域谓词，并确认 v5 将携带这些改动。同日 Andrea Righi 主动来对齐 proxy+sched_ext v13 系列与本系列的 t"
+  },
+  {
+    "title": "sched/eevdf: Fix rb augmented with multi fields",
+    "id": "sched-20260910-004",
+    "date": "2026-09-10",
+    "type": "bug",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-008 / sched-20260908-004。Vincent Guittot 的修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 51b0e68cfa0a，09-10 10:22 +0200），EEVDF 运行树 3 个增广字段只拷贝 min_vruntime 的问题正式进入紧急修复通道；同日线程里 Kayra Cizmeci 补了一轮独立 review（给出 Reviewed-by），并与 Peter 就 min_vruntime_update()"
+  },
+  {
+    "title": "sched/eevdf: Fix augmented max_slice",
+    "id": "sched-20260910-005",
+    "date": "2026-09-10",
+    "type": "bug",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260908-005。Vincent Guittot 的 max_slice 初始化修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 9a8bc9bb4c3f，09-10 10:22 +0200），与同日的多字段拷贝修复（sched-20260910-004）一起构成 EEVDF 增广树的两枚紧急修复。"
+  },
+  {
+    "title": "sched/fair: Reset NUMA fault locality after scan period update",
+    "id": "sched-20260910-006",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing",
+      "cfs"
+    ],
+    "authors": [
+      "Eric Kim"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.html",
+    "tldr": "Eric Kim 的 NUMA balancing 修复被 Peter Zijlstra 合入 tip/sched/core（commit e81ee0630837，09-10 11:01 +0200，Cc stable）：update_task_scan_period() 的早退路径漏清 p->numa_faults_locality，导致扫描周期被无意拉长直至上限。本系列此前未被日报覆盖（原始投递邮件未进入缓存），本文以合入信息为准做首次记录。"
+  },
+  {
+    "title": "sched: Enable preferred SMT siblings on NVIDIA Olympus",
+    "id": "sched-20260910-007",
+    "date": "2026-09-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "arm64",
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-007 / sched-20260904-002。v5 在 09-09 收获 Prateek 的 Reviewed-by+Tested-by、Peter 的 tentatively picked up，但 Will Deacon 拒绝 arm64 MIDR 拓扑检测方案；09-10 Peter 直接表态把该系列从收取队列里撤下（\"I'll drop this, no worries\"），并点出 Andrea 重发过快。系列合入路径回到「先解决 arm64 侧反对」的原点。"
+  },
+  {
+    "title": "sched/fair: Honor asymmetric SMT priority in idle selection",
+    "id": "sched-20260910-008",
+    "date": "2026-09-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "arm64",
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260908-002 / sched-20260907-005（本线程与 sched-20260910-007 的 NVIDIA Olympus v5 是同一逻辑系列：v4 的 2/2 补丁标题即本 subject）。09-10 的唯一进展是 Andrea Righi 对 Vincent Guittot 的 static key 质疑正式让步：去掉新增 static key、改用既有的 sched_smt_active()，该改动将落入下一版。"
+  },
+  {
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "id": "sched-20260910-009",
+    "date": "2026-09-10",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "cfs"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-012 / sched-20260908-008。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpuinfo.max_freq 随 boost 状态变化（4GHz vs 3GHz 例子），现有 __resolve_freq 方案救不了无频率表的驱动，并提出以「最大可持续频率」为固定参考的新方向，遗留"
+  },
+  {
+    "title": "Cache-aware scheduling does not work well with amd big/little cores",
+    "id": "sched-20260910-010",
+    "date": "2026-09-10",
+    "type": "bug",
+    "status": "stalled",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "topology",
+      "x86"
+    ],
+    "authors": [
+      "Klaus Kusche"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 Klaus 的系统根本无效；新的候选是 Chen Yu 的 ITMT 与 cache-aware scheduling 协调补丁，Tim 请 Klaus 叠加 Mario 的 ITMT/debugfs"
+  },
+  {
+    "title": "sched/fair: which tasks should nr_pref_llc_running be compared against?",
+    "id": "sched-20260910-011",
+    "date": "2026-09-10",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Xu Sheng Zhan"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-015 / sched-20260830-003。09-09 Chen Yu 对「用 cfs.h_nr_queued 作分母」与「Lu Wang 的 ALB guard 是否已覆盖该场景」的两连问，09-10 由 Tim Chen 给出完整回答：用 T1/T2 反例论证 h_nr_queued 作分母会错误触发 active balance，并指出 Lu Wang 的补丁只缓解 migrate_llc 一种迁移原因；Chen Yu 表示接受并已启动 sanity 测试，结果待回报。分母口径之争基本"
+  },
+  {
+    "title": "sched/fair: Load balance only among preferred CPUs",
+    "id": "sched-20260910-012",
+    "date": "2026-09-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "affinity",
+      "nohz",
+      "idle"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评审者，此前连续三轮提出实质意见（v11 的 steal 分母、v12 的 `cpumask_intersects_and`、v13 的 `npc_push_work_pending` 命名与 rq 字"
+  },
+  {
+    "title": "sched: clarify ptrace's effect on task_struct->parent",
+    "id": "sched-20260910-013",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Ziran Zhang"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-013-sched-clarify-ptrace-s-effect-on-task-struct-parent.html",
+    "tldr": "纯注释补丁，零功能改动：`task_struct->parent` 的注释没说清「被 ptrace 时会临时指向 tracer」。v1 写了 4 行长注释，Oleg Nesterov 认为是 overdocumentation 并给出一行版本，作者当天接受并在 13 分钟后发出 v2（1 insertion / 1 deletion，带 `Suggested-by: Oleg Nesterov`）。v2 目前无人回帖，但措辞出自该字段的实际维护者，合入阻力很小——值得关注的不是补丁本身，而是它顺带明确了 `parent` 与 `real_parent` 的语义边界。"
+  },
+  {
+    "title": "sched/fair: Rework pick_task_fair() control flow",
+    "id": "sched-20260910-014",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf",
+      "core_sched"
+    ],
+    "authors": [
+      "Yury Norov"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html",
+    "tldr": "Yury Norov 的单补丁清理：把 `pick_task_fair()` 里「从 rq 上挑任务」的那段抽成静态 helper `pick_task_fair_rq()`，并用 `while` / `do-while` 取代 `again:` / `idle:` 两个 goto 标签。自陈 \"No functional changes intended\"，GCC 15.2.0 + `x86_64_defconfig` 省 96 字节，加上 `CONFIG_SCHED_CORE` + `CONFIG_CFS_BANDWIDTH` 省 124 字节。09-10 缓存内**无人回帖**。改的是调"
+  },
+  {
+    "title": "sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser",
+    "id": "sched-20260910-015",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "low",
+    "tags": [
+      "affinity",
+      "topology",
+      "nohz"
+    ],
+    "authors": [
+      "Aaron Tomlin"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html",
+    "tldr": "这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`Fixes:` 标签与 `Cc: stable`。我对照本地内核树（Linux 7.2-rc6，已确认 `kernel/sched/isolation.c` 与该版本一致）确认这个越界读确实存在，位置在"
+  },
+  {
+    "title": "sched: Account cgroup CPU time to the execution context",
+    "id": "sched-20260910-016",
+    "date": "2026-09-10",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html",
+    "tldr": "本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enforcement 不再吻合，而这个缺口应该用「proxy execution 的显式统计」来补——也就是 John 自己提的 donated/gifted 时间思路。至此 cgroup 维护者与原设计者"
+  },
+  {
+    "title": "sched/core: Call wq_worker_tick() for the execution context",
+    "id": "sched-20260910-017",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution",
+      "preempt"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html",
+    "tldr": "本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——\"Sorry, seems this got lost in the email deluge :/ I can take it through sched/urgent.\"。也就是说这枚 +5/-4 的修复将由 sched 树、且走 urgent 分支收取。我对照本地内核树（与 Linux 7.2-rc6 逐字节一致，`git diff 0"
+  },
+  {
+    "title": "selftests/sched_ext: Validate select_cpu_and mask constraints",
+    "id": "sched-20260910-018",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "preempt",
+      "affinity"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，\"Hello, Tianyi. Applied to sched_ext/for-7.4.\"——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_ext/for-7.4` topic 分支。另需修正前文的一处时序判断：Tejun 09-09 02:01 那两条意见（`p->cpus_ptr` 在 PREEMPT_RCU 下的假阳性、固定 `cpu"
+  },
+  {
+    "title": "selftests/sched_ext: Drop -rdynamic and stop clobbering LDFLAGS",
+    "id": "sched-20260910-019",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "yphbchou0911@gmail.com"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.html",
+    "tldr": "Tejun Heo 于 09-10 01:52 回复 \"Applied to sched_ext/for-7.4.\"，收取了 `yphbchou0911@gmail.com` 的 v2 构建修复。**原始补丁（v1 与 v2）都不在邮箱缓存里**，缓存中只有 Tejun 的收取通知，因此补丁正文、commit message 与作者姓名均未获取到；本文的技术分析基于标题所指的两个问题在主线 Makefile 中的实际状态（我逐行核对过），并明确区分「邮件内容」与「我的代码核对」。两个缺陷都真实存在，且 `LDFLAGS =` 这一处在整个 `tools/testing/selftests` 里"
+  },
+  {
+    "title": "sched_ext: Merge adjacent ifdefs in ext.h",
+    "id": "sched-20260910-020",
+    "date": "2026-09-10",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "yphbchou0911@gmail.com"
+    ],
+    "url": "/lkm/2026/09/10/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.html",
+    "tldr": "Tejun Heo 于 09-10 01:52 回复 \"Applied to sched_ext/for-7.4.\"，收取了 `yphbchou0911@gmail.com` 直接投给 topic 分支的 v1 清理补丁。原始补丁未投递到本邮箱，正文与作者姓名均未获取到；本文的技术部分来自我对 Linux 7.2-rc6 中该头文件的逐行核对——`kernel/sched/ext/ext.h` 里确实存在**唯一一处**同条件相邻 ifdef 块（第 59 行 `#endif` 与第 61 行 `#ifdef CONFIG_SCHED_CLASS_EXT`），补丁标题描述的对象真实存在且范围恰"
   }
 ]

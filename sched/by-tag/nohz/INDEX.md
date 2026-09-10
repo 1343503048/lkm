@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 20 篇
+共 22 篇
 
+- [sched-20260910-015](../../2026/09/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/superseded` — 这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`F
+- [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评
 - [sched-20260908-001](../../2026/09/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not 
 - [sched-20260831-011](../../2026/08/sched-20260831-011-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.md) `fix/medium/superseded` — 本文为增量更新（见 sched-20260802-001 / sched-20260803-013）。这条追查了大半个月的 nohz_full 启动期 cpumask 释放问题**当天正式收尾**：Ionut Nechita（Wind River）宣布撤回自己的补丁——同一问题早已被 Waiman Long 的 `2b58c749b8c5` ("sched/isolation: Defer fre
 - [sched-20260831-001](../../2026/08/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新（完整背景见 related_articles）。Andrea Righi 在 8/31 21:42 发出 v13（18 patch，标记 `sched_ext/for-7.4`），把 Tejun Heo 对 v12 的四类意见全部落地：新增 `WF_ON_RQ` 唤醒标志替代 `SCX_TASK_ENQ_WAKEUP`、reject DSQ 排空逻辑收进 core 并改用 `SCX

@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 67 篇
+共 68 篇
 
+- [sched-20260910-016](../../2026/09/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enfo
 - [sched-20260909-016](../../2026/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `discussion/rfc` — 本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把
 - [sched-20260909-013](../../2026/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 sched-20260904-003。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 "Tentatively: Acked-by"，并第一次说明了当初为什么选择记到 donor——他是按 CPU
 - [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin

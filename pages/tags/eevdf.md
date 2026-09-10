@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 20
+article_count: 23
 ---
 
+- [sched-20260910-004](/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/merged_tip` — sched/eevdf: Fix rb augmented with multi fields
+- [sched-20260910-005](/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/merged_tip` — sched/eevdf: Fix augmented max_slice
+- [sched-20260910-014](/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html) `fix/none/under_review` — sched/fair: Rework pick_task_fair() control flow
 - [sched-20260909-008](/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields
 - [sched-20260908-004](/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields
 - [sched-20260908-005](/lkm/2026/09/08/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/under_review` — sched/eevdf: Fix augmented max_slice

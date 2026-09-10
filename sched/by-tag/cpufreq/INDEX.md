@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 30 篇
+共 31 篇
 
+- [sched-20260910-009](../../2026/09/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-012 / sched-20260908-008。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpu
 - [sched-20260909-012](../../2026/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景、三个互斥修法（sched 侧门控 / cpuutil 信号改用 arch_scale_freq_ref / cpufreq 侧 `__resolve_freq()`）的对比见 related_articles 中的 sched-20260908-008 / sched-20260907-006 / sched-20260903-010 / sched-20260902-0
 - [sched-20260908-008](../../2026/09/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景与三条互斥修法的对比见 [[sched-20260907-006]]、[[sched-20260903-010]]、[[sched-20260902-008]]。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__
 - [sched-20260908-006](../../2026/09/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — Ananthu C V（Qualcomm）在 09-08 16:30 发出 v2 两补丁，修 schedutil 打不到 boost 频率、以及 boost 关掉后频率上限回不来这两头问题：patch 1 在 policy 上线前用「含 boost 的最大可用频率」为 `capacity_freq_ref` 播种，patch 2 在 freq table 里额外跟踪最高非 boost 频率 `ma

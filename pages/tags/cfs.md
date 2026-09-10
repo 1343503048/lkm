@@ -2,9 +2,17 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 86
+article_count: 94
 ---
 
+- [sched-20260910-001](/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/none/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260910-004](/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/merged_tip` — sched/eevdf: Fix rb augmented with multi fields
+- [sched-20260910-005](/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/merged_tip` — sched/eevdf: Fix augmented max_slice
+- [sched-20260910-006](/lkm/2026/09/10/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.html) `fix/medium/merged_tip` — sched/fair: Reset NUMA fault locality after scan period update
+- [sched-20260910-009](/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260910-011](/lkm/2026/09/10/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html) `discussion/medium/under_review` — sched/fair: which tasks should nr_pref_llc_running be compared against?
+- [sched-20260910-014](/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html) `fix/none/under_review` — sched/fair: Rework pick_task_fair() control flow
+- [sched-20260910-016](/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context
 - [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260909-008](/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields

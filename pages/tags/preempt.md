@@ -2,9 +2,12 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 37
+article_count: 40
 ---
 
+- [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260910-017](/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/medium/under_review` — sched/core: Call wq_worker_tick() for the execution context
+- [sched-20260910-018](/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/merged_tip` — selftests/sched_ext: Validate select_cpu_and mask constraints
 - [sched-20260909-005](/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/under_review` — selftests/sched_ext: Validate select_cpu_and mask constraints
 - [sched-20260907-002](/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `bug/medium/rfc` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20260907-012](/lkm/2026/09/07/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.html) `fix/low/merged_tip` — sched: dynamic: Fix preemption model strings

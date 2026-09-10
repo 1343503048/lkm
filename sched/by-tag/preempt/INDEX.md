@@ -1,7 +1,10 @@
 # tag: preempt
 
-共 37 篇
+共 40 篇
 
+- [sched-20260910-018](../../2026/09/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_e
+- [sched-20260910-017](../../2026/09/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.md) `fix/medium/under_review` — 本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through
+- [sched-20260910-002](../../2026/09/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（W
 - [sched-20260909-005](../../2026/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/under_review` — Tianyi Chen 给 `scx_bpf_select_cpu_and()` 的 cpumask 约束加自测用例，09-09 02:01 被 Tejun Heo **打回**，指出两处会让用例自己出错的问题：一是在 `CONFIG_PREEMPT_RCU` 下用 `p->cpus_ptr` 反查会误判，二是固定大小的 `cpu_set_t` 在 `nr_cpu_ids > 1024` 的机器上
 - [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c

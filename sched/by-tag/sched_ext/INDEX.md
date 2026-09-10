@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 114 篇
+共 119 篇
 
+- [sched-20260910-020](../../2026/09/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.md) `fix/merged_tip` — Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yphbchou0911@gmail.com` 直接投给 topic 分支的 v1 清理补丁。原始补丁未投递到本邮箱，正文与作者姓名均未获取到；本文的技术部分来自我对 Linux 7.2-rc6 中该头文件的逐行核对——`kernel/sched/ext/ext.h` 里
+- [sched-20260910-019](../../2026/09/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.md) `fix/merged_tip` — Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yphbchou0911@gmail.com` 的 v2 构建修复。**原始补丁（v1 与 v2）都不在邮箱缓存里**，缓存中只有 Tejun 的收取通知，因此补丁正文、commit message 与作者姓名均未获取到；本文的技术分析基于标题所指的两个问题在主线 Mak
+- [sched-20260910-018](../../2026/09/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_e
+- [sched-20260910-003](../../2026/09/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-001。Hui Su 的 5 补丁 v4 系列在 09-09 收到 Peter Zijlstra 对 3/5 的重排要求和对 4/5 的明确 NAK 后，09-10 作者对全部四条意见给出了实质性回应：3/5 已按单 donor 块 + 单 curr 块重排、4/5 整个推翻原设计改为 sched_c
+- [sched-20260910-002](../../2026/09/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（W
 - [sched-20260909-011](../../2026/09/sched-20260909-011-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.md) `fix/under_review` — 本文为增量更新，重构动机与 skeleton API 等价性的完整分析见 related_articles 中的 sched-20260814-010。Ziyang Men 在 09-09 07:55 发出 v4 的 4/4：把 `tools/testing/selftests/sched_ext/Makefile` 自带的约 130 行 libbpf/bpftool/vmlinux.h/BPF 
 - [sched-20260909-006](../../2026/09/sched-20260909-006-selftests-sched-ext-handle-cpu-hotplug-write-failures.md) `fix/low/merged_tip` — 本文为增量更新，`hotplug.c` 丢 write 返回值导致测试无限挂住的完整分析见 related_articles 中的 sched-20260906-002。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」收下这枚补丁——从此一次失败的 CPU 状态写入会让用例立刻判 FAIL，而不是把真实失败伪装成 3 秒以上的挂起。
 - [sched-20260909-005](../../2026/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/under_review` — Tianyi Chen 给 `scx_bpf_select_cpu_and()` 的 cpumask 约束加自测用例，09-09 02:01 被 Tejun Heo **打回**，指出两处会让用例自己出错的问题：一是在 `CONFIG_PREEMPT_RCU` 下用 `p->cpus_ptr` 反查会误判，二是固定大小的 `cpu_set_t` 在 `nr_cpu_ids > 1024` 的机器上

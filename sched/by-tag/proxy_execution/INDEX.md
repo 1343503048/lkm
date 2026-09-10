@@ -1,7 +1,11 @@
 # tag: proxy_execution
 
-共 20 篇
+共 24 篇
 
+- [sched-20260910-017](../../2026/09/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.md) `fix/medium/under_review` — 本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through
+- [sched-20260910-016](../../2026/09/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enfo
+- [sched-20260910-003](../../2026/09/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-001。Hui Su 的 5 补丁 v4 系列在 09-09 收到 Peter Zijlstra 对 3/5 的重排要求和对 4/5 的明确 NAK 后，09-10 作者对全部四条意见给出了实质性回应：3/5 已按单 donor 块 + 单 curr 块重排、4/5 整个推翻原设计改为 sched_c
+- [sched-20260910-002](../../2026/09/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（W
 - [sched-20260905-001](../../2026/09/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.md) `fix/medium/under_review` — Hui Su 的 2 补丁系列把 NUMA / cache 的 task tick 从调度上下文（`rq->donor`）改挂到执行上下文（`rq->curr`），使 fair 任务替 RT/deadline donor 代理执行时 `task_tick_numa()` / `task_tick_cache()` 仍能运行。v3（09-04 发出）已在 09-05 拿到 Tim Chen 的 `R
 - [sched-20260904-007](../../2026/09/sched-20260904-007-sched-make-proxy-execution-compatible-with-sched-ext.md) `discussion/high/under_review` — 目前 `CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_SCHED_CLASS_EXT` 在构建期互斥。Andrea Righi 的 v13（18 补丁，标注目标分支 `sched_ext/for-7.4`）把代理执行做成 sched_ext 的可选能力：BPF 调度器通过 `SCX_OPS_ENQ_BLOCKED` 自行决定是否接收被阻塞的 donor，并统一「调度上下文呈
 - [sched-20260904-003](../../2026/09/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.md) `fix/medium/under_review` — 代理执行下 `cgroup_account_cputime()` 把 CPU 时间记到 donor，而 per-task / thread-group / cgroup 的 user/system 字段已记到实际执行任务，donor 与执行任务分属不同 cgroup 时用量会被算到别的组。Hui Su 的 v2 沿用 Tejun Heo 的意见，改成 cgroup CPU usage 跟随执行上下

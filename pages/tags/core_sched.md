@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 19
+article_count: 21
 ---
 
+- [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
+- [sched-20260910-014](/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html) `fix/none/under_review` — sched/fair: Rework pick_task_fair() control flow
 - [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260828-001](/lkm/2026/08/28/sched-20260828-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20260826-001](/lkm/2026/08/26/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC

@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 114
+article_count: 119
 ---
 
+- [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
+- [sched-20260910-018](/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/merged_tip` — selftests/sched_ext: Validate select_cpu_and mask constraints
+- [sched-20260910-019](/lkm/2026/09/10/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.html) `fix/none/merged_tip` — selftests/sched_ext: Drop -rdynamic and stop clobbering LDFLAGS
+- [sched-20260910-020](/lkm/2026/09/10/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.html) `fix/none/merged_tip` — sched_ext: Merge adjacent ifdefs in ext.h
 - [sched-20260909-002](/lkm/2026/09/09/sched-20260909-002-sched-fix-typos-and-repeated-words-in-comments.html) `fix/none/merged_tip` — sched: fix typos and repeated words in comments
 - [sched-20260909-003](/lkm/2026/09/09/sched-20260909-003-selftests-sched-ext-fail-interrupted-test-runs.html) `fix/low/merged_tip` — selftests/sched_ext: Fail interrupted test runs
 - [sched-20260909-004](/lkm/2026/09/09/sched-20260909-004-selftests-sched-ext-cover-duplicate-dsq-creation-and-id-reus.html) `feature/none/merged_tip` — selftests/sched_ext: Cover duplicate DSQ creation and ID reuse

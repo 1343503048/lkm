@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 22
+article_count: 23
 ---
 
+- [sched-20260910-006](/lkm/2026/09/10/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.html) `fix/medium/merged_tip` — sched/fair: Reset NUMA fault locality after scan period update
 - [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260908-001](/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html) `bug/medium/under_review` — sched/numa: Drive NUMA task tick from execution context
 - [sched-20260908-007](/lkm/2026/09/08/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control

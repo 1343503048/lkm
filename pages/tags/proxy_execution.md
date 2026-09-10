@@ -2,9 +2,13 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 20
+article_count: 24
 ---
 
+- [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
+- [sched-20260910-016](/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context
+- [sched-20260910-017](/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/medium/under_review` — sched/core: Call wq_worker_tick() for the execution context
 - [sched-20260905-001](/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
 - [sched-20260904-001](/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html) `fix/medium/under_review` — sched: Fix execution-context tick handling under proxy execution
 - [sched-20260904-003](/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html) `fix/medium/under_review` — sched: Account cgroup CPU time to the execution context

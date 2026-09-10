@@ -27,6 +27,7 @@
 - `rt_bandwidth` — RT 带宽控制（RT runtime、rt_bandwidth 限制）
 - `sched_debug` — sched_debugfs / 调试接口（/proc/sched_debug、debugfs）
 - `sched_clock` — 调度相关时钟处理（sched_clock、CLOCK_MONOTONIC 等）
+- `proxy_execution` — proxy execution（PE）：调度上下文 `rq->donor` 与执行上下文 `rq->curr` 拆分带来的记账、tick、限流归属等问题
 
 ## 问题性质（配合 type 使用，不重复 type 本身）
 - `regression` — 明确的性能/行为回退

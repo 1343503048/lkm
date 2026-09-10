@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 79
+article_count: 83
 ---
 
+- [sched-20260910-001](/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/none/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260910-010](/lkm/2026/09/10/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260910-011](/lkm/2026/09/10/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html) `discussion/medium/under_review` — sched/fair: which tasks should nr_pref_llc_running be compared against?
+- [sched-20260910-012](/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html) `feature/none/under_review` — sched/fair: Load balance only among preferred CPUs
 - [sched-20260909-009](/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260909-010](/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260909-014](/lkm/2026/09/09/sched-20260909-014-sched-fair-preserve-newidle-cost-decay-across-domains.html) `bug/medium/under_review` — sched/fair: Preserve newidle cost decay across domains

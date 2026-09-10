@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 22 篇
+共 23 篇
 
+- [sched-20260910-006](../../2026/09/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.md) `fix/medium/merged_tip` — Eric Kim 的 NUMA balancing 修复被 Peter Zijlstra 合入 tip/sched/core（commit e81ee0630837，09-10 11:01 +0200，Cc stable）：update_task_scan_period() 的早退路径漏清 p->numa_faults_locality，导致扫描周期被无意拉长直至上限。本系列此前未被日报覆盖（原始
 - [sched-20260909-001](../../2026/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 sched-20260908-001 / sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁
 - [sched-20260908-010](../../2026/09/sched-20260908-010-sched-cache-estimate-utilization-of-the-whole-thread-group.md) `feature/rfc` — 本文为增量更新，20/23 的算法本身（线程组整体利用率的非对称 EWMA 估算）与前因见 [[sched-20260828-010]]，Peter 那条建议的出处见 [[sched-20260901-006]]，整套 RFC 的方案背景见 [[sched-20260827-002]]。09-08 本线程只有一封新邮件，内容是一处代码生成层面的小收尾：作者 Jianyong Wu 在 15:43 
 - [sched-20260908-007](../../2026/09/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — Li Zhe（ByteDance）在 09-08 20:24 发出 4 补丁（无 v 前缀，即 v1）：给自动 NUMA 平衡加一个 **prctl 级别的 per-process 开关**，让个别进程能整体退出 NUMA 扫描与调度侧 locality 统计，同时把 `kernel.numa_balancing` 保留为管理员的硬总闸。设计上刻意选了「弱且可预测」的形状：两态、无 default

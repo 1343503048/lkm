@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 20 篇
+共 23 篇
 
+- [sched-20260910-014](../../2026/09/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.md) `fix/under_review` — Yury Norov 的单补丁清理：把 `pick_task_fair()` 里「从 rq 上挑任务」的那段抽成静态 helper `pick_task_fair_rq()`，并用 `while` / `do-while` 取代 `again:` / `idle:` 两个 goto 标签。自陈 "No functional changes intended"，GCC 15.2.0 + `x86_6
+- [sched-20260910-005](../../2026/09/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-005。Vincent Guittot 的 max_slice 初始化修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 9a8bc9bb4c3f，09-10 10:22 +0200），与同日的多字段拷贝修复（sched-20260910-004）一起构成 E
+- [sched-20260910-004](../../2026/09/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-008 / sched-20260908-004。Vincent Guittot 的修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 51b0e68cfa0a，09-10 10:22 +0200），EEVDF 运行树 3 个增广字段只拷贝 min_vrunt
 - [sched-20260909-008](../../2026/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/under_review` — 本文为增量更新，缺陷成因与补丁的完整代码分析见 related_articles 中的 sched-20260908-004。09-09 这条单补丁拿到了 K Prateek Nayak 的 `Reviewed-by` + `Tested-by`，而且他说明自己 2025 年 2 月就撞上过同一个问题、当时是在调度器层面绕开的——这等于独立确认了缺陷真实存在且此前的绕行方案不如泛化 rb 模板。剩
 - [sched-20260908-011](../../2026/09/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.md) `discussion/stalled` — 本文为增量更新，方案背景见 [[sched-20260824-011]] 与 [[sched-20260826-002]]，命名之争的经过见 [[sched-20260827-019]]。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: R
 - [sched-20260908-005](../../2026/09/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/under_review` — 本文为增量更新，完整背景与代码分析见 related_articles 中的 sched-20260907-001。09-08 该补丁拿到 K Prateek Nayak 的 `Reviewed-by`，评审面已无异议；同一天作者另发了一条同源的独立补丁 `sched/eevdf: fix rb augmented with multi fields`（本文不覆盖，见 sched-20260908
