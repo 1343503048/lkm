@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 108
+article_count: 114
 ---
 
+- [sched-20260909-002](/lkm/2026/09/09/sched-20260909-002-sched-fix-typos-and-repeated-words-in-comments.html) `fix/none/merged_tip` — sched: fix typos and repeated words in comments
+- [sched-20260909-003](/lkm/2026/09/09/sched-20260909-003-selftests-sched-ext-fail-interrupted-test-runs.html) `fix/low/merged_tip` — selftests/sched_ext: Fail interrupted test runs
+- [sched-20260909-004](/lkm/2026/09/09/sched-20260909-004-selftests-sched-ext-cover-duplicate-dsq-creation-and-id-reus.html) `feature/none/merged_tip` — selftests/sched_ext: Cover duplicate DSQ creation and ID reuse
+- [sched-20260909-005](/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/under_review` — selftests/sched_ext: Validate select_cpu_and mask constraints
+- [sched-20260909-006](/lkm/2026/09/09/sched-20260909-006-selftests-sched-ext-handle-cpu-hotplug-write-failures.html) `fix/low/merged_tip` — selftests/sched_ext: Handle CPU hotplug write failures
+- [sched-20260909-011](/lkm/2026/09/09/sched-20260909-011-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.html) `fix/none/under_review` — selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk
 - [sched-20260908-003](/lkm/2026/09/08/sched-20260908-003-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260907-010](/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html) `fix/low/merged_tip` — sched_ext: scx_qmap: Fix pending partition work handoff
 - [sched-20260907-016](/lkm/2026/09/07/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.html) `fix/low/under_review` — sched: fix typos and repeated words in comments

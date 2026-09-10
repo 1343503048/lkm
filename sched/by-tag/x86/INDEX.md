@@ -1,7 +1,8 @@
 # tag: x86
 
-共 13 篇
+共 14 篇
 
+- [sched-20260909-009](../../2026/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 sched-20260905-007 / sched-20260831-006 / sched-20260829-003。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而*
 - [sched-20260908-008](../../2026/09/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景与三条互斥修法的对比见 [[sched-20260907-006]]、[[sched-20260903-010]]、[[sched-20260902-008]]。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__
 - [sched-20260907-015](../../2026/09/sched-20260907-015-sched-update-the-thread-info-in-task-description.md) `fix/stalled` — 本文为增量更新，完整背景见 sched-20260726-006（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing
 - [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin

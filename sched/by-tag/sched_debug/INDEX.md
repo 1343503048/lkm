@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 39 篇
+共 41 篇
 
+- [sched-20260909-017](../../2026/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `bug/low/under_review` — Wei Yang（腾讯，邮件显示名 `albin_yang@163.com`）09-09 21:33 发出的单行修复：在 `DELAY_DEQUEUE` 下，一个正在睡觉（`se.sched_delayed`）的任务被普通迁移路径搬走时，`sched_info_enqueue()` 会把 `last_queued` 重新设成迁移时刻，于是真正唤醒时无法再复位，整段睡眠时间被折叠进 `run_del
+- [sched-20260909-010](../../2026/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 sched-20260907-011 / sched-20260903-002 / sched-20260902-014 / sched-20260831-007。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Pete
 - [sched-20260908-009](../../2026/09/sched-20260908-009-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — 本文为增量更新，完整背景与 v1→v2 的差异见 [[sched-20260907-004]]。09-08 本线程只有一封新邮件：SJ Park 在 05:20 给 patch 1/8 打上 `Reviewed-by`，条件是 Lorenzo Stoakes 提的缩进要求被采纳（「Assuming Lorenzo's indentation change requests are accepted
 - [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
 - [sched-20260907-004](../../2026/09/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — Ye Liu 在 09-07 16:13 发出 v2（8 补丁）：在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把 RCU 读锁作用域绑

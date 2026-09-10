@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 79
+article_count: 86
 ---
 
+- [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
+- [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260909-008](/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields
+- [sched-20260909-012](/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260909-013](/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context
+- [sched-20260909-015](/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html) `discussion/medium/under_review` — sched/fair: which tasks should nr_pref_llc_running be compared against?
+- [sched-20260909-017](/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `bug/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260908-001](/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html) `bug/medium/under_review` — sched/numa: Drive NUMA task tick from execution context
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260908-004](/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/under_review` — sched/eevdf: fix rb augmented with multi fields

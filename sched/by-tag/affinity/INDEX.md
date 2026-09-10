@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 36 篇
+共 38 篇
 
+- [sched-20260909-010](../../2026/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 sched-20260907-011 / sched-20260903-002 / sched-20260902-014 / sched-20260831-007。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Pete
+- [sched-20260909-006](../../2026/09/sched-20260909-006-selftests-sched-ext-handle-cpu-hotplug-write-failures.md) `fix/low/merged_tip` — 本文为增量更新，`hotplug.c` 丢 write 返回值导致测试无限挂住的完整分析见 related_articles 中的 sched-20260906-002。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」收下这枚补丁——从此一次失败的 CPU 状态写入会让用例立刻判 FAIL，而不是把真实失败伪装成 3 秒以上的挂起。
 - [sched-20260907-011](../../2026/09/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c
 - [sched-20260904-002](../../2026/09/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `discussion/medium/under_review` — NVIDIA Olympus/Vera 用两个对称 PE 实现 SMT2，短暂激活空闲 sibling 会让核退回两线程模式，且回到单线程模式并非即时。Andrea Righi 的 v2（2 补丁）把 PE0 标成 preferred sibling（`SD_ASYM_PACKING`），并让 fair 调度器的全部空闲 CPU 选择路径尊重这个优先级，在 Vera 的 88 核 GEMM 上把约

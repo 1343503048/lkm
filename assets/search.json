@@ -7942,5 +7942,301 @@
     ],
     "url": "/lkm/2026/09/08/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.html",
     "tldr": "本文为增量更新，方案背景见 [[sched-20260824-011]] 与 [[sched-20260826-002]]，命名之争的经过见 [[sched-20260827-019]]。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: Remove unused autogroup.h include`）的线程上，九分钟后在正确的线程里一边回帖一边道歉（「Sorry for this autogroup.h ping thing. A"
+  },
+  {
+    "title": "sched: Handle split scheduling and execution contexts in task ticks",
+    "id": "sched-20260909-001",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "numa_balancing",
+      "rt",
+      "core_sched"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html",
+    "tldr": "本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 sched-20260908-001 / sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁的 v4——彻底去掉 `sched_class::task_tick()` 的 `task_struct *` 参数，改由一个公共 `task_tick()` 分发器先调 donor 类、再调执行类；"
+  },
+  {
+    "title": "sched: fix typos and repeated words in comments",
+    "id": "sched-20260909-002",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Hemanth Selam"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-002-sched-fix-typos-and-repeated-words-in-comments.html",
+    "tldr": "本文为增量更新，两个补丁各自改什么的完整分析见 related_articles 中的 sched-20260907-016。09-09 01:13 这条线落地了：Tejun Heo 回 `[PATCH 0/2]` 封面「Applied 1-2 to sched_ext/for-7.4」，两枚纯注释修正全部被收下，等待随 sched_ext 的 7.4 合并窗口进主线。从发出到收取只用了约 18 小时，且全程没有任何 review 争议。"
+  },
+  {
+    "title": "selftests/sched_ext: Fail interrupted test runs",
+    "id": "sched-20260909-003",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-003-selftests-sched-ext-fail-interrupted-test-runs.html",
+    "tldr": "本文为增量更新，`runner.c` 退出码问题的完整来龙去脉见 related_articles 中的 sched-20260906-003。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」，这枚单行改动被收下：被 SIGINT/SIGTERM 打断的 sched_ext 测试运行不再返回 0，CI 从此能把「中断」和「通过」区分开。"
+  },
+  {
+    "title": "selftests/sched_ext: Cover duplicate DSQ creation and ID reuse",
+    "id": "sched-20260909-004",
+    "date": "2026-09-09",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-004-selftests-sched-ext-cover-duplicate-dsq-creation-and-id-reus.html",
+    "tldr": "Tianyi Chen 为 sched_ext selftests 补 DSQ 创建路径的覆盖（重复创建同一个 DSQ、以及 DSQ ID 被复用这两种情形），09-09 02:01 被 Tejun Heo 以「Applied to sched_ext/for-7.4」直接收下。需要说明的是：本日报只拿到维护者的收取回帖，补丁原文不在邮件缓存里，因此**具体加了哪几个用例、断在哪个 kfunc 上未获取到**，本文只对可核实的进展下结论。"
+  },
+  {
+    "title": "selftests/sched_ext: Validate select_cpu_and mask constraints",
+    "id": "sched-20260909-005",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "preempt"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html",
+    "tldr": "Tianyi Chen 给 `scx_bpf_select_cpu_and()` 的 cpumask 约束加自测用例，09-09 02:01 被 Tejun Heo **打回**，指出两处会让用例自己出错的问题：一是在 `CONFIG_PREEMPT_RCU` 下用 `p->cpus_ptr` 反查会误判，二是固定大小的 `cpu_set_t` 在 `nr_cpu_ids > 1024` 的机器上会让 `sched_getaffinity()` 直接 EINVAL。当天 23:25 作者又追加了一封道歉信，说明之前那次 v2 RESEND 是 Gmail 出站把长行折行破坏了补丁空白符，改以 "
+  },
+  {
+    "title": "selftests/sched_ext: Handle CPU hotplug write failures",
+    "id": "sched-20260909-006",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "affinity"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-006-selftests-sched-ext-handle-cpu-hotplug-write-failures.html",
+    "tldr": "本文为增量更新，`hotplug.c` 丢 write 返回值导致测试无限挂住的完整分析见 related_articles 中的 sched-20260906-002。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」收下这枚补丁——从此一次失败的 CPU 状态写入会让用例立刻判 FAIL，而不是把真实失败伪装成 3 秒以上的挂起。"
+  },
+  {
+    "title": "sched: Enable preferred SMT siblings on NVIDIA Olympus",
+    "id": "sched-20260909-007",
+    "date": "2026-09-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "idle",
+      "topology",
+      "arm64",
+      "hyperthreading",
+      "perf"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html",
+    "tldr": "本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 sched-20260908-002 / sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nayak 的 `Reviewed-by`+`Tested-by`，按 Dietmar Eggemann 的要求补上了 OpenBLAS 公开基准（+3.20% 吞吐、ST→SMT 模式切换次数 -80.5"
+  },
+  {
+    "title": "sched/eevdf: fix rb augmented with multi fields",
+    "id": "sched-20260909-008",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html",
+    "tldr": "本文为增量更新，缺陷成因与补丁的完整代码分析见 related_articles 中的 sched-20260908-004。09-09 这条单补丁拿到了 K Prateek Nayak 的 `Reviewed-by` + `Tested-by`，而且他说明自己 2025 年 2 月就撞上过同一个问题、当时是在调度器层面绕开的——这等于独立确认了缺陷真实存在且此前的绕行方案不如泛化 rb 模板。剩下唯一未处理的意见是一条注释 nit，作者当天 21:20 已承认「就是复制粘贴的结果」。"
+  },
+  {
+    "title": "Cache-aware scheduling does not work well with amd big/little cores",
+    "id": "sched-20260909-009",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "stalled",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "topology",
+      "x86"
+    ],
+    "authors": [
+      "Klaus Kusche"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html",
+    "tldr": "本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 sched-20260905-007 / sched-20260831-006 / sched-20260829-003。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而**不是** Mario 的那枚；以及 Tim Chen 主动透露 CAS 的主动负载均衡路径还有两个已知问题需要修，并给出了补丁链接。Klaus 表明自己在休假（Linz 的 Ars Electron"
+  },
+  {
+    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
+    "id": "sched-20260909-010",
+    "date": "2026-09-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "affinity",
+      "sched_debug",
+      "arm64"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html",
+    "tldr": "本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 sched-20260907-011 / sched-20260903-002 / sched-20260902-014 / sched-20260831-007。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Peter/Ingo「能否考虑进 sched/core、目标 7.4」，并把上一轮 Yury Norov 的三条评审意见全部收掉（字段改名 `npc_push_work_pending`、挪到 `steal_"
+  },
+  {
+    "title": "selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk",
+    "id": "sched-20260909-011",
+    "date": "2026-09-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Ziyang Men"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-011-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.html",
+    "tldr": "本文为增量更新，重构动机与 skeleton API 等价性的完整分析见 related_articles 中的 sched-20260814-010。Ziyang Men 在 09-09 07:55 发出 v4 的 4/4：把 `tools/testing/selftests/sched_ext/Makefile` 自带的约 130 行 libbpf/bpftool/vmlinux.h/BPF object/skeleton 构建机器换成 `include ../lib.bpf.mk`，让 sched_ext 成为继 `selftests/cgroup`、`selftests/hid` 之后"
+  },
+  {
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "id": "sched-20260909-012",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html",
+    "tldr": "本文为增量更新，完整背景、三个互斥修法（sched 侧门控 / cpuutil 信号改用 arch_scale_freq_ref / cpufreq 侧 `__resolve_freq()`）的对比见 related_articles 中的 sched-20260908-008 / sched-20260907-006 / sched-20260903-010 / sched-20260902-008。09-08 作者已经表态采纳 Prateek 的 cpufreq 侧方案，09-09 出现两件推进：**Hongyan Xia（Transsion）给出 LGTM** 并提出把每次全量 `__r"
+  },
+  {
+    "title": "sched: Account cgroup CPU time to the execution context",
+    "id": "sched-20260909-013",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cgroup",
+      "cfs"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html",
+    "tldr": "本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 sched-20260904-003。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 \"Tentatively: Acked-by\"，并第一次说明了当初为什么选择记到 donor——他是按 CPU 带宽控制器的情形来想的。Hui Su 随即用一个区分把这条反对意见拆掉：本补丁只改 `cgroup_account_cputime()` 这一处的 cgroup CPU usage，**不动 CFS"
+  },
+  {
+    "title": "sched/fair: Preserve newidle cost decay across domains",
+    "id": "sched-20260909-014",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Li RongQing"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-014-sched-fair-preserve-newidle-cost-decay-across-domains.html",
+    "tldr": "Li RongQing（百度）09-09 17:45 发出的单行修复：`sched_balance_domains()` 里 `need_decay` 在遍历调度域的循环中被**逐次赋值**而非累积，于是前面某个域报告的 decay 会被后面不需要 decay 的域覆盖掉，导致本应更新的 `rq->max_idle_balance_cost` 被跳过。修法就是把 `=` 换成 `|=`，`Fixes: e60b56e46b38`。我在本地主线（v7.0-rc 树）核对过，`kernel/sched/fair.c:13784` 处仍是 `need_decay = update_newidle_c"
+  },
+  {
+    "title": "sched/fair: which tasks should nr_pref_llc_running be compared against?",
+    "id": "sched-20260909-015",
+    "date": "2026-09-09",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Xu Sheng Zhan"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html",
+    "tldr": "本文为增量更新，计数口径之争的前几轮见 related_articles 中的 sched-20260830-003 / sched-20260828-004 / sched-20260827-018。09-09 19:40 Chen Yu（Intel）在认可当前版本「looks good now」之后，提出了**第三种候选口径**：拿 `env->src_rq->cfs.h_nr_queued` 而不是 `nr_running` 来比，并追问为什么没选它；同时把 Lu Wang 的 active load balance guard 补丁拉进来，问在新守卫之下原来的顾虑是否还成立。这条追问到"
+  },
+  {
+    "title": "sched/cache: Per-task control of cache aware scheduling via prctl",
+    "id": "sched-20260909-016",
+    "date": "2026-09-09",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "topology",
+      "cgroup"
+    ],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html",
+    "tldr": "本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把任务分到一组？能不能在应用已经跑起来之后再分组？之前否掉 cgroup 的理由是否仍然成立？这个系列是当天热度最高的 CAS 讨论线里唯一一份**没人回答**的新意见。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20260909-017",
+    "date": "2026-09-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "Wei Yang（腾讯，邮件显示名 `albin_yang@163.com`）09-09 21:33 发出的单行修复：在 `DELAY_DEQUEUE` 下，一个正在睡觉（`se.sched_delayed`）的任务被普通迁移路径搬走时，`sched_info_enqueue()` 会把 `last_queued` 重新设成迁移时刻，于是真正唤醒时无法再复位，整段睡眠时间被折叠进 `run_delay`。修法是给这个重新设值加一个 `!t->se.sched_delayed` 条件，`Fixes: 152e11f6df29`（实现 delayed dequeue 的那枚）。我核对了本地主线：`"
   }
 ]

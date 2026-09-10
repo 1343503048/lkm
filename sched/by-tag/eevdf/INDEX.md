@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 19 篇
+共 20 篇
 
+- [sched-20260909-008](../../2026/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/under_review` — 本文为增量更新，缺陷成因与补丁的完整代码分析见 related_articles 中的 sched-20260908-004。09-09 这条单补丁拿到了 K Prateek Nayak 的 `Reviewed-by` + `Tested-by`，而且他说明自己 2025 年 2 月就撞上过同一个问题、当时是在调度器层面绕开的——这等于独立确认了缺陷真实存在且此前的绕行方案不如泛化 rb 模板。剩
 - [sched-20260908-011](../../2026/09/sched-20260908-011-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.md) `discussion/stalled` — 本文为增量更新，方案背景见 [[sched-20260824-011]] 与 [[sched-20260826-002]]，命名之争的经过见 [[sched-20260827-019]]。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: R
 - [sched-20260908-005](../../2026/09/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/under_review` — 本文为增量更新，完整背景与代码分析见 related_articles 中的 sched-20260907-001。09-08 该补丁拿到 K Prateek Nayak 的 `Reviewed-by`，评审面已无异议；同一天作者另发了一条同源的独立补丁 `sched/eevdf: fix rb augmented with multi fields`（本文不覆盖，见 sched-20260908
 - [sched-20260908-004](../../2026/09/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/under_review` — Vincent Guittot 09-08 21:55 发出的单补丁，补的是他前一天 `sched/eevdf: Fix augmented max_slice`（见 related_articles）背后的**同类根因**：EEVDF 运行树增广了 3 个字段（`min_vruntime`/`min_slice`/`max_slice`），但 `RB_DECLARE_CALLBACKS` 只支持

@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 65 篇
+共 67 篇
 
+- [sched-20260909-016](../../2026/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `discussion/rfc` — 本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把
+- [sched-20260909-013](../../2026/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 sched-20260904-003。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 "Tentatively: Acked-by"，并第一次说明了当初为什么选择记到 donor——他是按 CPU
 - [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin
 - [sched-20260907-010](../../2026/09/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.md) `fix/low/merged_tip` — Tejun Heo 09-06 给自己维护的示例/自测调度器 `scx_qmap` 打了一个时序补丁：qmap 的分区（partition）更新采用「单 runner + pending 标志」的同步方式，但**请求的发布时机**和**runner 的检查时机**互相错开，存在一个把分区工作留在「有 pending、无 runner」状态的空窗，结果是这次分区更新要等到 round-robin 定
 - [sched-20260907-008](../../2026/09/sched-20260907-008-sched-fair-remove-the-write-order-dependency-between-cpu-max.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 [[sched-20260904-004]]（该文以 v2 的 cover 标题 `sched/fair: remove quota/burst write-order dependency` 为题，本篇是 v2 中 1/3 这一补丁本体的标题）。09-07 的进展是决定性的：cpu controller 维护者 Michal Koutný（SUSE）给出 `Revie

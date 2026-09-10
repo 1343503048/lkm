@@ -2,9 +2,11 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 17
+article_count: 19
 ---
 
+- [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260909-010](/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
 - [sched-20260907-015](/lkm/2026/09/07/sched-20260907-015-sched-update-the-thread-info-in-task-description.html) `fix/none/stalled` — sched: Update the THREAD_INFO_IN_TASK description

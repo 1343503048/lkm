@@ -2,9 +2,14 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 74
+article_count: 79
 ---
 
+- [sched-20260909-009](/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260909-010](/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260909-014](/lkm/2026/09/09/sched-20260909-014-sched-fair-preserve-newidle-cost-decay-across-domains.html) `bug/medium/under_review` — sched/fair: Preserve newidle cost decay across domains
+- [sched-20260909-015](/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html) `discussion/medium/under_review` — sched/fair: which tasks should nr_pref_llc_running be compared against?
+- [sched-20260909-016](/lkm/2026/09/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `discussion/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
 - [sched-20260904-006](/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260903-011](/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html) `discussion/medium/under_review` — sched/cache: Honor migrate_llc_task semantics in active load balance
 - [sched-20260903-012](/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html) `discussion/medium/rfc` — sched/cache: Introduce helpers for task migration decisions

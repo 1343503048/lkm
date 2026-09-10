@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 36
+article_count: 38
 ---
 
+- [sched-20260909-006](/lkm/2026/09/09/sched-20260909-006-selftests-sched-ext-handle-cpu-hotplug-write-failures.html) `fix/low/merged_tip` — selftests/sched_ext: Handle CPU hotplug write failures
+- [sched-20260909-010](/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260907-002](/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `bug/medium/rfc` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260904-002](/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `discussion/medium/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

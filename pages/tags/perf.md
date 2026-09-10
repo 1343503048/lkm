@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 36
+article_count: 37
 ---
 
+- [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU
 - [sched-20260901-001](/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html) `bug/high/under_review` — sched/cache: Fix use-after-free of the mm replaced by exec

@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 21 篇
+共 22 篇
 
+- [sched-20260909-001](../../2026/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 sched-20260908-001 / sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁
 - [sched-20260908-010](../../2026/09/sched-20260908-010-sched-cache-estimate-utilization-of-the-whole-thread-group.md) `feature/rfc` — 本文为增量更新，20/23 的算法本身（线程组整体利用率的非对称 EWMA 估算）与前因见 [[sched-20260828-010]]，Peter 那条建议的出处见 [[sched-20260901-006]]，整套 RFC 的方案背景见 [[sched-20260827-002]]。09-08 本线程只有一封新邮件，内容是一处代码生成层面的小收尾：作者 Jianyong Wu 在 15:43 
 - [sched-20260908-007](../../2026/09/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — Li Zhe（ByteDance）在 09-08 20:24 发出 4 补丁（无 v 前缀，即 v1）：给自动 NUMA 平衡加一个 **prctl 级别的 per-process 开关**，让个别进程能整体退出 NUMA 扫描与调度侧 locality 统计，同时把 `kernel.numa_balancing` 保留为管理员的硬总闸。设计上刻意选了「弱且可预测」的形状：两态、无 default
 - [sched-20260908-001](../../2026/09/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not 

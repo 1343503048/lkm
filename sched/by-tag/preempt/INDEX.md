@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 36 篇
+共 37 篇
 
+- [sched-20260909-005](../../2026/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/under_review` — Tianyi Chen 给 `scx_bpf_select_cpu_and()` 的 cpumask 约束加自测用例，09-09 02:01 被 Tejun Heo **打回**，指出两处会让用例自己出错的问题：一是在 `CONFIG_PREEMPT_RCU` 下用 `p->cpus_ptr` 反查会误判，二是固定大小的 `cpu_set_t` 在 `nr_cpu_ids > 1024` 的机器上
 - [sched-20260907-012](../../2026/09/sched-20260907-012-sched-dynamic-fix-preemption-model-strings.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c
 - [sched-20260906-006](../../2026/09/sched-20260906-006-tcp-skip-cond-resched-in-inet-csk-listen-stop-under-bpf-context.md) `fix/medium/under_review` — Jiayuan Chen 的 `bpf,tcp: Fix bpf_sock_destroy() on TIME_WAIT and listener socks` 系列于 09-06 15:41 以 `[PATCH bpf v2 0/3]` 重发，本篇对应的 2/3 是相对上一版新增的一片：`bpf_sock_destroy()` 在 tcp iterator 的 `rcu_read_lock()`

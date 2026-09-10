@@ -2,9 +2,14 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 57
+article_count: 62
 ---
 
+- [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260909-009](/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/stalled` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260909-012](/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
+- [sched-20260909-014](/lkm/2026/09/09/sched-20260909-014-sched-fair-preserve-newidle-cost-decay-across-domains.html) `bug/medium/under_review` — sched/fair: Preserve newidle cost decay across domains
+- [sched-20260909-016](/lkm/2026/09/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `discussion/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-003](/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
 - [sched-20260907-005](/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
