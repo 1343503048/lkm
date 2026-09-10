@@ -6,6 +6,7 @@ title: 首页
 <div class="home-layout">
   <div class="home-list-panel">
     <div class="hero">
+      <img class="hero-logo" src="{{ '/assets/img/tux.png' | relative_url }}" alt="Tux" width="211" height="256">
       <h1>Linux 内核调度子系统 LKML 日报</h1>
       <p class="hero-desc">每日自动分析 LKML 中 kernel/sched/* 相关邮件</p>
       <div class="stats-bar">
