@@ -67,7 +67,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: medium
-thread_root_msgid: "20260909094523.2314-1-lirongqing@baidu.com"
+thread_root_msgid: "<20260909094523.2314-1-lirongqing@baidu.com>"
 lore_url: "https://lore.kernel.org/all/20260909094523.2314-1-lirongqing@baidu.com/"
 upstream_commit: null
 fixes_commit: "e60b56e46b38"
@@ -79,7 +79,7 @@ authors:
 maintainers_involved: []
 patch_series:
   - version: v1
-    msgid: "20260909094523.2314-1-lirongqing@baidu.com"
+    msgid: "<20260909094523.2314-1-lirongqing@baidu.com>"
     date: "2026-09-09"
     summary: "sched_balance_domains() 遍历调度域时 need_decay 由逐次赋值改为按位累积（= 改 |=），使任一域报告的 decay 都能触发循环外 rq->max_idle_balance_cost 的更新；1 file changed, 1 insertion(+), 1 deletion(-)。"
     review_outcome: "v1 刚发出，当天无人回帖，无 Ack 无 NAK，也未见 tip-bot 收录。"

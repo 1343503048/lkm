@@ -6,7 +6,7 @@ subsystem: sched
 type: discussion
 status: rfc
 severity: none
-thread_root_msgid: cover.1787955777.git.tim.c.chen@linux.intel.com
+thread_root_msgid: <cover.1787955777.git.tim.c.chen@linux.intel.com>
 lore_url: https://lore.kernel.org/all/f0b6a0c3-4fa6-4f8c-99a0-a3c1a73507f3@linux.ibm.com/
 upstream_commit: null
 fixes_commit: null
@@ -19,7 +19,7 @@ maintainers_involved:
 - Shrikanth Hegde
 patch_series:
 - version: v1
-  msgid: cover.1787955777.git.tim.c.chen@linux.intel.com
+  msgid: <cover.1787955777.git.tim.c.chen@linux.intel.com>
   date: '2026-08-27'
   summary: RFC 0/7：为 cache-aware scheduling 增加 prctl 级别的 per-task 控制，把「哪些任务应视为同一缓存分组」的决定权交给应用/运行库，以应对内核无法在异构
     L3 与大小核上推断意图的问题。

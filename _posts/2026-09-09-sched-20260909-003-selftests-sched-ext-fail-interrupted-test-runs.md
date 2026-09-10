@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: merged_tip
 severity: low
-thread_root_msgid: 20260906135507.749280-1-hi@tychen.cc
+thread_root_msgid: <20260906135507.749280-1-hi@tychen.cc>
 lore_url: https://lore.kernel.org/all/1a60af2608a5d068d55ad5022d8221f4@kernel.org/
 upstream_commit: null
 fixes_commit: 9d851afa4826
@@ -19,7 +19,7 @@ maintainers_involved:
 - Tejun Heo
 patch_series:
 - version: v1
-  msgid: 20260906135507.749280-1-hi@tychen.cc
+  msgid: <20260906135507.749280-1-hi@tychen.cc>
   date: '2026-09-06'
   summary: 'runner.c 的 main() 退出码由 failed > 0 ? 1 : 0 改为 failed > 0 || exit_req ?
     1 : 0，使被 SIGINT/SIGTERM 中断的运行返回非零；结果计数仍只覆盖实际跑过的用例。+1/-1。'

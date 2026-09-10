@@ -65,7 +65,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: medium
-thread_root_msgid: "20260821073927.455475-1-wujianyong@hygon.cn"
+thread_root_msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
 lore_url: "https://lore.kernel.org/all/a2466e7d-2dd7-4de9-963f-6eb8c58d4a49@amd.com/"
 upstream_commit: null
 fixes_commit: null
@@ -79,7 +79,7 @@ maintainers_involved:
   - "Hongyan Xia"
 patch_series:
   - version: v1
-    msgid: "20260821073927.455475-1-wujianyong@hygon.cn"
+    msgid: "<20260821073927.455475-1-wujianyong@hygon.cn>"
     date: "2026-08-21"
     summary: "sched 侧门控：仅在 arch_scale_freq_invariant() 为真时计入 cpufreq 压力。作者已于 09-08 采纳 Prateek 的 cpufreq 侧 __resolve_freq() 方案并放弃本版本；该 cpufreq 侧补丁截至本日尚未发出。"
     review_outcome: "09-09 Hongyan Xia 给出 LGTM 并建议缓存最高可达 OPP 而非每次全量 __resolve_freq()；Prateek 认可并明确落点为 policy 对象、在 cpufreq_policy_online() 时更新，同时把发版优先权推回作者，称若不发他下周初发。"

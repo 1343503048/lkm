@@ -6,7 +6,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: low
-thread_root_msgid: 20260909133345.1572954-1-albin_yang@163.com
+thread_root_msgid: <20260909133345.1572954-1-albin_yang@163.com>
 lore_url: https://lore.kernel.org/all/20260909133345.1572954-1-albin_yang@163.com/
 upstream_commit: null
 fixes_commit: 152e11f6df29
@@ -18,7 +18,7 @@ authors:
 maintainers_involved: []
 patch_series:
 - version: v1
-  msgid: 20260909133345.1572954-1-albin_yang@163.com
+  msgid: <20260909133345.1572954-1-albin_yang@163.com>
   date: '2026-09-09'
   summary: sched_info_enqueue() 增加 !t->se.sched_delayed 条件，避免睡眠中的 delayed 任务被 move_queued_task()/move_queued_task_locked()
     迁移时把 last_queued 设成迁移时刻，从而防止真正唤醒时无法复位、整段睡眠被计入 run_delay；1 file changed, 1 insertion(+),

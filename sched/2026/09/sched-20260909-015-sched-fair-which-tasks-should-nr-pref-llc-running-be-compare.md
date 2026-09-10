@@ -65,7 +65,7 @@ subsystem: sched
 type: discussion
 status: under_review
 severity: medium
-thread_root_msgid: "20260827135000.735138-1-zhanxusheng@xiaomi.com"
+thread_root_msgid: "<20260827135000.735138-1-zhanxusheng@xiaomi.com>"
 lore_url: "https://lore.kernel.org/all/aqFFu1Xo52cQV3iy@fengwei-dev/"
 upstream_commit: null
 fixes_commit: null
@@ -78,7 +78,7 @@ maintainers_involved:
   - "Chen Yu"
 patch_series:
   - version: v1
-    msgid: "20260827135000.735138-1-zhanxusheng@xiaomi.com"
+    msgid: "<20260827135000.735138-1-zhanxusheng@xiaomi.com>"
     date: "2026-08-27"
     summary: "讨论 alb_break_llc() 中 nr_pref_llc_running 应与哪个计数比较；当前版本已把 nr_pref_llc_running 移入 runnable 域以与 DELAY_DEQUEUE 对齐。"
     review_outcome: "09-09 19:40 Chen Yu 认可当前版本，但另提 cfs.h_nr_queued 作为候选分母并给出 3 任务反例，追问 Lu Wang 的 ALB guard 是否已使该问题不成立；到当天结束无人回答。"

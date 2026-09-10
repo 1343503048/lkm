@@ -6,7 +6,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: low
-thread_root_msgid: 20260904034707.268416-1-sh_def@163.com
+thread_root_msgid: <20260904034707.268416-1-sh_def@163.com>
 lore_url: https://lore.kernel.org/all/CANDhNCq5iPq87=iKSJv-XzYzTYJ8Hp+bPJ6SoVfWB3pRa=HypQ@mail.gmail.com/
 upstream_commit: null
 fixes_commit: null
@@ -20,7 +20,7 @@ maintainers_involved:
 - Tejun Heo
 patch_series:
 - version: v2
-  msgid: 20260904034707.268416-1-sh_def@163.com
+  msgid: <20260904034707.268416-1-sh_def@163.com>
   date: '2026-09-04'
   summary: 沿用 Tejun Heo 意见，把 cgroup_account_cputime() 的目标从 rq->donor 改为 rq->curr，使
     cgroup CPU usage 与实际执行任务一致；kernel/sched/fair.c 单行改动，不改 CFS bandwidth 记账路径。

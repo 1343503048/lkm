@@ -48,7 +48,7 @@ subsystem: sched
 type: fix
 status: merged_tip
 severity: none
-thread_root_msgid: "20260907064943.25304-1-hemanth.selam@gmail.com"
+thread_root_msgid: "<20260907064943.25304-1-hemanth.selam@gmail.com>"
 lore_url: "https://lore.kernel.org/all/178888758275.2.6189775612518482207@kernel.org/"
 upstream_commit: null
 fixes_commit: null
@@ -61,7 +61,7 @@ maintainers_involved:
   - "Tejun Heo"
 patch_series:
   - version: v1
-    msgid: "20260907064943.25304-1-hemanth.selam@gmail.com"
+    msgid: "<20260907064943.25304-1-hemanth.selam@gmail.com>"
     date: "2026-09-07"
     summary: "2 补丁纯注释修正：1/2 把 kernel/sched/ext/ext.c 两处 upto 改为 up to，2/2 删除 tools/sched_ext/include/scx/common.bpf.h 中重复的 be；2 files changed, 3 insertions(+), 3 deletions(-)。"
     review_outcome: "09-09 01:13 Tejun Heo 回复 Applied 1-2 to sched_ext/for-7.4，两枚全部收取，无修改要求。"

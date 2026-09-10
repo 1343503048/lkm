@@ -127,7 +127,7 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: "20260909062649.469633-1-arighi@nvidia.com"
+thread_root_msgid: "<20260909062649.469633-1-arighi@nvidia.com>"
 lore_url: "https://lore.kernel.org/all/20260909062649.469633-1-arighi@nvidia.com/"
 upstream_commit: null
 fixes_commit: null
@@ -145,22 +145,22 @@ maintainers_involved:
   - "Srikar Dronamraju"
 patch_series:
   - version: v2
-    msgid: "20260904091838.3617894-1-arighi@nvidia.com"
+    msgid: "<20260904091838.3617894-1-arighi@nvidia.com>"
     date: "2026-09-04"
     summary: "澄清通用改动同样覆盖 POWER7；sched_smt_asym_prefer() 简化为直接检查最低层调度域（Dietmar Eggemann）。"
     review_outcome: "两条意见均已采纳。"
   - version: v3
-    msgid: "20260907163513.4172411-1-arighi@nvidia.com"
+    msgid: "<20260907163513.4172411-1-arighi@nvidia.com>"
     date: "2026-09-07"
     summary: "把 SMT 优先级调整收口到 select_idle_sibling() 中已选出 idle 候选之后；检查折进 select_idle_smt_priority() 并直接扫调度域 span（K Prateek Nayak）。"
     review_outcome: "Prateek 认可收口位置，后续建议进一步整合进慢路径。"
   - version: v4
-    msgid: "20260908082345.103087-1-arighi@nvidia.com"
+    msgid: "<20260908082345.103087-1-arighi@nvidia.com>"
     date: "2026-09-08"
     summary: "慢路径同样遵守 sibling 优先级；helper 改名 select_idle_smt_cpu()（Srikar Dronamraju）。"
     review_outcome: "Srikar 给出 Reviewed-by；Prateek 建议进一步用 group_asym_packing 整合进 sched_balance_find_dst_cpu()，作者以分类排序与 local-vs-idlest 比较两处语义问题反驳。"
   - version: v5
-    msgid: "20260909062649.469633-1-arighi@nvidia.com"
+    msgid: "<20260909062649.469633-1-arighi@nvidia.com>"
     date: "2026-09-09"
     summary: "仅删除冗余的 olympus_prefer_pe0 状态（K Prateek Nayak）。diffstat 6 files changed, 163 insertions(+), 17 deletions(-)，含 arch/arm64 三处改动。"
     review_outcome: "Prateek 给出 Reviewed-by+Tested-by（4th gen EPYC 与 128C Ampere ARM 服务器无性能影响）；Peter Zijlstra tentatively picked up 但要求 arm64 ack；Will Deacon 以 MIDR 检测拓扑不可接受为由拒绝；Vincent Guittot 认可调度器侧但质疑新增 static key。"

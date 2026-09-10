@@ -14,11 +14,22 @@ TAGS_OK = set("""sched_ext cfs eevdf rt deadline load_balance numa_balancing cgr
 core_sched preempt topology uclamp dl_server nohz affinity thermal autogroup rt_bandwidth sched_debug
 sched_clock regression hang crash syzbot perf arm64 x86 riscv hyperthreading""".split())
 
+# article_template.md specifies thread_root_msgid / patch_series msgid as "<xxxxx@xxxxx>"
+MSGID_SHAPE = re.compile(r'^<[^<>@\s]+@[^<>@\s]+>$')
+
 
 def lore_msgid(url):
-    """msgid == last non-empty path component of a lore.kernel.org URL."""
-    path = re.sub(r'^https?://lore\.kernel\.org/', '', url).strip('/')
-    return path.rsplit('/', 1)[-1] if path else ''
+    """msgid == the path component that carries '@'.
+
+    lore URLs come in several shapes (``all/<id>``, ``all/<id>/T/#u``,
+    ``r/<id>``, ``lkml/<id>/patch/...``); the last path component is only
+    the Message-ID for the first one, so the '@'-bearing segment is used.
+    """
+    path = re.sub(r'^https?://lore\.kernel\.org/', '', url)
+    for seg in path.split('/'):
+        if '@' in seg:
+            return seg
+    return ''
 
 
 def strip_tags(s):
@@ -110,12 +121,17 @@ for f in files:
         v = ps.get('msgid')
         if v in (None, 'null'):
             continue
+        chk(MSGID_SHAPE.match(str(v)), '%s: patch_series msgid 应为 <local@domain> 形式: %s' % (b, v))
         chk(str(v).strip('<>') in known_msgid, '%s: patch_series msgid 查无出处: %s' % (b, v))
     for fld in ('thread_root_msgid', 'lore_url'):
         v = y.get(fld)
         if v in (None, 'null'):
             continue
         s = str(v)
+        if s.startswith('http'):
+            chk(fld != 'thread_root_msgid', '%s: thread_root_msgid 应为 msgid 而非 URL: %s' % (b, s))
+        else:
+            chk(MSGID_SHAPE.match(s), '%s: %s 应为 <local@domain> 形式: %s' % (b, fld, s))
         idv = lore_msgid(s) if s.startswith('http') else s.strip('<>')
         chk(idv in known_msgid, '%s: %s 的 msgid 查无出处: %s' % (b, fld, idv))
     for url in set(re.findall(r'https?://lore\.kernel\.org/[^\s)\]">]+', t)):

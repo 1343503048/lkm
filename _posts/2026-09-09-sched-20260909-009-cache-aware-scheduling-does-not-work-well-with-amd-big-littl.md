@@ -6,7 +6,7 @@ subsystem: sched
 type: bug
 status: stalled
 severity: medium
-thread_root_msgid: 2180ea5a-eb28-4152-8d4d-cd00b0c24b2e@computerix.info
+thread_root_msgid: <2180ea5a-eb28-4152-8d4d-cd00b0c24b2e@computerix.info>
 lore_url: https://lore.kernel.org/all/e17ef3af-c1cd-4360-ba4b-9900ccc36ef6@computerix.info/
 upstream_commit: null
 fixes_commit: null
@@ -20,7 +20,7 @@ maintainers_involved:
 - Mario Limonciello
 patch_series:
 - version: v1
-  msgid: 2180ea5a-eb28-4152-8d4d-cd00b0c24b2e@computerix.info
+  msgid: <2180ea5a-eb28-4152-8d4d-cd00b0c24b2e@computerix.info>
   date: '2026-09-09'
   summary: 问题报告线程（非 patch 系列）。本日无新代码；澄清 (b)/(c) 对照组里被简称 patch 的是 Tim Chen 的 20260825174112.2580942-1
     而非 Mario 的 c1e7fe5e75ed（后者只把默认 cache-aware 参数经 debugfs 暴露、不改取值），并确认 HX-370 拓扑为大核

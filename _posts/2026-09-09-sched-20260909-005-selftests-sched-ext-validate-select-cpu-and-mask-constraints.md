@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: low
-thread_root_msgid: 20260906144029.848978-1-hi@tychen.cc
+thread_root_msgid: <20260906144029.848978-1-hi@tychen.cc>
 lore_url: https://lore.kernel.org/all/53d04980eecb0e5f6eeea25a5cf0dcf5@kernel.org/
 upstream_commit: null
 fixes_commit: null
@@ -19,12 +19,12 @@ maintainers_involved:
 - Tejun Heo
 patch_series:
 - version: v1
-  msgid: 20260906144029.848978-1-hi@tychen.cc
+  msgid: <20260906144029.848978-1-hi@tychen.cc>
   date: '2026-09-06'
   summary: 为 scx_bpf_select_cpu_and() 的 cpumask 约束新增 selftest 用例；补丁正文不在当天缓存内，用例组织细节未获取到。
   review_outcome: 无人回帖。
 - version: v2
-  msgid: CACGbirQ-xfWymbY9Z440sjbUseLRuaPFT17mBAwddeN7wqVi-w@mail.gmail.com
+  msgid: <CACGbirQ-xfWymbY9Z440sjbUseLRuaPFT17mBAwddeN7wqVi-w@mail.gmail.com>
   date: '2026-09-09'
   summary: 内容与 v1 的关系未在缓存中可证；作者 09-09 23:25 说明这次 RESEND 因 Gmail 出站折长行破坏了补丁空白符，请维护者忽略，并以
     text/plain 附件重发了未改动的 v2。

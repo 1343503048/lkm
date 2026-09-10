@@ -49,7 +49,7 @@ subsystem: sched
 type: fix
 status: merged_tip
 severity: low
-thread_root_msgid: "20260906135534.749534-1-hi@tychen.cc"
+thread_root_msgid: "<20260906135534.749534-1-hi@tychen.cc>"
 lore_url: "https://lore.kernel.org/all/47ce114f204b0c2f630bcdb2900cd5b0@kernel.org/"
 upstream_commit: null
 fixes_commit: "a5db7817af78"
@@ -62,7 +62,7 @@ maintainers_involved:
   - "Tejun Heo"
 patch_series:
   - version: v1
-    msgid: "20260906135534.749534-1-hi@tychen.cc"
+    msgid: "<20260906135534.749534-1-hi@tychen.cc>"
     date: "2026-09-06"
     summary: "hotplug.c 的 toggle_online_status() 返回 write 结果；test_hotplug() 新增 SCX_TEST_FAIL 初值与 out_destroy_link/out_destroy_skel 两条错误出口，必需的 CPU 状态写失败即判 FAIL 并释放调度器资源，由既有 cleanup 回调重试恢复 CPU1；正常恢复写失败也判 FAIL。+23/-11。"
     review_outcome: "09-09 02:01 Tejun Heo 回复 Applied to sched_ext/for-7.4，直接收取。"

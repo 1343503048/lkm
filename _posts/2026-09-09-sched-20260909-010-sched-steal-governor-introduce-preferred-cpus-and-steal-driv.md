@@ -6,7 +6,7 @@ subsystem: sched
 type: feature
 status: under_review
 severity: none
-thread_root_msgid: 20260909135617.871006-1-sshegde@linux.ibm.com
+thread_root_msgid: <20260909135617.871006-1-sshegde@linux.ibm.com>
 lore_url: https://lore.kernel.org/all/20260909135617.871006-1-sshegde@linux.ibm.com/
 upstream_commit: null
 fixes_commit: null
@@ -19,20 +19,20 @@ maintainers_involved:
 - Yury Norov
 patch_series:
 - version: v11
-  msgid: 20260825103855.721013-1-sshegde@linux.ibm.com
+  msgid: <20260825103855.721013-1-sshegde@linux.ibm.com>
   date: '2026-08-25'
   summary: steal 比例分母改为返回 active CPU 而非 possible CPU，避免阈值被稀释（Yury Norov、Ionut Nechita）；加入
     XEN dom0 阻塞检查；多架构框架推迟到合并后再设计。
   review_outcome: Yury Norov 与 Ionut Nechita 的意见被采纳。
 - version: v12
-  msgid: 20260903063240.268775-1-sshegde@linux.ibm.com
+  msgid: <20260903063240.268775-1-sshegde@linux.ibm.com>
   date: '2026-09-03'
   summary: 简化 ARM64 32 位任务 p->cpus_ptr 可能包含架构上不可能 CPU 的情形（Dietmar Eggemann、Vincent
     Guittot），为此新增 cpumask_intersects_and；按 Vincent 意见暂不做架构 kconfig gating。
   review_outcome: 09-09 06:58 Yury Norov 就该系列 08/13 的 struct rq 字段放置再提意见：不应依赖 hole
     优化，应放到逻辑相关字段旁，并建议放 prev_steal_time* 或 active balancing 段。
 - version: v13
-  msgid: 20260909135617.871006-1-sshegde@linux.ibm.com
+  msgid: <20260909135617.871006-1-sshegde@linux.ibm.com>
   date: '2026-09-09'
   summary: 改名 push_task_work_done → npc_push_work_pending、按 Yury 意见挪到 steal_* 字段旁并加
     CONFIG_PREFERRED_CPU 守卫、更新 select_fallback_rq 之后 rq lock 的注释；13 补丁，23 files changed,

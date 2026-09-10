@@ -6,7 +6,7 @@ subsystem: sched
 type: feature
 status: merged_tip
 severity: none
-thread_root_msgid: 20260906144044.849222-1-hi@tychen.cc
+thread_root_msgid: <20260906144044.849222-1-hi@tychen.cc>
 lore_url: https://lore.kernel.org/all/87d38cf2983a82fc89e18112510f5091@kernel.org/
 upstream_commit: null
 fixes_commit: null
@@ -19,7 +19,7 @@ maintainers_involved:
 - Tejun Heo
 patch_series:
 - version: v1
-  msgid: 20260906144044.849222-1-hi@tychen.cc
+  msgid: <20260906144044.849222-1-hi@tychen.cc>
   date: '2026-09-06'
   summary: 为 sched_ext selftests 补 DSQ 重复创建与 DSQ ID 复用两种情形的覆盖；补丁正文不在当天邮件缓存内，实现细节未获取到，此处仅按邮件主题与维护者回帖记录范围限于
     tools/testing/selftests/sched_ext/。

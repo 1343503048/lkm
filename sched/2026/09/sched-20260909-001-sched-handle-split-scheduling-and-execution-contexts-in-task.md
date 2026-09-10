@@ -109,7 +109,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: medium
-thread_root_msgid: "20260909092901.2989564-1-sh_def@163.com"
+thread_root_msgid: "<20260909092901.2989564-1-sh_def@163.com>"
 lore_url: "https://lore.kernel.org/all/20260909092901.2989564-1-sh_def@163.com/"
 upstream_commit: null
 fixes_commit: "7de9d4f94638"
@@ -123,17 +123,17 @@ maintainers_involved:
   - "Tim Chen"
 patch_series:
   - version: v2
-    msgid: "20260903041154.2479761-1-sh_def@163.com"
+    msgid: "<20260903041154.2479761-1-sh_def@163.com>"
     date: "2026-09-03"
     summary: "只处理 NUMA/cache 两个 tick 消费者，用公共 helper 取执行上下文；core scheduling 的 donor slice 记账问题尚未纳入。"
     review_outcome: "Tim Chen 于 09-09 00:01 确认应保持实时（task-clock）域比较，该意见最终成为 v4 的 5/5。"
   - version: v3
-    msgid: "20260904085244.799276-1-sh_def@163.com"
+    msgid: "<20260904085244.799276-1-sh_def@163.com>"
     date: "2026-09-04"
     summary: "把 NUMA 与 cache 两处收敛到一个 execution-context helper。"
     review_outcome: "Peter Zijlstra 否定这种局部 helper 修法，要求从 sched_class::task_tick() 接口本身解决；09-09 16:37 又在 v3 1/2 上回了 Indeed/Whoopsie 承认缺陷成立。"
   - version: v4
-    msgid: "20260909092901.2989564-1-sh_def@163.com"
+    msgid: "<20260909092901.2989564-1-sh_def@163.com>"
     date: "2026-09-09"
     summary: "5 补丁：去掉 task_tick() 的 task 参数并引入 donor 先/curr 后的公共分发器（1/5），NUMA 与 cache 移到 FAIR 执行上下文（2/5、3/5），RT 调度类状态留 donor、看门狗跟 curr（4/5），新增 core-slicing 用 task-clock 域度量 donor 已消耗 slice（5/5，Fixes aa4f74dfd42b）。"
     review_outcome: "Peter Zijlstra 同日两条意见：3/5 要求合并成单个 donor_class 与单个 curr_class 块；4/5 明确 NAK（不接受在 __schedule() 中间散落 rt 代码）。1/5 与 2/5 暂无人表态。"

@@ -6,7 +6,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: medium
-thread_root_msgid: 20260908135526.2783039-1-vincent.guittot@linaro.org
+thread_root_msgid: <20260908135526.2783039-1-vincent.guittot@linaro.org>
 lore_url: https://lore.kernel.org/all/88404fc2-22e5-4792-9de3-ffce55e98055@amd.com/
 upstream_commit: null
 fixes_commit: aef6987d8954
@@ -19,7 +19,7 @@ maintainers_involved:
 - K Prateek Nayak
 patch_series:
 - version: v1
-  msgid: 20260908135526.2783039-1-vincent.guittot@linaro.org
+  msgid: <20260908135526.2783039-1-vincent.guittot@linaro.org>
   date: '2026-09-08'
   summary: 把 RB_DECLARE_CALLBACKS 泛化为 RB_DECLARE_CALLBACKS_MULTI（由调用方提供 RBCOPY），原单字段宏改为自动生成
     _copy_single 后转调 MULTI；fair.c 新增 min_vruntime_copy() 同时搬运 min_vruntime/min_slice/max_slice。

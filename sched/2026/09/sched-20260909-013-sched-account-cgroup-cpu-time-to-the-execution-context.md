@@ -73,7 +73,7 @@ subsystem: sched
 type: bug
 status: under_review
 severity: low
-thread_root_msgid: "20260904034707.268416-1-sh_def@163.com"
+thread_root_msgid: "<20260904034707.268416-1-sh_def@163.com>"
 lore_url: "https://lore.kernel.org/all/CANDhNCq5iPq87=iKSJv-XzYzTYJ8Hp+bPJ6SoVfWB3pRa=HypQ@mail.gmail.com/"
 upstream_commit: null
 fixes_commit: null
@@ -87,7 +87,7 @@ maintainers_involved:
   - "Tejun Heo"
 patch_series:
   - version: v2
-    msgid: "20260904034707.268416-1-sh_def@163.com"
+    msgid: "<20260904034707.268416-1-sh_def@163.com>"
     date: "2026-09-04"
     summary: "沿用 Tejun Heo 意见，把 cgroup_account_cputime() 的目标从 rq->donor 改为 rq->curr，使 cgroup CPU usage 与实际执行任务一致；kernel/sched/fair.c 单行改动，不改 CFS bandwidth 记账路径。"
     review_outcome: "Tejun Heo 此前给出条件式 Acked-by（需 John 同意）。09-09 13:17 John Stultz 给 Tentatively Acked-by 并说明 aa4f74dfd42b 当初选择记给 donor 是出于 CPU 带宽控制器「该限流谁就记给谁」的考虑；14:08 作者回应本补丁不触及 account_cfs_rq_runtime() 的带宽路径，故该场景行为不变，并认同 donated/gifted 时间为独立后续工作。"

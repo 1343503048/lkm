@@ -6,7 +6,7 @@ subsystem: sched
 type: fix
 status: under_review
 severity: none
-thread_root_msgid: 20260908235552.2610256-5-ziyang.meme@gmail.com
+thread_root_msgid: <20260908235552.2610256-5-ziyang.meme@gmail.com>
 lore_url: https://lore.kernel.org/all/20260908235552.2610256-5-ziyang.meme@gmail.com/
 upstream_commit: null
 fixes_commit: null
@@ -18,13 +18,13 @@ authors:
 maintainers_involved: []
 patch_series:
 - version: v3
-  msgid: 20260814155054.scx_selftests_make@ziyang
+  msgid: <20260814075054.507089-5-ziyang.meme@gmail.com>
   date: '2026-08-14'
   summary: 用共享的 tools/testing/selftests/lib.bpf.mk 取代 sched_ext 自带约 130 行 BPF 构建机器，Makefile
     减 116 行；声明 28 个 skeleton/subskeleton 公开 API 不变。
   review_outcome: Suggested-by Eduard Zingerman 与 Mykola Lysenko；当日无进一步 review。
 - version: v4
-  msgid: 20260908235552.2610256-5-ziyang.meme@gmail.com
+  msgid: <20260908235552.2610256-5-ziyang.meme@gmail.com>
   date: '2026-09-09'
   summary: 同上方向，实测 +26/-123；以 BPF_SRCS/BPF_SKEL_EXT/BPF_GEN_SUBSKEL=1 与显式 BPF_OBJ_DIR/BPF_SKEL_DIR
     接入共享规则并保留既有 build/ 布局，本地 IS_LITTLE_ENDIAN 推导改用共享片段的 $(MENDIAN)。v3→v4 的 changelog
@@ -85,7 +85,7 @@ SCXOBJ_DIR   := $(BPF_OBJ_DIR)
 
 ## 版本演进与当前进展
 
-- v3：08-14 发出（`<20260814155054.scx_selftests_make@ziyang>`），当时 Makefile 减 116 行。
+- v3：08-14 发出（`<20260814075054.507089-5-ziyang.meme@gmail.com>`），当时 Makefile 减 116 行。
 - v4 4/4：09-09 07:55（`<20260908235552.2610256-5-ziyang.meme@gmail.com>`），改为 +26/-123。相比 v3 少删了几行、多了一些显式的目录保留设置，但**v3→v4 的 changelog 未获取到**（封面 `<20260908235552.2610256-1-ziyang.meme@gmail.com>` 不在当天邮件缓存里），因此不能确认这次迭代是为回应谁的哪条意见。
 - 4/4 发出当天无人回帖；1/4..3/4 也不在当天缓存内。
 
@@ -113,6 +113,6 @@ SCXOBJ_DIR   := $(BPF_OBJ_DIR)
 ## 参考链接
 
 - v4 4/4: https://lore.kernel.org/all/20260908235552.2610256-5-ziyang.meme@gmail.com/
-- v3 线程根: https://lore.kernel.org/all/20260814155054.scx_selftests_make@ziyang/
+- v3 线程根: https://lore.kernel.org/all/20260814075054.507089-5-ziyang.meme@gmail.com/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
