@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 83 篇
+共 86 篇
 
+- [sched-20260911-009](../../2026/09/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延迟的负载均衡改造）RESEND 后的讨论在当日继续发酵：Vincent Guittot 进一步加码——不只拒绝 05/10 的新选核函数，还质疑整个 LB_PROMOTE 的存在必要性与「real-time」的提法；K Prateek Nayak 对 01/10 给出反方案（rq->all_pinned
+- [sched-20260911-006](../../2026/09/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `feature/low/rfc` — Tim Chen 当日回复 Shrikanth Hegde 对该 RFC 0/7 的四个前置问题：给出腾讯（Vern Hao）跨进程按功能分组的真实用例、明确无需应用改码（管理员/守护进程用 PR_SCHED_CACHE_SHARE_FROM 按 pid 对分组）、运行时可分组、并重新陈述拒绝 cgroup 载体的理由。作者方首次正面回应，RFC 讨论从「接口要不要做」推进到「接口形状是否成立」。
+- [sched-20260911-003](../../2026/09/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.md) `fix/high/under_review` — Tim Chen 与 Chen Yu 把 cache aware scheduling（CAS，v7.2 合入）合入后发现的问题收拢成一个 4 补丁修复系列：两个修任务被搁置/拽离首选 LLC，两个修一处 KASAN 抓到的 use-after-free。当日 Peter Zijlstra 对 patch 4/4 的实现风格发火（"This is horrific crap"），Tim 承诺清理后
 - [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评
 - [sched-20260910-011](../../2026/09/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.md) `discussion/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-015 / sched-20260830-003。09-09 Chen Yu 对「用 cfs.h_nr_queued 作分母」与「Lu Wang 的 ALB guard 是否已覆盖该场景」的两连问，09-10 由 Tim Chen 给出完整回答：用 T1/T2 反例论证 h_nr_queued 作分母
 - [sched-20260910-010](../../2026/09/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 

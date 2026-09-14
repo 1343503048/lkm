@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 41
+article_count: 43
 ---
 
+- [sched-20260911-002](/lkm/2026/09/11/sched-20260911-002-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name
+- [sched-20260911-010](/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html) `feature/low/under_review` — sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES
 - [sched-20260909-010](/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260909-017](/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `bug/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260908-009](/lkm/2026/09/08/sched-20260908-009-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/none/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock

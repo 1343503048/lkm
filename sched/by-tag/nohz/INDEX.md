@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 22 篇
+共 23 篇
 
+- [sched-20260911-001](../../2026/09/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/under_review` — Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes
 - [sched-20260910-015](../../2026/09/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/superseded` — 这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`F
 - [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评
 - [sched-20260908-001](../../2026/09/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not 

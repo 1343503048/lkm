@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 41 篇
+共 43 篇
 
+- [sched-20260911-010](../../2026/09/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — Aaron Tomlin 提出新 patch：给 panic 时的 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务直接打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发，当日无回帖。
+- [sched-20260911-002](../../2026/09/sched-20260911-002-sched-add-support-for-long-task-name.md) `feature/low/under_review` — André Almeida（Igalia）把线程名从 16 字节扩展到 TASK_COMM_EXT_LEN=64 的系列发布 v6：新增 PR_{SET,GET}_EXT_NAME prctl 接口 + 保证 NUL 结尾的 copy_task_comm() helper，旧用户态 API 显式截断到 TASK_COMM_LEN。本文为增量更新，完整背景见 sched-20260828-009（v
 - [sched-20260909-017](../../2026/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `bug/low/under_review` — Wei Yang（腾讯，邮件显示名 `albin_yang@163.com`）09-09 21:33 发出的单行修复：在 `DELAY_DEQUEUE` 下，一个正在睡觉（`se.sched_delayed`）的任务被普通迁移路径搬走时，`sched_info_enqueue()` 会把 `last_queued` 重新设成迁移时刻，于是真正唤醒时无法再复位，整段睡眠时间被折叠进 `run_del
 - [sched-20260909-010](../../2026/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 sched-20260907-011 / sched-20260903-002 / sched-20260902-014 / sched-20260831-007。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Pete
 - [sched-20260908-009](../../2026/09/sched-20260908-009-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — 本文为增量更新，完整背景与 v1→v2 的差异见 [[sched-20260907-004]]。09-08 本线程只有一封新邮件：SJ Park 在 05:20 给 patch 1/8 打上 `Reviewed-by`，条件是 Lorenzo Stoakes 提的缩进要求被采纳（「Assuming Lorenzo's indentation change requests are accepted

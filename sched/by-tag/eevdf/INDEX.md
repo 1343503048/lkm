@@ -1,8 +1,9 @@
 # tag: eevdf
 
-共 24 篇
+共 25 篇
 
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
+- [sched-20260911-015](../../2026/09/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.md) `fix/low/under_review` — Kayra Cizmeci 的系列（让 place_entity()/requeue_delayed_entity() 不必重复计算 curr 状态）在 ping 后当日获得两位维护者表态：Vincent 认为「降低可读性且无可测收益」，Peter Zijlstra 则给出更彻底的判断——curr == se 分支根本不可达，整补丁等价于 no-op，不如把死代码整个删掉；作者当场接受 Peter
 - [sched-20260910-014](../../2026/09/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.md) `fix/under_review` — Yury Norov 的单补丁清理：把 `pick_task_fair()` 里「从 rq 上挑任务」的那段抽成静态 helper `pick_task_fair_rq()`，并用 `while` / `do-while` 取代 `again:` / `idle:` 两个 goto 标签。自陈 "No functional changes intended"，GCC 15.2.0 + `x86_6
 - [sched-20260910-005](../../2026/09/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.md) `bug/medium/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-005。Vincent Guittot 的 max_slice 初始化修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 9a8bc9bb4c3f，09-10 10:22 +0200），与同日的多字段拷贝修复（sched-20260910-004）一起构成 E
 - [sched-20260910-004](../../2026/09/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.md) `bug/medium/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-008 / sched-20260908-004。Vincent Guittot 的修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 51b0e68cfa0a，09-10 10:22 +0200），EEVDF 运行树 3 个增广字段只拷贝 min_vrunt

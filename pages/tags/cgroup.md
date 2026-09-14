@@ -2,10 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 69
+article_count: 71
 ---
 
 - [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260911-006](/lkm/2026/09/11/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `feature/low/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
+- [sched-20260911-014](/lkm/2026/09/11/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260910-016](/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context
 - [sched-20260909-013](/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context
 - [sched-20260909-016](/lkm/2026/09/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `discussion/none/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl

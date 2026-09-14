@@ -1,7 +1,8 @@
 # tag: perf
 
-共 37 篇
+共 38 篇
 
+- [sched-20260911-011](../../2026/09/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/stalled` — Luo Gengkun（华为）当日对 v9 系列发出 friendly ping：所有 review 意见已解决、无未决问题，询问 Tim Chen 是否可以收取。该系列（task_cache_work 只扫访问过的 CPU）自 07-31 v9 发出后已沉默六周，维护者仍未表态——按当前状态归为停滞（stalled）。本文为增量更新，v8 阶段的方案与并发安全讨论见 sched-20260728
 - [sched-20260909-007](../../2026/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 sched-20260908-002 / sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nay
 - [sched-20260908-002](../../2026/09/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-08 这一天该系列连出两版：凌晨 00:30 的 v3 落实了 Prateek Nayak 的「收口到 `select_idle_sibling()`」建议，下午 16:23 的 v4 又按 Srikar
 - [sched-20260907-011](../../2026/09/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 

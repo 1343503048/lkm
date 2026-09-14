@@ -2,9 +2,18 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 94
+article_count: 103
 ---
 
+- [sched-20260911-003](/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/under_review` — sched/cache: Fixes for cache aware scheduling
+- [sched-20260911-004](/lkm/2026/09/11/sched-20260911-004-sched-fair-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched/fair: Restart hrtick after same-task repicks
+- [sched-20260911-009](/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260911-011](/lkm/2026/09/11/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/stalled` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20260911-012](/lkm/2026/09/11/sched-20260911-012-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/low/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock
+- [sched-20260911-014](/lkm/2026/09/11/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
+- [sched-20260911-015](/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html) `fix/low/under_review` — sched/fair: avoid recalculating curr status in place_entity() and requeue_delayed_entity()
+- [sched-20260911-016](/lkm/2026/09/11/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
+- [sched-20260911-020](/lkm/2026/09/11/sched-20260911-020-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/low/under_review` — sched/fair: remove dead code on enqueue_task_fair()
 - [sched-20260910-001](/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/none/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
 - [sched-20260910-004](/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/merged_tip` — sched/eevdf: Fix rb augmented with multi fields
 - [sched-20260910-005](/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/merged_tip` — sched/eevdf: Fix augmented max_slice

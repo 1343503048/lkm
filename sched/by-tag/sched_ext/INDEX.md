@@ -1,9 +1,11 @@
 # tag: sched_ext
 
-共 121 篇
+共 123 篇
 
 - [sched-20260913-003](../../2026/09/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.md) `fix/low/merged_tip` — Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗口」的系列，09-13 23:59 被 Tejun Heo 应用到 `sched_ext/for-7.3-fixes`（仅做 minor wording cleanups），三天内走完 v1→v3 并合入维护者树。需要说明：该系列的原始补丁邮件未进入本邮箱缓存（v1/v2/v3 均未收到），本文基于 
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
+- [sched-20260911-007](../../2026/09/sched-20260911-007-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.md) `fix/low/under_review` — Ziyang Men 的 v5 系列第 4 补丁当日入缓存：用共享的 tools/testing/selftests/lib.bpf.mk 替换 sched_ext 自维护的约 130 行 libbpf/bpftool/skeleton 构建机制，并收到 bpf CI 的 AI review 两条非 bug 建议（subskel 生成可否裁掉、保留原注释的动机说明）。本文为增量更新，该系列在 09
+- [sched-20260911-005](../../2026/09/sched-20260911-005-sched-ext-close-the-pre-enable-ops-error-claim-window.md) `fix/low/under_review` — Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗口」的系列，当日收到 Tejun Heo 对 v1、v2 的两轮具体评审：删不可达错误路径、给出分配失败回退处的断言写法。评审在两轮内收敛、无异议——按 09-11 当日时点已属待收取状态（后续走向见 sched-20260913-003：v3 已被 Tejun 应用到 sched_ext/for-7
 - [sched-20260910-020](../../2026/09/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.md) `fix/merged_tip` — Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yphbchou0911@gmail.com` 直接投给 topic 分支的 v1 清理补丁。原始补丁未投递到本邮箱，正文与作者姓名均未获取到；本文的技术部分来自我对 Linux 7.2-rc6 中该头文件的逐行核对——`kernel/sched/ext/ext.h` 里
 - [sched-20260910-019](../../2026/09/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.md) `fix/merged_tip` — Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yphbchou0911@gmail.com` 的 v2 构建修复。**原始补丁（v1 与 v2）都不在邮箱缓存里**，缓存中只有 Tejun 的收取通知，因此补丁正文、commit message 与作者姓名均未获取到；本文的技术分析基于标题所指的两个问题在主线 Mak
 - [sched-20260910-018](../../2026/09/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_e

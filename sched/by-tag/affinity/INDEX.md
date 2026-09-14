@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 41 篇
+共 42 篇
 
+- [sched-20260911-001](../../2026/09/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/under_review` — Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes
 - [sched-20260910-018](../../2026/09/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_e
 - [sched-20260910-015](../../2026/09/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/superseded` — 这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`F
 - [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评

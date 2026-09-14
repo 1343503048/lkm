@@ -1,7 +1,9 @@
 # tag: hyperthreading
 
-共 16 篇
+共 18 篇
 
+- [sched-20260911-018](../../2026/09/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/low/under_review` — Andrea Righi 让 idle 选核遵守非对称 SMT 优先级的系列当日收到 Dietmar Eggemann 的一条实现级意见：select_idle_smt_cpu() 里的 for_each_domain() 建议换成 `sd = rcu_dereference_all(cpu_rq(cpu)->sd)`。改动很小，但指向该 helper 在 RCU/域遍历上的实现规范；系列的主体争
+- [sched-20260911-017](../../2026/09/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/low/under_review` — Andrea Righi 让调度器在 NVIDIA Olympus（SMT 不对称）平台上偏向首选 SMT 兄弟的系列再获一条重量级反馈：Dietmar Eggemann 在 ThunderX2（arm64 SMT-4）上用 OpenBLAS SGEMM 实测 v5 与基线「看不出变化」，并从机理上质疑——任务数 ≤ 核数时 SMT 感知的 select_idle_sibling() 本就该一核一
 - [sched-20260910-008](../../2026/09/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-002 / sched-20260907-005（本线程与 sched-20260910-007 的 NVIDIA Olympus v5 是同一逻辑系列：v4 的 2/2 补丁标题即本 subject）。09-10 的唯一进展是 Andrea Righi 对 Vincent Guittot 的 sta
 - [sched-20260910-007](../../2026/09/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-007 / sched-20260904-002。v5 在 09-09 收获 Prateek 的 Reviewed-by+Tested-by、Peter 的 tentatively picked up，但 Will Deacon 拒绝 arm64 MIDR 拓扑检测方案；09-10 Peter 直接表
 - [sched-20260909-007](../../2026/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 sched-20260908-002 / sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nay

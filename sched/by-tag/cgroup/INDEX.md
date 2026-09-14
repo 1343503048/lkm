@@ -1,8 +1,10 @@
 # tag: cgroup
 
-共 69 篇
+共 71 篇
 
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
+- [sched-20260911-014](../../2026/09/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — Zhe Liu（kylinos）修复 cgroup CPU 带宽 quota/burst 写入顺序依赖的系列发到 v3：v2 时曾考虑直接丢弃用户配置的 burst，v3 改为「保留配置值、refill 时把可用 burst 截到 min(burst, quota)」，并补自测与 cgroup v1/v2 文档。当日与 v2 版本同时入缓存、尚无回帖。本文为增量更新，v1/v2 进展见 sched
+- [sched-20260911-006](../../2026/09/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `feature/low/rfc` — Tim Chen 当日回复 Shrikanth Hegde 对该 RFC 0/7 的四个前置问题：给出腾讯（Vern Hao）跨进程按功能分组的真实用例、明确无需应用改码（管理员/守护进程用 PR_SCHED_CACHE_SHARE_FROM 按 pid 对分组）、运行时可分组、并重新陈述拒绝 cgroup 载体的理由。作者方首次正面回应，RFC 讨论从「接口要不要做」推进到「接口形状是否成立」。
 - [sched-20260910-016](../../2026/09/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enfo
 - [sched-20260909-016](../../2026/09/sched-20260909-016-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `discussion/rfc` — 本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把
 - [sched-20260909-013](../../2026/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 sched-20260904-003。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 "Tentatively: Acked-by"，并第一次说明了当初为什么选择记到 donor——他是按 CPU

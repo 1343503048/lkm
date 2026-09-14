@@ -2,9 +2,15 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 67
+article_count: 73
 ---
 
+- [sched-20260911-001](/lkm/2026/09/11/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html) `fix/low/under_review` — sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser
+- [sched-20260911-006](/lkm/2026/09/11/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `feature/low/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
+- [sched-20260911-009](/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260911-016](/lkm/2026/09/11/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
+- [sched-20260911-017](/lkm/2026/09/11/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/low/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260911-018](/lkm/2026/09/11/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260910-001](/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/none/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
 - [sched-20260910-007](/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260910-008](/lkm/2026/09/10/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection

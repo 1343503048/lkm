@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 41
+article_count: 42
 ---
 
+- [sched-20260911-001](/lkm/2026/09/11/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html) `fix/low/under_review` — sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser
 - [sched-20260910-012](/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html) `feature/none/under_review` — sched/fair: Load balance only among preferred CPUs
 - [sched-20260910-015](/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html) `fix/low/superseded` — sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser
 - [sched-20260910-018](/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/merged_tip` — selftests/sched_ext: Validate select_cpu_and mask constraints

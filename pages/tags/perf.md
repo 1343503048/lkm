@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 37
+article_count: 38
 ---
 
+- [sched-20260911-011](/lkm/2026/09/11/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/stalled` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 - [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260907-011](/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html) `feature/none/under_review` — sched/core: Push current task from non preferred CPU

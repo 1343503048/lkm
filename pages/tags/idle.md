@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 37
+article_count: 39
 ---
 
+- [sched-20260911-017](/lkm/2026/09/11/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/low/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260911-018](/lkm/2026/09/11/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260910-007](/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260910-008](/lkm/2026/09/10/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260910-012](/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html) `feature/none/under_review` — sched/fair: Load balance only among preferred CPUs
