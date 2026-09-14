@@ -1,8 +1,10 @@
 # tag: preempt
 
-共 41 篇
+共 43 篇
 
 - [sched-20260913-004](../../2026/09/sched-20260913-004-sched-set-need-resched-flags-before-tracing.md) `fix/high/under_review` — Andrea Righi 修复 `sched_set_need_resched_tp` tracepoint 早于 TIF_NEED_RESCHED 标志设置而引发的 BPF tracepoint 递归、直至内核栈溢出的问题（Fixes adcc3bfa8806「sched: Adapt sched tracepoints for RV task model」）。09-13 kernel-patc
+- [sched-20260912-007](../../2026/09/sched-20260912-007-sched-set-need-resched-flags-before-tracing.md) `fix/medium/superseded` — Andrea Righi 修复 sched_set_need_resched_tp 在 TIF_NEED_RESCHED 置位前触发、可被 BPF 程序递归重入直至内核栈溢出的问题；Gabriele Monaco 当即指出这与 Sechang Noh 六月的系列是同一修复，Andrea 确认逐行相同并主动撤回——「We can ignore this one and go with Sechang
+- [sched-20260912-005](../../2026/09/sched-20260912-005-sched-ext-add-lazy-preemption-support.md) `feature/low/under_review` — Andrea Righi 直接投递到 sched_ext/for-7.4 树的双补丁系列：给 BPF 调度器补上 fair 类已有的「惰性抢占」能力——新增 SCX_ENQ_PREEMPT_LAZY / SCX_KICK_PREEMPT_LAZY 与 SCX_OPS_LAZY_SLICE_EXPIRY，slice 过期后调度边界可推迟到返回用户态或下个 tick；配套一个 623 行的 kick 
 - [sched-20260910-018](../../2026/09/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_e
 - [sched-20260910-017](../../2026/09/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.md) `fix/medium/under_review` — 本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through
 - [sched-20260910-002](../../2026/09/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（W

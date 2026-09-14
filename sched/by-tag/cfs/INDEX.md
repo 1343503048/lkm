@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 103 篇
+共 108 篇
 
+- [sched-20260912-012](../../2026/09/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/low/under_review` — Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。
+- [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还
+- [sched-20260912-004](../../2026/09/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据
+- [sched-20260912-003](../../2026/09/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.md) `fix/medium/under_review` — Davi Chaves Azevedo 的 llc_bytes 热插拔修复一日内走完 v1 review → v2 → 维护者认可：Chen Yu 在 Ryzen 8945HX（2 LLC）与 Xeon（每节点 4 LLC）上复现并给 Reviewed-by，Tim Chen 对 v2 表态「looks good to me」。v2 无功能变化（恢复启动期注释 + 补多 LLC 测试记录）。本文为
+- [sched-20260912-001](../../2026/09/sched-20260912-001-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/low/under_review` — Kayra Cizmeci 补发带版本号的 v3：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3），diff 与 09-11 的无版本号投递逐行一致——作者自述「忘了标 v3」。这是 place_entity 系列（PeterZ 判定 curr==se 不可达）与独立清理补丁两条线索的正式归并版本，当日仍无回帖。本文为增量更新
 - [sched-20260911-020](../../2026/09/sched-20260911-020-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/low/under_review` — Kayra Cizmeci 当日深夜独立投递的清理补丁：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3）。它与 Peter Zijlstra 在 place_entity 系列讨论（sched-20260911-015）中给出的删除 diff 内容完全一致——可视为作者按 PeterZ 方向把 v3 的落点单独成篇，两条线索正
 - [sched-20260911-016](../../2026/09/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.md) `fix/medium/under_review` — Davi Chaves Azevedo 修复 CPU 热插拔后 llc_bytes 停留旧值的问题（CONFIG_SCHED_CACHE 下调度器按缓存共享比例缩放 LLC 容量）：teardown 时调度域先于 cacheinfo 重建，后续更新又查到已 detach 的域，导致幸存 CPU 的 llc_bytes 偏小（实测 16MiB LLC 只剩 15,379,114 字节）。修复把共享掩
 - [sched-20260911-015](../../2026/09/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.md) `fix/low/under_review` — Kayra Cizmeci 的系列（让 place_entity()/requeue_delayed_entity() 不必重复计算 curr 状态）在 ping 后当日获得两位维护者表态：Vincent 认为「降低可读性且无可测收益」，Peter Zijlstra 则给出更彻底的判断——curr == se 分支根本不可达，整补丁等价于 no-op，不如把死代码整个删掉；作者当场接受 Peter

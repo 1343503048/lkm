@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 86
+article_count: 87
 ---
 
+- [sched-20260912-011](/lkm/2026/09/12/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
 - [sched-20260911-003](/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/under_review` — sched/cache: Fixes for cache aware scheduling
 - [sched-20260911-006](/lkm/2026/09/11/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `feature/low/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl
 - [sched-20260911-009](/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks

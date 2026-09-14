@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 103
+article_count: 108
 ---
 
+- [sched-20260912-001](/lkm/2026/09/12/sched-20260912-001-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/low/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20260912-003](/lkm/2026/09/12/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
+- [sched-20260912-004](/lkm/2026/09/12/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks
+- [sched-20260912-011](/lkm/2026/09/12/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
+- [sched-20260912-012](/lkm/2026/09/12/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/low/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260911-003](/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/under_review` — sched/cache: Fixes for cache aware scheduling
 - [sched-20260911-004](/lkm/2026/09/11/sched-20260911-004-sched-fair-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched/fair: Restart hrtick after same-task repicks
 - [sched-20260911-009](/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks

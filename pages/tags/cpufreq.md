@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 31
+article_count: 32
 ---
 
+- [sched-20260912-012](/lkm/2026/09/12/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/low/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260910-009](/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260909-012](/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html) `bug/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260908-006](/lkm/2026/09/08/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling

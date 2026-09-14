@@ -2,11 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 123
+article_count: 124
 ---
 
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260913-003](/lkm/2026/09/13/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.html) `fix/low/merged_tip` — sched_ext: Close the pre-enable ops error claim window
+- [sched-20260912-005](/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html) `feature/low/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260911-005](/lkm/2026/09/11/sched-20260911-005-sched-ext-close-the-pre-enable-ops-error-claim-window.html) `fix/low/under_review` — sched_ext: Close the pre-enable ops error claim window
 - [sched-20260911-007](/lkm/2026/09/11/sched-20260911-007-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.html) `fix/low/under_review` — selftests/sched_ext: build BPF schedulers via the shared lib.bpf.mk
 - [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext

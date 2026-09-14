@@ -8928,6 +8928,211 @@
     "tldr": "Kayra Cizmeci 当日深夜独立投递的清理补丁：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3）。它与 Peter Zijlstra 在 place_entity 系列讨论（sched-20260911-015）中给出的删除 diff 内容完全一致——可视为作者按 PeterZ 方向把 v3 的落点单独成篇，两条线索正在合流。当日无回帖。"
   },
   {
+    "title": "sched/fair: remove dead code on enqueue_task_fair()",
+    "id": "sched-20260912-001",
+    "date": "2026-09-12",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-001-sched-fair-remove-dead-code-on-enqueue-task-fair.html",
+    "tldr": "Kayra Cizmeci 补发带版本号的 v3：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3），diff 与 09-11 的无版本号投递逐行一致——作者自述「忘了标 v3」。这是 place_entity 系列（PeterZ 判定 curr==se 不可达）与独立清理补丁两条线索的正式归并版本，当日仍无回帖。本文为增量更新，前情见 sched-20260911-020、sched-20260911-015。"
+  },
+  {
+    "title": "[BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)",
+    "id": "sched-20260912-002",
+    "date": "2026-09-12",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "regression"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-002-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html",
+    "tldr": "nested vfork 触发 scheduling-while-atomic 的 futex bug 当日迎来关键收尾：引入问题排除逻辑的 Davidlohr Bueso 亲自回帖——「没真正测过，完全接受 Peter 的 fixlet，抱歉弄坏了东西」，解除了 09-11 遗留的「当初为何排除 vfork」疑问。修复路线（PeterZ 的 2 行改动）获当事双方认可，仅剩正式补丁未投递。本文为增量更新，bug 定性见 sched-20260911-013。"
+  },
+  {
+    "title": "sched/cache: Refresh LLC capacity across CPU hotplug",
+    "id": "sched-20260912-003",
+    "date": "2026-09-12",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Davi Chaves Azevedo"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html",
+    "tldr": "Davi Chaves Azevedo 的 llc_bytes 热插拔修复一日内走完 v1 review → v2 → 维护者认可：Chen Yu 在 Ryzen 8945HX（2 LLC）与 Xeon（每节点 4 LLC）上复现并给 Reviewed-by，Tim Chen 对 v2 表态「looks good to me」。v2 无功能变化（恢复启动期注释 + 补多 LLC 测试记录）。本文为增量更新，v1 分析见 sched-20260911-016。"
+  },
+  {
+    "title": "sched: Restart hrtick after same-task repicks",
+    "id": "sched-20260912-004",
+    "date": "2026-09-12",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_clock"
+    ],
+    "authors": [
+      "Shubhang"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.html",
+    "tldr": "Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据同步到来：CPU-bound 任务最大运行时长从 5.227ms 降到 3.386ms、>4ms 样本从 6 个降到 0。本文为增量更新，v1 与 09-11 讨论见 sched-20260911-0"
+  },
+  {
+    "title": "sched_ext: Add lazy preemption support",
+    "id": "sched-20260912-005",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "preempt"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html",
+    "tldr": "Andrea Righi 直接投递到 sched_ext/for-7.4 树的双补丁系列：给 BPF 调度器补上 fair 类已有的「惰性抢占」能力——新增 SCX_ENQ_PREEMPT_LAZY / SCX_KICK_PREEMPT_LAZY 与 SCX_OPS_LAZY_SLICE_EXPIRY，slice 过期后调度边界可推迟到返回用户态或下个 tick；配套一个 623 行的 kick selftest（fexit 探针校验精确的 reschedule TIF）。当日无回帖。"
+  },
+  {
+    "title": "sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES",
+    "id": "sched-20260912-006",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Aaron Tomlin"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html",
+    "tldr": "Aaron Tomlin 的 panic 期 per-CPU runqueue 摘要补丁当日完成 v1→v2：kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者当天致谢（收件 Andrew、Peter）并以 rcu_dereference() 修复发出 v2。人类维护者评审仍未开始。本文为增量更新，v1 分析见 sched-20260911-010。"
+  },
+  {
+    "title": "sched: Set need-resched flags before tracing",
+    "id": "sched-20260912-007",
+    "date": "2026-09-12",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "preempt",
+      "crash"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-007-sched-set-need-resched-flags-before-tracing.html",
+    "tldr": "Andrea Righi 修复 sched_set_need_resched_tp 在 TIF_NEED_RESCHED 置位前触发、可被 BPF 程序递归重入直至内核栈溢出的问题；Gabriele Monaco 当即指出这与 Sechang Noh 六月的系列是同一修复，Andrea 确认逐行相同并主动撤回——「We can ignore this one and go with Sechang's」。本补丁本身就此终止，真正的修复在 Sechang 的 v3 系列（未入缓存）。后续报道见 sched-20260913-004。"
+  },
+  {
+    "title": "sched/fair: Honor asymmetric SMT priority in idle selection",
+    "id": "sched-20260912-008",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "arm64",
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html",
+    "tldr": "Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 sched-20260911-018。"
+  },
+  {
+    "title": "sched: Enable preferred SMT siblings on NVIDIA Olympus",
+    "id": "sched-20260912-009",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "arm64",
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html",
+    "tldr": "Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态，但收益机理首次得到完整阐述。本文为增量更新，测试争议见 sched-20260911-017。"
+  },
+  {
+    "title": "sched: Add support for long task name",
+    "id": "sched-20260912-010",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "André Almeida"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-010-sched-add-support-for-long-task-name.html",
+    "tldr": "André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 security/smack 的编译错误（cover 自嘲 \"for good\"）。系列自 v5 起持续以修编译错误的方式快速迭代，但仍无任何人类 review。本文为增量更新，v6 见 sched-20260911-002，完整背景见 sched-20260828-009。"
+  },
+  {
+    "title": "sched/fair: A series of load balance patches to improve real-time performance of CFS tasks",
+    "id": "sched-20260912-011",
+    "date": "2026-09-12",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Xin Zhao"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.html",
+    "tldr": "Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还原）；对 Prateek 的 LBF_ALL_PINNED 质疑给出双簇 T0/T1/T2 反例走查。维护者仍未跟进。本文为增量更新，09-10/09-11 讨论见 sched-20260910-00"
+  },
+  {
+    "title": "sched/fair: Only apply cpufreq pressure where frequency is invariant",
+    "id": "sched-20260912-012",
+    "date": "2026-09-12",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "cpufreq"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/12/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html",
+    "tldr": "Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。"
+  },
+  {
     "title": "[GIT PULL] scheduler fixes",
     "id": "sched-20260913-001",
     "date": "2026-09-13",

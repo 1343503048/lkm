@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 86 篇
+共 87 篇
 
+- [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还
 - [sched-20260911-009](../../2026/09/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延迟的负载均衡改造）RESEND 后的讨论在当日继续发酵：Vincent Guittot 进一步加码——不只拒绝 05/10 的新选核函数，还质疑整个 LB_PROMOTE 的存在必要性与「real-time」的提法；K Prateek Nayak 对 01/10 给出反方案（rq->all_pinned
 - [sched-20260911-006](../../2026/09/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `feature/low/rfc` — Tim Chen 当日回复 Shrikanth Hegde 对该 RFC 0/7 的四个前置问题：给出腾讯（Vern Hao）跨进程按功能分组的真实用例、明确无需应用改码（管理员/守护进程用 PR_SCHED_CACHE_SHARE_FROM 按 pid 对分组）、运行时可分组、并重新陈述拒绝 cgroup 载体的理由。作者方首次正面回应，RFC 讨论从「接口要不要做」推进到「接口形状是否成立」。
 - [sched-20260911-003](../../2026/09/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.md) `fix/high/under_review` — Tim Chen 与 Chen Yu 把 cache aware scheduling（CAS，v7.2 合入）合入后发现的问题收拢成一个 4 补丁修复系列：两个修任务被搁置/拽离首选 LLC，两个修一处 KASAN 抓到的 use-after-free。当日 Peter Zijlstra 对 patch 4/4 的实现风格发火（"This is horrific crap"），Tim 承诺清理后

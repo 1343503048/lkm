@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 16
+article_count: 17
 ---
 
+- [sched-20260912-002](/lkm/2026/09/12/sched-20260912-002-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html) `bug/medium/under_review` — [BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)
 - [sched-20260911-013](/lkm/2026/09/11/sched-20260911-013-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html) `bug/medium/under_review` — [BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)
 - [sched-20260908-006](/lkm/2026/09/08/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260903-006](/lkm/2026/09/03/sched-20260903-006-regression-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost.html) `bug/high/stalled` — [REGRESSION] sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)
