@@ -12,7 +12,7 @@ VOCAB = {
 }
 TAGS_OK = set("""sched_ext cfs eevdf rt deadline load_balance numa_balancing cgroup psi cpufreq idle
 core_sched preempt topology uclamp dl_server nohz affinity thermal autogroup rt_bandwidth sched_debug
-sched_clock regression hang crash syzbot perf arm64 x86 riscv hyperthreading""".split())
+sched_clock proxy_execution regression hang crash syzbot perf arm64 x86 riscv hyperthreading""".split())
 
 # article_template.md specifies thread_root_msgid / patch_series msgid as "<xxxxx@xxxxx>"
 MSGID_SHAPE = re.compile(r'^<[^<>@\s]+@[^<>@\s]+>$')

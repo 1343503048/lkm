@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 23
+article_count: 24
 ---
 
+- [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260910-004](/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/merged_tip` — sched/eevdf: Fix rb augmented with multi fields
 - [sched-20260910-005](/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html) `bug/medium/merged_tip` — sched/eevdf: Fix augmented max_slice
 - [sched-20260910-014](/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html) `fix/none/under_review` — sched/fair: Rework pick_task_fair() control flow

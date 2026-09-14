@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 21
+article_count: 23
 ---
 
+- [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
+- [sched-20260913-005](/lkm/2026/09/13/sched-20260913-005-sched-core-handle-unavailable-pointer-hash-in-pr-sched-core.html) `fix/low/under_review` — sched/core: Handle unavailable pointer hash in PR_SCHED_CORE_GET
 - [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260910-014](/lkm/2026/09/10/sched-20260910-014-sched-fair-rework-pick-task-fair-control-flow.html) `fix/none/under_review` — sched/fair: Rework pick_task_fair() control flow
 - [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks

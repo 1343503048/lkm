@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 24 篇
+共 26 篇
 
+- [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
+- [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
 - [sched-20260910-017](../../2026/09/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.md) `fix/medium/under_review` — 本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through
 - [sched-20260910-016](../../2026/09/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.md) `bug/low/under_review` — 本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enfo
 - [sched-20260910-003](../../2026/09/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-001。Hui Su 的 5 补丁 v4 系列在 09-09 收到 Peter Zijlstra 对 3/5 的重排要求和对 4/5 的明确 NAK 后，09-10 作者对全部四条意见给出了实质性回应：3/5 已按单 donor 块 + 单 curr 块重排、4/5 整个推翻原设计改为 sched_c

@@ -8588,5 +8588,92 @@
     ],
     "url": "/lkm/2026/09/10/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.html",
     "tldr": "Tejun Heo 于 09-10 01:52 回复 \"Applied to sched_ext/for-7.4.\"，收取了 `yphbchou0911@gmail.com` 直接投给 topic 分支的 v1 清理补丁。原始补丁未投递到本邮箱，正文与作者姓名均未获取到；本文的技术部分来自我对 Linux 7.2-rc6 中该头文件的逐行核对——`kernel/sched/ext/ext.h` 里确实存在**唯一一处**同条件相邻 ifdef 块（第 59 行 `#endif` 与第 61 行 `#ifdef CONFIG_SCHED_CLASS_EXT`），补丁标题描述的对象真实存在且范围恰"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20260913-001",
+    "date": "2026-09-13",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "proxy_execution",
+      "cgroup"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html",
+    "tldr": "Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmented rbtree 修复与 Hui Su 的两条 proxy execution 执行上下文记账修复。四条全部是本报 09-09/09-10 跟踪过的系列（见 related_articles），本"
+  },
+  {
+    "title": "sched: Handle split scheduling and execution contexts in task ticks",
+    "id": "sched-20260913-002",
+    "date": "2026-09-13",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution",
+      "core_sched",
+      "numa_balancing",
+      "sched_ext",
+      "rt"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、core slice baseline 保留跨同 donor reselect。同日 Kayra Cizmeci 质疑补丁 1「单独无用」、作者回应拆分是为可评审性。Peter 尚未对 v5 表态，系列维"
+  },
+  {
+    "title": "sched_ext: Close the pre-enable ops error claim window",
+    "id": "sched-20260913-003",
+    "date": "2026-09-13",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Qiurong Fang"
+    ],
+    "url": "/lkm/2026/09/13/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.html",
+    "tldr": "Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗口」的系列，09-13 23:59 被 Tejun Heo 应用到 `sched_ext/for-7.3-fixes`（仅做 minor wording cleanups），三天内走完 v1→v3 并合入维护者树。需要说明：该系列的原始补丁邮件未进入本邮箱缓存（v1/v2/v3 均未收到），本文基于 Tejun 的三轮回帖与合入回执重建脉络，补丁 diff 与 commit 细节未获取到。"
+  },
+  {
+    "title": "sched: Set need-resched flags before tracing",
+    "id": "sched-20260913-004",
+    "date": "2026-09-13",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "preempt",
+      "crash"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html",
+    "tldr": "Andrea Righi 修复 `sched_set_need_resched_tp` tracepoint 早于 TIF_NEED_RESCHED 标志设置而引发的 BPF tracepoint 递归、直至内核栈溢出的问题（Fixes adcc3bfa8806「sched: Adapt sched tracepoints for RV task model」）。09-13 kernel-patches CI 的 AI 审查 bot 提出：新顺序在远程 CPU 分支可能破坏 runtime verification 的 nrp monitor 状态机，panic reactor 下会直接 pa"
+  },
+  {
+    "title": "sched/core: Handle unavailable pointer hash in PR_SCHED_CORE_GET",
+    "id": "sched-20260913-005",
+    "date": "2026-09-13",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "core_sched"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/13/sched-20260913-005-sched-core-handle-unavailable-pointer-hash-in-pr-sched-core.html",
+    "tldr": "Hui Su 修复 PR_SCHED_CORE_GET 忽略 `ptr_to_hashval()` 的 -EBUSY 错误、在指针哈希 key 未初始化的早期启动窗口把已有 cookie 的任务误报为默认 cookie 0 的问题（Fixes 7ac592aa35a6「sched: prctl() core-scheduling interface」，Cc stable），配套 selftest 对 EBUSY 重试。同日连发 v1→v2：v2 把 selftest 的失败处理从「拿错误哨兵继续比对断言」改为「致命错误直接中止」。尚无维护者评审。经查当前主线 `kernel/sched/cor"
   }
 ]

@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 40
+article_count: 41
 ---
 
+- [sched-20260913-004](/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html) `fix/high/under_review` — sched: Set need-resched flags before tracing
 - [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260910-017](/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html) `fix/medium/under_review` — sched/core: Call wq_worker_tick() for the execution context
 - [sched-20260910-018](/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html) `fix/low/merged_tip` — selftests/sched_ext: Validate select_cpu_and mask constraints

@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 24
+article_count: 26
 ---
 
+- [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260910-016](/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html) `bug/low/under_review` — sched: Account cgroup CPU time to the execution context

@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 28
+article_count: 29
 ---
 
+- [sched-20260913-004](/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html) `fix/high/under_review` — sched: Set need-resched flags before tracing
 - [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/merged_tip` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
 - [sched-20260903-004](/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/under_review` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
 - [sched-20260902-003](/lkm/2026/09/02/sched-20260902-003-sched-cache-fix-use-after-free-mm-access-in-account-mm-sched.html) `bug/high/under_review` — sched/cache: Fix use after free mm access in account_mm_sched()

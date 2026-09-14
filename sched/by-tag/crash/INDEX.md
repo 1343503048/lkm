@@ -1,7 +1,8 @@
 # tag: crash
 
-共 28 篇
+共 29 篇
 
+- [sched-20260913-004](../../2026/09/sched-20260913-004-sched-set-need-resched-flags-before-tracing.md) `fix/high/under_review` — Andrea Righi 修复 `sched_set_need_resched_tp` tracepoint 早于 TIF_NEED_RESCHED 标志设置而引发的 BPF tracepoint 递归、直至内核栈溢出的问题（Fixes adcc3bfa8806「sched: Adapt sched tracepoints for RV task model」）。09-13 kernel-patc
 - [sched-20260904-011](../../2026/09/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.md) `fix/high/merged_tip` — Wanwu Li 发现两个 COMPAT kfunc 包装器（`scx_bpf_select_cpu_and()`、`scx_bpf_dsq_insert_vtime()`）在挂了 sub-sched 时会用 `scx_task_sched(p)` 去 `scx_error()`，而该字段对「已过 `sched_ext_dead()` 的任务」和 idle 任务为 NULL，NULL 会一路传到 
 - [sched-20260903-004](../../2026/09/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.md) `fix/high/under_review` — 带 sub-sched 时，COMPAT 包装 `scx_bpf_select_cpu_and()` 与 `scx_bpf_dsq_insert_vtime()` 会用 `scx_error(scx_task_sched(p), ...)` 报错，而 `p->scx.sched` 对「已过 `sched_ext_dead()` 的任务」和 idle 任务是 NULL，于是 `scx_error()
 - [sched-20260902-006](../../2026/09/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.md) `bug/high/merged_tip` — `scx_bpf_select_cpu_and()` 在「root scheduler 挂了 sub-sched 且参数用法不对」时走 `scx_error(scx_task_sched(p), ...)`，而 `scx_task_sched(p)` 就是 `p->scx.sched`——对不在 sched_ext 上的 任务它是 NULL。`BPF_PROG_TYPE_SYSCALL`（`bpf
