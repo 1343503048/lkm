@@ -9218,5 +9218,160 @@
     ],
     "url": "/lkm/2026/09/13/sched-20260913-005-sched-core-handle-unavailable-pointer-hash-in-pr-sched-core.html",
     "tldr": "Hui Su 修复 PR_SCHED_CORE_GET 忽略 `ptr_to_hashval()` 的 -EBUSY 错误、在指针哈希 key 未初始化的早期启动窗口把已有 cookie 的任务误报为默认 cookie 0 的问题（Fixes 7ac592aa35a6「sched: prctl() core-scheduling interface」，Cc stable），配套 selftest 对 EBUSY 重试。同日连发 v1→v2：v2 把 selftest 的失败处理从「拿错误哨兵继续比对断言」改为「致命错误直接中止」。尚无维护者评审。经查当前主线 `kernel/sched/cor"
+  },
+  {
+    "title": "Cache-aware scheduling does not work well with amd big/little cores",
+    "id": "sched-20260914-001",
+    "date": "2026-09-14",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "topology",
+      "x86"
+    ],
+    "authors": [
+      "Klaus Kusche"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html",
+    "tldr": "本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶化，构建超 8 分钟。Chen Yu 据此定位根因——AMD 混合平台依赖 SD_ASYM_PACKING 而非 ASYM_CPUCAPACITY，CAS 与之冲突——并给出「检测到 ASYM_PAC"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20260914-002",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "proxy_execution",
+      "cgroup"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html",
+    "tldr": "增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF augmented rbtree、两条 proxy execution 记账）正式从 tip 进入主线。"
+  },
+  {
+    "title": "kcov: Suppress timer and scheduler coverage leaks",
+    "id": "sched-20260914-003",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "preempt",
+      "rt"
+    ],
+    "authors": [
+      "Karl Mehltretter"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.html",
+    "tldr": "增量更新，v1/v2 全貌见 sched-20260902-016。Karl Mehltretter 发出 v3（6 补丁，其中 4/5/6 落在 kernel/sched/core.c）：相对 v2，rebase 到 mainline `22098763a10d`、按 Potapenko 意见共享 pause 与上下文切换抑制的 flag helper 并加 READ_ONCE/WRITE_ONCE/编译器屏障、把 try_to_wake_up 的 pause guard 提到 preempt guard 之前、删掉 sched 补丁的宽泛 Fixes 标签，并给出覆盖多架构/多编译器/KC"
+  },
+  {
+    "title": "sched/cache: Introduce task_struct->sched_cache_grp",
+    "id": "sched-20260914-004",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Tim Chen",
+      "Chen Yu"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.html",
+    "tldr": "增量更新，系列全貌见 sched-20260911-003（sched/cache: Fixes for cache aware scheduling 的 patch 4/4）。09-14 Chen Yu 回复 patch 4/4 的 rcu_dereference 用法修正方案：exec_mmap() 中 current 是唯一写者，改用 `rcu_dereference_protected(tsk->sched_cache_grp, tsk == current)`（仿 deref_curr_numa_group()）；未来支持 task tagging 出现多写者竞态时，再升级为 pi_"
+  },
+  {
+    "title": "sched/cache: Keep nr_pref_llc_running in the runnable domain",
+    "id": "sched-20260914-005",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html",
+    "tldr": "增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺序；Kayra 认可 \"Yeah, I think this is cleaner\"。这是对 sched-20260911-003 中 Kayra 质疑的延续收口。"
+  },
+  {
+    "title": "sched_ext: Add lazy preemption support",
+    "id": "sched-20260914-006",
+    "date": "2026-09-14",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "preempt"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-006-sched-ext-add-lazy-preemption-support.html",
+    "tldr": "增量更新，v1 全貌见 sched-20260912-005。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tick、kick 优先级收敛进 kick_one_cpu()、清掩码合并）；v3 按 Sashiko 的收尾意见微调（冗余 rq clock 更新、pin 锁、PR_SET_PDEATHSIG、nohz_"
+  },
+  {
+    "title": "sched/fair: avoid creating misfits during cache-aware balancing",
+    "id": "sched-20260914-007",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html",
+    "tldr": "增量更新，全貌见 sched-20260904-006（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 schedstat lb_imbalance_misfit 或其他信号）。Tim 尚未回复。"
+  },
+  {
+    "title": "sched/fair: fix typo in requeue_delayed_entity() comment",
+    "id": "sched-20260914-008",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "stalled",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-008-sched-fair-fix-typo-in-requeue-delayed-entity-comment.html",
+    "tldr": "Kayra Cizmeci 对 08-22 投出的注释 typo 修复补丁发 gentle ping（\"This one is not urgent, just a typo fix\"）。纯注释修正、无技术争议，但长期无维护者响应，补丁处于停滞状态。"
+  },
+  {
+    "title": "sched: Restart hrtick after same-task repicks",
+    "id": "sched-20260914-009",
+    "date": "2026-09-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_clock"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/09/14/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.html",
+    "tldr": "增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT_REPICK 用陈旧 dl_se->runtime 武装 hrtick 过晚、延迟 DL runtime 强制。作者表示若无 DL 情形需要该 rearm，下版将删除 DL 部分，请社区先忽略 v2"
   }
 ]

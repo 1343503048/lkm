@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_clock"
 title: "标签: sched_clock"
-article_count: 8
+article_count: 9
 ---
 
+- [sched-20260914-009](/lkm/2026/09/14/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks
 - [sched-20260912-004](/lkm/2026/09/12/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks
 - [sched-20260911-004](/lkm/2026/09/11/sched-20260911-004-sched-fair-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched/fair: Restart hrtick after same-task repicks
 - [sched-20260907-014](/lkm/2026/09/07/sched-20260907-014-sched-clock-add-option-to-use-absolute-time-against-hardware.html) `discussion/none/stalled` — sched_clock: Add option to use absolute time against hardware clock reset

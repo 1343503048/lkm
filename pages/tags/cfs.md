@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 108
+article_count: 112
 ---
 
+- [sched-20260914-004](/lkm/2026/09/14/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.html) `fix/high/under_review` — sched/cache: Introduce task_struct->sched_cache_grp
+- [sched-20260914-005](/lkm/2026/09/14/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
+- [sched-20260914-008](/lkm/2026/09/14/sched-20260914-008-sched-fair-fix-typo-in-requeue-delayed-entity-comment.html) `fix/none/stalled` — sched/fair: fix typo in requeue_delayed_entity() comment
+- [sched-20260914-009](/lkm/2026/09/14/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks
 - [sched-20260912-001](/lkm/2026/09/12/sched-20260912-001-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/low/under_review` — sched/fair: remove dead code on enqueue_task_fair()
 - [sched-20260912-003](/lkm/2026/09/12/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
 - [sched-20260912-004](/lkm/2026/09/12/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks

@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 108 篇
+共 112 篇
 
+- [sched-20260914-009](../../2026/09/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT
+- [sched-20260914-008](../../2026/09/sched-20260914-008-sched-fair-fix-typo-in-requeue-delayed-entity-comment.md) `fix/stalled` — Kayra Cizmeci 对 08-22 投出的注释 typo 修复补丁发 gentle ping（"This one is not urgent, just a typo fix"）。纯注释修正、无技术争议，但长期无维护者响应，补丁处于停滞状态。
+- [sched-20260914-005](../../2026/09/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — 增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺
+- [sched-20260914-004](../../2026/09/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.md) `fix/high/under_review` — 增量更新，系列全貌见 sched-20260911-003（sched/cache: Fixes for cache aware scheduling 的 patch 4/4）。09-14 Chen Yu 回复 patch 4/4 的 rcu_dereference 用法修正方案：exec_mmap() 中 current 是唯一写者，改用 `rcu_dereference_protected(t
 - [sched-20260912-012](../../2026/09/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/low/under_review` — Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。
 - [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还
 - [sched-20260912-004](../../2026/09/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据

@@ -1,7 +1,8 @@
 # tag: sched_clock
 
-共 8 篇
+共 9 篇
 
+- [sched-20260914-009](../../2026/09/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT
 - [sched-20260912-004](../../2026/09/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据
 - [sched-20260911-004](../../2026/09/sched-20260911-004-sched-fair-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系列在沉寂两周后当日出现大量进展：作者确认按 Zhan Xusheng 的意见改条件并承诺 v2，Peter Zijlstra 给出把 set_next_task() 的 `bool first` 改成枚举（SNT_PICK/SNT_REPICK）并覆盖全部调度类（含 DL）的重构方向，Vincent Guittot 参与了
 - [sched-20260907-014](../../2026/09/sched-20260907-014-sched-clock-add-option-to-use-absolute-time-against-hardware.md) `discussion/stalled` — 本文为增量更新，完整背景见 sched-20260906-005（Thomas Gleixner 09-06 的明确 NAK）与 sched-20260903-015（Marc Zyngier 的三条反对）。本日是这条线程的**收尾**：Feng Tang 09-07 17:05 接受「补丁 hacky」的判断，放弃改 epoch 的原方案，转而按 Marc 的建议拿出一个形状完全不同的 diff

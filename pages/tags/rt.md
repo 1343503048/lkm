@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 19
+article_count: 20
 ---
 
+- [sched-20260914-003](/lkm/2026/09/14/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260910-003](/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260909-001](/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks

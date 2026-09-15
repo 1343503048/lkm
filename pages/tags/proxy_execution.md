@@ -2,9 +2,10 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 26
+article_count: 27
 ---
 
+- [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260910-002](/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext

@@ -1,7 +1,9 @@
 # tag: topology
 
-共 77 篇
+共 79 篇
 
+- [sched-20260914-007](../../2026/09/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.md) `fix/medium/merged_tip` — 增量更新，全貌见 sched-20260904-006（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 s
+- [sched-20260914-001](../../2026/09/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶
 - [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还
 - [sched-20260912-009](../../2026/09/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/low/under_review` — Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态
 - [sched-20260912-008](../../2026/09/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/low/under_review` — Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 sched-20260911-

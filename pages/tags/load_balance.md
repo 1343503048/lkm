@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 87
+article_count: 91
 ---
 
+- [sched-20260914-001](/lkm/2026/09/14/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260914-004](/lkm/2026/09/14/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.html) `fix/high/under_review` — sched/cache: Introduce task_struct->sched_cache_grp
+- [sched-20260914-005](/lkm/2026/09/14/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
+- [sched-20260914-007](/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260912-011](/lkm/2026/09/12/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.html) `feature/low/rfc` — sched/fair: A series of load balance patches to improve real-time performance of CFS tasks
 - [sched-20260911-003](/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/under_review` — sched/cache: Fixes for cache aware scheduling
 - [sched-20260911-006](/lkm/2026/09/11/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `feature/low/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl

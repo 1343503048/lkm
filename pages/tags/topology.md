@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 77
+article_count: 79
 ---
 
+- [sched-20260914-001](/lkm/2026/09/14/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260914-007](/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260912-003](/lkm/2026/09/12/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
 - [sched-20260912-008](/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260912-009](/lkm/2026/09/12/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/low/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

@@ -1,7 +1,8 @@
 # tag: x86
 
-共 15 篇
+共 16 篇
 
+- [sched-20260914-001](../../2026/09/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶
 - [sched-20260910-010](../../2026/09/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 
 - [sched-20260909-009](../../2026/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 sched-20260905-007 / sched-20260831-006 / sched-20260829-003。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而*
 - [sched-20260908-008](../../2026/09/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景与三条互斥修法的对比见 [[sched-20260907-006]]、[[sched-20260903-010]]、[[sched-20260902-008]]。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__

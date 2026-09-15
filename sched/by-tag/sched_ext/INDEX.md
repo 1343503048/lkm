@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 124 篇
+共 125 篇
 
+- [sched-20260914-006](../../2026/09/sched-20260914-006-sched-ext-add-lazy-preemption-support.md) `feature/low/under_review` — 增量更新，v1 全貌见 sched-20260912-005。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tic
 - [sched-20260913-003](../../2026/09/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.md) `fix/low/merged_tip` — Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗口」的系列，09-13 23:59 被 Tejun Heo 应用到 `sched_ext/for-7.3-fixes`（仅做 minor wording cleanups），三天内走完 v1→v3 并合入维护者树。需要说明：该系列的原始补丁邮件未进入本邮箱缓存（v1/v2/v3 均未收到），本文基于 
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
 - [sched-20260912-005](../../2026/09/sched-20260912-005-sched-ext-add-lazy-preemption-support.md) `feature/low/under_review` — Andrea Righi 直接投递到 sched_ext/for-7.4 树的双补丁系列：给 BPF 调度器补上 fair 类已有的「惰性抢占」能力——新增 SCX_ENQ_PREEMPT_LAZY / SCX_KICK_PREEMPT_LAZY 与 SCX_OPS_LAZY_SLICE_EXPIRY，slice 过期后调度边界可推迟到返回用户态或下个 tick；配套一个 623 行的 kick 

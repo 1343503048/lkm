@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 71 篇
+共 72 篇
 
+- [sched-20260914-002](../../2026/09/sched-20260914-002-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF au
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
 - [sched-20260911-014](../../2026/09/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — Zhe Liu（kylinos）修复 cgroup CPU 带宽 quota/burst 写入顺序依赖的系列发到 v3：v2 时曾考虑直接丢弃用户配置的 burst，v3 改为「保留配置值、refill 时把可用 burst 截到 min(burst, quota)」，并补自测与 cgroup v1/v2 文档。当日与 v2 版本同时入缓存、尚无回帖。本文为增量更新，v1/v2 进展见 sched
 - [sched-20260911-006](../../2026/09/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `feature/low/rfc` — Tim Chen 当日回复 Shrikanth Hegde 对该 RFC 0/7 的四个前置问题：给出腾讯（Vern Hao）跨进程按功能分组的真实用例、明确无需应用改码（管理员/守护进程用 PR_SCHED_CACHE_SHARE_FROM 按 pid 对分组）、运行时可分组、并重新陈述拒绝 cgroup 载体的理由。作者方首次正面回应，RFC 讨论从「接口要不要做」推进到「接口形状是否成立」。

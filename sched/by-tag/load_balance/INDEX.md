@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 87 篇
+共 91 篇
 
+- [sched-20260914-007](../../2026/09/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.md) `fix/medium/merged_tip` — 增量更新，全貌见 sched-20260904-006（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 s
+- [sched-20260914-005](../../2026/09/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — 增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺
+- [sched-20260914-004](../../2026/09/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.md) `fix/high/under_review` — 增量更新，系列全貌见 sched-20260911-003（sched/cache: Fixes for cache aware scheduling 的 patch 4/4）。09-14 Chen Yu 回复 patch 4/4 的 rcu_dereference 用法修正方案：exec_mmap() 中 current 是唯一写者，改用 `rcu_dereference_protected(t
+- [sched-20260914-001](../../2026/09/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶
 - [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还
 - [sched-20260911-009](../../2026/09/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延迟的负载均衡改造）RESEND 后的讨论在当日继续发酵：Vincent Guittot 进一步加码——不只拒绝 05/10 的新选核函数，还质疑整个 LB_PROMOTE 的存在必要性与「real-time」的提法；K Prateek Nayak 对 01/10 给出反方案（rq->all_pinned
 - [sched-20260911-006](../../2026/09/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.md) `feature/low/rfc` — Tim Chen 当日回复 Shrikanth Hegde 对该 RFC 0/7 的四个前置问题：给出腾讯（Vern Hao）跨进程按功能分组的真实用例、明确无需应用改码（管理员/守护进程用 PR_SCHED_CACHE_SHARE_FROM 按 pid 对分组）、运行时可分组、并重新陈述拒绝 cgroup 载体的理由。作者方首次正面回应，RFC 讨论从「接口要不要做」推进到「接口形状是否成立」。

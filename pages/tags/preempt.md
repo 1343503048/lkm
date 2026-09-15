@@ -2,9 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20260914-003](/lkm/2026/09/14/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
+- [sched-20260914-006](/lkm/2026/09/14/sched-20260914-006-sched-ext-add-lazy-preemption-support.html) `feature/low/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260913-004](/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html) `fix/high/under_review` — sched: Set need-resched flags before tracing
 - [sched-20260912-005](/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html) `feature/low/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260912-007](/lkm/2026/09/12/sched-20260912-007-sched-set-need-resched-flags-before-tracing.html) `fix/medium/superseded` — sched: Set need-resched flags before tracing

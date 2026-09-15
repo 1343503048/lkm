@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 25
+article_count: 26
 ---
 
+- [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260911-015](/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html) `fix/low/under_review` — sched/fair: avoid recalculating curr status in place_entity() and requeue_delayed_entity()
 - [sched-20260910-004](/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html) `bug/medium/merged_tip` — sched/eevdf: Fix rb augmented with multi fields
