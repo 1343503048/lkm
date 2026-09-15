@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 125 篇
+共 128 篇
 
+- [sched-20260915-003](../../2026/09/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/under_review` — Qiurong Fang v2：`ops.dequeue()` 在 consume、move、terminal insert 三条路径上都是在 DSQ 锁仍被持有的状态下被调用，任何从 `ops.dequeue()` 回锁同一 DSQ 的 BPF 调度器（例如用 `bpf_iter_scx_dsq` 迭代，每步都要拿 DSQ 锁）都会自死锁。修复把这三次调用移到 DSQ 解锁之后。patch 1 
+- [sched-20260915-002](../../2026/09/sched-20260915-002-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles。Andrea Righi 09-15 发出 v4：给 sched_ext 增加 lazy 抢占——`SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 让 BPF 调度器像 fair 类一样把调度边界推迟到返回用户态或下一个 tick，并新增 `SCX_OPS_LAZY_SLICE_EXPIRY`
+- [sched-20260915-001](../../2026/09/sched-20260915-001-sched-ext-idle-claim-recovery-and-online-cid-mask.md) `fix/low/under_review` — Tejun Heo 为 cid 接口补两个漏洞：idle CPU 被 reserve+kick 后无任务到达、再选 idle 时无状态转换导致自维护 idle 的 cid-form 调度器「丢 CPU」，以及自装 cid 映射的调度器无法得知哪些 cid 在线。v1 用 idle-to-idle 通知方案，被 Andrea Righi 指出会改变 update_idle 语义后，v2 改为公认的「
 - [sched-20260914-006](../../2026/09/sched-20260914-006-sched-ext-add-lazy-preemption-support.md) `feature/low/under_review` — 增量更新，v1 全貌见 sched-20260912-005。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tic
 - [sched-20260913-003](../../2026/09/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.md) `fix/low/merged_tip` — Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗口」的系列，09-13 23:59 被 Tejun Heo 应用到 `sched_ext/for-7.3-fixes`（仅做 minor wording cleanups），三天内走完 v1→v3 并合入维护者树。需要说明：该系列的原始补丁邮件未进入本邮箱缓存（v1/v2/v3 均未收到），本文基于 
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co

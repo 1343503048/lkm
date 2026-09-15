@@ -2,9 +2,14 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 91
+article_count: 96
 ---
 
+- [sched-20260915-004](/lkm/2026/09/15/sched-20260915-004-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `bug/high/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
+- [sched-20260915-005](/lkm/2026/09/15/sched-20260915-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
+- [sched-20260915-006](/lkm/2026/09/15/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
+- [sched-20260915-007](/lkm/2026/09/15/sched-20260915-007-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.html) `feature/none/rfc` — sched/fair: Introduce select_task_rq_fair_thin() to select rq when LB_PROMOTE
+- [sched-20260915-008](/lkm/2026/09/15/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.html) `fix/low/under_review` — sched/fair: Reject misfit pulls onto busy SMT siblings on asym-capacity
 - [sched-20260914-001](/lkm/2026/09/14/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260914-004](/lkm/2026/09/14/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.html) `fix/high/under_review` — sched/cache: Introduce task_struct->sched_cache_grp
 - [sched-20260914-005](/lkm/2026/09/14/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain

@@ -1,7 +1,9 @@
 # tag: topology
 
-共 79 篇
+共 81 篇
 
+- [sched-20260915-008](../../2026/09/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.md) `fix/low/under_review` — 09-15 Matthieu Baerts 回复 Sasha Levin 的 AUTOSEL（6.18-6.1）回合通知，指出该补丁在 v6.1 上编译失败：`update_sd_lb_stats()` 里用到 `is_core_idle()`，但该函数在 6.1 尚未声明（implicit declaration of function 'is_core_idle'）。这解释了为何 6.1 的自
+- [sched-20260915-006](../../2026/09/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.md) `fix/medium/merged_tip` — 本文为增量更新（完整背景见 related_articles，前述修复已合入 tip sched/urgent）。09-15 Tim Chen 回应 NVIDIA KobaK 09-14 的「观测方法」疑问，补上该修复的原始动机场景：Ricardo 在 Nova Lake（LP-E 核独占一个 LLC 域、E/P 核在另一 LLC 域）上把一个多线程进程 pin 到 LP-E 核再 unpin，期
 - [sched-20260914-007](../../2026/09/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.md) `fix/medium/merged_tip` — 增量更新，全貌见 sched-20260904-006（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 s
 - [sched-20260914-001](../../2026/09/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶
 - [sched-20260912-011](../../2026/09/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.md) `feature/low/rfc` — Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还

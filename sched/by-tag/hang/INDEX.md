@@ -1,7 +1,8 @@
 # tag: hang
 
-共 7 篇
+共 8 篇
 
+- [sched-20260915-003](../../2026/09/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/under_review` — Qiurong Fang v2：`ops.dequeue()` 在 consume、move、terminal insert 三条路径上都是在 DSQ 锁仍被持有的状态下被调用，任何从 `ops.dequeue()` 回锁同一 DSQ 的 BPF 调度器（例如用 `bpf_iter_scx_dsq` 迭代，每步都要拿 DSQ 锁）都会自死锁。修复把这三次调用移到 DSQ 解锁之后。patch 1 
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c
 - [sched-20260901-014](../../2026/09/sched-20260901-014-deadlock-from-exec-update-lock-and-reading-procfs.md) `bug/critical/under_review` — Benjamin Peterson 报告：带上 `6650527444da ("proc: protect ptrace_may_access() with exec_update_lock (part 1)")` 之后，FUSE 服务器在实际负载下死锁——正在 `execve` 的进程在 `do_close_on_exec()` 里关 O_CLOEXEC 文件、同步等 FUSE 回复，而 FUS
 - [sched-20260827-005](../../2026/08/sched-20260827-005-question-userspace-throttling-sched-fair-combine-detach-into.md) `bug/high/under_review` — 本文为增量更新（完整背景见 related_articles）。chenjinghuang（Huawei）与 Aaron Lu（ByteDance）在 08-27 把 guest 启动挂起问题的边界钉得更实：复现需要 **CPU 超额订阅 + 大量 vCPU**，96 vCPU 不复现、128 vCPU 复现；必须同时 revert `e1f078f50478`（Combine detach in

@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 45
+article_count: 46
 ---
 
+- [sched-20260915-013](/lkm/2026/09/15/sched-20260915-013-sched-assert-static-storage-for-wait-queue-and-completion-de.html) `fix/low/under_review` — sched: assert static storage for wait queue and completion declarations
 - [sched-20260912-006](/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html) `feature/low/under_review` — sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES
 - [sched-20260912-010](/lkm/2026/09/12/sched-20260912-010-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name
 - [sched-20260911-002](/lkm/2026/09/11/sched-20260911-002-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name

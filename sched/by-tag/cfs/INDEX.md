@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 112 篇
+共 114 篇
 
+- [sched-20260915-007](../../2026/09/sched-20260915-007-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.md) `feature/rfc` — 本文为增量更新（系列全貌见 related_articles）。Vincent Guittot 09-15 对 Xin Zhao 的 LB_PROMOTE RFC（patch 05/10 引入 `select_task_rq_fair_thin()`）给出三条反馈：把「real-time」字样用于 fair 调度是误导（fair 不是实时调度器，只能保证 best effort）；建议看 EEVD
+- [sched-20260915-005](../../2026/09/sched-20260915-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — 本文为增量更新（完整背景见 related_articles）。Kayra Cizmeci 的「把 nr_pref_llc_running 收进 runnable 域」4 补丁系列（patch 1/4）今日再获 Tim Chen 评审：认可改动方向（"This change looks good and make the code cleaner"），但要求把操作场景注释收紧——点明「CPU0/C
 - [sched-20260914-009](../../2026/09/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT
 - [sched-20260914-008](../../2026/09/sched-20260914-008-sched-fair-fix-typo-in-requeue-delayed-entity-comment.md) `fix/stalled` — Kayra Cizmeci 对 08-22 投出的注释 typo 修复补丁发 gentle ping（"This one is not urgent, just a typo fix"）。纯注释修正、无技术争议，但长期无维护者响应，补丁处于停滞状态。
 - [sched-20260914-005](../../2026/09/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — 增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺

@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 125
+article_count: 128
 ---
 
+- [sched-20260915-001](/lkm/2026/09/15/sched-20260915-001-sched-ext-idle-claim-recovery-and-online-cid-mask.html) `fix/low/under_review` — sched_ext: Idle claim recovery and online cid mask
+- [sched-20260915-002](/lkm/2026/09/15/sched-20260915-002-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
+- [sched-20260915-003](/lkm/2026/09/15/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260914-006](/lkm/2026/09/14/sched-20260914-006-sched-ext-add-lazy-preemption-support.html) `feature/low/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260913-003](/lkm/2026/09/13/sched-20260913-003-sched-ext-close-the-pre-enable-ops-error-claim-window.html) `fix/low/merged_tip` — sched_ext: Close the pre-enable ops error claim window

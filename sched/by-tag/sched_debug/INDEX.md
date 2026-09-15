@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 45 篇
+共 46 篇
 
+- [sched-20260915-013](../../2026/09/sched-20260915-013-sched-assert-static-storage-for-wait-queue-and-completion-de.md) `fix/low/under_review` — Yury Norov 09-15 发 17 补丁系列的 patch 06/17：给 `DECLARE_WAIT_QUEUE_HEAD()`/`DECLARE_SWAIT_QUEUE_HEAD()`/`DECLARE_COMPLETION()` 加 `ASSERT_STATIC_STORAGE()`，确保 wait queue/completion 的嵌入锁静态初始化（lockdep 拿持久 cla
 - [sched-20260912-010](../../2026/09/sched-20260912-010-sched-add-support-for-long-task-name.md) `feature/low/under_review` — André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 security/smack 的编译错误（cover 自嘲 "for good"）。系列自 v5 起持续以修编译错误的方式快速迭代，但仍无任何人类 review。本文为增量更新，v6 见 sched-20260911-002，完整背景见 sched-20260828-009。
 - [sched-20260912-006](../../2026/09/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — Aaron Tomlin 的 panic 期 per-CPU runqueue 摘要补丁当日完成 v1→v2：kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者当天致谢（收件 Andrew、Peter）并以 rcu_dereference() 修复发出 v2。人类维护者评审仍未开始。本文为增量更新，v1 分析见 sched-20260911-010
 - [sched-20260911-010](../../2026/09/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — Aaron Tomlin 提出新 patch：给 panic 时的 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务直接打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发，当日无回帖。

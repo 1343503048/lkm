@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 45 篇
+共 46 篇
 
+- [sched-20260915-002](../../2026/09/sched-20260915-002-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles。Andrea Righi 09-15 发出 v4：给 sched_ext 增加 lazy 抢占——`SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 让 BPF 调度器像 fair 类一样把调度边界推迟到返回用户态或下一个 tick，并新增 `SCX_OPS_LAZY_SLICE_EXPIRY`
 - [sched-20260914-006](../../2026/09/sched-20260914-006-sched-ext-add-lazy-preemption-support.md) `feature/low/under_review` — 增量更新，v1 全貌见 sched-20260912-005。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tic
 - [sched-20260914-003](../../2026/09/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.md) `fix/low/under_review` — 增量更新，v1/v2 全貌见 sched-20260902-016。Karl Mehltretter 发出 v3（6 补丁，其中 4/5/6 落在 kernel/sched/core.c）：相对 v2，rebase 到 mainline `22098763a10d`、按 Potapenko 意见共享 pause 与上下文切换抑制的 flag helper 并加 READ_ONCE/WRITE_ON
 - [sched-20260913-004](../../2026/09/sched-20260913-004-sched-set-need-resched-flags-before-tracing.md) `fix/high/under_review` — Andrea Righi 修复 `sched_set_need_resched_tp` tracepoint 早于 TIF_NEED_RESCHED 标志设置而引发的 BPF tracepoint 递归、直至内核栈溢出的问题（Fixes adcc3bfa8806「sched: Adapt sched tracepoints for RV task model」）。09-13 kernel-patc

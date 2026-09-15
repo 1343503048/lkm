@@ -1,7 +1,10 @@
 # tag: proxy_execution
 
-共 27 篇
+共 30 篇
 
+- [sched-20260915-011](../../2026/09/sched-20260915-011-sched-core-introduce-chain-wakeup-to-activate-blocked-donors.md) `feature/rfc` — 本文为增量更新（系列全貌见 related_articles：K Prateek Nayak 的 16 补丁 RFC PoC）。09-15 John Stultz（proxy-exec 共同作者之一）回复 patch 14/16：在跑该系列时命中大量 lockdep 警告——`proxy_activate_blocked_task()` 带着 rq 锁被 pin 住就调用。这正是他自己 patch
+- [sched-20260915-010](../../2026/09/sched-20260915-010-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `fix/under_review` — 本文为增量更新。Zhidao Su 的 v5「用序列标记检测 proxy walk 环」今日（09-15）获 Hui Su 回复：Hui Su 称正在实验同一环检测问题的不同取舍，已作为独立 RFC 发出（sched/proxy_exec: detect cycles without persistent walk state），并简述其 Online Brent 方案与 v5 的核心差异——不往
+- [sched-20260915-009](../../2026/09/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.md) `discussion/rfc` — Hui Su 09-15 发 RFC（0/1）：用 Brent 环形检测算法直接在 find_proxy_task() 的真实 owner walk 里检测 blocked_on 链的环，避免 Zhidao Su v5 序列标记方案需要的 task_struct/rq 持久状态与激活时复位。核心取舍：允许 walk 短暂安装 blocked_donor 环，用延迟的 checkpoint 检测点来
 - [sched-20260914-002](../../2026/09/sched-20260914-002-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF au
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen

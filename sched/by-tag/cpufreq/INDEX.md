@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 32 篇
+共 33 篇
 
+- [sched-20260915-012](../../2026/09/sched-20260915-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新（v2 全貌见 related_articles）。Dietmar Eggemann（Arm，sched 维护者）09-15 回复该 v2：认可方案（"IMHO, this makes sense"）及通过 `cpufreq_pressure`（policy->max）的协调，并在 ARM64 Juno R0 上给出实测数据；唯一小问题——boost 关闭后 cpu0/3-5 的 p
 - [sched-20260912-012](../../2026/09/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/low/under_review` — Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。
 - [sched-20260910-009](../../2026/09/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-012 / sched-20260908-008。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpu
 - [sched-20260909-012](../../2026/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景、三个互斥修法（sched 侧门控 / cpuutil 信号改用 arch_scale_freq_ref / cpufreq 侧 `__resolve_freq()`）的对比见 related_articles 中的 sched-20260908-008 / sched-20260907-006 / sched-20260903-010 / sched-20260902-0

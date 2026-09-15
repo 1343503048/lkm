@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 30
+article_count: 31
 ---
 
+- [sched-20260915-004](/lkm/2026/09/15/sched-20260915-004-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `bug/high/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
 - [sched-20260913-004](/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html) `fix/high/under_review` — sched: Set need-resched flags before tracing
 - [sched-20260912-007](/lkm/2026/09/12/sched-20260912-007-sched-set-need-resched-flags-before-tracing.html) `fix/medium/superseded` — sched: Set need-resched flags before tracing
 - [sched-20260904-011](/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html) `fix/high/merged_tip` — sched_ext: Fix NULL sched deref in kfunc sub-sched error paths

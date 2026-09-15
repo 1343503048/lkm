@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 27
+article_count: 30
 ---
 
+- [sched-20260915-009](/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html) `discussion/none/rfc` — sched/proxy_exec: detect cycles without persistent walk state
+- [sched-20260915-010](/lkm/2026/09/15/sched-20260915-010-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `fix/none/under_review` — sched/proxy_exec: Detect cycles in proxy walks
+- [sched-20260915-011](/lkm/2026/09/15/sched-20260915-011-sched-core-introduce-chain-wakeup-to-activate-blocked-donors.html) `feature/none/rfc` — sched/core: Introduce chain-wakeup to activate blocked donors
 - [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
