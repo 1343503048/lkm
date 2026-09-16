@@ -2,9 +2,10 @@
 layout: default
 tag: "hang"
 title: "标签: hang"
-article_count: 8
+article_count: 9
 ---
 
+- [sched-20260916-006](/lkm/2026/09/16/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260915-003](/lkm/2026/09/15/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260907-002](/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `bug/medium/rfc` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20260901-014](/lkm/2026/09/01/sched-20260901-014-deadlock-from-exec-update-lock-and-reading-procfs.html) `bug/critical/under_review` — deadlock from exec_update_lock and reading procfs

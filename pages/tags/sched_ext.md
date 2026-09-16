@@ -2,9 +2,16 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 128
+article_count: 135
 ---
 
+- [sched-20260916-002](/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260916-004](/lkm/2026/09/16/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html) `fix/critical/under_review` — sched_ext: Unlink pending local reenqueues before freeing scheduler
+- [sched-20260916-005](/lkm/2026/09/16/sched-20260916-005-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html) `fix/medium/under_review` — sched_ext: Wait for SCX_OPSS_DISPATCHING before reenqueueing a task
+- [sched-20260916-006](/lkm/2026/09/16/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
+- [sched-20260916-007](/lkm/2026/09/16/sched-20260916-007-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
+- [sched-20260916-008](/lkm/2026/09/16/sched-20260916-008-sched-ext-idle-claim-recovery-and-online-cid-mask.html) `fix/low/merged_tip` — sched_ext: Idle claim recovery and online cid mask
+- [sched-20260916-009](/lkm/2026/09/16/sched-20260916-009-sched-ext-fixes-for-v7-3-rc3.html) `fix/none/merged_tip` — sched_ext: Fixes for v7.3-rc3
 - [sched-20260915-001](/lkm/2026/09/15/sched-20260915-001-sched-ext-idle-claim-recovery-and-online-cid-mask.html) `fix/low/under_review` — sched_ext: Idle claim recovery and online cid mask
 - [sched-20260915-002](/lkm/2026/09/15/sched-20260915-002-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260915-003](/lkm/2026/09/15/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held

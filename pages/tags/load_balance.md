@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 96
+article_count: 99
 ---
 
+- [sched-20260916-015](/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks
+- [sched-20260916-016](/lkm/2026/09/16/sched-20260916-016-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.html) `feature/none/rfc` — sched/fair: Introduce select_task_rq_fair_thin() to select rq when LB_PROMOTE
+- [sched-20260916-018](/lkm/2026/09/16/sched-20260916-018-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `bug/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260915-004](/lkm/2026/09/15/sched-20260915-004-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `bug/high/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
 - [sched-20260915-005](/lkm/2026/09/15/sched-20260915-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
 - [sched-20260915-006](/lkm/2026/09/15/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing

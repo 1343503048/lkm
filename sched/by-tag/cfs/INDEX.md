@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 114 篇
+共 118 篇
 
+- [sched-20260916-017](../../2026/09/sched-20260916-017-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik 的 v3：fair hrtick 是一次性定时器，hrtick 到期后的 same-task repick 会跳过 `set_next_task_fair()`，导致下一个公平抢占点没有 armed 的 hrtick，造成调度延迟。方案引入 `SNT_REPICK` 区分 next==prev 路径。v3 按 Zhan Xusheng 上轮意见**去掉了 SCHE
+- [sched-20260916-013](../../2026/09/sched-20260916-013-sched-cache-introduce-task-struct-sched-cache-grp.md) `fix/high/under_review` — Tim Chen 的 cache-aware 系列 patch 4/4（本日为 Peter Zijlstra 评审轮）：在 `task_struct` 上引入 `sched_cache_grp` 指针。Peter 对 RCU 解引用写法提出意见——当下的 `rcu_dereference(...)` 带 `c`（update-side 校验）是反模式，建议抽一个 `rcu_deref_sched_
+- [sched-20260916-012](../../2026/09/sched-20260916-012-sched-cache-decouple-sched-cache-group-from-mm.md) `fix/medium/under_review` — Tim Chen 的 cache-aware 系列 patch 3/4（本日为 Peter Zijlstra 评审轮）：把 `sched_cache_group` 从 mm 中解耦。Peter 密集提了多条正确性意见——注释误导（rcu-free 上下文、RT 下 free_percpu 不可在原子上下文）、发布需 store-release、疑似 TOCTOU、建议用 `READ_ONCE(mm
+- [sched-20260916-011](../../2026/09/sched-20260916-011-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — Tim Chen 的 cache-aware 系列 patch 1/4（本日为 Peter Zijlstra 评审轮）：让 `nr_pref_llc_running` 只统计 runnable 域内的任务。Peter 只提了一条实质意见——**需要补 `Fixes:` 标签**（便于回溯），并提醒要注明「以后 flat-pick 演进时要再把这个条件拿掉」。Kayra Cizmeci 当场定位出引
 - [sched-20260915-007](../../2026/09/sched-20260915-007-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.md) `feature/rfc` — 本文为增量更新（系列全貌见 related_articles）。Vincent Guittot 09-15 对 Xin Zhao 的 LB_PROMOTE RFC（patch 05/10 引入 `select_task_rq_fair_thin()`）给出三条反馈：把「real-time」字样用于 fair 调度是误导（fair 不是实时调度器，只能保证 best effort）；建议看 EEVD
 - [sched-20260915-005](../../2026/09/sched-20260915-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.md) `fix/medium/under_review` — 本文为增量更新（完整背景见 related_articles）。Kayra Cizmeci 的「把 nr_pref_llc_running 收进 runnable 域」4 补丁系列（patch 1/4）今日再获 Tim Chen 评审：认可改动方向（"This change looks good and make the code cleaner"），但要求把操作场景注释收紧——点明「CPU0/C
 - [sched-20260914-009](../../2026/09/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT

@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 96 篇
+共 99 篇
 
+- [sched-20260916-018](../../2026/09/sched-20260916-018-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本日为增量更新：报告者 Klaus Kusche 反馈 Intel 侧（Chen Yu）最新一版补丁后，其 AMD big/little（大小核混合）平台上 cache-aware 调度的性能已基本追平无 cache-aware 的内核，比早期 cache-aware 内核快约 2%，核心柱状图上也未见明显错放进程。这是一个偏正面的修复确认，完整背景见 related_articles。
+- [sched-20260916-016](../../2026/09/sched-20260916-016-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.md) `feature/rfc` — 本日为增量更新：Xin Zhao 的 RFC（RESEND，10 枚，核心是 `select_task_rq_fair_thin()` 让 LB_PROMOTE 场景选 rq 时走一个去掉能耗部分的轻量路径）。社区 reviewer Kayra Cizmeci 追加两点质疑——去掉能耗部分在嵌入式/能耗敏感场景的影响，以及用一个只服务于单一选项的函数「更像权衡而非优化」。作者尚未公开回应这轮置疑。
+- [sched-20260916-015](../../2026/09/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — Christian Loehle（ARM）的两枚新 patch：慢路径 CPU 选择存在扫描顺序偏差，并发的 wakeup 选择器可能收敛到同一个 idle CPU。方案是去掉 idle-recency 偏好、对等 latency 候选用 reservoir sampling 单趟随机化。在 160 核 Altra 上 stress-ng fork 中位数吞吐最多 +4.13%、stale-pic
 - [sched-20260915-008](../../2026/09/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.md) `fix/low/under_review` — 09-15 Matthieu Baerts 回复 Sasha Levin 的 AUTOSEL（6.18-6.1）回合通知，指出该补丁在 v6.1 上编译失败：`update_sd_lb_stats()` 里用到 `is_core_idle()`，但该函数在 6.1 尚未声明（implicit declaration of function 'is_core_idle'）。这解释了为何 6.1 的自
 - [sched-20260915-007](../../2026/09/sched-20260915-007-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.md) `feature/rfc` — 本文为增量更新（系列全貌见 related_articles）。Vincent Guittot 09-15 对 Xin Zhao 的 LB_PROMOTE RFC（patch 05/10 引入 `select_task_rq_fair_thin()`）给出三条反馈：把「real-time」字样用于 fair 调度是误导（fair 不是实时调度器，只能保证 best effort）；建议看 EEVD
 - [sched-20260915-006](../../2026/09/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.md) `fix/medium/merged_tip` — 本文为增量更新（完整背景见 related_articles，前述修复已合入 tip sched/urgent）。09-15 Tim Chen 回应 NVIDIA KobaK 09-14 的「观测方法」疑问，补上该修复的原始动机场景：Ricardo 在 Nova Lake（LP-E 核独占一个 LLC 域、E/P 核在另一 LLC 域）上把一个多线程进程 pin 到 LP-E 核再 unpin，期

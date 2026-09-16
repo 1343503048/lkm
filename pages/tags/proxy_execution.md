@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 30
+article_count: 33
 ---
 
+- [sched-20260916-001](/lkm/2026/09/16/sched-20260916-001-sched-core-avoid-false-migration-warning-for-proxy-donors.html) `fix/low/under_review` — sched/core: Avoid false migration warning for proxy donors
+- [sched-20260916-002](/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260916-003](/lkm/2026/09/16/sched-20260916-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260915-009](/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html) `discussion/none/rfc` — sched/proxy_exec: detect cycles without persistent walk state
 - [sched-20260915-010](/lkm/2026/09/15/sched-20260915-010-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `fix/none/under_review` — sched/proxy_exec: Detect cycles in proxy walks
 - [sched-20260915-011](/lkm/2026/09/15/sched-20260915-011-sched-core-introduce-chain-wakeup-to-activate-blocked-donors.html) `feature/none/rfc` — sched/core: Introduce chain-wakeup to activate blocked donors

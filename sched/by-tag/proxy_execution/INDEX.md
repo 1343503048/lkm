@@ -1,7 +1,10 @@
 # tag: proxy_execution
 
-共 30 篇
+共 33 篇
 
+- [sched-20260916-003](../../2026/09/sched-20260916-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.md) `feature/rfc` — K Prateek Nayak（AMD）在 08-26 发出的 RFC/PoC（16 枚），提出与 John Stultz 正在推进的「sleeping-owner enqueuing」不同的另一条路线：用一组新的 per-task 状态（`blocked_cpu`、`is_linked` 等）把整条 blocked 等待链绑定到单一 CPU 上统一唤醒。本日 John Stultz 给出详细评审
+- [sched-20260916-002](../../2026/09/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本日为增量更新：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）逐 patch 正式评审，焦点集中在 08/18 的 `WF_ON_RQ` 语义（Andrea 自己承认「描述错了区分」）以及 07/18 的 reject-DSQ 重试点设计。Andrea 已在多枚 patch 上给出回应并准备 v14
+- [sched-20260916-001](../../2026/09/sched-20260916-001-sched-core-avoid-false-migration-warning-for-proxy-donors.md) `fix/low/under_review` — Andrea Righi 从 proxy-execution 兼容 sched_ext 系列里抽出的一枚独立修复：proxy execution 会把一个 migration-disabled 的 blocked donor 的调度上下文挪到锁 owner 的 CPU 上，`set_task_cpu()` 对此无条件 `WARN_ON_ONCE(is_migration_disabled(p))`
 - [sched-20260915-011](../../2026/09/sched-20260915-011-sched-core-introduce-chain-wakeup-to-activate-blocked-donors.md) `feature/rfc` — 本文为增量更新（系列全貌见 related_articles：K Prateek Nayak 的 16 补丁 RFC PoC）。09-15 John Stultz（proxy-exec 共同作者之一）回复 patch 14/16：在跑该系列时命中大量 lockdep 警告——`proxy_activate_blocked_task()` 带着 rq 锁被 pin 住就调用。这正是他自己 patch
 - [sched-20260915-010](../../2026/09/sched-20260915-010-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `fix/under_review` — 本文为增量更新。Zhidao Su 的 v5「用序列标记检测 proxy walk 环」今日（09-15）获 Hui Su 回复：Hui Su 称正在实验同一环检测问题的不同取舍，已作为独立 RFC 发出（sched/proxy_exec: detect cycles without persistent walk state），并简述其 Online Brent 方案与 v5 的核心差异——不往
 - [sched-20260915-009](../../2026/09/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.md) `discussion/rfc` — Hui Su 09-15 发 RFC（0/1）：用 Brent 环形检测算法直接在 find_proxy_task() 的真实 owner walk 里检测 blocked_on 链的环，避免 Zhidao Su v5 序列标记方案需要的 task_struct/rq 持久状态与激活时复位。核心取舍：允许 walk 短暂安装 blocked_donor 环，用延迟的 checkpoint 检测点来
