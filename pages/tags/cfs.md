@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 118
+article_count: 120
 ---
 
+- [sched-20260917-005](/lkm/2026/09/17/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
+- [sched-20260917-007](/lkm/2026/09/17/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260916-011](/lkm/2026/09/16/sched-20260916-011-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html) `fix/medium/under_review` — sched/cache: Keep nr_pref_llc_running in the runnable domain
 - [sched-20260916-012](/lkm/2026/09/16/sched-20260916-012-sched-cache-decouple-sched-cache-group-from-mm.html) `fix/medium/under_review` — sched/cache: Decouple sched_cache_group from mm
 - [sched-20260916-013](/lkm/2026/09/16/sched-20260916-013-sched-cache-introduce-task-struct-sched-cache-grp.html) `fix/high/under_review` — sched/cache: Introduce task_struct->sched_cache_grp

@@ -1,7 +1,8 @@
 # tag: arm64
 
-共 25 篇
+共 26 篇
 
+- [sched-20260917-014](../../2026/09/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — 增量更新：Oleg Keri 推出 v4，针对 Snapdragon X2 Elite（boost 4723200 kHz > 4194304 kHz）修复 arm64 频率上报与跟踪的两处溢出/失真：arch_freq_get_on_cpu() 的 u64 乘积被截断为 unsigned int 导致回绕，以及 capacity_freq_ref 不包含 boost 频率导致调度器无法区分 bo
 - [sched-20260912-009](../../2026/09/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/low/under_review` — Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态
 - [sched-20260912-008](../../2026/09/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/low/under_review` — Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 sched-20260911-
 - [sched-20260911-018](../../2026/09/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/low/under_review` — Andrea Righi 让 idle 选核遵守非对称 SMT 优先级的系列当日收到 Dietmar Eggemann 的一条实现级意见：select_idle_smt_cpu() 里的 for_each_domain() 建议换成 `sd = rcu_dereference_all(cpu_rq(cpu)->sd)`。改动很小，但指向该 helper 在 RCU/域遍历上的实现规范；系列的主体争

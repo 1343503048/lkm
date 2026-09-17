@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 38
+article_count: 39
 ---
 
+- [sched-20260917-001](/lkm/2026/09/17/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/under_review` — perf sched stats: Reject mismatched or incomplete snapshots
 - [sched-20260911-011](/lkm/2026/09/11/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/stalled` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 - [sched-20260909-007](/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260908-002](/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection

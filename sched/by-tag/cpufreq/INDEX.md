@@ -1,7 +1,11 @@
 # tag: cpufreq
 
-共 33 篇
+共 37 篇
 
+- [sched-20260917-016](../../2026/09/sched-20260917-016-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.md) `fix/under_review` — 增量更新：Jie Zhan 的"CPPC 热插拔期间保持 policy"系列（v4 1/4）继续评审。Sumit Gupta 质疑为复位值准备的 MIN/MAX 顺序化 prep 非必需（平台可能把 MAX 复位到更低值，先恢复 MIN 会短暂出现 MIN>MAX），询问 Christian 是否同意按 v3 那样直接用 cppc_set_perf() 恢复、把顺序化 MIN/MAX 更新放到独立
+- [sched-20260917-014](../../2026/09/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — 增量更新：Oleg Keri 推出 v4，针对 Snapdragon X2 Elite（boost 4723200 kHz > 4194304 kHz）修复 arm64 频率上报与跟踪的两处溢出/失真：arch_freq_get_on_cpu() 的 u64 乘积被截断为 unsigned int 导致回绕，以及 capacity_freq_ref 不包含 boost 频率导致调度器无法区分 bo
+- [sched-20260917-006](../../2026/09/sched-20260917-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 增量更新：Sumit Gupta 的 CPPC v5 系列（保留 OSPM 设置的寄存器）获得 K Prateek Nayak 的 x86 实测 Tested-by——K Prateek 把 Kconfig 改成可在 x86 上编译驱动后，在 Zen3 共享内存 CPPC 上验证 `auto_select` 与 `energy_performance_preference_val` 在 offli
+- [sched-20260917-002](../../2026/09/sched-20260917-002-cpufreq-cppc-select-the-frequency-invariance-callback-per-cp.md) `fix/medium/under_review` — Christian Loehle 的 CPPC v7 系列尾部两枚补丁（19/20、20/20）修 FIE（frequency invariance）回调的空指针缺陷：共享 policy 下非 PCC CPU 会被装上 PCC tick 回调、或离线成员/热加 policy 引用不存在的 FIE worker，最终调用 NULL 函数指针。两补丁均 Fixes: 997c021abc6e、Cc: 
 - [sched-20260915-012](../../2026/09/sched-20260915-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新（v2 全貌见 related_articles）。Dietmar Eggemann（Arm，sched 维护者）09-15 回复该 v2：认可方案（"IMHO, this makes sense"）及通过 `cpufreq_pressure`（policy->max）的协调，并在 ARM64 Juno R0 上给出实测数据；唯一小问题——boost 关闭后 cpu0/3-5 的 p
 - [sched-20260912-012](../../2026/09/sched-20260912-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/low/under_review` — Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。
 - [sched-20260910-009](../../2026/09/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-012 / sched-20260908-008。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpu

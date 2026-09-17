@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 118 篇
+共 120 篇
 
+- [sched-20260917-007](../../2026/09/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 c
+- [sched-20260917-005](../../2026/09/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于"跳过 put_prev_task_*() 无法区分 fair 与 DL"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_
 - [sched-20260916-017](../../2026/09/sched-20260916-017-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik 的 v3：fair hrtick 是一次性定时器，hrtick 到期后的 same-task repick 会跳过 `set_next_task_fair()`，导致下一个公平抢占点没有 armed 的 hrtick，造成调度延迟。方案引入 `SNT_REPICK` 区分 next==prev 路径。v3 按 Zhan Xusheng 上轮意见**去掉了 SCHE
 - [sched-20260916-013](../../2026/09/sched-20260916-013-sched-cache-introduce-task-struct-sched-cache-grp.md) `fix/high/under_review` — Tim Chen 的 cache-aware 系列 patch 4/4（本日为 Peter Zijlstra 评审轮）：在 `task_struct` 上引入 `sched_cache_grp` 指针。Peter 对 RCU 解引用写法提出意见——当下的 `rcu_dereference(...)` 带 `c`（update-side 校验）是反模式，建议抽一个 `rcu_deref_sched_
 - [sched-20260916-012](../../2026/09/sched-20260916-012-sched-cache-decouple-sched-cache-group-from-mm.md) `fix/medium/under_review` — Tim Chen 的 cache-aware 系列 patch 3/4（本日为 Peter Zijlstra 评审轮）：把 `sched_cache_group` 从 mm 中解耦。Peter 密集提了多条正确性意见——注释误导（rcu-free 上下文、RT 下 free_percpu 不可在原子上下文）、发布需 store-release、疑似 TOCTOU、建议用 `READ_ONCE(mm

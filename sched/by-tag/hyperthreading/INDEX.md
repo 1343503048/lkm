@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 21 篇
+共 22 篇
 
+- [sched-20260917-018](../../2026/09/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_acti
 - [sched-20260915-008](../../2026/09/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.md) `fix/low/under_review` — 09-15 Matthieu Baerts 回复 Sasha Levin 的 AUTOSEL（6.18-6.1）回合通知，指出该补丁在 v6.1 上编译失败：`update_sd_lb_stats()` 里用到 `is_core_idle()`，但该函数在 6.1 尚未声明（implicit declaration of function 'is_core_idle'）。这解释了为何 6.1 的自
 - [sched-20260912-009](../../2026/09/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/low/under_review` — Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态
 - [sched-20260912-008](../../2026/09/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/low/under_review` — Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 sched-20260911-

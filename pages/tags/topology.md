@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 82
+article_count: 83
 ---
 
+- [sched-20260917-018](/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260916-010](/lkm/2026/09/16/sched-20260916-010-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
 - [sched-20260915-006](/lkm/2026/09/15/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing
 - [sched-20260915-008](/lkm/2026/09/15/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.html) `fix/low/under_review` — sched/fair: Reject misfit pulls onto busy SMT siblings on asym-capacity

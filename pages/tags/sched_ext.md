@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 135
+article_count: 141
 ---
 
+- [sched-20260917-003](/lkm/2026/09/17/sched-20260917-003-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html) `fix/medium/superseded` — sched_ext: Unlink pending local reenqueues before freeing scheduler
+- [sched-20260917-008](/lkm/2026/09/17/sched-20260917-008-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html) `fix/medium/merged_tip` — sched_ext: Wait for SCX_OPSS_DISPATCHING before reenqueueing a task
+- [sched-20260917-009](/lkm/2026/09/17/sched-20260917-009-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
+- [sched-20260917-010](/lkm/2026/09/17/sched-20260917-010-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
+- [sched-20260917-011](/lkm/2026/09/17/sched-20260917-011-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html) `fix/medium/under_review` — sched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags
+- [sched-20260917-015](/lkm/2026/09/17/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.html) `feature/none/under_review` — sched: Add sched_ext hooks for proxy execution
 - [sched-20260916-002](/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260916-004](/lkm/2026/09/16/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html) `fix/critical/under_review` — sched_ext: Unlink pending local reenqueues before freeing scheduler
 - [sched-20260916-005](/lkm/2026/09/16/sched-20260916-005-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html) `fix/medium/under_review` — sched_ext: Wait for SCX_OPSS_DISPATCHING before reenqueueing a task

@@ -2,9 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 48
+article_count: 50
 ---
 
+- [sched-20260917-005](/lkm/2026/09/17/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
+- [sched-20260917-010](/lkm/2026/09/17/sched-20260917-010-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260916-007](/lkm/2026/09/16/sched-20260916-007-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260916-019](/lkm/2026/09/16/sched-20260916-019-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/low/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.
 - [sched-20260915-002](/lkm/2026/09/15/sched-20260915-002-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support

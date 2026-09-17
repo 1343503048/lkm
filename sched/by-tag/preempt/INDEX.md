@@ -1,7 +1,9 @@
 # tag: preempt
 
-共 48 篇
+共 50 篇
 
+- [sched-20260917-010](../../2026/09/sched-20260917-010-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以
+- [sched-20260917-005](../../2026/09/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于"跳过 put_prev_task_*() 无法区分 fair 与 DL"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_
 - [sched-20260916-019](../../2026/09/sched-20260916-019-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/low/under_review` — Sebastian Siewior 的 v2（syzbot 报告）：`non_block_start()/end()` 为捕捉依赖锁/可睡眠条件的回调而引入，当初把 spinlock 排除在外。但 PREEMPT_RT 上 `spinlock_t`/`rwlock_t` 变成可睡眠自旋锁、带 `might_sleep()`，锁竞争时会 `schedule()`，于是在 `non_block` 块内
 - [sched-20260916-007](../../2026/09/sched-20260916-007-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — Andrea Righi 的 v5：给 sched_ext 增加懒惰抢占语义——新增 `SCX_ENQ_PREEMPT_LAZY` / `SCX_KICK_PREEMPT_LAZY` / `SCX_OPS_LAZY_SLICE_EXPIRY` 与 `scx_bpf_task_set_slice_expiry()`，让 BPF 调度器能像 fair class 一样把调度边界推迟到返回用户态或下一次
 - [sched-20260915-002](../../2026/09/sched-20260915-002-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles。Andrea Righi 09-15 发出 v4：给 sched_ext 增加 lazy 抢占——`SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 让 BPF 调度器像 fair 类一样把调度边界推迟到返回用户态或下一个 tick，并新增 `SCX_OPS_LAZY_SLICE_EXPIRY`

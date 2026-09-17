@@ -2,9 +2,10 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 25
+article_count: 26
 ---
 
+- [sched-20260917-014](/lkm/2026/09/17/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
 - [sched-20260912-008](/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260912-009](/lkm/2026/09/12/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/low/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260911-017](/lkm/2026/09/11/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/low/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

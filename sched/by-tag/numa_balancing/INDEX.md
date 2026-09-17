@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 25 篇
+共 26 篇
 
+- [sched-20260917-013](../../2026/09/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA "停止让 VMA 扫描过滤器阻碍提升"系列（v2）引发维护者关注——Andrew Morton 追问"为什么 cc:stable 和 Fixes:"，Gregory 解释 NUMA balancing 自 2022/2023 起就被功能性打破、只因另一个 shmem bug 掩盖了症状；David Hildenbrand 将负责审查 MM 侧，并
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
 - [sched-20260911-008](../../2026/09/sched-20260911-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — Gregory Price（Meta）v2 系列的第 3、4 补丁当日入缓存并给出重磅实测数据：CXL 分层机上 20GB 热 hash 表在修复前完全滞留慢层、修复后 DRAM/CXL 均分；作者同时回应 v1 review 认为遗留疑问多为误报。本文为增量更新（v1 背景与 3/4 的 v1 分析见 sched-20260905-006、sched-20260907-009）：v2 把两个 V
 - [sched-20260910-006](../../2026/09/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.md) `fix/medium/merged_tip` — Eric Kim 的 NUMA balancing 修复被 Peter Zijlstra 合入 tip/sched/core（commit e81ee0630837，09-10 11:01 +0200，Cc stable）：update_task_scan_period() 的早退路径漏清 p->numa_faults_locality，导致扫描周期被无意拉长直至上限。本系列此前未被日报覆盖（原始

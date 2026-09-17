@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 25
+article_count: 26
 ---
 
+- [sched-20260917-013](/lkm/2026/09/17/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260911-008](/lkm/2026/09/11/sched-20260911-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion
 - [sched-20260910-006](/lkm/2026/09/10/sched-20260910-006-sched-fair-reset-numa-fault-locality-after-scan-period-updat.html) `fix/medium/merged_tip` — sched/fair: Reset NUMA fault locality after scan period update

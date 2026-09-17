@@ -1,7 +1,11 @@
 # tag: proxy_execution
 
-共 33 篇
+共 37 篇
 
+- [sched-20260917-017](../../2026/09/sched-20260917-017-kernel-sched-core-c-5791-14-sparse-sparse-incorrect-type-in.md) `bug/low/under_review` — 0day 机器人报告内核主线（commit f5741d2b3451 "sched/core: Call wq_worker_tick() for the execution context"，7 天前）在 x86_64-randconfig + W=1 下 kernel/sched/core.c 出现新的 sparse 地址空间类型告警。无回帖、无补丁，属低危构建期类型安全噪音。
+- [sched-20260917-015](../../2026/09/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.md) `feature/under_review` — 增量更新：Andrea Righi 的 proxy execution 兼容 sched_ext 系列（v13，18 枚）继续与 Peter Zijlstra 就 07/18（`sched: Add sched_ext hooks for proxy execution`）交换意见。Peter 承认自己把 donor/curr 的 put_prev_task 处理搞混了，随后确认 `rq->don
+- [sched-20260917-012](../../2026/09/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.md) `feature/rfc` — Suleiman Souhlal（Google，与 John Stultz 联合）发布 RFC 系列（12 枚），引入名为 PING（"PI Next Generation"，Steven Rostedt 命名）的新型 PI futex：可被偷取、内部用 Proxy Execution 而非 rtmutex。目标是让争锁者有机会不阻塞直接抢锁，并为 fair 任务带来优先级继承。Peter Zij
+- [sched-20260917-004](../../2026/09/sched-20260917-004-sched-core-alternate-approach-to-sleeping-owner-handling-in.md) `discussion/rfc` — 增量更新：K Prateek Nayak 的 proxy execution「sleeping-owner 处理替代方案」PoC（00/16）在 John Stultz 的 torture 压力测试中触发 `sched_change_begin` 的 WARNING，随后 kernel BUG（rt.c:1020）。K Prateek 已认领排查。该系列仍是 PoC（RFC），非合入候选。
 - [sched-20260916-003](../../2026/09/sched-20260916-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.md) `feature/rfc` — K Prateek Nayak（AMD）在 08-26 发出的 RFC/PoC（16 枚），提出与 John Stultz 正在推进的「sleeping-owner enqueuing」不同的另一条路线：用一组新的 per-task 状态（`blocked_cpu`、`is_linked` 等）把整条 blocked 等待链绑定到单一 CPU 上统一唤醒。本日 John Stultz 给出详细评审
 - [sched-20260916-002](../../2026/09/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本日为增量更新：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）逐 patch 正式评审，焦点集中在 08/18 的 `WF_ON_RQ` 语义（Andrea 自己承认「描述错了区分」）以及 07/18 的 reject-DSQ 重试点设计。Andrea 已在多枚 patch 上给出回应并准备 v14
 - [sched-20260916-001](../../2026/09/sched-20260916-001-sched-core-avoid-false-migration-warning-for-proxy-donors.md) `fix/low/under_review` — Andrea Righi 从 proxy-execution 兼容 sched_ext 系列里抽出的一枚独立修复：proxy execution 会把一个 migration-disabled 的 blocked donor 的调度上下文挪到锁 owner 的 CPU 上，`set_task_cpu()` 对此无条件 `WARN_ON_ONCE(is_migration_disabled(p))`

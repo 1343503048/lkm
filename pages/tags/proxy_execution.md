@@ -2,9 +2,13 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 33
+article_count: 37
 ---
 
+- [sched-20260917-004](/lkm/2026/09/17/sched-20260917-004-sched-core-alternate-approach-to-sleeping-owner-handling-in.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
+- [sched-20260917-012](/lkm/2026/09/17/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.html) `feature/none/rfc` — FUTEX_PING: A stealable futex using Proxy Execution.
+- [sched-20260917-015](/lkm/2026/09/17/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.html) `feature/none/under_review` — sched: Add sched_ext hooks for proxy execution
+- [sched-20260917-017](/lkm/2026/09/17/sched-20260917-017-kernel-sched-core-c-5791-14-sparse-sparse-incorrect-type-in.html) `bug/low/under_review` — kernel/sched/core.c:5791:14: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260916-001](/lkm/2026/09/16/sched-20260916-001-sched-core-avoid-false-migration-warning-for-proxy-donors.html) `fix/low/under_review` — sched/core: Avoid false migration warning for proxy donors
 - [sched-20260916-002](/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260916-003](/lkm/2026/09/16/sched-20260916-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.html) `feature/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC

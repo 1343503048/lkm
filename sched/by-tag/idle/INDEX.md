@@ -1,7 +1,9 @@
 # tag: idle
 
-共 43 篇
+共 45 篇
 
+- [sched-20260917-018](../../2026/09/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_acti
+- [sched-20260917-007](../../2026/09/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 c
 - [sched-20260916-015](../../2026/09/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — Christian Loehle（ARM）的两枚新 patch：慢路径 CPU 选择存在扫描顺序偏差，并发的 wakeup 选择器可能收敛到同一个 idle CPU。方案是去掉 idle-recency 偏好、对等 latency 候选用 reservoir sampling 单趟随机化。在 160 核 Altra 上 stress-ng fork 中位数吞吐最多 +4.13%、stale-pic
 - [sched-20260915-001](../../2026/09/sched-20260915-001-sched-ext-idle-claim-recovery-and-online-cid-mask.md) `fix/low/under_review` — Tejun Heo 为 cid 接口补两个漏洞：idle CPU 被 reserve+kick 后无任务到达、再选 idle 时无状态转换导致自维护 idle 的 cid-form 调度器「丢 CPU」，以及自装 cid 映射的调度器无法得知哪些 cid 在线。v1 用 idle-to-idle 通知方案，被 Andrea Righi 指出会改变 update_idle 语义后，v2 改为公认的「
 - [sched-20260912-009](../../2026/09/sched-20260912-009-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/low/under_review` — Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态

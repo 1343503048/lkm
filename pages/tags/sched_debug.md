@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 46
+article_count: 47
 ---
 
+- [sched-20260917-001](/lkm/2026/09/17/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/under_review` — perf sched stats: Reject mismatched or incomplete snapshots
 - [sched-20260915-013](/lkm/2026/09/15/sched-20260915-013-sched-assert-static-storage-for-wait-queue-and-completion-de.html) `fix/low/under_review` — sched: assert static storage for wait queue and completion declarations
 - [sched-20260912-006](/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html) `feature/low/under_review` — sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES
 - [sched-20260912-010](/lkm/2026/09/12/sched-20260912-010-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name

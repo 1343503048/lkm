@@ -9913,5 +9913,302 @@
     ],
     "url": "/lkm/2026/09/16/sched-20260916-020-sched-core-remove-redundant-core-sched-seq.html",
     "tldr": "Hui Su 的单枚整洁性补丁：删掉 `struct rq` 里的 `core_sched_seq` 字段。作者论证它与 `core_pick` 重复——一次 core-wide 选择后 `core_pick` 非空即可表明该 rq 还有待消费的 pick，`core_sched_seq` 只是同一条状态的一份冗余拷贝。无功能性改动。本日暂无 review，合入可能性未知。"
+  },
+  {
+    "title": "perf sched stats: Reject mismatched or incomplete snapshots",
+    "id": "sched-20260917-001",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "perf",
+      "sched_debug"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html",
+    "tldr": "Tianyi Chen 提交 tools/perf 补丁，修复 `perf sched stats` report 子命令的快照配对缺陷：before/after 记录按列表位置配对，测量期间 CPU/domain 消失会导致计数错位或游标越界。补丁改为按时间戳/CPU 顺序识别第二份快照并校验 ID/版本一致，附合成快照 shell 测试。新补丁暂无评审。"
+  },
+  {
+    "title": "cpufreq: CPPC: Select the frequency-invariance callback per CPU",
+    "id": "sched-20260917-002",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-002-cpufreq-cppc-select-the-frequency-invariance-callback-per-cp.html",
+    "tldr": "Christian Loehle 的 CPPC v7 系列尾部两枚补丁（19/20、20/20）修 FIE（frequency invariance）回调的空指针缺陷：共享 policy 下非 PCC CPU 会被装上 PCC tick 回调、或离线成员/热加 policy 引用不存在的 FIE worker，最终调用 NULL 函数指针。两补丁均 Fixes: 997c021abc6e、Cc: stable，属明确的 bug 修复。"
+  },
+  {
+    "title": "sched_ext: Unlink pending local reenqueues before freeing scheduler",
+    "id": "sched-20260917-003",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-003-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html",
+    "tldr": "增量更新：Andrea Righi 昨日（09-16）的\"释放调度器前 unlink 挂起的 local reenqueue 请求\"补丁被 Tejun Heo 判定为治标不治本——WARN 本就该触发、unlink 会掩盖下一处丢失的调度；根因已定位并用新补丁（Derive SCX_RQ_IN_WAKEUP，见 related）修复。Cheng-Yang Chou 补了一个 Acked-by。本补丁实质被取代。"
+  },
+  {
+    "title": "sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC",
+    "id": "sched-20260917-004",
+    "date": "2026-09-17",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-004-sched-core-alternate-approach-to-sleeping-owner-handling-in.html",
+    "tldr": "增量更新：K Prateek Nayak 的 proxy execution「sleeping-owner 处理替代方案」PoC（00/16）在 John Stultz 的 torture 压力测试中触发 `sched_change_begin` 的 WARNING，随后 kernel BUG（rt.c:1020）。K Prateek 已认领排查。该系列仍是 PoC（RFC），非合入候选。"
+  },
+  {
+    "title": "sched: Restart fair hrtick after same-task repicks",
+    "id": "sched-20260917-005",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "preempt"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.html",
+    "tldr": "增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于\"跳过 put_prev_task_*() 无法区分 fair 与 DL\"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_PICK 语义，且 CONFIG_SCHED_CLASS_EXT=y 编译通过。无新版本。"
+  },
+  {
+    "title": "cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload",
+    "id": "sched-20260917-006",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html",
+    "tldr": "增量更新：Sumit Gupta 的 CPPC v5 系列（保留 OSPM 设置的寄存器）获得 K Prateek Nayak 的 x86 实测 Tested-by——K Prateek 把 Kconfig 改成可在 x86 上编译驱动后，在 Zen3 共享内存 CPPC 上验证 `auto_select` 与 `energy_performance_preference_val` 在 offline-online 周期后正确保留。Sumit 确认会加 Tested-by 与 patch 2 的 Reviewed-by。"
+  },
+  {
+    "title": "sched/fair: Randomize equally shallow slow-path candidates",
+    "id": "sched-20260917-007",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "idle"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.html",
+    "tldr": "增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 cpuidle 驱动时须保留 !idle CPU、Shubhang 建议把采样限定在 exit_latency==min 的候选中，作者倾向沿用 v1 的 !idle 优先级并改用 U64_MAX re"
+  },
+  {
+    "title": "sched_ext: Wait for SCX_OPSS_DISPATCHING before reenqueueing a task",
+    "id": "sched-20260917-008",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-008-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html",
+    "tldr": "增量更新：Tejun Heo 的 sched_ext/for-7.3-fixes 补丁\"在重新入队任务前等待 SCX_OPSS_DISPATCHING\"已被 Tejun 本人应用到 sched_ext/for-7.3-fixes 分支，进入 tip。该修复解决 DISPATCHING 窗口内 reenqueue 导致的竞态，至此合入。"
+  },
+  {
+    "title": "sched_ext: Don't run ops.dequeue() with a DSQ lock held",
+    "id": "sched-20260917-009",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Qiurong Fang"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-009-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html",
+    "tldr": "增量更新：Qiurong Fang 推出 v4，落实 Tejun Heo 对 v3 的全部评审意见（终端分支注释措辞、删除未用的 @src_dsq 参数、修正 commit message 用词、selftest 从 run() 直接轮询）。该修复解决 consume/move 路径持源 DSQ 锁调用 ops.dequeue() 的自死锁问题，已 Cc: stable v7.1+，patch 1 带 Andrea Righi 的 Acked-by，合入可能性高。"
+  },
+  {
+    "title": "sched_ext: Add lazy preemption support",
+    "id": "sched-20260917-010",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "preempt"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-010-sched-ext-add-lazy-preemption-support.html",
+    "tldr": "增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以 AI 辅助评审跑通 vng 下全部 selftest，并给出若干待修的小问题（autogen 头顺序、selftest 健壮性），合入可能性高。"
+  },
+  {
+    "title": "sched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags",
+    "id": "sched-20260917-011",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-011-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html",
+    "tldr": "Tejun Heo 提交 sched_ext/for-7.3-fixes 根因修复：`enqueue_task_scx()` 从合并后的 enqueue flags 派生 SCX_RQ_IN_WAKEUP，导致 `move_remote_task_to_local_dsq()` 在远端 rq 上置位该标志、却没有后续 `task_woken_scx()`，令 local reenqueue 请求被永久挂起、最终指向已释放的 per-cpu 区域（UAF）。修复改为只测试 core enqueue flags 的 wakeup 位。Andrea Righi 已给 Reviewed-by，且此补丁"
+  },
+  {
+    "title": "FUTEX_PING: A stealable futex using Proxy Execution.",
+    "id": "sched-20260917-012",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Suleiman Souhlal",
+      "John Stultz"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.html",
+    "tldr": "Suleiman Souhlal（Google，与 John Stultz 联合）发布 RFC 系列（12 枚），引入名为 PING（\"PI Next Generation\"，Steven Rostedt 命名）的新型 PI futex：可被偷取、内部用 Proxy Execution 而非 rtmutex。目标是让争锁者有机会不阻塞直接抢锁，并为 fair 任务带来优先级继承。Peter Zijlstra 认为整条路线\"为时过早\"（主张先让 rt_mutex 退化为普通 mutex），并担心无界 proxy 链与死锁；Jihan LIN 报告了一个会卡死 find_proxy_task() "
+  },
+  {
+    "title": "sched/numa: stop VMA scan filters from gating promotion",
+    "id": "sched-20260917-013",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.html",
+    "tldr": "增量更新：Gregory Price 的 NUMA \"停止让 VMA 扫描过滤器阻碍提升\"系列（v2）引发维护者关注——Andrew Morton 追问\"为什么 cc:stable 和 Fixes:\"，Gregory 解释 NUMA balancing 自 2022/2023 起就被功能性打破、只因另一个 shmem bug 掩盖了症状；David Hildenbrand 将负责审查 MM 侧，并请人审查 sched/fair.c 侧。合入仍缺 sched 维护者评审。"
+  },
+  {
+    "title": "arm64/cpufreq: report and track frequencies above 4.19 GHz",
+    "id": "sched-20260917-014",
+    "date": "2026-09-17",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "arm64"
+    ],
+    "authors": [
+      "Oleg Keri"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html",
+    "tldr": "增量更新：Oleg Keri 推出 v4，针对 Snapdragon X2 Elite（boost 4723200 kHz > 4194304 kHz）修复 arm64 频率上报与跟踪的两处溢出/失真：arch_freq_get_on_cpu() 的 u64 乘积被截断为 unsigned int 导致回绕，以及 capacity_freq_ref 不包含 boost 频率导致调度器无法区分 boost 与持续频率。Dietmar Eggemann 就 v3 的 capacity_freq_ref 讨论补充了 cpufreq pressure 的机制与实测数据。"
+  },
+  {
+    "title": "sched: Add sched_ext hooks for proxy execution",
+    "id": "sched-20260917-015",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.html",
+    "tldr": "增量更新：Andrea Righi 的 proxy execution 兼容 sched_ext 系列（v13，18 枚）继续与 Peter Zijlstra 就 07/18（`sched: Add sched_ext hooks for proxy execution`）交换意见。Peter 承认自己把 donor/curr 的 put_prev_task 处理搞混了，随后确认 `rq->donor` 有 `put_prev_task()` 兜底、而 `rq->curr` 没有，最终\"Fair enough\"收敛。属对 v14 收尾的点状确认，无 NAK。"
+  },
+  {
+    "title": "cpufreq: CPPC: Keep the policy across CPU hotplug",
+    "id": "sched-20260917-016",
+    "date": "2026-09-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Jie Zhan"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-016-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.html",
+    "tldr": "增量更新：Jie Zhan 的\"CPPC 热插拔期间保持 policy\"系列（v4 1/4）继续评审。Sumit Gupta 质疑为复位值准备的 MIN/MAX 顺序化 prep 非必需（平台可能把 MAX 复位到更低值，先恢复 MIN 会短暂出现 MIN>MAX），询问 Christian 是否同意按 v3 那样直接用 cppc_set_perf() 恢复、把顺序化 MIN/MAX 更新放到独立的 CPPC core 系列处理；Christian 基本同意，但坚持该 prep 应落在 cppc_set_perf() 内部而非 cppc-cpufreq。"
+  },
+  {
+    "title": "kernel/sched/core.c:5791:14: sparse: sparse: incorrect type in assignment (different address spaces)",
+    "id": "sched-20260917-017",
+    "date": "2026-09-17",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-017-kernel-sched-core-c-5791-14-sparse-sparse-incorrect-type-in.html",
+    "tldr": "0day 机器人报告内核主线（commit f5741d2b3451 \"sched/core: Call wq_worker_tick() for the execution context\"，7 天前）在 x86_64-randconfig + W=1 下 kernel/sched/core.c 出现新的 sparse 地址空间类型告警。无回帖、无补丁，属低危构建期类型安全噪音。"
+  },
+  {
+    "title": "sched: Enable preferred SMT siblings on NVIDIA Olympus",
+    "id": "sched-20260917-018",
+    "date": "2026-09-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html",
+    "tldr": "增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_active()（回应 Vincent Guittot）。OpenBLAS sgemm +3.20%、NVPL +6.73%、方差显著下降。方向从\"平台特判\"改为\"通用可开关\"，合入前景改善。"
   }
 ]

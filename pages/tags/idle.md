@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20260917-007](/lkm/2026/09/17/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
+- [sched-20260917-018](/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260916-015](/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks
 - [sched-20260915-001](/lkm/2026/09/15/sched-20260915-001-sched-ext-idle-claim-recovery-and-online-cid-mask.html) `fix/low/under_review` — sched_ext: Idle claim recovery and online cid mask
 - [sched-20260912-008](/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
