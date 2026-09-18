@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 141
+article_count: 146
 ---
 
+- [sched-20260918-006](/lkm/2026/09/18/sched-20260918-006-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html) `fix/low/merged_tip` — sched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags
+- [sched-20260918-007](/lkm/2026/09/18/sched-20260918-007-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/merged_tip` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
+- [sched-20260918-012](/lkm/2026/09/18/sched-20260918-012-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
+- [sched-20260918-021](/lkm/2026/09/18/sched-20260918-021-sched-ext-fix-coding-style-and-macro-parenthesization-in-ext.html) `feature/none/under_review` — sched_ext: Fix coding style and macro parenthesization in ext and cid
+- [sched-20260918-024](/lkm/2026/09/18/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/ext/ext.c:1451:38: sparse: sparse: incorrect type in initializer (different address spaces)
 - [sched-20260917-003](/lkm/2026/09/17/sched-20260917-003-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html) `fix/medium/superseded` — sched_ext: Unlink pending local reenqueues before freeing scheduler
 - [sched-20260917-008](/lkm/2026/09/17/sched-20260917-008-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html) `fix/medium/merged_tip` — sched_ext: Wait for SCX_OPSS_DISPATCHING before reenqueueing a task
 - [sched-20260917-009](/lkm/2026/09/17/sched-20260917-009-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held

@@ -2,9 +2,10 @@
 layout: default
 tag: "wake_affine"
 title: "标签: wake_affine"
-article_count: 7
+article_count: 8
 ---
 
+- [sched-20260918-001](/lkm/2026/09/18/sched-20260918-001-sched-document-wf-sync-wakeup-placement-semantics.html) `feature/none/rfc` — sched: Document WF_SYNC wakeup placement semantics
 - [sched-20260810-012](/lkm/2026/08/10/sched-20260810-012-sched-fair-let-sync-wakeups-target-the-waker-s-core.html) `feature/none/under_review` — sched/fair: Let sync wakeups target the waker's core
 - [sched-20260806-009](/lkm/2026/08/06/sched-20260806-009-sched-fair-sync-wakeup-target-waker-core.html) `feature/none/under_review` — sched/fair: Let sync wakeups target the waker's core
 - [sched-20260806-012](/lkm/2026/08/06/sched-20260806-012-fuse-wakeup-hints-to-scheduler.html) `feature/none/draft` — fuse: give wakeup hints to the scheduler for synchronous requests

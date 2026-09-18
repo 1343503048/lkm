@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 99 篇
+共 101 篇
 
+- [sched-20260918-015](../../2026/09/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.md) `feature/under_review` — 增量更新：Tim Chen 的 cache-aware 负载均衡系列（v4，22 补丁）本日仅在 01/22 上有 Zenghui Yu 一句简短回应——对某条 review 建议表示"I agree，我会试试"。系列整体无新的实质进展或反对意见。
+- [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello
 - [sched-20260916-018](../../2026/09/sched-20260916-018-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本日为增量更新：报告者 Klaus Kusche 反馈 Intel 侧（Chen Yu）最新一版补丁后，其 AMD big/little（大小核混合）平台上 cache-aware 调度的性能已基本追平无 cache-aware 的内核，比早期 cache-aware 内核快约 2%，核心柱状图上也未见明显错放进程。这是一个偏正面的修复确认，完整背景见 related_articles。
 - [sched-20260916-016](../../2026/09/sched-20260916-016-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.md) `feature/rfc` — 本日为增量更新：Xin Zhao 的 RFC（RESEND，10 枚，核心是 `select_task_rq_fair_thin()` 让 LB_PROMOTE 场景选 rq 时走一个去掉能耗部分的轻量路径）。社区 reviewer Kayra Cizmeci 追加两点质疑——去掉能耗部分在嵌入式/能耗敏感场景的影响，以及用一个只服务于单一选项的函数「更像权衡而非优化」。作者尚未公开回应这轮置疑。
 - [sched-20260916-015](../../2026/09/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — Christian Loehle（ARM）的两枚新 patch：慢路径 CPU 选择存在扫描顺序偏差，并发的 wakeup 选择器可能收敛到同一个 idle CPU。方案是去掉 idle-recency 偏好、对等 latency 候选用 reservoir sampling 单趟随机化。在 160 核 Altra 上 stress-ng fork 中位数吞吐最多 +4.13%、stale-pic

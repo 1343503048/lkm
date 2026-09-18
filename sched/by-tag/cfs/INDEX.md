@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 120 篇
+共 124 篇
 
+- [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te
+- [sched-20260918-004](../../2026/09/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 随机化系列（v2）本日收尾——Vincent Guittot 对 2/2 补上 Reviewed-by，Peter Zijlstra 表示"Thanks, let me go queue this"，系列即将进入 tip。上一日遗留的 !idle 处理与候选计数复位分歧，作者 v2 已按 U64_MAX reservoir 落
+- [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe
+- [sched-20260918-001](../../2026/09/sched-20260918-001-sched-document-wf-sync-wakeup-placement-semantics.md) `feature/rfc` — 增量更新：Shubhang Kaushik 的 WF_SYNC 语义文档系列推出 v2（去掉实现细节、只描述稳定的 fair 类语义），并修正 waitqueue API 中"wakee 不会被迁移"的错误保证。本日 Peter Zijlstra 质疑整篇文档是"bitrot 温床"、建议改成内联注释，Shrikanth Hegde 则支持文档化（WF_SYNC 已有 4+ 个改动提案、语义混乱）
 - [sched-20260917-007](../../2026/09/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 c
 - [sched-20260917-005](../../2026/09/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于"跳过 put_prev_task_*() 无法区分 fair 与 DL"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_
 - [sched-20260916-017](../../2026/09/sched-20260916-017-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik 的 v3：fair hrtick 是一次性定时器，hrtick 到期后的 same-task repick 会跳过 `set_next_task_fair()`，导致下一个公平抢占点没有 armed 的 hrtick，造成调度延迟。方案引入 `SNT_REPICK` 区分 next==prev 路径。v3 按 Zhan Xusheng 上轮意见**去掉了 SCHE

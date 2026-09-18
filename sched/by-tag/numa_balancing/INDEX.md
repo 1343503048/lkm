@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 26 篇
+共 28 篇
 
+- [sched-20260918-014](../../2026/09/sched-20260918-014-sched-numa-scan-read-only-file-mappings-in-tiering-mode.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 3/4，让 tiering 模式也扫描只读文件映射）本日集中讨论 VMA 判定语义——David Hildenbrand 认为函数名误导、应用新 VMA flags API；Lorenzo Stoakes 给出详尽的 VMA 标志分析并建议引入 `vma_maps_shared_readonly_file()` 
+- [sched-20260918-013](../../2026/09/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 4/4，去掉 VMA PID 活动对 promotion 的门控）本日获 Peter Zijlstra 有条件点头——"我对 tiering 代码引发的问题不喜欢，但这版应该行，Mel?"（等待 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 mess
 - [sched-20260917-013](../../2026/09/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA "停止让 VMA 扫描过滤器阻碍提升"系列（v2）引发维护者关注——Andrew Morton 追问"为什么 cc:stable 和 Fixes:"，Gregory 解释 NUMA balancing 自 2022/2023 起就被功能性打破、只因另一个 shmem bug 掩盖了症状；David Hildenbrand 将负责审查 MM 侧，并
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co
 - [sched-20260911-008](../../2026/09/sched-20260911-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — Gregory Price（Meta）v2 系列的第 3、4 补丁当日入缓存并给出重磅实测数据：CXL 分层机上 20GB 热 hash 表在修复前完全滞留慢层、修复后 DRAM/CXL 均分；作者同时回应 v1 review 认为遗留疑问多为误报。本文为增量更新（v1 背景与 3/4 的 v1 分析见 sched-20260905-006、sched-20260907-009）：v2 把两个 V

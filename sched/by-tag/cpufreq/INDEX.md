@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 37 篇
+共 39 篇
 
+- [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello
+- [sched-20260918-005](../../2026/09/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 增量更新：Ananthu C V 的 schedutil boost 频率处理修复（v2）本日新增一轮 review 与实测——Oleg Keri 在 Lenovo Yoga Slim 7x（scmi-cpufreq）上验证通过并给出 Tested-by；Zhongqiu Han 质疑 Fixes 标签应指向 `6e39ba4e5a82`（cpufreq boost_freq_req QoS），并
 - [sched-20260917-016](../../2026/09/sched-20260917-016-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.md) `fix/under_review` — 增量更新：Jie Zhan 的"CPPC 热插拔期间保持 policy"系列（v4 1/4）继续评审。Sumit Gupta 质疑为复位值准备的 MIN/MAX 顺序化 prep 非必需（平台可能把 MAX 复位到更低值，先恢复 MIN 会短暂出现 MIN>MAX），询问 Christian 是否同意按 v3 那样直接用 cppc_set_perf() 恢复、把顺序化 MIN/MAX 更新放到独立
 - [sched-20260917-014](../../2026/09/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.md) `bug/medium/under_review` — 增量更新：Oleg Keri 推出 v4，针对 Snapdragon X2 Elite（boost 4723200 kHz > 4194304 kHz）修复 arm64 频率上报与跟踪的两处溢出/失真：arch_freq_get_on_cpu() 的 u64 乘积被截断为 unsigned int 导致回绕，以及 capacity_freq_ref 不包含 boost 频率导致调度器无法区分 bo
 - [sched-20260917-006](../../2026/09/sched-20260917-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 增量更新：Sumit Gupta 的 CPPC v5 系列（保留 OSPM 设置的寄存器）获得 K Prateek Nayak 的 x86 实测 Tested-by——K Prateek 把 Kconfig 改成可在 x86 上编译驱动后，在 Zen3 共享内存 CPPC 上验证 `auto_select` 与 `energy_performance_preference_val` 在 offli

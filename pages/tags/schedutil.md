@@ -2,9 +2,11 @@
 layout: default
 tag: "schedutil"
 title: "标签: schedutil"
-article_count: 6
+article_count: 8
 ---
 
+- [sched-20260918-005](/lkm/2026/09/18/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
+- [sched-20260918-010](/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260904-005](/lkm/2026/09/04/sched-20260904-005-cpufreq-schedutil-convert-to-kthread-create-worker.html) `discussion/low/under_review` — cpufreq: schedutil: convert to kthread_create_worker
 - [sched-20260903-010](/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `discussion/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant
 - [sched-20260902-008](/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html) `fix/medium/under_review` — sched/fair: Only apply cpufreq pressure where frequency is invariant

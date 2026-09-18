@@ -1,7 +1,8 @@
 # tag: psi
 
-共 7 篇
+共 8 篇
 
+- [sched-20260918-018](../../2026/09/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — Zhan Xusheng 提交修复：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响 `CONFIG_S
 - [sched-20260823-007](../../2026/08/sched-20260823-007.md) `feature/low/under_review` — Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETUP/TEARDOWN），并把「poll 超时未触发」从 SKIP 改为 FAIL。已迭代四轮，合入概率高。
 - [sched-20260819-007](../../2026/08/sched-20260819-007-selftests-cgroup-add-psi-pressure-tests-v3.md) `feature/low/under_review` — Tao Cui 为 cgroup selftests 增加 `test_psi.c`，覆盖 PSI 压力触发与 `cgroup.pressure` 显隐切换，v3 按 review 拆分成 per-resource case 并提升健壮性。纯测试覆盖增强，合入概率高。
 - [sched-20260807-012-psi-rtpoll-teardown-stale-timer.md](../../2026/08/sched-20260807-012-psi-rtpoll-teardown-stale-timer.md) `in-review`

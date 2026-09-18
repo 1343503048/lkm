@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 72
+article_count: 74
 ---
 
+- [sched-20260918-003](/lkm/2026/09/18/sched-20260918-003-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/medium/under_review` — sched/mmcid: Bound the CID allocation busy wait
+- [sched-20260918-019](/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html) `fix/none/under_review` — cgroup/cpuset: Defer sched domain rebuild to common unlock path
 - [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260913-001](/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260911-006](/lkm/2026/09/11/sched-20260911-006-sched-cache-per-task-control-of-cache-aware-scheduling-via-p.html) `feature/low/rfc` — sched/cache: Per-task control of cache aware scheduling via prctl

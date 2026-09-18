@@ -1,7 +1,10 @@
 # tag: proxy_execution
 
-共 37 篇
+共 40 篇
 
+- [sched-20260918-020](../../2026/09/sched-20260918-020-sched-core-avoid-false-migration-warning-for-proxy-donors.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy execution 修复（避免对 migration-disabled 的被阻塞 donor 误报迁移告警）本日被 Peter Zijlstra 合入 tip 的 `sched/urgent` 分支（commit fe3c73d7bc76），Fixes b049b81bdff6，已获 John Stultz Acked-by。将随 sched/u
+- [sched-20260918-018](../../2026/09/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — Zhan Xusheng 提交修复：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响 `CONFIG_S
+- [sched-20260918-011](../../2026/09/sched-20260918-011-futex-ping-a-stealable-futex-using-proxy-execution.md) `feature/rfc` — 增量更新：Suleiman Souhlal 的 FUTEX_PING（可偷取 futex + Proxy Execution，RFC 00/12）本日迎来密集高层讨论。Steven Rostedt 与 John Stultz 回溯了 FUTEX_PI 强制公平导致 SCHED_OTHER 性能崩溃、催生新 futex 的动机；Peter Zijlstra 指出"又想要 Priority Inher
 - [sched-20260917-017](../../2026/09/sched-20260917-017-kernel-sched-core-c-5791-14-sparse-sparse-incorrect-type-in.md) `bug/low/under_review` — 0day 机器人报告内核主线（commit f5741d2b3451 "sched/core: Call wq_worker_tick() for the execution context"，7 天前）在 x86_64-randconfig + W=1 下 kernel/sched/core.c 出现新的 sparse 地址空间类型告警。无回帖、无补丁，属低危构建期类型安全噪音。
 - [sched-20260917-015](../../2026/09/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.md) `feature/under_review` — 增量更新：Andrea Righi 的 proxy execution 兼容 sched_ext 系列（v13，18 枚）继续与 Peter Zijlstra 就 07/18（`sched: Add sched_ext hooks for proxy execution`）交换意见。Peter 承认自己把 donor/curr 的 put_prev_task 处理搞混了，随后确认 `rq->don
 - [sched-20260917-012](../../2026/09/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.md) `feature/rfc` — Suleiman Souhlal（Google，与 John Stultz 联合）发布 RFC 系列（12 枚），引入名为 PING（"PI Next Generation"，Steven Rostedt 命名）的新型 PI futex：可被偷取、内部用 Proxy Execution 而非 rtmutex。目标是让争锁者有机会不阻塞直接抢锁，并为 fair 任务带来优先级继承。Peter Zij

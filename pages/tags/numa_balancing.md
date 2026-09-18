@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 26
+article_count: 28
 ---
 
+- [sched-20260918-013](/lkm/2026/09/18/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.html) `fix/medium/under_review` — sched/numa: do not let VMA PID activity gate promotion
+- [sched-20260918-014](/lkm/2026/09/18/sched-20260918-014-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html) `fix/medium/under_review` — sched/numa: scan read-only file mappings in tiering mode
 - [sched-20260917-013](/lkm/2026/09/17/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks
 - [sched-20260911-008](/lkm/2026/09/11/sched-20260911-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion

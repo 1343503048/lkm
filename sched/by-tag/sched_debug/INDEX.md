@@ -1,7 +1,11 @@
 # tag: sched_debug
 
-共 47 篇
+共 51 篇
 
+- [sched-20260918-024](../../2026/09/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba
+- [sched-20260918-023](../../2026/09/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/topology.c:1037:21` 对 `struct sched_domain *sd` 赋值了 `[noderef] __rcu *parent`，地址空间标注不匹配；同报告还列出 `debug.c`（788/1129）与 `topology.c`（118/137）多处 `sd`/`tsk` 的
+- [sched-20260918-022](../../2026/09/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/idle.c:511:45` 把 `struct task_struct __rcu *curr` 传给期望 `const struct task_struct *` 的形参，地址空间标注不匹配；同报告还列出 `kernel/sched/rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到
+- [sched-20260918-017](../../2026/09/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.md) `fix/low/under_review` — Liang Luo 提交修复：rt/dl 调度类的 `sched_stat_wait` 统计在 schedstats 运行时才开启的场景下会输出"自开机以来"的虚假等待时间（wait_max/wait_sum 被永久污染）。修复是把 fair 类既有的"零 wait_start 跳过"检查下沉到公共的 `__update_stats_wait_end()`，让所有调度类共享。值得注意的是：该补丁明
 - [sched-20260917-001](../../2026/09/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/under_review` — Tianyi Chen 提交 tools/perf 补丁，修复 `perf sched stats` report 子命令的快照配对缺陷：before/after 记录按列表位置配对，测量期间 CPU/domain 消失会导致计数错位或游标越界。补丁改为按时间戳/CPU 顺序识别第二份快照并校验 ID/版本一致，附合成快照 shell 测试。新补丁暂无评审。
 - [sched-20260915-013](../../2026/09/sched-20260915-013-sched-assert-static-storage-for-wait-queue-and-completion-de.md) `fix/low/under_review` — Yury Norov 09-15 发 17 补丁系列的 patch 06/17：给 `DECLARE_WAIT_QUEUE_HEAD()`/`DECLARE_SWAIT_QUEUE_HEAD()`/`DECLARE_COMPLETION()` 加 `ASSERT_STATIC_STORAGE()`，确保 wait queue/completion 的嵌入锁静态初始化（lockdep 拿持久 cla
 - [sched-20260912-010](../../2026/09/sched-20260912-010-sched-add-support-for-long-task-name.md) `feature/low/under_review` — André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 security/smack 的编译错误（cover 自嘲 "for good"）。系列自 v5 起持续以修编译错误的方式快速迭代，但仍无任何人类 review。本文为增量更新，v6 见 sched-20260911-002，完整背景见 sched-20260828-009。

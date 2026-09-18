@@ -1,7 +1,11 @@
 # tag: idle
 
-共 45 篇
+共 49 篇
 
+- [sched-20260918-022](../../2026/09/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/idle.c:511:45` 把 `struct task_struct __rcu *curr` 传给期望 `const struct task_struct *` 的形参，地址空间标注不匹配；同报告还列出 `kernel/sched/rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到
+- [sched-20260918-009](../../2026/09/sched-20260918-009-cpuidle-speed-up-do-idle-by-caching-the-governor-latency-qos.md) `feature/stalled` — Yaxiong Tian 的 cpuidle 系列（v2，6 补丁）试图通过缓存 cpuidle governor 的 latency QoS 约束来加速 `do_idle()`（kernel/sched/idle.c 的 idle 循环）。本日维护者 Rafael Wysocki 明确表示"I'm totally unconvinced"，认为只省下了可省略的防御性检查、且新增两个 per-CP
+- [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te
+- [sched-20260918-004](../../2026/09/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 随机化系列（v2）本日收尾——Vincent Guittot 对 2/2 补上 Reviewed-by，Peter Zijlstra 表示"Thanks, let me go queue this"，系列即将进入 tip。上一日遗留的 !idle 处理与候选计数复位分歧，作者 v2 已按 U64_MAX reservoir 落
 - [sched-20260917-018](../../2026/09/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_acti
 - [sched-20260917-007](../../2026/09/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 c
 - [sched-20260916-015](../../2026/09/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — Christian Loehle（ARM）的两枚新 patch：慢路径 CPU 选择存在扫描顺序偏差，并发的 wakeup 选择器可能收敛到同一个 idle CPU。方案是去掉 idle-recency 偏好、对等 latency 候选用 reservoir sampling 单趟随机化。在 160 核 Altra 上 stress-ng fork 中位数吞吐最多 +4.13%、stale-pic

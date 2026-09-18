@@ -1,7 +1,9 @@
 # tag: schedutil
 
-共 6 篇
+共 8 篇
 
+- [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello
+- [sched-20260918-005](../../2026/09/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 增量更新：Ananthu C V 的 schedutil boost 频率处理修复（v2）本日新增一轮 review 与实测——Oleg Keri 在 Lenovo Yoga Slim 7x（scmi-cpufreq）上验证通过并给出 Tested-by；Zhongqiu Han 质疑 Fixes 标签应指向 `6e39ba4e5a82`（cpufreq boost_freq_req QoS），并
 - [sched-20260904-005](../../2026/09/sched-20260904-005-cpufreq-schedutil-convert-to-kthread-create-worker.md) `discussion/low/under_review` — 把 `kernel/sched/cpufreq_schedutil.c` 里 `sugov_policy` 的 kthread worker 从已废弃的 `kthread_init_worker()` + `kthread_create(kthread_worker_fn, ...)` + `wake_up_process()` 组合换成 `kthread_create_worker()` / `
 - [sched-20260903-010](../../2026/09/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `discussion/medium/under_review` — `get_actual_cpu_capacity()` 无条件从容量里扣掉 `max(hw_load_avg, cpufreq_get_pressure())`，但只有频率不变（`arch_scale_freq_invariant()` 为真）的架构上 util 才会随频率同比例缩放；在没有频率不变性的机器上，满载 CPU 无论跑多高频率都会累计到完整 `SCHED_CAPACITY_SCALE`
 - [sched-20260902-008](../../2026/09/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的单补丁：只在 `arch_scale_freq_invariant()` 为真时才把 cpufreq pressure 计入 `get_actual_cpu_capacity()`。9/2 这天的实质结论是**作者承认标题里的因果口径错了**——他对 Hongyan Xia 说 "I will re-phrase the problem statement i

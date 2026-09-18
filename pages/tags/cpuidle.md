@@ -2,9 +2,10 @@
 layout: default
 tag: "cpuidle"
 title: "标签: cpuidle"
-article_count: 4
+article_count: 5
 ---
 
+- [sched-20260918-009](/lkm/2026/09/18/sched-20260918-009-cpuidle-speed-up-do-idle-by-caching-the-governor-latency-qos.html) `feature/none/stalled` — cpuidle: speed up do_idle() by caching the governor latency QoS constraint
 - [sched-20260824-001](/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html) `fix/low/under_review` — sched_ext: pass the initial cpu.idle state in scx_cgroup_init_args
 - [sched-20260824-002](/lkm/2026/08/24/sched-20260824-002-sched-cpufreq-reevaluate-tickless-idle.html) `fix/low/under_review` — sched/cpufreq: Reevaluate frequency before tickless idle
 - [sched-20260821-010](/lkm/2026/08/21/sched-20260821-010-cpuidle-deny-idle-entry-when-cpu-already-have-ipi-interrupt-pending.html) `fix/medium/under_review` — cpuidle: Deny idle entry when CPU already have IPI interrupt pending

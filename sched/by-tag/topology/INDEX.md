@@ -1,7 +1,11 @@
 # tag: topology
 
-共 83 篇
+共 87 篇
 
+- [sched-20260918-023](../../2026/09/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/topology.c:1037:21` 对 `struct sched_domain *sd` 赋值了 `[noderef] __rcu *parent`，地址空间标注不匹配；同报告还列出 `debug.c`（788/1129）与 `topology.c`（118/137）多处 `sd`/`tsk` 的
+- [sched-20260918-019](../../2026/09/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.md) `fix/under_review` — Guopeng Zhang 提交清理：`update_prstate()` 末尾的 `rebuild_sched_domains_locked()` 检查是冗余的——其两个调用者随后都会走 `cpuset_update_sd_hk_unlock()`（在释放 cpuset 锁前统一重建 sched domain）。维护者 Ridong Chen 认可删冗余代码，但指出标题里 "defer" 用词误
+- [sched-20260918-015](../../2026/09/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.md) `feature/under_review` — 增量更新：Tim Chen 的 cache-aware 负载均衡系列（v4，22 补丁）本日仅在 01/22 上有 Zenghui Yu 一句简短回应——对某条 review 建议表示"I agree，我会试试"。系列整体无新的实质进展或反对意见。
+- [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te
 - [sched-20260917-018](../../2026/09/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_acti
 - [sched-20260916-010](../../2026/09/sched-20260916-010-sched-cache-refresh-llc-capacity-across-cpu-hotplug.md) `fix/medium/under_review` — Davi Chaves Azevedo 的 v3（tag-only）：修复 CPU hotplug 时 LLC 容量被低估的问题——CPU 下线时调度域先于 cacheinfo 重建，用了旧的共享权重，导致存活 CPU 的 `llc_bytes` 偏低（例：16MiB LLC 掉一个 SMT sibling 后算成 15379114 而非 16777216），在 cache-aware 调度下可能
 - [sched-20260915-008](../../2026/09/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.md) `fix/low/under_review` — 09-15 Matthieu Baerts 回复 Sasha Levin 的 AUTOSEL（6.18-6.1）回合通知，指出该补丁在 v6.1 上编译失败：`update_sd_lb_stats()` 里用到 `is_core_idle()`，但该函数在 6.1 尚未声明（implicit declaration of function 'is_core_idle'）。这解释了为何 6.1 的自

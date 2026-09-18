@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 72 篇
+共 74 篇
 
+- [sched-20260918-019](../../2026/09/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.md) `fix/under_review` — Guopeng Zhang 提交清理：`update_prstate()` 末尾的 `rebuild_sched_domains_locked()` 检查是冗余的——其两个调用者随后都会走 `cpuset_update_sd_hk_unlock()`（在释放 cpuset 锁前统一重建 sched domain）。维护者 Ridong Chen 认可删冗余代码，但指出标题里 "defer" 用词误
+- [sched-20260918-003](../../2026/09/sched-20260918-003-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/medium/under_review` — Jiakai Xu 提交修复：为 `mm_get_cid()` 的无界自旋加 32 次重试上限，耗尽时返回 `MM_CID_UNSET` 让任务无 CID 运行、下次调度再重试。这避免了 CID 耗尽时 rq 锁 + 关中断自旋导致的 RCU stall / 整机 lockup 以及模式切换 fixup 线程的 livelock。Peter Zijlstra 强烈质疑——"horribly wro
 - [sched-20260914-002](../../2026/09/sched-20260914-002-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF au
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
 - [sched-20260911-014](../../2026/09/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — Zhe Liu（kylinos）修复 cgroup CPU 带宽 quota/burst 写入顺序依赖的系列发到 v3：v2 时曾考虑直接丢弃用户配置的 burst，v3 改为「保留配置值、refill 时把可用 burst 截到 min(burst, quota)」，并补自测与 cgroup v1/v2 文档。当日与 v2 版本同时入缓存、尚无回帖。本文为增量更新，v1/v2 进展见 sched

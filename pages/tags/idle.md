@@ -2,9 +2,13 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 45
+article_count: 49
 ---
 
+- [sched-20260918-004](/lkm/2026/09/18/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
+- [sched-20260918-008](/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260918-009](/lkm/2026/09/18/sched-20260918-009-cpuidle-speed-up-do-idle-by-caching-the-governor-latency-qos.html) `feature/none/stalled` — cpuidle: speed up do_idle() by caching the governor latency QoS constraint
+- [sched-20260918-022](/lkm/2026/09/18/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.html) `bug/low/stalled` — kernel/sched/idle.c:511:45: sparse: sparse: incorrect type in argument 1 (different address spaces)
 - [sched-20260917-007](/lkm/2026/09/17/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260917-018](/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260916-015](/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks

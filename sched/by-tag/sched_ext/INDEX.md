@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 141 篇
+共 146 篇
 
+- [sched-20260918-024](../../2026/09/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba
+- [sched-20260918-021](../../2026/09/sched-20260918-021-sched-ext-fix-coding-style-and-macro-parenthesization-in-ext.md) `feature/under_review` — 新贡献者 rahadbhuiya 提交 sched_ext 编码风格清理：把 SPDX 注释改成 C++ 风格、给两个宏定义加括号避免优先级副作用、修正结构体初始化括号位置、删除分号前空格、补空行。纯格式清理，无功能变化，本日无回复。
+- [sched-20260918-012](../../2026/09/sched-20260918-012-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列（2 补丁：核心支持 + selftests）本日获 Tejun Heo 完整 review——"整体不错"，提出可折叠进 `for_each_cpu_or()`、改名为 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED`、补 bit 枚举等若干点，selftest
+- [sched-20260918-007](../../2026/09/sched-20260918-007-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/merged_tip` — 增量更新：Qiurong Fang 的 sched_ext 修复系列（v4，2-patch：确保 `ops.dequeue()` 不在持有 DSQ 锁时运行）本日被 Tejun Heo 合入 `sched_ext/for-7.3-fixes`，将随 7.3-rc 周期进入主线。
+- [sched-20260918-006](../../2026/09/sched-20260918-006-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.md) `fix/low/merged_tip` — 增量更新：Tejun Heo 的 sched_ext 修复（从核心 enqueue flags 派生出 `SCX_RQ_IN_WAKEUP`，替代 sched_ext 自行维护的 wakeup 标记）本日被 Tejun 亲自合入 `sched_ext/for-7.3-fixes`，将随 7.3-rc 周期进入主线。
 - [sched-20260917-015](../../2026/09/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.md) `feature/under_review` — 增量更新：Andrea Righi 的 proxy execution 兼容 sched_ext 系列（v13，18 枚）继续与 Peter Zijlstra 就 07/18（`sched: Add sched_ext hooks for proxy execution`）交换意见。Peter 承认自己把 donor/curr 的 put_prev_task 处理搞混了，随后确认 `rq->don
 - [sched-20260917-011](../../2026/09/sched-20260917-011-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.md) `fix/medium/under_review` — Tejun Heo 提交 sched_ext/for-7.3-fixes 根因修复：`enqueue_task_scx()` 从合并后的 enqueue flags 派生 SCX_RQ_IN_WAKEUP，导致 `move_remote_task_to_local_dsq()` 在远端 rq 上置位该标志、却没有后续 `task_woken_scx()`，令 local reenqueue 请求被
 - [sched-20260917-010](../../2026/09/sched-20260917-010-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以

@@ -1,7 +1,9 @@
 # tag: preempt
 
-共 50 篇
+共 52 篇
 
+- [sched-20260918-012](../../2026/09/sched-20260918-012-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列（2 补丁：核心支持 + selftests）本日获 Tejun Heo 完整 review——"整体不错"，提出可折叠进 `for_each_cpu_or()`、改名为 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED`、补 bit 枚举等若干点，selftest
+- [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe
 - [sched-20260917-010](../../2026/09/sched-20260917-010-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以
 - [sched-20260917-005](../../2026/09/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于"跳过 put_prev_task_*() 无法区分 fair 与 DL"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_
 - [sched-20260916-019](../../2026/09/sched-20260916-019-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/low/under_review` — Sebastian Siewior 的 v2（syzbot 报告）：`non_block_start()/end()` 为捕捉依赖锁/可睡眠条件的回调而引入，当初把 spinlock 排除在外。但 PREEMPT_RT 上 `spinlock_t`/`rwlock_t` 变成可睡眠自旋锁、带 `might_sleep()`，锁竞争时会 `schedule()`，于是在 `non_block` 块内

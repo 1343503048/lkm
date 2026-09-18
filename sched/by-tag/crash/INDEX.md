@@ -1,7 +1,8 @@
 # tag: crash
 
-共 32 篇
+共 33 篇
 
+- [sched-20260918-016](../../2026/09/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.md) `bug/critical/stalled` — 华为鲲鹏（Great Wall RK5260 V5，128 核 arm64）上报告一起 hard lockup：`rq[3].__lock` qspinlock 一直处于 locked 状态、却找不到持有者，124 个 CPU 挂在该锁的 MCS 队列里，CPU3 经 futex_wait → schedule() 阻塞在拿 rq 锁。内核为自研 5.15.131。Will Deacon 回应"得
 - [sched-20260916-004](../../2026/09/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.md) `fix/critical/under_review` — Andrea Righi 的 sched_ext 修复：调度器 teardown 时若仍有一个已链接但未消费的 deferred local reenqueue 请求挂在 rq 列表上，`scx_sched_free_rcu_work()` 只告警一声就释放 `sch->pcpu`，后续 `run_deferred()` 会顺着悬空节点解引用已释放内存，造成 use-after-free 与系统级
 - [sched-20260915-004](../../2026/09/sched-20260915-004-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.md) `bug/high/under_review` — 本文为增量更新（完整背景见 related_articles）。09-15 Zenghui Yu（Huawei）在跑 mm-new 时命中 SLUB「Poison overwritten」——4 字节 0xffffffff 覆写，定位到 `account_mm_sched()` 在远端 CPU 上解引用 `rq->curr->mm` 并写 `mm->sc_stat.cpu = -1` 的 use-
 - [sched-20260913-004](../../2026/09/sched-20260913-004-sched-set-need-resched-flags-before-tracing.md) `fix/high/under_review` — Andrea Righi 修复 `sched_set_need_resched_tp` tracepoint 早于 TIF_NEED_RESCHED 标志设置而引发的 BPF tracepoint 递归、直至内核栈溢出的问题（Fixes adcc3bfa8806「sched: Adapt sched tracepoints for RV task model」）。09-13 kernel-patc

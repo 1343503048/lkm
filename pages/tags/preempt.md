@@ -2,9 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 50
+article_count: 52
 ---
 
+- [sched-20260918-002](/lkm/2026/09/18/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
+- [sched-20260918-012](/lkm/2026/09/18/sched-20260918-012-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260917-005](/lkm/2026/09/17/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260917-010](/lkm/2026/09/17/sched-20260917-010-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support
 - [sched-20260916-007](/lkm/2026/09/16/sched-20260916-007-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support

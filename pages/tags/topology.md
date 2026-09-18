@@ -2,9 +2,13 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 83
+article_count: 87
 ---
 
+- [sched-20260918-008](/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
+- [sched-20260918-015](/lkm/2026/09/18/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `feature/none/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
+- [sched-20260918-019](/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html) `fix/none/under_review` — cgroup/cpuset: Defer sched domain rebuild to common unlock path
+- [sched-20260918-023](/lkm/2026/09/18/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:1037:21: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260917-018](/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260916-010](/lkm/2026/09/16/sched-20260916-010-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html) `fix/medium/under_review` — sched/cache: Refresh LLC capacity across CPU hotplug
 - [sched-20260915-006](/lkm/2026/09/15/sched-20260915-006-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html) `fix/medium/merged_tip` — sched/fair: avoid creating misfits during cache-aware balancing

@@ -2,9 +2,10 @@
 layout: default
 tag: "hang"
 title: "标签: hang"
-article_count: 9
+article_count: 10
 ---
 
+- [sched-20260918-016](/lkm/2026/09/18/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.html) `bug/critical/stalled` — [BUG] arm64/sched: hard lockup with rq->__lock stuck locked and no apparent owner
 - [sched-20260916-006](/lkm/2026/09/16/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260915-003](/lkm/2026/09/15/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/under_review` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260907-002](/lkm/2026/09/07/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `bug/medium/rfc` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()

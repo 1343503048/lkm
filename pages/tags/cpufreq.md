@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 37
+article_count: 39
 ---
 
+- [sched-20260918-005](/lkm/2026/09/18/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
+- [sched-20260918-010](/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260917-002](/lkm/2026/09/17/sched-20260917-002-cpufreq-cppc-select-the-frequency-invariance-callback-per-cp.html) `fix/medium/under_review` — cpufreq: CPPC: Select the frequency-invariance callback per CPU
 - [sched-20260917-006](/lkm/2026/09/17/sched-20260917-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `feature/none/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20260917-014](/lkm/2026/09/17/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz

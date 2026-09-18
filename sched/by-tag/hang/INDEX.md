@@ -1,7 +1,8 @@
 # tag: hang
 
-共 9 篇
+共 10 篇
 
+- [sched-20260918-016](../../2026/09/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.md) `bug/critical/stalled` — 华为鲲鹏（Great Wall RK5260 V5，128 核 arm64）上报告一起 hard lockup：`rq[3].__lock` qspinlock 一直处于 locked 状态、却找不到持有者，124 个 CPU 挂在该锁的 MCS 队列里，CPU3 经 futex_wait → schedule() 阻塞在拿 rq 锁。内核为自研 5.15.131。Will Deacon 回应"得
 - [sched-20260916-006](../../2026/09/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/under_review` — Qiurong Fang 的 v3：`ops.dequeue()` 在 consume/move 路径上仍带着源 user DSQ 锁被调用，任何从 `ops.dequeue()` 回锁同一 DSQ 的 BPF 调度器会自死锁。v3 按 Tejun Heo 的全套评审意见重写：收紧死锁描述到两条 user DSQ 路径、open-code 掉 `call_task_dequeue()`、放弃拆分直
 - [sched-20260915-003](../../2026/09/sched-20260915-003-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/under_review` — Qiurong Fang v2：`ops.dequeue()` 在 consume、move、terminal insert 三条路径上都是在 DSQ 锁仍被持有的状态下被调用，任何从 `ops.dequeue()` 回锁同一 DSQ 的 BPF 调度器（例如用 `bpf_iter_scx_dsq` 迭代，每步都要拿 DSQ 锁）都会自死锁。修复把这三次调用移到 DSQ 解锁之后。patch 1 
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c

@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 37
+article_count: 40
 ---
 
+- [sched-20260918-011](/lkm/2026/09/18/sched-20260918-011-futex-ping-a-stealable-futex-using-proxy-execution.html) `feature/none/rfc` — FUTEX_PING: A stealable futex using Proxy Execution.
+- [sched-20260918-018](/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
+- [sched-20260918-020](/lkm/2026/09/18/sched-20260918-020-sched-core-avoid-false-migration-warning-for-proxy-donors.html) `fix/low/merged_tip` — sched/core: Avoid false migration warning for proxy donors
 - [sched-20260917-004](/lkm/2026/09/17/sched-20260917-004-sched-core-alternate-approach-to-sleeping-owner-handling-in.html) `discussion/none/rfc` — sched/core: Alternate approach to sleeping-owner handling in PROXY_EXEC
 - [sched-20260917-012](/lkm/2026/09/17/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.html) `feature/none/rfc` — FUTEX_PING: A stealable futex using Proxy Execution.
 - [sched-20260917-015](/lkm/2026/09/17/sched-20260917-015-sched-add-sched-ext-hooks-for-proxy-execution.html) `feature/none/under_review` — sched: Add sched_ext hooks for proxy execution
