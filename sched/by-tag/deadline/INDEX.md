@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 15 篇
+共 16 篇
 
+- [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_
 - [sched-20260918-017](../../2026/09/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.md) `fix/low/under_review` — Liang Luo 提交修复：rt/dl 调度类的 `sched_stat_wait` 统计在 schedstats 运行时才开启的场景下会输出"自开机以来"的虚假等待时间（wait_max/wait_sum 被永久污染）。修复是把 fair 类既有的"零 wait_start 跳过"检查下沉到公共的 `__update_stats_wait_end()`，让所有调度类共享。值得注意的是：该补丁明
 - [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe
 - [sched-20260907-013](../../2026/09/sched-20260907-013-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/lin

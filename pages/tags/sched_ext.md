@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 146
+article_count: 148
 ---
 
+- [sched-20260919-002](/lkm/2026/09/19/sched-20260919-002-sched-ext-pass-the-initial-cmask-to-cid-form-ops-enable.html) `fix/none/merged_tip` — sched_ext: Pass the initial cmask to cid-form ops.enable()
+- [sched-20260919-003](/lkm/2026/09/19/sched-20260919-003-sched-ext-add-lazy-preemption-support.html) `feature/none/merged_tip` — sched_ext: Add lazy preemption support
 - [sched-20260918-006](/lkm/2026/09/18/sched-20260918-006-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html) `fix/low/merged_tip` — sched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags
 - [sched-20260918-007](/lkm/2026/09/18/sched-20260918-007-sched-ext-don-t-run-ops-dequeue-with-a-dsq-lock-held.html) `fix/medium/merged_tip` — sched_ext: Don't run ops.dequeue() with a DSQ lock held
 - [sched-20260918-012](/lkm/2026/09/18/sched-20260918-012-sched-ext-add-lazy-preemption-support.html) `feature/none/under_review` — sched_ext: Add lazy preemption support

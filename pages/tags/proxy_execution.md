@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 40
+article_count: 42
 ---
 
+- [sched-20260919-005](/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
+- [sched-20260919-012](/lkm/2026/09/19/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html) `feature/none/rfc` — sched/proxy_exec: detect cycles without persistent walk state
 - [sched-20260918-011](/lkm/2026/09/18/sched-20260918-011-futex-ping-a-stealable-futex-using-proxy-execution.html) `feature/none/rfc` — FUTEX_PING: A stealable futex using Proxy Execution.
 - [sched-20260918-018](/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
 - [sched-20260918-020](/lkm/2026/09/18/sched-20260918-020-sched-core-avoid-false-migration-warning-for-proxy-donors.html) `fix/low/merged_tip` — sched/core: Avoid false migration warning for proxy donors

@@ -1,7 +1,8 @@
 # tag: idle
 
-共 49 篇
+共 50 篇
 
+- [sched-20260919-007](../../2026/09/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.md) `feature/under_review` — 增量更新：Andrea Righi 非对称 SMT 系列 2/2（新增内核参数覆盖 asymmetric SMT packing）本日收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意按 Vincent 建议砍掉 `auto`/`off`、只保留显式强制项。
 - [sched-20260918-022](../../2026/09/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/idle.c:511:45` 把 `struct task_struct __rcu *curr` 传给期望 `const struct task_struct *` 的形参，地址空间标注不匹配；同报告还列出 `kernel/sched/rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到
 - [sched-20260918-009](../../2026/09/sched-20260918-009-cpuidle-speed-up-do-idle-by-caching-the-governor-latency-qos.md) `feature/stalled` — Yaxiong Tian 的 cpuidle 系列（v2，6 补丁）试图通过缓存 cpuidle governor 的 latency QoS 约束来加速 `do_idle()`（kernel/sched/idle.c 的 idle 循环）。本日维护者 Rafael Wysocki 明确表示"I'm totally unconvinced"，认为只省下了可省略的防御性检查、且新增两个 per-CP
 - [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te

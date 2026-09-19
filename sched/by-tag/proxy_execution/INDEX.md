@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 40 篇
+共 42 篇
 
+- [sched-20260919-012](../../2026/09/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.md) `feature/rfc` — 增量更新：Hui Su 的 proxy execution 环检测 RFC（Online Brent，无持久 walk 状态）本日由作者贴出对 tip/sched/core（`e81ee0630837`）的追加验证——针对 `772d9ffbfd26`（"sched: Migrate whole chain in proxy_migrate_task()"）引入的 `p->blocked_dono
+- [sched-20260919-005](../../2026/09/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。
 - [sched-20260918-020](../../2026/09/sched-20260918-020-sched-core-avoid-false-migration-warning-for-proxy-donors.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy execution 修复（避免对 migration-disabled 的被阻塞 donor 误报迁移告警）本日被 Peter Zijlstra 合入 tip 的 `sched/urgent` 分支（commit fe3c73d7bc76），Fixes b049b81bdff6，已获 John Stultz Acked-by。将随 sched/u
 - [sched-20260918-018](../../2026/09/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — Zhan Xusheng 提交修复：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响 `CONFIG_S
 - [sched-20260918-011](../../2026/09/sched-20260918-011-futex-ping-a-stealable-futex-using-proxy-execution.md) `feature/rfc` — 增量更新：Suleiman Souhlal 的 FUTEX_PING（可偷取 futex + Proxy Execution，RFC 00/12）本日迎来密集高层讨论。Steven Rostedt 与 John Stultz 回溯了 FUTEX_PI 强制公平导致 SCHED_OTHER 性能崩溃、催生新 futex 的动机；Peter Zijlstra 指出"又想要 Priority Inher

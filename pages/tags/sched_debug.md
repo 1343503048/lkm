@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 51
+article_count: 52
 ---
 
+- [sched-20260919-004](/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl
 - [sched-20260918-022](/lkm/2026/09/18/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.html) `bug/low/stalled` — kernel/sched/idle.c:511:45: sparse: sparse: incorrect type in argument 1 (different address spaces)
 - [sched-20260918-023](/lkm/2026/09/18/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:1037:21: sparse: sparse: incorrect type in assignment (different address spaces)

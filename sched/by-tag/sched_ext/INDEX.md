@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 146 篇
+共 148 篇
 
+- [sched-20260919-003](../../2026/09/sched-20260919-003-sched-ext-add-lazy-preemption-support.md) `feature/merged_tip` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列推出 v7，本日被 Tejun Heo 应用 1-2 到 `sched_ext/for-7.4`。相比 v6，v7 主要是把即时抢占的 `SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 一次性操作与新的持久策略 `scx_bpf_task_set_lazy_resched()`/`S
+- [sched-20260919-002](../../2026/09/sched-20260919-002-sched-ext-pass-the-initial-cmask-to-cid-form-ops-enable.md) `fix/merged_tip` — Tejun Heo 在一天之内把 sched_ext cid-form API 的一个明显漏洞从 v1 迭代到 v3 并合入 `sched_ext/for-7.3-fixes`：此前 cid-form 调度器的任务 cmask 只能通过 `ops.set_cmask()` 看到，而它在 fork/子调度使能/re-home 等进入路径上不触发，导致调度器只能用 `ops.init_task()` 
 - [sched-20260918-024](../../2026/09/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba
 - [sched-20260918-021](../../2026/09/sched-20260918-021-sched-ext-fix-coding-style-and-macro-parenthesization-in-ext.md) `feature/under_review` — 新贡献者 rahadbhuiya 提交 sched_ext 编码风格清理：把 SPDX 注释改成 C++ 风格、给两个宏定义加括号避免优先级副作用、修正结构体初始化括号位置、删除分号前空格、补空行。纯格式清理，无功能变化，本日无回复。
 - [sched-20260918-012](../../2026/09/sched-20260918-012-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列（2 补丁：核心支持 + selftests）本日获 Tejun Heo 完整 review——"整体不错"，提出可折叠进 `for_each_cpu_or()`、改名为 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED`、补 bit 枚举等若干点，selftest

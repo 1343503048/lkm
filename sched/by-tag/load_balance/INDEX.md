@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 101 篇
+共 102 篇
 
+- [sched-20260919-006](../../2026/09/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的 cpufreq CPU pressure 参考频率修复本日被 Rafael J. Wysocki 指出方向性偏差——Rafael 认为问题的本质是"在 `arch_scale_freq_ref()` 为零时仍施加了 pressure"，与 boost 本身关系不大，并贴出一版更窄的替代补丁（把回退限于 `intel_pstate` 非对称容量场景），请作者与 
 - [sched-20260918-015](../../2026/09/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.md) `feature/under_review` — 增量更新：Tim Chen 的 cache-aware 负载均衡系列（v4，22 补丁）本日仅在 01/22 上有 Zenghui Yu 一句简短回应——对某条 review 建议表示"I agree，我会试试"。系列整体无新的实质进展或反对意见。
 - [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello
 - [sched-20260916-018](../../2026/09/sched-20260916-018-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本日为增量更新：报告者 Klaus Kusche 反馈 Intel 侧（Chen Yu）最新一版补丁后，其 AMD big/little（大小核混合）平台上 cache-aware 调度的性能已基本追平无 cache-aware 的内核，比早期 cache-aware 内核快约 2%，核心柱状图上也未见明显错放进程。这是一个偏正面的修复确认，完整背景见 related_articles。

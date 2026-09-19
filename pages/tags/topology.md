@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 87
+article_count: 88
 ---
 
+- [sched-20260919-007](/lkm/2026/09/19/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.html) `feature/none/under_review` — sched/topology: Add asymmetric SMT packing override
 - [sched-20260918-008](/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260918-015](/lkm/2026/09/18/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `feature/none/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
 - [sched-20260918-019](/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html) `fix/none/under_review` — cgroup/cpuset: Defer sched domain rebuild to common unlock path

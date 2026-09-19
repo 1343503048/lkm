@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 101
+article_count: 102
 ---
 
+- [sched-20260919-006](/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260918-010](/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260918-015](/lkm/2026/09/18/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `feature/none/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
 - [sched-20260916-015](/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks

@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 124 篇
+共 127 篇
 
+- [sched-20260919-013](../../2026/09/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.md) `discussion/rfc` — 新 RFC（设计讨论，未附补丁）：16 岁的 Julian Blaauwiekel 在其自研 OS MUDOS_64 的调度器 HEDFS-4 中提出"Dependency-Aware Scheduling (DAS)"——当一个已 runnable 的任务 B 成为另一任务 A 因果关键路径上的一环时（A 等 B，但 B 本已 runnable，故无 wakeup 事件传递该信息），给 B 施加
+- [sched-20260919-010](../../2026/09/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — 增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为"依赖特定编辑顺序的状态校验既烦人又价值不高"。系列等待收取。
+- [sched-20260919-004](../../2026/09/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：albin_yang 的 `run_delay` 虚增修复系列本日推进——作者给出用户态 reproducer（每次在 sched_delayed 睡眠期间发生的迁移会把整段睡眠时长 ~148ms 虚算进 run_delay），Chen Yu 给出 Reviewed-by 并附机制分析；Kayra Cizmeci 纠正了 Chen Yu 关于 `can_migrate_task()` 跳
 - [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te
 - [sched-20260918-004](../../2026/09/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 的慢路径 idle CPU 随机化系列（v2）本日收尾——Vincent Guittot 对 2/2 补上 Reviewed-by，Peter Zijlstra 表示"Thanks, let me go queue this"，系列即将进入 tip。上一日遗留的 !idle 处理与候选计数复位分歧，作者 v2 已按 U64_MAX reservoir 落
 - [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe

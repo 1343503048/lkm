@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 23 篇
+共 24 篇
 
+- [sched-20260919-007](../../2026/09/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.md) `feature/under_review` — 增量更新：Andrea Righi 非对称 SMT 系列 2/2（新增内核参数覆盖 asymmetric SMT packing）本日收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意按 Vincent 建议砍掉 `auto`/`off`、只保留显式强制项。
 - [sched-20260918-008](../../2026/09/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/under_review` — 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Te
 - [sched-20260917-018](../../2026/09/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 推出 v6，重大转向——弃用 arm64 MIDR 硬编码与 arch_asym_cpu_priority() 覆盖（回应 Will Deacon），改为通用 `sched_smt_asym_packing={auto,on,off}` boot 选项 + 默认 -cpu 优先级排序，并去掉 SMT 专属 static key 改用 sched_smt_acti
 - [sched-20260915-008](../../2026/09/sched-20260915-008-sched-fair-reject-misfit-pulls-onto-busy-smt-siblings-on-asy.md) `fix/low/under_review` — 09-15 Matthieu Baerts 回复 Sasha Levin 的 AUTOSEL（6.18-6.1）回合通知，指出该补丁在 v6.1 上编译失败：`update_sd_lb_stats()` 里用到 `is_core_idle()`，但该函数在 6.1 尚未声明（implicit declaration of function 'is_core_idle'）。这解释了为何 6.1 的自

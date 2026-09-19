@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 15
+article_count: 16
 ---
 
+- [sched-20260919-001](/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/high/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260918-002](/lkm/2026/09/18/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl
 - [sched-20260907-013](/lkm/2026/09/07/sched-20260907-013-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes

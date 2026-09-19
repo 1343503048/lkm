@@ -10623,5 +10623,236 @@
     ],
     "url": "/lkm/2026/09/18/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.html",
     "tldr": "kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba2c3615bd6（sched_ext 源码迁移，3 个月前）。当前无人认领。"
+  },
+  {
+    "title": "sched/deadline: Fix zero-CPU DL bandwidth handling",
+    "id": "sched-20260919-001",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "crash"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html",
+    "tldr": "增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_active()`，另拆成独立补丁。触发点是在 CPU hot-unplug 期间，CPU 先从 `cpu_active_mask` 摘除、尚未 offline 的窗口里 `dl_bw_cpus()`"
+  },
+  {
+    "title": "sched_ext: Pass the initial cmask to cid-form ops.enable()",
+    "id": "sched-20260919-002",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-002-sched-ext-pass-the-initial-cmask-to-cid-form-ops-enable.html",
+    "tldr": "Tejun Heo 在一天之内把 sched_ext cid-form API 的一个明显漏洞从 v1 迭代到 v3 并合入 `sched_ext/for-7.3-fixes`：此前 cid-form 调度器的任务 cmask 只能通过 `ops.set_cmask()` 看到，而它在 fork/子调度使能/re-home 等进入路径上不触发，导致调度器只能用 `ops.init_task()` 里从 `p->cpus_ptr` 播种、再被陈旧化。v3 把初始 cmask 通过新参数结构 `scx_enable_args` 传入 `ops.enable()`。Andrea Righi 全程 r"
+  },
+  {
+    "title": "sched_ext: Add lazy preemption support",
+    "id": "sched-20260919-003",
+    "date": "2026-09-19",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-003-sched-ext-add-lazy-preemption-support.html",
+    "tldr": "增量更新：Andrea Righi 的 sched_ext 惰性抢占系列推出 v7，本日被 Tejun Heo 应用 1-2 到 `sched_ext/for-7.4`。相比 v6，v7 主要是把即时抢占的 `SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 一次性操作与新的持久策略 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED` 语义厘清，并补充了无穷大 slice 任务在 NO_HZ_FULL CPU 上恢复 tick、以及 preempt=lazy / nohz_full 分设的 "
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20260919-004",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "albin_yang"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "增量更新：albin_yang 的 `run_delay` 虚增修复系列本日推进——作者给出用户态 reproducer（每次在 sched_delayed 睡眠期间发生的迁移会把整段睡眠时长 ~148ms 虚算进 run_delay），Chen Yu 给出 Reviewed-by 并附机制分析；Kayra Cizmeci 纠正了 Chen Yu 关于 `can_migrate_task()` 跳过 delayed 任务的论断，指出 active load balance（`detach_one_task()`→`active_load_balance_cpu_stop()`，迁移类型未设置为"
+  },
+  {
+    "title": "sched/core: Account PSI IRQ time to the execution context",
+    "id": "sched-20260919-005",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "proxy_execution",
+      "psi"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html",
+    "tldr": "增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。"
+  },
+  {
+    "title": "cpufreq: Use a non-boost reference frequency for pressure calculation",
+    "id": "sched-20260919-006",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html",
+    "tldr": "增量更新：Jianyong Wu 的 cpufreq CPU pressure 参考频率修复本日被 Rafael J. Wysocki 指出方向性偏差——Rafael 认为问题的本质是\"在 `arch_scale_freq_ref()` 为零时仍施加了 pressure\"，与 boost 本身关系不大，并贴出一版更窄的替代补丁（把回退限于 `intel_pstate` 非对称容量场景），请作者与 Ricardo 帮忙测试。"
+  },
+  {
+    "title": "sched/topology: Add asymmetric SMT packing override",
+    "id": "sched-20260919-007",
+    "date": "2026-09-19",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.html",
+    "tldr": "增量更新：Andrea Righi 非对称 SMT 系列 2/2（新增内核参数覆盖 asymmetric SMT packing）本日收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意按 Vincent 建议砍掉 `auto`/`off`、只保留显式强制项。"
+  },
+  {
+    "title": "sched/numa: scan read-only file mappings in tiering mode",
+    "id": "sched-20260919-008",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-008-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html",
+    "tldr": "增量更新：Gregory Price 的 NUMA tiering 修复系列 3/4（让 tiering 模式也扫描只读文件映射）本日继续被 mm 维护者 Lorenzo Stoakes 敲打——他指出该补丁的 VMA 判定函数名不符实、实际会囊括 write-sealed memfd 与 MAP_PRIVATE 文件映射等，不建议在此引入新的 VMA helper，主张 hotfix 用内联代码+注释；作者回应\"给我周末时间清理\"。"
+  },
+  {
+    "title": "sched/numa: stop VMA scan filters from gating promotion",
+    "id": "sched-20260919-009",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.html",
+    "tldr": "增量更新：Gregory Price 的 NUMA tiering 修复系列（v2 4-patch，整体目标是移除 VMA 扫描过滤器对 promotion 的门控）本日在 cover 信层面收到 Zi Yan 的测试范围质询——询问是否用了 numactl 等 NUMA 控制；Gregory 澄清这些修复源于 Joshua 的 tiered memcg limits 补丁测试时发现的\"numa balancing 彻底失效\"，纯内部一致性问题、不涉及 mempolicy/cpuset。"
+  },
+  {
+    "title": "sched/fair: remove quota/burst write-order dependency",
+    "id": "sched-20260919-010",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "cgroup"
+    ],
+    "authors": [
+      "Zhe Liu"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html",
+    "tldr": "增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为\"依赖特定编辑顺序的状态校验既烦人又价值不高\"。系列等待收取。"
+  },
+  {
+    "title": "cpufreq: CPPC: Keep the policy across CPU hotplug",
+    "id": "sched-20260919-011",
+    "date": "2026-09-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-011-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.html",
+    "tldr": "增量更新：Sumit Gupta 的 CPPC CPU hotplug 策略保留系列（v4）本日收到 Christian Loehle 的意见——他认为应在 hotplug 系列之前落地 ACPI 规范要求的\"Minimum Performance ≤ Maximum Performance / Desired Performance 界内\"顺序保证，并贴出一版草拟补丁（分批写入 control、快速切换只在变化时带 limits），请系列作者测 AUTOSEL 场景。"
+  },
+  {
+    "title": "sched/proxy_exec: detect cycles without persistent walk state",
+    "id": "sched-20260919-012",
+    "date": "2026-09-19",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html",
+    "tldr": "增量更新：Hui Su 的 proxy execution 环检测 RFC（Online Brent，无持久 walk 状态）本日由作者贴出对 tip/sched/core（`e81ee0630837`）的追加验证——针对 `772d9ffbfd26`（\"sched: Migrate whole chain in proxy_migrate_task()\"）引入的 `p->blocked_donor` 直接遍历，作者用只读插桩在深链/跨 CPU 环/对象复用/KCSAN 等用例下未观测到逃逸进迁移路径的临时 backlink 环。仍为 RFC，无维护者表态。"
+  },
+  {
+    "title": "sched/fair: bounded Dependency-Aware Scheduling for causal progress",
+    "id": "sched-20260919-013",
+    "date": "2026-09-19",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Julian Blaauwiekel"
+    ],
+    "url": "/lkm/2026/09/19/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.html",
+    "tldr": "新 RFC（设计讨论，未附补丁）：16 岁的 Julian Blaauwiekel 在其自研 OS MUDOS_64 的调度器 HEDFS-4 中提出\"Dependency-Aware Scheduling (DAS)\"——当一个已 runnable 的任务 B 成为另一任务 A 因果关键路径上的一环时（A 等 B，但 B 本已 runnable，故无 wakeup 事件传递该信息），给 B 施加有界、可消耗的\"依赖压力\"以调整短期服务顺序，但明确不创造 CPU 配额。作者发 RFC 寻求社区指出是否已有等价机制。本日无回复。"
+  },
+  {
+    "title": "WARNING: locking bug in finish_task_switch (3)",
+    "id": "sched-20260919-014",
+    "date": "2026-09-19",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "syzbot"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/09/19/sched-20260919-014-warning-locking-bug-in-finish-task-switch-3.html",
+    "tldr": "syzbot 针对 `kernel/sched/core.c` 的 `finish_task_switch()` 锁上下文告警（lockdep `DEBUG_LOCKS_WARN_ON`）报告：有人提出的补丁经 syzbot 复测后告警仍触发。告警出现在 `finish_lock_switch` 获取 rq 锁时，触发路径经 net socket（tcp diag dump 持 socket 锁后 schedule）。标签为 `[net?]`（syzbot 不确定归属），告警点确在调度器上下文切换路径。"
   }
 ]

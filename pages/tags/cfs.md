@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 124
+article_count: 127
 ---
 
+- [sched-20260919-004](/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
+- [sched-20260919-010](/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
+- [sched-20260919-013](/lkm/2026/09/19/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.html) `discussion/none/rfc` — sched/fair: bounded Dependency-Aware Scheduling for causal progress
 - [sched-20260918-001](/lkm/2026/09/18/sched-20260918-001-sched-document-wf-sync-wakeup-placement-semantics.html) `feature/none/rfc` — sched: Document WF_SYNC wakeup placement semantics
 - [sched-20260918-002](/lkm/2026/09/18/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260918-004](/lkm/2026/09/18/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates

@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 26 篇
+共 27 篇
 
+- [sched-20260919-013](../../2026/09/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.md) `discussion/rfc` — 新 RFC（设计讨论，未附补丁）：16 岁的 Julian Blaauwiekel 在其自研 OS MUDOS_64 的调度器 HEDFS-4 中提出"Dependency-Aware Scheduling (DAS)"——当一个已 runnable 的任务 B 成为另一任务 A 因果关键路径上的一环时（A 等 B，但 B 本已 runnable，故无 wakeup 事件传递该信息），给 B 施加
 - [sched-20260914-002](../../2026/09/sched-20260914-002-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — 增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF au
 - [sched-20260913-001](../../2026/09/sched-20260913-001-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3），共 4 条修复、2 位作者、3 个文件 +46/-16：Vincent Guittot 的两条 EEVDF augmen
 - [sched-20260911-015](../../2026/09/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.md) `fix/low/under_review` — Kayra Cizmeci 的系列（让 place_entity()/requeue_delayed_entity() 不必重复计算 curr 状态）在 ping 后当日获得两位维护者表态：Vincent 认为「降低可读性且无可测收益」，Peter Zijlstra 则给出更彻底的判断——curr == se 分支根本不可达，整补丁等价于 no-op，不如把死代码整个删掉；作者当场接受 Peter

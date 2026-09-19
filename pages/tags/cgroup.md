@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 74
+article_count: 75
 ---
 
+- [sched-20260919-010](/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260918-003](/lkm/2026/09/18/sched-20260918-003-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/medium/under_review` — sched/mmcid: Bound the CID allocation busy wait
 - [sched-20260918-019](/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html) `fix/none/under_review` — cgroup/cpuset: Defer sched domain rebuild to common unlock path
 - [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes

@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 28 篇
+共 30 篇
 
+- [sched-20260919-009](../../2026/09/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复系列（v2 4-patch，整体目标是移除 VMA 扫描过滤器对 promotion 的门控）本日在 cover 信层面收到 Zi Yan 的测试范围质询——询问是否用了 numactl 等 NUMA 控制；Gregory 澄清这些修复源于 Joshua 的 tiered memcg limits 补丁测试时发现的"numa 
+- [sched-20260919-008](../../2026/09/sched-20260919-008-sched-numa-scan-read-only-file-mappings-in-tiering-mode.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复系列 3/4（让 tiering 模式也扫描只读文件映射）本日继续被 mm 维护者 Lorenzo Stoakes 敲打——他指出该补丁的 VMA 判定函数名不符实、实际会囊括 write-sealed memfd 与 MAP_PRIVATE 文件映射等，不建议在此引入新的 VMA helper，主张 hotfix 用内联代码
 - [sched-20260918-014](../../2026/09/sched-20260918-014-sched-numa-scan-read-only-file-mappings-in-tiering-mode.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 3/4，让 tiering 模式也扫描只读文件映射）本日集中讨论 VMA 判定语义——David Hildenbrand 认为函数名误导、应用新 VMA flags API；Lorenzo Stoakes 给出详尽的 VMA 标志分析并建议引入 `vma_maps_shared_readonly_file()` 
 - [sched-20260918-013](../../2026/09/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 4/4，去掉 VMA PID 活动对 promotion 的门控）本日获 Peter Zijlstra 有条件点头——"我对 tiering 代码引发的问题不喜欢，但这版应该行，Mel?"（等待 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 mess
 - [sched-20260917-013](../../2026/09/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA "停止让 VMA 扫描过滤器阻碍提升"系列（v2）引发维护者关注——Andrew Morton 追问"为什么 cc:stable 和 Fixes:"，Gregory 解释 NUMA balancing 自 2022/2023 起就被功能性打破、只因另一个 shmem bug 掩盖了症状；David Hildenbrand 将负责审查 MM 侧，并

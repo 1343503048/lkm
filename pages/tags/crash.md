@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 33
+article_count: 34
 ---
 
+- [sched-20260919-001](/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/high/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260918-016](/lkm/2026/09/18/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.html) `bug/critical/stalled` — [BUG] arm64/sched: hard lockup with rq->__lock stuck locked and no apparent owner
 - [sched-20260916-004](/lkm/2026/09/16/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html) `fix/critical/under_review` — sched_ext: Unlink pending local reenqueues before freeing scheduler
 - [sched-20260915-004](/lkm/2026/09/15/sched-20260915-004-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `bug/high/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing
