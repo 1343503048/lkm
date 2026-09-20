@@ -1,7 +1,8 @@
 # tag: topology
 
-共 88 篇
+共 89 篇
 
+- [sched-20260920-002](../../2026/09/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 "defer" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 
 - [sched-20260919-007](../../2026/09/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.md) `feature/under_review` — 增量更新：Andrea Righi 非对称 SMT 系列 2/2（新增内核参数覆盖 asymmetric SMT packing）本日收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意按 Vincent 建议砍掉 `auto`/`off`、只保留显式强制项。
 - [sched-20260918-023](../../2026/09/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/topology.c:1037:21` 对 `struct sched_domain *sd` 赋值了 `[noderef] __rcu *parent`，地址空间标注不匹配；同报告还列出 `debug.c`（788/1129）与 `topology.c`（118/137）多处 `sd`/`tsk` 的
 - [sched-20260918-019](../../2026/09/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.md) `fix/under_review` — Guopeng Zhang 提交清理：`update_prstate()` 末尾的 `rebuild_sched_domains_locked()` 检查是冗余的——其两个调用者随后都会走 `cpuset_update_sd_hk_unlock()`（在释放 cpuset 锁前统一重建 sched domain）。维护者 Ridong Chen 认可删冗余代码，但指出标题里 "defer" 用词误

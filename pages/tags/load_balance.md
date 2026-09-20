@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 102
+article_count: 103
 ---
 
+- [sched-20260920-001](/lkm/2026/09/20/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260919-006](/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260918-010](/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260918-015](/lkm/2026/09/18/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.html) `feature/none/under_review` — sched/cache: Introduce infrastructure for cache-aware load balancing

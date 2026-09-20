@@ -10854,5 +10854,71 @@
     "authors": [],
     "url": "/lkm/2026/09/19/sched-20260919-014-warning-locking-bug-in-finish-task-switch-3.html",
     "tldr": "syzbot 针对 `kernel/sched/core.c` 的 `finish_task_switch()` 锁上下文告警（lockdep `DEBUG_LOCKS_WARN_ON`）报告：有人提出的补丁经 syzbot 复测后告警仍触发。告警出现在 `finish_lock_switch` 获取 rq 锁时，触发路径经 net socket（tcp diag dump 持 socket 锁后 schedule）。标签为 `[net?]`（syzbot 不确定归属），告警点确在调度器上下文切换路径。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20260920-001",
+    "date": "2026-09-20",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "eevdf",
+      "load_balance"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/09/20/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "增量更新：Wei Yang 的 run_delay 虚增修复发布 v2——按 Kayra Cizmeci 的纠正重写了 commit message 中「负载均衡迁移不受影响」的错误论断（active load balance 的 lb_env 不设置 migration_type、恒为 0==migrate_load，delayed 任务仍可能被迁移），并纳入 Chen Yu 的 Reviewed-by。Kayra 在 v2 上给出 Reviewed-by，同时指出 `sched_info_enqueue()` 上方注释有误（实际有两处调用点），表示后续会单独发补丁修注释。"
+  },
+  {
+    "title": "cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()",
+    "id": "sched-20260920-002",
+    "date": "2026-09-20",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Guopeng Zhang"
+    ],
+    "url": "/lkm/2026/09/20/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html",
+    "tldr": "增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 \"defer\" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 上给出 Reviewed-by。"
+  },
+  {
+    "title": "sched/doc: add a preemption model overview",
+    "id": "sched-20260920-003",
+    "date": "2026-09-20",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html",
+    "tldr": "Quchaosheng 提交文档补丁（[PATCH 1/2]）：新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并专门澄清最易被误解的 PREEMPT_LAZY（lazy 抢占）机制。本日为首发，暂无 review 意见。"
+  },
+  {
+    "title": "scheduler fix",
+    "id": "sched-20260920-004",
+    "date": "2026-09-20",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/20/sched-20260920-004-scheduler-fix.html",
+    "tldr": "增量更新：Andrea Righi 的 proxy donor 误报迁移告警修复（sched/core: Avoid false migration warning for proxy donors）已随 sched/urgent 进入 Ingo Molnar 今日发给 Linus 的拉取请求（sched-urgent-2026-09-20，HEAD fe3c73d7bc76），等待进入主线；kernel test robot 对 tip/sched/urgent 分支报 BUILD SUCCESS（178 个 config 构建通过）。"
   }
 ]

@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 102 篇
+共 103 篇
 
+- [sched-20260920-001](../../2026/09/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：Wei Yang 的 run_delay 虚增修复发布 v2——按 Kayra Cizmeci 的纠正重写了 commit message 中「负载均衡迁移不受影响」的错误论断（active load balance 的 lb_env 不设置 migration_type、恒为 0==migrate_load，delayed 任务仍可能被迁移），并纳入 Chen Yu 的 Reviewe
 - [sched-20260919-006](../../2026/09/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的 cpufreq CPU pressure 参考频率修复本日被 Rafael J. Wysocki 指出方向性偏差——Rafael 认为问题的本质是"在 `arch_scale_freq_ref()` 为零时仍施加了 pressure"，与 boost 本身关系不大，并贴出一版更窄的替代补丁（把回退限于 `intel_pstate` 非对称容量场景），请作者与 
 - [sched-20260918-015](../../2026/09/sched-20260918-015-sched-cache-introduce-infrastructure-for-cache-aware-load-ba.md) `feature/under_review` — 增量更新：Tim Chen 的 cache-aware 负载均衡系列（v4，22 补丁）本日仅在 01/22 上有 Zenghui Yu 一句简短回应——对某条 review 建议表示"I agree，我会试试"。系列整体无新的实质进展或反对意见。
 - [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello

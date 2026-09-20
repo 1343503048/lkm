@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 42 篇
+共 43 篇
 
+- [sched-20260920-004](../../2026/09/sched-20260920-004-scheduler-fix.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy donor 误报迁移告警修复（sched/core: Avoid false migration warning for proxy donors）已随 sched/urgent 进入 Ingo Molnar 今日发给 Linus 的拉取请求（sched-urgent-2026-09-20，HEAD fe3c73d7bc76），等待进入主线；ke
 - [sched-20260919-012](../../2026/09/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.md) `feature/rfc` — 增量更新：Hui Su 的 proxy execution 环检测 RFC（Online Brent，无持久 walk 状态）本日由作者贴出对 tip/sched/core（`e81ee0630837`）的追加验证——针对 `772d9ffbfd26`（"sched: Migrate whole chain in proxy_migrate_task()"）引入的 `p->blocked_dono
 - [sched-20260919-005](../../2026/09/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。
 - [sched-20260918-020](../../2026/09/sched-20260918-020-sched-core-avoid-false-migration-warning-for-proxy-donors.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy execution 修复（避免对 migration-disabled 的被阻塞 donor 误报迁移告警）本日被 Peter Zijlstra 合入 tip 的 `sched/urgent` 分支（commit fe3c73d7bc76），Fixes b049b81bdff6，已获 John Stultz Acked-by。将随 sched/u

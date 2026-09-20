@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 52 篇
+共 53 篇
 
+- [sched-20260920-003](../../2026/09/sched-20260920-003-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — Quchaosheng 提交文档补丁（[PATCH 1/2]）：新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并专门澄清最易被误解的 PREEMPT_LAZY（lazy 抢占）机制。本日为首发，暂无 review 意见。
 - [sched-20260918-012](../../2026/09/sched-20260918-012-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列（2 补丁：核心支持 + selftests）本日获 Tejun Heo 完整 review——"整体不错"，提出可折叠进 `for_each_cpu_or()`、改名为 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED`、补 bit 枚举等若干点，selftest
 - [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe
 - [sched-20260917-010](../../2026/09/sched-20260917-010-sched-ext-add-lazy-preemption-support.md) `feature/under_review` — 增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以
