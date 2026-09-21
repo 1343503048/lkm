@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 41 篇
+共 43 篇
 
+- [sched-20260921-010](../../2026/09/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的"cpufreq 用非 boost 参考频率计算 pressure"修复（v1）昨日获作者本人补强的 Tested-by——在 Hygon 与 AMD（acpi-cpufreq）平台上实测 CPU pressure 重新归零，cache aware 调度恢复把任务聚合到 50% LLC 容量（与 d2d5c129d07e 引入回归前一致）。实测背书到位，合入概率
+- [sched-20260921-007](../../2026/09/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 增量更新：Ananthu C V 的 schedutil boost 频率处理修复（v2）昨日有两则作者回复——回应 Oleg 关于 `cpuinfo->max_freq` 只升不降设计的疑问，并接受 Zhongqiu 建议、将在下一版给补丁补上 `Fixes: 538b0188da46` 标签，同时考虑把 `policy_has_boost_freq` 从 freq_table.c 导出复用。修
 - [sched-20260919-011](../../2026/09/sched-20260919-011-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.md) `fix/medium/under_review` — 增量更新：Sumit Gupta 的 CPPC CPU hotplug 策略保留系列（v4）本日收到 Christian Loehle 的意见——他认为应在 hotplug 系列之前落地 ACPI 规范要求的"Minimum Performance ≤ Maximum Performance / Desired Performance 界内"顺序保证，并贴出一版草拟补丁（分批写入 control、
 - [sched-20260919-006](../../2026/09/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的 cpufreq CPU pressure 参考频率修复本日被 Rafael J. Wysocki 指出方向性偏差——Rafael 认为问题的本质是"在 `arch_scale_freq_ref()` 为零时仍施加了 pressure"，与 boost 本身关系不大，并贴出一版更窄的替代补丁（把回退限于 `intel_pstate` 非对称容量场景），请作者与 
 - [sched-20260918-010](../../2026/09/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参考频率"，避免 boost 开关时 pressure 无谓变化、进而干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。本日讨论集中在参考频率的命名与语义：Rafael Wysocki 追问"什么可持续、可持续多久"，Mario Limonciello

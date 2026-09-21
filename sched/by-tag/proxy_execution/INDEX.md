@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 43 篇
+共 45 篇
 
+- [sched-20260921-011](../../2026/09/sched-20260921-011-scheduler-fix.md) `fix/low/merged_tip` — 增量更新：Ingo Molnar 的 sched/urgent 拉取请求（内含 Andrea Righi 的 proxy donor 误报迁移告警修复）已于 09-21 被 Linus 合入主线 torvalds/linux.git，merge commit fecbe78ac0e7bb5cdae232444e649a3103d9a917。该修复走完 tip/sched/urgent → GIT 
+- [sched-20260921-003](../../2026/09/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/under_review` — Quchaosheng 发补丁允许 `CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_PREEMPT_RT` 同时编译，修掉此前 Kconfig `depends on !PREEMPT_RT` 挡住的一批编译错误。v2 当日紧跟 v1 发出（只改 Cc、注释缩进与措辞）。但 PREEMPT_RT 维护者（linutronix）在回帖中质疑该组合在 RT 下运行时是"空转"（
 - [sched-20260920-004](../../2026/09/sched-20260920-004-scheduler-fix.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy donor 误报迁移告警修复（sched/core: Avoid false migration warning for proxy donors）已随 sched/urgent 进入 Ingo Molnar 今日发给 Linus 的拉取请求（sched-urgent-2026-09-20，HEAD fe3c73d7bc76），等待进入主线；ke
 - [sched-20260919-012](../../2026/09/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.md) `feature/rfc` — 增量更新：Hui Su 的 proxy execution 环检测 RFC（Online Brent，无持久 walk 状态）本日由作者贴出对 tip/sched/core（`e81ee0630837`）的追加验证——针对 `772d9ffbfd26`（"sched: Migrate whole chain in proxy_migrate_task()"）引入的 `p->blocked_dono
 - [sched-20260919-005](../../2026/09/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。

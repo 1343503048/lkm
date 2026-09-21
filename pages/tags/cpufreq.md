@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 41
+article_count: 43
 ---
 
+- [sched-20260921-007](/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
+- [sched-20260921-010](/lkm/2026/09/21/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260919-006](/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260919-011](/lkm/2026/09/19/sched-20260919-011-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.html) `fix/medium/under_review` — cpufreq: CPPC: Keep the policy across CPU hotplug
 - [sched-20260918-005](/lkm/2026/09/18/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling

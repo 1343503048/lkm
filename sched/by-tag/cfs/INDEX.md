@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 127 篇
+共 132 篇
 
+- [sched-20260921-009](../../2026/09/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.md) `discussion/low/rfc` — 增量更新：Dongli Zhang 的"延迟被抢占远程 vCPU 的 task clock 更新" RFC 昨日收到 KVM 维护者 Sean Christopherson 的技术质疑——该方案的关键约束"hypervisor 在清除 preempted 标记前发布最新 stealtime"在旧版 KVM 上无法保证，作者尚未回应。合入前景趋弱。
+- [sched-20260921-006](../../2026/09/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：Wei Yang 的 `sched/stats` run_delay 多计数修复（v2）昨日又获 K Prateek Nayak 的 Reviewed-by + Tested-by，评审背书进一步加强，合入概率高。
+- [sched-20260921-005](../../2026/09/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 回复 Vincent Guittot 的 review，补充了 idle CPU 选择随机化方案中"未发布 idle 状态"（unpublished idle state）CPU 的处理思路——实测这类候选只占约 0.1-0.5%，把它们按 `U64_MAX` 退出延迟对待后极少成为最优候选，因此随机化引入的偏置风险可控。这是对既有 v2 的补充论证，无
+- [sched-20260921-002](../../2026/09/sched-20260921-002-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/low/under_review` — Ye Liu 的进程/线程遍历 RCU 化系列发到 v4（共 15 个补丁），新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()` 三个宏，用 `scoped_guard(rcu)` 把 RCU 读锁的作用域收敛到循环体，替代手写 `rcu_read_l
+- [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip
 - [sched-20260919-013](../../2026/09/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.md) `discussion/rfc` — 新 RFC（设计讨论，未附补丁）：16 岁的 Julian Blaauwiekel 在其自研 OS MUDOS_64 的调度器 HEDFS-4 中提出"Dependency-Aware Scheduling (DAS)"——当一个已 runnable 的任务 B 成为另一任务 A 因果关键路径上的一环时（A 等 B，但 B 本已 runnable，故无 wakeup 事件传递该信息），给 B 施加
 - [sched-20260919-010](../../2026/09/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — 增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为"依赖特定编辑顺序的状态校验既烦人又价值不高"。系列等待收取。
 - [sched-20260919-004](../../2026/09/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：albin_yang 的 `run_delay` 虚增修复系列本日推进——作者给出用户态 reproducer（每次在 sched_delayed 睡眠期间发生的迁移会把整段睡眠时长 ~148ms 虚算进 run_delay），Chen Yu 给出 Reviewed-by 并附机制分析；Kayra Cizmeci 纠正了 Chen Yu 关于 `can_migrate_task()` 跳

@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 76 篇
+共 77 篇
 
+- [sched-20260921-008](../../2026/09/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。
 - [sched-20260920-002](../../2026/09/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 "defer" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 
 - [sched-20260919-010](../../2026/09/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — 增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为"依赖特定编辑顺序的状态校验既烦人又价值不高"。系列等待收取。
 - [sched-20260918-019](../../2026/09/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.md) `fix/under_review` — Guopeng Zhang 提交清理：`update_prstate()` 末尾的 `rebuild_sched_domains_locked()` 检查是冗余的——其两个调用者随后都会走 `cpuset_update_sd_hk_unlock()`（在释放 cpuset 锁前统一重建 sched domain）。维护者 Ridong Chen 认可删冗余代码，但指出标题里 "defer" 用词误

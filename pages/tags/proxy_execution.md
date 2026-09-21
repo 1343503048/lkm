@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20260921-003](/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/under_review` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
+- [sched-20260921-011](/lkm/2026/09/21/sched-20260921-011-scheduler-fix.html) `fix/low/merged_tip` — scheduler fix
 - [sched-20260920-004](/lkm/2026/09/20/sched-20260920-004-scheduler-fix.html) `fix/low/merged_tip` — scheduler fix
 - [sched-20260919-005](/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
 - [sched-20260919-012](/lkm/2026/09/19/sched-20260919-012-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html) `feature/none/rfc` — sched/proxy_exec: detect cycles without persistent walk state

@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 127
+article_count: 132
 ---
 
+- [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks
+- [sched-20260921-002](/lkm/2026/09/21/sched-20260921-002-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/low/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock
+- [sched-20260921-005](/lkm/2026/09/21/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
+- [sched-20260921-006](/lkm/2026/09/21/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
+- [sched-20260921-009](/lkm/2026/09/21/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260919-004](/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260919-010](/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260919-013](/lkm/2026/09/19/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.html) `discussion/none/rfc` — sched/fair: bounded Dependency-Aware Scheduling for causal progress

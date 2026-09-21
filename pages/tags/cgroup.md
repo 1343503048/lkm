@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 76
+article_count: 77
 ---
 
+- [sched-20260921-008](/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260920-002](/lkm/2026/09/20/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260919-010](/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency
 - [sched-20260918-003](/lkm/2026/09/18/sched-20260918-003-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/medium/under_review` — sched/mmcid: Bound the CID allocation busy wait

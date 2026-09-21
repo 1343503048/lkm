@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 50
+article_count: 52
 ---
 
+- [sched-20260921-004](/lkm/2026/09/21/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260921-005](/lkm/2026/09/21/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260919-007](/lkm/2026/09/19/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.html) `feature/none/under_review` — sched/topology: Add asymmetric SMT packing override
 - [sched-20260918-004](/lkm/2026/09/18/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260918-008](/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection

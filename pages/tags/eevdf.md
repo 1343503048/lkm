@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 28
+article_count: 29
 ---
 
+- [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks
 - [sched-20260920-001](/lkm/2026/09/20/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260919-013](/lkm/2026/09/19/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.html) `discussion/none/rfc` — sched/fair: bounded Dependency-Aware Scheduling for causal progress
 - [sched-20260914-002](/lkm/2026/09/14/sched-20260914-002-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes

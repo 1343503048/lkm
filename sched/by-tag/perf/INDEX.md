@@ -1,7 +1,8 @@
 # tag: perf
 
-共 39 篇
+共 40 篇
 
+- [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip
 - [sched-20260917-001](../../2026/09/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/under_review` — Tianyi Chen 提交 tools/perf 补丁，修复 `perf sched stats` report 子命令的快照配对缺陷：before/after 记录按列表位置配对，测量期间 CPU/domain 消失会导致计数错位或游标越界。补丁改为按时间戳/CPU 顺序识别第二份快照并校验 ID/版本一致，附合成快照 shell 测试。新补丁暂无评审。
 - [sched-20260911-011](../../2026/09/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/stalled` — Luo Gengkun（华为）当日对 v9 系列发出 friendly ping：所有 review 意见已解决、无未决问题，询问 Tim Chen 是否可以收取。该系列（task_cache_work 只扫访问过的 CPU）自 07-31 v9 发出后已沉默六周，维护者仍未表态——按当前状态归为停滞（stalled）。本文为增量更新，v8 阶段的方案与并发安全讨论见 sched-20260728
 - [sched-20260909-007](../../2026/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 sched-20260908-002 / sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nay
