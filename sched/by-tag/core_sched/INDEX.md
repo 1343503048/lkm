@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 24 篇
+共 25 篇
 
+- [sched-20260922-002](../../2026/09/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.md) `feature/rfc` — John Stultz 发出 proxy execution 旅程第 5 阶段「Sleeping Owner Handling」的第 32 版迭代（2 补丁）：当任务阻塞在一个 owner 正在睡眠的 mutex 上时，把 waiter 停用（deactivate）并挂到 owner 的等待表上，待 owner 唤醒时在同一 runqueue 上重新激活，使其得以提升 owner。v32 新增 K
 - [sched-20260916-020](../../2026/09/sched-20260916-020-sched-core-remove-redundant-core-sched-seq.md) `feature/under_review` — Hui Su 的单枚整洁性补丁：删掉 `struct rq` 里的 `core_sched_seq` 字段。作者论证它与 `core_pick` 重复——一次 core-wide 选择后 `core_pick` 非空即可表明该 rq 还有待消费的 pick，`core_sched_seq` 只是同一条状态的一份冗余拷贝。无功能性改动。本日暂无 review，合入可能性未知。
 - [sched-20260913-005](../../2026/09/sched-20260913-005-sched-core-handle-unavailable-pointer-hash-in-pr-sched-core.md) `fix/low/under_review` — Hui Su 修复 PR_SCHED_CORE_GET 忽略 `ptr_to_hashval()` 的 -EBUSY 错误、在指针哈希 key 未初始化的早期启动窗口把已有 cookie 的任务误报为默认 cookie 0 的问题（Fixes 7ac592aa35a6「sched: prctl() core-scheduling interface」，Cc stable），配套 selftest 
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co

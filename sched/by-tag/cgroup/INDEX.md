@@ -1,7 +1,10 @@
 # tag: cgroup
 
-共 77 篇
+共 80 篇
 
+- [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
+- [sched-20260922-017](../../2026/09/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reje
+- [sched-20260922-003](../../2026/09/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.md) `fix/high/under_review` — Donggeun Yoo 修复 sysrq-n（Nice All RT Tasks）在存在 SCHED_DEADLINE 任务时于原子上下文睡眠的死锁/挂起：`normalize_rt_tasks()` 持 `tasklist_lock` 走 `__sched_setscheduler()`，而后者对 deadline 策略会取 `cpuset_mutex`（普通 `mutex_lock`），导致
 - [sched-20260921-008](../../2026/09/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。
 - [sched-20260920-002](../../2026/09/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 "defer" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 
 - [sched-20260919-010](../../2026/09/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.md) `fix/low/under_review` — 增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为"依赖特定编辑顺序的状态校验既烦人又价值不高"。系列等待收取。

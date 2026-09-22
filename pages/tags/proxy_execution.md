@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 45
+article_count: 48
 ---
 
+- [sched-20260922-002](/lkm/2026/09/22/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v32)
+- [sched-20260922-012](/lkm/2026/09/22/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `feature/none/rfc` — sched/proxy_exec: detect cycles in proxy walks
+- [sched-20260922-013](/lkm/2026/09/22/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
 - [sched-20260921-003](/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/under_review` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
 - [sched-20260921-011](/lkm/2026/09/21/sched-20260921-011-scheduler-fix.html) `fix/low/merged_tip` — scheduler fix
 - [sched-20260920-004](/lkm/2026/09/20/sched-20260920-004-scheduler-fix.html) `fix/low/merged_tip` — scheduler fix

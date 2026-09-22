@@ -1,7 +1,8 @@
 # tag: psi
 
-共 9 篇
+共 10 篇
 
+- [sched-20260922-014](../../2026/09/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Pete
 - [sched-20260919-005](../../2026/09/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。
 - [sched-20260918-018](../../2026/09/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — Zhan Xusheng 提交修复：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响 `CONFIG_S
 - [sched-20260823-007](../../2026/08/sched-20260823-007.md) `feature/low/under_review` — Tao Cui 的 cgroup PSI selftest 推进到 v4：改成 kselftest harness（TEST_F/FIXTURE_SETUP/TEARDOWN），并把「poll 超时未触发」从 SKIP 改为 FAIL。已迭代四轮，合入概率高。

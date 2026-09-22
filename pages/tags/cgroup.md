@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 77
+article_count: 80
 ---
 
+- [sched-20260922-003](/lkm/2026/09/22/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.html) `fix/high/under_review` — sched: Restore the normalize_rt_tasks() cpuset_mutex exemption
+- [sched-20260922-017](/lkm/2026/09/22/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/medium/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
+- [sched-20260922-018](/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/low/merged_tip` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260921-008](/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260920-002](/lkm/2026/09/20/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260919-010](/lkm/2026/09/19/sched-20260919-010-sched-fair-remove-quota-burst-write-order-dependency.html) `fix/low/under_review` — sched/fair: remove quota/burst write-order dependency

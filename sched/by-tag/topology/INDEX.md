@@ -1,7 +1,8 @@
 # tag: topology
 
-共 91 篇
+共 92 篇
 
+- [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
 - [sched-20260921-008](../../2026/09/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。
 - [sched-20260921-004](../../2026/09/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 的"在 NVIDIA Olympus 上启用优先 SMT 兄弟"系列（v6，其中 1/2 为 `sched/fair: Honor asymmetric SMT priority in idle selection`）昨日又获两则实质反馈——Breno Leitao 给出完整 Tested-by（实测唤醒重定向 800/800 生效、无 KASAN/lockde
 - [sched-20260920-002](../../2026/09/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 "defer" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 

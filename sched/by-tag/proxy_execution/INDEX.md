@@ -1,7 +1,10 @@
 # tag: proxy_execution
 
-共 45 篇
+共 48 篇
 
+- [sched-20260922-013](../../2026/09/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/superseded` — 本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。
+- [sched-20260922-012](../../2026/09/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 blo
+- [sched-20260922-002](../../2026/09/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.md) `feature/rfc` — John Stultz 发出 proxy execution 旅程第 5 阶段「Sleeping Owner Handling」的第 32 版迭代（2 补丁）：当任务阻塞在一个 owner 正在睡眠的 mutex 上时，把 waiter 停用（deactivate）并挂到 owner 的等待表上，待 owner 唤醒时在同一 runqueue 上重新激活，使其得以提升 owner。v32 新增 K
 - [sched-20260921-011](../../2026/09/sched-20260921-011-scheduler-fix.md) `fix/low/merged_tip` — 增量更新：Ingo Molnar 的 sched/urgent 拉取请求（内含 Andrea Righi 的 proxy donor 误报迁移告警修复）已于 09-21 被 Linus 合入主线 torvalds/linux.git，merge commit fecbe78ac0e7bb5cdae232444e649a3103d9a917。该修复走完 tip/sched/urgent → GIT 
 - [sched-20260921-003](../../2026/09/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/under_review` — Quchaosheng 发补丁允许 `CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_PREEMPT_RT` 同时编译，修掉此前 Kconfig `depends on !PREEMPT_RT` 挡住的一批编译错误。v2 当日紧跟 v1 发出（只改 Cc、注释缩进与措辞）。但 PREEMPT_RT 维护者（linutronix）在回帖中质疑该组合在 RT 下运行时是"空转"（
 - [sched-20260920-004](../../2026/09/sched-20260920-004-scheduler-fix.md) `fix/low/merged_tip` — 增量更新：Andrea Righi 的 proxy donor 误报迁移告警修复（sched/core: Avoid false migration warning for proxy donors）已随 sched/urgent 进入 Ingo Molnar 今日发给 Linus 的拉取请求（sched-urgent-2026-09-20，HEAD fe3c73d7bc76），等待进入主线；ke

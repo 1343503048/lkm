@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 9
+article_count: 10
 ---
 
+- [sched-20260922-014](/lkm/2026/09/22/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/merged_tip` — sched/core: Account PSI IRQ time to the execution context
 - [sched-20260919-005](/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
 - [sched-20260918-018](/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/under_review` — sched/core: Account PSI IRQ time to the execution context
 - [sched-20260823-007](/lkm/2026/08/23/sched-20260823-007.html) `feature/low/under_review` — selftests/cgroup: Add PSI pressure tests

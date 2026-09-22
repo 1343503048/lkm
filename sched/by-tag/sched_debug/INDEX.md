@@ -1,7 +1,10 @@
 # tag: sched_debug
 
-共 52 篇
+共 55 篇
 
+- [sched-20260922-015](../../2026/09/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_block
+- [sched-20260922-010](../../2026/09/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.md) `bug/low/stalled` — kernel test robot 的 sparse 报告：`kernel/sched/fair.c` 中 `update_curr_fair()`（`for_each_sched_entity` 展开处）及 `sched.h` 的 `task_dl_entity`/RT 相关比较，把标注为 `__rcu` 的 `struct task_struct` 与普通指针混用，触发 `incorrect 
+- [sched-20260922-008](../../2026/09/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.md) `fix/merged_tip` — Thomas Huth 把 `<uapi/linux/sched.h>`（及 perf 工具里的同名 uapi 头）里的 `__ASSEMBLY__` 守卫宏标准化为 `__ASSEMBLER__`，消除用户态/内核态切换时的困惑。补丁当日即被合入 `tip/sched/core`（commit `a9b3c7570564`）。
 - [sched-20260919-004](../../2026/09/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：albin_yang 的 `run_delay` 虚增修复系列本日推进——作者给出用户态 reproducer（每次在 sched_delayed 睡眠期间发生的迁移会把整段睡眠时长 ~148ms 虚算进 run_delay），Chen Yu 给出 Reviewed-by 并附机制分析；Kayra Cizmeci 纠正了 Chen Yu 关于 `can_migrate_task()` 跳
 - [sched-20260918-024](../../2026/09/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba
 - [sched-20260918-023](../../2026/09/sched-20260918-023-kernel-sched-topology-c-1037-21-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/topology.c:1037:21` 对 `struct sched_domain *sd` 赋值了 `[noderef] __rcu *parent`，地址空间标注不匹配；同报告还列出 `debug.c`（788/1129）与 `topology.c`（118/137）多处 `sd`/`tsk` 的

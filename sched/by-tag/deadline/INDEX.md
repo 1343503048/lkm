@@ -1,7 +1,10 @@
 # tag: deadline
 
-共 16 篇
+共 19 篇
 
+- [sched-20260922-017](../../2026/09/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reje
+- [sched-20260922-012](../../2026/09/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 blo
+- [sched-20260922-003](../../2026/09/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.md) `fix/high/under_review` — Donggeun Yoo 修复 sysrq-n（Nice All RT Tasks）在存在 SCHED_DEADLINE 任务时于原子上下文睡眠的死锁/挂起：`normalize_rt_tasks()` 持 `tasklist_lock` 走 `__sched_setscheduler()`，而后者对 deadline 策略会取 `cpuset_mutex`（普通 `mutex_lock`），导致
 - [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_
 - [sched-20260918-017](../../2026/09/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.md) `fix/low/under_review` — Liang Luo 提交修复：rt/dl 调度类的 `sched_stat_wait` 统计在 schedstats 运行时才开启的场景下会输出"自开机以来"的虚假等待时间（wait_max/wait_sum 被永久污染）。修复是把 fair 类既有的"零 wait_start 跳过"检查下沉到公共的 `__update_stats_wait_end()`，让所有调度类共享。值得注意的是：该补丁明
 - [sched-20260918-002](../../2026/09/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xushe

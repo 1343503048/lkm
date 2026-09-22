@@ -1,7 +1,10 @@
 # tag: perf
 
-共 40 篇
+共 43 篇
 
+- [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方
+- [sched-20260922-005](../../2026/09/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.md) `feature/merged_tip` — Usama Arif 为 sched_ext 的 TID 与 scheduler 两张 rhashtable 提供专用比较回调，把 `scx_bpf_tid_to_task()`（热路径，用于 tid→task 反查）和 `scx_find_sub_sched()`（被子调度器 dispatch 与管理 kfunc 调用）上的泛型 `rhashtable_compare()`/`memcmp()`
+- [sched-20260922-004](../../2026/09/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.md) `feature/merged_tip` — Usama Arif 为 sched_ext 的 DSQ（dispatch queue）哈希表补上 `obj_cmpfn`，把 `find_user_dsq()` 热路径上的泛型 `rhashtable_compare()`（运行时读 offset/length 再 out-of-line `memcmp` 8 字节）折叠成编译期对 `dsq->id` 的单次 u64 比较。作者在 Meta 机群
 - [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip
 - [sched-20260917-001](../../2026/09/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/under_review` — Tianyi Chen 提交 tools/perf 补丁，修复 `perf sched stats` report 子命令的快照配对缺陷：before/after 记录按列表位置配对，测量期间 CPU/domain 消失会导致计数错位或游标越界。补丁改为按时间戳/CPU 顺序识别第二份快照并校验 ID/版本一致，附合成快照 shell 测试。新补丁暂无评审。
 - [sched-20260911-011](../../2026/09/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/stalled` — Luo Gengkun（华为）当日对 v9 系列发出 friendly ping：所有 review 意见已解决、无未决问题，询问 Tim Chen 是否可以收取。该系列（task_cache_work 只扫访问过的 CPU）自 07-31 v9 发出后已沉默六周，维护者仍未表态——按当前状态归为停滞（stalled）。本文为增量更新，v8 阶段的方案与并发安全讨论见 sched-20260728

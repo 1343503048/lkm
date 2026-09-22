@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 132
+article_count: 137
 ---
 
+- [sched-20260922-001](/lkm/2026/09/22/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/merged_tip` — sched/cache: Fixes for cache aware scheduling
+- [sched-20260922-010](/lkm/2026/09/22/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.html) `bug/low/stalled` — kernel/sched/fair.c:2004:38: sparse: sparse: incorrect type in initializer (different address spaces)
+- [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20260922-014](/lkm/2026/09/22/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/merged_tip` — sched/core: Account PSI IRQ time to the execution context
+- [sched-20260922-015](/lkm/2026/09/22/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks
 - [sched-20260921-002](/lkm/2026/09/21/sched-20260921-002-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/low/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock
 - [sched-20260921-005](/lkm/2026/09/21/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates

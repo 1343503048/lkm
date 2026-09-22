@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 52
+article_count: 55
 ---
 
+- [sched-20260922-008](/lkm/2026/09/22/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.html) `fix/none/merged_tip` — sched: Replace __ASSEMBLY__ with __ASSEMBLER__ in sched.h header
+- [sched-20260922-010](/lkm/2026/09/22/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.html) `bug/low/stalled` — kernel/sched/fair.c:2004:38: sparse: sparse: incorrect type in initializer (different address spaces)
+- [sched-20260922-015](/lkm/2026/09/22/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260919-004](/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl
 - [sched-20260918-022](/lkm/2026/09/18/sched-20260918-022-kernel-sched-idle-c-511-45-sparse-sparse-incorrect-type-in-a.html) `bug/low/stalled` — kernel/sched/idle.c:511:45: sparse: sparse: incorrect type in argument 1 (different address spaces)

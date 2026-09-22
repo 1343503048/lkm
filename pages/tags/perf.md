@@ -2,9 +2,12 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 40
+article_count: 43
 ---
 
+- [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare
+- [sched-20260922-005](/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html) `feature/none/merged_tip` — sched_ext: Specialize TID and scheduler hashtable compares
+- [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks
 - [sched-20260917-001](/lkm/2026/09/17/sched-20260917-001-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/under_review` — perf sched stats: Reject mismatched or incomplete snapshots
 - [sched-20260911-011](/lkm/2026/09/11/sched-20260911-011-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/stalled` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus

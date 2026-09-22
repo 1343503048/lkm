@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 29 篇
+共 30 篇
 
+- [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方
 - [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip
 - [sched-20260920-001](../../2026/09/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：Wei Yang 的 run_delay 虚增修复发布 v2——按 Kayra Cizmeci 的纠正重写了 commit message 中「负载均衡迁移不受影响」的错误论断（active load balance 的 lb_env 不设置 migration_type、恒为 0==migrate_load，delayed 任务仍可能被迁移），并纳入 Chen Yu 的 Reviewe
 - [sched-20260919-013](../../2026/09/sched-20260919-013-sched-fair-bounded-dependency-aware-scheduling-for-causal-pr.md) `discussion/rfc` — 新 RFC（设计讨论，未附补丁）：16 岁的 Julian Blaauwiekel 在其自研 OS MUDOS_64 的调度器 HEDFS-4 中提出"Dependency-Aware Scheduling (DAS)"——当一个已 runnable 的任务 B 成为另一任务 A 因果关键路径上的一环时（A 等 B，但 B 本已 runnable，故无 wakeup 事件传递该信息），给 B 施加

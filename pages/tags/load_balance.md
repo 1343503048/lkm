@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 105
+article_count: 107
 ---
 
+- [sched-20260922-001](/lkm/2026/09/22/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/merged_tip` — sched/cache: Fixes for cache aware scheduling
+- [sched-20260922-009](/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks
 - [sched-20260921-010](/lkm/2026/09/21/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260920-001](/lkm/2026/09/20/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks

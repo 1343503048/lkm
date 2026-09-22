@@ -11106,5 +11106,328 @@
     ],
     "url": "/lkm/2026/09/21/sched-20260921-011-scheduler-fix.html",
     "tldr": "增量更新：Ingo Molnar 的 sched/urgent 拉取请求（内含 Andrea Righi 的 proxy donor 误报迁移告警修复）已于 09-21 被 Linus 合入主线 torvalds/linux.git，merge commit fecbe78ac0e7bb5cdae232444e649a3103d9a917。该修复走完 tip/sched/urgent → GIT PULL → 主线的完整链路。"
+  },
+  {
+    "title": "sched/cache: Fixes for cache aware scheduling",
+    "id": "sched-20260922-001",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Tim Chen",
+      "Lu Wang",
+      "Chen Yu",
+      "Davi Chaves Azevedo"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.html",
+    "tldr": "Tim Chen 汇总 cache-aware scheduling（CAS，7.2 合入）遗留问题，发出 v2 六补丁修复系列：DELAY_DEQUEUE 下 `nr_pref_llc_running` 计数口径不一致导致主动负载均衡把任务拉离首选 LLC、active load balance 丢失 `migrate_llc_task` 语义、任务 mm 切换时 `account_mm_sched()` 访问已释放 mm 的 UAF、内核线程借用用户线程缓存统计、CPU 热插拔时 LLC 容量被低估。六补丁当天已被 Peter Zijlstra 全部合入 `tip/sched/urgent"
+  },
+  {
+    "title": "Sleeping Owner Handling for Proxy Execution (v32)",
+    "id": "sched-20260922-002",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "core_sched"
+    ],
+    "authors": [
+      "John Stultz",
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.html",
+    "tldr": "John Stultz 发出 proxy execution 旅程第 5 阶段「Sleeping Owner Handling」的第 32 版迭代（2 补丁）：当任务阻塞在一个 owner 正在睡眠的 mutex 上时，把 waiter 停用（deactivate）并挂到 owner 的等待表上，待 owner 唤醒时在同一 runqueue 上重新激活，使其得以提升 owner。v32 新增 K Prateek 的「无 owner 时激活 blocked donor」补丁，并整合 Atul Kumar Pant、Peter 的风格与竞态修复意见。仍在征求 Peter 在他与 K Pratee"
+  },
+  {
+    "title": "sched: Restore the normalize_rt_tasks() cpuset_mutex exemption",
+    "id": "sched-20260922-003",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "deadline"
+    ],
+    "authors": [
+      "Donggeun Yoo"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.html",
+    "tldr": "Donggeun Yoo 修复 sysrq-n（Nice All RT Tasks）在存在 SCHED_DEADLINE 任务时于原子上下文睡眠的死锁/挂起：`normalize_rt_tasks()` 持 `tasklist_lock` 走 `__sched_setscheduler()`，而后者对 deadline 策略会取 `cpuset_mutex`（普通 `mutex_lock`），导致原子上下文 sleep splat 甚至 sysrq-n 挂死。补丁让 `__sched_setscheduler()` 只在 `pi == true` 时取锁，恢复此前被 `111cd11bbc54"
+  },
+  {
+    "title": "sched_ext: Specialize the DSQ hashtable compare",
+    "id": "sched-20260922-004",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "perf"
+    ],
+    "authors": [
+      "Usama Arif"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html",
+    "tldr": "Usama Arif 为 sched_ext 的 DSQ（dispatch queue）哈希表补上 `obj_cmpfn`，把 `find_user_dsq()` 热路径上的泛型 `rhashtable_compare()`（运行时读 offset/length 再 out-of-line `memcmp` 8 字节）折叠成编译期对 `dsq->id` 的单次 u64 比较。作者在 Meta 机群 A/B 实测该查找快 2.9x。Tejun Heo 已合入 `sched_ext/for-7.4`，并建议对 TID/scheduler 哈希表做同样处理（已由作者以 0/2 系列跟进）。"
+  },
+  {
+    "title": "sched_ext: Specialize TID and scheduler hashtable compares",
+    "id": "sched-20260922-005",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "perf"
+    ],
+    "authors": [
+      "Usama Arif"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html",
+    "tldr": "Usama Arif 为 sched_ext 的 TID 与 scheduler 两张 rhashtable 提供专用比较回调，把 `scx_bpf_tid_to_task()`（热路径，用于 tid→task 反查）和 `scx_find_sub_sched()`（被子调度器 dispatch 与管理 kfunc 调用）上的泛型 `rhashtable_compare()`/`memcmp()` 折叠为编译期单次 u64 比较。这是 DSQ hashtable（见 sched-20260922-004）的跟进。Tejun Heo 已把 1-2 合入 `sched_ext/for-7.4`。b"
+  },
+  {
+    "title": "tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts",
+    "id": "sched-20260922-006",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Fuyu Zhao"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html",
+    "tldr": "Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun Heo 回帖建议 `SCX_OPS_OPEN()` 直接以 0 为 opts 调用 `SCX_OPS_OPEN_OPTS()` 来减少重复。"
+  },
+  {
+    "title": "tools/sched_ext: Add scx_priority dual-queue priority CPU scheduler",
+    "id": "sched-20260922-007",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "rahadbhuiya"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-007-tools-sched-ext-add-scx-priority-dual-queue-priority-cpu-sch.html",
+    "tldr": "rahadbhuiya 提交一个 sched_ext 示例调度器 `scx_priority`：双队列（高优先级 nice<0 / 普通）区分延迟敏感与批处理任务，高优先级任务享 boosted slice 并优先 drain。Andrea Righi 回帖认为其功能已被现有示例覆盖、不建议合入内核，建议改投社区调度器仓库 sched-ext/scx。合入前景低。"
+  },
+  {
+    "title": "sched: Replace __ASSEMBLY__ with __ASSEMBLER__ in sched.h header",
+    "id": "sched-20260922-008",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Thomas Huth"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.html",
+    "tldr": "Thomas Huth 把 `<uapi/linux/sched.h>`（及 perf 工具里的同名 uapi 头）里的 `__ASSEMBLY__` 守卫宏标准化为 `__ASSEMBLER__`，消除用户态/内核态切换时的困惑。补丁当日即被合入 `tip/sched/core`（commit `a9b3c7570564`）。"
+  },
+  {
+    "title": "cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()",
+    "id": "sched-20260922-009",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "load_balance"
+    ],
+    "authors": [
+      "Rafael J. Wysocki"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html",
+    "tldr": "Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regrression：`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_ref()`，让 intel_pstate 仅在容量参考频率已知时才回落，否则保持无压力。这是与 schedutil 压力机制直接相关的 cpufreq 修复。"
+  },
+  {
+    "title": "kernel/sched/fair.c:2004:38: sparse: sparse: incorrect type in initializer (different address spaces)",
+    "id": "sched-20260922-010",
+    "date": "2026-09-22",
+    "type": "bug",
+    "status": "stalled",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.html",
+    "tldr": "kernel test robot 的 sparse 报告：`kernel/sched/fair.c` 中 `update_curr_fair()`（`for_each_sched_entity` 展开处）及 `sched.h` 的 `task_dl_entity`/RT 相关比较，把标注为 `__rcu` 的 `struct task_struct` 与普通指针混用，触发 `incorrect type in initializer / incompatible types in comparison expression (different address spaces)`。针对已合入 "
+  },
+  {
+    "title": "Improving latency of short slice tasks",
+    "id": "sched-20260922-011",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "perf"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方案；对 patch 5/8（idle 唤醒时重置 lag）给出 `vlag_seq` 的代码草案；对 6/8 建议把缓存放 `struct rq` 避免 cache miss；对 8/8 建议复用 `"
+  },
+  {
+    "title": "sched/proxy_exec: detect cycles in proxy walks",
+    "id": "sched-20260922-012",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "deadline"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 block 图无环」，必须在暴露给用户态前强制检测，且应讨论是否返回 `-EDEADLK` 给用户态。方向从「要不要环检测」转向「环检测如何配合用户态错误返回」。"
+  },
+  {
+    "title": "sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT",
+    "id": "sched-20260922-013",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "superseded",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。"
+  },
+  {
+    "title": "sched/core: Account PSI IRQ time to the execution context",
+    "id": "sched-20260922-014",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "psi",
+      "cfs"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Peter 确认「In it goes」——补丁已被合入。系列以 merged 收尾。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20260922-015",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_blocked` 判断更合适）。补丁本身已集齐多组 review/test，合入概率高，但 Peter 的问题待回应。"
+  },
+  {
+    "title": "sched/doc: add a preemption model overview",
+    "id": "sched-20260922-016",
+    "date": "2026-09-22",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-016-sched-doc-add-a-preemption-model-overview.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260920-003（v1）。Quchaosheng 发出 v2：按 Sebastian Andrzej Siewior 的意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误的测量段与 yield 措辞，并把 debugfs 段并入运行时选择小节。新增 `Documentation/scheduler/sched-preemption.rst`（84 行）。Sebastian 建议合入。"
+  },
+  {
+    "title": "sched/deadline: Fix zero-CPU DL bandwidth handling",
+    "id": "sched-20260922-017",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline",
+      "cgroup"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（\"sched/deadline: Reject debugfs dl_server writes for offline CPUs\"）更贴切。两补丁基本可合，只差修 Fixes 标签。"
+  },
+  {
+    "title": "cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()",
+    "id": "sched-20260922-018",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Guopeng Zhang"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。"
+  },
+  {
+    "title": "cpufreq: fix schedutil not returning to non-boost freq when boost is disabled",
+    "id": "sched-20260922-019",
+    "date": "2026-09-22",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Ananthu C V"
+    ],
+    "url": "/lkm/2026/09/22/sched-20260922-019-cpufreq-fix-schedutil-not-returning-to-non-boost-freq-when.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260921-007（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（\"cpufreq: Remove driver default policy->min/max init\"）引入，而 `538b0188da46`、`6e39ba4e5a82` 均未复现。测试结论与 v1 反馈一致，补丁方向获进一步佐证。"
   }
 ]

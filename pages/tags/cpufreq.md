@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20260922-009](/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
+- [sched-20260922-019](/lkm/2026/09/22/sched-20260922-019-cpufreq-fix-schedutil-not-returning-to-non-boost-freq-when.html) `fix/medium/under_review` — cpufreq: fix schedutil not returning to non-boost freq when boost is disabled
 - [sched-20260921-007](/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260921-010](/lkm/2026/09/21/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation
 - [sched-20260919-006](/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html) `fix/medium/under_review` — cpufreq: Use a non-boost reference frequency for pressure calculation

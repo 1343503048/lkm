@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 16
+article_count: 19
 ---
 
+- [sched-20260922-003](/lkm/2026/09/22/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.html) `fix/high/under_review` — sched: Restore the normalize_rt_tasks() cpuset_mutex exemption
+- [sched-20260922-012](/lkm/2026/09/22/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `feature/none/rfc` — sched/proxy_exec: detect cycles in proxy walks
+- [sched-20260922-017](/lkm/2026/09/22/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/medium/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260919-001](/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/high/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260918-002](/lkm/2026/09/18/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl

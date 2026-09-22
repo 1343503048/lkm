@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 91
+article_count: 92
 ---
 
+- [sched-20260922-018](/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/low/merged_tip` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260921-004](/lkm/2026/09/21/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260921-008](/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260920-002](/lkm/2026/09/20/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/none/under_review` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()

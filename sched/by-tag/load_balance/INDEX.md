@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 105 篇
+共 107 篇
 
+- [sched-20260922-009](../../2026/09/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regrression：`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_r
+- [sched-20260922-001](../../2026/09/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.md) `fix/high/merged_tip` — Tim Chen 汇总 cache-aware scheduling（CAS，7.2 合入）遗留问题，发出 v2 六补丁修复系列：DELAY_DEQUEUE 下 `nr_pref_llc_running` 计数口径不一致导致主动负载均衡把任务拉离首选 LLC、active load balance 丢失 `migrate_llc_task` 语义、任务 mm 切换时 `account_mm_sch
 - [sched-20260921-010](../../2026/09/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的"cpufreq 用非 boost 参考频率计算 pressure"修复（v1）昨日获作者本人补强的 Tested-by——在 Hygon 与 AMD（acpi-cpufreq）平台上实测 CPU pressure 重新归零，cache aware 调度恢复把任务聚合到 50% LLC 容量（与 d2d5c129d07e 引入回归前一致）。实测背书到位，合入概率
 - [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip
 - [sched-20260920-001](../../2026/09/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：Wei Yang 的 run_delay 虚增修复发布 v2——按 Kayra Cizmeci 的纠正重写了 commit message 中「负载均衡迁移不受影响」的错误论断（active load balance 的 lb_env 不设置 migration_type、恒为 0==migrate_load，delayed 任务仍可能被迁移），并纳入 Chen Yu 的 Reviewe

@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 148
+article_count: 152
 ---
 
+- [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare
+- [sched-20260922-005](/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html) `feature/none/merged_tip` — sched_ext: Specialize TID and scheduler hashtable compares
+- [sched-20260922-006](/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
+- [sched-20260922-007](/lkm/2026/09/22/sched-20260922-007-tools-sched-ext-add-scx-priority-dual-queue-priority-cpu-sch.html) `feature/none/under_review` — tools/sched_ext: Add scx_priority dual-queue priority CPU scheduler
 - [sched-20260919-002](/lkm/2026/09/19/sched-20260919-002-sched-ext-pass-the-initial-cmask-to-cid-form-ops-enable.html) `fix/none/merged_tip` — sched_ext: Pass the initial cmask to cid-form ops.enable()
 - [sched-20260919-003](/lkm/2026/09/19/sched-20260919-003-sched-ext-add-lazy-preemption-support.html) `feature/none/merged_tip` — sched_ext: Add lazy preemption support
 - [sched-20260918-006](/lkm/2026/09/18/sched-20260918-006-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html) `fix/low/merged_tip` — sched_ext: Derive SCX_RQ_IN_WAKEUP from the core enqueue flags

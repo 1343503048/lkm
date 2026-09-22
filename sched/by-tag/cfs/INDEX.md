@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 132 篇
+共 137 篇
 
+- [sched-20260922-015](../../2026/09/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_block
+- [sched-20260922-014](../../2026/09/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Pete
+- [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方
+- [sched-20260922-010](../../2026/09/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.md) `bug/low/stalled` — kernel test robot 的 sparse 报告：`kernel/sched/fair.c` 中 `update_curr_fair()`（`for_each_sched_entity` 展开处）及 `sched.h` 的 `task_dl_entity`/RT 相关比较，把标注为 `__rcu` 的 `struct task_struct` 与普通指针混用，触发 `incorrect 
+- [sched-20260922-001](../../2026/09/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.md) `fix/high/merged_tip` — Tim Chen 汇总 cache-aware scheduling（CAS，7.2 合入）遗留问题，发出 v2 六补丁修复系列：DELAY_DEQUEUE 下 `nr_pref_llc_running` 计数口径不一致导致主动负载均衡把任务拉离首选 LLC、active load balance 丢失 `migrate_llc_task` 语义、任务 mm 切换时 `account_mm_sch
 - [sched-20260921-009](../../2026/09/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.md) `discussion/low/rfc` — 增量更新：Dongli Zhang 的"延迟被抢占远程 vCPU 的 task clock 更新" RFC 昨日收到 KVM 维护者 Sean Christopherson 的技术质疑——该方案的关键约束"hypervisor 在清除 preempted 标记前发布最新 stealtime"在旧版 KVM 上无法保证，作者尚未回应。合入前景趋弱。
 - [sched-20260921-006](../../2026/09/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 增量更新：Wei Yang 的 `sched/stats` run_delay 多计数修复（v2）昨日又获 K Prateek Nayak 的 Reviewed-by + Tested-by，评审背书进一步加强，合入概率高。
 - [sched-20260921-005](../../2026/09/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 回复 Vincent Guittot 的 review，补充了 idle CPU 选择随机化方案中"未发布 idle 状态"（unpublished idle state）CPU 的处理思路——实测这类候选只占约 0.1-0.5%，把它们按 `U64_MAX` 退出延迟对待后极少成为最优候选，因此随机化引入的偏置风险可控。这是对既有 v2 的补充论证，无

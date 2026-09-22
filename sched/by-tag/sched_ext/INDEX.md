@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 148 篇
+共 152 篇
 
+- [sched-20260922-007](../../2026/09/sched-20260922-007-tools-sched-ext-add-scx-priority-dual-queue-priority-cpu-sch.md) `feature/under_review` — rahadbhuiya 提交一个 sched_ext 示例调度器 `scx_priority`：双队列（高优先级 nice<0 / 普通）区分延迟敏感与批处理任务，高优先级任务享 boosted slice 并优先 drain。Andrea Righi 回帖认为其功能已被现有示例覆盖、不建议合入内核，建议改投社区调度器仓库 sched-ext/scx。合入前景低。
+- [sched-20260922-006](../../2026/09/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.md) `feature/under_review` — Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun 
+- [sched-20260922-005](../../2026/09/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.md) `feature/merged_tip` — Usama Arif 为 sched_ext 的 TID 与 scheduler 两张 rhashtable 提供专用比较回调，把 `scx_bpf_tid_to_task()`（热路径，用于 tid→task 反查）和 `scx_find_sub_sched()`（被子调度器 dispatch 与管理 kfunc 调用）上的泛型 `rhashtable_compare()`/`memcmp()`
+- [sched-20260922-004](../../2026/09/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.md) `feature/merged_tip` — Usama Arif 为 sched_ext 的 DSQ（dispatch queue）哈希表补上 `obj_cmpfn`，把 `find_user_dsq()` 热路径上的泛型 `rhashtable_compare()`（运行时读 offset/length 再 out-of-line `memcmp` 8 字节）折叠成编译期对 `dsq->id` 的单次 u64 比较。作者在 Meta 机群
 - [sched-20260919-003](../../2026/09/sched-20260919-003-sched-ext-add-lazy-preemption-support.md) `feature/merged_tip` — 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列推出 v7，本日被 Tejun Heo 应用 1-2 到 `sched_ext/for-7.4`。相比 v6，v7 主要是把即时抢占的 `SCX_ENQ_PREEMPT_LAZY`/`SCX_KICK_PREEMPT_LAZY` 一次性操作与新的持久策略 `scx_bpf_task_set_lazy_resched()`/`S
 - [sched-20260919-002](../../2026/09/sched-20260919-002-sched-ext-pass-the-initial-cmask-to-cid-form-ops-enable.md) `fix/merged_tip` — Tejun Heo 在一天之内把 sched_ext cid-form API 的一个明显漏洞从 v1 迭代到 v3 并合入 `sched_ext/for-7.3-fixes`：此前 cid-form 调度器的任务 cmask 只能通过 `ops.set_cmask()` 看到，而它在 fork/子调度使能/re-home 等进入路径上不触发，导致调度器只能用 `ops.init_task()` 
 - [sched-20260918-024](../../2026/09/sched-20260918-024-kernel-sched-ext-ext-c-1451-38-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（W=1）报告：`kernel/sched/ext/ext.c:1451:38` 初始化器把 `struct task_struct [noderef] __rcu *` 赋给 `struct task_struct *`，地址空间标注不匹配；同报告还列出 `rt.c` 多处 donor 的 `__rcu` 标注缺失。定位到 commit bba

@@ -2,9 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 54
+article_count: 56
 ---
 
+- [sched-20260922-013](/lkm/2026/09/22/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
+- [sched-20260922-016](/lkm/2026/09/22/sched-20260922-016-sched-doc-add-a-preemption-model-overview.html) `feature/none/under_review` — sched/doc: add a preemption model overview
 - [sched-20260921-003](/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/under_review` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
 - [sched-20260920-003](/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html) `feature/none/under_review` — sched/doc: add a preemption model overview
 - [sched-20260918-002](/lkm/2026/09/18/sched-20260918-002-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart fair hrtick after same-task repicks
