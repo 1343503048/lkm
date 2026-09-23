@@ -565,4 +565,5 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 .conf-group .date-header { display: flex; align-items: baseline; gap: 0.5rem; }
 .conf-count { font-size: 0.8rem; color: #9ca3af; font-weight: 500; }
 .conf-page { max-width: 900px; margin: 0 auto; }
-.conf-sosp { background: #fee2e2 !important; color: #991b1b !important; }
+.conf-sosp { background: #cffafe !important; color: #155e75 !important; }
+.conf-ckc { background: #fee2e2 !important; color: #b91c1c !important; }

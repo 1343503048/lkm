@@ -16,7 +16,7 @@ _conferences/<会议小写>-<年份>/<slug>.md  →  /lkm/conferences/<会议小
 ```yaml
 ---
 title: "文章标题（英文原题或中文整理标题）"
-conf: LPC              # 会议名：LPC / OSDI / SOSP / OSPM / LSFMM / ...，自由填写
+conf: LPC              # 会议名：LPC / OSDI / SOSP / CKC（中国内核开发者大会）/ OSPM / LSFMM / ...，自由填写
 year: "2025"           # 必须加引号，保持字符串；跨届总览用 "2016-2026"
 direction: sched       # sched / mm / perf / android / arch / mixed；也可自定义新值（自动进筛选器）
 overview: true         # 仅届级总览页填写；单篇分析省略此字段
