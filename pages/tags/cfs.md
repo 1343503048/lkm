@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 137
+article_count: 140
 ---
 
+- [sched-20260923-003](/lkm/2026/09/23/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `discussion/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
+- [sched-20260923-005](/lkm/2026/09/23/sched-20260923-005-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/under_review` — sched: Clarify WF_SYNC wakeup semantics
+- [sched-20260923-007](/lkm/2026/09/23/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260922-001](/lkm/2026/09/22/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/merged_tip` — sched/cache: Fixes for cache aware scheduling
 - [sched-20260922-010](/lkm/2026/09/22/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.html) `bug/low/stalled` — kernel/sched/fair.c:2004:38: sparse: sparse: incorrect type in initializer (different address spaces)
 - [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

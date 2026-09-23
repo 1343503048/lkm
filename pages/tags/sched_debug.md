@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 55
+article_count: 57
 ---
 
+- [sched-20260923-007](/lkm/2026/09/23/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
+- [sched-20260923-009](/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html) `feature/low/under_review` — sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES
 - [sched-20260922-008](/lkm/2026/09/22/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.html) `fix/none/merged_tip` — sched: Replace __ASSEMBLY__ with __ASSEMBLER__ in sched.h header
 - [sched-20260922-010](/lkm/2026/09/22/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.html) `bug/low/stalled` — kernel/sched/fair.c:2004:38: sparse: sparse: incorrect type in initializer (different address spaces)
 - [sched-20260922-015](/lkm/2026/09/22/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks

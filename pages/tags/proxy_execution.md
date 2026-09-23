@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 48
+article_count: 50
 ---
 
+- [sched-20260923-002](/lkm/2026/09/23/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260923-012](/lkm/2026/09/23/sched-20260923-012-futex-make-futex-ping-use-proxy-execution.html) `feature/none/rfc` — futex: Make FUTEX_*_PING use Proxy Execution.
 - [sched-20260922-002](/lkm/2026/09/22/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v32)
 - [sched-20260922-012](/lkm/2026/09/22/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `feature/none/rfc` — sched/proxy_exec: detect cycles in proxy walks
 - [sched-20260922-013](/lkm/2026/09/22/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `feature/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT

@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 152
+article_count: 154
 ---
 
+- [sched-20260923-002](/lkm/2026/09/23/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260923-013](/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare
 - [sched-20260922-005](/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html) `feature/none/merged_tip` — sched_ext: Specialize TID and scheduler hashtable compares
 - [sched-20260922-006](/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts

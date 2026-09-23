@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 107 篇
+共 110 篇
 
+- [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260901-004。Jianyong Wu（海光）的 NUMA/LLC 两级亲和性负载均衡系列（RFC v2）今日继续 02/23 的距离矩阵去重讨论：Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」这一更省存储、更直白的方案，并质疑去重算法会耗尽可用距离槽；Jianyong 逐条回应，澄清系列目标（系统级 LLC 亲
+- [sched-20260923-004](../../2026/09/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260922-009（v1）。Rafael Wysocki 的这个修复今日收获 Ricardo Neri 的 Tested-by（第 25/26 代 Intel 混合架构实测无压力时任务正常散开、施压后迁移、撤压后回流），Rafael 表态：若无异议将作为 7.3 的 fix 收下。合入概率从 high 逼近 merged。
+- [sched-20260923-003](../../2026/09/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `discussion/under_review` — Qais Yousef 早期 capacity-aware 系列（v2 04/13）中的清理补丁——把 `fits_capacity()` 的魔数 margin（`cap*1280 < max*1024`）换成 per-rq 的 `fits_capacity_threshold`——在今日被 Zhan Xusheng 指出一个与主线交互的隐患：`fits_capacity()` 改了签名后，新合入
 - [sched-20260922-009](../../2026/09/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regrression：`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_r
 - [sched-20260922-001](../../2026/09/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.md) `fix/high/merged_tip` — Tim Chen 汇总 cache-aware scheduling（CAS，7.2 合入）遗留问题，发出 v2 六补丁修复系列：DELAY_DEQUEUE 下 `nr_pref_llc_running` 计数口径不一致导致主动负载均衡把任务拉离首选 LLC、active load balance 丢失 `migrate_llc_task` 语义、任务 mm 切换时 `account_mm_sch
 - [sched-20260921-010](../../2026/09/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的"cpufreq 用非 boost 参考频率计算 pressure"修复（v1）昨日获作者本人补强的 Tested-by——在 Hygon 与 AMD（acpi-cpufreq）平台上实测 CPU pressure 重新归零，cache aware 调度恢复把任务聚合到 50% LLC 容量（与 d2d5c129d07e 引入回归前一致）。实测背书到位，合入概率

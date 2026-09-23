@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 48 篇
+共 50 篇
 
+- [sched-20260923-012](../../2026/09/sched-20260923-012-futex-make-futex-ping-use-proxy-execution.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260918-011（该系列 cover 标题为「FUTEX_PING: A stealable futex using Proxy Execution.」）。Jihan LIN 对 07/12 补丁给出设计意见：该方案可复用 owner walk 以避免争用路径上的额外链式遍历，但认为「sleep 前做死锁检测」与 PI futex 更一致，且最后一次
+- [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260916-002（v13，18 枚）及更早文章。Andrea Righi 发出 v14（16 枚）：基本落实了 Peter Zijlstra 在 v13 评审中的全部意见——`WF_ON_RQ` 更名 `WF_TTUW_RQ` 并拆为预备 patch、blocked-donor admission 用 `scx_enabled()` static k
 - [sched-20260922-013](../../2026/09/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/superseded` — 本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。
 - [sched-20260922-012](../../2026/09/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 blo
 - [sched-20260922-002](../../2026/09/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.md) `feature/rfc` — John Stultz 发出 proxy execution 旅程第 5 阶段「Sleeping Owner Handling」的第 32 版迭代（2 补丁）：当任务阻塞在一个 owner 正在睡眠的 mutex 上时，把 waiter 停用（deactivate）并挂到 owner 的等待表上，待 owner 唤醒时在同一 runqueue 上重新激活，使其得以提升 owner。v32 新增 K

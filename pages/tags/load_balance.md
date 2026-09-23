@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 107
+article_count: 110
 ---
 
+- [sched-20260923-003](/lkm/2026/09/23/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `discussion/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
+- [sched-20260923-004](/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
+- [sched-20260923-006](/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260922-001](/lkm/2026/09/22/sched-20260922-001-sched-cache-fixes-for-cache-aware-scheduling.html) `fix/high/merged_tip` — sched/cache: Fixes for cache aware scheduling
 - [sched-20260922-009](/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks

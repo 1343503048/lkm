@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 45 篇
+共 46 篇
 
+- [sched-20260923-004](../../2026/09/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260922-009（v1）。Rafael Wysocki 的这个修复今日收获 Ricardo Neri 的 Tested-by（第 25/26 代 Intel 混合架构实测无压力时任务正常散开、施压后迁移、撤压后回流），Rafael 表态：若无异议将作为 7.3 的 fix 收下。合入概率从 high 逼近 merged。
 - [sched-20260922-019](../../2026/09/sched-20260922-019-cpufreq-fix-schedutil-not-returning-to-non-boost-freq-when.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-007（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（"cpufreq: Remove driver default p
 - [sched-20260922-009](../../2026/09/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regrression：`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_r
 - [sched-20260921-010](../../2026/09/sched-20260921-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.md) `fix/medium/under_review` — 增量更新：Jianyong Wu 的"cpufreq 用非 boost 参考频率计算 pressure"修复（v1）昨日获作者本人补强的 Tested-by——在 Hygon 与 AMD（acpi-cpufreq）平台上实测 CPU pressure 重新归零，cache aware 调度恢复把任务聚合到 50% LLC 容量（与 d2d5c129d07e 引入回归前一致）。实测背书到位，合入概率

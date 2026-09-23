@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 43
+article_count: 44
 ---
 
+- [sched-20260923-011](/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html) `fix/medium/under_review` — sched/mmcid: Fix affinity-triggered switch back to per-task mode
 - [sched-20260916-014](/lkm/2026/09/16/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html) `fix/medium/under_review` — sched/mmcid: Fix affinity-triggered switch back to per-task mode
 - [sched-20260911-001](/lkm/2026/09/11/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html) `fix/low/under_review` — sched/isolation: Prevent out-of-bounds read in isolcpus= boot parameter parser
 - [sched-20260910-012](/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html) `feature/none/under_review` — sched/fair: Load balance only among preferred CPUs

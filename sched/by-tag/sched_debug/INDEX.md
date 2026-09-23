@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 55 篇
+共 57 篇
 
+- [sched-20260923-009](../../2026/09/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — 本文为增量更新，完整背景见 sched-20260912-006（v2）。Peter Zijlstra 与 Petr Mladek 终于开始了对这个 panic 期 per-CPU runqueue 摘要补丁的首轮人类评审：Peter 要求给「这些路径必须远离 rq->lock」加上注释/注解、并质疑是否真需要这个功能（kdump 也可只 dump 内核数据结构）；作者 Aaron Tomlin 
+- [sched-20260923-007](../../2026/09/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260922-015（v3）。针对 Peter Zijlstra 上轮提出的「proxy execution 是否也有同类 over-count、是否该用 `t->is_blocked` 判断」，Wei Yang 与 Kayra Cizmeci 今日给出回应：确认 `proxy_migrate_task()` 经 `activate_task()`（无 
 - [sched-20260922-015](../../2026/09/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_block
 - [sched-20260922-010](../../2026/09/sched-20260922-010-kernel-sched-fair-c-2004-38-sparse-sparse-incorrect-type-in.md) `bug/low/stalled` — kernel test robot 的 sparse 报告：`kernel/sched/fair.c` 中 `update_curr_fair()`（`for_each_sched_entity` 展开处）及 `sched.h` 的 `task_dl_entity`/RT 相关比较，把标注为 `__rcu` 的 `struct task_struct` 与普通指针混用，触发 `incorrect 
 - [sched-20260922-008](../../2026/09/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.md) `fix/merged_tip` — Thomas Huth 把 `<uapi/linux/sched.h>`（及 perf 工具里的同名 uapi 头）里的 `__ASSEMBLY__` 守卫宏标准化为 `__ASSEMBLER__`，消除用户态/内核态切换时的困惑。补丁当日即被合入 `tip/sched/core`（commit `a9b3c7570564`）。

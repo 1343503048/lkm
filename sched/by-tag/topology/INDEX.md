@@ -1,7 +1,8 @@
 # tag: topology
 
-共 92 篇
+共 93 篇
 
+- [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260901-004。Jianyong Wu（海光）的 NUMA/LLC 两级亲和性负载均衡系列（RFC v2）今日继续 02/23 的距离矩阵去重讨论：Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」这一更省存储、更直白的方案，并质疑去重算法会耗尽可用距离槽；Jianyong 逐条回应，澄清系列目标（系统级 LLC 亲
 - [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
 - [sched-20260921-008](../../2026/09/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。
 - [sched-20260921-004](../../2026/09/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 的"在 NVIDIA Olympus 上启用优先 SMT 兄弟"系列（v6，其中 1/2 为 `sched/fair: Honor asymmetric SMT priority in idle selection`）昨日又获两则实质反馈——Breno Leitao 给出完整 Tested-by（实测唤醒重定向 800/800 生效、无 KASAN/lockde

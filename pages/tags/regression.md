@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 17
+article_count: 18
 ---
 
+- [sched-20260923-001](/lkm/2026/09/23/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260912-002](/lkm/2026/09/12/sched-20260912-002-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html) `bug/medium/under_review` — [BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)
 - [sched-20260911-013](/lkm/2026/09/11/sched-20260911-013-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html) `bug/medium/under_review` — [BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)
 - [sched-20260908-006](/lkm/2026/09/08/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling

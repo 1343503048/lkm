@@ -11431,6 +11431,223 @@
     "tldr": "本文为增量更新，完整背景见 sched-20260921-007（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（\"cpufreq: Remove driver default policy->min/max init\"）引入，而 `538b0188da46`、`6e39ba4e5a82` 均未复现。测试结论与 v1 反馈一致，补丁方向获进一步佐证。"
   },
   {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20260923-001",
+    "date": "2026-09-23",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "regression"
+    ],
+    "authors": [
+      "Aishwarya Rambhadran"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，用 Fastpath 自动化 bisect 定位到「sched/eevdf: Move to a single runqueue」这一 commit。整体 schbench 结果为中性（部分配置改善、部分回退），但个别线程配置出现 ~30% 的 p99 延迟回退。作者正待 Peter Zijlstra 回应这是否是单运行队列改动的预期取舍。"
+  },
+  {
+    "title": "sched: Make proxy execution compatible with sched_ext",
+    "id": "sched-20260923-002",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "sched_ext",
+      "nohz"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260916-002（v13，18 枚）及更早文章。Andrea Righi 发出 v14（16 枚）：基本落实了 Peter Zijlstra 在 v13 评审中的全部意见——`WF_ON_RQ` 更名 `WF_TTUW_RQ` 并拆为预备 patch、blocked-donor admission 用 `scx_enabled()` static key 门控、retained-donor 清理移到 sched_ext ownership-transition 路径、NOHZ_FULL 下保守重开 tick。新 kselftest `enq_bl"
+  },
+  {
+    "title": "sched/fair: Remove magic hardcoded margin in fits_capacity()",
+    "id": "sched-20260923-003",
+    "date": "2026-09-23",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html",
+    "tldr": "Qais Yousef 早期 capacity-aware 系列（v2 04/13）中的清理补丁——把 `fits_capacity()` 的魔数 margin（`cap*1280 < max*1024`）换成 per-rq 的 `fits_capacity_threshold`——在今日被 Zhan Xusheng 指出一个与主线交互的隐患：`fits_capacity()` 改了签名后，新合入的 `invalid_llc_nr()` 把「LLC 内 CPU 数」当容量传给新签名，会静默绑定到错误的 `@cpu` 参数。Zhan 提出拆出 `fits_llc_nr()` 独立 helper，"
+  },
+  {
+    "title": "cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()",
+    "id": "sched-20260923-004",
+    "date": "2026-09-23",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "load_balance"
+    ],
+    "authors": [
+      "Rafael J. Wysocki"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260922-009（v1）。Rafael Wysocki 的这个修复今日收获 Ricardo Neri 的 Tested-by（第 25/26 代 Intel 混合架构实测无压力时任务正常散开、施压后迁移、撤压后回流），Rafael 表态：若无异议将作为 7.3 的 fix 收下。合入概率从 high 逼近 merged。"
+  },
+  {
+    "title": "sched: Clarify WF_SYNC wakeup semantics",
+    "id": "sched-20260923-005",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-005-sched-clarify-wf-sync-wakeup-semantics.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260918-001（该系列前作主题为「Document WF_SYNC wakeup placement semantics」）。Shubhang Kaushik 按 Peter Zijlstra 的倾向推出 v3：放弃独立文档页，把 WF_SYNC 的「advisory hint」契约收敛为 flag 定义旁的一条内联注释，删除 waitqueue 里「wakee 不会被迁移」的过时保证，并把系列合并为单补丁（12 插入 / 19 删除）。形式之争（独立文档 vs 内联注释）以采纳 Peter 意见而收敛。"
+  },
+  {
+    "title": "sched/topology: Introduce a NUMA distance matrix with unique distance values",
+    "id": "sched-20260923-006",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "numa_balancing",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260901-004。Jianyong Wu（海光）的 NUMA/LLC 两级亲和性负载均衡系列（RFC v2）今日继续 02/23 的距离矩阵去重讨论：Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」这一更省存储、更直白的方案，并质疑去重算法会耗尽可用距离槽；Jianyong 逐条回应，澄清系列目标（系统级 LLC 亲和排序）与去重只作用于节点层、不涉及 LLC 数。分歧未收敛，属设计路线讨论。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20260923-007",
+    "date": "2026-09-23",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260922-015（v3）。针对 Peter Zijlstra 上轮提出的「proxy execution 是否也有同类 over-count、是否该用 `t->is_blocked` 判断」，Wei Yang 与 Kayra Cizmeci 今日给出回应：确认 `proxy_migrate_task()` 经 `activate_task()`（无 `ENQUEUE_RESTORE`）重挂 blocked donor 是同类问题，但 `is_blocked` 不能直接门控（会误伤 `ttwu_runnable()` 的真实唤醒重挂）；作者倾向先复"
+  },
+  {
+    "title": "sched/numa: stop VMA scan filters from gating promotion",
+    "id": "sched-20260923-008",
+    "date": "2026-09-23",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260919-009（v2 4 枚）。Gregory Price 发出 v3（7 枚）：把可回合的修复集扩为 5 枚（新增「scan PID-inactive VMA for promotion」），并补上 `Fixes:`/`Cc: stable` 标签（3/7 `Fixes: c574bbe91703`、4/7 `Fixes: fc137c0ddab2`），另加 2 枚独立的 mm 清理（BIT()、VMA flag helper）。cover 给出首个量化收益数据：DRAM 带宽 150-200→250+ GB/s、CXL 带宽 40-45→5"
+  },
+  {
+    "title": "sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES",
+    "id": "sched-20260923-009",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Aaron Tomlin"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260912-006（v2）。Peter Zijlstra 与 Petr Mladek 终于开始了对这个 panic 期 per-CPU runqueue 摘要补丁的首轮人类评审：Peter 要求给「这些路径必须远离 rq->lock」加上注释/注解、并质疑是否真需要这个功能（kdump 也可只 dump 内核数据结构）；作者 Aaron Tomlin 逐条回应，坚持 `raw_spin_rq_trylock()` 非阻塞路线，并说明面向生产支持（kdump 未配/截断时 dmesg 是唯一诊断物）。likelihood 从 unknown 转 lo"
+  },
+  {
+    "title": "sched/doc: add a preemption model overview",
+    "id": "sched-20260923-010",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-010-sched-doc-add-a-preemption-model-overview.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260922-016（v2）。Quchaosheng 快速迭代：v3 按 Sebastian Andrzej Siewior 的要求把「such a call」明确写为 `cond_resched()`（保留其 Reviewed-by），随后仅因第二枚 patch 变化而重发 v4（diff 无变化）。文档已获 Suggested-by/Reviewed-by 维护者认可，等待收取。"
+  },
+  {
+    "title": "sched/mmcid: Fix affinity-triggered switch back to per-task mode",
+    "id": "sched-20260923-011",
+    "date": "2026-09-23",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "affinity"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260916-014（v1）。作者 Hui Su 回应 Mathieu Desnoyers 的 selftest 要求：确认了 Thomas 当年 [0/4] 系列的 thread-pool emulator 没有对应 selftest、上游 `tools/testing/selftests/rseq/` 也缺 affinity-expansion（per-CPU 切回 per-task）场景的转换覆盖，决定为这一场景补一个聚焦 selftest 并发 v2，并向 Thomas 征询 emulator 是否可用作参考。"
+  },
+  {
+    "title": "futex: Make FUTEX_*_PING use Proxy Execution.",
+    "id": "sched-20260923-012",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Suleiman Souhlal",
+      "John Stultz"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-012-futex-make-futex-ping-use-proxy-execution.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260918-011（该系列 cover 标题为「FUTEX_PING: A stealable futex using Proxy Execution.」）。Jihan LIN 对 07/12 补丁给出设计意见：该方案可复用 owner walk 以避免争用路径上的额外链式遍历，但认为「sleep 前做死锁检测」与 PI futex 更一致，且最后一次锁尝试若能直接向用户态返回 `-EDEADLK` 则额外的遍历物有所值——这与 Peter Zijlstra 先前「死锁检测应在 block 时做、返回 -EDEADLK」的立场呼应。"
+  },
+  {
+    "title": "tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts",
+    "id": "sched-20260923-013",
+    "date": "2026-09-23",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Fuyu Zhao"
+    ],
+    "url": "/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html",
+    "tldr": "本文为增量更新，完整背景见 sched-20260922-006（v1）。Fuyu Zhao 发出 v2：按 Tejun Heo 的建议让 `SCX_OPS_OPEN()` 内部以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，收敛为单份展开，消除两份宏实现的重复。实现已落地，待 Tejun 复审。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

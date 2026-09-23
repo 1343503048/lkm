@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 137 篇
+共 140 篇
 
+- [sched-20260923-007](../../2026/09/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260922-015（v3）。针对 Peter Zijlstra 上轮提出的「proxy execution 是否也有同类 over-count、是否该用 `t->is_blocked` 判断」，Wei Yang 与 Kayra Cizmeci 今日给出回应：确认 `proxy_migrate_task()` 经 `activate_task()`（无 
+- [sched-20260923-005](../../2026/09/sched-20260923-005-sched-clarify-wf-sync-wakeup-semantics.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260918-001（该系列前作主题为「Document WF_SYNC wakeup placement semantics」）。Shubhang Kaushik 按 Peter Zijlstra 的倾向推出 v3：放弃独立文档页，把 WF_SYNC 的「advisory hint」契约收敛为 flag 定义旁的一条内联注释，删除 waitqueue 
+- [sched-20260923-003](../../2026/09/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `discussion/under_review` — Qais Yousef 早期 capacity-aware 系列（v2 04/13）中的清理补丁——把 `fits_capacity()` 的魔数 margin（`cap*1280 < max*1024`）换成 per-rq 的 `fits_capacity_threshold`——在今日被 Zhan Xusheng 指出一个与主线交互的隐患：`fits_capacity()` 改了签名后，新合入
 - [sched-20260922-015](../../2026/09/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_block
 - [sched-20260922-014](../../2026/09/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Pete
 - [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方
