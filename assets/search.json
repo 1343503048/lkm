@@ -11429,5 +11429,117 @@
     ],
     "url": "/lkm/2026/09/22/sched-20260922-019-cpufreq-fix-schedutil-not-returning-to-non-boost-freq-when.html",
     "tldr": "本文为增量更新，完整背景见 sched-20260921-007（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（\"cpufreq: Remove driver default policy->min/max init\"）引入，而 `538b0188da46`、`6e39ba4e5a82` 均未复现。测试结论与 v1 反馈一致，补丁方向获进一步佐证。"
+  },
+  {
+    "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2020-index",
+    "date": "2026-09-22",
+    "type": "LPC 2020",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2020/",
+    "tldr": "LPC 2020（线上）五大方向：core scheduling 上游冲刺、PREEMPT_RT 入主线前夜、DAMON 首秀、Android GKI 与 pKVM 首次公开、RISC-V 向量支持。"
+  },
+  {
+    "title": "LPC 2020–2025 五年议题纵览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2020-2025-index",
+    "date": "2026-09-22",
+    "type": "LPC 2020-2025",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2020-2025/",
+    "tldr": "LPC 六届（2020–2025）全景：MC 生态变迁、五大方向跨年趋势，以及与调度/cpuset/cgroup 方向最相关的 12 条议题精选。各届明细见同目录年度总览。"
+  },
+  {
+    "title": "LPC 2021 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2021-index",
+    "date": "2026-09-22",
+    "type": "LPC 2021",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2021/",
+    "tldr": "LPC 2021（线上）五大方向：唤醒路径与 EAS 微调、folio 之争、uclamp 产品化负反馈、ghOSt、机密计算 MC 设立与 CXL 首秀。"
+  },
+  {
+    "title": "LPC 2022 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2022-index",
+    "date": "2026-09-22",
+    "type": "LPC 2022",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2022/",
+    "tldr": "LPC 2022（都柏林）五大方向：EAS 上 x86、CPU Isolation MC 新设与 cpuset 化、MM MC 设立与 MGLRU 冲刺、CXL MC 首设、SCX/ghOSt BoF 预热。"
+  },
+  {
+    "title": "LPC 2023 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2023-index",
+    "date": "2026-09-22",
+    "type": "LPC 2023",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2023/",
+    "tldr": "LPC 2023（里士满）五大方向：CPU isolation 深化与 RT end game、MM MC 缺位（分流 KSM/DAMON/16KB page）、验证器可验证化、Pixel 6 上游与去 vendor hooks、CXL 深水区。"
+  },
+  {
+    "title": "LPC 2024 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2024-index",
+    "date": "2026-09-22",
+    "type": "LPC 2024",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2024/",
+    "tldr": "LPC 2024（维也纳）五大方向：sched_ext 与 PREEMPT_RT 双双随 6.12 合入、mTHP 与 MGLRU 生产化、验证器工具链成熟、OPPO mTHP 量产、x86 MC 首设。"
+  },
+  {
+    "title": "LPC 2025 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
+    "id": "lpc-2025-index",
+    "date": "2026-09-22",
+    "type": "LPC 2025",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "lpc"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/lpc-2025/",
+    "tldr": "LPC 2025（东京，12 月）五大方向：sched_ext 生产化（Meta AI 集群）、mempolicy 重构与僵尸 memcg、Observability MC 新设、Android 16KB 全面押注、RISC-V RVA23 与分家。"
+  },
+  {
+    "title": "OSDI 2016–2026：OS 调度 / 性能 / 体系结构相关论文整理",
+    "id": "osdi-2016-2026-index",
+    "date": "2026-09-22",
+    "type": "OSDI 2016-2026",
+    "status": "overview",
+    "severity": "mixed",
+    "tags": [
+      "osdi"
+    ],
+    "authors": [],
+    "url": "/lkm/conferences/osdi-2016-2026/",
+    "tldr": "OSDI 2016–2026 共 9 届 541 篇论文中筛出的 262 篇调度/性能/体系结构相关论文整理：OS/内核级调度、集群级调度（数据中心/ML 系统）与体系结构三条主线。"
   }
 ]

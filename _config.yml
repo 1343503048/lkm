@@ -4,6 +4,18 @@ baseurl: "/lkm"
 url: "https://1343503048.github.io"
 markdown: kramdown
 
+collections:
+  conferences:
+    output: true
+    permalink: /conferences/:path.html
+
+defaults:
+  - scope:
+      path: ""
+      type: conferences
+    values:
+      layout: conference
+
 exclude:
   - references/
   - scripts/

@@ -1,0 +1,148 @@
+---
+layout: default
+---
+{% assign page_year = page.year | append: '' %}
+<article class="article-page">
+  <div class="reading-progress" id="reading-progress"></div>
+  <nav class="breadcrumbs">
+    <a href="{{ '/' | relative_url }}">首页</a> ›
+    <a href="{{ '/conferences/' | relative_url }}">论文笔记</a> ›
+    {% if page.overview %}
+    <span>{{ page.conf }} {{ page_year }}</span>
+    {% else %}
+    <span>{{ page.title | truncate: 60 }}</span>
+    {% endif %}
+  </nav>
+  <div class="article-layout">
+    <div class="article-content">
+      <header class="article-header">
+        <h1>{{ page.title }}</h1>
+        <div class="article-meta">
+          <span class="meta-date"> {{ page.date | date: "%Y-%m-%d" }}</span>
+          <span class="badge conf-{{ page.conf | downcase | replace: ' ', '_' }}">{{ page.conf }} {{ page_year }}</span>
+          {% if page.direction %}<span class="badge dir-{{ page.direction }}">{{ page.direction }}</span>{% endif %}
+          {% if page.source_type %}<span class="badge source-{{ page.source_type }}">{{ page.source_type }}</span>{% endif %}
+          {% if page.overview %}<span class="badge overview-badge">总览</span>{% endif %}
+        </div>
+        {% if page.speakers %}
+        <div class="article-authors"><span><strong>演讲者:</strong> {{ page.speakers | join: ', ' }}</span></div>
+        {% endif %}
+        {% if page.track %}
+        <div class="article-authors"><span><strong>Track:</strong> {{ page.track }}</span></div>
+        {% endif %}
+      </header>
+
+      <!-- Tags -->
+      <div class="article-tags">
+        {% for tag in page.tags %}
+        {% assign safe_tag = tag | replace: '/', '_' %}
+        <a href="{{ '/pages/tags/' | append: safe_tag | append: '.html' | relative_url }}" class="tag-link">{{ tag }}</a>
+        {% endfor %}
+      </div>
+
+      <!-- Source Link (论文/视频/议程页) -->
+      {% if page.source_url %}
+      <div class="lore-link">
+        <a href="{{ page.source_url }}" target="_blank" rel="noopener"> 查看{{ page.conf }} {{ page_year }} {{ page.source_type | default: '资料' }}原文</a>
+      </div>
+      {% endif %}
+
+      <div class="article-body">{{ content }}</div>
+
+      <!-- Footer metadata -->
+      <footer class="article-footer">
+        <div class="footer-meta">
+          <span><strong>会议:</strong> {{ page.conf }} {{ page_year }}{% if page.track %} · {{ page.track }}{% endif %}</span>
+        </div>
+        <div class="footer-id">
+          <small>ID: {{ page.conf | downcase }}-{{ page_year }} · 论文笔记</small>
+        </div>
+      </footer>
+    </div>
+    <aside class="toc-sidebar">
+      <h4>目录</h4>
+      <div id="toc"></div>
+    </aside>
+    <aside class="related-sidebar">
+      {% capture sibling_list %}
+      {% for a in site.conferences %}
+        {% assign ay = a.year | append: '' %}
+        {% if a.conf == page.conf and ay == page_year and a.url != page.url and a.overview != true %}
+        <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% endcapture %}
+      {% if sibling_list contains '<li>' %}
+      <h3>{{ page.conf }} {{ page_year }} 单篇分析</h3>
+      <ul>{{ sibling_list }}</ul>
+      {% endif %}
+
+      {% capture overview_list %}
+      {% for a in site.conferences %}
+        {% if a.conf == page.conf and a.overview == true and a.url != page.url %}
+        <li><a href="{{ a.url | relative_url }}">{{ a.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% endcapture %}
+      {% if overview_list contains '<li>' %}
+      <h3>{{ page.conf }} 各届总览</h3>
+      <ul>{{ overview_list }}</ul>
+      {% endif %}
+
+      {% if page.related_daily and page.related_daily.size > 0 %}
+      <h3>相关日报</h3>
+      <ul>
+        {% for rel_id in page.related_daily %}
+        {% assign rel = site.posts | where: 'id', rel_id | first %}
+        <li>{% if rel %}<a href="{{ rel.url | relative_url }}">{{ rel.title }}</a>{% else %}{{ rel_id }}{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ── TOC 生成 ─
+  var body = document.querySelector('.article-body');
+  var toc = document.getElementById('toc');
+  if (!body || !toc) return;
+  var headings = body.querySelectorAll('h2, h3');
+  var html = '<ul>';
+  headings.forEach(function(h) {
+    var id = h.textContent.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-').replace(/^-|-$/g, '');
+    h.id = id;
+    var cls = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+    html += '<li class="' + cls + '"><a href="#' + id + '" data-target="' + id + '">' + h.textContent + '</a></li>';
+  });
+  html += '</ul>';
+  toc.innerHTML = html;
+
+  // ── 滚动进度条 ──
+  var progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', function() {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+  }
+
+  // ── TOC Active 高亮（Scroll Spy）──
+  var tocLinks = toc.querySelectorAll('a[data-target]');
+  if (tocLinks.length > 0) {
+    var observerOptions = { rootMargin: '-80px 0px -70% 0px', threshold: 0 };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(link) { link.classList.remove('active'); });
+          var activeLink = toc.querySelector('a[data-target="' + entry.target.id + '"]');
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, observerOptions);
+    headings.forEach(function(h) { observer.observe(h); });
+  }
+});
+</script>

@@ -25,6 +25,7 @@ POSTS_DIR = REPO_ROOT / "_posts"
 DAILY_DIR = REPO_ROOT / "_daily"
 TAGS_DIR = REPO_ROOT / "pages" / "tags"
 ASSETS_DIR = REPO_ROOT / "assets"
+CONFERENCES_DIR = REPO_ROOT / "_conferences"
 
 # ── Frontmatter 解析 ──────────────────────────────────────────
 
@@ -209,15 +210,82 @@ def generate_tag_pages(tag_index: dict):
             status = a.get('status', 'unknown')
             severity = a.get('severity', 'none')
             title = a.get('title', a.get('id', ''))
-            # 使用相对路径（从 pages/tags/ 到 posts/_posts/）
-            date_parts = a['date'].replace('-', '/')
-            url = f"/lkm/{a['date'].replace('-', '/')}/{a['slug']}.html"
+            url = a.get('url') or f"/lkm/{a['date'].replace('-', '/')}/{a['slug']}.html"
             lines.append(
                 f'- [{a["id"]}]({url}) `{type_str}/{severity}/{status}` — {title}'
             )
 
         content = '\n'.join(lines) + '\n'
         (TAGS_DIR / f"{safe_tag}.md").write_text(content, encoding='utf-8')
+
+
+# ── 会议文章处理（论文笔记）─────────────────────────────────────
+
+def process_conferences():
+    """扫描 _conferences/ 集合，返回用于搜索索引与标签页的元数据。
+
+    URL 规则须与 _config.yml 中 conferences collection 的 permalink 保持一致：
+    - 有显式 permalink（如届级总览 index.md）→ /lkm + permalink
+    - 其余 → /lkm/conferences/<相对路径>.html
+    """
+    if not CONFERENCES_DIR.exists():
+        return []
+
+    articles = []
+    for md_file in sorted(CONFERENCES_DIR.rglob("*.md")):
+        content = md_file.read_text(encoding='utf-8')
+        m = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+        if not m:
+            print(f"[warn] 会议文章缺少顶部 frontmatter，跳过：{md_file.name}", file=sys.stderr)
+            continue
+        try:
+            fm = yaml.safe_load(m.group(1)) or {}
+        except yaml.YAMLError:
+            print(f"[warn] 会议文章 frontmatter 解析失败，跳过：{md_file.name}", file=sys.stderr)
+            continue
+
+        if fm.get('published') is False:
+            continue
+
+        conf = str(fm.get('conf', '')).strip()
+        year = str(fm.get('year', '')).strip()
+        if not conf or not year:
+            print(f"[warn] 会议文章缺少 conf/year，跳过：{md_file.name}", file=sys.stderr)
+            continue
+
+        title = fm.get('title')
+        if not title:
+            title = extract_title(content[m.end():]) or md_file.stem
+
+        tags = fm.get('tags', []) or []
+        if isinstance(tags, str):
+            tags = [t.strip() for t in tags.split(',')]
+        speakers = fm.get('speakers', []) or []
+        if isinstance(speakers, str):
+            speakers = [s.strip() for s in speakers.split(',')]
+
+        date = str(fm.get('date', '') or f"{year[:4]}-01-01")[:10]
+        if fm.get('permalink'):
+            url = "/lkm" + str(fm['permalink'])
+        else:
+            rel = md_file.relative_to(CONFERENCES_DIR).with_suffix('')
+            url = f"/lkm/conferences/{rel.as_posix()}.html"
+
+        status = fm.get('source_type') or ('overview' if fm.get('overview') else '')
+        articles.append({
+            'title': str(title),
+            'id': f"{conf.lower()}-{year}-{md_file.stem}",
+            'date': date,
+            'type': f"{conf} {year}",
+            'status': status,
+            'severity': fm.get('direction', ''),
+            'tags': tags,
+            'authors': speakers,
+            'url': url,
+            'tldr': str(fm.get('tldr', ''))[:300],
+            'slug': md_file.stem,
+        })
+    return articles
 
 
 # ── 搜索索引 ──────────────────────────────────────────────────
@@ -291,6 +359,15 @@ def main():
         if result:
             daily_indices.append(result)
 
+    # 处理论文笔记（_conferences/）
+    conf_articles = []
+    if not dry_run:
+        conf_articles = process_conferences()
+        for result in conf_articles:
+            for tag in result.get('tags', []):
+                tag_index[tag].append(result)
+            all_articles.append(result)
+
     # 生成标签页
     if not dry_run:
         generate_tag_pages(tag_index)
@@ -298,9 +375,10 @@ def main():
 
     # 输出统计
     print(f"✅ 构建完成:")
-    print(f"   文章: {len(all_articles)} 篇")
+    print(f"   文章: {len(all_articles) - len(conf_articles)} 篇")
     print(f"   每日索引: {len(daily_indices)} 天")
     print(f"   标签页: {len(tag_index)} 个")
+    print(f"   会议分析: {len(conf_articles)} 篇")
     if skipped:
         print(f"   ⚠ 跳过 {len(skipped)} 个非标准文件:")
         for s in skipped[:5]:

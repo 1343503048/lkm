@@ -543,3 +543,26 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
     padding: 1.25rem;
   }
 }
+
+/* ── 论文笔记（会议分析）── */
+.badge[class*="conf-"] { background: #e0e7ff; color: #3730a3; }
+.conf-lpc { background: #dbeafe !important; color: #1e40af !important; }
+.conf-osdi { background: #fef3c7 !important; color: #b45309 !important; }
+.conf-ospm { background: #d1fae5 !important; color: #065f46 !important; }
+.conf-lsfmm { background: #f3e8ff !important; color: #6d28d9 !important; }
+.dir-sched { background: #dbeafe; color: #1d4ed8; }
+.dir-mm { background: #ccfbf1; color: #0f766e; }
+.dir-perf { background: #ffedd5; color: #c2410c; }
+.dir-android { background: #dcfce7; color: #15803d; }
+.dir-arch { background: #ede9fe; color: #6d28d9; }
+.dir-mixed { background: #f3f4f6; color: #6b7280; }
+.source-paper { background: #f0f9ff; color: #0369a1; }
+.source-talk { background: #fdf2f8; color: #be185d; }
+.source-video { background: #ecfdf5; color: #047857; }
+.overview-badge { background: #1f2937; color: #fff; }
+.track-badge { background: #f9fafb; color: #6b7280; border: 1px solid #e5e7eb; }
+.conf-group { margin-bottom: 1.25rem; }
+.conf-group .date-header { display: flex; align-items: baseline; gap: 0.5rem; }
+.conf-count { font-size: 0.8rem; color: #9ca3af; font-weight: 500; }
+.conf-page { max-width: 900px; margin: 0 auto; }
+.conf-sosp { background: #fee2e2 !important; color: #991b1b !important; }
