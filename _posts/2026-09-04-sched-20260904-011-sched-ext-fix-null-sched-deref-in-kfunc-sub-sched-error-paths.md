@@ -133,7 +133,7 @@ if (unlikely(!list_empty(&sch->children))) {
   - Andrea Righi 要求扩到 dsq_insert_vtime: <https://lore.kernel.org/all/aphLWtCVY1XVME9C@gpd4/>
   - Andrea Righi 的 Reviewed-by: <https://lore.kernel.org/all/aphmwjLkdS4tKpbv@gpd4/>
 - 相关文章/系列：
-  - [[sched-20260903-004]] sched_ext sub-sched 错误路径 NULL deref（kfunc v3 + select_cpu_and）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html">sched-20260903-004</a> sched_ext sub-sched 错误路径 NULL deref（kfunc v3 + select_cpu_and）。
 - 相关代码/commit：
   - `a5fa0708cbfd` "sched_ext: Enforce scheduling authority in dispatch and select_cpu operations"
   - `kernel/sched/ext/ext.c` `scx_bpf_dsq_insert_vtime()` / `kernel/sched/ext/idle.c` `scx_bpf_select_cpu_and()`

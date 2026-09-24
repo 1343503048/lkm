@@ -46,7 +46,7 @@ layout: article
 本日为增量更新：Xin Zhao 的 RFC（RESEND，10 枚，核心是 `select_task_rq_fair_thin()` 让 LB_PROMOTE 场景选 rq 时走一个去掉能耗部分的轻量路径）。社区 reviewer Kayra Cizmeci 追加两点质疑——去掉能耗部分在嵌入式/能耗敏感场景的影响，以及用一个只服务于单一选项的函数「更像权衡而非优化」。作者尚未公开回应这轮置疑。合入可能性维持中等。完整背景见 related_articles。
 
 ## 背景与问题
-该 RFC 的动机与主线背景见 sched-20260915-007：在 `LB_PROMOTE` 场景下引入 `select_task_rq_fair_thin()`，跳过能耗相关的选核逻辑以缩短路径，面向嵌入式等场景的负载均衡优化。
+该 RFC 的动机与主线背景见 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-007-sched-fair-introduce-select-task-rq-fair-thin-to-select-rq-w.html">sched-20260915-007</a>：在 `LB_PROMOTE` 场景下引入 `select_task_rq_fair_thin()`，跳过能耗相关的选核逻辑以缩短路径，面向嵌入式等场景的负载均衡优化。
 
 ## 技术方案
 方案主体不变。本轮讨论焦点回到设计取舍：Kayra 认为「去掉整个能耗部分 + 造一个只服务于 LB_PROMOTE 选项的函数」是被绕过去的部分，而且能耗在嵌入式系统上恰恰重要，质疑作者之前「这是优化」的定性——她认为这更像是对特定用例有利的 trade-off。

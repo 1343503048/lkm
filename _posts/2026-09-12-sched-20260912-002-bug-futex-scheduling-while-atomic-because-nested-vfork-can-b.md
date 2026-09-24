@@ -44,13 +44,13 @@ layout: article
 ---
 
 ## TL;DR
-nested vfork 触发 scheduling-while-atomic 的 futex bug 当日迎来关键收尾：引入问题排除逻辑的 Davidlohr Bueso 亲自回帖——「没真正测过，完全接受 Peter 的 fixlet，抱歉弄坏了东西」，解除了 09-11 遗留的「当初为何排除 vfork」疑问。修复路线（PeterZ 的 2 行改动）获当事双方认可，仅剩正式补丁未投递。本文为增量更新，bug 定性见 sched-20260911-013。
+nested vfork 触发 scheduling-while-atomic 的 futex bug 当日迎来关键收尾：引入问题排除逻辑的 Davidlohr Bueso 亲自回帖——「没真正测过，完全接受 Peter 的 fixlet，抱歉弄坏了东西」，解除了 09-11 遗留的「当初为何排除 vfork」疑问。修复路线（PeterZ 的 2 行改动）获当事双方认可，仅剩正式补丁未投递。本文为增量更新，bug 定性见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-013-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html">sched-20260911-013</a>。
 
 ## 背景与问题
 need_futex_hash_allocate_default() 排除 CLONE_VFORK（commit ee9dce44362b 引入），nested vfork 场景可打破「单线程进程无私有 futex hash」的前提，在原子上下文触发调度。Peter Zijlstra 09-11 给出治愈测试用例的 2 行修正（不再排除 vfork），当时待确认两点：历史排除原因、性能权衡。
 
 ## 技术方案
-（承 sched-20260911-013：`need_futex_hash_allocate_default()` 的条件从 `(clone_flags & (CLONE_VM | CLONE_VFORK)) == CLONE_VM` 改为 `clone_flags & CLONE_VM`。）当日无新代码；新增的是关键证词——Davidlohr Bueso 回应 Jann Horn 的动机分析（该排除只是单线程 vfork+exec 的性能优化）：「Right, but didn't really measure anything and am certainly fine with Peter's fixlet. Sorry for breaking things.」——即当初未做测量、接受 Peter 的修法并致歉。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-013-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html">sched-20260911-013</a>：`need_futex_hash_allocate_default()` 的条件从 `(clone_flags & (CLONE_VM | CLONE_VFORK)) == CLONE_VM` 改为 `clone_flags & CLONE_VM`。）当日无新代码；新增的是关键证词——Davidlohr Bueso 回应 Jann Horn 的动机分析（该排除只是单线程 vfork+exec 的性能优化）：「Right, but didn't really measure anything and am certainly fine with Peter's fixlet. Sorry for breaking things.」——即当初未做测量、接受 Peter 的修法并致歉。
 
 ## 版本演进与当前进展
 *current_version: 无版本化补丁（修复仍以 09-11 PeterZ 的线程内联 diff 形态存在，尚未转正为带 Fixes 的正式 PATCH）*。当日线程新增 1 封（Davidlohr Bueso，09-12 01:51 入缓存）。

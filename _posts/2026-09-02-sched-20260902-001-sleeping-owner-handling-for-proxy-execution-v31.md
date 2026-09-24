@@ -129,7 +129,7 @@ there will be lots of review feedback for me to address in the last two."——�
 74394 `Call wq_worker_tick() for the execution context`（9/2）、
 76822 `sched/rt: Fix RT watchdog accounting for proxy execution`（9/3）、
 78587 `[PATCH v2] sched: Account cgroup CPU time to the execution context`（9/4），
-以及 [[sched-20260903-001]] / [[sched-20260904-001]] / [[sched-20260905-001]] 记录的 tick 系列 v1->v3。
+以及 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260904-001</a> / <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260905-001</a> 记录的 tick 系列 v1->v3。
 
 ## Maintainer 意见与讨论焦点
 
@@ -142,7 +142,7 @@ there will be lots of review feedback for me to address in the last two."——�
   mutex owner. Before the change, CPUCLOCK_SCHED reads repeatedly returned unchanged runtime during
   confirmed proxy-execution windows. After the change, no stale reads were observed. The non-proxy
   control case was unchanged." 该补丁到 9/7 仍无人回帖。
-- Tejun Heo 对 74394 已给 `Acked-by` 并主动问路由（见 [[sched-20260902-012]]）；
+- Tejun Heo 对 74394 已给 `Acked-by` 并主动问路由（见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>）；
   sched/cache 侧由 Tim Chen 从 9/3 起接手（75219 / 78148 / 77800 / 80559 / 80942 / 80952），
   Chen Yu（77066 / 80406）与作者（75742 / 81773）一路迭代到 v3；Tejun 在 78784 追问 cgroup 归属。
 - 真正未收口的语义问题：donor 与 owner 属于不同 cgroup 时 CPU 时间记到谁头上（78587 系列），
@@ -177,7 +177,7 @@ cookie 被绕过的语义漏洞（源头是 Prateek 的报告 `10282ce9-f4ae-498
 - **73775 至今零回帖**，且带了可复核的 CPUCLOCK_SCHED 观察，回 `Tested-by` 或给反例的成本极低。
 - 替 PE 的 sleeping-owner 路径补量化与压测：作者明确欢迎简化建议。现成模板是同仓库线程里
   K Prateek Nayak 给的 `coresched new -t pid -- perf bench sched messaging -p -l 100000 -g 8`
-  （出现在 [[sched-20260902-015]] 引用的旧线程中），再加 mutex 持有者主动 sleep 的用例。
+  （出现在 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html">sched-20260902-015</a> 引用的旧线程中），再加 mutex 持有者主动 sleep 的用例。
 - cpuset/cgroup 视角切入：78587 / 78784 那条「cgroup CPU 时间记到执行上下文」的线直接决定容器内
   CPU 用量在 PE 下是否可解释，也是本仓库读者最有发言权的地方。
 - 1/9 与 9/9 未进树：同时跑 PE 与 sched_ext 的人需要盯住 Andrea 提到的两行交叉依赖，
@@ -196,4 +196,4 @@ cookie 被绕过的语义漏洞（源头是 Prateek 的报告 `10282ce9-f4ae-498
 - 后续修正：https://lore.kernel.org/all/20260902112539.879979-1-sh_def@163.com/ （task_sched_runtime）
   ；https://lore.kernel.org/all/20260902150208.1209922-2-sh_def@163.com/ （wq_worker_tick）
 - v31 封面（`[RESEND][PATCH v31 0/9]`）自身的 Message-ID 未获取到：缓存中该邮件只带占位 msgid。
-- 相关：[[sched-20260902-012]]、[[sched-20260902-015]]、[[sched-20260903-001]]、[[sched-20260903-005]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-015-sched-remove-sched-class-balance.html">sched-20260902-015</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html">sched-20260903-005</a>

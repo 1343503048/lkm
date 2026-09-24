@@ -69,7 +69,7 @@ enqueue_task_fair() 里 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 
 ## Maintainer 意见与讨论焦点
 - **Vincent Guittot**："This makes the code less readable and I don't think it gives any measurable benefit"——对 v2 优化方向直接否定；
-- **Peter Zijlstra**：认为 curr == se 不可达、v2 实质是 no-op，给出删除死代码的完整 diff（与其后 Kayra 独立投递的 dead-code 补丁完全一致，见 sched-20260911-020）；
+- **Peter Zijlstra**：认为 curr == se 不可达、v2 实质是 no-op，给出删除死代码的完整 diff（与其后 Kayra 独立投递的 dead-code 补丁完全一致，见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-020-sched-fair-remove-dead-code-on-enqueue-task-fair.html">sched-20260911-020</a>）；
 - **作者**：接受 PeterZ 方向，v3 = 删除 curr 分支；Vincent 对「删除」本身的意见未发表（其否定的可读性论据针对的是 v2 的下沉方案）；
 - 分歧焦点已从「怎么优化」转为「删多少」：PeterZ 主张全删，v3 形态待验证。
 

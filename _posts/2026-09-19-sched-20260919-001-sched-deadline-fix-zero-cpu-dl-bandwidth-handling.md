@@ -52,7 +52,7 @@ layout: article
 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_active()`，另拆成独立补丁。触发点是在 CPU hot-unplug 期间，CPU 先从 `cpu_active_mask` 摘除、尚未 offline 的窗口里 `dl_bw_cpus()` 返回 0，导致除零 panic。v2 刚发出（本日 23:31），尚无维护者 review。
 
 ## 背景与问题
-背景见 sched-20260827-016（v1）：CPU 热卸载时，CPU 在变为 offline 之前先从 `cpu_active_mask` 摘除；若它是 root domain 里最后一个 active CPU，`dl_bw_cpus()` 会返回 0，而相关路径仍可到达，从而在向 active runqueue 分发带宽更新时发生除零。v1 只在 DL server 参数更新路径上兜底。
+背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.html">sched-20260827-016</a>（v1）：CPU 热卸载时，CPU 在变为 offline 之前先从 `cpu_active_mask` 摘除；若它是 root domain 里最后一个 active CPU，`dl_bw_cpus()` 会返回 0，而相关路径仍可到达，从而在向 active runqueue 分发带宽更新时发生除零。v1 只在 DL server 参数更新路径上兜底。
 
 本日 Mikhail Zaslonko（IBM s390x）回报了同一问题的更一般形态：从 `sched_setscheduler()` 系统调用路径同样触发除零——`task_non_contending()` 把 `dl_bw_cpus(task_cpu(p))` 返回的 0 传给 `__dl_sub()`。栈显示 `dsgr %r4,%r2`（除指令）崩溃，`panic_on_oops` 直接 panic；panic 前 11 秒有 `select_fallback_rq` 与 "no longer affine to cpu118/cpu122" 的 CPU offlining 并发日志。Mikhail 还指出 `__dl_sub()`/`__dl_add()` 有多个其他调用者。
 
@@ -65,7 +65,7 @@ v2 把零 CPU 处理下沉到公共 helper，而不是继续在调用点打补�
 拆分理由（作者在回帖中说明）：helper 问题早于 DL server debugfs 接口出现，把通用修复单独成 patch 能让 review 与 stable backport 范围各自清晰。
 
 ## 版本演进与当前进展
-- v1（2026-08-12，`<20260812123252.2355986-3-sh_def@163.com>`）：仅在 DL server 参数更新路径修复（见 sched-20260827-016）。
+- v1（2026-08-12，`<20260812123252.2355986-3-sh_def@163.com>`）：仅在 DL server 参数更新路径修复（见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.html">sched-20260827-016</a>）。
 - 本日 Mikhail Zaslonko（`<c52c9e8c-260e-49a4-a88e-229e0795d07b@linux.ibm.com>`）报 sched_setscheduler 路径同款除零，并建议在 `__dl_sub()`/`__dl_add()` 统一处理。
 - 作者 Hui Su 回帖（`<6dbd08d0d0ca288b77dfc7c393898d86.sh_def@163.com>`）认可该方向，说明将拆成两 patch 并给出测试矩阵。
 - v2（2026-09-19，`<20260919153150.2618403-1-sh_def@163.com>`）：按上述拆分为 2 patch 发出。base-commit `f259f446f5198d98e13756d2cd531812a0ad3064`。

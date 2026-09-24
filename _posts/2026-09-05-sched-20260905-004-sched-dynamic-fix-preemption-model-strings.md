@@ -85,7 +85,7 @@ Mark Rutland 的单补丁修掉 PREEMPT_DYNAMIC 简化留下的收尾问题：�
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260903-013]] PREEMPT_DYNAMIC 简化 v2 0/6。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a> PREEMPT_DYNAMIC 简化 v2 0/6。
 - 原始补丁：https://lore.kernel.org/all/20260902101637.232129-1-mark.rutland@arm.com/
 - tip 合入通知（tip-bot2）：https://lore.kernel.org/all/178834676769.3717435.18409512288803533130.tip-bot2@tip-bot2/
 - 本日 0day 构建结果：https://lore.kernel.org/all/202609051102.q7DwMELZ-lkp@intel.com/

@@ -61,7 +61,7 @@ layout: article
 
 ## TL;DR
 
-**本文为增量更新**（完整方案背景见 sched-20260827-002）。Jianyong Wu（Hygon）23 补丁 RFC v2 在 8/27 只送到 cover + 00–14，**8/28 补齐了后半段的 7 封：15/23–18/23、20/23、21/23、23/23**（`4/23`、`11/23`、`12/23`、`19/23`、`22/23` 到 9/5 缓存末尾仍未收到）。这半段是整套"按 LLC 粒度有序扩张"的**执行端**：迁移准入判定（15）、active balance 双向不对称放行（16）、NUMA balancing 拆成 task/page 两条独立开关（17）、线程组 scan 范围纳入全部 active preferred node（18）、线程组整体利用率的非对称 EWMA 估算（20）、按估算前缀放行扩散（21，单封 325 增 25 删，是全系列最重的一封）、`/proc` 里打印任务 preferred LLC（23）。8/28 当日这 7 封**无一人回帖**；8/31 Peter Zijlstra 的六连帖全部打在更早的 02/04/07/08 上，后半段至今未被评审。
+**本文为增量更新**（完整方案背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>）。Jianyong Wu（Hygon）23 补丁 RFC v2 在 8/27 只送到 cover + 00–14，**8/28 补齐了后半段的 7 封：15/23–18/23、20/23、21/23、23/23**（`4/23`、`11/23`、`12/23`、`19/23`、`22/23` 到 9/5 缓存末尾仍未收到）。这半段是整套"按 LLC 粒度有序扩张"的**执行端**：迁移准入判定（15）、active balance 双向不对称放行（16）、NUMA balancing 拆成 task/page 两条独立开关（17）、线程组 scan 范围纳入全部 active preferred node（18）、线程组整体利用率的非对称 EWMA 估算（20）、按估算前缀放行扩散（21，单封 325 增 25 删，是全系列最重的一封）、`/proc` 里打印任务 preferred LLC（23）。8/28 当日这 7 封**无一人回帖**；8/31 Peter Zijlstra 的六连帖全部打在更早的 02/04/07/08 上，后半段至今未被评审。
 
 ## 背景与问题
 
@@ -83,16 +83,16 @@ layout: article
 
 ## 版本演进与当前进展
 
-- v1：2026-06-25（见 sched-20260827-002）。
+- v1：2026-06-25（见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>）。
 - v2：8/27 发 cover 与 00–14（缺 4/11/12），8/28 续发 15/16/17/18/20/21/23（缺 19/22）。**作者本人未在同一天对后半段补充说明，也没有 gentle ping**。
 - 8/28 当日：后半段 0 回复。
-- 8/31：Peter Zijlstra 在该系列连发 6 帖，针对 02/23 的去重算法边界、04/23 命名、07/23 与 NUMA balancing preferred node 的关系、08/23 新增计数器的必要性（详见 sched-20260831-005）。**评审压力仍集中在前半段**，后半段的形态问题（下面几处）尚未被提出。
+- 8/31：Peter Zijlstra 在该系列连发 6 帖，针对 02/23 的去重算法边界、04/23 命名、07/23 与 NUMA balancing preferred node 的关系、08/23 新增计数器的必要性（详见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-005-sched-topology-add-llc-to-node-to-translate-llc-id-to-numa-node.html">sched-20260831-005</a>）。**评审压力仍集中在前半段**，后半段的形态问题（下面几处）尚未被提出。
 
 ## Maintainer 意见与讨论焦点
 
 8/28 当日**没有任何 maintainer 回帖**，因此这一节记录的是"该半段内部暴露、但社区尚未追问"的实质风险点：
 
-- **`alb_break_llc()` 语义被缩小**（15/23）：这个函数原本是 active balance 尊重 LLC 偏好的唯一闸门。改成只管单任务 rq 之后，多任务 rq 的保护要靠 `can_migrate_task()` 里的新判定补足——而 `can_migrate_task()` 是热路径且判据已多达 8 条（站内 sched-20260828-007 刚在整理这份清单）。同一周内该计数器还暴露过 DELAY_DEQUEUE 导致的集合不一致问题（sched-20260828-004、sched-20260830-003），说明这里的判定条件是当前 CAS 最不稳定的部分。
+- **`alb_break_llc()` 语义被缩小**（15/23）：这个函数原本是 active balance 尊重 LLC 偏好的唯一闸门。改成只管单任务 rq 之后，多任务 rq 的保护要靠 `can_migrate_task()` 里的新判定补足——而 `can_migrate_task()` 是热路径且判据已多达 8 条（站内 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-007-sched-fair-fix-stale-comment-on-task-is-ineligible-on-dst-cpu.html">sched-20260828-007</a> 刚在整理这份清单）。同一周内该计数器还暴露过 DELAY_DEQUEUE 导致的集合不一致问题（<a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>、<a class="article-ref" href="/lkm/2026/08/30/sched-20260830-003-sched-fair-which-tasks-should-nr-pref-llc-running-be-compared-against.html">sched-20260830-003</a>），说明这里的判定条件是当前 CAS 最不稳定的部分。
 - **不对称放行的代价没有数据**（16/23）：`cache_nice_tries` 这套等待机制本身就是历史上为抑制抖动而加的。取消推方向的等待、只靠"源超 cap + 目标可容纳"两个前提，理论上确实只能纠正 overshoot，但 active balance 的触发频率与跨 LLC 迁移次数变化没有给出任何计数。
 - **非对称 EWMA 的两个常数从何而来**（20/23）：1/2 与 1/8 直接决定"扩张多快、收缩多慢"，是全系列最影响线上行为却最难论证的参数，邮件里没有敏感性分析。
 - **NUMA balancing 拆分**（17/23）：作者自己在 cover 标注未完成。它与 18/23 的 scan 范围改造是同一个问题的两种解法（拆开互不干扰 vs 扩大 scan 范围包容彼此），社区尚未表态该走哪条。
@@ -107,13 +107,13 @@ layout: article
 
 ## 效果评估
 
-**这 7 封里没有任何 benchmark 数据**：commit message 全部是机制描述与失效场景说明，唯一的量化信息是改动规模（21/23 单封 325 增 25 删，说明准入判定改动量集中在这一封）。v2 的 cover（8/27，见 sched-20260827-002）提到过 schbench 等测试暴露的饱和问题被本版修复，但同样未给出前后对比数字。因此本版效果无法独立评估，只能作为"作者自述已改善"记录。
+**这 7 封里没有任何 benchmark 数据**：commit message 全部是机制描述与失效场景说明，唯一的量化信息是改动规模（21/23 单封 325 增 25 删，说明准入判定改动量集中在这一封）。v2 的 cover（8/27，见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>）提到过 schbench 等测试暴露的饱和问题被本版修复，但同样未给出前后对比数字。因此本版效果无法独立评估，只能作为"作者自述已改善"记录。
 
 ## 我可以参与的点
 
 - **最有价值的回帖是数据而不是读码**：16/23 与 21/23 都宣称"只纠正 overshoot、不跟聚合对抗"，这类论断在真实多线程负载上很容易证伪。用固定线程数的并发负载（多线程 schbench/自定义 spin 组）在 4 node/多 LLC 机型上量一下：跨 LLC 迁移次数、`nr_active`/active balance 成功率、每 LLC 运行时间方差。若能看到"推方向放开等待后出现来回迁移"，就是 v3 必须修的第一条。
 - **参数敏感性分析**：20/23 的 1/2 与 1/8 是纯经验值。给出"上升更快/更慢"的对照组（哪怕只是同一负载下三个取值的时间序列），对社区的价值高于一句"看起来更好"。
-- **与 `nr_pref_llc_running` 那条线交叉验证**：15/23 之后 `alb_break_llc()` 只对单任务 rq 生效，而该判据里用的 `nr_pref_llc_running == cfs.h_nr_runnable` 本周已被证明在 DELAY_DEQUEUE 下失效（sched-20260828-004、sched-20260830-003）。可以顺着这条线确认 CAS 的聚合闸门在多任务 rq 上是否还剩有效保护。
+- **与 `nr_pref_llc_running` 那条线交叉验证**：15/23 之后 `alb_break_llc()` 只对单任务 rq 生效，而该判据里用的 `nr_pref_llc_running == cfs.h_nr_runnable` 本周已被证明在 DELAY_DEQUEUE 下失效（<a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>、<a class="article-ref" href="/lkm/2026/08/30/sched-20260830-003-sched-fair-which-tasks-should-nr-pref-llc-running-be-compared-against.html">sched-20260830-003</a>）。可以顺着这条线确认 CAS 的聚合闸门在多任务 rq 上是否还剩有效保护。
 - **cpuset/cgroup 视角的缺口值得点出**：整套估算以"线程组（thread group）"为单位，没有 cgroup 层级维度。若客户侧的放置单元是 cgroup/cpuset 而非单进程线程组，跨 LLC 前缀估算在多进程 cgroup 上如何聚合，是 v3 之前应当提出的问题。
 - **回合判断**：该系列与主线 CAS 强耦合（`CONFIG_SCHED_CACHE`、per-sd 计数、距离矩阵），OLK-6.6 无对应基础设施，短期内不具备回合条件；但 17/23（NUMA balancing 任务迁移与页迁移拆分）是**可独立参考的设计**，内部若有"关 NUMA balancing 页迁移、只留任务迁移"的需求，可以直接对照这封的实现面。
 
@@ -126,5 +126,5 @@ layout: article
 - 20/23: https://lore.kernel.org/all/20260828021156.785662-1-wujianyong@hygon.cn/
 - 21/23: https://lore.kernel.org/all/20260828021332.785700-1-wujianyong@hygon.cn/
 - 23/23: https://lore.kernel.org/all/20260828021554.785781-1-wujianyong@hygon.cn/
-- v2 cover（8/27）: 未获取到（邮件正文 msgid 不在本日语料中，见 sched-20260827-002）
-- Peter Zijlstra 8/31 的评审: 见 sched-20260831-005
+- v2 cover（8/27）: 未获取到（邮件正文 msgid 不在本日语料中，见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>）
+- Peter Zijlstra 8/31 的评审: 见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-005-sched-topology-add-llc-to-node-to-translate-llc-id-to-numa-node.html">sched-20260831-005</a>

@@ -67,10 +67,10 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、core slice baseline 保留跨同 donor reselect。同日 Kayra Cizmeci 质疑补丁 1「单独无用」、作者回应拆分是为可评审性。Peter 尚未对 v5 表态，系列维持 under_review 但 v5 已完整交付 v4 承诺的全部改动。
+本文为增量更新，完整背景见 related_articles（<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a> 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、core slice baseline 保留跨同 donor reselect。同日 Kayra Cizmeci 质疑补丁 1「单独无用」、作者回应拆分是为可评审性。Peter 尚未对 v5 表态，系列维持 under_review 但 v5 已完整交付 v4 承诺的全部改动。
 
 ## 背景与问题
-proxy execution 把调度上下文（rq->donor）与执行上下文（rq->curr）分离后，scheduler tick 的各消费者归属出现不一致：NUMA 扫描、cache-aware 记账的输入状态跟执行任务，而调度策略与 slice 判断跟 donor。v4（5 补丁）曾引入 RT watchdog 处理但被 Peter NAK（不接受在 __schedule() 中间散落 RT 代码），并要求重排 FAIR tick。本篇只覆盖 v5 带来的变化与 09-13 新讨论，历史背景见 [[sched-20260910-003]]、[[sched-20260909-001]]、[[sched-20260903-001]]。
+proxy execution 把调度上下文（rq->donor）与执行上下文（rq->curr）分离后，scheduler tick 的各消费者归属出现不一致：NUMA 扫描、cache-aware 记账的输入状态跟执行任务，而调度策略与 slice 判断跟 donor。v4（5 补丁）曾引入 RT watchdog 处理但被 Peter NAK（不接受在 __schedule() 中间散落 RT 代码），并要求重排 FAIR tick。本篇只覆盖 v5 带来的变化与 09-13 新讨论，历史背景见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a>、<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260909-001</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>。
 
 ## 技术方案
 v5 四补丁（基线 cba2348ab114391f5b1a00fa65c5b739f13f0563）：
@@ -121,4 +121,4 @@ RT watchdog 不再在本系列内：作者 09-13 凌晨在 v4 4/5（sched/rt: Fi
 - 作者回应（拆分理由与 commit message 改写承诺）: https://lore.kernel.org/all/36503a3fb742ca20fa218ec190a50932.sh_def@163.com/
 - RT watchdog 独立推进与 WIP 生命周期设计: https://lore.kernel.org/all/c8b457d91942d655cea763b6094c9df4.sh_def@163.com/
 - 需调和的关联工作——Zhidao Su proxy-walk 环检测: https://lore.kernel.org/r/20260722120346.93000-1-soolaugust@gmail.com/ ；Andrea sched_ext/proxy-execution: https://lore.kernel.org/r/20260831134338.1531664-1-arighi@nvidia.com/
-- 前作分析: [[sched-20260910-003]]（v4）、[[sched-20260909-001]]、[[sched-20260903-001]]
+- 前作分析: <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a>（v4）、<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-001-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260909-001</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>

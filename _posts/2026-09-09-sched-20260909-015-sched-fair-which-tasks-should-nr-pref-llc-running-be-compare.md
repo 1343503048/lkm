@@ -55,11 +55,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，计数口径之争的前几轮见 related_articles 中的 sched-20260830-003 / sched-20260828-004 / sched-20260827-018。09-09 19:40 Chen Yu（Intel）在认可当前版本「looks good now」之后，提出了**第三种候选口径**：拿 `env->src_rq->cfs.h_nr_queued` 而不是 `nr_running` 来比，并追问为什么没选它；同时把 Lu Wang 的 active load balance guard 补丁拉进来，问在新守卫之下原来的顾虑是否还成立。这条追问到当天结束无人回答。
+本文为增量更新，计数口径之争的前几轮见 related_articles 中的 <a class="article-ref" href="/lkm/2026/08/30/sched-20260830-003-sched-fair-which-tasks-should-nr-pref-llc-running-be-compared-against.html">sched-20260830-003</a> / <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a> / <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-018-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260827-018</a>。09-09 19:40 Chen Yu（Intel）在认可当前版本「looks good now」之后，提出了**第三种候选口径**：拿 `env->src_rq->cfs.h_nr_queued` 而不是 `nr_running` 来比，并追问为什么没选它；同时把 Lu Wang 的 active load balance guard 补丁拉进来，问在新守卫之下原来的顾虑是否还成立。这条追问到当天结束无人回答。
 
 ## 背景与问题
 
-`alb_break_llc()` 要判断「源 rq 上的任务是否全都偏好这个 LLC」，以此决定是否允许跨 LLC 的主动负载均衡。判断形式是 `env->src_rq->nr_pref_llc_running == <某个分母>`，争议一直在**分母该用什么**：用 `nr_running` 会因 `DELAY_DEQUEUE` 下被延迟出队的任务不计入 `nr_running` 而误判；而 `nr_pref_llc_running` 本身此前是「running」语义，Xu Sheng Zhan 的另一条改动把它挪到 runnable 域（见 sched-20260828-004）之后，分子分母的口径必须重新对齐。
+`alb_break_llc()` 要判断「源 rq 上的任务是否全都偏好这个 LLC」，以此决定是否允许跨 LLC 的主动负载均衡。判断形式是 `env->src_rq->nr_pref_llc_running == <某个分母>`，争议一直在**分母该用什么**：用 `nr_running` 会因 `DELAY_DEQUEUE` 下被延迟出队的任务不计入 `nr_running` 而误判；而 `nr_pref_llc_running` 本身此前是「running」语义，Xu Sheng Zhan 的另一条改动把它挪到 runnable 域（见 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>）之后，分子分母的口径必须重新对齐。
 
 ## 技术方案
 

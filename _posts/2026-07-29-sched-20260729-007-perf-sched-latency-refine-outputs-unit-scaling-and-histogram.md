@@ -50,10 +50,10 @@ layout: article
 ---
 
 ## TL;DR
-Aaron Tomlin 的 perf sched latency 改进系列更新到 v4（07-26 的 v3 已收录为 sched-20260726-003，本篇为增量分析）：v4 集中解决 pipe mode 支持问题并加固 NULL 防护。工具类改动、迭代活跃、意见都被逐条回应，合入可能性高。
+Aaron Tomlin 的 perf sched latency 改进系列更新到 v4（07-26 的 v3 已收录为 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.html">sched-20260726-003</a>，本篇为增量分析）：v4 集中解决 pipe mode 支持问题并加固 NULL 防护。工具类改动、迭代活跃、意见都被逐条回应，合入可能性高。
 
 ## 背景与问题
-`perf sched latency` 存在三类问题：perf.data 缺少 tracepoint 事件时不报错而是打印空表和全零统计（返回 0）；所有时延列硬编码为 ms，微秒或秒级数据难读；缺乏直方图可视化和时间段过滤能力。详细背景见 sched-20260726-003，此处不重复。
+`perf sched latency` 存在三类问题：perf.data 缺少 tracepoint 事件时不报错而是打印空表和全零统计（返回 0）；所有时延列硬编码为 ms，微秒或秒级数据难读；缺乏直方图可视化和时间段过滤能力。详细背景见 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.html">sched-20260726-003</a>，此处不重复。
 
 ## 技术方案
 三 patch 结构与 v3 相同：
@@ -68,7 +68,7 @@ v4 的增量改动（较 v3）：
 - 修正格式化字符串使各行与表头列宽逐字符对齐。
 
 ## 版本演进与当前进展
-v1→v3 演进记录在 sched-20260726-003。v4（2026-07-29）为回应 pipe mode 相关意见的迭代版本，发出当天尚无回复。作者三天内从 v3 迭代到 v4，响应速度快。
+v1→v3 演进记录在 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.html">sched-20260726-003</a>。v4（2026-07-29）为回应 pipe mode 相关意见的迭代版本，发出当天尚无回复。作者三天内从 v3 迭代到 v4，响应速度快。
 
 ## Maintainer 意见与讨论焦点
 v4 暂无新的 review 意见。从 v4 changelog 看，前一轮意见集中在 pipe mode 的正确性（header 回调缺失、空表输出），均已在 v4 处理；未见 NAK 或方向性反对。
@@ -77,7 +77,7 @@ v4 暂无新的 review 意见。从 v4 changelog 看，前一轮意见集中在 
 *likelihood: high*。理由：改动限于 perf 工具侧不触及内核核心、每版都逐条回应意见、无方向性争议。剩余不确定性是 perf tools 维护者对 v4 pipe mode 修复方式的最终确认。卡点仅为 review 带宽。
 
 ## 效果评估
-该系列为工具功能改进，无性能数据语义。v4 未附带新的输出示例（v3 曾给出直方图效果示例，见 sched-20260726-003）。
+该系列为工具功能改进，无性能数据语义。v4 未附带新的输出示例（v3 曾给出直方图效果示例，见 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.html">sched-20260726-003</a>）。
 
 ## 我可以参与的点
 - 实测 pipe mode：`perf sched record ... | perf sched latency -i -` 在 v4 打补丁前后对比行为，把 Tested-by 结果回帖，这类工具 patch 的实测反馈对合入很有帮助。
@@ -85,5 +85,5 @@ v4 暂无新的 review 意见。从 v4 changelog 看，前一轮意见集中在 
 
 ## 参考链接
 - lore thread: https://lore.kernel.org/lkml/20260729144451.38286-1-atomlin@atomlin.com
-- 前序分析: sched-20260726-003（v3）
+- 前序分析: <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-003-perf-sched-latency-refine-outputs-unit-scaling-and-histogram-support.html">sched-20260726-003</a>（v3）
 - tip-bot commit: 未获取到

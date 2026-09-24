@@ -53,7 +53,7 @@ fair class 能通过 lazy rescheduling 推迟内核内的调度边界，但 sche
 
 ## 版本演进与当前进展
 - **v5**（本日 105386，`<20260915194611.2674127-1-arighi@nvidia.com>`）：仅修正 kselftest——当 `CONFIG_PREEMPT_DYNAMIC` 关闭且 `sched/preempt` debugfs 不可用时检测静态懒抢占（Cheng-Yang Chou）。
-- v4→v3→v2 回顾：v4 处理了 `SCX_KICK_WAIT` 与 `SCX_KICK_PREEMPT_LAZY` 组合的同步、tick 依赖恢复、selftest 规范（Sashiko）；v2 按 Tejun Heo 意见把懒 slice expiry 做成逐任务属性、恢复 `NO_HZ_FULL` tick 依赖、独立累积并解析 kick 优先级。完整背景见 sched-20260914-006 / sched-20260915-002。
+- v4→v3→v2 回顾：v4 处理了 `SCX_KICK_WAIT` 与 `SCX_KICK_PREEMPT_LAZY` 组合的同步、tick 依赖恢复、selftest 规范（Sashiko）；v2 按 Tejun Heo 意见把懒 slice expiry 做成逐任务属性、恢复 `NO_HZ_FULL` tick 依赖、独立累积并解析 kick 优先级。完整背景见 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-006-sched-ext-add-lazy-preemption-support.html">sched-20260914-006</a> / <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-002-sched-ext-add-lazy-preemption-support.html">sched-20260915-002</a>。
 
 ## Maintainer 意见与讨论焦点
 - 设计核心由 **Tejun Heo** 在 v2 阶段定型（逐任务 expiry、tick 依赖恢复、kick 优先级解析）。

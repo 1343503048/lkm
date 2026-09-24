@@ -40,13 +40,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Peter 确认「In it goes」——补丁已被合入。系列以 merged 收尾。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260918-018</a> 与 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260919-005</a>。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Peter 确认「In it goes」——补丁已被合入。系列以 merged 收尾。
 
 ## 背景与问题
-背景见 sched-20260919-005：PSI 的 IRQ 时间此前被计入错误上下文，补丁改为计入实际执行上下文。
+背景见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260919-005</a>：PSI 的 IRQ 时间此前被计入错误上下文，补丁改为计入实际执行上下文。
 
 ## 技术方案
-方案见 sched-20260919-005。当天无代码改动，仅解决应用分支与依赖 commit 归属。
+方案见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260919-005</a>。当天无代码改动，仅解决应用分支与依赖 commit 归属。
 
 ## 版本演进与当前进展
 补丁（`<20260918132915.1236312-1-zhanxusheng@xiaomi.com>`）当天在 Peter 与作者之间多轮往返后合入。
@@ -59,7 +59,7 @@ layout: article
 *likelihood=merged*。Peter 明确「In it goes」确认合入。blocking_issues 无；当天缓存未见 tip-bot 提交通知，具体 commit hash 与目标分支未获取到。
 
 ## 效果评估
-无本日新增数据；PSI 记账正确性修复（详见 sched-20260919-005）。
+无本日新增数据；PSI 记账正确性修复（详见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260919-005</a>）。
 
 ## 我可以参与的点
 当前阶段暂无明显参与空间（已合入），可持续观察后续 PSI 记账相关补丁。

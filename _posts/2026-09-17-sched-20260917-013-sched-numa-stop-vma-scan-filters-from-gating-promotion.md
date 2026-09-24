@@ -48,7 +48,7 @@ layout: article
 增量更新：Gregory Price 的 NUMA "停止让 VMA 扫描过滤器阻碍提升"系列（v2）引发维护者关注——Andrew Morton 追问"为什么 cc:stable 和 Fixes:"，Gregory 解释 NUMA balancing 自 2022/2023 起就被功能性打破、只因另一个 shmem bug 掩盖了症状；David Hildenbrand 将负责审查 MM 侧，并请人审查 sched/fair.c 侧。合入仍缺 sched 维护者评审。
 
 ## 背景与问题
-背景见 sched-20260911-008：VMA 扫描过滤器会阻碍 NUMA 提升，导致 NUMA balancing 失效。本日增量是关于影响面与 Fixes/stable 标签的正当性讨论。
+背景见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260911-008</a>：VMA 扫描过滤器会阻碍 NUMA 提升，导致 NUMA balancing 失效。本日增量是关于影响面与 Fixes/stable 标签的正当性讨论。
 
 ## 技术方案
 无方案变化。焦点转为对该系列"严重性"的澄清。

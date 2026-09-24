@@ -53,7 +53,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景与代码分析见 related_articles 中的 sched-20260907-001。09-08 该补丁拿到 K Prateek Nayak 的 `Reviewed-by`，评审面已无异议；同一天作者另发了一条同源的独立补丁 `sched/eevdf: fix rb augmented with multi fields`（本文不覆盖，见 sched-20260908-004），说明他把「增广字段完整性」当成一组缺陷在处理。本补丁本身进度：v1 带 `Fixes`、有 RB，仍等 tip 收取。
+本文为增量更新，完整背景与代码分析见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-001-sched-eevdf-fix-augmented-max-slice.html">sched-20260907-001</a>。09-08 该补丁拿到 K Prateek Nayak 的 `Reviewed-by`，评审面已无异议；同一天作者另发了一条同源的独立补丁 `sched/eevdf: fix rb augmented with multi fields`（本文不覆盖，见 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260908-004</a>），说明他把「增广字段完整性」当成一组缺陷在处理。本补丁本身进度：v1 带 `Fixes`、有 RB，仍等 tip 收取。
 
 ## 背景与问题
 
@@ -79,7 +79,7 @@ layout: article
 
 ## 合入评估
 
-`likelihood=high`。带 `Fixes`、2 行纯补漏、来自 fair/EEVDF 维护者、已有一位熟悉该逻辑的评审者签 RB、全文无反对意见——按「评审无异议待收取」的口径归为 high。剩余卡点只有一个：还没有 Peter Zijlstra 的 Ack，也未见 tip 收录。`next_action` 是维护者收取；同作者的 `fix rb augmented with multi fields`（sched-20260908-004）若被认可，两条很可能成对进 `sched/urgent` 或同一个常规提交。
+`likelihood=high`。带 `Fixes`、2 行纯补漏、来自 fair/EEVDF 维护者、已有一位熟悉该逻辑的评审者签 RB、全文无反对意见——按「评审无异议待收取」的口径归为 high。剩余卡点只有一个：还没有 Peter Zijlstra 的 Ack，也未见 tip 收录。`next_action` 是维护者收取；同作者的 `fix rb augmented with multi fields`（<a class="article-ref" href="/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260908-004</a>）若被认可，两条很可能成对进 `sched/urgent` 或同一个常规提交。
 
 ## 效果评估
 
@@ -88,7 +88,7 @@ layout: article
 ## 我可以参与的点
 
 - `testing`：这条已经不需要「找反对意见」，缺的是症状证据。若能在混合 slice + 频繁 enqueue/dequeue 的负载下，用 ftrace 或 `/proc/sched_debug` 抓到 `entity_lag()` 的钳制值越出理论界（`-limit < vlag < limit`）的实例并回帖，能直接决定它是否走 urgent。
-- `review`：把本补丁与 sched-20260908-004 作为一个整体看——只合一条会留下另一半破口。值得回帖提醒维护者成对收取，这比再找一个 Ack 更有价值。
+- `review`：把本补丁与 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260908-004</a> 作为一个整体看——只合一条会留下另一半破口。值得回帖提醒维护者成对收取，这比再找一个 Ack 更有价值。
 - `new_patch`：自家 OLK-6.6 分支同样只预置 `min_slice`（前一篇已确认 `kernel/sched/fair.c` 第 1170 行附近的状态），而 `min_vruntime_update()` 已在算 `max_slice`。回合时与本条 + 多字段搬运那条一起打，`Fixes` 引用 OLK-6.6 自身的 commit。
 
 ## 参考链接

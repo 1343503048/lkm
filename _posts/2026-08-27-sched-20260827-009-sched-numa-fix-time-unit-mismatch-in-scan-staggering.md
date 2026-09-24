@@ -54,7 +54,7 @@ v1（本日，msgid `<20260827095902.2645166-1-sh_def@163.com>`），暂无 revi
 无人表态。单位错误有算例支撑，预期不会有方向性争议；潜在讨论点只是是否值得走 stable。
 
 ## 合入评估
-**likely**。逻辑正确性修复、有 Fixes、diff 极小；作者同日还有一封同类修复（sched-20260827-008），且前一对 DL server 修复已拿到 Juri 的 Ack（见 sched-20260827-016/017），说明该作者的微观修复线正在被接受。`next_action`：等 review。
+**likely**。逻辑正确性修复、有 Fixes、diff 极小；作者同日还有一封同类修复（<a class="article-ref" href="/lkm/2026/08/27/sched-20260827-008-sched-core-fix-overflow-in-resched-latency-warning-threshold.html">sched-20260827-008</a>），且前一对 DL server 修复已拿到 Juri 的 Ack（见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.html">sched-20260827-016</a>/017），说明该作者的微观修复线正在被接受。`next_action`：等 review。
 
 ## 效果评估
 邮件给出的量化的是**错误**本身（2000 ms vs 60000 ns、HZ=1000 下 2.06 ms），修复后的扫描分布改善未附数据——修复动机充分，收益幅度属合理推断、未见实测。

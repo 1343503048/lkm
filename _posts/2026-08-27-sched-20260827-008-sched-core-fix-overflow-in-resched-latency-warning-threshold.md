@@ -51,7 +51,7 @@ Hui Su 的单补丁修复：32-bit 内核上 `latency_warn_ms * NSEC_PER_MSEC` �
 v1（本日发出，msgid `<20260827080152.2544683-1-sh_def@163.com>`），暂无 review。带 `Fixes: c006fac556e4`（"sched: Warn on long periods of pending need_resched"）。
 
 ## Maintainer 意见与讨论焦点
-无人表态，无分歧。该补丁出自近期活跃的同一作者（同日还有 sched/numa 修复，见 sched-20260827-009）。
+无人表态，无分歧。该补丁出自近期活跃的同一作者（同日还有 sched/numa 修复，见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-009-sched-numa-fix-time-unit-mismatch-in-scan-staggering.html">sched-20260827-009</a>）。
 
 ## 合入评估
 **likely**。范围小、意图清晰、有 Fixes 标签、不触碰调度决策路径，此类类型修复维护者接受度高。卡点仅在被淹没在待办里没人捡。`next_action`：等 review 或轻微 ping。

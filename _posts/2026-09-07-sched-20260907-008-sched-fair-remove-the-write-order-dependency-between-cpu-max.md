@@ -66,7 +66,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 [[sched-20260904-004]]（该文以 v2 的 cover 标题 `sched/fair: remove quota/burst write-order dependency` 为题，本篇是 v2 中 1/3 这一补丁本体的标题）。09-07 的进展是决定性的：cpu controller 维护者 Michal Koutný（SUSE）给出 `Reviewed-by`，原话是「The change makes sense to me and it should've been like that from the beginning」，但附带一个必须执行的修改要求——「it may break someone's setup, so I'd take it but revert it should regressions be reported. Hence, I wouldn't mark it for stable.」而作者 v2 里正好带了 `Cc: stable@vger.kernel.org`。他同时否掉了 09-04 Tao Cui 报的那个 u64 溢出：认为那是 sashiko 把 `MAX_BW` 与 `UULONG_MAX`（更准确说是 `UULONG_MAX / NSEC_PER_USEC`）搞混了，并指出这些带 `BW_SHIFT` 的量与 burst 无关，「so even your version should still be safe」。他同时注意到校验实际会被放宽成 `if (burst_us > max_bw_runtime_us / 2) return -EINVAL;` 这种形式。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260904-004</a>（该文以 v2 的 cover 标题 `sched/fair: remove quota/burst write-order dependency` 为题，本篇是 v2 中 1/3 这一补丁本体的标题）。09-07 的进展是决定性的：cpu controller 维护者 Michal Koutný（SUSE）给出 `Reviewed-by`，原话是「The change makes sense to me and it should've been like that from the beginning」，但附带一个必须执行的修改要求——「it may break someone's setup, so I'd take it but revert it should regressions be reported. Hence, I wouldn't mark it for stable.」而作者 v2 里正好带了 `Cc: stable@vger.kernel.org`。他同时否掉了 09-04 Tao Cui 报的那个 u64 溢出：认为那是 sashiko 把 `MAX_BW` 与 `UULONG_MAX`（更准确说是 `UULONG_MAX / NSEC_PER_USEC`）搞混了，并指出这些带 `BW_SHIFT` 的量与 burst 无关，「so even your version should still be safe」。他同时注意到校验实际会被放宽成 `if (burst_us > max_bw_runtime_us / 2) return -EINVAL;` 这种形式。
 
 ## 背景与问题
 
@@ -78,7 +78,7 @@ if (quota_us != RUNTIME_INF && (burst_us > quota_us ||
         return -EINVAL;
 ```
 
-v1 采取「写 quota 时把不兼容的 burst 清零」，被 Koutný 否决（用户配置值不该被内核改写，应钳制生效值而非改配置值），v2 因此改为「配置的 burst 与当前 quota 解耦，在 `__refill_cfs_bandwidth_runtime()` 里钳到 `quota + min(burst, quota)`」，并补 selftest 与文档。详见 [[sched-20260904-004]]。
+v1 采取「写 quota 时把不兼容的 burst 清零」，被 Koutný 否决（用户配置值不该被内核改写，应钳制生效值而非改配置值），v2 因此改为「配置的 burst 与当前 quota 解耦，在 `__refill_cfs_bandwidth_runtime()` 里钳到 `quota + min(burst, quota)`」，并补 selftest 与文档。详见 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260904-004</a>。
 
 ## 技术方案
 
@@ -147,4 +147,4 @@ v2 的 1/3 只有 5 增 3 删，两个 hunk：
   - Koutný 对 v1 的意见（要求钳制而非清零）：https://lore.kernel.org/all/aobnZEh1hfIBhswD@localhost.localdomain/
   - v1 cover letter：https://lore.kernel.org/all/20260820033218.214259-1-liuzhe1@kylinos.cn/
 - 相关代码/commit：`kernel/sched/core.c` `tg_set_bandwidth()`；`kernel/sched/fair.c` `__refill_cfs_bandwidth_runtime()` / `sched_cfs_period_timer()`；`tools/testing/selftests/cgroup/test_cpu.c`；`Fixes: f4183717b370`（"sched/fair: Introduce the burstable CFS controller"）
-- 相关：[[sched-20260904-004]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-004-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260904-004</a>

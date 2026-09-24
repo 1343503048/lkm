@@ -59,7 +59,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新（早期完整背景见 sched-20260810-008）。Shrikanth Hegde 的 preferred-CPU / steal-governor 系列 v11 里，`05/12` 的 `task_can_sched_on_preferred()` 要在"任务亲和 ∩ preferred 掩码 ∩ 该任务可能的 CPU 集合"三者里判断有无交集：8/28 Dietmar Eggemann 为了 32 位 EL0 任务的 `execve()` 窗口提出改用三路 `cpumask_first_and_and()`、Vincent Guittot `+1`、作者承诺放进 v12；**8/30 Yury Norov 接着提两点反对——建议换成语义更清楚的 `cpumask_intersects_and()` helper，并明确"不喜欢这个补丁玩 `likely()`"**：`possible == task_possible` 在 x86 上确实 likely，但在 aarch64 的 el0-32 任务上永远 unlikely，会导致 aarch64 上代码生成变差。这条与 cpuset/亲和性直接交叉，且涉及 cpumask helper 的收口，值得跟。
+本文为增量更新（早期完整背景见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）。Shrikanth Hegde 的 preferred-CPU / steal-governor 系列 v11 里，`05/12` 的 `task_can_sched_on_preferred()` 要在"任务亲和 ∩ preferred 掩码 ∩ 该任务可能的 CPU 集合"三者里判断有无交集：8/28 Dietmar Eggemann 为了 32 位 EL0 任务的 `execve()` 窗口提出改用三路 `cpumask_first_and_and()`、Vincent Guittot `+1`、作者承诺放进 v12；**8/30 Yury Norov 接着提两点反对——建议换成语义更清楚的 `cpumask_intersects_and()` helper，并明确"不喜欢这个补丁玩 `likely()`"**：`possible == task_possible` 在 x86 上确实 likely，但在 aarch64 的 el0-32 任务上永远 unlikely，会导致 aarch64 上代码生成变差。这条与 cpuset/亲和性直接交叉，且涉及 cpumask helper 的收口，值得跟。
 
 ## 背景与问题
 
@@ -107,7 +107,7 @@ static inline bool task_can_sched_on_preferred(int cpu, struct task_struct *p)
 - 8/25：v11（12 补丁）发出，`05/12` 即本条。
 - 8/28：Dietmar 提出三路交集 + 指出 arm64 el0-32 的 `execve()` 窗口并称"我再测一下"；Vincent Guittot `+1`（"This is the best way to check that there is a valid cpu"）；作者接受，给出上面的 v12 草案，并说"大概在 7.3-rc1 落地后发 v12"。
 - 8/30（本日）：Yury Norov 追加 helper 命名与 `likely()` 两点意见。
-- 当日无人回复 Yury；v12 尚未发出（后续 v12 于 9/3 出现，见 sched-20260903-002）。
+- 当日无人回复 Yury；v12 尚未发出（后续 v12 于 9/3 出现，见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a>）。
 
 ## Maintainer 意见与讨论焦点
 
@@ -122,7 +122,7 @@ static inline bool task_can_sched_on_preferred(int cpu, struct task_struct *p)
 
 ## 效果评估
 
-无本日新增数据。系列早前给出的动机数据见 sched-20260810-008；本日的争论全部是**代码质量与架构取向**（正确性窗口、helper 命名、分支预测提示对代码生成的影响），没有人在测 `task_can_sched_on_preferred()` 的开销，Yury 关于"suboptimal code generation on aarch64"的判断也**没有给出反汇编或性能数字支撑**，属未验证的定性意见。
+无本日新增数据。系列早前给出的动机数据见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>；本日的争论全部是**代码质量与架构取向**（正确性窗口、helper 命名、分支预测提示对代码生成的影响），没有人在测 `task_can_sched_on_preferred()` 的开销，Yury 关于"suboptimal code generation on aarch64"的判断也**没有给出反汇编或性能数字支撑**，属未验证的定性意见。
 
 ## 我可以参与的点
 

@@ -65,11 +65,11 @@ Hui Su 的单补丁（本日 19:07 发出）把 cgroup 字段统一按**调度�
 
 - 本日单 patch 首发（v1），带 `Fixes: aa4f74dfd42b`（"sched: Fix runtime accounting w/ split exec & sched contexts"），无 `Cc: stable`。
 - 09-03 内无回帖、无 tag、未进入任何分支。
-- 属「代理执行执行上下文修正」主线：同日 [[sched-20260903-001]]（NUMA/cache tick，已迭代到 v2 并有 Intel/AMD 实质评审）与 [[sched-20260903-005]]（RT watchdog）同作者、同基线；三者里本补丁体量最大（197 行）而评审进度最慢。
+- 属「代理执行执行上下文修正」主线：同日 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>（NUMA/cache tick，已迭代到 v2 并有 Intel/AMD 实质评审）与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html">sched-20260903-005</a>（RT watchdog）同作者、同基线；三者里本补丁体量最大（197 行）而评审进度最慢。
 
 ## Maintainer 意见与讨论焦点
 
-未获取到维护者意见：补丁于 09-03 19:07 发出，当日缓存内无人回帖；尤其值得注意的是 **Tejun Heo（cgroup 维护者）当天没有对 cgroup 统计语义的这一改动表态**，而同作者的 [[sched-20260903-003]]、[[sched-20260903-014]] 两个 sched_ext 补丁当天都已拿到他的处理结果，说明他当日在线。
+未获取到维护者意见：补丁于 09-03 19:07 发出，当日缓存内无人回帖；尤其值得注意的是 **Tejun Heo（cgroup 维护者）当天没有对 cgroup 统计语义的这一改动表态**，而同作者的 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260903-003</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-014-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-same-value.html">sched-20260903-014</a> 两个 sched_ext 补丁当天都已拿到他的处理结果，说明他当日在线。
 可预见的讨论焦点（依据补丁自身内容，而非回帖）：
 - cgroup `cpu.stat` 的 usage/user/system 首次被明确定义为「调度上下文」口径，而 `/proc/<pid>/stat` 与 per-CPU cpustat 仍是「执行上下文」口径。这种同一时间双口径的划分是否要在 `Documentation/admin-guide/cgroup-v2.rst` 里写清，作者未提。
 - 延迟边界方案里「持旧 owner 引用 + 推迟到目标 CPU 下次进入调度器」是全套改动中最需要并发评审的部分：它引入了一个新的生命周期，而 `proxy_reset_donor()` 本身已有 `WARN_ON_ONCE(rq->donor == rq->curr)` 前置。
@@ -99,8 +99,8 @@ Hui Su 的单补丁（本日 19:07 发出）把 cgroup 字段统一按**调度�
 
 - 本补丁：https://lore.kernel.org/all/5733b51108eda90c1bda98a68d58b5e6ccbc24ec.1788433334.git.sh_def@163.com/
 - 相关文章/系列：
-  - [[sched-20260903-001]] 代理执行下执行上下文 tick 处理（同作者、同一主线，进度最快）。
-  - [[sched-20260903-005]] RT watchdog 记账归属（同作者、同簇）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> 代理执行下执行上下文 tick 处理（同作者、同一主线，进度最快）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-005-sched-rt-fix-rt-watchdog-accounting-for-proxy-execution.html">sched-20260903-005</a> RT watchdog 记账归属（同作者、同簇）。
 - 相关代码：
   - `kernel/sched/cputime.c` `task_group_account_field()` / `cgroup_account_task()` / vtime 边界
   - `kernel/sched/core.c` `proxy_reset_donor()` / `finish_task_switch()` / `init_idle()`

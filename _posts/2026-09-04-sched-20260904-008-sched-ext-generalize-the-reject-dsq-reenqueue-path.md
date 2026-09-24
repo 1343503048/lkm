@@ -103,7 +103,7 @@ layout: article
   - 本补丁（v13 12/18）: <https://lore.kernel.org/all/20260831134338.1531664-13-arighi@nvidia.com/>
   - 所属 v13 系列 cover letter: <https://lore.kernel.org/all/20260831134338.1531664-1-arighi@nvidia.com/>
 - 相关文章/系列：
-  - [[sched-20260902-001]] 代理执行与 sched_ext 兼容（影响 DSQ 路径）。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html">sched-20260902-001</a> 代理执行与 sched_ext 兼容（影响 DSQ 路径）。
 - 相关代码/commit：
   - `kernel/sched/ext/ext.c` `scx_dispatch_enqueue()` / `scx_do_enqueue_task()` / `reenq_local()` / `reenq_user()` / `dsq_is_rq_owned()`
   - `kernel/sched/ext/sub.c`（reject DSQ 原属 sub-sched 的部分）

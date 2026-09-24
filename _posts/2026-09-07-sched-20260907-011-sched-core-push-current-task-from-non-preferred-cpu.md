@@ -65,11 +65,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260905-005（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 与后续 `rq_lock()` 之间的窗口是安全的（绝大多数情况根本不会拿 rq 锁，即使任务在拿锁前被负载均衡拉走，`task_rq(p) == rq` 会兜住并 bail out）；接受改名 `npc_push_work_pending`；承认 `struct rq` 新字段当初只在 powerpc（128B cacheline）上 pahole 过、那里正好是 64 字节空洞，但在 64B cacheline 上可能不是最优，并给出两个对两种 cacheline 都合适的候选位置；同时同意用 `CONFIG_PREFERRED_CPU` 包住该字段。截至本日仍是 v12，没有 v13——作者的原话是「I will pick one after little bit of probing.」
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a>（steal governor v12 的第 08/13 片：tick 上用 stopper 把非偏好 CPU 上的当前任务推走）。本日只有一封邮件，但把 Yury Norov 09-05 对 08/13 提的 4 条意见**全部**给出了可执行答复：Shrikanth Hegde 论证 `select_fallback_rq()` 与后续 `rq_lock()` 之间的窗口是安全的（绝大多数情况根本不会拿 rq 锁，即使任务在拿锁前被负载均衡拉走，`task_rq(p) == rq` 会兜住并 bail out）；接受改名 `npc_push_work_pending`；承认 `struct rq` 新字段当初只在 powerpc（128B cacheline）上 pahole 过、那里正好是 64 字节空洞，但在 64B cacheline 上可能不是最优，并给出两个对两种 cacheline 都合适的候选位置；同时同意用 `CONFIG_PREFERRED_CPU` 包住该字段。截至本日仍是 v12，没有 v13——作者的原话是「I will pick one after little bit of probing.」
 
 ## 背景与问题
 
-v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占的代价、`cpu_preferred_mask` 三条折叠路径、只推 FAIR 类当前任务等）与 08/13 的实现细节见 [[sched-20260905-005]]，此处只留一句定位：08/13 在 `sched_tick()` 开头判 `!cpu_preferred(cpu)`，把非偏好 CPU 上正在跑的任务用 `stop_one_cpu_nowait()` 排队推走，`struct rq` 为此新增一个 bool 字段做「已排队 stopper」的去重标记。
+v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占的代价、`cpu_preferred_mask` 三条折叠路径、只推 FAIR 类当前任务等）与 08/13 的实现细节见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a>，此处只留一句定位：08/13 在 `sched_tick()` 开头判 `!cpu_preferred(cpu)`，把非偏好 CPU 上正在跑的任务用 `stop_one_cpu_nowait()` 排队推走，`struct rq` 为此新增一个 bool 字段做「已排队 stopper」的去重标记。
 
 本日讨论全部围绕 Yury 09-05 那 4 条评审意见的落地，不涉及新增功能。
 
@@ -96,7 +96,7 @@ v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占�
 
 ## 版本演进与当前进展
 
-- 09-03 v12（13 片）发出，作者请求 Peter/Ingo 排进 `sched/core`、目标窗口 **7.4**；v11→v12 的实质变化与更早的版本轨迹见 [[sched-20260905-005]]。
+- 09-03 v12（13 片）发出，作者请求 Peter/Ingo 排进 `sched/core`、目标窗口 **7.4**；v11→v12 的实质变化与更早的版本轨迹见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a>。
 - 09-05 08:28 Yury Norov 对 08/13 提 4 条意见（竞争窗口、命名 + config 保护、字段摆放、pahole）。
 - 09-07 11:23 Shrikanth Hegde 逐条回应（本日唯一邮件）：4 条中 3 条直接采纳（改名、加 `CONFIG_PREFERRED_CPU`、挪字段位置），1 条给出安全性论证（竞争窗口）。
 - 截至本日**没有 v13**，本邮件中也没有出现新的 patchset 或维护者表态。字段位置仍是未定项（等作者的 probe 结果）。
@@ -105,7 +105,7 @@ v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占�
 
 - **Yury Norov（NVIDIA）**：本日的焦点仍是他那 4 条。值得注意的是他的意见层次很清楚——1 条是潜在正确性问题（要求作者论证），3 条是工程整洁度（命名、config 保护、结构体布局 + pahole）。作者对正确性那条是「解释并主张安全」，对另外三条全部接受，这通常意味着下一版会带上这些改动而不产生新的争论。
 - **Shrikanth Hegde（作者）**：应对方式是「能接受的全接受，安全论证靠既有兜底检查」。他的安全论证有一个隐含前提值得 reviewer 盯一下：`task_rq(p) == rq` 只能保证「任务不在我不知情情况下被搬走」，它依赖取到 rq 锁后读到的 `task_rq(p)` 与 `p->on_rq` 是稳定一致的视图（此时锁已持有）；而**推送退化为 no-op 的概率**本身没有量化——也就是说，如果这个窗口在实践中不罕见，特性收益会打折，但正确性不受影响。邮件中没有给出这方面的统计。
-- **无人反驳，也无人加意见**：Peter Zijlstra、Ingo Molnar 在本线程（含本日）仍未对 v12 表态，因此「是否排队进 sched/core」依旧未定，与 [[sched-20260905-005]] 记录的判断一致。
+- **无人反驳，也无人加意见**：Peter Zijlstra、Ingo Molnar 在本线程（含本日）仍未对 v12 表态，因此「是否排队进 sched/core」依旧未定，与 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a> 记录的判断一致。
 
 ## 合入评估
 
@@ -120,7 +120,7 @@ v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占�
 
 ## 效果评估
 
-本日邮件是评审往返，不含任何新数据；08/13 单独也没有 benchmark（系列级数据见 [[sched-20260905-005]] 的 hackbench/schbench/pgbench/sysbench/Daytrader 表格）。本日唯一带「数字」的内容是 `struct rq` 的 pahole 偏移：字段挪到候选 1 时利用 `idle_balance` 之后的 6 字节空洞、挪到候选 2 时利用 `ttwu_local` 之后的 4 字节空洞，作者主张两者都不增加 `struct rq` 总大小、也不让现有字段错位——这是他给出的唯一可验证主张，且他人可以用 pahole 直接复算。
+本日邮件是评审往返，不含任何新数据；08/13 单独也没有 benchmark（系列级数据见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a> 的 hackbench/schbench/pgbench/sysbench/Daytrader 表格）。本日唯一带「数字」的内容是 `struct rq` 的 pahole 偏移：字段挪到候选 1 时利用 `idle_balance` 之后的 6 字节空洞、挪到候选 2 时利用 `ttwu_local` 之后的 4 字节空洞，作者主张两者都不增加 `struct rq` 总大小、也不让现有字段错位——这是他给出的唯一可验证主张，且他人可以用 pahole 直接复算。
 
 ## 我可以参与的点
 
@@ -133,9 +133,9 @@ v12 的整体架构、动机（vCPU 超配下持锁/关中断段被 host 抢占�
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260905-005]] 前作：v12 全架构、08/13 实现细节与 Yury 的 4 条意见原文。
-  - [[sched-20260903-002]] steal governor v12 的偏好 CPU + vCPU 回退主体。
-  - [[sched-20260904-012]] 系列 01/13 的 `kcpustat_field_total()` helper。
+  - <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-005-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260905-005</a> 前作：v12 全架构、08/13 实现细节与 Yury 的 4 条意见原文。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a> steal governor v12 的偏好 CPU + vCPU 回退主体。
+  - <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.html">sched-20260904-012</a> 系列 01/13 的 `kcpustat_field_total()` helper。
 - 本日作者的逐条回应: https://lore.kernel.org/all/7d88a3c4-a7e4-4814-9e29-84955b69a5b3@linux.ibm.com/
 - Yury Norov 的 4 条意见（09-05）: https://lore.kernel.org/all/aptiJP_8SWwZWju6@yury/
 - v12 08/13 补丁本体: https://lore.kernel.org/all/20260903063240.268775-9-sshegde@linux.ibm.com/

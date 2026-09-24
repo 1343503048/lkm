@@ -42,13 +42,13 @@ layout: article
 增量更新：Zhe Liu 的 fair quota/burst 写顺序依赖移除系列（v3）本日获 CFS 带宽维护者 Ben Segall 的 Reviewed-by——他认为"依赖特定编辑顺序的状态校验既烦人又价值不高"。系列等待收取。
 
 ## 背景与问题
-背景见 sched-20260911-014：cgroup CFS 带宽（quota/burst）的状态更新要求按特定顺序修改多个字段，否则会触发"状态校验"告警；这套顺序依赖烦琐且易错。系列旨在移除 quota/burst 的写顺序依赖。
+背景见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260911-014</a>：cgroup CFS 带宽（quota/burst）的状态更新要求按特定顺序修改多个字段，否则会触发"状态校验"告警；这套顺序依赖烦琐且易错。系列旨在移除 quota/burst 的写顺序依赖。
 
 ## 技术方案
-见 sched-20260911-014：重构 quota/burst 状态更新，使其不再依赖写的先后顺序。本日无方案变更。
+见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260911-014</a>：重构 quota/burst 状态更新，使其不再依赖写的先后顺序。本日无方案变更。
 
 ## 版本演进与当前进展
-- v3（2026-09-11，`<20260911092258.660771-1-liuzhe1@kylinos.cn>`）：3-patch 系列（见 sched-20260911-014）。
+- v3（2026-09-11，`<20260911092258.660771-1-liuzhe1@kylinos.cn>`）：3-patch 系列（见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-014-sched-fair-remove-quota-burst-write-order-dependency.html">sched-20260911-014</a>）。
 - 本日 Ben Segall（`<xm2633v6w83y.fsf@google.com>`）对 1/3 给出 Reviewed-by。
 
 ## Maintainer 意见与讨论焦点

@@ -141,7 +141,7 @@ s390（z16，8C/16T SMT2）pgbench 2VM×8CPU +73.50%±35.91%（标准差极大�
   - patch 09/13（非 preferred CPU 引发的迁移统计）：https://lore.kernel.org/all/20260903063240.268775-10-sshegde@linux.ibm.com/
 - 上一版对照：v11 封面 https://lore.kernel.org/all/20260825103855.721013-1-sshegde@linux.ibm.com/
 - 相关文章/系列：
-  - [[sched-20260902-014]] steal_governor v11 preferred（讨论版）。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260902-014</a> steal_governor v11 preferred（讨论版）。
 - 相关代码：
   - `kernel/sched/core.c` `is_cpu_allowed()` / `sched_tick()` 推送；`kernel/sched/fair.c` `sched_balance_rq`
   - `drivers/virt/steal_governor.c`；`Documentation/scheduler/sched-paravirt.rst`

@@ -60,7 +60,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新（完整背景见 sched-20260810-008）。Shrikanth Hegde（IBM）的 preferred-CPU / steal-governor 系列已到 **v11（12 补丁）**，`05/12` 让 `is_cpu_allowed()`/`select_fallback_rq()` 在受限时优先挑仍被允许的 preferred CPU。8/31 的争点从代码本身转到**该在哪些架构上启用**：Yury Norov 主张只在已实测过的 PPC+xPVM / x86+KVM 上开，Vincent Guittot 当晚明确反对——"It's always better to support all arch by default, unless something is missing which is not the case here."，作者目前把 arm64 决定权押在 Dietmar/Vincent 回复上。这条与 cpuset/亲和性交互，值得盯。
+本文为增量更新（完整背景见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）。Shrikanth Hegde（IBM）的 preferred-CPU / steal-governor 系列已到 **v11（12 补丁）**，`05/12` 让 `is_cpu_allowed()`/`select_fallback_rq()` 在受限时优先挑仍被允许的 preferred CPU。8/31 的争点从代码本身转到**该在哪些架构上启用**：Yury Norov 主张只在已实测过的 PPC+xPVM / x86+KVM 上开，Vincent Guittot 当晚明确反对——"It's always better to support all arch by default, unless something is missing which is not the case here."，作者目前把 arm64 决定权押在 Dietmar/Vincent 回复上。这条与 cpuset/亲和性交互，值得盯。
 
 ## 背景与问题
 
@@ -102,7 +102,7 @@ layout: article
 
 ## 版本演进与当前进展
 
-- 8/10 前后的 v9 为 11 补丁（该 patch 当时是 `04/11`，见 sched-20260810-008）；8/25 的 **v11 已是 12 补丁**，该 patch 变 `05/12`（`<20260825103855.721013-6-sshegde@linux.ibm.com>`）。
+- 8/10 前后的 v9 为 11 补丁（该 patch 当时是 `04/11`，见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）；8/25 的 **v11 已是 12 补丁**，该 patch 变 `05/12`（`<20260825103855.721013-6-sshegde@linux.ibm.com>`）。
 - 8/28 Dietmar Eggemann 指出 arm64 32 位 EL0 场景并给出 `cpumask_first_and_and()` 写法；8/30 Yury Norov 提出 helper 化、`likely()` 用法与"只在实测过的架构上启用"三点；8/31 作者逐条回复并抛出 arm64 是否现在就使能的问题；8/31 晚 Vincent Guittot 表态反对按架构收窄。
 - 尚未确认的改动：三方交集 helper 是否采用（作者态度是"只有 ARM64 现在就要使能才需要，否则可以退回 `cpumask_intersects()`，等 ARM 生态使能时再加"）；`likely()` 的用法作者未表态修改。
 - 当前 Kconfig 使能清单：`PPC_SPLPAR`、`S390`、`X86_64`，作者写明确实"在等 Dietmar/Vincent 关于 ARM 的意见"。

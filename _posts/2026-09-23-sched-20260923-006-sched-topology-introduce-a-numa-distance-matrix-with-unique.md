@@ -46,16 +46,16 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，Peter 希望更紧上界）与 commit message 质量。
-- sched-20260923-006（今天）：继续 02/23 距离矩阵去重讨论——Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」（更省存储、更直白），并质疑去重算法会耗尽可用距离槽；Jianyong 逐条回应，澄清系列目标是系统级 LLC 亲和排序、去重只作用于节点层。分歧未收敛，属设计路线讨论。
+- <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260901-004</a>：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，Peter 希望更紧上界）与 commit message 质量。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260923-006</a>（今天）：继续 02/23 距离矩阵去重讨论——Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」（更省存储、更直白），并质疑去重算法会耗尽可用距离槽；Jianyong 逐条回应，澄清系列目标是系统级 LLC 亲和排序、去重只作用于节点层。分歧未收敛，属设计路线讨论。
 
 ## 背景与问题
-- sched-20260901-004：上游 cache-aware 负载均衡只在 LLC 粒度决策，跨 NUMA 节点放置交给独立的 NUMA balancing，二者互不知情。该系列给拓扑加一张**去重后的 NUMA 距离矩阵**，让每个节点的距离值互不相同，供 load balance 按「任务数 × 距离差」算 affinity 得分。海光这类非全对称互连平台节点间距离非单值，需要去重矩阵才有区分度。
-- sched-20260923-006（今天）：背景无新增。
+- <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260901-004</a>：上游 cache-aware 负载均衡只在 LLC 粒度决策，跨 NUMA 节点放置交给独立的 NUMA balancing，二者互不知情。该系列给拓扑加一张**去重后的 NUMA 距离矩阵**，让每个节点的距离值互不相同，供 load balance 按「任务数 × 距离差」算 affinity 得分。海光这类非全对称互连平台节点间距离非单值，需要去重矩阵才有区分度。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260923-006</a>（今天）：背景无新增。
 
 ## 技术方案
-- sched-20260901-004：两级矩阵（NUMA 节点距离矩阵 + 节点内 LLC 距离小矩阵）；用贪心边着色去重保证每行无重复（Peter 指出上界应为 Δ/Δ+1、贪心只能到 2Δ+1）；在 rq/sd 上维护 `llc_counts[]`/`numa_counts[]` 供 affinify score 使用；per-sd scratch 数组避免热路径分配。关键取舍是「热路径记账 vs 慢路径按需累加」，Peter 主张后者、作者接受。
-- sched-20260923-006（今天）：出现一条替代路线——**Tim Chen** 提议 `llc_next` 数组（如 `[1 0 3 2 5 4 7 6]`）表达「同一 NUMA 节点内 cache 排序」，比人造矩阵更省存储、更直白，且人造矩阵的「距离槽」个数无保证（可能耗尽）。**Jianyong Wu** 澄清：目标是系统级 LLC 亲和排序，需分层（节点级排序 + 节点内 LLC 排序），此 patch 只管节点级；`llc_next` 描述不了「该访问哪个等距节点」，正是去重矩阵要消解的歧义；去重只作用于节点矩阵，且算法预留距离空间，不会耗尽。
+- <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260901-004</a>：两级矩阵（NUMA 节点距离矩阵 + 节点内 LLC 距离小矩阵）；用贪心边着色去重保证每行无重复（Peter 指出上界应为 Δ/Δ+1、贪心只能到 2Δ+1）；在 rq/sd 上维护 `llc_counts[]`/`numa_counts[]` 供 affinify score 使用；per-sd scratch 数组避免热路径分配。关键取舍是「热路径记账 vs 慢路径按需累加」，Peter 主张后者、作者接受。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260923-006</a>（今天）：出现一条替代路线——**Tim Chen** 提议 `llc_next` 数组（如 `[1 0 3 2 5 4 7 6]`）表达「同一 NUMA 节点内 cache 排序」，比人造矩阵更省存储、更直白，且人造矩阵的「距离槽」个数无保证（可能耗尽）。**Jianyong Wu** 澄清：目标是系统级 LLC 亲和排序，需分层（节点级排序 + 节点内 LLC 排序），此 patch 只管节点级；`llc_next` 描述不了「该访问哪个等距节点」，正是去重矩阵要消解的歧义；去重只作用于节点矩阵，且算法预留距离空间，不会耗尽。
 
 ## 版本演进与当前进展
 - v2（08-27，23 枚）以来持续逐片评审。本日为 02/23 去重矩阵的路线分歧延续，无新版。

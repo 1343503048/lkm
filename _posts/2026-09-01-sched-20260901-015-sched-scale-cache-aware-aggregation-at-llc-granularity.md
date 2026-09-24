@@ -65,7 +65,7 @@ layout: article
 
 ## TL;DR
 
-Jianyong Wu（海光）的 23 片 RFC v2——把 cache-aware 调度的聚合域从「固定单个 LLC」扩展成「按 LLC 粒度有序铺开」，是当日 sched 目录里体量最大、也是唯一由 Peter Zijlstra 逐片跟读的一整个系列。**09-01 一天该系列产生 24 封邮件（PZ 12 / 作者 12）**，其中 patch 08 的 `numa_counts[]` 被当场判掉（改为按需求和）、patch 17 的「NUMA 与 LLC 迁移可分别开关」被 PZ 明确反对并给出替代方向。本篇覆盖整系列与尚未成文的 6 个子线程（08/09/10/14/17/20）；02/07/11/12 四片已有单独分析（sched-20260901-004~007）。
+Jianyong Wu（海光）的 23 片 RFC v2——把 cache-aware 调度的聚合域从「固定单个 LLC」扩展成「按 LLC 粒度有序铺开」，是当日 sched 目录里体量最大、也是唯一由 Peter Zijlstra 逐片跟读的一整个系列。**09-01 一天该系列产生 24 封邮件（PZ 12 / 作者 12）**，其中 patch 08 的 `numa_counts[]` 被当场判掉（改为按需求和）、patch 17 的「NUMA 与 LLC 迁移可分别开关」被 PZ 明确反对并给出替代方向。本篇覆盖整系列与尚未成文的 6 个子线程（08/09/10/14/17/20）；02/07/11/12 四片已有单独分析（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260901-004</a>~007）。
 
 ## 背景与问题
 
@@ -73,7 +73,7 @@ Jianyong Wu（海光）的 23 片 RFC v2——把 cache-aware 调度的聚合域
 
 要回答两个问题（cover letter 原话的复述）：LLC 按什么顺序被考虑，以及线程组要沿这个顺序铺多远。
 
-- 顺序：以 preferred LLC 所在 node 的**距离矩阵行**给 node 排序；node 内部另建一张「没有物理含义、只用于排序」的 LLC 距离矩阵；其它 node 内按 LLC ID 升序。三者拼成一条 affinity sequence。因为真实 node 距离里一行会出现相同值，所以需要一张**每行数值唯一**的 node 距离矩阵（即 sched-20260901-004 那片）。
+- 顺序：以 preferred LLC 所在 node 的**距离矩阵行**给 node 排序；node 内部另建一张「没有物理含义、只用于排序」的 LLC 距离矩阵；其它 node 内按 LLC ID 升序。三者拼成一条 affinity sequence。因为真实 node 距离里一行会出现相同值，所以需要一张**每行数值唯一**的 node 距离矩阵（即 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-004-sched-topology-introduce-a-numa-distance-matrix-with-unique.html">sched-20260901-004</a> 那片）。
 - 铺多远：估算整个 thread group 的总利用率，取能装下它的**最小前缀**；前缀内的 LLC 只要自身能装下这个任务就可以进（**不要求前序 LLC 先饱和**），前缀之外才退回原来的有序饱和检查。
 
 被放弃的备选（cover 里明确写了，对判断合入难度很有用）：原本想给每个进程的线程组维护一张 LLC mask。两条理由否掉——mask 在 `task_cache_work()` 里更新、在 load balancing 里读，负载快速变化时读到的是过期值；且 load balance 找 source `sched_group`/rq 时**没有 task 上下文**去取对应的 mask。因此改为 task-independent 的每 rq / per-sd 聚合计数（patch 08/09/10 那组）。
@@ -110,10 +110,10 @@ PZ 是本系列**唯一**评审者，12 封回帖里可分四层：
 
 1. **认可并给方向**：affinity sequence + 按需扩范围这套骨架没有被质疑；09/23 的要求是「大系列必须写清 *why*」——`I mean, I can read the patch and see what it does, but I cannot divinate … why you're doing things. This is esp. important for large series -- or series that do complicated things -- or like this case: both!` 作者答应在 commit message 补。
 2. **要求删除冗余状态**：08/23 的 `numa_counts[]`（见上，已定案删除）。
-3. **代码级正确性**：`__counted_by_ptr` 注解（08/23、10/23）、`mul_u64_u32_shr()` 替 `mul_u64_u32_div()`（20/23，理由是后者内联 asm 无法优化除法）、inverse x-mas-tree 变量序与折行（11/23，见 sched-20260901-007）。
-4. **架构级反对**：17/23 的 NUMA/LLC 优先级与双开关，**这是唯一没有当场被作者接受、也没有被作者反驳的分歧**——本日邮件里作者对 17/23 未回帖。加上 11/23 里 `can_migrate_node()` 与既有 `can_migrate_llc()` 的三处口径分叉（sched-20260901-007），PZ 的读后结论倾向于「先证明这两份逻辑为何不能合并成一个函数」。
+3. **代码级正确性**：`__counted_by_ptr` 注解（08/23、10/23）、`mul_u64_u32_shr()` 替 `mul_u64_u32_div()`（20/23，理由是后者内联 asm 无法优化除法）、inverse x-mas-tree 变量序与折行（11/23，见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-007-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260901-007</a>）。
+4. **架构级反对**：17/23 的 NUMA/LLC 优先级与双开关，**这是唯一没有当场被作者接受、也没有被作者反驳的分歧**——本日邮件里作者对 17/23 未回帖。加上 11/23 里 `can_migrate_node()` 与既有 `can_migrate_llc()` 的三处口径分叉（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-007-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260901-007</a>），PZ 的读后结论倾向于「先证明这两份逻辑为何不能合并成一个函数」。
 
-另有一处只被 PZ 点破、双方都未展开的语义问题：17/23 的多节点循环里「跳过 target 与 src 之间那些 locality 更好的节点」与后面用「更近节点」来否决迁移互相矛盾（原样记录在 sched-20260901-007）。
+另有一处只被 PZ 点破、双方都未展开的语义问题：17/23 的多节点循环里「跳过 target 与 src 之间那些 locality 更好的节点」与后面用「更近节点」来否决迁移互相矛盾（原样记录在 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-007-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260901-007</a>）。
 
 ## 合入评估
 

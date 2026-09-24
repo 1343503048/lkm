@@ -85,7 +85,7 @@ Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yp
 ## Maintainer 意见与讨论焦点
 - **Tejun Heo**：唯一发言者，且只有收取通知一句。无任何评审意见被缓存捕获——v2 从发出（09-09 15:17）到被收取（09-10 01:52）约 10.5 小时，中间没有可见的往返。
 - 无 NAK、无争议、无未决问题。这类构建卫生修复本身就是维护者最愿意直接收的类型。
-- 值得记一笔的对照：同一晚（09-10 01:52 / 01:57）Tejun 连续收取了三枚补丁——本枚、同作者的 `sched_ext: Merge adjacent ifdefs in ext.h`（见 sched-20260910-020）、以及 Tianyi Chen 的 `Validate select_cpu_and mask constraints`（见 sched-20260910-018）。说明 `sched_ext/for-7.4` 正在集中收集小修复与自测覆盖。
+- 值得记一笔的对照：同一晚（09-10 01:52 / 01:57）Tejun 连续收取了三枚补丁——本枚、同作者的 `sched_ext: Merge adjacent ifdefs in ext.h`（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-020-sched-ext-merge-adjacent-ifdefs-in-ext-h.html">sched-20260910-020</a>）、以及 Tianyi Chen 的 `Validate select_cpu_and mask constraints`（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html">sched-20260910-018</a>）。说明 `sched_ext/for-7.4` 正在集中收集小修复与自测覆盖。
 - 线程中**无人**提到与 Ziyang Men lib.bpf.mk 转换的相互作用，这是一个当前没人盯的协调缺口。
 
 ## 合入评估

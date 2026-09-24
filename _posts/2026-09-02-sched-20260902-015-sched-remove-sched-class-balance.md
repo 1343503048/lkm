@@ -205,4 +205,4 @@ Tejun 提到的收益（sched_ext 可去掉 ugly 的 lock-drop 追踪）要等�
 - Aaron Lu 补上可复现脚本（8/21）：https://lore.kernel.org/all/20260821024335.GA3046103@bytedance.com/
 - Peter Zijlstra：hackery 通过 + "the patches need to be redone"（8/22）：https://lore.kernel.org/all/20260822094254.GH687043@noisy.programming.kicks-ass.net/
 - Peter Zijlstra 向 Aaron 索要测试方法（8/20，回复 7/2 panic 报告）：https://lore.kernel.org/all/20260820154052.GB4120091@noisy.programming.kicks-ass.net/
-- 相关：[[sched-20260902-012]]（同期 `rq->donor` 语义修正，同属 PE 落地后的核心路径收尾）、[[sched-20260902-007]]（同期 fair 侧 `task_h_load` 重做，与本系列 5/7/6/7 改的是同一片 newidle 代码）、[[sched-20260902-002]]（同期 sched/core 清理）
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>（同期 `rq->donor` 语义修正，同属 PE 落地后的核心路径收尾）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-007-sched-fair-rework-fix-task-h-load.html">sched-20260902-007</a>（同期 fair 侧 `task_h_load` 重做，与本系列 5/7/6/7 改的是同一片 newidle 代码）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a>（同期 sched/core 清理）

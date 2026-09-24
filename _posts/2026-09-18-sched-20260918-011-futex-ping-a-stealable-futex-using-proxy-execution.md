@@ -52,7 +52,7 @@ layout: article
 增量更新：Suleiman Souhlal 的 FUTEX_PING（可偷取 futex + Proxy Execution，RFC 00/12）本日迎来密集高层讨论。Steven Rostedt 与 John Stultz 回溯了 FUTEX_PI 强制公平导致 SCHED_OTHER 性能崩溃、催生新 futex 的动机；Peter Zijlstra 指出"又想要 Priority Inheritance 又不想要 PI 严格性"自相矛盾，主张复用 mutex 的 FUTEX_LOCK/UNLOCK 路线，并强调整个 futex/proxy 需要死锁检测器（应在 block 时做、返回 -EDEADLK），明确"我们不急着合"。
 
 ## 背景与问题
-背景见 sched-20260917-012：Google/Android 场景下少数 RT 任务与数百 SCHED_OTHER 任务竞争共享锁，FUTEX_PI 强制严格 PI/FIFO 语义导致 SCHED_OTHER 性能崩溃，需要一种"RT 保持 PI、SCHED_OTHER 可被偷取"的新 futex，并借助 Proxy Execution 由锁 owner 代为执行被阻塞的 waiter。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-012-futex-ping-a-stealable-futex-using-proxy-execution.html">sched-20260917-012</a>：Google/Android 场景下少数 RT 任务与数百 SCHED_OTHER 任务竞争共享锁，FUTEX_PI 强制严格 PI/FIFO 语义导致 SCHED_OTHER 性能崩溃，需要一种"RT 保持 PI、SCHED_OTHER 可被偷取"的新 futex，并借助 Proxy Execution 由锁 owner 代为执行被阻塞的 waiter。
 
 ## 技术方案
 沿用 RFC 方案：新增 FUTEX_PING（PING 名字是玩笑、可改），保留 waiter bit、支持 Proxy Execution，让公平任务可 steal 锁。本日讨论重心转向"是否该作为全新 futex op，还是复用 mutex 的 FUTEX_LOCK/UNLOCK + proxy"。

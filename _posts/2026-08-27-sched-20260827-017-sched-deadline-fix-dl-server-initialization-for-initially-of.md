@@ -41,7 +41,7 @@ layout: article
 ---
 
 ## TL;DR
-同作者的姊妹 ping：针对"初始离线 CPU 上 DL server 初始化"的修复（8 月 11 日发出）同样**已有 Juri Lelli 的 Acked-by**，08-27 作者催办，等 Peter/Ingo 收取。与 sched-20260827-016 一起构成 deadline server 在 CPU 热插拔/离线生命周期下的两个正确性补丁。补丁正文细节不在本日缓存，未获取到。
+同作者的姊妹 ping：针对"初始离线 CPU 上 DL server 初始化"的修复（8 月 11 日发出）同样**已有 Juri Lelli 的 Acked-by**，08-27 作者催办，等 Peter/Ingo 收取。与 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.html">sched-20260827-016</a> 一起构成 deadline server 在 CPU 热插拔/离线生命周期下的两个正确性补丁。补丁正文细节不在本日缓存，未获取到。
 
 ## 背景与问题
 DL server 的初始化路径在 CPU 自启动起就处于离线状态时处理不正确（具体症状——是崩溃、还是状态未初始化——原文未在本线程重述）。references 根 `<20260811100612.1408592-2-sh_def@163.com>`。

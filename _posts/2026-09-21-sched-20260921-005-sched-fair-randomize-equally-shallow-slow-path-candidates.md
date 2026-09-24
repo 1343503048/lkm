@@ -46,7 +46,7 @@ layout: article
 增量更新：Christian Loehle 回复 Vincent Guittot 的 review，补充了 idle CPU 选择随机化方案中"未发布 idle 状态"（unpublished idle state）CPU 的处理思路——实测这类候选只占约 0.1-0.5%，把它们按 `U64_MAX` 退出延迟对待后极少成为最优候选，因此随机化引入的偏置风险可控。这是对既有 v2 的补充论证，无新代码。
 
 ## 背景与问题
-背景见 sched-20260918-004：slow-path idle CPU 扫描总是挑选第一个满足条件的 CPU，存在扫描顺序偏置。系列（v2）通过随机化"同样浅（equally shallow）"的候选消除该偏置。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-004-sched-fair-randomize-equally-shallow-slow-path-candidates.html">sched-20260918-004</a>：slow-path idle CPU 扫描总是挑选第一个满足条件的 CPU，存在扫描顺序偏置。系列（v2）通过随机化"同样浅（equally shallow）"的候选消除该偏置。
 
 ## 技术方案
 本日无新代码。作者针对 review 中关心的"未发布 idle 状态"CPU（即已进入 idle 但 idle 状态尚未对外发布、处于窗口期的 CPU）给出两个处理思路与实测依据：

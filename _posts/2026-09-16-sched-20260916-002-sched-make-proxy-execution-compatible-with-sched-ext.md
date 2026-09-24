@@ -49,7 +49,7 @@ layout: article
 本日为增量更新：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）逐 patch 正式评审，焦点集中在 08/18 的 `WF_ON_RQ` 语义（Andrea 自己承认「描述错了区分」）以及 07/18 的 reject-DSQ 重试点设计。Andrea 已在多枚 patch 上给出回应并准备 v14，暂无 NAK，但 08/18 的方向仍有开放讨论（Peter 抛出了一个未测试的 `sched_delayed`→`is_blocked` 大重构思路）。合入可能性维持中等。完整背景见 related_articles。
 
 ## 背景与问题
-该系列的目标是让 proxy execution（拆分执行上下文与调度上下文）与 sched_ext 兼容：sched_ext 需要感知 proxy 带来的 donor/curr 分离、blocked donor 的 runqueue 驻留、以及任务在 EXT 调度类与其它类之间切换时的清理时机。背景与前几版一致，见 sched-20260910-002。
+该系列的目标是让 proxy execution（拆分执行上下文与调度上下文）与 sched_ext 兼容：sched_ext 需要感知 proxy 带来的 donor/curr 分离、blocked donor 的 runqueue 驻留、以及任务在 EXT 调度类与其它类之间切换时的清理时机。背景与前几版一致，见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260910-002</a>。
 
 ## 技术方案
 系列核心机制不变。本日讨论落在三处具体设计：
@@ -59,7 +59,7 @@ layout: article
 
 ## 版本演进与当前进展
 - **v13**（2026-08-31，`<20260831134338.1531664-1-arighi@nvidia.com>`）：当前版本。
-- 本日（09-16）Peter 正式评审 04/05/07/08/09/14/15，Andrea 逐条回应并承诺 v14 改动：05/18 删除并改为对 `DEQUEUE_CLASS` 条件处理；07/18 改名并补充说明；09/18 移到 ownership-transition 路径；14/18 删掉两个「possible combinations」条目并显式声明 invariant；15/18 inline 化 `scx_allow_proxy_exec()` 包装（用 `scx_enabled()` 静态 key）。04/18 已抽为独立修复单发（见 sched-20260916-001）。
+- 本日（09-16）Peter 正式评审 04/05/07/08/09/14/15，Andrea 逐条回应并承诺 v14 改动：05/18 删除并改为对 `DEQUEUE_CLASS` 条件处理；07/18 改名并补充说明；09/18 移到 ownership-transition 路径；14/18 删掉两个「possible combinations」条目并显式声明 invariant；15/18 inline 化 `scx_allow_proxy_exec()` 包装（用 `scx_enabled()` 静态 key）。04/18 已抽为独立修复单发（见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-001-sched-core-avoid-false-migration-warning-for-proxy-donors.html">sched-20260916-001</a>）。
 
 ## Maintainer 意见与讨论焦点
 - **Peter Zijlstra（07/18）**：质疑为何不把 blocked 任务直接留在 reject 队列、等 wakeup 再处理。Andrea 解释：被 reject 的任务未必 blocked——一个 runnable 的 EXT mutex owner 正通过 blocked donor 的调度上下文在 CPU0 执行，其 EXT entity 仍可能在非本地 DSQ；CPU1 并发消费它时发现它已是 rq->curr 无法迁移，park 后若无重试点，它就不再对 BPF 调度器可见、永远无法用自己的调度上下文运行。

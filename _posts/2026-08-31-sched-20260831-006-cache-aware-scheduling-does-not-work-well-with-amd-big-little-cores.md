@@ -58,7 +58,7 @@ layout: article
 
 ## TL;DR
 
-用户报告（Klaus Kusche，AMD Ryzen HX 370）：开启 cache-aware scheduling 后，一个跑在小核上的长时 LTO 链接进程**即使大核全空闲也不会迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，CAS 的判定压过了大/LITTLE 容量调度。Chen Yu 确认"当前代码里 CAS 覆盖了非对称调度策略"，并指向 Tim Chen 8/25 的修复 `[PATCH] sched/fair: avoid creating misfits during cache-aware balancing`（该文已在 sched-20260826-010 分析过）；报告者 8/31 晚回报"两个补丁配合起来看起来达到期望效果"，但**没有数字**。同日 Peter Zijlstra 对 Tim 的补丁只提了 SoB 链与 subject 大小写两处形式意见。
+用户报告（Klaus Kusche，AMD Ryzen HX 370）：开启 cache-aware scheduling 后，一个跑在小核上的长时 LTO 链接进程**即使大核全空闲也不会迁走**——因为所有大核构成一个 L3 域、所有小核构成另一个域，CAS 的判定压过了大/LITTLE 容量调度。Chen Yu 确认"当前代码里 CAS 覆盖了非对称调度策略"，并指向 Tim Chen 8/25 的修复 `[PATCH] sched/fair: avoid creating misfits during cache-aware balancing`（该文已在 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260826-010</a> 分析过）；报告者 8/31 晚回报"两个补丁配合起来看起来达到期望效果"，但**没有数字**。同日 Peter Zijlstra 对 Tim 的补丁只提了 SoB 链与 subject 大小写两处形式意见。
 
 ## 背景与问题
 
@@ -82,7 +82,7 @@ Chen Yu 给出的判断是"这不是配置问题而是代码问题"：CAS 可以
 
 ## 版本演进与当前进展
 
-- 8/25：Tim Chen 发出 `sched/fair: avoid creating misfits during cache-aware balancing`（`<20260825174112.2580942-1-tim.c.chen@linux.intel.com>`），已带 `Reviewed-by: Ricardo Neri`、`Tested-by: Ricardo Neri`、`Reviewed-by: Chen Yu`；8/26 的分析见 sched-20260826-010。
+- 8/25：Tim Chen 发出 `sched/fair: avoid creating misfits during cache-aware balancing`（`<20260825174112.2580942-1-tim.c.chen@linux.intel.com>`），已带 `Reviewed-by: Ricardo Neri`、`Tested-by: Ricardo Neri`、`Reviewed-by: Chen Yu`；8/26 的分析见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260826-010</a>。
 - 8/29：Klaus Kusche 发报告线程；Mario Limonciello 抄送 CAS 相关的人并提示 `aggr_tolerance`。
 - 8/31：Chen Yu 确认根因并把 Tim 的补丁摆到报告者面前；Peter Zijlstra 在 Tim 的补丁线程上回两处形式意见；报告者实测回报有效。
 - 补丁本体仍是 **v1**，当天没有因这些意见发出 v2。

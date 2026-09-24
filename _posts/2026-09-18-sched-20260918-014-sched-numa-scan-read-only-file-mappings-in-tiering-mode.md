@@ -54,14 +54,14 @@ layout: article
 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 3/4，让 tiering 模式也扫描只读文件映射）本日集中讨论 VMA 判定语义——David Hildenbrand 认为函数名误导、应用新 VMA flags API；Lorenzo Stoakes 给出详尽的 VMA 标志分析并建议引入 `vma_maps_shared_readonly_file()` helper；作者坚持先做"可回移的最小 bugfix"、把更激进的 VMA 清理留给后续 patch。
 
 ## 背景与问题
-背景见 sched-20260907-009：memory-tiering 模式下，只读文件映射（如库文件/数据文件的 MAP_SHARED 只读映射）此前不被 NUMA 扫描，导致其页面无法被正确迁移/提升到更近的 memory tier。
+背景见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260907-009</a>：memory-tiering 模式下，只读文件映射（如库文件/数据文件的 MAP_SHARED 只读映射）此前不被 NUMA 扫描，导致其页面无法被正确迁移/提升到更近的 memory tier。
 
 ## 技术方案
 - 在 tiering 模式下把"只读文件映射"纳入扫描范围；v2 把既有 VMA 判定代码搬到 helper 中（作者未改动既有判定逻辑）。
 - 本日争议聚焦判定条件：作者现用 `vma->vm_file && !vma_test(vma, VMA_WRITE_BIT)`（近似），David/Lorenzo 建议用 `VMA_MAYSHARE_BIT && !VMA_MAYWRITE_BIT` 语义。
 
 ## 版本演进与当前进展
-- v1（09-07，`<20260907-…-gourry@gourry.net>`）：单补丁，见 sched-20260907-009。
+- v1（09-07，`<20260907-…-gourry@gourry.net>`）：单补丁，见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260907-009</a>。
 - v2 3/4（09-11，`<20260911001826.2109390-4-gourry@gourry.net>`）：纳入 4 补丁系列；本日围绕 VMA 判定展开讨论。
 
 ## Maintainer 意见与讨论焦点

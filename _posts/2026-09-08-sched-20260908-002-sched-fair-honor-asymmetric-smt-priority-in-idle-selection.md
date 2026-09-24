@@ -77,7 +77,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 related_articles 中的 sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-08 这一天该系列连出两版：凌晨 00:30 的 v3 落实了 Prateek Nayak 的「收口到 `select_idle_sibling()`」建议，下午 16:23 的 v4 又按 Srikar Dronamraju 的意见补上唤醒慢路径并把 helper 改名为 `select_idle_smt_cpu()`，同时拿到 Srikar 的 `Reviewed-by`。一天两版且评审意见全部被吸收，推进速度很快；仍未解决的是 IBM 侧关于 SMT4 兄弟核 IPC 次序的追问和 arm64 拓扑侧的表态。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260907-005</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260904-002</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a>。09-08 这一天该系列连出两版：凌晨 00:30 的 v3 落实了 Prateek Nayak 的「收口到 `select_idle_sibling()`」建议，下午 16:23 的 v4 又按 Srikar Dronamraju 的意见补上唤醒慢路径并把 helper 改名为 `select_idle_smt_cpu()`，同时拿到 Srikar 的 `Reviewed-by`。一天两版且评审意见全部被吸收，推进速度很快；仍未解决的是 IBM 侧关于 SMT4 兄弟核 IPC 次序的追问和 arm64 拓扑侧的表态。
 
 ## 背景与问题
 

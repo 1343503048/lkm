@@ -57,7 +57,7 @@ v3 把三条路径上的 `ops.dequeue()` 调用统一移到 DSQ 解锁之后：`
 - v2 回顾：补了迭代源 DSQ 的 selftest，删掉被 Andrea 纠正的回调时序说法。
 
 ## Maintainer 意见与讨论焦点
-- **Tejun Heo（v2→v3 评审）**：逐条给出可执行意见——自死锁只存在于两条 user DSQ 路径；要求把「任务在 `ops.dequeue()` 完成前不能开始运行或被 reenqueue」的不变量说清楚（或删掉）；指出该不变量当前有个洞（DISPATCHING reenq，见 sched-20260916-005）会本补丁放大、由其单独修；要求 open-code 掉只剩两个调用点的 `call_task_dequeue()`；否定拆分方案、改为 unlink 后立即解锁。v3 全部落实。
+- **Tejun Heo（v2→v3 评审）**：逐条给出可执行意见——自死锁只存在于两条 user DSQ 路径；要求把「任务在 `ops.dequeue()` 完成前不能开始运行或被 reenqueue」的不变量说清楚（或删掉）；指出该不变量当前有个洞（DISPATCHING reenq，见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-005-sched-ext-wait-for-scx-opss-dispatching-before-reenqueueing.html">sched-20260916-005</a>）会本补丁放大、由其单独修；要求 open-code 掉只剩两个调用点的 `call_task_dequeue()`；否定拆分方案、改为 unlink 后立即解锁。v3 全部落实。
 - 无 NAK 与遗留争议。
 
 ## 合入评估

@@ -58,13 +58,13 @@ layout: article
 rseq 时间片扩展授予路径的硬死锁（critical，08-02 系列 002）在 08-03 有新进展：Peter Zijlstra 建议用 reflow 替代新增 `guard(irq)()` 包装，更贴合既有锁上下文。仍 critical，待作者定稿 v2。
 
 ## 背景与问题
-rseq 的「时间片扩展（TSE）」授予路径需要在中断上下文重排 deferred TIF，调用 `hrtimer_rearm_deferred_tif()`——该调用要求关中断。但授予路径在**开中断**下运行，导致 hrtimer 的 base 锁在 IRQ 重入时被反向获取，构成锁反转，最终表现为硬死锁。该问题最初通过真实间歇性 lockup 发现（非仅 lockdep 理论）。08-02 文章（sched-20260802-002）已覆盖 v1 的单行 `guard(irq)()` 修复。
+rseq 的「时间片扩展（TSE）」授予路径需要在中断上下文重排 deferred TIF，调用 `hrtimer_rearm_deferred_tif()`——该调用要求关中断。但授予路径在**开中断**下运行，导致 hrtimer 的 base 锁在 IRQ 重入时被反向获取，构成锁反转，最终表现为硬死锁。该问题最初通过真实间歇性 lockup 发现（非仅 lockdep 理论）。08-02 文章（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-002-rseq-fix-hard-lockup-on-granted-time-slice-extension.html">sched-20260802-002</a>）已覆盖 v1 的单行 `guard(irq)()` 修复。
 
 ## 技术方案
 08-03 上 Peter Zijlstra 给出 reflow 建议：与其在调用点新增 `guard(irq)()` 包装（引入新的关中断作用域），不如把 TSE 授予与 hrtimer 重排的上下文重新组织（reflow），使 `hrtimer_rearm_deferred_tif()` 始终在已知的关中断路径下执行。这样不新增额外的锁/irq 作用域，更贴合既有锁设计，也避免 `guard(irq)` 可能掩盖更深层上下文问题。
 
 ## 版本演进与当前进展
-- 08-02：v1 单行 `guard(irq)()`（sched-20260802-002）。
+- 08-02：v1 单行 `guard(irq)()`（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-002-rseq-fix-hard-lockup-on-granted-time-slice-extension.html">sched-20260802-002</a>）。
 - 08-03：Peter Zijlstra 在 16272 回帖，提出 reflow 改法。当前等待原作者据此调整。
 
 ## Maintainer 意见与讨论焦点

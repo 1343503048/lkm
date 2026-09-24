@@ -51,10 +51,10 @@ layout: article
 ---
 
 ## TL;DR
-Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还原）；对 Prateek 的 LBF_ALL_PINNED 质疑给出双簇 T0/T1/T2 反例走查。维护者仍未跟进。本文为增量更新，09-10/09-11 讨论见 sched-20260910-001、sched-20260911-009。
+Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给出生产系统 RT 任务占比数据（18 个 CPU 上 RT 占比 21%~53%，如 CPU0 197/369），论证「RT 任务已无法继续扩容、kworker/ksoftirqd 的公平时延才是瓶颈」，并提出新设计方向（LB_PROMOTE 使能时给各 CPU 调度域加 SD_BALANCE_WAKE、禁用时还原）；对 Prateek 的 LBF_ALL_PINNED 质疑给出双簇 T0/T1/T2 反例走查。维护者仍未跟进。本文为增量更新，09-10/09-11 讨论见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260910-001</a>、<a class="article-ref" href="/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260911-009</a>。
 
 ## 背景与问题
-（承 sched-20260911-009）Vincent 质疑「有实时需求为何不用 RT 调度器」并否定 LB_PROMOTE 前提；Prateek 索要 patch 1 数据并给出 rq->all_pinned 反方案。作者当日逐条回应。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-009-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260911-009</a>）Vincent 质疑「有实时需求为何不用 RT 调度器」并否定 LB_PROMOTE 前提；Prateek 索要 patch 1 数据并给出 rq->all_pinned 反方案。作者当日逐条回应。
 
 ## 技术方案
 当日无新版本，作者以四封回帖推进论证：
@@ -75,7 +75,7 @@ Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给�
 *likelihood=low*（不变）：作者的辩护质量显著提升，但 Vincent 对前提的否定仍未被正面化解，维护者无跟进。*blocking_issues*：SD_BALANCE_WAKE 方案无人评估；patch 1 数据仍缺（Prateek 索要的独立收益数字）；效果数据仍限作者单一嵌入式平台。*next_action*：等 Vincent/Prateek 对新论据的回应；若 SD_BALANCE_WAKE 方向被接受，等作者出正式 v2。
 
 ## 效果评估
-新增一手数据为静态构成表（各 CPU RT/总任务数，如 CPU0 369/197、CPU1 293/132），用于论证「RT 无法扩容」，非 LB_PROMOTE 的收益数据。0.3% 平均开销与 ≥4ms 延迟消除的交换仍是作者主张（其早前测试平台承 sched-20260910-001），patch 1 的独立收益数字仍未提供。
+新增一手数据为静态构成表（各 CPU RT/总任务数，如 CPU0 369/197、CPU1 293/132），用于论证「RT 无法扩容」，非 LB_PROMOTE 的收益数据。0.3% 平均开销与 ≥4ms 延迟消除的交换仍是作者主张（其早前测试平台承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260910-001</a>），patch 1 的独立收益数字仍未提供。
 
 ## 我可以参与的点
 - kind=review：评估「LB_PROMOTE 使能时切换 SD_BALANCE_WAKE、禁用时还原」的可行性——这是作者首次给出不需要新选核函数的替代接口形态，直接回应 Vincent 的核心反对理由，值得在 v2 前给出结论。

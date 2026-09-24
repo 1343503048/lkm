@@ -226,4 +226,4 @@ nohz_full housekeeping 组合、pin 在非 preferred 的任务保持不动、`ta
 - Yury Norov 在 v12 08/13 上的新一轮意见（9/5）：https://lore.kernel.org/all/aptiJP_8SWwZWju6@yury/
 - 作者对 pahole/命名/竞态的逐条答复（9/7）：https://lore.kernel.org/all/7d88a3c4-a7e4-4814-9e29-84955b69a5b3@linux.ibm.com/
 - v10 封面（第三方测试所针对的版本）：https://lore.kernel.org/all/20260812054033.95658-1-sshegde@linux.ibm.com/
-- 相关：[[sched-20260825-001]]（v11 主文）、[[sched-20260822-003]]（Yury 独立测试与回退）、[[sched-20260902-001]]（同期 guest/steal 方向的 PE 批合并）
+- 相关：<a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a>（v11 主文）、<a class="article-ref" href="/lkm/2026/08/22/sched-20260822-003-steal-governor-v10-benchmark-3-5pct-regression.html">sched-20260822-003</a>（Yury 独立测试与回退）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html">sched-20260902-001</a>（同期 guest/steal 方向的 PE 批合并）

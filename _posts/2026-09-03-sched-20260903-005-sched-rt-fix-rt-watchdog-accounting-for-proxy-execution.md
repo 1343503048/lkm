@@ -90,8 +90,8 @@ layout: article
 
 - 本补丁：https://lore.kernel.org/all/20260903111247.3538976-1-sh_def@163.com/
 - 相关文章/系列：
-  - [[sched-20260903-001]] 代理执行下执行上下文 tick 处理（同作者、同 `Fixes` 提交）。
-  - [[sched-20260903-008]] cgroup cputime 归属调度上下文（同作者，同属上下文一致性簇）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> 代理执行下执行上下文 tick 处理（同作者、同 `Fixes` 提交）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html">sched-20260903-008</a> cgroup cputime 归属调度上下文（同作者，同属上下文一致性簇）。
 - 相关代码：
   - `kernel/sched/rt.c` `task_tick_rt()` / `watchdog()`
   - `kernel/sched/core.c` `try_to_block_task()` / `__schedule()` 的 `rt.timeout` 重置点

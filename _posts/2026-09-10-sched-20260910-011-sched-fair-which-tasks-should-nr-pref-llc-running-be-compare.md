@@ -51,7 +51,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-015 / sched-20260830-003。09-09 Chen Yu 对「用 cfs.h_nr_queued 作分母」与「Lu Wang 的 ALB guard 是否已覆盖该场景」的两连问，09-10 由 Tim Chen 给出完整回答：用 T1/T2 反例论证 h_nr_queued 作分母会错误触发 active balance，并指出 Lu Wang 的补丁只缓解 migrate_llc 一种迁移原因；Chen Yu 表示接受并已启动 sanity 测试，结果待回报。分母口径之争基本落定，维持 runnable 域计数。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a> / <a class="article-ref" href="/lkm/2026/08/30/sched-20260830-003-sched-fair-which-tasks-should-nr-pref-llc-running-be-compared-against.html">sched-20260830-003</a>。09-09 Chen Yu 对「用 cfs.h_nr_queued 作分母」与「Lu Wang 的 ALB guard 是否已覆盖该场景」的两连问，09-10 由 Tim Chen 给出完整回答：用 T1/T2 反例论证 h_nr_queued 作分母会错误触发 active balance，并指出 Lu Wang 的补丁只缓解 migrate_llc 一种迁移原因；Chen Yu 表示接受并已启动 sanity 测试，结果待回报。分母口径之争基本落定，维持 runnable 域计数。
 
 ## 背景与问题
 cache-aware scheduling 的 alb_break_llc() 需要判断「本 LLC 上偏好该 LLC 的任务占比」来决定是否打破 LLC 亲和做 active balance，分子 nr_pref_llc_running 应与哪个分母比较存在争议：08-28 的改动把 nr_pref_llc_running 移入 runnable 域（与 DELAY_DEQUEUE 对齐，h_nr_runnable 作分母），09-09 Chen Yu 提出 cfs.h_nr_queued 作为候选分母并给出 3 任务反例。

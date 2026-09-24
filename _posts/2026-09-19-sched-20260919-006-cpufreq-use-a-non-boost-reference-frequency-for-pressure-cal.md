@@ -47,13 +47,13 @@ layout: article
 增量更新：Jianyong Wu 的 cpufreq CPU pressure 参考频率修复本日被 Rafael J. Wysocki 指出方向性偏差——Rafael 认为问题的本质是"在 `arch_scale_freq_ref()` 为零时仍施加了 pressure"，与 boost 本身关系不大，并贴出一版更窄的替代补丁（把回退限于 `intel_pstate` 非对称容量场景），请作者与 Ricardo 帮忙测试。
 
 ## 背景与问题
-背景见 sched-20260918-010：cpufreq 的 CPU pressure 计算此前在 `arch_scale_freq_ref()` 为零时回退到 `policy->cpuinfo.max_freq`，导致 boost 开关时 pressure 无谓变化，干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260918-010</a>：cpufreq 的 CPU pressure 计算此前在 `arch_scale_freq_ref()` 为零时回退到 `policy->cpuinfo.max_freq`，导致 boost 开关时 pressure 无谓变化，干扰负载均衡（cache-aware scheduling 无法按预期聚合 LLC 任务）。
 
 ## 技术方案
-原修复（见 sched-20260918-010）：改用"非 boost 参考频率"计算 pressure。本日 Rafael 提出另一条路线：问题实质在于调度器假设 `arch_scale_freq_ref()` 为零时 pressure 应为零，而被质疑的 commit 违反了这个假设——所以不应把修复绑到 boost 上。替代补丁（未测试）把 `cpufreq_update_pressure()` 里的 `max_freq` 回退改为仅当驱动提供 `scale_freq_ref` 回调时才回退（`if (!max_freq && cpufreq_driver->scale_freq_ref) max_freq = cpufreq_driver->scale_freq_ref(policy);`），并在 `intel_pstate` 里新增 `intel_pstate_scale_freq_ref()`：仅当 `cpu->capacity_perf` 非零（即有非对称容量/混合核）时返回 `cpuinfo.max_freq`，否则返回 0——即把回退范围限定到"intel_pstate 配非对称容量"这一触发场景。
+原修复（见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260918-010</a>）：改用"非 boost 参考频率"计算 pressure。本日 Rafael 提出另一条路线：问题实质在于调度器假设 `arch_scale_freq_ref()` 为零时 pressure 应为零，而被质疑的 commit 违反了这个假设——所以不应把修复绑到 boost 上。替代补丁（未测试）把 `cpufreq_update_pressure()` 里的 `max_freq` 回退改为仅当驱动提供 `scale_freq_ref` 回调时才回退（`if (!max_freq && cpufreq_driver->scale_freq_ref) max_freq = cpufreq_driver->scale_freq_ref(policy);`），并在 `intel_pstate` 里新增 `intel_pstate_scale_freq_ref()`：仅当 `cpu->capacity_perf` 非零（即有非对称容量/混合核）时返回 `cpuinfo.max_freq`，否则返回 0——即把回退范围限定到"intel_pstate 配非对称容量"这一触发场景。
 
 ## 版本演进与当前进展
-- v1（2026-09-15，`<20260915065747.1671965-1-wujianyong@hygon.cn>`）："非 boost 参考频率"方案（见 sched-20260918-010）。
+- v1（2026-09-15，`<20260915065747.1671965-1-wujianyong@hygon.cn>`）："非 boost 参考频率"方案（见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260918-010</a>）。
 - 本日 Rafael Wysocki（`<5135696.31r3eYUQgx@rafael.j.wysocki>`）提出窄化 scope 的替代方案，请作者（Jianyong Wu）与 Ricardo 测试。
 
 ## Maintainer 意见与讨论焦点

@@ -50,10 +50,10 @@ layout: article
 ---
 
 ## TL;DR
-Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态，但收益机理首次得到完整阐述。本文为增量更新，测试争议见 sched-20260911-017。
+Andrea Righi 当日对 Dietmar 的 ThunderX2 无收益实测给出长篇机理回应：PE0 更可能处理中断等 per-CPU 杂务，Olympus 有「PE0 需持续 WFI 10K 周期才回到全资源单线程模式」的迟滞设计，因此 ThunderX2（无该延迟模式切换）的驻留型负载确实无法复现收益；并提出在 THX2 上只验证放置行为而非性能的具体方案。系列仍处于被 drop 状态，但收益机理首次得到完整阐述。本文为增量更新，测试争议见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260911-017</a>。
 
 ## 背景与问题
-（承 sched-20260911-017）系列让调度器在 SMT 不对称平台偏向首选 sibling；Dietmar 在 ThunderX2 SMT-4 上 SGEMM 七种布局实测 v5 与基线无差异，并质疑「任务数 ≤ 核数时 SIB 已一核一任务铺开，收益难以发生」。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-017-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260911-017</a>）系列让调度器在 SMT 不对称平台偏向首选 sibling；Dietmar 在 ThunderX2 SMT-4 上 SGEMM 七种布局实测 v5 与基线无差异，并质疑「任务数 ≤ 核数时 SIB 已一核一任务铺开，收益难以发生」。
 
 ## 技术方案
 Andrea 的回应揭示了两点此前未在邮件列表写清的硬件/平台差异：
@@ -81,7 +81,7 @@ Andrea 的回应揭示了两点此前未在邮件列表写清的硬件/平台差
 
 ## 我可以参与的点
 - kind=testing：在 THX2（或任何多级 sibling 优先级的 SMT 平台）按 Andrea 给出的模式跑 32/64/128 任务放置验证并回帖——直接检验机理回应的核心预测，且比 SGEMM 更贴近系列的意图。
-- kind=discussion：跟进 arm64 检测机制的替代提案（承 sched-20260910-007，仍无人认领）。
+- kind=discussion：跟进 arm64 检测机制的替代提案（承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260910-007</a>，仍无人认领）。
 
 ## 参考链接
 - Andrea 的机理回应：https://lore.kernel.org/all/aqSEB2N_NQbBVab6@gpd4/

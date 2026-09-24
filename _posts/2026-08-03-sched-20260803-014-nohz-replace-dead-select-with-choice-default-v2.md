@@ -58,13 +58,13 @@ layout: article
 `nohz` 用 `choice/default` 替换失效的 `select` 依赖（08-02 系列 005）在 08-03 收到 Reviewed-by，确认语义等价。低严重度，合入可能性高；仍缺 `.config` 对比数据（明确参与点）。
 
 ## 背景与问题
-`NO_HZ_FULL` 的 Kconfig 原先 `select` 一个**已删除/失效**的符号，导致该依赖静默失效、配置可能与作者预期漂移而不被察觉。08-02 文章（sched-20260802-005）已覆盖 v1：把 `select` 改为 `choice`/`default` 结构，使依赖关系显式且可验证。
+`NO_HZ_FULL` 的 Kconfig 原先 `select` 一个**已删除/失效**的符号，导致该依赖静默失效、配置可能与作者预期漂移而不被察觉。08-02 文章（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-005-nohz-replace-dead-select-with-choice-default.html">sched-20260802-005</a>）已覆盖 v1：把 `select` 改为 `choice`/`default` 结构，使依赖关系显式且可验证。
 
 ## 技术方案
 08-03 Frederic Weisbecker 给出 `Reviewed-by`，确认 `choice`/`default` 重构在语义上与原 `select` 路径等价。核心改动不变：用显式 choice 块 + 合理 default 表达 NO_HZ_FULL 的依赖，替代失效的 select。
 
 ## 版本演进与当前进展
-- 08-02：v1 提出 choice/default 重构（sched-20260802-005）。
+- 08-02：v1 提出 choice/default 重构（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-005-nohz-replace-dead-select-with-choice-default.html">sched-20260802-005</a>）。
 - 08-03：Reviewed-by 通过，进入合入前夜。
 
 ## Maintainer 意见与讨论焦点

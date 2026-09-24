@@ -46,7 +46,7 @@ layout: article
 本文为增量更新。Zhidao Su 的 v5「用序列标记检测 proxy walk 环」今日（09-15）获 Hui Su 回复：Hui Su 称正在实验同一环检测问题的不同取舍，已作为独立 RFC 发出（sched/proxy_exec: detect cycles without persistent walk state），并简述其 Online Brent 方案与 v5 的核心差异——不往 task_struct/rq 加状态、不需激活时复位、复用真实 owner walk 而非另做 preflight；代价是 Brent 可能在 walk 短暂闭合 blocked_donor 环后才检出。合入判断 unknown。
 
 ## 背景与问题
-承 proxy_exec 环检测主线（见 related_articles 与 sched-20260915-009）：blocked_on 链成环会让 `find_proxy_task()` 持 rq->lock 死循环。Zhidao Su 的 v5 用「task_struct + rq 序列状态 + 激活时复位标记」检测重复；本日 Hui Su 从旁给出一个免持久状态的替代取舍，作为对 v5 方案的独立评审视角。
+承 proxy_exec 环检测主线（见 related_articles 与 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html">sched-20260915-009</a>）：blocked_on 链成环会让 `find_proxy_task()` 持 rq->lock 死循环。Zhidao Su 的 v5 用「task_struct + rq 序列状态 + 激活时复位标记」检测重复；本日 Hui Su 从旁给出一个免持久状态的替代取舍，作为对 v5 方案的独立评审视角。
 
 ## 技术方案
 本日 v5 线程无新代码。Hui Su 的回复概述其替代方案的要点并附对比测试线索：环检测状态局部于真实 owner walk；不加 task_struct/rq 状态、不要激活时标记复位；复用 walk 的 owner 解析；代价是允许短暂 backlink 窗口。并附上与 v5 同基/同配置对比的结论（正常无环路径 ns/call 在测试深度上相当）。

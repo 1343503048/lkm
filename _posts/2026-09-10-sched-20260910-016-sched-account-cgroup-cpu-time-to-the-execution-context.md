@@ -61,10 +61,10 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 sched-20260909-013 / sched-20260904-003。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enforcement 不再吻合，而这个缺口应该用「proxy execution 的显式统计」来补——也就是 John 自己提的 donated/gifted 时间思路。至此 cgroup 维护者与原设计者两方立场对齐，此前一直无人认领的那个后续工作被 Tejun 明确认定为正确方向。补丁本身仍等 Peter Zijlstra 收取。
+本文为增量更新，完整背景与 v1/v2 演进见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260909-013</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260904-003</a>。09-10 的唯一进展是 **Tejun Heo 直接回复 John Stultz，把这枚单行补丁背后的口径之争定了调**：cgroup 基础统计应当与 per-thread 上报一致，即使这意味着它与 bandwidth enforcement 不再吻合，而这个缺口应该用「proxy execution 的显式统计」来补——也就是 John 自己提的 donated/gifted 时间思路。至此 cgroup 维护者与原设计者两方立场对齐，此前一直无人认领的那个后续工作被 Tejun 明确认定为正确方向。补丁本身仍等 Peter Zijlstra 收取。
 
 ## 背景与问题
-（本节为增量文章，完整背景见 sched-20260909-013，此处只保留理解本日讨论所必需的部分。）
+（本节为增量文章，完整背景见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260909-013</a>，此处只保留理解本日讨论所必需的部分。）
 
 proxy execution 把调度上下文（`rq->donor`）与执行上下文（`rq->curr`）拆开后，per-task 与 thread-group 的 user/system 时间已跟随实际执行者，但 `cgroup_account_cputime()` 仍记给 donor。当 donor 与锁持有者分属不同 cgroup 时，`cpu.stat` 的 `usage_usec` 会落到另一个组头上。
 
@@ -97,11 +97,11 @@ proxy execution 把调度上下文（`rq->donor`）与执行上下文（`rq->cur
 ## Maintainer 意见与讨论焦点
 - **Tejun Heo（cgroup / workqueue 维护者）**：本日定调方。他的措辞 "I want the cgroup base stats to agree with what's reported for threads" 是**要求**而非偏好，且他主动承认代价（"This makes it disagree with bw enforcement"）并指定了补偿手段。此前他的 ack 是条件式的，本日的表态实质上把条件变成了他本人的设计主张。
 - **John Stultz（`aa4f74dfd42b` 作者）**：被回复方。他 09-09 的 ack 仍写作 "Tentatively"，原话包含 "I'll trust your judgement"；他提的 donated/gifted 统计被 Tejun 本日明确 endorse（"like you're suggesting"）。**但 John 在 09-10 缓存截止前没有回复 Tejun 这封**，因此他的 Tentatively 是否转正、他是否接受「bw 与 usage 口径分离」这个结论，仍未落定。这是本线程当前唯一悬着的技术性确认。
-- **Peter Zijlstra（sched 侧）**：当日未参与本线程。值得注意的是同日他在同作者的相邻补丁 `sched/core: Call wq_worker_tick() for the execution context` 上明确表态 "I can take it through sched/urgent"（见 sched-20260910-017），说明 PE 记账类小修复的收取通道是通的——本补丁尚未获得同样的表态。
+- **Peter Zijlstra（sched 侧）**：当日未参与本线程。值得注意的是同日他在同作者的相邻补丁 `sched/core: Call wq_worker_tick() for the execution context` 上明确表态 "I can take it through sched/urgent"（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260910-017</a>），说明 PE 记账类小修复的收取通道是通的——本补丁尚未获得同样的表态。
 - 无 NAK、无新分歧。焦点已从「改不改」转移到「谁把 donated/gifted 统计做出来」。
 
 ## 合入评估
-*likelihood: high*（与 sched-20260909-013 持平，但支撑更实：此前依赖 John 的让步式 ack，现在有 cgroup 维护者主动给出设计原则）。
+*likelihood: high*（与 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260909-013</a> 持平，但支撑更实：此前依赖 John 的让步式 ack，现在有 cgroup 维护者主动给出设计原则）。
 
 *blocking_issues*：
 - John Stultz 的 ack 仍是 "Tentatively"，且他未回复 Tejun 本日的定调邮件。
@@ -121,7 +121,7 @@ proxy execution 把调度上下文（`rq->donor`）与执行上下文（`rq->cur
 - **把 donated/gifted 统计做出来（extend）**：本日的实质变化就在这里——这个后续工作此前「双方认可但无人认领」，现在 cgroup 维护者明确说「该用这个办法补缺口」。范围清楚：为 PE 场景增加 per-task（并可聚合到 cgroup）的 donated/gifted 时间计数，配合 rstat 暴露，使 usage 与 bw 两个口径的差额可观测。这是一个动机已被维护者写进邮件、且尚无人动手的独立特性，适合作为后续 patch 发出。
 - **实测补齐唯一的无数据断言（testing）**：在启用 proxy execution 的环境构造 donor 与锁持有者跨 cgroup 的负载，同时记录三组数据——改前/改后 `cpu.stat:usage_usec` 的归属、`/proc/<pid>/stat` 的 utime+stime、以及 CFS 限流触发点，验证「只有前两者变化、限流不变」。把结果回帖可以同时收口 John 的 Tentatively 与 Tejun 的一致性主张。
 - **推动收口（discussion）**：把 Tejun 本日的原话回给 John，请他确认这已解决其顾虑并将 ack 转正；同时提请 Peter 参照同日 `wq_worker_tick()` 补丁的处理方式（`sched/urgent`）一并收取。
-- 自家分支若启用 PE 且依赖 cgroup CPU 计费口径，这枚单行补丁适合回合，但需先确认采集侧是否假定「记给 donor」（new_patch，同 sched-20260909-013）。
+- 自家分支若启用 PE 且依赖 cgroup CPU 计费口径，这枚单行补丁适合回合，但需先确认采集侧是否假定「记给 donor」（new_patch，同 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-013-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260909-013</a>）。
 
 ## 参考链接
 - Tejun Heo 本日的口径定调（本线程当日邮件）: https://lore.kernel.org/all/aqGb1ar23XBzdaKn@slm.duckdns.org/
@@ -130,4 +130,4 @@ proxy execution 把调度上下文（`rq->donor`）与执行上下文（`rq->cur
 - v2 线程根: https://lore.kernel.org/all/20260904034707.268416-1-sh_def@163.com/
 - 相关上游提交 `aa4f74dfd42b`（sched: Fix runtime accounting w/ split exec & sched contexts）的 lore 链接: 未获取到（该 commit 的邮件不在本缓存内，不构造搜索链接）
 - tip-bot commit / stable backport: 未获取到（尚未合入）
-- 同作者相邻补丁当日的进展: 见 sched-20260910-017
+- 同作者相邻补丁当日的进展: 见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260910-017</a>

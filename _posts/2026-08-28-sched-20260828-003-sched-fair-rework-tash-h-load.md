@@ -54,7 +54,7 @@ layout: article
 
 ## TL;DR
 
-Peter Zijlstra 8/28 发出 4 补丁系列（cover letter 标题里的 `tash_h_load` 是作者自己的笔误），重做 cgroup 层级负载 `cfs_rq->h_load` 的计算。他给 `task_h_load()` 定了三条罪名：**层级遍历对 rq->lock 的依赖从未被断言、因而本质上是有竞态的"broken"**；限流用的是 jiffies（=HZ）而不是 PELT 衰减；更新时机绑在 `task_h_load()` 被调用那一刻，导致 `sched/debug` 里打印的 `h_load` 几乎永远是过期值。手法是把 back-link 追踪塞进 `for_each_sched_entity()` 宏，再在 enqueue/dequeue/set_next/tick 这些**确定持 rq->lock** 的位置顺手把 `h_load` 算新。作者自评 "Lightly tested..."。当日无回帖；8/31 起 Vincent Guittot 与 Chen Yu 介入讨论（站内 sched-20260831-003 记录）。对用 cgroup CPU 负载均衡的用户，这块是直接影响迁移决策正确性的。
+Peter Zijlstra 8/28 发出 4 补丁系列（cover letter 标题里的 `tash_h_load` 是作者自己的笔误），重做 cgroup 层级负载 `cfs_rq->h_load` 的计算。他给 `task_h_load()` 定了三条罪名：**层级遍历对 rq->lock 的依赖从未被断言、因而本质上是有竞态的"broken"**；限流用的是 jiffies（=HZ）而不是 PELT 衰减；更新时机绑在 `task_h_load()` 被调用那一刻，导致 `sched/debug` 里打印的 `h_load` 几乎永远是过期值。手法是把 back-link 追踪塞进 `for_each_sched_entity()` 宏，再在 enqueue/dequeue/set_next/tick 这些**确定持 rq->lock** 的位置顺手把 `h_load` 算新。作者自评 "Lightly tested..."。当日无回帖；8/31 起 Vincent Guittot 与 Chen Yu 介入讨论（站内 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html">sched-20260831-003</a> 记录）。对用 cgroup CPU 负载均衡的用户，这块是直接影响迁移决策正确性的。
 
 ## 背景与问题
 
@@ -91,7 +91,7 @@ Cover letter 只给了动机不给细节："So task_h_load() has been known bugg
 
 - 8/28 15:40 首发，subject 不带版本号（PZ 习惯）。作者自述 "Lightly tested..."。
 - 当日（8/28）无任何回帖。
-- 后续：8/31 站内 sched-20260831-003 记录了 Vincent Guittot 与 Peter Zijlstra 就"两个可为 NULL 的参数需要注释"的收口式讨论，方向已无异议。
+- 后续：8/31 站内 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html">sched-20260831-003</a> 记录了 Vincent Guittot 与 Peter Zijlstra 就"两个可为 NULL 的参数需要注释"的收口式讨论，方向已无异议。
 
 ## Maintainer 意见与讨论焦点
 

@@ -64,7 +64,7 @@ layout: article
 增量更新：Shubhang Kaushik 的 fair hrtick 修复系列推出 v4（新增 SNT_REPICK 复用 set_next_task_fair() 重启 one-shot hrtick；明确 fair 可重启而 DL 不可的原因；文档化 SNT_NORMAL/SNT_PICK/SNT_REPICK 语义）。本日 v4 刚发出、暂无新 review；此前已获 Zhan Xusheng 的 Reviewed-by，并带 HRTICK 延迟 90/99 分位实测数据。
 
 ## 背景与问题
-背景见 sched-20260917-005：fair hrtick 是 one-shot 定时器，hrtick 到期后若 pick_task_fair() 又选中同一个任务（same-task repick），put_prev_set_next_task() 因 next==prev 提前返回、跳过 set_next_task_fair()，导致下一个 fair 抢占点没有 hrtick 被重新武装，抢占粒度丢失。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-005-sched-restart-fair-hrtick-after-same-task-repicks.html">sched-20260917-005</a>：fair hrtick 是 one-shot 定时器，hrtick 到期后若 pick_task_fair() 又选中同一个任务（same-task repick），put_prev_set_next_task() 因 next==prev 提前返回、跳过 set_next_task_fair()，导致下一个 fair 抢占点没有 hrtick 被重新武装，抢占粒度丢失。
 
 ## 技术方案
 - 引入 `SNT_REPICK` 复用路径：`put_prev_set_next_task()` 在 next==prev 时调用 `next->sched_class->set_next_task(rq, next, SNT_REPICK)`，`set_next_task_fair()` 跳过任务切换工作、仅调用 `hrtick_start_fair()` 重启 hrtick；`hrtick_start()` 在 schedule() 期间记录 delay，`hrtick_schedule_exit()` 重新武装定时器。

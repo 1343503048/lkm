@@ -150,7 +150,7 @@ patch 的形态——它在 `sched_clock_register()` 里加一次除法，运行
   用户态可读位置），而不是给 `sched_clock()` 加分支语义——线程里这个方案是 Marc 提的（一次性采样 +
   离线处理），作者反驳的理由只有「boot 期可能 panic 所以 debugfs 不可用」+「dmesg 也能做但麻烦」，
   这个反驳不够硬，值得替他补完或彻底放弃。
-- 相关：[[sched-20260902-011]] 里 `rq_clock()`/`idle_stamp` 那类「时钟起点假设」的回归，正好说明
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-011-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stamp.html">sched-20260902-011</a> 里 `rq_clock()`/`idle_stamp` 那类「时钟起点假设」的回归，正好说明
   动 `sched_clock` 语义的风险不是抽象的。
 
 ## 参考链接
@@ -165,4 +165,4 @@ patch 的形态——它在 `sched_clock_register()` 里加一次除法，运行
 - 作者退化为 pr_info 一行（9/7）：https://lore.kernel.org/all/ap5-ZM-2RMih3iQ7@U-2FWC9VHC-2323.local/
 - Marc 最终反对（9/7）：https://lore.kernel.org/all/86h5k14d34.wl-maz@kernel.org/
 - 作者接受收尾（9/7）：https://lore.kernel.org/all/ap6Ypbz4wkftPgBa@U-2FWC9VHC-2323.local/
-- 相关：[[sched-20260902-002]]（同期调度核心改动）、[[sched-20260902-011]]（rq_clock/idle_stamp 起点假设）
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a>（同期调度核心改动）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-011-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stamp.html">sched-20260902-011</a>（rq_clock/idle_stamp 起点假设）

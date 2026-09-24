@@ -45,10 +45,10 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260920-003（v1）。Quchaosheng 发出 v2：按 Sebastian Andrzej Siewior 的意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误的测量段与 yield 措辞，并把 debugfs 段并入运行时选择小节。新增 `Documentation/scheduler/sched-preemption.rst`（84 行）。Sebastian 建议合入。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html">sched-20260920-003</a>（v1）。Quchaosheng 发出 v2：按 Sebastian Andrzej Siewior 的意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误的测量段与 yield 措辞，并把 debugfs 段并入运行时选择小节。新增 `Documentation/scheduler/sched-preemption.rst`（84 行）。Sebastian 建议合入。
 
 ## 背景与问题
-背景见 sched-20260920-003：调度文档只有各调度类与调参说明，没有抢占模型（PREEMPT_NONE/VOLUNTARY/FULL/LAZY 等四模型）本身的概述，唯一出处是 `preempt=` 的 kernel-parameters 条目。
+背景见 <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html">sched-20260920-003</a>：调度文档只有各调度类与调参说明，没有抢占模型（PREEMPT_NONE/VOLUNTARY/FULL/LAZY 等四模型）本身的概述，唯一出处是 `preempt=` 的 kernel-parameters 条目。
 
 ## 技术方案
 新增 `sched-preemption.rst`，覆盖四种模型、各模型下调度请求如何被兑现、哪些能在运行时选择。v2 改为沿着「调度请求」主线叙述，而非 v1 的「走读 `resched_curr_lazy()`/`scheduler_tick()` 代码」方式。

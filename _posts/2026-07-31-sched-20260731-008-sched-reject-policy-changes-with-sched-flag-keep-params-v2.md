@@ -39,11 +39,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260730-001。Andrea Righi (NVIDIA) 的 SCHED_FLAG_KEEP_PARAMS 策略变更副作用修复 v2 在 20260731 收到 Bharata B Rao (AMD) 的确认回复。Bharata 确认修复方向正确。合入可能性高。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-001-sched-fix-sched-flag-keep-params-side-effects.html">sched-20260730-001</a>。Andrea Righi (NVIDIA) 的 SCHED_FLAG_KEEP_PARAMS 策略变更副作用修复 v2 在 20260731 收到 Bharata B Rao (AMD) 的确认回复。Bharata 确认修复方向正确。合入可能性高。
 
 ## 背景与问题
 
-（完整背景见 sched-20260730-001）`SCHED_FLAG_KEEP_PARAMS` 标志旨在保持调度参数不变，但策略变更（如从 SCHED_OTHER 切换到 SCHED_FIFO）仍会产生副作用，修改了本应保持不变的参数。
+（完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-001-sched-fix-sched-flag-keep-params-side-effects.html">sched-20260730-001</a>）`SCHED_FLAG_KEEP_PARAMS` 标志旨在保持调度参数不变，但策略变更（如从 SCHED_OTHER 切换到 SCHED_FIFO）仍会产生副作用，修改了本应保持不变的参数。
 
 ## 新增讨论（20260731）
 
@@ -66,4 +66,4 @@ layout: article
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260730135858.2460751-1-arighi@nvidia.com
-- 前日分析: sched-20260730-001
+- 前日分析: <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-001-sched-fix-sched-flag-keep-params-side-effects.html">sched-20260730-001</a>

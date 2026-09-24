@@ -55,13 +55,13 @@ layout: article
 ---
 
 ## TL;DR
-Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延迟的负载均衡改造）RESEND 后的讨论在当日继续发酵：Vincent Guittot 进一步加码——不只拒绝 05/10 的新选核函数，还质疑整个 LB_PROMOTE 的存在必要性与「real-time」的提法；K Prateek Nayak 对 01/10 给出反方案（rq->all_pinned）并要求数据；作者逐条回应但未让步。本文为增量更新，系列全貌与 09-10 讨论（Vincent 拒 05/10 等）见 sched-20260910-001。
+Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延迟的负载均衡改造）RESEND 后的讨论在当日继续发酵：Vincent Guittot 进一步加码——不只拒绝 05/10 的新选核函数，还质疑整个 LB_PROMOTE 的存在必要性与「real-time」的提法；K Prateek Nayak 对 01/10 给出反方案（rq->all_pinned）并要求数据；作者逐条回应但未让步。本文为增量更新，系列全貌与 09-10 讨论（Vincent 拒 05/10 等）见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260910-001</a>。
 
 ## 背景与问题
 作者观察：小 CPU 数平台上，任务唤醒/负载均衡存在不合理的 CPU 空闲事件与 sys% 代价，提出 LB_PROMOTE feature（patch 4）与 select_task_rq_fair_thin()（patch 5）等 10 补丁改造。Vincent 09-10 已拒绝 05/10（不接受再多一个 select idle cpu 函数），Prateek 质疑 01/10 的 overload 语义，Kayra 质疑 02/10 的冗余检查论证。
 
 ## 技术方案
-（承 sched-20260910-001：1 通用修复，2/3 前置，4 定义 LB_PROMOTE，5 thin 选核，6/7 抢占式 active balance，8 去 avg_idle 检查，9/10 newly idle 尽力迁移。）当日新增讨论要点：
+（承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260910-001</a>：1 通用修复，2/3 前置，4 定义 LB_PROMOTE，5 thin 选核，6/7 抢占式 active balance，8 去 avg_idle 检查，9/10 newly idle 尽力迁移。）当日新增讨论要点：
 
 - patch 5（Vincent，加码）：「如果你有实时需求，为什么不用实时调度器？目前我看不出需要新分支或 LB_PROMOTE 的理由。你没有把问题描述清楚，就给出了一个平台特定的方案而不是修现有代码。藏在 LB_PROMOTE 后面并不能让它变好。」
 - patch 4（Vincent，缓和一些）：「4ms tick 下看起来合理；ILB 在下个 tick 会修这个，慢路径唤醒有类似版本。你也该看看 newly idle load balance 路径。实时系统请用实时调度器，但你可以改用 interactive（交互式系统）来表述。」
@@ -82,7 +82,7 @@ Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延
 *likelihood=low*：核心补丁 05/10 已被 Vincent 两度拒绝且反对面扩大到 LB_PROMOTE 本身；01/10 被要求补数据且出现竞争方案。*blocking_issues*：作者需正面回答「为什么不用 RT 调度器/为何叫 real-time」；patch 1 缺少独立收益数据；Prateek 反方案与作者方案的取舍未决；效果数据全部来自作者单一嵌入式平台。*next_action*：作者明确问题定位（交互式而非实时）、按 Vincent 09-10 建议改做 nr_idle_scan 小 LLC 自适应或放弃 thin 选核、补 patch 1 数据后发正式 v2。
 
 ## 效果评估
-无新数据：当日讨论为机理与方案之争，作者未提供 patch 1 的独立收益数字（Prateek 明确索要而未获回应）；既有数据承 sched-20260910-001（单一嵌入式 arm64 平台，CONFIG_HZ_250）。
+无新数据：当日讨论为机理与方案之争，作者未提供 patch 1 的独立收益数字（Prateek 明确索要而未获回应）；既有数据承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-001-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260910-001</a>（单一嵌入式 arm64 平台，CONFIG_HZ_250）。
 
 ## 我可以参与的点
 - kind=review：分析 Prateek 反方案（rq->all_pinned + add_nr_running 恢复 overload）与作者「作用域不等价」反驳谁成立——把结论写成可进 commit message 的论证（02/10 已有先例：Kayra 质疑后由作者补充论证）。

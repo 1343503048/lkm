@@ -64,7 +64,7 @@ if (env->src_rq->nr_pref_llc_running &&
 单封提问（`<20260827135000.735138-1-zhanxusheng@xiaomi.com>`，08-27 21:50），当日无人回复。
 
 ## Maintainer 意见与讨论焦点
-帖子自身附带一条对 CAS 测试方法的观察：作者在双路 qemu guest 上无法触发该路径——cache-aware 开启、6 busy + 10 sleeping 线程的单进程场景下 `p->preferred_llc` 从未被赋值，`nr_pref_llc_running` 恒 0，`alb_break_llc()` 跑了 21 次也测不到；他怀疑 `update_se()` 在模拟环境下因 `delta_exec <= 0` 提前返回、`account_mm_sched()` 在 `mm->sc_stat` 检查前就返回。**"计数器语义无人确认 + 虚拟化环境难以验证"是当前最大的未决点**——而同日 Jianyong Wu 的 cache-aware v2 系列（sched-20260827-002）正建立在这套 LLC 偏好计数机制之上，这类语义含糊是上游化前必须扫清的障碍。
+帖子自身附带一条对 CAS 测试方法的观察：作者在双路 qemu guest 上无法触发该路径——cache-aware 开启、6 busy + 10 sleeping 线程的单进程场景下 `p->preferred_llc` 从未被赋值，`nr_pref_llc_running` 恒 0，`alb_break_llc()` 跑了 21 次也测不到；他怀疑 `update_se()` 在模拟环境下因 `delta_exec <= 0` 提前返回、`account_mm_sched()` 在 `mm->sc_stat` 检查前就返回。**"计数器语义无人确认 + 虚拟化环境难以验证"是当前最大的未决点**——而同日 Jianyong Wu 的 cache-aware v2 系列（<a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>）正建立在这套 LLC 偏好计数机制之上，这类语义含糊是上游化前必须扫清的障碍。
 
 ## 合入评估
 本身无补丁可评估。问题若被确认，修复方向 2 会牵动 CAS 计数骨架，维护者可能要作者在真实硬件上先演示触发。与 002 一样属于 CAS 上游化的必经清障讨论。

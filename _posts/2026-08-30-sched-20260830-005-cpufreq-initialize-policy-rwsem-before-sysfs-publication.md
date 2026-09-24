@@ -47,7 +47,7 @@ layout: article
 
 ## TL;DR
 
-Runyu Xiao（东南大学）单补丁：`cpufreq_policy_alloc()` 里 `init_rwsem(&policy->rwsem)` 排在 `kobject_init_and_add()` **之后**，也就是 policy 的 sysfs 目录和默认属性已经对外可见、rwsem 还没初始化——用户态只要在这个窗口里打开并读写属性，就会去取一把未初始化的信号量。补丁只是把那行提前到 kobject 发布之前（2 行改动），带 `Fixes: ad7722dab729` 与 `Cc: stable`。当天无人回复；次日 cpufreq 维护者 Viresh Kumar 直接 `Acked-by`，并有人报出同一窗口的第二个问题（见 sched-20260831-012）。
+Runyu Xiao（东南大学）单补丁：`cpufreq_policy_alloc()` 里 `init_rwsem(&policy->rwsem)` 排在 `kobject_init_and_add()` **之后**，也就是 policy 的 sysfs 目录和默认属性已经对外可见、rwsem 还没初始化——用户态只要在这个窗口里打开并读写属性，就会去取一把未初始化的信号量。补丁只是把那行提前到 kobject 发布之前（2 行改动），带 `Fixes: ad7722dab729` 与 `Cc: stable`。当天无人回复；次日 cpufreq 维护者 Viresh Kumar 直接 `Acked-by`，并有人报出同一窗口的第二个问题（见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html">sched-20260831-012</a>）。
 
 ## 背景与问题
 
@@ -83,7 +83,7 @@ Runyu Xiao（东南大学）单补丁：`cpufreq_policy_alloc()` 里 `init_rwsem
 
 - 8/30 23:53（北京时间）v1 发出，当日**无人回复**。
 - 本地主线树核对（`/home/zq/code/linux`，树时间 2026-08-31）：`init_rwsem(&policy->rwsem)` 仍在 `kobject_init_and_add()` 之后（`drivers/cpufreq/cpufreq.c:1275` vs `1262`），即该问题当时未修。
-- 次日线程推进：Viresh Kumar `Acked-by`；Zhongqiu Han 指出 `Fixes:` 应指向 `2fc3384dc75b`，并顺手报出**同一窗口的第二个漏洞**（`policy->cpus` 用不带 `__GFP_ZERO` 的 `alloc_cpumask_var()` 分配，kobject 一发布 `policy_is_inactive()` 就可能读到垃圾 mask），表示会另发修复。详见 sched-20260831-012。
+- 次日线程推进：Viresh Kumar `Acked-by`；Zhongqiu Han 指出 `Fixes:` 应指向 `2fc3384dc75b`，并顺手报出**同一窗口的第二个漏洞**（`policy->cpus` 用不带 `__GFP_ZERO` 的 `alloc_cpumask_var()` 分配，kobject 一发布 `policy_is_inactive()` 就可能读到垃圾 mask），表示会另发修复。详见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-012-cpufreq-initialize-policy-rwsem-before-sysfs-publication.html">sched-20260831-012</a>。
 
 ## Maintainer 意见与讨论焦点
 

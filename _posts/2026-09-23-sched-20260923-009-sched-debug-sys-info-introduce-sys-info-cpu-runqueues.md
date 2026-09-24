@@ -52,19 +52,19 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260911-010：Aaron Tomlin 提出新 patch——给 panic 时 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发当日无回帖。
-- sched-20260912-006：v2 完成——kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者以 `rcu_dereference()` 修复发出 v2，人类维护者评审仍未开始。
-- sched-20260923-009（今天）：Peter Zijlstra 与 Petr Mladek 开始首轮人类评审——Peter 要求给「这些路径必须远离 rq->lock」加注释/注解、并质疑是否真需要这个功能（kdump 也可只 dump 内核数据结构）；作者 Aaron Tomlin 逐条回应，坚持 `raw_spin_rq_trylock()` 非阻塞路线。likelihood 从 unknown 转 low/unknown。
+- <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260911-010</a>：Aaron Tomlin 提出新 patch——给 panic 时 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发当日无回帖。
+- <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260912-006</a>：v2 完成——kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者以 `rcu_dereference()` 修复发出 v2，人类维护者评审仍未开始。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260923-009</a>（今天）：Peter Zijlstra 与 Petr Mladek 开始首轮人类评审——Peter 要求给「这些路径必须远离 rq->lock」加注释/注解、并质疑是否真需要这个功能（kdump 也可只 dump 内核数据结构）；作者 Aaron Tomlin 逐条回应，坚持 `raw_spin_rq_trylock()` 非阻塞路线。likelihood 从 unknown 转 low/unknown。
 
 ## 背景与问题
-- sched-20260911-010：排查内核 panic 时 per-CPU runqueue 与可运行任务状态对诊断 CPU 饥饿/优先级反转很有价值；debugfs 能看到，但自动化 panic 或 crash dump 场景拿不到。把 runqueue 状态写入 log_buf 可供事后分析。
-- sched-20260912-006：背景不变——debugfs 内容不进自动化 panic/crash dump，补丁新增 `SYS_INFO_CPU_RUNQUEUES` 与 `panic_sys_info=cpu_runqueues` 开关，`sched_show_runqueues()` 把摘要写进 log_buf。
-- sched-20260923-009（今天）：背景无新增。
+- <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260911-010</a>：排查内核 panic 时 per-CPU runqueue 与可运行任务状态对诊断 CPU 饥饿/优先级反转很有价值；debugfs 能看到，但自动化 panic 或 crash dump 场景拿不到。把 runqueue 状态写入 log_buf 可供事后分析。
+- <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260912-006</a>：背景不变——debugfs 内容不进自动化 panic/crash dump，补丁新增 `SYS_INFO_CPU_RUNQUEUES` 与 `panic_sys_info=cpu_runqueues` 开关，`sched_show_runqueues()` 把摘要写进 log_buf。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260923-009</a>（今天）：背景无新增。
 
 ## 技术方案
-- sched-20260911-010：新增 `SYS_INFO_CPU_RUNQUEUES` 位与 panic_sys_info 的 `cpu_runqueues` token；`sched_show_runqueues()`（仿 `print_rq()`）只输出 running/queued 任务保持日志精简；panic 上下文安全靠 `raw_spin_rq_trylock()` + READ_ONCE 回退（争用标注 `(contended)`）、`rcu_read_lock()` 保护、省略 cgroup path（Suggested-by: Rishil Sandip Shah）。
-- sched-20260912-006：v2 唯一变化——`sched_show_runqueues()` 经 `rcu_dereference()` 访问 `rq->curr`，消除 microblaze randconfig W=1 下的 sparse __rcu 告警。
-- sched-20260923-009（今天）：方案不变（承 v2）：`sched_show_runqueues()` 只调 `print_rq(NULL, rq, cpu, false, true)`（不调会无条件拿 `rq->lock` 的 `print_cpu()`），`print_rq()` 内仅在 `rcu_read_lock()` 下遍历并 `print_task()`，全程不拿 `rq->lock`；`raw_spin_rq_trylock()` 保证非阻塞。
+- <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260911-010</a>：新增 `SYS_INFO_CPU_RUNQUEUES` 位与 panic_sys_info 的 `cpu_runqueues` token；`sched_show_runqueues()`（仿 `print_rq()`）只输出 running/queued 任务保持日志精简；panic 上下文安全靠 `raw_spin_rq_trylock()` + READ_ONCE 回退（争用标注 `(contended)`）、`rcu_read_lock()` 保护、省略 cgroup path（Suggested-by: Rishil Sandip Shah）。
+- <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-006-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260912-006</a>：v2 唯一变化——`sched_show_runqueues()` 经 `rcu_dereference()` 访问 `rq->curr`，消除 microblaze randconfig W=1 下的 sparse __rcu 告警。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260923-009</a>（今天）：方案不变（承 v2）：`sched_show_runqueues()` 只调 `print_rq(NULL, rq, cpu, false, true)`（不调会无条件拿 `rq->lock` 的 `print_cpu()`），`print_rq()` 内仅在 `rcu_read_lock()` 下遍历并 `print_task()`，全程不拿 `rq->lock`；`raw_spin_rq_trylock()` 保证非阻塞。
 
 ## 版本演进与当前进展
 - v2（09-12）后，本日进入首轮人类评审（Peter Zijlstra、Petr Mladek），无新版。

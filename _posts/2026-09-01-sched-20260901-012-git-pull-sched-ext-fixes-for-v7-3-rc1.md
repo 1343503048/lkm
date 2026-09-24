@@ -87,8 +87,8 @@ commit 构成：Wanwu Li 4（示例调度器 timer/vtime/注释）、Tejun Heo 3
 pull 线程本身当日只有 Tejun 的发起与 pr-tracker 的机械回执，**没有任何 review 意见**——这是 pull request 的正常形态，讨论都发生在被收进来的各补丁自己的线程里。当日可见的相关维护者动作是 Tejun 对其中若干补丁的直接表态（同一批邮件里能看到）：
 
 - `sched_ext: Fix several comment issues`／`Fix timer pinning and return value in scx_central`／`Fix missing @slice and @vtime descriptions...`：Tejun 09-01 凌晨逐条回帖 "Applied to sched_ext/for-7.3-fixes"，并说明把 `scx_central` 描述里的 `-EINVAL` 归因从 `central_init()` 改到 `start_central_timer()`（自 `d6edb15ad92c` 起它就在后者），以及把首个注释块重新折行到 80 列。
-- `sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value`（本日另文，见 sched-20260901-008）与 vtime 排序系列（sched-20260901-009）仍在迭代，**没有**进入本 pull。
-- 未解决项：Tejun 明确「以后走 sched_ext 的 pull」的内容仍有排在 7.4 的（例如把初始 `cpu.idle` 传入 `scx_cgroup_init_args` 的清理片，见 sched-20260901-017），rc1 只收 fixes。
+- `sched_ext: don't deliver duplicate ops.cgroup_set_idle() for same value`（本日另文，见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html">sched-20260901-008</a>）与 vtime 排序系列（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-009-sched-ext-fix-vtime-priority-queue-inversion-on-wide-vtime-s.html">sched-20260901-009</a>）仍在迭代，**没有**进入本 pull。
+- 未解决项：Tejun 明确「以后走 sched_ext 的 pull」的内容仍有排在 7.4 的（例如把初始 `cpu.idle` 传入 `scx_cgroup_init_args` 的清理片，见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-017-sched-ext-pass-the-initial-cpu-idle-state-in-scx-cgroup-init.html">sched-20260901-017</a>），rc1 只收 fixes。
 
 ## 合入评估
 

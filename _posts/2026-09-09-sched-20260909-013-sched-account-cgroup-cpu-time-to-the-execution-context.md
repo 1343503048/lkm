@@ -61,7 +61,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 sched-20260904-003。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 "Tentatively: Acked-by"，并第一次说明了当初为什么选择记到 donor——他是按 CPU 带宽控制器的情形来想的。Hui Su 随即用一个区分把这条反对意见拆掉：本补丁只改 `cgroup_account_cputime()` 这一处的 cgroup CPU usage，**不动 CFS bandwidth 记账**，John 担心的「donor 替 owner 破限」行为完全不变。
+本文为增量更新，v1/v2 的来龙去脉见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-003-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260904-003</a>。09-09 这枚单补丁拿到了**最关键的那一票**：John Stultz（`aa4f74dfd42b` 的作者、proxy execution 的原始设计者之一）给出 "Tentatively: Acked-by"，并第一次说明了当初为什么选择记到 donor——他是按 CPU 带宽控制器的情形来想的。Hui Su 随即用一个区分把这条反对意见拆掉：本补丁只改 `cgroup_account_cputime()` 这一处的 cgroup CPU usage，**不动 CFS bandwidth 记账**，John 担心的「donor 替 owner 破限」行为完全不变。
 
 ## 背景与问题
 

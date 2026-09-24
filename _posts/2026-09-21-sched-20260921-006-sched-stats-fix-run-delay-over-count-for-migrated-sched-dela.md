@@ -40,7 +40,7 @@ layout: article
 增量更新：Wei Yang 的 `sched/stats` run_delay 多计数修复（v2）昨日又获 K Prateek Nayak 的 Reviewed-by + Tested-by，评审背书进一步加强，合入概率高。
 
 ## 背景与问题
-背景见 sched-20260919-004 / sched-20260920-001：任务在被迁移且处于 `sched_delayed`（延迟出队）状态时，`run_delay` 统计会被重复累计，导致 `/proc/<pid>/sched` 等接口里 run_delay 数据偏大失真。
+背景见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-004-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260919-004</a> / <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-001-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260920-001</a>：任务在被迁移且处于 `sched_delayed`（延迟出队）状态时，`run_delay` 统计会被重复累计，导致 `/proc/<pid>/sched` 等接口里 run_delay 数据偏大失真。
 
 ## 技术方案
 本日无新代码，是 v2 的评审推进。修复思路仍为对迁移到别的 CPU 的 sched_delayed 任务正确结算 run_delay 增量，避免跨 CPU 迁移路径上的重复计数。

@@ -44,13 +44,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html">sched-20260921-008</a>。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
 
 ## 背景与问题
-背景见 sched-20260921-008：cpuset 的 `update_prstate()` 在分区状态更新时做了冗余的调度域重建，v2 移除之。
+背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html">sched-20260921-008</a>：cpuset 的 `update_prstate()` 在分区状态更新时做了冗余的调度域重建，v2 移除之。
 
 ## 技术方案
-方案见 sched-20260921-008。
+方案见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html">sched-20260921-008</a>。
 
 ## 版本演进与当前进展
 v2（`<20260920025256.24991-1-guopeng.zhang@linux.dev>`）后，当天 Tejun Heo 回帖合入 `cgroup/for-7.4`。
@@ -62,7 +62,7 @@ v2（`<20260920025256.24991-1-guopeng.zhang@linux.dev>`）后，当天 Tejun Heo
 *likelihood=merged*。已合入 `cgroup/for-7.4` 维护者树。blocking_issues 无；next_action 无（等待随 cgroup 树进入主线）。
 
 ## 效果评估
-无性能数据；清理冗余操作（见 sched-20260921-008）。
+无性能数据；清理冗余操作（见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html">sched-20260921-008</a>）。
 
 ## 我可以参与的点
 当前阶段暂无明显参与空间（已合入维护者树）。

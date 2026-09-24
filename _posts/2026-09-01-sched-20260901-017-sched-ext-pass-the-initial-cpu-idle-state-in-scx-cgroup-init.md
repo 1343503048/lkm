@@ -70,7 +70,7 @@ layout: article
 
 ## TL;DR
 
-**这是 08-24/08-25 已报道系列（sched-20260824-001、sched-20260825-005）的增量更新，本日报道的是合入结果而非新讨论。** 09-01 05:59 Tejun Heo 一句话收尾：`Applied 1 to sched_ext/for-7.3-fixes and 2 to sched_ext/for-7.4, with Andrea's Reviewed-by from the cover added to 2 and the subjects capitalized.` 即 `cpu.idle` 初值缺失的修复（1/2）按 fixes 走 7.3，纯重命名（2/2）按 cleanup 走 7.4。值得注意的是**时序**：这个应用发生在 Tejun 08-31 发出、09-01 05:05 已被 Linus 合入的 `sched_ext-for-7.3-rc1-fixes` tag **之后**（该 pull 里 Tao Cui 只有 1 篇 docs 提交，见 sched-20260901-012），所以 1/2 不在 v7.3-rc1 修复集合内，要等下一个 fixes pull。截至缓存覆盖的 09-07，尚未看到后续 pull。
+**这是 08-24/08-25 已报道系列（<a class="article-ref" href="/lkm/2026/08/24/sched-20260824-001-sched_ext-cgroup-init-cpu-idle.html">sched-20260824-001</a>、<a class="article-ref" href="/lkm/2026/08/25/sched-20260825-005-sched-ext-pass-initial-cpu-idle-state-scx-cgroup-init-args-v3.html">sched-20260825-005</a>）的增量更新，本日报道的是合入结果而非新讨论。** 09-01 05:59 Tejun Heo 一句话收尾：`Applied 1 to sched_ext/for-7.3-fixes and 2 to sched_ext/for-7.4, with Andrea's Reviewed-by from the cover added to 2 and the subjects capitalized.` 即 `cpu.idle` 初值缺失的修复（1/2）按 fixes 走 7.3，纯重命名（2/2）按 cleanup 走 7.4。值得注意的是**时序**：这个应用发生在 Tejun 08-31 发出、09-01 05:05 已被 Linus 合入的 `sched_ext-for-7.3-rc1-fixes` tag **之后**（该 pull 里 Tao Cui 只有 1 篇 docs 提交，见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-012-git-pull-sched-ext-fixes-for-v7-3-rc1.html">sched-20260901-012</a>），所以 1/2 不在 v7.3-rc1 修复集合内，要等下一个 fixes pull。截至缓存覆盖的 09-07，尚未看到后续 pull。
 
 ## 背景与问题
 
@@ -107,7 +107,7 @@ v3 相对 v2 的四点变化（cover 自述）：字段改名 `sched_idle`（Tej
 - **v3**（08-25 10:35，cover `<20260825023557.27881-1-cui.tao@linux.dev>`）：拆成 1/2 修复 + 2/2 重命名，补 `Fixes: 347ed2d566da ("sched/ext: Implement cgroup_set_idle() callback")`。
 - 08-25 13:51 Andrea Righi 在 cover 上 `Reviewed-by`（`<ao0tfbNNcs514WgU@gpd4>`，"This looks good to me."）。
 - **09-01 05:59 Tejun Heo 分拆应用**（`<32bb40e15ac938fc380e4a65eebf3f9a@kernel.org>`）：1/2 → `sched_ext/for-7.3-fixes`，2/2 → `sched_ext/for-7.4`；把 cover 上的 `Reviewed-by` 挪到 2/2；subject 首字母大写。系列到此关闭，无 v4。
-- 由本系列派生的后续：08-25 13:20 作者提出 `scx_group_set_idle()` 对同值重写也会投递 `ops.cgroup_set_idle()`，并明确「The fix is a one-line guard, but **it reads the field renamed here**, so I'll post it on top of this series once it lands.」（`<b53c61a1-4d7d-4232-941f-d48b0563d4ed@linux.dev>`）。09-01 11:11 该补丁以 v1/v2 出现（见 sched-20260901-008），其 diff 里读的确实是 `tg->scx.sched_idle`——即它的前提是 2/2 先进树。
+- 由本系列派生的后续：08-25 13:20 作者提出 `scx_group_set_idle()` 对同值重写也会投递 `ops.cgroup_set_idle()`，并明确「The fix is a one-line guard, but **it reads the field renamed here**, so I'll post it on top of this series once it lands.」（`<b53c61a1-4d7d-4232-941f-d48b0563d4ed@linux.dev>`）。09-01 11:11 该补丁以 v1/v2 出现（见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html">sched-20260901-008</a>），其 diff 里读的确实是 `tg->scx.sched_idle`——即它的前提是 2/2 先进树。
 
 ## Maintainer 意见与讨论焦点
 
@@ -123,7 +123,7 @@ v3 相对 v2 的四点变化（cover 自述）：字段改名 `sched_idle`（Tej
 - 1/2（修复，`Fixes: 347ed2d566da`）在 `sched_ext/for-7.3-fixes`，但**不在** `sched_ext-for-7.3-rc1-fixes`（08-31 发 pull、09-01 05:05 合入 mainline，merge commit `bf1079577a116f0685e7025b9ee2547345ee1c63`）里，因为 Tejun 应用它的时间在那之后；它需要下一个 sched_ext fixes pull 才进 mainline，随后才是 stable 回合候选。
 - 2/2（重命名）在 `sched_ext/for-7.4`，7.4 合并窗口才可见。
 - 截至缓存中的 09-07，未再出现 sched_ext 的 GIT PULL，因此两半都**还没有 mainline commit hash**（`upstream_commit: null`，未获取到）。
-- 无阻塞问题。唯一需要留意的是依赖链：09-01 那条重复投递修复（sched-20260901-008）读的是重命名后的字段，所以它只能落在 2/2 之后，即最早也是 7.4 的树。
+- 无阻塞问题。唯一需要留意的是依赖链：09-01 那条重复投递修复（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-008-sched-ext-don-t-deliver-duplicate-ops-cgroup-set-idle-for-sa.html">sched-20260901-008</a>）读的是重命名后的字段，所以它只能落在 2/2 之后，即最早也是 7.4 的树。
 
 ## 效果评估
 

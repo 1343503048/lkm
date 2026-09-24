@@ -55,7 +55,7 @@ layout: article
 增量更新：Christian Loehle 的慢路径 idle CPU 选择系列推出 v2（1/2 删除 idle-recency tie-break，获 Vincent Guittot Reviewed-by；2/2 用 reservoir sampling 随机化等 exit-latency 候选）。本日讨论集中在 2/2 的 !idle CPU 处理与候选计数复位：Vincent 提出无 cpuidle 驱动时须保留 !idle CPU、Shubhang 建议把采样限定在 exit_latency==min 的候选中，作者倾向沿用 v1 的 !idle 优先级并改用 U64_MAX reservoir，Kayra 主动请缨另发 idle helper 补丁。
 
 ## 背景与问题
-背景见 sched-20260916-015：并发慢路径选择器会收敛到同一 idle CPU，且 idle-recency 时间戳偏好可能选中唤醒成本最高的 CPU。v2 将原方案拆为两枚补丁单独成文。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html">sched-20260916-015</a>：并发慢路径选择器会收敛到同一 idle CPU，且 idle-recency 时间戳偏好可能选中唤醒成本最高的 CPU。v2 将原方案拆为两枚补丁单独成文。
 
 ## 技术方案
 - 1/2（Drop idle recency from slow-path CPU selection）：删除 idle_stamp tie-break，除遇到更低 exit latency 外保留首个候选，15 行缩减为 1 行。
@@ -76,7 +76,7 @@ layout: article
 *likelihood=medium*。1/2 已获 Reviewed-by、2/2 方向获 Vincent 认可但仍有 !idle 处理与计数复位两个设计点待收敛；作者承诺出 v3（U64_MAX reservoir + 独立的 idle helper）。*blocking_issues*：2/2 的 !idle 候选语义与候选计数复位待定；v3 未发出。*next_action*：作者发 v3 落实 U64_MAX reservoir 与 idle helper 拆解，回应 Vincent/Shubhang 剩余意见。
 
 ## 效果评估
-本日 v2 未附新的 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 sched-20260916-015。
+本日 v2 未附新的 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html">sched-20260916-015</a>。
 
 ## 我可以参与的点
 - kind=testing：在 8~32 核小系统复测 v2，验证 !idle CPU 处理在小域下的行为。

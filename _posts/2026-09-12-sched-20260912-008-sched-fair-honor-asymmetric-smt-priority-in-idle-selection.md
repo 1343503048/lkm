@@ -47,10 +47,10 @@ layout: article
 ---
 
 ## TL;DR
-Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 sched-20260911-018。
+Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实：select_idle_smt_cpu() 改为直接取最低调度域（rcu_dereference_all(cpu_rq(cpu)->sd)），将随下一版发出。系列其余状态（v6 待发、Olympus 系列被 drop 的连带影响）不变。本文为增量更新，v4 分析见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260911-018</a>。
 
 ## 背景与问题
-（承 sched-20260911-018）系列让慢路径 idle 选核遵守非对称 SMT 优先级，helper 为 select_idle_smt_cpu()；Dietmar 指出其中的 for_each_domain() 应改为显式 `sd = rcu_dereference_all(cpu_rq(cpu)->sd)` 取最低域。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260911-018</a>）系列让慢路径 idle 选核遵守非对称 SMT 优先级，helper 为 select_idle_smt_cpu()；Dietmar 指出其中的 for_each_domain() 应改为显式 `sd = rcu_dereference_all(cpu_rq(cpu)->sd)` 取最低域。
 
 ## 技术方案
 本日无新代码。Andrea 回复确认实现方向：「Correct, I've changed it locally already to inspect the lowest scheduling domain directly.」——即取最低调度域的改法已在本地完成，待落入下一版（v6，连同 sched_smt_active() 替换 static key）。
@@ -62,10 +62,10 @@ Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实�
 
 ## Maintainer 意见与讨论焦点
 - **Dietmar Eggemann**（承 09-11）：取域方式意见被完全接受；
-- 未解事项不变：v6 未发出；sched-20260910-007 的 Olympus 系列被 PeterZ drop 的连带影响仍在；「sched_smt_active() 为真但无 SD_ASYM_PACKING 平台的无谓扫描」问题（09-10-008 提出）仍无人回答。
+- 未解事项不变：v6 未发出；<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260910-007</a> 的 Olympus 系列被 PeterZ drop 的连带影响仍在；「sched_smt_active() 为真但无 SD_ASYM_PACKING 平台的无谓扫描」问题（09-10-008 提出）仍无人回答。
 
 ## 合入评估
-*likelihood=medium*（不变）：评审意见收敛、作者响应积极，但 v6 未发出前无新信息改变评估。blocking_issues 与 next_action 均承 sched-20260911-018：v6 一并落实 static key 替换与取域修改后再请 PeterZ 重新收取。
+*likelihood=medium*（不变）：评审意见收敛、作者响应积极，但 v6 未发出前无新信息改变评估。blocking_issues 与 next_action 均承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-018-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260911-018</a>：v6 一并落实 static key 替换与取域修改后再请 PeterZ 重新收取。
 
 ## 效果评估
 无新效果数据（承前：收益数据限于作者的 Olympus 平台陈述）。

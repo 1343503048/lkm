@@ -50,7 +50,7 @@ layout: article
 
 ## TL;DR
 
-Andrea Righi 的 v2 补丁优化 NOHZ idle load balancer 的 CPU 选择：优先选择整个 SMT core 都 idle 的 CPU，避免唤醒部分空闲 core 的 sibling。在 NVIDIA Vera 的 GEMM 测试中从 6.2 TFLOP/s 提升到 9.4 TFLOP/s（+51%）。本文为增量更新，完整背景见 sched-20260729-001。
+Andrea Righi 的 v2 补丁优化 NOHZ idle load balancer 的 CPU 选择：优先选择整个 SMT core 都 idle 的 CPU，避免唤醒部分空闲 core 的 sibling。在 NVIDIA Vera 的 GEMM 测试中从 6.2 TFLOP/s 提升到 9.4 TFLOP/s（+51%）。本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/29/sched-20260729-001-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.html">sched-20260729-001</a>。
 
 ## 背景与问题
 
@@ -99,4 +99,4 @@ v2 方案：
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- related: sched-20260729-001
+- related: <a class="article-ref" href="/lkm/2026/07/29/sched-20260729-001-sched-fair-prefer-fully-idle-cores-for-nohz-balancing.html">sched-20260729-001</a>

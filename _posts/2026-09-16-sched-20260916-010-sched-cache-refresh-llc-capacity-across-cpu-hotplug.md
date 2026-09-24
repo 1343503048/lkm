@@ -51,7 +51,7 @@ Davi Chaves Azevedo 的 v3（tag-only）：修复 CPU hotplug 时 LLC 容量被�
 
 ## 版本演进与当前进展
 - **v3**（本日 107345，`<20260916134432.11767-1-davichazbh@gmail.com>`）：仅补 Reviewed-by/Tested-by 标签，无功能性改动。
-- v2：按 Chen Yu 建议恢复 boot 期 shared_cpu_map 说明，补多 LLC 测试说明；v1 为初始修复。完整背景见 sched-20260911-016 / sched-20260912-003。
+- v2：按 Chen Yu 建议恢复 boot 期 shared_cpu_map 说明，补多 LLC 测试说明；v1 为初始修复。完整背景见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html">sched-20260911-016</a> / <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-003-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html">sched-20260912-003</a>。
 
 ## Maintainer 意见与讨论焦点
 - **Chen Yu**：`Reviewed-by` + `Tested-by`（在 Ryzen 8945HX 双 LLC 与 Xeon 每节点四 LLC 上复现并验证 v1 恢复正确 `sd->llc_bytes`）。

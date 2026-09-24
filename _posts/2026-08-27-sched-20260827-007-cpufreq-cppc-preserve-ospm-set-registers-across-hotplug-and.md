@@ -43,13 +43,13 @@ layout: article
 本文为增量更新（完整背景见 related_articles）。v4 收尾出现变数：作者 Sumit Gupta 08-27 承认**一直没看到 Sashiko（AI 审查代理）对该系列的 review 邮件**，刚补读网页版结论，承诺两条发现都会在 v5 处理。合入节奏因此再加一个版本周期。
 
 ## 背景与问题
-CPPC cpufreq 驱动在 CPU hotplug 与驱动卸载时丢失 OSPM 设置的寄存器值（EPP、Autonomous Activity Window、Autonomous Selection）的问题，由 4 补丁系列解决（online()/offline() 回调保持 policy 存活 + 表驱动 save/restore）。背景与方案细节见 sched-20260826-005，此处不重复。
+CPPC cpufreq 驱动在 CPU hotplug 与驱动卸载时丢失 OSPM 设置的寄存器值（EPP、Autonomous Activity Window、Autonomous Selection）的问题，由 4 补丁系列解决（online()/offline() 回调保持 policy 存活 + 表驱动 save/restore）。背景与方案细节见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.html">sched-20260826-005</a>，此处不重复。
 
 ## 技术方案
 当日无方案变化。唯一新信息是 v5 的触发源：Sashiko 对该系列产出了 2 条 review 发现（邮件作者未收到、仅网页可见），作者将逐条回应。**两条发现的具体内容在当日邮件中未展开，未获取到。**
 
 ## 版本演进与当前进展
-- v1–v4：见 related 文章；v4 期间 Rafael J. Wysocki、Christian Loehle 参与 review（sched-20260826-005）。
+- v1–v4：见 related 文章；v4 期间 Rafael J. Wysocki、Christian Loehle 参与 review（<a class="article-ref" href="/lkm/2026/08/26/sched-20260826-005-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-unload.html">sched-20260826-005</a>）。
 - 08-26：Rafael 的邮件（本封回复的对象 `<CAJZ5v0hMRNTZbhb1tR7rf5+65Oes-7K__b1dLg5kGkm7NqKvWw@mail.gmail.com>`）提示作者去看 Sashiko 结论。
 - 08-27：作者确认将出 v5。系列停留在 v4。
 

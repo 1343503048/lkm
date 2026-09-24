@@ -124,7 +124,7 @@ Olympus 以两个对称 PE 实现 SMT：只有一个 PE 活跃时核运行在单
   - v1 2/2 补丁: <https://lore.kernel.org/all/20260831181800.1668646-3-arighi@nvidia.com/>
   - Dietmar Eggemann 对 v1 2/2 的评审: <https://lore.kernel.org/all/0d02e284-9a07-4f54-bf63-8edaa5e224e5@arm.com/>
 - 相关文章/系列：
-  - [[sched-20260903-009]] sched/fair 空闲选择尊重非对称 SMT 优先级（v1）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a> sched/fair 空闲选择尊重非对称 SMT 优先级（v1）。
 - 相关代码/commit：
   - `kernel/sched/fair.c` `select_idle_core()` / `select_idle_smt()` / `select_idle_cpu()` / `select_idle_capacity()` / `select_idle_sibling()`
   - `kernel/sched/topology.c` `SD_ASYM_PACKING` 优先级查询

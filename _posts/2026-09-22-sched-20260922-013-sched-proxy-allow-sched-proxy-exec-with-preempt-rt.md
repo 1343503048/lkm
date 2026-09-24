@@ -47,13 +47,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html">sched-20260921-003</a>。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。
 
 ## 背景与问题
-背景见 sched-20260921-003：补丁摘掉 Kconfig `depends on !PREEMPT_RT` 让组合可编译，但被指出 RT 下 `blocked_on` 恒为 NULL、新增访问器实为死代码，无实际代理执行语义。
+背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html">sched-20260921-003</a>：补丁摘掉 Kconfig `depends on !PREEMPT_RT` 让组合可编译，但被指出 RT 下 `blocked_on` 恒为 NULL、新增访问器实为死代码，无实际代理执行语义。
 
 ## 技术方案
-方案见 sched-20260921-003。当天无新代码。
+方案见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html">sched-20260921-003</a>。当天无新代码。
 
 ## 版本演进与当前进展
 v2（`<20260921102712.3245860-1-quchaosheng000406@163.com>`）后，当天 Peter 与作者先后回复，作者明确撤回。

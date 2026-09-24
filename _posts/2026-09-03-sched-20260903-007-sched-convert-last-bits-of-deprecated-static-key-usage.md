@@ -57,18 +57,18 @@ raw static key 不带类型信息，无法防止误配（例如对默认为 TRUE
 - v1 不在当日缓存中（仅见于 v2 的 changelog 自述）。
 - v2（09-03 19:57）两项改动：补充说明旧 API 为何被废弃；rebase 并修掉 `core.c` 的一个大冲突。
 - 09-03 内无回帖、无 tag、未进入任何分支。
-- 与 [[sched-20260903-013]]（PREEMPT_DYNAMIC 简化）以及已合入的 [[sched-20260902-002]] 改动同一代码区域；v2 的大冲突正是这一点的直接证据。
+- 与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a>（PREEMPT_DYNAMIC 简化）以及已合入的 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a> 改动同一代码区域；v2 的大冲突正是这一点的直接证据。
 
 ## Maintainer 意见与讨论焦点
 
 未获取到维护者意见：本日为 v2 首发于当日缓存，无任何回帖。
-值得注意的不是态度而是**冲突面**：作者自己记录 v2 "Rebase and fix a big conflict in core.c"，而冲突位置就是 `__sched_dynamic_update()` 与 `preempt_dynamic_key_*` 宏——同一区域同时是 Mark Rutland 的 PREEMPT_DYNAMIC 精简系列（[[sched-20260903-013]]）的工作对象，且 Mark 在 09-02 已承认该处 `sched_dynamic_show()` 的字符串数组与 enum 不一致问题"probably needs a bit more rework"。也就是说这 4 行改动的最终形态取决于两条线谁先落地。
+值得注意的不是态度而是**冲突面**：作者自己记录 v2 "Rebase and fix a big conflict in core.c"，而冲突位置就是 `__sched_dynamic_update()` 与 `preempt_dynamic_key_*` 宏——同一区域同时是 Mark Rutland 的 PREEMPT_DYNAMIC 精简系列（<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a>）的工作对象，且 Mark 在 09-02 已承认该处 `sched_dynamic_show()` 的字符串数组与 enum 不一致问题"probably needs a bit more rework"。也就是说这 4 行改动的最终形态取决于两条线谁先落地。
 
 ## 合入评估
 
 *likelihood: possible*。
 依据：纯清理、无功能变化、改动面 8 行，且是既有废弃 API 迁移序列的收尾（前序补丁已合入），维护者一般不会有异议；作者已主动 rebase 到当前基线并解决冲突。
-卡点：一是零评审、零 tag，本日为 v2 首发；二是与 PREEMPT_DYNAMIC 精简系列存在明确的代码区域竞争，`fair.c` 那半部分基本无风险，`core.c` 那半部分需要与 [[sched-20260903-013]] 的落地顺序协商，很可能被要求等 Mark 的 v3 之后再 rebase；三是这类收尾补丁通常由 maintainer 直接收进 tip 的 cleanup 分支，不会单独催促进度。
+卡点：一是零评审、零 tag，本日为 v2 首发；二是与 PREEMPT_DYNAMIC 精简系列存在明确的代码区域竞争，`fair.c` 那半部分基本无风险，`core.c` 那半部分需要与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a> 的落地顺序协商，很可能被要求等 Mark 的 v3 之后再 rebase；三是这类收尾补丁通常由 maintainer 直接收进 tip 的 cleanup 分支，不会单独催促进度。
 
 ## 效果评估
 
@@ -85,8 +85,8 @@ raw static key 不带类型信息，无法防止误配（例如对默认为 TRUE
 
 - 本补丁 v2：https://lore.kernel.org/all/20260903115728.11864-1-hongyan.xia@transsion.com/
 - 相关文章/系列：
-  - [[sched-20260902-002]] PREEMPT_DYNAMIC 简化 + static key 迁移（已合入）。
-  - [[sched-20260903-013]] Simplify PREEMPT_DYNAMIC v2（同一代码区域的并行系列）。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a> PREEMPT_DYNAMIC 简化 + static key 迁移（已合入）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a> Simplify PREEMPT_DYNAMIC v2（同一代码区域的并行系列）。
 - 相关代码：
   - `kernel/sched/fair.c` `cfs_bandwidth_used()` / `__cfs_bandwidth_used`
   - `kernel/sched/core.c` `__sched_dynamic_update()` / `preempt_dynamic_branch_{enable,disable}`

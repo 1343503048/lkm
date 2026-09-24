@@ -46,10 +46,10 @@ layout: article
 增量更新：Jianyong Wu 的"cpufreq 用非 boost 参考频率计算 pressure"修复（v1）昨日获作者本人补强的 Tested-by——在 Hygon 与 AMD（acpi-cpufreq）平台上实测 CPU pressure 重新归零，cache aware 调度恢复把任务聚合到 50% LLC 容量（与 d2d5c129d07e 引入回归前一致）。实测背书到位，合入概率较高。
 
 ## 背景与问题
-背景见 sched-20260918-010 / sched-20260919-006：cpufreq 的 pressure 计算把 boost 频率当作参考频率，导致 CPU pressure 计算失真，进而破坏依赖该信号的 cache aware 调度聚合。回归由 commit d2d5c129d07e 引入。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-010-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260918-010</a> / <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260919-006</a>：cpufreq 的 pressure 计算把 boost 频率当作参考频率，导致 CPU pressure 计算失真，进而破坏依赖该信号的 cache aware 调度聚合。回归由 commit d2d5c129d07e 引入。
 
 ## 技术方案
-本日无新代码。修复为改用非 boost 参考频率来做 pressure 计算（详见 sched-20260919-006）。昨日回复是对此前维护者（Rafael J. Wysocki）追问的确认，并补充了双平台实测数据。
+本日无新代码。修复为改用非 boost 参考频率来做 pressure 计算（详见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-006-cpufreq-use-a-non-boost-reference-frequency-for-pressure-cal.html">sched-20260919-006</a>）。昨日回复是对此前维护者（Rafael J. Wysocki）追问的确认，并补充了双平台实测数据。
 
 ## 版本演进与当前进展
 - v1（09-15，thread root `<20260915065747.1671965-1-wujianyong@hygon.cn>`）。

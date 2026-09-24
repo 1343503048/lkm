@@ -41,13 +41,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260921-007（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（"cpufreq: Remove driver default policy->min/max init"）引入，而 `538b0188da46`、`6e39ba4e5a82` 均未复现。测试结论与 v1 反馈一致，补丁方向获进一步佐证。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260921-007</a>（该系列 cover 标题为 sched/cpufreq: fix schedutil's boost frequency handling）。当天 Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，给出精确定位：问题由 `db80ad776cd2`（"cpufreq: Remove driver default policy->min/max init"）引入，而 `538b0188da46`、`6e39ba4e5a82` 均未复现。测试结论与 v1 反馈一致，补丁方向获进一步佐证。
 
 ## 背景与问题
-背景见 sched-20260921-007：schedutil 在 boost 关闭后不回落到非 boost 频率。该系列的 2/2 补丁修复此问题。
+背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260921-007</a>：schedutil 在 boost 关闭后不回落到非 boost 频率。该系列的 2/2 补丁修复此问题。
 
 ## 技术方案
-方案见 sched-20260921-007（2/2）。当天无新代码。
+方案见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260921-007</a>（2/2）。当天无新代码。
 
 ## 版本演进与当前进展
 系列 v2（cover `<20260908-schedutil-boost-frequency-handling-v2-0-25312a713699@oss.qualcomm.com>`）。当天 Zhongqiu Han 对 2/2 回复测试结果。
@@ -57,7 +57,7 @@ layout: article
 - 无反对意见。
 
 ## 合入评估
-*likelihood=medium*（维持 sched-20260921-007 判断）。测试佐证补丁方向正确、问题 commit 已定位，但当日未见维护者最终合入表态。blocking_issues 见 sched-20260921-007；*next_action*：等待维护者基于定位结论收取或要求改版。
+*likelihood=medium*（维持 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260921-007</a> 判断）。测试佐证补丁方向正确、问题 commit 已定位，但当日未见维护者最终合入表态。blocking_issues 见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-007-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260921-007</a>；*next_action*：等待维护者基于定位结论收取或要求改版。
 
 ## 效果评估
 无量化数字；Zhongqiu 给出问题引入 commit 的二分定位（`db80ad776cd2`）与因果链条，佐证修复必要性。

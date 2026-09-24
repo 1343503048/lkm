@@ -126,4 +126,4 @@ Mark Rutland 的 `sched: dynamic` 精简系列 v2（0/6，08-04 投递）在 09-
   - Mark Rutland 的「Ugh, yes」+ sched_dynamic_show() 表态：https://lore.kernel.org/all/apb3naadvUkEJxGM@J2N7QTR9R3.cambridge.arm.com/
   - 修复补丁（Reported-by: Jinjie Ruan，进 tip 为 ef9293b3b797）：https://lore.kernel.org/all/20260902101637.232129-1-mark.rutland@arm.com/
   - 本日 Jinjie Ruan 的催问：https://lore.kernel.org/all/6f4a009f-4261-4cce-88b6-1dec5ecc3a53@huawei.com/
-- 相关文章：[[sched-20260902-002]]（PREEMPT_DYNAMIC 简化与 static key 迁移）、[[sched-20260903-007]]（本日同族的 deprecated static key 收尾）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a>（PREEMPT_DYNAMIC 简化与 static key 迁移）、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-007-sched-convert-last-bits-of-deprecated-static-key-usage.html">sched-20260903-007</a>（本日同族的 deprecated static key 收尾）。

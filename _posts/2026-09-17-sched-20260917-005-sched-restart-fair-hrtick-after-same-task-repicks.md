@@ -45,7 +45,7 @@ layout: article
 增量更新：作者 Shubhang Kaushik 回应 Zhan Xusheng（09-16 评审）关于"跳过 put_prev_task_*() 无法区分 fair 与 DL"的疑问，解释了 fair 与 DL picker 侧 runtime 更新的差异（fair 在 pick 前刷新 entity、DL 无对应更新），承诺改 changelog、补注释并文档化 SNT_NORMAL/SNT_PICK 语义，且 CONFIG_SCHED_CLASS_EXT=y 编译通过。无新版本。
 
 ## 背景与问题
-背景见 sched-20260916-017：当 pick_next_task() 重复选择同一个 fair 任务（repick）时跳过 put_prev_task_*()，导致 hrtick 未重启、切片到期后抢占失效。本日是对既有评审的回应，无新方案。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-017-sched-restart-fair-hrtick-after-same-task-repicks.html">sched-20260916-017</a>：当 pick_next_task() 重复选择同一个 fair 任务（repick）时跳过 put_prev_task_*()，导致 hrtick 未重启、切片到期后抢占失效。本日是对既有评审的回应，无新方案。
 
 ## 技术方案
 无方案变化。关键澄清一条机制差异：

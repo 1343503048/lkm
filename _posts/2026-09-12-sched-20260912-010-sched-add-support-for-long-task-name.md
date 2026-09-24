@@ -50,10 +50,10 @@ layout: article
 ---
 
 ## TL;DR
-André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 security/smack 的编译错误（cover 自嘲 "for good"）。系列自 v5 起持续以修编译错误的方式快速迭代，但仍无任何人类 review。本文为增量更新，v6 见 sched-20260911-002，完整背景见 sched-20260828-009。
+André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 security/smack 的编译错误（cover 自嘲 "for good"）。系列自 v5 起持续以修编译错误的方式快速迭代，但仍无任何人类 review。本文为增量更新，v6 见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-002-sched-add-support-for-long-task-name.html">sched-20260911-002</a>，完整背景见 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html">sched-20260828-009</a>。
 
 ## 背景与问题
-（承 sched-20260828-009/09-11-002）调试追踪数百线程的程序时 16 字节 comm 不够；系列引入 TASK_COMM_EXT_LEN=64、PR_{SET,GET}_EXT_NAME prctl、保证 NUL 结尾的 copy_task_comm()，旧用户态 API 显式截断到 16。
+（承 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html">sched-20260828-009</a>/09-11-002）调试追踪数百线程的程序时 16 字节 comm 不够；系列引入 TASK_COMM_EXT_LEN=64、PR_{SET,GET}_EXT_NAME prctl、保证 NUL 结尾的 copy_task_comm()，旧用户态 API 显式截断到 16。
 
 ## 技术方案
 （承前文，接口设计不变。）v7 相对 v6 的变化：「Fixed build errors (for good): bpf test and security/smack」——继续收口 treewide 改动暴露的编译问题；v6 修过 security/、i915、blktrace，v7 补 bpf selftest 与 smack。当日缓存含 v7 cover 与 4/6 补丁，其余补丁未入缓存。

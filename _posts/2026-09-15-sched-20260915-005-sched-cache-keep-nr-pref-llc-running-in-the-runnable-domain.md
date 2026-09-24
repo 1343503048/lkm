@@ -45,7 +45,7 @@ layout: article
 本文为增量更新（完整背景见 related_articles）。Kayra Cizmeci 的「把 nr_pref_llc_running 收进 runnable 域」4 补丁系列（patch 1/4）今日再获 Tim Chen 评审：认可改动方向（"This change looks good and make the code cleaner"），但要求把操作场景注释收紧——点明「CPU0/CPU1 都在 preferred LLC、任务在 CPU1 上被唤醒」的前提，并把某段代码块归到 CPU 0 下，认为现有注释过长、不够全面。
 
 ## 背景与问题
-承 sched-20260828-004 与 sched-20260914-005：`nr_pref_llc_running` 计数口径（DELAY_DEQUEUE 下跟随 queued 语义 vs `cfs.h_nr_runnable` 扣除 delay-dequeued 任务）导致 `alb_break_llc()` 判断失效。Kayra 09-10 投出 4 补丁系列，把该计数收进 runnable 域，省掉独立判据与多处调用。09-14 Chen Yu 已实测 Kayra 方案并倾向维持较简版本、补注释；09-15 Tim Chen 接着评审。
+承 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a> 与 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-005-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260914-005</a>：`nr_pref_llc_running` 计数口径（DELAY_DEQUEUE 下跟随 queued 语义 vs `cfs.h_nr_runnable` 扣除 delay-dequeued 任务）导致 `alb_break_llc()` 判断失效。Kayra 09-10 投出 4 补丁系列，把该计数收进 runnable 域，省掉独立判据与多处调用。09-14 Chen Yu 已实测 Kayra 方案并倾向维持较简版本、补注释；09-15 Tim Chen 接着评审。
 
 ## 技术方案
 本日无新代码。Tim Chen 对 patch 1/4 的注释场景描述给出具体修改意见：注释应明确「假设 CPU0 与 CPU1 都在 preferred LLC、任务在 CPU1 上被唤醒」这一前提；「LB 把 delayed 任务从 preferred LLC 迁到 non-preferred LLC」时 `rq1->nr_pref_llc_running++` 所在代码块应标注归 CPU 0；并指出所列操作场景不够全面、注释偏长。

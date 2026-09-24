@@ -46,7 +46,7 @@ layout: article
 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶化，构建超 8 分钟。Chen Yu 据此定位根因——AMD 混合平台依赖 SD_ASYM_PACKING 而非 ASYM_CPUCAPACITY，CAS 与之冲突——并给出「检测到 ASYM_PACKING 时禁用 CAS」的仅编译验证补丁，请 Klaus 实测。
 
 ## 背景与问题
-AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L3）平台上 CAS（v7.2 合入）效果不佳，部分负载开启后反而变差。前几轮（见 sched-20260909-009 / sched-20260905-007）已完成归因澄清：被简称 patch 的是 Tim Chen 的 misfit 补丁（20260825174112），而非 Mario 的 debugfs 参数暴露补丁；报告者随后休假。
+AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L3）平台上 CAS（v7.2 合入）效果不佳，部分负载开启后反而变差。前几轮（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260909-009</a> / <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260905-007</a>）已完成归因澄清：被简称 patch 的是 Tim Chen 的 misfit 补丁（20260825174112），而非 Mario 的 debugfs 参数暴露补丁；报告者随后休假。
 
 今日 Klaus 返岗实测，先交代系统状态：`/sys/kernel/sched/debug/domains/*` 在他的系统上**不存在**（即便开了 debugfs）；`/sys/kernel/debug/x86/sched_itmt_enabled` 为 "Y"，`sched_core_priority` 数值正常（大核约为小核两倍）。
 
@@ -58,7 +58,7 @@ AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L3）平台上 CAS（
 - Chen Yu 自述 "just compile tested, as I do not have a multi-LLC hybrid AMD platform for testing"。
 
 ## 版本演进与当前进展
-- 09-05 / 09-09 / 09-10：补丁归因澄清与诊断信息收集，报告者休假（承 sched-20260909-009 / sched-20260910-010）。
+- 09-05 / 09-09 / 09-10：补丁归因澄清与诊断信息收集，报告者休假（承 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260909-009</a> / <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260910-010</a>）。
 - 09-14（本文窗口）：Klaus 返岗给出三组实测；Chen Yu 抛出新方向（禁用 CAS if ASYM_PACKING）并附 compile-tested 补丁，等 Klaus 实测。
 
 ## Maintainer 意见与讨论焦点

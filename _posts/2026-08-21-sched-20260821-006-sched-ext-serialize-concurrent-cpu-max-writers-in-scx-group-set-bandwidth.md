@@ -81,7 +81,7 @@ v1 刚发出，暂无 review 意见。
 - **blocking_issues**: 无
 - **next_action**: 等待 review
 
-该补丁与 sched-20260821-001（Lift cgroup update locking to core）互补：001 修复 CFS 侧锁提升，本补丁修复 SCX 侧串行化。
+该补丁与 <a class="article-ref" href="/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html">sched-20260821-001</a>（Lift cgroup update locking to core）互补：001 修复 CFS 侧锁提升，本补丁修复 SCX 侧串行化。
 
 ## 效果评估
 

@@ -83,4 +83,4 @@ v1（09-06 21:54，msgid `<20260906135507.749280-1-hi@tychen.cc>`）首次发出
 - 本补丁: https://lore.kernel.org/all/20260906135507.749280-1-hi@tychen.cc/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- 相关：[[sched-20260906-001]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/06/sched-20260906-001-sched-ext-fix-keep-last-for-sub-scheduler-tasks-and-two-scx-qmap.html">sched-20260906-001</a>

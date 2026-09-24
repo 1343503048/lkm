@@ -44,16 +44,16 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260916-014：Hui Su 的修复补丁——sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 回复态度正面（「you're onto something」），但要求用 `tools/testing/selftests/rseq/` 覆盖这些状态转换，并询问 Thomas 当年重写 rseq mm_cid 时的转换测试是否已上游。合入可能性中等，方向被认可。
-- sched-20260923-011（今天）：作者 Hui Su 回应 Mathieu 的 selftest 要求——确认 Thomas 当年 [0/4] 系列的 thread-pool emulator 没有对应 selftest、上游 `tools/testing/selftests/rseq/` 也缺 affinity-expansion（per-CPU 切回 per-task）场景的转换覆盖，决定为此补一个聚焦 selftest 并发 v2，并向 Thomas 征询 emulator 是否可作参考。
+- <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260916-014</a>：Hui Su 的修复补丁——sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 回复态度正面（「you're onto something」），但要求用 `tools/testing/selftests/rseq/` 覆盖这些状态转换，并询问 Thomas 当年重写 rseq mm_cid 时的转换测试是否已上游。合入可能性中等，方向被认可。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260923-011</a>（今天）：作者 Hui Su 回应 Mathieu 的 selftest 要求——确认 Thomas 当年 [0/4] 系列的 thread-pool emulator 没有对应 selftest、上游 `tools/testing/selftests/rseq/` 也缺 affinity-expansion（per-CPU 切回 per-task）场景的转换覆盖，决定为此补一个聚焦 selftest 并发 v2，并向 Thomas 征询 emulator 是否可作参考。
 
 ## 背景与问题
-- sched-20260916-014：`sched/mmcid` 是 rseq 使用的内存上下文 ID（mm-cid / mmcid）机制，rseq 的 `mm_cid` 有 per-mm 与 per-task 两种模式。补丁修复：任务因 CPU affinity 变化触发某些状态转换时错误切回 per-task 模式。补丁原文 09-15 发出（`20260915155953.2856524-1-sh_def@163.com`），16 日仅有 Mathieu 回复可见。
-- sched-20260923-011（今天）：背景无新增。
+- <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260916-014</a>：`sched/mmcid` 是 rseq 使用的内存上下文 ID（mm-cid / mmcid）机制，rseq 的 `mm_cid` 有 per-mm 与 per-task 两种模式。补丁修复：任务因 CPU affinity 变化触发某些状态转换时错误切回 per-task 模式。补丁原文 09-15 发出（`20260915155953.2856524-1-sh_def@163.com`），16 日仅有 Mathieu 回复可见。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260923-011</a>（今天）：背景无新增。
 
 ## 技术方案
-- sched-20260916-014：补丁体不在 16 日缓存，具体方案未获取到；从 Mathieu 回复可反推，修复针对 affinity-triggered 的 mmcid 模式切换路径、需覆盖多个状态转换场景。
-- sched-20260923-011（今天）：补丁体细节仍在作者侧。本日进展是测试覆盖层面的方案——为「affinity-expansion 使 ownership 从 per-CPU 切回 per-task」这一特定场景新增一个聚焦 selftest，并作为 v2 的一部分。
+- <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260916-014</a>：补丁体不在 16 日缓存，具体方案未获取到；从 Mathieu 回复可反推，修复针对 affinity-triggered 的 mmcid 模式切换路径、需覆盖多个状态转换场景。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html">sched-20260923-011</a>（今天）：补丁体细节仍在作者侧。本日进展是测试覆盖层面的方案——为「affinity-expansion 使 ownership 从 per-CPU 切回 per-task」这一特定场景新增一个聚焦 selftest，并作为 v2 的一部分。
 
 ## 版本演进与当前进展
 - v1（09-15）：修复 affinity 变化触发的 mmcid 状态转换错误（`20260915155953.2856524-1-sh_def@163.com`）。

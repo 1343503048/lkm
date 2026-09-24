@@ -60,7 +60,7 @@ layout: article
 
 ## TL;DR
 
-增量更新（完整方案见 sched-20260831-007 / sched-20260810-008）。Shrikanth Hegde 的 preferred-CPU / steal_governor v11 系列中，`05/12` 关于「要不要只在实测过的架构上启用」的争论在 09-01 收口：Vincent Guittot 与 Dietmar Eggemann 都认为无需为 arm64 单独设限，理由是这条路径本来就架构无关——`task_cpu_possible_mask(p)` 默认即 `cpu_possible_mask`，且它在 `kernel/sched/core.c` 与 `kernel/cgroup/cpuset.c` 里早已为 `allow_mismatched_32bit_el0` 服务过。
+增量更新（完整方案见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260831-007</a> / <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）。Shrikanth Hegde 的 preferred-CPU / steal_governor v11 系列中，`05/12` 关于「要不要只在实测过的架构上启用」的争论在 09-01 收口：Vincent Guittot 与 Dietmar Eggemann 都认为无需为 arm64 单独设限，理由是这条路径本来就架构无关——`task_cpu_possible_mask(p)` 默认即 `cpu_possible_mask`，且它在 `kernel/sched/core.c` 与 `kernel/cgroup/cpuset.c` 里早已为 `allow_mismatched_32bit_el0` 服务过。
 
 ## 背景与问题
 
@@ -89,7 +89,7 @@ v11（12 片）阶段，本日 3 封回帖全部集中在架构启用问题上�
 
 ## 合入评估
 
-`likelihood = medium`。整个 v11 系列的瓶颈不在 05/12 的这条小改动，而在 steal_governor 主线本身（见 sched-20260817-005 / sched-20260825-001 记录的 v10/v11 演进与基准回退讨论）。本日争论向「全架构默认启用」收敛，若作者按此发 v12，本片不需要额外工作；`Reviewed-by` 仍未出现。
+`likelihood = medium`。整个 v11 系列的瓶颈不在 05/12 的这条小改动，而在 steal_governor 主线本身（见 <a class="article-ref" href="/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260817-005</a> / <a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a> 记录的 v10/v11 演进与基准回退讨论）。本日争论向「全架构默认启用」收敛，若作者按此发 v12，本片不需要额外工作；`Reviewed-by` 仍未出现。
 
 ## 效果评估
 

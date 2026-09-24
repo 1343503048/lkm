@@ -68,7 +68,7 @@ layout: article
 
 ## TL;DR
 
-**本文为增量更新**（完整背景见 sched-20260827-001）。Aaron Tomlin 的 6 补丁系列在一天之内连发 **v8 与 v9**：给 `struct rq->rd` 补上 `__rcu` 标注，并把 `kernel/sched/` 里所有无锁直读 `rq->rd` 的地方换成统一 helper。v8 按 Peter Zijlstra 对 v7 的意见引入 `rcu_dereference_root_domain()`；发完 v8 约 1 小时后作者自己回帖 "Please ignore"——Sashiko 机器人查出 `dl_task_needs_bw_move()` 在只持 `cpuset_mutex` 的进程上下文里解引用（既无 `sched_domains_mutex` 也无 RCU 读侧临界区），他用 virtme-ng 复现出 `WARNING: suspicious RCU usage`，随后 v9 补上 `guard(rcu)()` 与另外三处遗漏。8/28 当日 v9 无人回帖，但**作者自曝的缺陷恰好说明该系列的真正难点不是标注本身，而是"哪些上下文算合法读侧"**。
+**本文为增量更新**（完整背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-001-sched-annotate-rq-rd-with-rcu-and-update-lockless-readers.html">sched-20260827-001</a>）。Aaron Tomlin 的 6 补丁系列在一天之内连发 **v8 与 v9**：给 `struct rq->rd` 补上 `__rcu` 标注，并把 `kernel/sched/` 里所有无锁直读 `rq->rd` 的地方换成统一 helper。v8 按 Peter Zijlstra 对 v7 的意见引入 `rcu_dereference_root_domain()`；发完 v8 约 1 小时后作者自己回帖 "Please ignore"——Sashiko 机器人查出 `dl_task_needs_bw_move()` 在只持 `cpuset_mutex` 的进程上下文里解引用（既无 `sched_domains_mutex` 也无 RCU 读侧临界区），他用 virtme-ng 复现出 `WARNING: suspicious RCU usage`，随后 v9 补上 `guard(rcu)()` 与另外三处遗漏。8/28 当日 v9 无人回帖，但**作者自曝的缺陷恰好说明该系列的真正难点不是标注本身，而是"哪些上下文算合法读侧"**。
 
 ## 背景与问题
 

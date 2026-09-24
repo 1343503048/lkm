@@ -40,7 +40,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，两个补丁各自改什么的完整分析见 related_articles 中的 sched-20260907-016。09-09 01:13 这条线落地了：Tejun Heo 回 `[PATCH 0/2]` 封面「Applied 1-2 to sched_ext/for-7.4」，两枚纯注释修正全部被收下，等待随 sched_ext 的 7.4 合并窗口进主线。从发出到收取只用了约 18 小时，且全程没有任何 review 争议。
+本文为增量更新，两个补丁各自改什么的完整分析见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-016-sched-fix-typos-and-repeated-words-in-comments.html">sched-20260907-016</a>。09-09 01:13 这条线落地了：Tejun Heo 回 `[PATCH 0/2]` 封面「Applied 1-2 to sched_ext/for-7.4」，两枚纯注释修正全部被收下，等待随 sched_ext 的 7.4 合并窗口进主线。从发出到收取只用了约 18 小时，且全程没有任何 review 争议。
 
 ## 背景与问题
 

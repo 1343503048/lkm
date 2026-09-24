@@ -52,7 +52,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，20/23 的算法本身（线程组整体利用率的非对称 EWMA 估算）与前因见 [[sched-20260828-010]]，Peter 那条建议的出处见 [[sched-20260901-006]]，整套 RFC 的方案背景见 [[sched-20260827-002]]。09-08 本线程只有一封新邮件，内容是一处代码生成层面的小收尾：作者 Jianyong Wu 在 15:43 回复 Peter Zijlstra 09-01 的意见，接受把 20/23 里的 `mul_u64_u32_div()` 换成 `mul_u64_u32_shr(..., NICE_0_LOAD_SHIFT)`，并为一周未回道歉（「Sorry for the late reply. Good point, will fix.」）。这不改变系列任何争议——20/23 的参数取值、以及 RFC v2 整体被 Peter 否掉的方向性问题依旧挂着。
+本文为增量更新，20/23 的算法本身（线程组整体利用率的非对称 EWMA 估算）与前因见 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-010-sched-cache-judge-migration-eligibility-in-llc-granularity.html">sched-20260828-010</a>，Peter 那条建议的出处见 <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-006-sched-cache-prioritize-preferred-numa-node-selection-over-llc-selection.html">sched-20260901-006</a>，整套 RFC 的方案背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-002-sched-scale-cache-aware-aggregation-at-llc-granularity.html">sched-20260827-002</a>。09-08 本线程只有一封新邮件，内容是一处代码生成层面的小收尾：作者 Jianyong Wu 在 15:43 回复 Peter Zijlstra 09-01 的意见，接受把 20/23 里的 `mul_u64_u32_div()` 换成 `mul_u64_u32_shr(..., NICE_0_LOAD_SHIFT)`，并为一周未回道歉（「Sorry for the late reply. Good point, will fix.」）。这不改变系列任何争议——20/23 的参数取值、以及 RFC v2 整体被 Peter 否掉的方向性问题依旧挂着。
 
 ## 背景与问题
 

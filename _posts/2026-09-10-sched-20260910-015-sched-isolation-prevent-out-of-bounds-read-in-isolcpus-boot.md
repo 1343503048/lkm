@@ -138,7 +138,7 @@ layout: article
 - **推动解耦（discussion）**：这是本线程最有价值的一件事——在原线程回复，指出带 `Cc: stable` 的越界读修复不应等待一个已迭代 15 版的大系列，建议 Aaron 单独重发 v2 走 `sched/urgent`，v16 再 rebase 到它之上；同时可请 Valentin 就处置方式表个态。成本低、对 stable 用户有实际收益。
 - **补复现与验证（testing）**：在开启 `CONFIG_KASAN` 的内核上用 `isolcpus=<未知flag>`（不带尾随逗号）启动，确认是否报越界读、以及 housekeeping 掩码是否被错误设置，把结果回帖。当日线程里完全没有复现数据，这是明显的信息缺口。
 - **审 v16 的前置补丁顺序（review）**：等 v16 发出后，核对修复是否真的排在改写同一解析逻辑的补丁之前、bisect 基线是否成立，以及 `Fixes:` 与 `Cc: stable` 是否如承诺保留。
-- 相邻背景可参考 sched-20260802-001（同文件 `kernel/sched/isolation.c` 的 housekeeping cpumask 释放时机修复），两者都属 housekeeping 初始化路径的小修复，合入路径可互为参照。
+- 相邻背景可参考 <a class="article-ref" href="/lkm/2026/08/02/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html">sched-20260802-001</a>（同文件 `kernel/sched/isolation.c` 的 housekeeping cpumask 释放时机修复），两者都属 housekeeping 初始化路径的小修复，合入路径可互为参照。
 
 ## 参考链接
 - 原始补丁 v1（线程根，2026-05-23）: https://lore.kernel.org/all/20260523210214.593704-1-atomlin@atomlin.com/

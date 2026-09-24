@@ -58,7 +58,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，重构动机与 skeleton API 等价性的完整分析见 related_articles 中的 sched-20260814-010。Ziyang Men 在 09-09 07:55 发出 v4 的 4/4：把 `tools/testing/selftests/sched_ext/Makefile` 自带的约 130 行 libbpf/bpftool/vmlinux.h/BPF object/skeleton 构建机器换成 `include ../lib.bpf.mk`，让 sched_ext 成为继 `selftests/cgroup`、`selftests/hid` 之后第三个树内消费者——净删 97 行（+26/-123）。注意：v4 相对 v3 改了什么**未获取到**（当天邮箱里只有 4/4，封面不在缓存内）。
+本文为增量更新，重构动机与 skeleton API 等价性的完整分析见 related_articles 中的 <a class="article-ref" href="/lkm/2026/08/14/sched-20260814-010-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib-.html">sched-20260814-010</a>。Ziyang Men 在 09-09 07:55 发出 v4 的 4/4：把 `tools/testing/selftests/sched_ext/Makefile` 自带的约 130 行 libbpf/bpftool/vmlinux.h/BPF object/skeleton 构建机器换成 `include ../lib.bpf.mk`，让 sched_ext 成为继 `selftests/cgroup`、`selftests/hid` 之后第三个树内消费者——净删 97 行（+26/-123）。注意：v4 相对 v3 改了什么**未获取到**（当天邮箱里只有 4/4，封面不在缓存内）。
 
 ## 背景与问题
 

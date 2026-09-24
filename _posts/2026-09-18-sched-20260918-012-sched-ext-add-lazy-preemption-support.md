@@ -48,7 +48,7 @@ layout: article
 增量更新：Andrea Righi 的 sched_ext 惰性抢占系列（2 补丁：核心支持 + selftests）本日获 Tejun Heo 完整 review——"整体不错"，提出可折叠进 `for_each_cpu_or()`、改名为 `scx_bpf_task_set_lazy_resched()`/`SCX_OPS_LAZY_RESCHED`、补 bit 枚举等若干点，selftests 亦有详细整改项；作者已全盘接受并表示将出新版。Tao Cui 补上 Tested-by 与实测（惰性抢占在常见场景无唤醒延迟回退、上下文切换率大幅下降）。
 
 ## 背景与问题
-背景见 sched-20260917-010：sched_ext 需要"惰性抢占"（lazy preemption）能力——让 BPF 调度器把抢占推迟到时间片耗尽等惰性点，避免频繁上下文切换。本系列为 v6。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-010-sched-ext-add-lazy-preemption-support.html">sched-20260917-010</a>：sched_ext 需要"惰性抢占"（lazy preemption）能力——让 BPF 调度器把抢占推迟到时间片耗尽等惰性点，避免频繁上下文切换。本系列为 v6。
 
 ## 技术方案
 - 1/2：新增惰性抢占支持，通过 `SCX_OPS_LAZY_SLICE_EXPIRY` 等 flag + 惰性 resched 标记实现；Tejun 建议改用 `scx_bpf_task_set_lazy_resched()` 命名、把 lazy-only 目标的 `cpus_to_kick_if_idle` 折叠进 `for_each_cpu_or()` 循环。

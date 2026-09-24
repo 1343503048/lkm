@@ -46,15 +46,15 @@ layout: article
 增量更新：albin_yang 的 `run_delay` 虚增修复系列本日推进——作者给出用户态 reproducer（每次在 sched_delayed 睡眠期间发生的迁移会把整段睡眠时长 ~148ms 虚算进 run_delay），Chen Yu 给出 Reviewed-by 并附机制分析；Kayra Cizmeci 纠正了 Chen Yu 关于 `can_migrate_task()` 跳过 delayed 任务的论断，指出 active load balance（`detach_one_task()`→`active_load_balance_cpu_stop()`，迁移类型未设置为 migrate_load）路径仍有让 delayed 任务被迁移的可能。
 
 ## 背景与问题
-背景见 sched-20260909-017：EEVDF 的 delayed-dequeue 任务（`!entity_eligible` 被保留在 rq 上、`se.sched_delayed` 置位）在睡眠期间被迁移时，普通迁移路径 `activate_task(dst, 0)` 会在迁移时刻重设 `last_queued`，把"迁移到唤醒"这段仍处于睡眠的时长记进了 run_delay（对 `last_queued=0` 的任务 `sched_info_arrive()` 不扣减等待）。
+背景见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260909-017</a>：EEVDF 的 delayed-dequeue 任务（`!entity_eligible` 被保留在 rq 上、`se.sched_delayed` 置位）在睡眠期间被迁移时，普通迁移路径 `activate_task(dst, 0)` 会在迁移时刻重设 `last_queued`，把"迁移到唤醒"这段仍处于睡眠的时长记进了 run_delay（对 `last_queued=0` 的任务 `sched_info_arrive()` 不扣减等待）。
 
 本日作者把这条路径做成了可复现的 reproducer，坐实"真实、用户可见"的 over-count。
 
 ## 技术方案
-修复本身（见 sched-20260909-017）：迁移被 delayed 的任务时不应更新其 `last_queued` 字段，因为它并未真的变得 runnable。作者 reproducer 的构造：先起背景负载（`stress-ng --cpu $(nproc-1) &`）把 min_vruntime 顶高，一个 worker 线程在 CPU0 上烧 CPU ~80ms 后 `usleep` 150ms——此时它 `!entity_eligible` 被 delayed-dequeue（"睡眠"但仍在 rq 上）；另一线程在它入睡 ~2ms 后用 `sched_setaffinity` 把它迁到 CPU1（走 `activate_task(dst,0)` 的 plain migration 路径），复刻"仍在睡眠但重设 last_queued"。
+修复本身（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260909-017</a>）：迁移被 delayed 的任务时不应更新其 `last_queued` 字段，因为它并未真的变得 runnable。作者 reproducer 的构造：先起背景负载（`stress-ng --cpu $(nproc-1) &`）把 min_vruntime 顶高，一个 worker 线程在 CPU0 上烧 CPU ~80ms 后 `usleep` 150ms——此时它 `!entity_eligible` 被 delayed-dequeue（"睡眠"但仍在 rq 上）；另一线程在它入睡 ~2ms 后用 `sched_setaffinity` 把它迁到 CPU1（走 `activate_task(dst,0)` 的 plain migration 路径），复刻"仍在睡眠但重设 last_queued"。
 
 ## 版本演进与当前进展
-- v1（2026-09-09，`<20260909133345.1572954-1-albin_yang@163.com>`）：修复补丁（见 sched-20260909-017）。
+- v1（2026-09-09，`<20260909133345.1572954-1-albin_yang@163.com>`）：修复补丁（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-017-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260909-017</a>）。
 - 本日作者回帖（`<20260919035951.509665-1-albin_yang@163.com>`）补充 reproducer 与实测数据。
 - Chen Yu（`<aq5AkZq396xkL4LW@three-body>`）给出 Reviewed-by：`last_queued` 在任务切出时被 `sched_info_arrive()` 清空，"delayed 状态与 run_delay 无关"；凡被动/主动 load balance、NUMA balancing、`sched_setaffinity` 迁移都不该在重新入队 delayed 任务时更新 `last_queued`。
 - Kayra Cizmeci（`<20260919102420.108000-1-kayracizmeci@gmail.com>`）纠正：`can_migrate_task()` 会跳过 delayed 任务，除非 delayed 且迁移类型非 migrate_load；但 `can_migrate_task()` 也由 `detach_one_task()`（来自 `active_load_balance_cpu_stop()`）调用，且该处自定义 env 未设置迁移类型——即迁移类型按 migrate_load 计，此路径上 delayed 任务确实能被迁移。

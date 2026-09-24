@@ -75,7 +75,7 @@ Andrea Righi 原先提的备选是：proxy execution 打开且 mutex 带 `MUTEX_
 
 ## 版本演进与当前进展
 
-- RFC v1：2026-08-26 发出 16 补丁（cover `<20260826062901.2137-1-kprateek.nayak@amd.com>`），当天 Andrea 已就 PELT 注释与 owner-NULL 自旋提过意见（见 sched-20260826-001）。
+- RFC v1：2026-08-26 发出 16 补丁（cover `<20260826062901.2137-1-kprateek.nayak@amd.com>`），当天 Andrea 已就 PELT 注释与 owner-NULL 自旋提过意见（见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-001-sched-core-alternate-approach-sleeping-owner-proxy-exec.html">sched-20260826-001</a>）。
 - 2026-08-31：Prateek 在 `04/16` 回帖给出上述三组实验与数据；Andrea 23:07 回复接受结论。**系列版本未变（仍是同一版 RFC）**，也没有出现新的重构 patch 集。
 - 系列自身状态：cover 里写明"not bisectible in any way at the moment"，Patch 1–4 是可以脱离其余 RFC 单独讨论的 fix。
 

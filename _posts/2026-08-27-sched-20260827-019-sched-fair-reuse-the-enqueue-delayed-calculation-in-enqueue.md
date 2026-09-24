@@ -46,13 +46,13 @@ layout: article
 本文为增量更新（完整背景见 related_articles）。Kayra Cizmeci 的 enqueue 路径清理系列在 08-26 被 K Prateek Nayak（AMD）提了个 nit——引入局部 `bool delayed` 后可读性变差（"not delayed or delayed?"），建议要么改名 `wakeup_delayed` 要么直接沿用宏；08-27 作者反问：为什么不干脆改名后两处共用，若不认可则维持 `ENQUEUE_DELAYED`（两处判断逻辑本一致）。讨论停留在命名口味层面，无功能分歧。
 
 ## 背景与问题
-该系列（v2 共 2 补丁）把 `enqueue_task_fair()` 内散落的 `flags & ENQUEUE_DELAYED` 检查收敛为函数开头一次计算的 `bool delayed`，并去掉 `place_entity()`/`requeue_delayed_entity()` 对 curr 状态的重复判断，声明 "No functional change intended"。背景细节见 sched-20260824-011 / sched-20260826-002。
+该系列（v2 共 2 补丁）把 `enqueue_task_fair()` 内散落的 `flags & ENQUEUE_DELAYED` 检查收敛为函数开头一次计算的 `bool delayed`，并去掉 `place_entity()`/`requeue_delayed_entity()` 对 curr 状态的重复判断，声明 "No functional change intended"。背景细节见 <a class="article-ref" href="/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html">sched-20260824-011</a> / <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-002-sched-fair-reduce-repeated-work-in-enqueue-path.html">sched-20260826-002</a>。
 
 ## 技术方案
 争点只有一个：局部布尔量的**命名**。Prateek 的观点是编译器最终会优化掉这层间接，代码读者对着一个大写的 `ENQUEUE_DELAYED` 更不容易误解（他特别嫌 `if (!p->se.sched_delayed || delayed)` 这种"取反 || 布尔"的读感），并顺带建议 `wakeup_delayed` 但自认没必要。作者的立场：若不做重命名，宁可保留宏原位使用，因为两处判断的语义相同。备选方向（改名并两处共用）已由作者在本日回帖中主动提出，等 Prateek 表态。
 
 ## 版本演进与当前进展
-- 08-24：v1 首次出现（sched-20260824-011）。
+- 08-24：v1 首次出现（<a class="article-ref" href="/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html">sched-20260824-011</a>）。
 - 08-26：v2（1/2 msgid `<0b1ef9d0122ae3037dac38d2549f13c9b063369a.1787737648.git.kayracizmeci@gmail.com>`）；Prateek 提 nit（`<3ae49b35-2188-4b29-af4a-6fff500098d3@amd.com>`）。
 - 08-27：作者回帖反问（`<20260826184432.911321-1-kayracizmeci@gmail.com>`），当日无人再回复，等待裁决。
 

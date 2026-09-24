@@ -120,7 +120,7 @@ layout: article
   - Tim Chen 对 v3 的 Reviewed-by: <https://lore.kernel.org/all/84f83c4dab930ff41cafbe614bbfa866003caa21.camel@linux.intel.com/>
   - v2 cover letter（上一版）: <https://lore.kernel.org/all/20260903041154.2479761-1-sh_def@163.com/>
 - 相关文章/系列：
-  - [[sched-20260903-001]] 代理执行下执行上下文 tick 处理（v2）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> 代理执行下执行上下文 tick 处理（v2）。
 - 相关代码/commit：
   - `kernel/sched/core.c` `sched_tick()` / `sched_tick_remote()` / `sched_tick_exec_ctx()`
   - `kernel/sched/fair.c` `task_tick_fair()` / `task_tick_numa()` / `task_tick_cache()`

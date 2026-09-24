@@ -57,7 +57,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景与三条互斥修法的对比见 [[sched-20260907-006]]、[[sched-20260903-010]]、[[sched-20260902-008]]。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__resolve_freq()` 方案（自认自己原来那版更复杂），并给出第二平台实测——他的机器上 `cpuinfo_max_freq` 3100000 高于最高 `_PSS` 档 2700000，打上 Prateek 那版改动后 CPU capacity 回到 1024。同时他提出给 Prateek 加 `Suggested-by:`，并把「由谁署名发这版」的选择权交回给 Prateek。至此假压力的成因、复现平台（AMD 5900X + Hygon `_PSS`）、修法三者都对齐了，缺的只是正式提交与 cpufreq 维护者表态。
+本文为增量更新，完整背景与三条互斥修法的对比见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260907-006</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260903-010</a>、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a>。09-08 本线程只有一封新邮件，但是第一封带**收敛结论**的：作者 Jianyong Wu（Hygon）在 15:19 回复 Prateek Nayak，明确采纳 Prateek 的 cpufreq 侧 `__resolve_freq()` 方案（自认自己原来那版更复杂），并给出第二平台实测——他的机器上 `cpuinfo_max_freq` 3100000 高于最高 `_PSS` 档 2700000，打上 Prateek 那版改动后 CPU capacity 回到 1024。同时他提出给 Prateek 加 `Suggested-by:`，并把「由谁署名发这版」的选择权交回给 Prateek。至此假压力的成因、复现平台（AMD 5900X + Hygon `_PSS`）、修法三者都对齐了，缺的只是正式提交与 cpufreq 维护者表态。
 
 ## 背景与问题
 

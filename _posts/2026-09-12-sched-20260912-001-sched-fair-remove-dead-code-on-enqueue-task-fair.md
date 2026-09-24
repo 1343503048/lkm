@@ -48,7 +48,7 @@ layout: article
 ---
 
 ## TL;DR
-Kayra Cizmeci 补发带版本号的 v3：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3），diff 与 09-11 的无版本号投递逐行一致——作者自述「忘了标 v3」。这是 place_entity 系列（PeterZ 判定 curr==se 不可达）与独立清理补丁两条线索的正式归并版本，当日仍无回帖。本文为增量更新，前情见 sched-20260911-020、sched-20260911-015。
+Kayra Cizmeci 补发带版本号的 v3：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3），diff 与 09-11 的无版本号投递逐行一致——作者自述「忘了标 v3」。这是 place_entity 系列（PeterZ 判定 curr==se 不可达）与独立清理补丁两条线索的正式归并版本，当日仍无回帖。本文为增量更新，前情见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-020-sched-fair-remove-dead-code-on-enqueue-task-fair.html">sched-20260911-020</a>、<a class="article-ref" href="/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html">sched-20260911-015</a>。
 
 ## 背景与问题
 enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(cfs_rq, se, flags) 独立分支、跳过常规入队路径。该前提在 09-11 的 place_entity 系列讨论中被 Peter Zijlstra 论证为不可达（enqueue 时 se 不可能是 cfs_rq->curr），作者当天以 WARN_ON_ONCE 测试佐证并承诺发 v3；本补丁即该方向的独立实现。
@@ -61,9 +61,9 @@ enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 ## 版本演进与当前进展
 *current_version: v3（msgid `<20260911160253.1249960-1-kayracizmeci@gmail.com>`，09-12 00:02 入缓存）*。
 
-- 09-11 23:54：以无版本号的 `[PATCH]` 投递（见 sched-20260911-020）；
+- 09-11 23:54：以无版本号的 `[PATCH]` 投递（见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-020-sched-fair-remove-dead-code-on-enqueue-task-fair.html">sched-20260911-020</a>）；
 - 09-12 00:02：补发 `[PATCH v3]`，cover 注明「Ah.. I forgot to add v3. Sorry of the other one.」——diff 与前次投递完全一致（同一 blob 对 440e4fdebe2f），本次只是把版本号补上；
-- 当日无回帖。place_entity 系列（sched-20260911-015）承诺的 v3 当日缓存内未出现，两条线索的最终归并形态仍待观察。
+- 当日无回帖。place_entity 系列（<a class="article-ref" href="/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html">sched-20260911-015</a>）承诺的 v3 当日缓存内未出现，两条线索的最终归并形态仍待观察。
 
 ## Maintainer 意见与讨论焦点
 本补丁自身当日无新回帖；既有的支持性意见来自 PeterZ（09-11 在 place_entity 线程给出等价 diff）。无反对意见记录；潜在关注点仍是删除后 enqueue 路径确无 curr == se 的隐藏入口。

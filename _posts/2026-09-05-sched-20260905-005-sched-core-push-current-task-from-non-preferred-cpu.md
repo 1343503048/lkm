@@ -129,8 +129,8 @@ v12 的架构分两层：A 层是通用调度器机制 `cpu_preferred_mask`（�
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260904-012]] steal_governor v12 kcpustat_field_total helper（01/13）。
-  - [[sched-20260903-002]] steal_governor v12 偏好 CPU + vCPU 回退。
+  - <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-012-sched-cputime-add-kcpustat-field-total-helper.html">sched-20260904-012</a> steal_governor v12 kcpustat_field_total helper（01/13）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a> steal_governor v12 偏好 CPU + vCPU 回退。
 - v12 cover letter：https://lore.kernel.org/all/20260903063240.268775-1-sshegde@linux.ibm.com/
 - v12 08/13 补丁本体：https://lore.kernel.org/all/20260903063240.268775-9-sshegde@linux.ibm.com/
 - Yury Norov 的 4 条意见：https://lore.kernel.org/all/aptiJP_8SWwZWju6@yury/

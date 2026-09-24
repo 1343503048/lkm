@@ -95,7 +95,7 @@ vfs_read+0xe8/0x360
 ## Maintainer 意见与讨论焦点
 
 - 本日无维护者表态，讨论焦点只有一个：**锁的覆盖范围是否应该包含会同步等待用户态的 `do_close_on_exec()`**。报告者给出的判断是这一步在原评审里被承认过是理论风险。
-- 与本日另一条 exec 路径修复同源：`sched/cache: Fix use-after-free of the mm replaced by exec`（sched-20260901-001）处理的正是「exec 换 mm 时 `p->mm` 无生命周期保护」，两者都是 `begin_new_exec()` 长临界区外溢到别的子系统造成的后果，可以在同一次 review 里一起看。
+- 与本日另一条 exec 路径修复同源：`sched/cache: Fix use-after-free of the mm replaced by exec`（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-001-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html">sched-20260901-001</a>）处理的正是「exec 换 mm 时 `p->mm` 无生命周期保护」，两者都是 `begin_new_exec()` 长临界区外溢到别的子系统造成的后果，可以在同一次 review 里一起看。
 - 无人提出「这是 FUSE 的使用错误」这一反驳（09-01 范围内），因此分歧尚未展开。
 
 ## 合入评估

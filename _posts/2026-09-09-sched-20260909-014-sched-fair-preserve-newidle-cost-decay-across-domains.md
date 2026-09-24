@@ -69,7 +69,7 @@ Li RongQing（百度）09-09 17:45 发出的单行修复：`sched_balance_domain
 
 `kernel/sched/fair.c | 2 +-`，1 file changed, 1 insertion(+), 1 deletion(-)。
 
-顺带一提：commit message 结尾两段有重复——"This restores the aggregate semantics of need_decay and ensures rq->max_idle_balance_cost is updated..." 与紧随其后的 "This restores the aggregate semantics of need_decay that existed before e60b56e46b38 and ensures..." 说的是同一件事，只差一个 `that existed before e60b56e46b38`。这种重复在同为注释修正类的今天另一篇里也被社区在意（见 sched-20260909-002 就是专门修重复词的），值得顺手清理。
+顺带一提：commit message 结尾两段有重复——"This restores the aggregate semantics of need_decay and ensures rq->max_idle_balance_cost is updated..." 与紧随其后的 "This restores the aggregate semantics of need_decay that existed before e60b56e46b38 and ensures..." 说的是同一件事，只差一个 `that existed before e60b56e46b38`。这种重复在同为注释修正类的今天另一篇里也被社区在意（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-002-sched-fix-typos-and-repeated-words-in-comments.html">sched-20260909-002</a> 就是专门修重复词的），值得顺手清理。
 
 ## 版本演进与当前进展
 

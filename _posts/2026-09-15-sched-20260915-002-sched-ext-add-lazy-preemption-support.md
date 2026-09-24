@@ -61,7 +61,7 @@ fair 调度类可通过 lazy rescheduling 推迟调度边界（推迟到返回�
 - 对因无限 slice 停掉 tick 的 NOHZ_FULL CPU 上的任务，lazy 请求会恢复 tick 依赖，保证前向进展；kick 请求独立累加、在持目标 rq 锁时解算优先级；拒绝未知 kick flag 与非法 SCX_KICK_IDLE 组合。
 
 ## 版本演进与当前进展
-- **v1**（09-11）、**v2**（09-14 08:49，见 sched-20260912-005）、**v3**（09-14 14:46，见 sched-20260914-006）。
+- **v1**（09-11）、**v2**（09-14 08:49，见 <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html">sched-20260912-005</a>）、**v3**（09-14 14:46，见 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-006-sched-ext-add-lazy-preemption-support.html">sched-20260914-006</a>）。
 - **v4**（本日 17:00，`<20260915090127.2321020-1-arighi@nvidia.com>`）：保留 SCX_KICK_WAIT 与 SCX_KICK_PREEMPT_LAZY 组合时的同步（Sashiko）；lazy 过期无限 slice 时恢复 tick 依赖（Sashiko）；kselftest 验证延迟 SCX_KICK_WAIT 回调确实执行、kick 测试控制器脱离 victim CPU、nohz_tick 控制器选 housekeeping CPU 并优雅跳过（Sashiko）。
 - 本日回帖：作者 104545 就 selftest 一条反馈（`autoconf.h` 可包含并据此判断）确认「I'll include this fix in the next version」。
 

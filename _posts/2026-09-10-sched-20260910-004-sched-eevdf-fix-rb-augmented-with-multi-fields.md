@@ -53,7 +53,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-008 / sched-20260908-004。Vincent Guittot 的修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 51b0e68cfa0a，09-10 10:22 +0200），EEVDF 运行树 3 个增广字段只拷贝 min_vruntime 的问题正式进入紧急修复通道；同日线程里 Kayra Cizmeci 补了一轮独立 review（给出 Reviewed-by），并与 Peter 就 min_vruntime_update() 的 bool 参数是否冗余交锋两轮，结论是「该删但没有干净的删法」，留作后续清理。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260909-008</a> / <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260908-004</a>。Vincent Guittot 的修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 51b0e68cfa0a，09-10 10:22 +0200），EEVDF 运行树 3 个增广字段只拷贝 min_vruntime 的问题正式进入紧急修复通道；同日线程里 Kayra Cizmeci 补了一轮独立 review（给出 Reviewed-by），并与 Peter 就 min_vruntime_update() 的 bool 参数是否冗余交锋两轮，结论是「该删但没有干净的删法」，留作后续清理。
 
 ## 背景与问题
 EEVDF 运行树增广了 3 个字段（min_vruntime/min_slice/max_slice），但 RB_DECLARE_CALLBACKS 模板只支持单个 RBAUGMENTED 字段，_copy 与 _rotate 回调只搬 min_vruntime，插入再平衡与删除变色路径会丢另外两个字段，导致父级增广值计算错误（影响基于 min_slice/max_slice 的 eligibility/最长 slice 判定）。Fixes: aef6987d8954 ("sched/eevdf: Propagate min_slice up the cgroup hierarchy")。

@@ -60,10 +60,10 @@ Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent`
 ## 背景与问题
 拉取内容与此前跟踪的对应关系：
 
-- **sched/eevdf: Fix augmented max_slice**（Vincent Guittot）——修正入队时 `se->max_slice` 的取值，对应 sched-20260910-005。
-- **sched/eevdf: Fix rb augmented with multi fields**（Vincent Guittot）——修正 EEVDF 多字段 augmented rbtree 的重平衡，对应 sched-20260909-008 与 sched-20260910-004。
-- **sched: Account cgroup CPU time to the execution context**（Hui Su）——proxy execution 下 cgroup CPU 时间记到执行上下文而非调度上下文，对应 sched-20260910-016。
-- **sched/core: Call wq_worker_tick() for the execution context**（Hui Su）——wq worker tick 同样跟随执行上下文，对应 sched-20260910-017。
+- **sched/eevdf: Fix augmented max_slice**（Vincent Guittot）——修正入队时 `se->max_slice` 的取值，对应 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html">sched-20260910-005</a>。
+- **sched/eevdf: Fix rb augmented with multi fields**（Vincent Guittot）——修正 EEVDF 多字段 augmented rbtree 的重平衡，对应 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260909-008</a> 与 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260910-004</a>。
+- **sched: Account cgroup CPU time to the execution context**（Hui Su）——proxy execution 下 cgroup CPU 时间记到执行上下文而非调度上下文，对应 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260910-016</a>。
+- **sched/core: Call wq_worker_tick() for the execution context**（Hui Su）——wq worker tick 同样跟随执行上下文，对应 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260910-017</a>。
 
 本日邮件本身是 pull request 正文，不含新讨论；「背景」在这里是身份变化：这批修复此前只存在于评审线程，现在进入了 `tip/sched/urgent` 的祖先图，成为下游分支（内部分支、stable 回合队列）可以据此对齐的事实。
 
@@ -73,7 +73,7 @@ Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent`
 ## 版本演进与当前进展
 本 pull 是这四条修复共同的时间节点，时间线：
 
-- 09-09/09-10：Guittot 两条 EEVDF 修复与 Hui Su 两条 proxy 记账修复发出并被本报逐篇跟踪（sched-20260909-008、sched-20260910-004/005/016/017）。
+- 09-09/09-10：Guittot 两条 EEVDF 修复与 Hui Su 两条 proxy 记账修复发出并被本报逐篇跟踪（<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260909-008</a>、<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260910-004</a>/005/016/017）。
 - 09-13 16:19（北京时间）：Ingo 汇总拉取，短句描述四条修复，按「EEVDF 两条在前、Hui Su 两条在后」排列，未附加任何评审说明。
 - 进 Linus 树的时点：本日缓存中没有 pr-tracker-bot 回执，未获取到。
 
@@ -97,9 +97,9 @@ pull request 无 benchmark 数据。可量化信息是规模与时延：4 条修
 ## 参考链接
 - 本日 pull request: https://lore.kernel.org/all/aqZcjrj6NEVj6Vgq@gmail.com/
 - 相关文章/系列：
-  - [[sched-20260910-004]] sched/eevdf: Fix rb augmented with multi fields
-  - [[sched-20260910-005]] sched/eevdf: Fix augmented max_slice
-  - [[sched-20260910-016]] sched: Account cgroup CPU time to the execution context
-  - [[sched-20260910-017]] sched/core: Call wq_worker_tick() for the execution context
+  - <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260910-004</a> sched/eevdf: Fix rb augmented with multi fields
+  - <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-005-sched-eevdf-fix-augmented-max-slice.html">sched-20260910-005</a> sched/eevdf: Fix augmented max_slice
+  - <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-016-sched-account-cgroup-cpu-time-to-the-execution-context.html">sched-20260910-016</a> sched: Account cgroup CPU time to the execution context
+  - <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-017-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260910-017</a> sched/core: Call wq_worker_tick() for the execution context
 - 进 Linus 树的合并点: 未获取到（无 pr-tracker-bot 回执）
 - stable backport: 未获取到

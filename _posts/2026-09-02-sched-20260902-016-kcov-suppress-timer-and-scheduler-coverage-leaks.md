@@ -211,4 +211,4 @@ v2 相对 v1 的两处实质变化可确认：patch 1 变为 `kcov: Add a kcov_p
   这些邮件在缓存中的 msgid 均为 IMAP 占位（形如 `<uid-27674@qq-imap>`），**未获取到可链接的真实 msgid**；
   v1 patchset 的 msgid 只能从 Sashiko 脚注读作 `20260807205027.31972-1-kmehltretter@gmail.com`，
   它未出现在缓存的 msgid/In-Reply-To 字段中，故不给出 lore 链接。
-- 相关：[[sched-20260902-002]]（同期 `sched: dynamic: Simplify PREEMPT_DYNAMIC`，同属抢占/调度核心的低风险清理线）
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a>（同期 `sched: dynamic: Simplify PREEMPT_DYNAMIC`，同属抢占/调度核心的低风险清理线）

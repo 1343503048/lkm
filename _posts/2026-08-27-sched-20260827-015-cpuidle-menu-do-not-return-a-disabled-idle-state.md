@@ -40,7 +40,7 @@ layout: article
 ---
 
 ## TL;DR
-Xueqin Luo 本日第二封同型修复：menu governor 在 `latency_req == 0` 且 state 0 被禁用时，`menu_select()` 的提前返回分支**短路了 disable 检查**，直接返回禁用的 state 0。修法是把 `!disable` 提为整个提前返回条件的前提。与 teo 那封（sched-20260827-014）是同一 bug 类在两个 governor 上的两份补丁，当日无人回复。
+Xueqin Luo 本日第二封同型修复：menu governor 在 `latency_req == 0` 且 state 0 被禁用时，`menu_select()` 的提前返回分支**短路了 disable 检查**，直接返回禁用的 state 0。修法是把 `!disable` 提为整个提前返回条件的前提。与 teo 那封（<a class="article-ref" href="/lkm/2026/08/27/sched-20260827-014-cpuidle-teo-do-not-return-a-disabled-idle-state.html">sched-20260827-014</a>）是同一 bug 类在两个 governor 上的两份补丁，当日无人回复。
 
 ## 背景与问题
 `menu_select()` 的提前返回条件形如 `if (latency_req == 0 || (…… && !dev->states_usage[0].disable))`——`||` 左侧完全绕过了 disable 判断。53812cdc9100（"cpuidle: menu: Move the latency_req == 0 special case check"）引入该特殊分支时即带此缺陷。后果与 teo 相同：核心层不复核 governor 返回值，CPU 进入本被禁用的状态；禁用 state 0 的部署（裁剪/调试用途）下 PM QoS 约束为 0 时必现。

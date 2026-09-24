@@ -96,7 +96,7 @@ v2 在本日尚未看到 Tejun Heo 的应用回帖。
 
 - **Andrea Righi**：唯一意见是 `Link:` 消息 ID 不完整（缺 `@linux.dev` 后缀，导致链接指向不存在的短消息 ID），其余认可并给出 `Reviewed-by`。这是纯标签正确性问题，说明 review 已读完代码。
 - 作者对「什么场景会被这个 bug 影响」给了明确类别：**toggle 型或计数型的 BPF 调度器**（`which toggle- or accounting-based schedulers miscount`），并用自己的探针调度器验证。
-- **本日无人讨论的一点**：该守卫读的是 `tg->scx.sched_idle`，而调用发生在 `percpu_down_read(&scx_cgroup_ops_rwsem)` 之下。等值判断与随后的状态更新之间是否有窗口、是否依赖上层旋钮写入串行化，正是同一天 Michal Blaszczyk 的 `sched: Lift cgroup update locking to core to prevent CFS/SCX divergence`（sched-20260901-003）与 Andrea 自己的 `sched_ext: Serialize cgroup knob updates`（被 Tejun 判定为被前者取代）在解决的那一类问题。这片修复不改变锁结构，但它的新语义建立在「同 tg 的旋钮写入被序列化」这一前提上，值得在后续版本中写明。
+- **本日无人讨论的一点**：该守卫读的是 `tg->scx.sched_idle`，而调用发生在 `percpu_down_read(&scx_cgroup_ops_rwsem)` 之下。等值判断与随后的状态更新之间是否有窗口、是否依赖上层旋钮写入串行化，正是同一天 Michal Blaszczyk 的 `sched: Lift cgroup update locking to core to prevent CFS/SCX divergence`（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-003-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html">sched-20260901-003</a>）与 Andrea 自己的 `sched_ext: Serialize cgroup knob updates`（被 Tejun 判定为被前者取代）在解决的那一类问题。这片修复不改变锁结构，但它的新语义建立在「同 tg 的旋钮写入被序列化」这一前提上，值得在后续版本中写明。
 
 ## 合入评估
 
@@ -110,7 +110,7 @@ v2 在本日尚未看到 Tejun Heo 的应用回帖。
 
 - **可直接代做的后续**：把 `scx_group_set_weight()` 与 `scx_group_set_idle()` 的等值守卫统一成一个 helper（或明确注释二者必须一致），避免第三条旋钮路径重蹈覆辙。这类「一致性」小补丁在 sched_ext 的 fixes 通道接受度较高。
 - **写一个可复用的探针调度器**：作者的验证方式是自写探针调度器打印每次回调。把它整理进 `tools/sched_ext/` 或 selftests，作为「cgroup 旋钮 → ops 回调」的契约测试，能同时保护 weight/idle/bandwidth 三条路径（`ops.cgroup_set_bandwidth()` 也在这天的 pull 里被改成允许 sleepable）。
-- **补一层语义文档**：`cpu.idle` 的回调契约（是否保证幂等、是否允许等值下发）目前靠代码行为约定，与 1/2 文档片（sched-20260901-009 同作者的另一条线）一样属于可补的空白。
+- **补一层语义文档**：`cpu.idle` 的回调契约（是否保证幂等、是否允许等值下发）目前靠代码行为约定，与 1/2 文档片（<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-009-sched-ext-fix-vtime-priority-queue-inversion-on-wide-vtime-s.html">sched-20260901-009</a> 同作者的另一条线）一样属于可补的空白。
 - **回合判断**：OLK-6.6 无 sched_ext，本片不直接相关；但「等值写不产生转换通知」这条原则同样适用于我们自己的 cgroup 旋钮转发路径（cpuset/cpu.max），值得作为实现纪律吸收。
 
 ## 参考链接

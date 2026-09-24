@@ -50,7 +50,7 @@ Tejun Heo 的 sched_ext 修复：`ebf1ccff79c4` 把 dispatcher 的最终 `ops_st
 新增 `scx_reenq_wait_dispatching()`：若任务的 `ops_state` 仍为 `SCX_OPSS_DISPATCHING`，则用 `wait_ops_state()` 等待其清除，与 `ops_dequeue()` 的做法一致。在三条 reenqueue 路径（`reenq_local()`、`reenq_user()`、`scx_reenq_reject()`）的 dequeue 之前调用。改动集中在 `kernel/sched/ext/ext.c`（13 insertions）加少量头文件声明。
 
 ## 版本演进与当前进展
-- **v1**（本日 105403，`<a4304b3f0c89fba23f1e5e92997a8f56@kernel.org>`）：单枚补丁，`Fixes: ebf1ccff79c4`，`Cc: stable # v7.1+`。这是 Tejun 在 ops.dequeue v2 评审里预告要「单独修」的那个 DISPATCHING reenq 洞（见 sched-20260916-006）。
+- **v1**（本日 105403，`<a4304b3f0c89fba23f1e5e92997a8f56@kernel.org>`）：单枚补丁，`Fixes: ebf1ccff79c4`，`Cc: stable # v7.1+`。这是 Tejun 在 ops.dequeue v2 评审里预告要「单独修」的那个 DISPATCHING reenq 洞（见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.html">sched-20260916-006</a>）。
 
 ## Maintainer 意见与讨论焦点
 - **Andrea Righi**：`Reviewed-by: Andrea Righi <arighi@nvidia.com>`——「Thanks for fixing this, it makes sense to me.」无异议。

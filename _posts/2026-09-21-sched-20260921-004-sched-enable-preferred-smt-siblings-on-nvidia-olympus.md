@@ -50,7 +50,7 @@ layout: article
 增量更新：Andrea Righi 的"在 NVIDIA Olympus 上启用优先 SMT 兄弟"系列（v6，其中 1/2 为 `sched/fair: Honor asymmetric SMT priority in idle selection`）昨日又获两则实质反馈——Breno Leitao 给出完整 Tested-by（实测唤醒重定向 800/800 生效、无 KASAN/lockdep 告警），Dietmar Eggemann 则对 Spatial SMT 收益机制提出技术问题，想确认作者是否持有 88 个持续运行的 benchmark 线程的负载模型。方向获认可，但 throughput 数据仍缺。
 
 ## 背景与问题
-背景见 sched-20260917-018 / sched-20260918-008：NVIDIA 的 Spatial SMT 会动态把物理核切分为两个"兄弟"逻辑核，传统 `sched_smt_asym_packing` 语义不适用，需要在 idle 选择路径上优先选择低编号（PE0）兄弟，让 PE0 保持全资源单线程模式、PE1 空闲。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-018-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260917-018</a> / <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260918-008</a>：NVIDIA 的 Spatial SMT 会动态把物理核切分为两个"兄弟"逻辑核，传统 `sched_smt_asym_packing` 语义不适用，需要在 idle 选择路径上优先选择低编号（PE0）兄弟，让 PE0 保持全资源单线程模式、PE1 空闲。
 
 ## 技术方案
 本日无新代码，仅两条社区反馈进一步验证/拷问既有方案。Breno 测试覆盖了 SMT 域的 `SD_ASYM_PACKING` 标记、域重建后的 override 重放（~400 次热插拔）、以及高编号兄弟向低编号兄弟的唤醒重定向。Dietmar 则从机制层面确认：这套代码"只对 NVIDIA Spatial SMT 这类动态分区物理核有益"，传统 SMT（Power7 等两线程机会性竞争同一资源）不会打开 `sched_smt_asym_packing`，故不会受影响。

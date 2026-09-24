@@ -129,7 +129,7 @@ v2→v3 全部是 Tejun 的修正（封面逐条列出）：
 - 顺着「界从哪来」做一件更值钱的事：把 `scx_flatcg` 的 lag/lead 界形式化成一份可复用的说明或
   helper，供其它使用 `time_before64()` 排序的 DSQ 检查自己是否满足前提。
 - 关注 sashiko-bot 的其余报告：`scx_bpf_task_set_slice()` 的竞争正是同一批审计的产物
-  （见 [[sched-20260902-004]]）。
+  （见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260902-004</a>）。
 - cgroup 视角：`scx_flatcg` 是扁平层级 cgroup 调度器，这条回绕修复影响长时间运行的容器场景，
   做 cgroup CPU 公平性测试时可以按「每 CPU 每次 pick 记一整个 slice」来估算回绕点。
 
@@ -142,4 +142,4 @@ v2→v3 全部是 Tejun 的修正（封面逐条列出）：
   https://lore.kernel.org/all/beadefcfd5ae112a703b2514f6eebf34@kernel.org/ ；
   applied：https://lore.kernel.org/all/752cd2e42b6161465a7644c3085ce924@kernel.org/
 - sashiko 原始报告（补丁 `Link:`）：https://lore.kernel.org/all/3f1ce004-e259-4e72-a5f7-14a5050053bd@linux.dev/
-- 相关：[[sched-20260902-004]]、[[sched-20260902-006]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260902-004</a>、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html">sched-20260902-006</a>

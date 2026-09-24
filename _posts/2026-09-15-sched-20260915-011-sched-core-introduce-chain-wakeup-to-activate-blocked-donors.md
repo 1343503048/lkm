@@ -42,7 +42,7 @@ layout: article
 本文为增量更新（系列全貌见 related_articles：K Prateek Nayak 的 16 补丁 RFC PoC）。09-15 John Stultz（proxy-exec 共同作者之一）回复 patch 14/16：在跑该系列时命中大量 lockdep 警告——`proxy_activate_blocked_task()` 带着 rq 锁被 pin 住就调用。这正是他自己 patch 里把 `activate_blocked_waiters()` 放到 rq_lock 之外的原因；建议把 `rf` 作为参数传入、用 `rq_unlock(rq, rf)` 后再调，之后 `rq_lock(rq, rf)`，并称这样能解决。合入判断 unknown（仍是 RFC/PoC）。
 
 ## 背景与问题
-承 sched-20260831-002：proxy-exec 里 sleeping owner 与 blocked donor 的竞态——owner 睡着时 proxy chain 挂在 owner 上、owner 唤醒时做 chain activation，而 blocked donor 可能被并发唤醒事件提前叫醒，激活路径需额外持 `p->blocked_lock` 才不漏 donor。patch 14/16「Introduce chain-wakeup to activate blocked donors」正是这段激活路径的一部分。John Stultz 实测后发现该实现持 rq 锁调用 `proxy_activate_blocked_task()`，触及 lockdep 约束。
+承 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-002-sched-core-alternate-approach-to-sleeping-owner-handling-in-proxy-exec.html">sched-20260831-002</a>：proxy-exec 里 sleeping owner 与 blocked donor 的竞态——owner 睡着时 proxy chain 挂在 owner 上、owner 唤醒时做 chain activation，而 blocked donor 可能被并发唤醒事件提前叫醒，激活路径需额外持 `p->blocked_lock` 才不漏 donor。patch 14/16「Introduce chain-wakeup to activate blocked donors」正是这段激活路径的一部分。John Stultz 实测后发现该实现持 rq 锁调用 `proxy_activate_blocked_task()`，触及 lockdep 约束。
 
 ## 技术方案
 无新代码。John Stultz 给出具体修法建议：给 `proxy_activate_blocked_task()` 传 `rf`（rq_flags）参数，在其内部 `rq_unlock(rq, rf)` 后再做激活、之后 `rq_lock(rq, rf)` 恢复——即把激活调用移出 rq 锁临界区，与其自己补丁里 `activate_blocked_waiters()` 的处理一致。

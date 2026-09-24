@@ -54,7 +54,7 @@ layout: article
 ---
 
 ## TL;DR
-Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据同步到来：CPU-bound 任务最大运行时长从 5.227ms 降到 3.386ms、>4ms 样本从 6 个降到 0。本文为增量更新，v1 与 09-11 讨论见 sched-20260911-004。
+Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据同步到来：CPU-bound 任务最大运行时长从 5.227ms 降到 3.386ms、>4ms 样本从 6 个降到 0。本文为增量更新，v1 与 09-11 讨论见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-004-sched-fair-restart-hrtick-after-same-task-repicks.html">sched-20260911-004</a>。
 
 ## 背景与问题
 hrtick 到期 → task_tick 触发 resched_curr() → schedule() 里 pick_task_fair() 再次选中当前任务 → put_prev_set_next_task() 在 next == prev 时直接返回、不调用 set_next_task()——hrtick_start_fair() 被跳过，下一个抢占点没有被武装。DL 同理（set_next_task_dl()/start_hrtick_dl() 被跳过）。v1 用 fair 特有的 rq flag + runnable 计数修复，被 Zhan Xusheng 与 PeterZ 指出缺陷与冗余。
@@ -84,7 +84,7 @@ hrtick 到期 → task_tick 触发 resched_curr() → schedule() 里 pick_task_f
 作者一手数据（5 次 10 秒 perf sched trace，条件见上）：CPU-bound fair 任务最大运行时长 baseline 5.227ms → v2 3.386ms；>4ms 样本 6 → 0。方向与幅度自洽（base_slice_ns 3ms 下 hrtick 缺失会让任务跑到 4ms+ 才被抢占），暂无第三方复现。
 
 ## 我可以参与的点
-- kind=testing：作者承诺的 delayed dequeue 混合负载与 DL hrtick 场景仍未回填数据，可在对应配置下复测（ftrace 验证 repick 路径 hrtick 重启，承 sched-20260826-009 的验证点）。
+- kind=testing：作者承诺的 delayed dequeue 混合负载与 DL hrtick 场景仍未回填数据，可在对应配置下复测（ftrace 验证 repick 路径 hrtick 重启，承 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.html">sched-20260826-009</a> 的验证点）。
 - kind=new_patch：认领「SNT_REPICK 不调用 set_protect_slice」的独立修复——作者与 Vincent 已就语义达成一致，只剩实现。
 
 ## 参考链接

@@ -108,7 +108,7 @@ Wanwu Li 把 sashiko 机器人挑起的 NMI kfunc 审计继续推下去，从「
   - Tejun Heo 指定做法的邮件（2/2 的 `Link:`）: <https://lore.kernel.org/all/d84b31727f04e1ed0d40042ba1c09e61@kernel.org/>
   - Tejun Heo 的 apply 通报: <https://lore.kernel.org/all/7567d46cf1bbae3377b0c84aa5e4a030@kernel.org/>
 - 相关文章/系列：
-  - [[sched-20260903-003]] sched_ext NMI kfunc 审计后续修复（拒 NMI 拿锁 kfunc v3 + 两处 irqsave）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260903-003</a> sched_ext NMI kfunc 审计后续修复（拒 NMI 拿锁 kfunc v3 + 两处 irqsave）。
 - 相关代码/commit：
   - `kernel/sched/ext/idle.c` `pick_idle_cpu_from_online_nodes()`
   - `kernel/sched/ext/internal.h` `scx_locked_rq()`

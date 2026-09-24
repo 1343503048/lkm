@@ -45,13 +45,13 @@ layout: article
 增量更新：Hui Su 的 proxy execution 环检测 RFC（Online Brent，无持久 walk 状态）本日由作者贴出对 tip/sched/core（`e81ee0630837`）的追加验证——针对 `772d9ffbfd26`（"sched: Migrate whole chain in proxy_migrate_task()"）引入的 `p->blocked_donor` 直接遍历，作者用只读插桩在深链/跨 CPU 环/对象复用/KCSAN 等用例下未观测到逃逸进迁移路径的临时 backlink 环。仍为 RFC，无维护者表态。
 
 ## 背景与问题
-背景见 sched-20260915-009：proxy execution 的 proxy walk 检测 donor 环通常需要持久化 walk 状态；RFC 用 Brent 环检测在无持久状态的情况下探测环。近期 `772d9ffbfd26` 让 `proxy_migrate_task()` 直接遍历 `p->blocked_donor`，成为 RFC 提到的"临时 backlink 环"最重要的当前消费者，作者因此做了追加验证。
+背景见 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html">sched-20260915-009</a>：proxy execution 的 proxy walk 检测 donor 环通常需要持久化 walk 状态；RFC 用 Brent 环检测在无持久状态的情况下探测环。近期 `772d9ffbfd26` 让 `proxy_migrate_task()` 直接遍历 `p->blocked_donor`，成为 RFC 提到的"临时 backlink 环"最重要的当前消费者，作者因此做了追加验证。
 
 ## 技术方案
-见 sched-20260915-009：Brent 环检测（checkpoint/power/span 三段状态完全属单次 `find_proxy_task()` 调用）。本日验证方式为 validation-only 的只读插桩——在 `proxy_migrate_task()` 入口检查已建 backlink 前缀，但不修复/截断/改动生产迁移路径。
+见 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html">sched-20260915-009</a>：Brent 环检测（checkpoint/power/span 三段状态完全属单次 `find_proxy_task()` 调用）。本日验证方式为 validation-only 的只读插桩——在 `proxy_migrate_task()` 入口检查已建 backlink 前缀，但不修复/截断/改动生产迁移路径。
 
 ## 版本演进与当前进展
-- RFC 0/1（2026-09-14，`<20260914165455.2126134-1-sh_def@163.com>`）：环检测方案（见 sched-20260915-009）。
+- RFC 0/1（2026-09-14，`<20260914165455.2126134-1-sh_def@163.com>`）：环检测方案（见 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-009-sched-proxy-exec-detect-cycles-without-persistent-walk-state.html">sched-20260915-009</a>）。
 - 本日作者回帖（`<77591907f579598e5cf293e2ac03682a.sh_def@163.com>`）追加 tip/sched/core 上与 `proxy_migrate_task()` 相关的验证数据。
 
 ## Maintainer 意见与讨论焦点

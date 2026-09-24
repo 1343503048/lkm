@@ -51,7 +51,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，方案背景见 [[sched-20260824-011]] 与 [[sched-20260826-002]]，命名之争的经过见 [[sched-20260827-019]]。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: Remove unused autogroup.h include`）的线程上，九分钟后在正确的线程里一边回帖一边道歉（「Sorry for this autogroup.h ping thing. Ah..」），并给出结论——他放弃自己原本「改名后两处共用」的想法，接受 Prateek 的判断，直接**丢掉 1/2**，只继续推 2/2（`sched/fair: reduce repeated work in enqueue path`）。也就是说这个补丁不会进主线了，本线程最后剩下的实质信息是作者的取舍理由。
+本文为增量更新，方案背景见 <a class="article-ref" href="/lkm/2026/08/24/sched-20260824-011-sched-fair-reuse-enqueue-delayed.html">sched-20260824-011</a> 与 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-002-sched-fair-reduce-repeated-work-in-enqueue-path.html">sched-20260826-002</a>，命名之争的经过见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-019-sched-fair-reuse-the-enqueue-delayed-calculation-in-enqueue.html">sched-20260827-019</a>。09-08 这处持续三天的口味之争收尾了，而且收得有点戏剧性：Kayra Cizmeci 在 00:05 误发了一封「Gentle ping on this patch」到另一个补丁（`sched/fair: Remove unused autogroup.h include`）的线程上，九分钟后在正确的线程里一边回帖一边道歉（「Sorry for this autogroup.h ping thing. Ah..」），并给出结论——他放弃自己原本「改名后两处共用」的想法，接受 Prateek 的判断，直接**丢掉 1/2**，只继续推 2/2（`sched/fair: reduce repeated work in enqueue path`）。也就是说这个补丁不会进主线了，本线程最后剩下的实质信息是作者的取舍理由。
 
 ## 背景与问题
 

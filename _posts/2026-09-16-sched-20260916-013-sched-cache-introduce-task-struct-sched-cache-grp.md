@@ -46,7 +46,7 @@ layout: article
 Tim Chen 的 cache-aware 系列 patch 4/4（本日为 Peter Zijlstra 评审轮）：在 `task_struct` 上引入 `sched_cache_grp` 指针。Peter 对 RCU 解引用写法提出意见——当下的 `rcu_dereference(...)` 带 `c`（update-side 校验）是反模式，建议抽一个 `rcu_deref_sched_cache_grp(tsk)` 助手宏（`rcu_dereference_protected(tsk->sched_cache_grp, tsk == current)`）以统一语义。合入可能性中等。
 
 ## 背景与问题
-cache-aware 调度需要按任务记录其所属的 `sched_cache_group`。此前该指针挂在 mm 上（见 sched-20260916-012 的解耦），本 patch 在 `task_struct` 上直接引入 `sched_cache_grp` 字段，涉及对它的 RCU 解引用与更新侧校验。本 patch 的早期版本已在 sched-20260914-004 覆盖，这里是新一版评审。
+cache-aware 调度需要按任务记录其所属的 `sched_cache_group`。此前该指针挂在 mm 上（见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-012-sched-cache-decouple-sched-cache-group-from-mm.html">sched-20260916-012</a> 的解耦），本 patch 在 `task_struct` 上直接引入 `sched_cache_grp` 字段，涉及对它的 RCU 解引用与更新侧校验。本 patch 的早期版本已在 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-004-sched-cache-introduce-task-struct-sched-cache-grp.html">sched-20260914-004</a> 覆盖，这里是新一版评审。
 
 ## 技术方案
 在 `task_struct` 引入 `sched_cache_grp` 指针。Peter 的评审集中在 RCU API 用法：更新侧用带 `c` 后缀的 `rcu_dereference` 是反模式（那个 `c` 是用来验证「确实是 update side、持有写锁」的），建议抽成助手宏避免到处重复，并考虑直接用 `rcu_dereference_protected()`（他本人更倾向无条件用 `rcu_dereference_*check()`；Alpha 上语义略有差异但已没人关心）。

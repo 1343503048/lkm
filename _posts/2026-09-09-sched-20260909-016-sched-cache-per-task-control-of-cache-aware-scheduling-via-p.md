@@ -58,11 +58,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 sched-20260831-008 / sched-20260829-002。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把任务分到一组？能不能在应用已经跑起来之后再分组？之前否掉 cgroup 的理由是否仍然成立？这个系列是当天热度最高的 CAS 讨论线里唯一一份**没人回答**的新意见。
+本文为增量更新，RFC 的 7 个补丁与「把决定权交给用户态」的设计取舍见 related_articles 中的 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-008-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html">sched-20260831-008</a> / <a class="article-ref" href="/lkm/2026/08/29/sched-20260829-002-sched-cache-per-task-control-of-cache-aware-scheduling-via-prctl.html">sched-20260829-002</a>。09-09 20:57 Shrikanth Hegde（IBM）第一次正面质询这个 prctl 方案的可用性前提，问了四个当天没人能答的问题：用户态现在有什么工具能做这个决定？应用开发者凭什么判断该不该把任务分到一组？能不能在应用已经跑起来之后再分组？之前否掉 cgroup 的理由是否仍然成立？这个系列是当天热度最高的 CAS 讨论线里唯一一份**没人回答**的新意见。
 
 ## 背景与问题
 
-摘要（详见前文）：Tim Chen 的 RFC 给 cache-aware scheduling 加一个 prctl 级别的 per-task 控制，让应用/运行库自己告诉内核「这些任务应当被看作同一缓存域的一组」或相反，因为内核在异构 L3 与大小核场景下无法可靠推断意图。它的前置事实是 CAS 在 AMD 大小核上表现不佳这一持续报告（见 sched-20260909-009 那条线）。
+摘要（详见前文）：Tim Chen 的 RFC 给 cache-aware scheduling 加一个 prctl 级别的 per-task 控制，让应用/运行库自己告诉内核「这些任务应当被看作同一缓存域的一组」或相反，因为内核在异构 L3 与大小核场景下无法可靠推断意图。它的前置事实是 CAS 在 AMD 大小核上表现不佳这一持续报告（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260909-009</a> 那条线）。
 
 Shrikanth 的开宗明义是「我一直在追赶进度，还没读完，可能有傻问题，请多包涵」，然后落到关键处：
 
@@ -77,7 +77,7 @@ Shrikanth 的开宗明义是「我一直在追赶进度，还没读完，可能�
 3. **cgroup 是否真的不行**："I remember you guys discussed about cgroup and decided it is not a good option. That argument is still holds?" ——要求重新检验那个结论，理由是 cgroup 天然是「外部可管理、可运行时调整、有现成策略工具」的位置，而 prctl 是「必须改应用」的位置。
 4. 显式承认自己可能漏了上下文，因此欢迎被纠正。
 
-这四条与当天另一条 prctl 系（Li Zhe 的 per-process NUMA balancing 开关，见 sched-20260908-007）撞在同一个问题上：**per-task 接口在没有配套用户侧决策工具时到底能不能落地**。
+这四条与当天另一条 prctl 系（Li Zhe 的 per-process NUMA balancing 开关，见 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-007-sched-numa-add-per-process-automatic-numa-balancing-control.html">sched-20260908-007</a>）撞在同一个问题上：**per-task 接口在没有配套用户侧决策工具时到底能不能落地**。
 
 ## 版本演进与当前进展
 
@@ -97,7 +97,7 @@ Shrikanth 的开宗明义是「我一直在追赶进度，还没读完，可能�
 
 ## 效果评估
 
-本日无数据。RFC 线程至今也没有出现可比较的收益数字——这一点与 09-09 CAS 那条 bug 报告线（sched-20260909-009）的处境是同一个：**CAS 在异构平台上「效果不好」这件事已被反复报告了十几天，但仍然没有一份归因清楚的对照数据**，因此为它开的这个 per-task 逃生口能带来多少收益也就无法评估。
+本日无数据。RFC 线程至今也没有出现可比较的收益数字——这一点与 09-09 CAS 那条 bug 报告线（<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260909-009</a>）的处境是同一个：**CAS 在异构平台上「效果不好」这件事已被反复报告了十几天，但仍然没有一份归因清楚的对照数据**，因此为它开的这个 per-task 逃生口能带来多少收益也就无法评估。
 
 ## 我可以参与的点
 

@@ -49,19 +49,19 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260918-013：Gregory Price 的 NUMA tiering 修复 v2 系列 4/4（去掉 VMA PID 活动对 promotion 的门控）获 Peter Zijlstra 有条件点头（等 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 messy；作者回应已试 3~4 种写法、这是最不难看的。更早 v1 名为「stop VMA scan filters from gating promotion」。
-- sched-20260919-009：该系列（v2 4-patch，整体目标是移除 VMA 扫描过滤器对 promotion 的门控）在 cover 信层面收到 Zi Yan 的测试范围质询；Gregory 澄清这些修复源于 Joshua 的 tiered memcg limits 补丁测试时发现的「numa balancing 彻底失效」，纯内部一致性问题。
-- sched-20260923-008（今天）：Gregory Price 发出 v3（7 枚）：把可回合的修复集扩为 5 枚（新增「scan PID-inactive VMA for promotion」），补上 `Fixes:`/`Cc: stable` 标签（3/7 `Fixes: c574bbe91703`、4/7 `Fixes: fc137c0ddab2`），另加 2 枚独立 mm 清理（BIT()、VMA flag helper）。cover 给出首个量化收益：DRAM 带宽 150-200→250+ GB/s、CXL 带宽 40-45→5-10 GB/s、请求延迟 >5ms→800us-2ms。
+- <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.html">sched-20260918-013</a>：Gregory Price 的 NUMA tiering 修复 v2 系列 4/4（去掉 VMA PID 活动对 promotion 的门控）获 Peter Zijlstra 有条件点头（等 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 messy；作者回应已试 3~4 种写法、这是最不难看的。更早 v1 名为「stop VMA scan filters from gating promotion」。
+- <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260919-009</a>：该系列（v2 4-patch，整体目标是移除 VMA 扫描过滤器对 promotion 的门控）在 cover 信层面收到 Zi Yan 的测试范围质询；Gregory 澄清这些修复源于 Joshua 的 tiered memcg limits 补丁测试时发现的「numa balancing 彻底失效」，纯内部一致性问题。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260923-008</a>（今天）：Gregory Price 发出 v3（7 枚）：把可回合的修复集扩为 5 枚（新增「scan PID-inactive VMA for promotion」），补上 `Fixes:`/`Cc: stable` 标签（3/7 `Fixes: c574bbe91703`、4/7 `Fixes: fc137c0ddab2`），另加 2 枚独立 mm 清理（BIT()、VMA flag helper）。cover 给出首个量化收益：DRAM 带宽 150-200→250+ GB/s、CXL 带宽 40-45→5-10 GB/s、请求延迟 >5ms→800us-2ms。
 
 ## 背景与问题
-- sched-20260918-013：NUMA memory-tiering 模式下，VMA 的 PID 活动被用作 promotion 的门控条件，导致部分应被提升的内存页无法提升。
-- sched-20260919-009：系列整体要解决的是 NUMA balancing 用 hinting fault 同时做任务放置与 memory-tier 晋升时，几个为避免无效 socket-placement fault 而设的过滤器误伤了 promotion；测试源于 tiered memcg limits 补丁发现的「numa balancing 彻底失效」。
-- sched-20260923-008（今天）：生产部署（kernel.numa_balancing=2，768 GB DRAM + 256 GB CXL，两个 ~430 GB 数据库负载、大 shmem VMA）出现 NUMA balancing 行为劣化：修前 DRAM 带宽仅 150-200 GB/s、CXL 带宽 40-45 GB/s 打到设备饱和、请求延迟 >5 ms 且尾部长。
+- <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.html">sched-20260918-013</a>：NUMA memory-tiering 模式下，VMA 的 PID 活动被用作 promotion 的门控条件，导致部分应被提升的内存页无法提升。
+- <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260919-009</a>：系列整体要解决的是 NUMA balancing 用 hinting fault 同时做任务放置与 memory-tier 晋升时，几个为避免无效 socket-placement fault 而设的过滤器误伤了 promotion；测试源于 tiered memcg limits 补丁发现的「numa balancing 彻底失效」。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260923-008</a>（今天）：生产部署（kernel.numa_balancing=2，768 GB DRAM + 256 GB CXL，两个 ~430 GB 数据库负载、大 shmem VMA）出现 NUMA balancing 行为劣化：修前 DRAM 带宽仅 150-200 GB/s、CXL 带宽 40-45 GB/s 打到设备饱和、请求延迟 >5 ms 且尾部长。
 
 ## 技术方案
-- sched-20260918-013：移除 VMA PID 活动对 promotion 的门控，使 promotion 不再被该条件阻挡（当前实现的 `promo_only()` 计算被 David 认为过于绕）。
-- sched-20260919-009：系列核心思路是把 scan reasoning 塞进 prot_none 注入、同时保留 placement 过滤。
-- sched-20260923-008（今天）：v3 结构变化——**patches 1-5 = 可回合的修复集**（须一起回退）：1. mm: support promotion-only NUMA hinting scans；2. mm: allow shared folios to be promoted to a fast tier；3. sched/numa: scan read-only file mappings in tiering mode（`Fixes: c574bbe91703`）；4. sched/numa: separate VMA placement from scan continuation（`Fixes: fc137c0ddab2`，`vma_is_accessed()` 改名 `vma_needs_placement_scan()`，扫描续态移到 `task_numa_work()`）；5. sched/numa: scan PID-inactive VMAs for promotion（新增）。**patches 6-7 = 独立清理**：`mm: use BIT() for change_protection() flags`、`mm: use VMA flag helpers in NUMA balancing`。
+- <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-013-sched-numa-do-not-let-vma-pid-activity-gate-promotion.html">sched-20260918-013</a>：移除 VMA PID 活动对 promotion 的门控，使 promotion 不再被该条件阻挡（当前实现的 `promo_only()` 计算被 David 认为过于绕）。
+- <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260919-009</a>：系列核心思路是把 scan reasoning 塞进 prot_none 注入、同时保留 placement 过滤。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260923-008</a>（今天）：v3 结构变化——**patches 1-5 = 可回合的修复集**（须一起回退）：1. mm: support promotion-only NUMA hinting scans；2. mm: allow shared folios to be promoted to a fast tier；3. sched/numa: scan read-only file mappings in tiering mode（`Fixes: c574bbe91703`）；4. sched/numa: separate VMA placement from scan continuation（`Fixes: fc137c0ddab2`，`vma_is_accessed()` 改名 `vma_needs_placement_scan()`，扫描续态移到 `task_numa_work()`）；5. sched/numa: scan PID-inactive VMAs for promotion（新增）。**patches 6-7 = 独立清理**：`mm: use BIT() for change_protection() flags`、`mm: use VMA flag helpers in NUMA balancing`。
 
 ## 版本演进与当前进展
 - v2（09-11，4 枚）：去掉 VMA PID 活动对 promotion 的门控（4/4）、scan read-only file mappings（3/4），获 Peter Zijlstra 有条件点头。

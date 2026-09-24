@@ -64,7 +64,7 @@ v2 的做法是把两个「执行上下文 tick」整体上移一层，而不是
 
 改动量很小：`core.c +13`、`fair.c -9/+4`、`sched.h +2`。两个 patch 分别带 `Fixes: 7de9d4f94638`（"sched: Start blocked_on chain processing in find_proxy_task()"）与 `Fixes: df0d98475954`（"sched/cache: Introduce infrastructure for cache-aware load balancing"），并都加 `Suggested-by: Tim Chen`。
 
-辅助说明：同日另有一封 `sched/core: Call wq_worker_tick() for the execution context` 是**独立补丁**，不属于本系列（它属于 09-02 的 [[sched-20260902-012]]）。
+辅助说明：同日另有一封 `sched/core: Call wq_worker_tick() for the execution context` 是**独立补丁**，不属于本系列（它属于 09-02 的 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>）。
 
 ## 版本演进与当前进展
 
@@ -113,7 +113,7 @@ v2 的做法是把两个「执行上下文 tick」整体上移一层，而不是
   - Chen Yu 关于 sum_exec_runtime / task_tick_core 的追问：https://lore.kernel.org/all/4593a7a4-cde1-499c-bba8-2fbe24f35422@intel.com/
   - Prateek 更早关于「按 rq->curr->mm 判定」的结论：https://lore.kernel.org/all/78c81f74-7b27-4f28-9ca2-0d1e27ed9c56@amd.com/
 - 相关文章/系列：
-  - 独立补丁 wq_worker_tick 的执行上下文见 [[sched-20260902-012]]，本日已获 Tejun Heo Acked-by：https://lore.kernel.org/all/aphpMkGmuOrUByf3@slm.duckdns.org/
+  - 独立补丁 wq_worker_tick 的执行上下文见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>，本日已获 Tejun Heo Acked-by：https://lore.kernel.org/all/aphpMkGmuOrUByf3@slm.duckdns.org/
 - 相关代码：
   - `kernel/sched/core.c` `sched_tick()` / `sched_tick_remote()`
   - `kernel/sched/fair.c` `task_tick_numa()` / `task_tick_cache()` / `account_mm_sched()`

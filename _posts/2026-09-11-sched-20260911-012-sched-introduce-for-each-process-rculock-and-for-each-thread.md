@@ -59,7 +59,7 @@ layout: article
 ---
 
 ## TL;DR
-Ye Liu（kylinos）的 RCU 迭代宏系列发到 v3：新增 for_each_process_rculock()/for_each_thread_rculock()/for_each_process_thread_rculock()（scoped_guard(rcu) 包裹的迭代宏），并把 mm/kernel/fs/lib/security 各处的手工 rcu_read_lock/unlock 转换过去（15 个补丁、无功能变化）。v3 落实了 PeterZ/Rostedt 的拆分要求，sched 部分已带 mhocko Acked-by 与 Oleg/Lorenzo/SJ Park Reviewed-by。本文为增量更新，v1/v2 进展见 sched-20260907-004、sched-20260908-009。
+Ye Liu（kylinos）的 RCU 迭代宏系列发到 v3：新增 for_each_process_rculock()/for_each_thread_rculock()/for_each_process_thread_rculock()（scoped_guard(rcu) 包裹的迭代宏），并把 mm/kernel/fs/lib/security 各处的手工 rcu_read_lock/unlock 转换过去（15 个补丁、无功能变化）。v3 落实了 PeterZ/Rostedt 的拆分要求，sched 部分已带 mhocko Acked-by 与 Oleg/Lorenzo/SJ Park Reviewed-by。本文为增量更新，v1/v2 进展见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.html">sched-20260907-004</a>、<a class="article-ref" href="/lkm/2026/09/08/sched-20260908-009-sched-introduce-for-each-process-rculock-and-for-each-thread.html">sched-20260908-009</a>。
 
 ## 背景与问题
 遍历进程/线程时需要配对 rcu_read_lock()/rcu_read_unlock() 或 guard(rcu)，与 for_each_process_thread() 混写易错（尤其循环内 break/return 提前退出时的解锁路径）；OOM kill 路径曾被 Michal Hocko 指出可读性问题（系列起源，2026-08-13）。宏把 RCU 读锁的生命周期绑定到循环体上，break/goto/return 都安全退出。

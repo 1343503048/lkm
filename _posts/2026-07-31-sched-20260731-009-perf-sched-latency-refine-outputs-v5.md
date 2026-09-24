@@ -41,11 +41,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260730-007。Adrian Hunter 的 perf sched latency 改进系列推进到 v5，包含三项改进：修复空表格输出、动态单位自动缩放（ns/us/ms/s）、延迟直方图可视化（--histogram/-H、--hist-mode、--time 选项）。v5 刚发出，暂无新 review。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-007-sched-isolation-defer-cpumask-memblock-freeing.html">sched-20260730-007</a>。Adrian Hunter 的 perf sched latency 改进系列推进到 v5，包含三项改进：修复空表格输出、动态单位自动缩放（ns/us/ms/s）、延迟直方图可视化（--histogram/-H、--hist-mode、--time 选项）。v5 刚发出，暂无新 review。
 
 ## 背景与问题
 
-（完整背景见 sched-20260730-007）`perf sched latency` 存在以下问题：
+（完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-007-sched-isolation-defer-cpumask-memblock-freeing.html">sched-20260730-007</a>）`perf sched latency` 存在以下问题：
 1. 缺少 tracepoint 时仍输出空表格和零值统计
 2. 所有值统一以 ms 显示，微秒或秒级延迟难以阅读
 3. 缺少延迟分布可视化
@@ -90,4 +90,4 @@ layout: article
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260730185416.97166-1-atomlin@atomlin.com
-- 前日分析: sched-20260730-007
+- 前日分析: <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-007-sched-isolation-defer-cpumask-memblock-freeing.html">sched-20260730-007</a>

@@ -56,7 +56,71 @@ def extract_title(body: str):
 
 # ── 单篇文章处理 ──────────────────────────────────────────────
 
-def process_article(src_path: Path, dest_dir: Path):
+def build_id_url_map():
+    """扫描全部文章，建立 文章ID → 站点URL 映射，供正文引用链接化使用。"""
+    id_map = {}
+    for md_file in sorted(SCHED_DIR.rglob("sched-*.md")):
+        if '.state' in md_file.parts or 'index' in md_file.name:
+            continue
+        content = md_file.read_text(encoding='utf-8')
+        m = re.search(r'\n---\n(.*?)\n---\s*$', content, re.DOTALL)
+        if not m:
+            continue
+        idm = re.search(r"^id:\s*['\"]?(sched-\d{8}-\d{3})['\"]?\s*$", m.group(1), re.M)
+        if not idm:
+            continue
+        stem = md_file.stem
+        dm = re.match(r'sched-(\d{8})-', stem)
+        if not dm:
+            continue
+        d = dm.group(1)
+        id_map[idm.group(1)] = f"/lkm/{d[:4]}/{d[4:6]}/{d[6:]}/{stem}.html"
+    return id_map
+
+
+ARTICLE_ID_RE = re.compile(r'\[\[(sched-\d{8}-\d{3})\]\]|\b(sched-\d{8}-\d{3})(?![\w-])')
+
+
+def linkify_article_refs(body: str, id_map: dict) -> str:
+    """把正文中的文章 ID 引用转成可点击链接（class=article-ref）。
+
+    处理 [[sched-YYYYMMDD-NNN]] 与裸 sched-YYYYMMDD-NNN 两种形式；
+    跳过代码块、行内代码、markdown 链接文本与 URL 内的命中。
+    """
+    if not id_map or 'sched-' not in body:
+        return body
+    out_lines = []
+    fence_open = False
+    for line in body.split('\n'):
+        if line.strip().startswith('```'):
+            fence_open = not fence_open
+            out_lines.append(line)
+            continue
+        if fence_open:
+            out_lines.append(line)
+            continue
+        seg = []
+        lpos = 0
+        for m in ARTICLE_ID_RE.finditer(line):
+            token = m.group(1) or m.group(2)
+            url = id_map.get(token)
+            if not url:
+                continue
+            if line[:m.start()].count('`') % 2 == 1:
+                continue
+            if m.group(1) is None:
+                prev_ch = line[m.start() - 1] if m.start() > 0 else ''
+                if prev_ch in ('[', '"', '/', '>') or line[m.end():m.end() + 1] == '<':
+                    continue
+            seg.append(line[lpos:m.start()])
+            seg.append(f'<a class="article-ref" href="{url}">{token}</a>')
+            lpos = m.end()
+        seg.append(line[lpos:])
+        out_lines.append(''.join(seg))
+    return '\n'.join(out_lines)
+
+
+def process_article(src_path: Path, dest_dir: Path, id_map=None):
     """处理单篇文章：底部 frontmatter → 顶部，生成 Jekyll 文章。"""
     content = src_path.read_text(encoding='utf-8')
     fm, body = extract_bottom_frontmatter(content)
@@ -119,6 +183,9 @@ def process_article(src_path: Path, dest_dir: Path):
 
     # 计算 URL
     url = f"/lkm/{date.replace('-', '/')}/{slug}.html"
+
+    # 正文中的文章 ID 引用链接化（在 TL;DR 提取之后，避免污染搜索索引）
+    body = linkify_article_refs(body, id_map or {})
 
     # 组装输出
     yaml_str = yaml.dump(fm_out, allow_unicode=True, default_flow_style=False, sort_keys=False)
@@ -331,6 +398,8 @@ def main():
     daily_indices = []
     skipped = []
 
+    id_url_map = build_id_url_map()
+
     # 处理所有文章
     for md_file in sorted(SCHED_DIR.rglob("sched-*.md")):
         # 跳过 .state 目录（备份等）和 index 文件
@@ -341,7 +410,7 @@ def main():
         if dry_run:
             continue
 
-        result = process_article(md_file, POSTS_DIR)
+        result = process_article(md_file, POSTS_DIR, id_url_map)
         if result:
             for tag in result.get('tags', []):
                 tag_index[tag].append(result)

@@ -74,4 +74,4 @@ LLC（last-level cache）域的 active load balance 用于把过载 CPU 的任�
 
 ## 参考链接
 - lore: 未获取到
-- 关联: sched-20260809-002
+- 关联: <a class="article-ref" href="/lkm/2026/08/09/sched-20260809-002-sched-cache-honor-migrate-llc-task-semantics-in-active-load-.html">sched-20260809-002</a>

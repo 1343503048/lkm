@@ -192,4 +192,4 @@ Cc Mete Durlu / Peter Zijlstra / Shrikanth Hegde。
 - 同批进树的其余三个：https://lore.kernel.org/all/20260819081312.12447-1-hongyan.xia@transsion.com/ （sched_feat）
   ；https://lore.kernel.org/all/20260819080159.105433-1-vz@kernel.org/ ；
   https://lore.kernel.org/all/20260816032643.44969-1-haohlliang@gmail.com/
-- 相关：[[sched-20260903-007]]、[[sched-20260903-013]]、[[sched-20260905-004]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-007-sched-convert-last-bits-of-deprecated-static-key-usage.html">sched-20260903-007</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a>、<a class="article-ref" href="/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html">sched-20260905-004</a>

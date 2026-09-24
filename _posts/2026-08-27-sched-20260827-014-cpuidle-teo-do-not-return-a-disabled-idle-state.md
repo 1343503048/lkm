@@ -63,7 +63,7 @@ v1（`<20260827090505.3703860-1-luoxueqin@kylinos.cn>`），`Fixes: c410a9a142f1
 唯一分歧即上述实现路径之争：事后回退 vs 钳制阶段修 `constraint_idx`。Rafael 是 cpuidle 领域维护者，他的写法大概率就是 v2 的形态。无 NAK、无正确性质疑。
 
 ## 合入评估
-**likely**。维护者认可问题、只改写法，Fixes 标签齐全；`next_action`：作者按 Rafael 建议出 v2（并验证 `idx0` 语义下禁用 state 0 + 约束为 0 的极端组合行为）。同作者同日还有 menu governor 的姊妹修复（sched-20260827-015），两封很可能被打包处理。
+**likely**。维护者认可问题、只改写法，Fixes 标签齐全；`next_action`：作者按 Rafael 建议出 v2（并验证 `idx0` 语义下禁用 state 0 + 约束为 0 的极端组合行为）。同作者同日还有 menu governor 的姊妹修复（<a class="article-ref" href="/lkm/2026/08/27/sched-20260827-015-cpuidle-menu-do-not-return-a-disabled-idle-state.html">sched-20260827-015</a>），两封很可能被打包处理。
 
 ## 效果评估
 无数据（行为正确性修复）。触发路径为代码推导，未见 syzbot/现场报告。

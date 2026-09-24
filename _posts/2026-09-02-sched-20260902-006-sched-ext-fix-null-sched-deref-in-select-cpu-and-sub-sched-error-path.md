@@ -124,7 +124,7 @@ Andrea Righi 指出 STRUCT_OPS 程序可以从 `ops.enqueue()`/`ops.dispatch()` 
 效果就是消除一个可从 BPF 测试路径稳定触发的整机 Oops（作者有实机栈）。它同时暴露了 sched_ext 的
 一个结构性风险面：**`scx_kfunc_context_filter()` 为测试方便放开的 SYSCALL 可达集，等于把内核
 API 暴露给「可传任意 task_struct 的任意程序」**，因此每个 `p->scx.sched` 解引用点都需要单独论证
-可达性——同一作者在 [[sched-20260902-004]] 里做的 NMI 审计是同一类问题。
+可达性——同一作者在 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260902-004</a> 里做的 NMI 审计是同一类问题。
 无性能影响（多一次 RCU 安全读）。
 
 ## 我可以参与的点
@@ -148,4 +148,4 @@ API 暴露给「可传任意 task_struct 的任意程序」**，因此每个 `p-
 - Tejun 的意见：https://lore.kernel.org/all/d819e8358fffc09015feffad57794f7c@kernel.org/ 、
   https://lore.kernel.org/all/aph7j7b_rqqqcSwR@slm.duckdns.org/ ；
   applied：https://lore.kernel.org/all/2edcf44237f7a5e81c6ec97a81b56d5b@kernel.org/
-- 相关：[[sched-20260902-004]]、[[sched-20260903-004]]、[[sched-20260904-011]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260902-004</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html">sched-20260903-004</a>、<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html">sched-20260904-011</a>

@@ -128,4 +128,4 @@ patch 1（`arm64: topology: fix arch_freq_get_on_cpu() overflow above 4.19 GHz`�
 - v1 1/2 `arm64: topology: fix arch_freq_get_on_cpu() overflow above 4.19 GHz`: 本批缓存中缺该邮件，未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- 相关：[[sched-20260902-008]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a>

@@ -43,16 +43,16 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260922-009：Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regression——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_ref()`，让 intel_pstate 仅在容量参考频率已知时才回落。当日无 review。
-- sched-20260923-004（今天）：Ricardo Neri 给出 Tested-by（第 25/26 代 Intel 混合架构实测无压力时任务正常散开、施压后迁移、撤压后回流），Rafael 表态：若无异议将作为 7.3 的 fix 收下。合入概率从 high 逼近 merged。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260922-009</a>：Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regression——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 driver 回调 `.scale_freq_ref()`，让 intel_pstate 仅在容量参考频率已知时才回落。当日无 review。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260923-004</a>（今天）：Ricardo Neri 给出 Tested-by（第 25/26 代 Intel 混合架构实测无压力时任务正常散开、施压后迁移、撤压后回流），Rafael 表态：若无异议将作为 7.3 的 fix 收下。合入概率从 high 逼近 merged。
 
 ## 背景与问题
-- sched-20260922-009：commit `d2d5c129d07e`（"cpufreq: Make cpufreq_update_pressure() fall back to cpuinfo.max_freq"）后，某些此前不出现 cpufreq pressure 的场合，压力信号意外出现在 CPU 负载均衡器中，造成困惑。调度器本假设「只有 CPU 容量参考频率已知时才设置 cpufreq pressure」，该 commit 违反了这个假设。但某些情形下容量参考频率其实已知、只是 `arch_scale_freq_ref()` 返回 0，此时应能正确设置 pressure。`Fixes: d2d5c129d07e`，`Reported-by/Tested-by: Jianyong Wu <wujianyong@hygon.cn>`。
-- sched-20260923-004（今天）：背景无新增。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260922-009</a>：commit `d2d5c129d07e`（"cpufreq: Make cpufreq_update_pressure() fall back to cpuinfo.max_freq"）后，某些此前不出现 cpufreq pressure 的场合，压力信号意外出现在 CPU 负载均衡器中，造成困惑。调度器本假设「只有 CPU 容量参考频率已知时才设置 cpufreq pressure」，该 commit 违反了这个假设。但某些情形下容量参考频率其实已知、只是 `arch_scale_freq_ref()` 返回 0，此时应能正确设置 pressure。`Fixes: d2d5c129d07e`，`Reported-by/Tested-by: Jianyong Wu <wujianyong@hygon.cn>`。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260923-004</a>（今天）：背景无新增。
 
 ## 技术方案
-- sched-20260922-009：引入新的 cpufreq driver 回调 `.scale_freq_ref()` 返回 CPU 容量参考频率；`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()==0` 时改调该回调（若存在），而非无条件回落 `cpuinfo.max_freq`。intel_pstate 实现该回调：仅当该 CPU 的 scale-invariant capacity 已显式设置（`capacity_perf` 非空）时才返回 `cpuinfo.max_freq`，否则返回 0。
-- sched-20260923-004（今天）：方案不变。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260922-009</a>：引入新的 cpufreq driver 回调 `.scale_freq_ref()` 返回 CPU 容量参考频率；`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()==0` 时改调该回调（若存在），而非无条件回落 `cpuinfo.max_freq`。intel_pstate 实现该回调：仅当该 CPU 的 scale-invariant capacity 已显式设置（`capacity_perf` 非空）时才返回 `cpuinfo.max_freq`，否则返回 0。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html">sched-20260923-004</a>（今天）：方案不变。
 
 ## 版本演进与当前进展
 - v1（09-22）当日无 review，今日（09-23）进入验证与收取阶段：Ricardo Neri 给出 Tested-by，Rafael 表态准备作为 7.3 fix 排队。

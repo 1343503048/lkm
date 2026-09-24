@@ -68,7 +68,9 @@ layout: default
     <aside class="related-sidebar">
       {% if page.related_articles and page.related_articles.size > 0 %}
       <h3>相关文章</h3>
-      <ul>{% for rel_id in page.related_articles %}<li>{{ rel_id }}</li>{% endfor %}</ul>
+      <ul>{% for rel_id in page.related_articles %}{% assign rel_post = site.posts | where: "id", rel_id | first %}{% if rel_post %}
+        <li><a href="{{ rel_post.url | relative_url }}">{{ rel_id }}</a></li>{% else %}
+        <li>{{ rel_id }}</li>{% endif %}{% endfor %}</ul>
       {% else %}
       <div class="sidebar-placeholder"></div>
       {% endif %}

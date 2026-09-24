@@ -51,7 +51,7 @@ layout: article
 增量更新：Christian Loehle 的慢路径 idle CPU 随机化系列（v2）本日收尾——Vincent Guittot 对 2/2 补上 Reviewed-by，Peter Zijlstra 表示"Thanks, let me go queue this"，系列即将进入 tip。上一日遗留的 !idle 处理与候选计数复位分歧，作者 v2 已按 U64_MAX reservoir 落实。
 
 ## 背景与问题
-背景见 sched-20260917-007 与 sched-20260916-015：并发慢路径选择器会收敛到同一 idle CPU，且 idle-recency tie-break 可能选中唤醒成本最高的 CPU。v2 拆为 1/2（删除 idle-recency tie-break）与 2/2（reservoir sampling 随机化等 exit-latency 候选）。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-007-sched-fair-randomize-equally-shallow-slow-path-candidates.html">sched-20260917-007</a> 与 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html">sched-20260916-015</a>：并发慢路径选择器会收敛到同一 idle CPU，且 idle-recency tie-break 可能选中唤醒成本最高的 CPU。v2 拆为 1/2（删除 idle-recency tie-break）与 2/2（reservoir sampling 随机化等 exit-latency 候选）。
 
 ## 技术方案
 沿用 v2 方案：1/2 删除 idle_stamp tie-break；2/2 用 per-CPU PRNG + `reciprocal_scale()` 对等 exit-latency 候选做 reservoir sampling，U64_MAX 表示未发布状态。
@@ -68,7 +68,7 @@ layout: article
 *likelihood=high*。1/2、2/2 均已获 Reviewed-by，Peter 明确表示将排队合入，接近合入。*blocking_issues*：无明显阻塞（等待 Peter 实际合入）。*next_action*：等待 Peter 将系列收进 tip/sched/core；作者无需进一步动作，除非合入时出现冲突。
 
 ## 效果评估
-本日无新增 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 sched-20260916-015。
+本日无新增 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-015-sched-fair-randomize-equally-shallow-idle-cpu-picks.html">sched-20260916-015</a>。
 
 ## 我可以参与的点
 - kind=testing：系列合入 tip 后，在 8~32 核小系统回归慢路径 idle CPU 选择行为，确认无 !idle 相关的反直觉收敛。

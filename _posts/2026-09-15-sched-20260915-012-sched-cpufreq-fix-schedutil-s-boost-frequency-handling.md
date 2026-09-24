@@ -46,7 +46,7 @@ layout: article
 本文为增量更新（v2 全貌见 related_articles）。Dietmar Eggemann（Arm，sched 维护者）09-15 回复该 v2：认可方案（"IMHO, this makes sense"）及通过 `cpufreq_pressure`（policy->max）的协调，并在 ARM64 Juno R0 上给出实测数据；唯一小问题——boost 关闭后 cpu0/3-5 的 pressure 从 102 掉到 79（前一个含纯微架构差异、后者含微架构+最大频率差异，max_capacity 从 578 变 446），倾向认为这是预期的压力口径变化而非 bug。合入概率高。
 
 ## 背景与问题
-承 sched-20260908-006：修 schedutil 打不到 boost 频率、以及 boost 关掉后频率上限回不来这两头问题。Dietmar 本日从「cpufreq 压力（policy->max）与 boost 的协调」这个角度做维护者评审验证。
+承 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-006-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260908-006</a>：修 schedutil 打不到 boost 频率、以及 boost 关掉后频率上限回不来这两头问题。Dietmar 本日从「cpufreq 压力（policy->max）与 boost 的协调」这个角度做维护者评审验证。
 
 ## 技术方案
 本日无新代码。Dietmar 的验证：在 ARM64 Juno R0（大小核，cpu_capacity 446/1024）上，关闭 boost 时 `cpufreq_update_pressure()` 报告的 policy->max 与 pressure（如 policy[0,3-5] max=700000 pressure=102）；开 boost 后两 policy pressure 均归 0；再关 boost 后恢复（pressure 280 / 102→79）。他确认压力随 boost 开关正确联动，仅标注 102 vs 79 的差异为其「唯一小问题」。

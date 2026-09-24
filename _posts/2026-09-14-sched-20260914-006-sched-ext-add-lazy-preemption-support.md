@@ -58,10 +58,10 @@ layout: article
 ---
 
 ## TL;DR
-增量更新，v1 全貌见 sched-20260912-005。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tick、kick 优先级收敛进 kick_one_cpu()、清掩码合并）；v3 按 Sashiko 的收尾意见微调（冗余 rq clock 更新、pin 锁、PR_SET_PDEATHSIG、nohz_tick 超时、delta 计数）。selftest 全绿（kick 6/0/0、nohz_tick 1/0/0），Tejun 方向认可但尚未对 v2/v3 复核；Cheng-Yang Chou 发现 selftest 在 PREEMPT_DYNAMIC=n 下的兼容问题并给修复建议。
+增量更新，v1 全貌见 <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html">sched-20260912-005</a>。09-14 当日 Andrea Righi 连续发出 v2 与 v3：v2 按 Tejun Heo 对 v1 的五条意见重构（lazy slice expiry 变为 per-task 属性、新增 `scx_bpf_task_set_slice_expiry()`、NO_HZ_FULL 下 infinite-slice 任务恢复 tick、kick 优先级收敛进 kick_one_cpu()、清掩码合并）；v3 按 Sashiko 的收尾意见微调（冗余 rq clock 更新、pin 锁、PR_SET_PDEATHSIG、nohz_tick 超时、delta 计数）。selftest 全绿（kick 6/0/0、nohz_tick 1/0/0），Tejun 方向认可但尚未对 v2/v3 复核；Cheng-Yang Chou 发现 selftest 在 PREEMPT_DYNAMIC=n 下的兼容问题并给修复建议。
 
 ## 背景与问题
-fair 调度类支持 lazy rescheduling：lazy 请求不立即抢占，推迟到返回用户态或被下个 tick 升级，避免不必要内核态抢占。sched_ext 此前只向 BPF 调度器暴露立即抢占，无法做同样取舍（承 sched-20260912-005）。
+fair 调度类支持 lazy rescheduling：lazy 请求不立即抢占，推迟到返回用户态或被下个 tick 升级，避免不必要内核态抢占。sched_ext 此前只向 BPF 调度器暴露立即抢占，无法做同样取舍（承 <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html">sched-20260912-005</a>）。
 
 ## 技术方案
 v2/v3 最终方案（v3 cover 描述）：
@@ -81,7 +81,7 @@ $ vng -a "preempt=lazy nohz_full=8-15" -- .../runner -t nohz_tick
 ```
 
 ## 版本演进与当前进展
-- v1（09-11/09-12，sched-20260912-005）：双补丁首发，当日零回帖。
+- v1（09-11/09-12，<a class="article-ref" href="/lkm/2026/09/12/sched-20260912-005-sched-ext-add-lazy-preemption-support.html">sched-20260912-005</a>）：双补丁首发，当日零回帖。
 - Tejun 09-14 评审 v1（五条）：(1) kick 路径可简化；(2) lazy slice expiry 做成 per-task flag、ops flag 只做默认值；(3) NO_HZ_FULL 角例——远程 infinite-slice + tick 停止时 resched_curr_lazy() 不发 IPI、清 slice 也不重启 tick，kick/enqueue 都要给 tick-stopped 目标安排前进；(4) 为何不在原清 cpus_to_preempt 处同时清两个掩码（含 skipped-kick 路径）；(5) 是否真要拒绝全部组合——PREEMPT 应赢过 PREEMPT_LAZY、WAIT 可强制立即、plain kick + lazy 仍清 slice 并立即重调度，建议在 kick_one_cpu() 收敛优先级。
 - Andrea 09-14 逐条回应：同意 per-task slice-expiry（p->scx.slice_expires_lazy，enable() 前从 SCX_OPS_LAZY_SLICE_EXPIRY 初始化、任意回调可覆盖）；同意加公共 helper（清 SCX_RQ_CAN_STOP_TICK + 更新 tick 依赖 + resched_curr_lazy）；同意清掩码合并；同意优先级 PREEMPT|WAIT > plain kick > PREEMPT_LAZY，lazy+immediate 组合仍清 slice、enqueue 与 kick 接口一致。
 - v2（09-14）：按上述五条落地，并扩展 selftest（组合/有序 kick、per-task 覆盖、NO_HZ_FULL）。

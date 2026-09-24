@@ -54,13 +54,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_blocked` 判断更合适）。补丁本身已集齐多组 review/test，合入概率高，但 Peter 的问题待回应。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260921-006</a>（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_blocked` 判断更合适）。补丁本身已集齐多组 review/test，合入概率高，但 Peter 的问题待回应。
 
 ## 背景与问题
-背景见 sched-20260921-006：DELAY_DEQUEUE 下被迁移的 sched_delayed 任务，`sched_info_enqueue()` 在迁移时错误重挂 `last_queued`，导致真实唤醒时被抑制，整段「迁移→唤醒」睡眠时长被计入 run_delay。
+背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260921-006</a>：DELAY_DEQUEUE 下被迁移的 sched_delayed 任务，`sched_info_enqueue()` 在迁移时错误重挂 `last_queued`，导致真实唤醒时被抑制，整段「迁移→唤醒」睡眠时长被计入 run_delay。
 
 ## 技术方案
-方案见 sched-20260921-006：`sched_info_enqueue()` 对 sched_delayed 任务不重挂 `last_queued`（唤醒路径清掉 sched_delayed 后才到该函数，故真实唤醒仍正确重挂，普通 runnable 任务不受影响）。
+方案见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260921-006</a>：`sched_info_enqueue()` 对 sched_delayed 任务不重挂 `last_queued`（唤醒路径清掉 sched_delayed 后才到该函数，故真实唤醒仍正确重挂，普通 runnable 任务不受影响）。
 
 ## 版本演进与当前进展
 - v3（`<20260922082432.2987855-1-albin_yang@163.com>`）：新增 Kayra Cizmeci 与 K Prateek Nayak 的 Reviewed-by、K Prateek 的 Tested-by。
@@ -75,7 +75,7 @@ layout: article
 *likelihood=high*。补丁修正路径清晰、多组 review/test 已到位；唯一待办是回应 Peter 关于 proxy exec 场景的疑问。*blocking_issues*：Peter 的 proxy exec 同类问题未回应。*next_action*：作者澄清 proxy exec 场景（是否 `is_blocked` 更合适），随后可合。
 
 ## 效果评估
-无本日新增 benchmark；为统计记账正确性修复（详见 sched-20260921-006）。
+无本日新增 benchmark；为统计记账正确性修复（详见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html">sched-20260921-006</a>）。
 
 ## 我可以参与的点
 - **review**：分析 Peter 提出的 proxy exec 场景——`t->is_blocked` 与 `sched_delayed` 在 run_delay 记账上的差异，帮助作者判断判定条件。

@@ -46,7 +46,7 @@ layout: article
 本文为增量更新（系列全貌见 related_articles）。Vincent Guittot 09-15 对 Xin Zhao 的 LB_PROMOTE RFC（patch 05/10 引入 `select_task_rq_fair_thin()`）给出三条反馈：把「real-time」字样用于 fair 调度是误导（fair 不是实时调度器，只能保证 best effort）；建议看 EEVDF slice 如何（有限度地）给任务排序；明确不赞成用 `sched_feature` 来使能 LB_PROMOTE——`sched_feature` 是用来评估特性影响的，不是动态开关。
 
 ## 背景与问题
-承 sched-20260912-011：Xin Zhao 的 10 补丁 RFC 系列用 LB_PROMOTE 机制改善 CFS 任务的调度时延/「实时性」体感，patch 05/10 引入 `select_task_rq_fair_thin()` 在 LB_PROMOTE 时选 rq。Vincent 此前已质疑「有实时需求为何不用 RT 调度器」并否定 LB_PROMOTE 前提；本日就术语、调度语义与实现接口持续给出意见。
+承 <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-011-sched-fair-a-series-of-load-balance-patches-to-improve-real.html">sched-20260912-011</a>：Xin Zhao 的 10 补丁 RFC 系列用 LB_PROMOTE 机制改善 CFS 任务的调度时延/「实时性」体感，patch 05/10 引入 `select_task_rq_fair_thin()` 在 LB_PROMOTE 时选 rq。Vincent 此前已质疑「有实时需求为何不用 RT 调度器」并否定 LB_PROMOTE 前提；本日就术语、调度语义与实现接口持续给出意见。
 
 ## 技术方案
 本日无新代码。Vincent 的三点意见均针对设计与方向：

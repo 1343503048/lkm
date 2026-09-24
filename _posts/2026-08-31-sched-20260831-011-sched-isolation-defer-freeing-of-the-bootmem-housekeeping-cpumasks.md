@@ -47,7 +47,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新（见 sched-20260802-001 / sched-20260803-013）。这条追查了大半个月的 nohz_full 启动期 cpumask 释放问题**当天正式收尾**：Ionut Nechita（Wind River）宣布撤回自己的补丁——同一问题早已被 Waiman Long 的 `2b58c749b8c5` ("sched/isolation: Defer freeing of cpumask memblock memory to initcall") 修掉，该 commit 由 Peter 收进 `sched/urgent` 并已在 **v7.3-rc1** 发布；作者同时会在 8/3 准备 v2 时才发现，明确表示"please drop this one, there will be no v2"，并把 bug 221804 关成 RESOLVED/CODE_FIX。**结论：不需要任何新代码，需要的是确认目标分支是否已含 `2b58c749b8c5`。**
+本文为增量更新（见 <a class="article-ref" href="/lkm/2026/08/02/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html">sched-20260802-001</a> / <a class="article-ref" href="/lkm/2026/08/03/sched-20260803-013-sched-isolation-defer-freeing-of-bootmem-housekeeping-cpumasks-v2.html">sched-20260803-013</a>）。这条追查了大半个月的 nohz_full 启动期 cpumask 释放问题**当天正式收尾**：Ionut Nechita（Wind River）宣布撤回自己的补丁——同一问题早已被 Waiman Long 的 `2b58c749b8c5` ("sched/isolation: Defer freeing of cpumask memblock memory to initcall") 修掉，该 commit 由 Peter 收进 `sched/urgent` 并已在 **v7.3-rc1** 发布；作者同时会在 8/3 准备 v2 时才发现，明确表示"please drop this one, there will be no v2"，并把 bug 221804 关成 RESOLVED/CODE_FIX。**结论：不需要任何新代码，需要的是确认目标分支是否已含 `2b58c749b8c5`。**
 
 ## 背景与问题
 

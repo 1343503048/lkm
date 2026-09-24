@@ -113,8 +113,8 @@ cache-aware 负载均衡会偏向任务的 preferred LLC。在 CPU 容量不对�
   - 初版补丁: <https://lore.kernel.org/all/20260825174112.2580942-1-tim.c.chen@linux.intel.com/>
   - Peter Zijlstra 的格式意见: <https://lore.kernel.org/all/20260831084149.GG4120091@noisy.programming.kicks-ass.net/>
 - 相关文章/系列：
-  - [[sched-20260903-011]] migrate_llc_task 语义 v4 主动均衡。
-  - [[sched-20260903-012]] sched/cache 迁移决策 helper RFC v2。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html">sched-20260903-011</a> migrate_llc_task 语义 v4 主动均衡。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a> sched/cache 迁移决策 helper RFC v2。
 - 相关代码/commit：
   - `f0d243a96f2684ad771d678767d17972cf840bd7` "sched/fair: avoid creating misfits during cache-aware balancing"（tip `sched/urgent`）
   - `kernel/sched/fair.c` `can_migrate_llc_task()` / `alb_break_llc()` / `task_misfits_asym_cpu()` / `task_fits_cpu()`

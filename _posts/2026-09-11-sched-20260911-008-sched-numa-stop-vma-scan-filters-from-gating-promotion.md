@@ -54,7 +54,7 @@ layout: article
 ---
 
 ## TL;DR
-Gregory Price（Meta）v2 系列的第 3、4 补丁当日入缓存并给出重磅实测数据：CXL 分层机上 20GB 热 hash 表在修复前完全滞留慢层、修复后 DRAM/CXL 均分；作者同时回应 v1 review 认为遗留疑问多为误报。本文为增量更新（v1 背景与 3/4 的 v1 分析见 sched-20260905-006、sched-20260907-009）：v2 把两个 VMA 过滤器在分层模式下改为「仅提升（promotion-only）」扫描。
+Gregory Price（Meta）v2 系列的第 3、4 补丁当日入缓存并给出重磅实测数据：CXL 分层机上 20GB 热 hash 表在修复前完全滞留慢层、修复后 DRAM/CXL 均分；作者同时回应 v1 review 认为遗留疑问多为误报。本文为增量更新（v1 背景与 3/4 的 v1 分析见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260905-006</a>、<a class="article-ref" href="/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260907-009</a>）：v2 把两个 VMA 过滤器在分层模式下改为「仅提升（promotion-only）」扫描。
 
 ## 背景与问题
 NUMA balancing 有两个 VMA 级过滤会阻止 hinting fault，进而在分层内存（NUMA_BALANCING_MEMORY_TIERING）下把热内存困在慢层：
@@ -70,7 +70,7 @@ NUMA balancing 有两个 VMA 级过滤会阻止 hinting fault，进而在分层�
 ## 版本演进与当前进展
 *current_version: v2（v2 cover msgid `<20260911001826.2109390-1-gourry@gourry.net>`，msgid 时间戳 09-11 00:18；当日入缓存 3/4、4/4 与 cover 回帖，1/2/4 补丁未入缓存）*。
 
-- v1（2026-09-04/05，root `<20260904182006.1562449-1-gourry@gourry.net>`）：sashiko 提出无谓重扫与并发扫描疑问，作者逐条反驳后于 09-07 自认 v1 捆绑过多、承诺测后发 v2（详见 sched-20260907-009）；
+- v1（2026-09-04/05，root `<20260904182006.1562449-1-gourry@gourry.net>`）：sashiko 提出无谓重扫与并发扫描疑问，作者逐条反驳后于 09-07 自认 v1 捆绑过多、承诺测后发 v2（详见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260907-009</a>）；
 - v2（09-11）：3/4 抽出 vma_is_ro_file() helper 并收敛分层判断；4/4 新增 prev_placement_scan_seq 处理并发扫描与饥饿兜底——正是 v1 自认缺失的两点；两补丁均带 Fixes 与 Cc stable，署名 Assisted-by: LLM。
 
 ## Maintainer 意见与讨论焦点
@@ -86,7 +86,7 @@ patch 4/4：同机型跑两个约 430GB 数据库负载——一个大 shmem VMA
 以上数字均出自补丁 commit message，为作者单一平台数据，无第三方复现。
 
 ## 我可以参与的点
-- kind=testing：在 CXL/慢层机型上开分层模式，用 trace_sched_skip_vma_numa 统计被跳过 VMA 字节与慢层驻留比例，提供作者之外的第二份数据（承 sched-20260907-009 的参与点，v2 后依然成立）。
+- kind=testing：在 CXL/慢层机型上开分层模式，用 trace_sched_skip_vma_numa 统计被跳过 VMA 字节与慢层驻留比例，提供作者之外的第二份数据（承 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-009-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260907-009</a> 的参与点，v2 后依然成立）。
 - kind=review：核对 patch 4/4 删除「扫描过半继续」补偿逻辑后，多线程应用跨 VMA 的扫描完成性是否仍成立（原逻辑正是为此而设）。
 - kind=new_patch：评估「分层模式下只读映射的 promo fault 是否应计入 numa_faults[] 参与放置」的语义矩阵——作者在 v1 遗留、v2 仍未覆盖的设计输入。
 

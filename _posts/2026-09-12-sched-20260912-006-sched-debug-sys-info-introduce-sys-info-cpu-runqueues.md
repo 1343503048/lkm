@@ -48,13 +48,13 @@ layout: article
 ---
 
 ## TL;DR
-Aaron Tomlin 的 panic 期 per-CPU runqueue 摘要补丁当日完成 v1→v2：kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者当天致谢（收件 Andrew、Peter）并以 rcu_dereference() 修复发出 v2。人类维护者评审仍未开始。本文为增量更新，v1 分析见 sched-20260911-010。
+Aaron Tomlin 的 panic 期 per-CPU runqueue 摘要补丁当日完成 v1→v2：kernel test robot 报出 rq->curr 的 __rcu sparse 告警，作者当天致谢（收件 Andrew、Peter）并以 rcu_dereference() 修复发出 v2。人类维护者评审仍未开始。本文为增量更新，v1 分析见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260911-010</a>。
 
 ## 背景与问题
 排查内核 panic 时 per-CPU runqueue 与可运行任务状态对诊断 CPU 饥饿、优先级反转很有价值，但 debugfs 内容不会进入自动化 panic/crash dump。补丁新增 SYS_INFO_CPU_RUNQUEUES 与 panic_sys_info 的 cpu_runqueues 开关，sched_show_runqueues()（仿 print_rq()，只输出 running/queued 任务）把 runqueue 摘要直接写进 log_buf。
 
 ## 技术方案
-（承 sched-20260911-010：trylock + READ_ONCE 回退与 " (contended)" 标注、rcu_read_lock() 保护采样、省略 cgroup path。）v2 相对 v1 的唯一变化：sched_show_runqueues() 中经 rcu_dereference() 访问 rq->curr，消除 microblaze randconfig（W=1 构建）下的 sparse __rcu 地址空间告警（kernel/sched/debug.c 多处 incorrect type in argument/assignment）。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-010-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html">sched-20260911-010</a>：trylock + READ_ONCE 回退与 " (contended)" 标注、rcu_read_lock() 保护采样、省略 cgroup path。）v2 相对 v1 的唯一变化：sched_show_runqueues() 中经 rcu_dereference() 访问 rq->curr，消除 microblaze randconfig（W=1 构建）下的 sparse __rcu 地址空间告警（kernel/sched/debug.c 多处 incorrect type in argument/assignment）。
 
 ## 版本演进与当前进展
 *current_version: v2（msgid `<20260912013240.545742-1-atomlin@atomlin.com>`，09-12 09:32 入缓存）*。

@@ -60,7 +60,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评审者，此前连续三轮提出实质意见（v11 的 steal 分母、v12 的 `cpumask_intersects_and`、v13 的 `npc_push_work_pending` 命名与 rq 字段位置），如今在负载均衡这一核心补丁上转为认可。Peter Zijlstra / Ingo Molnar 对封面「排入 sched/core 冲 7.4」的请求仍未回应。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260909-010</a>（steal_governor 系列 v13 整体分析）与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a>。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评审者，此前连续三轮提出实质意见（v11 的 steal 分母、v12 的 `cpumask_intersects_and`、v13 的 `npc_push_work_pending` 命名与 rq 字段位置），如今在负载均衡这一核心补丁上转为认可。Peter Zijlstra / Ingo Molnar 对封面「排入 sched/core 冲 7.4」的请求仍未回应。
 
 ## 背景与问题
 steal_governor 系列把 CPU 超配场景下的 vCPU 抢占代价（锁持有者被抢占、临界区、TLB/cache miss）转化为一个协作式退让机制：guest 侧按 steal time 动态收缩「preferred CPU」集合，把负载折叠到更少的 vCPU 上。折叠动作有三条路径——唤醒选核（06/13）、tick 里用 stopper 推送 current（08/13）、以及本补丁负责的负载均衡。
@@ -112,19 +112,19 @@ steal_governor 系列把 CPU 超配场景下的 vCPU 抢占代价（锁持有者
 ## 合入评估
 *likelihood: medium*（就本补丁而言：实现只有 3+/5-，已获 Yury R-b，无未决技术分歧；但补丁不能脱离系列单独合入——`cpu_preferred_mask` 由系列 04/13 引入，缺了它本补丁无法编译，因此实际节奏由系列整体决定）。
 
-*blocking_issues*：Peter/Ingo 未对「排入 sched/core 冲 7.4」表态；fair 类维护者（Vincent）未评审本补丁；系列横跨 driver core / drivers/virt / s390 / procfs 仍缺对应维护者 ack（见 sched-20260909-010）。
+*blocking_issues*：Peter/Ingo 未对「排入 sched/core 冲 7.4」表态；fair 类维护者（Vincent）未评审本补丁；系列横跨 driver core / drivers/virt / s390 / procfs 仍缺对应维护者 ack（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260909-010</a>）。
 
 *next_action*：等 Peter 对排队时点的回应；本补丁可主动抄送/提请 Vincent Guittot 评审 `sched_balance_rq` 的 span 收窄与 `sched_balance_newidle` 的提前返回，补上公平类维护者的认可。
 
 ## 效果评估
 本日邮件无任何新数据（Yury 的回帖只有一行 R-b）。
 
-本补丁自身的收益是定性的：消除均衡与 tick push 之间的迁移抖动。系列级量化数据见 sched-20260903-002 / sched-20260909-010：PowerPC 实测 hackbench 无 `-p` 在 10/20/40 groups 下 5.20→4.65（+10.58%）、11.39→7.09（+37.75%）、20.32→11.31（+44.34%），kernbench 231→199（+14%）；x86/s390 数据作者已标注为基于 **v2** 由 Ilya Leoshkevich 在 OSPM26 期间所跑，实现此后已大幅变更，**不适用于当前版本**。`schbench` 无提升、纯 CPU-time 负载可能小幅回归，均为作者自陈。
+本补丁自身的收益是定性的：消除均衡与 tick push 之间的迁移抖动。系列级量化数据见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a> / <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260909-010</a>：PowerPC 实测 hackbench 无 `-p` 在 10/20/40 groups 下 5.20→4.65（+10.58%）、11.39→7.09（+37.75%）、20.32→11.31（+44.34%），kernbench 231→199（+14%）；x86/s390 数据作者已标注为基于 **v2** 由 Ilya Leoshkevich 在 OSPM26 期间所跑，实现此后已大幅变更，**不适用于当前版本**。`schbench` 无提升、纯 CPU-time 负载可能小幅回归，均为作者自陈。
 
 ## 我可以参与的点
 - 本补丁已获 R-b、实现极小，直接的代码评审空间有限；但**公平类维护者的缺位是真实缺口**：可针对 `sched_balance_rq` 把 span 收窄到 `cpu_preferred_mask` 后，与 `sd->span` / `sched_domain` 层级遍历、`nohz.next_balance` 更新、以及 `find_new_ilb()` 升序/降序不匹配这几个交互点做一次专门复核，把结论带到线程里提请 Vincent 关注（review）。
 - 作者明确放弃的 `find_new_ilb()` 优化是一个可验证的边界：构造「所有 idle CPU 均为 non-preferred」的场景（steal_governor 收缩到只剩 1 个 preferred 核且该核繁忙），实测 ILB 选到 non-preferred CPU 后是否真的只产生一次无效迁移，把数据回帖（testing）。
-- 其余系列级参与点（用当前 v13 重跑 x86/s390 三列对照、push 覆盖全部排队任务的后续 patch、NUMA 感知裁剪）见 sched-20260909-010，不重复。
+- 其余系列级参与点（用当前 v13 重跑 x86/s390 三列对照、push 覆盖全部排队任务的后续 patch、NUMA 感知裁剪）见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260909-010</a>，不重复。
 
 ## 参考链接
 - 本补丁（v13 07/13，线程根）: https://lore.kernel.org/all/20260909135617.871006-8-sshegde@linux.ibm.com/

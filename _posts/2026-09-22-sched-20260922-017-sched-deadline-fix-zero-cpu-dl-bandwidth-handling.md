@@ -49,13 +49,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reject debugfs dl_server writes for offline CPUs"）更贴切。两补丁基本可合，只差修 Fixes 标签。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html">sched-20260919-001</a>。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reject debugfs dl_server writes for offline CPUs"）更贴切。两补丁基本可合，只差修 Fixes 标签。
 
 ## 背景与问题
-背景见 sched-20260919-001：DL bandwidth 记账在 CPU 全 inactive（dl_rq->dl_bw 为 0）时除零；debugfs dl_server 写操作未拒绝 inactive CPU。
+背景见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html">sched-20260919-001</a>：DL bandwidth 记账在 CPU 全 inactive（dl_rq->dl_bw 为 0）时除零；debugfs dl_server 写操作未拒绝 inactive CPU。
 
 ## 技术方案
-方案见 sched-20260919-001：1/2 修复除零（用激活的 CPU 集合做分母），2/2 拒绝向 inactive CPU 写 dl_server。
+方案见 <a class="article-ref" href="/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html">sched-20260919-001</a>：1/2 修复除零（用激活的 CPU 集合做分母），2/2 拒绝向 inactive CPU 写 dl_server。
 
 ## 版本演进与当前进展
 v2（cover `<20260919153150.2618403-1-sh_def@163.com>`）发出后，当天 Juri 分别对 1/2、2/2 回复 Acked。

@@ -44,7 +44,7 @@ layout: article
 ---
 
 ## TL;DR
-Ziyang Men 的 v5 系列第 4 补丁当日入缓存：用共享的 tools/testing/selftests/lib.bpf.mk 替换 sched_ext 自维护的约 130 行 libbpf/bpftool/skeleton 构建机制，并收到 bpf CI 的 AI review 两条非 bug 建议（subskel 生成可否裁掉、保留原注释的动机说明）。本文为增量更新，该系列在 09-09 已有覆盖（sched-20260909-011）。
+Ziyang Men 的 v5 系列第 4 补丁当日入缓存：用共享的 tools/testing/selftests/lib.bpf.mk 替换 sched_ext 自维护的约 130 行 libbpf/bpftool/skeleton 构建机制，并收到 bpf CI 的 AI review 两条非 bug 建议（subskel 生成可否裁掉、保留原注释的动机说明）。本文为增量更新，该系列在 09-09 已有覆盖（<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-011-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.html">sched-20260909-011</a>）。
 
 ## 背景与问题
 sched_ext selftests 的 Makefile 自带一整套 BPF 构建机制：libbpf 静态库编译、bpftool 构建、vmlinux.h 生成、BPF 对象编译、skeleton/subskeleton 生成，约 130 行。该机制与 selftests/cgroup、selftests/hid 已迁到的共享片段 lib.bpf.mk 重复，三处维护成本高、行为易漂移。
@@ -55,7 +55,7 @@ sched_ext selftests 的 Makefile 自带一整套 BPF 构建机制：libbpf 静�
 - Makefile 净减 97 行（26+/123-）。
 
 ## 版本演进与当前进展
-*current_version: v5（v5 cover msgid `<20260910233303.1063501-1-ziyang.meme@gmail.com>`，由 4/4 补丁的 In-Reply-To 落实；4/4 于 09-11 07:33 入缓存）*。本日缓存仅含 4/4 与 bot 回评，系列其余补丁未入缓存。v5 之前的演进承 sched-20260909-011（早期版本曾按 review 迭代，本次缓存窗口内未获取到 1-3/4 的差异说明）。
+*current_version: v5（v5 cover msgid `<20260910233303.1063501-1-ziyang.meme@gmail.com>`，由 4/4 补丁的 In-Reply-To 落实；4/4 于 09-11 07:33 入缓存）*。本日缓存仅含 4/4 与 bot 回评，系列其余补丁未入缓存。v5 之前的演进承 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-011-selftests-sched-ext-build-bpf-schedulers-via-the-shared-lib.html">sched-20260909-011</a>（早期版本曾按 review 迭代，本次缓存窗口内未获取到 1-3/4 的差异说明）。
 
 ## Maintainer 意见与讨论焦点
 - **bot+bpf-ci（AI review，非人类维护者）**：两条「不是 bug 但值得考虑」：(1) 生成的 `*.bpf.subskel.h` 在目录里没有任何 .c/.h 消费（pre-patch 规则也生成它们，行为等价保留），问是否可作为后续补丁去掉 `BPF_GEN_SUBSKEL` 以省每个调度器一次 bpftool 运行；(2) 替换后丢掉了原注释里「为什么每个 testcase 依赖全部 BPF prog」的动机说明，建议保留原措辞。CI run 摘要：kernel-patches/bpf actions run 34573210499。

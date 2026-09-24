@@ -56,19 +56,19 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260920-003：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并澄清最易误解的 PREEMPT_LAZY 机制。首发，暂无 review。
-- sched-20260922-016：v2——按 Sebastian 意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误测量段与 yield 措辞，debugfs 段并入运行时选择小节。Sebastian 建议合入。
-- sched-20260923-010（今天）：Quchaosheng 快速迭代——v3 按 Sebastian 要求把「such a call」明确写为 `cond_resched()`（保留其 Reviewed-by），随后仅因第二枚 patch 变化而重发 v4（diff 无变化）。文档已获 Suggested-by/Reviewed-by 维护者认可，等待收取。
+- <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html">sched-20260920-003</a>：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并澄清最易误解的 PREEMPT_LAZY 机制。首发，暂无 review。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-016-sched-doc-add-a-preemption-model-overview.html">sched-20260922-016</a>：v2——按 Sebastian 意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误测量段与 yield 措辞，debugfs 段并入运行时选择小节。Sebastian 建议合入。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-010-sched-doc-add-a-preemption-model-overview.html">sched-20260923-010</a>（今天）：Quchaosheng 快速迭代——v3 按 Sebastian 要求把「such a call」明确写为 `cond_resched()`（保留其 Reviewed-by），随后仅因第二枚 patch 变化而重发 v4（diff 无变化）。文档已获 Suggested-by/Reviewed-by 维护者认可，等待收取。
 
 ## 背景与问题
-- sched-20260920-003：现有调度文档只讲各调度类和调优旋钮，没有任何一处系统描述「抢占模型」本身；唯一提到的地方是 `preempt=` 内核启动参数的 kernel-parameters 条目，但它只解释启动参数、不解释其选中的模型。作者希望补上这块空缺。
-- sched-20260922-016：背景不变——调度文档缺抢占模型概述。
-- sched-20260923-010（今天）：背景无新增。
+- <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html">sched-20260920-003</a>：现有调度文档只讲各调度类和调优旋钮，没有任何一处系统描述「抢占模型」本身；唯一提到的地方是 `preempt=` 内核启动参数的 kernel-parameters 条目，但它只解释启动参数、不解释其选中的模型。作者希望补上这块空缺。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-016-sched-doc-add-a-preemption-model-overview.html">sched-20260922-016</a>：背景不变——调度文档缺抢占模型概述。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-010-sched-doc-add-a-preemption-model-overview.html">sched-20260923-010</a>（今天）：背景无新增。
 
 ## 技术方案
-- sched-20260920-003：新增 `sched-preemption.rst`（120 行）并在 `index.rst` 挂条目。定义四种模型：none（仅 cond_resched()/阻塞点）、voluntary（none + might_sleep()）、full（未显式关抢占处可抢占）、lazy（同 full 但 fair 类 resched 请求不打断目标 CPU，返回用户态或下一 tick 提交）；CONFIG_PREEMPT_DYNAMIC 下可用 `preempt=` 启动时选择；澄清 lazy 不发送跨 CPU resched IPI。
-- sched-20260922-016：v2 改为沿「调度请求」主线叙述（84→85 行），覆盖四模型、各模型下请求如何兑现、哪些可运行时选择。
-- sched-20260923-010（今天）：v3 唯一实质变化——把指代不清的「such a call」明确写为 `cond_resched()`；v4 diff 无变化（仅因第二枚 patch 变化而重发）。
+- <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-003-sched-doc-add-a-preemption-model-overview.html">sched-20260920-003</a>：新增 `sched-preemption.rst`（120 行）并在 `index.rst` 挂条目。定义四种模型：none（仅 cond_resched()/阻塞点）、voluntary（none + might_sleep()）、full（未显式关抢占处可抢占）、lazy（同 full 但 fair 类 resched 请求不打断目标 CPU，返回用户态或下一 tick 提交）；CONFIG_PREEMPT_DYNAMIC 下可用 `preempt=` 启动时选择；澄清 lazy 不发送跨 CPU resched IPI。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-016-sched-doc-add-a-preemption-model-overview.html">sched-20260922-016</a>：v2 改为沿「调度请求」主线叙述（84→85 行），覆盖四模型、各模型下请求如何兑现、哪些可运行时选择。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-010-sched-doc-add-a-preemption-model-overview.html">sched-20260923-010</a>（今天）：v3 唯一实质变化——把指代不清的「such a call」明确写为 `cond_resched()`；v4 diff 无变化（仅因第二枚 patch 变化而重发）。
 
 ## 版本演进与当前进展
 - v1（09-20）：代码走读式概述（按 `resched_curr_lazy()`/`scheduler_tick()` 代码走读，120 行）。

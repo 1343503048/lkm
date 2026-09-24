@@ -179,4 +179,4 @@ acpi-cpufreq 下 `3300000 vs 4680714`，即假 pressure 幅度约 29% 的频率�
 - 9/2 Hongyan Xia 提出「更广的问题」+ Ryzen 7840U：https://lore.kernel.org/all/44993024-f1bb-4b4f-802b-a22f95101171@transsion.com/
 - 8/25 Hongyan Xia 的定性（本线程内引用，原始 msgid）：https://lore.kernel.org/all/49233994-f46f-4d41-99b3-b40cc23bcbc7@transsion.com/
 - 8/25 Vincent Guittot 的邮件（本线程引用，原始 msgid）：https://lore.kernel.org/all/CAKfTPtCxMA-7BX20LNhdOT+BQysdnOxOALrLvhTFNYJLbdsoCA@mail.gmail.com/
-- 相关：[[sched-20260821-004]]（v1 首发当日）、[[sched-20260824-004]]、[[sched-20260825-010]]（同一线程的 8/24、8/25 讨论）
+- 相关：<a class="article-ref" href="/lkm/2026/08/21/sched-20260821-004-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260821-004</a>（v1 首发当日）、<a class="article-ref" href="/lkm/2026/08/24/sched-20260824-004-sched-fair-cpufreq-pressure-invariant.html">sched-20260824-004</a>、<a class="article-ref" href="/lkm/2026/08/25/sched-20260825-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-invariant.html">sched-20260825-010</a>（同一线程的 8/24、8/25 讨论）

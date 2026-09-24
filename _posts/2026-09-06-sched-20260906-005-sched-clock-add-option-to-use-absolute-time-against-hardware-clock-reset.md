@@ -104,4 +104,4 @@ Feng Tang（09-02）给 `kernel/time/sched_clock.c` 加了个 `abs_sched_clock` 
 - Thomas Gleixner 的 NAK（本日）: https://lore.kernel.org/all/8733vn5t6p.ffs@fw13/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- 相关：[[sched-20260903-015]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-015-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260903-015</a>

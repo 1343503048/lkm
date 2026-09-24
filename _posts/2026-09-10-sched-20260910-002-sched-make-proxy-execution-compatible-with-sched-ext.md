@@ -58,7 +58,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260908-003 / sched-20260904-007 / sched-20260831-001。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/18、14/18 的前提被指「不可能发生」，但 15/18 他给出了明确可接受的改法。v14 的工作量已经清晰。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-003-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260908-003</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-007-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260904-007</a> / <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260831-001</a>。09-10 是 Peter Zijlstra 对 18 补丁 v13 系列承诺的正式评审落地的一天：他在 03、04、05、07、08、09、14、15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/18、14/18 的前提被指「不可能发生」，但 15/18 他给出了明确可接受的改法。v14 的工作量已经清晰。
 
 ## 背景与问题
 代理执行把调度上下文（`rq->donor`）与执行上下文（`rq->curr`）拆开以缓解优先级反转；本系列（PATCHSET v13 sched_ext/for-7.4）目标是解除 `CONFIG_SCHED_PROXY_EXEC` 对 `!SCHED_CLASS_EXT` 的依赖，让 BPF 调度器全面接管 donor/curr 拆分后的策略与记账。09-08 时技术争议面已基本清零，瓶颈只剩 Peter 的正式评审——本日评审到达。
@@ -76,7 +76,7 @@ layout: article
 - **15/18（Delegate proxy donor admission to BPF schedulers）**：两条具体改法——入口封装成带 `scx_enabled()` 判断的 inline；并参照另一处的写法 "Just have it be always instead of for ext-ext only"（准入检查应总是执行，而不是只在 ext→ext 场景）。
 
 ## 版本演进与当前进展
-*current_version: v13（2026-08-31 发出，msgid `<20260831134338.1531664-1-arighi@nvidia.com>`）*。09-08 作者集中回应了 Prateek/Tejun/Richard 的遗留意见；09-10 Peter 的正式评审到达，v13 尚未有作者对这些意见的公开回应（当天 Andrea 在另一线程对 Hui Su 表示两个系列「很快会兼容」，见 sched-20260910-003）。v14 需要落实：03/18 收敛进 sched_proxy_exec() 分支并论证 FAIR donor + RT curr 场景是否真实存在、04/18 解释主线为何未触发、05/18 处理 {EN,DE}QUEUE_CLASS 引起的类变化、07/18 说明 scx_proxy_resolved()、08/18 重新定义 WF_ON_RQ 想表达的区分（或撤回）、09/18 按 Peter 给出的 switching_to_scx() 方案重构、14/18 删除组合 3/4、15/18 inline 化并改为总是检查。
+*current_version: v13（2026-08-31 发出，msgid `<20260831134338.1531664-1-arighi@nvidia.com>`）*。09-08 作者集中回应了 Prateek/Tejun/Richard 的遗留意见；09-10 Peter 的正式评审到达，v13 尚未有作者对这些意见的公开回应（当天 Andrea 在另一线程对 Hui Su 表示两个系列「很快会兼容」，见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a>）。v14 需要落实：03/18 收敛进 sched_proxy_exec() 分支并论证 FAIR donor + RT curr 场景是否真实存在、04/18 解释主线为何未触发、05/18 处理 {EN,DE}QUEUE_CLASS 引起的类变化、07/18 说明 scx_proxy_resolved()、08/18 重新定义 WF_ON_RQ 想表达的区分（或撤回）、09/18 按 Peter 给出的 switching_to_scx() 方案重构、14/18 删除组合 3/4、15/18 inline 化并改为总是检查。
 
 ## Maintainer 意见与讨论焦点
 Peter Zijlstra 一人留下全部 10 条意见，性质分三档：

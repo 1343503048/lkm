@@ -46,7 +46,7 @@ layout: article
 增量更新：Andrea Righi 的 proxy execution 兼容 sched_ext 系列（v13，18 枚）继续与 Peter Zijlstra 就 07/18（`sched: Add sched_ext hooks for proxy execution`）交换意见。Peter 承认自己把 donor/curr 的 put_prev_task 处理搞混了，随后确认 `rq->donor` 有 `put_prev_task()` 兜底、而 `rq->curr` 没有，最终"Fair enough"收敛。属对 v14 收尾的点状确认，无 NAK。
 
 ## 背景与问题
-背景见 sched-20260916-002：让 proxy execution（执行上下文与调度上下文拆分）与 sched_ext 兼容。本日为 07/18 补丁的细化确认，不涉及新方案。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260916-002</a>：让 proxy execution（执行上下文与调度上下文拆分）与 sched_ext 兼容。本日为 07/18 补丁的细化确认，不涉及新方案。
 
 ## 技术方案
 无方案变化。本日交换聚焦一处语义：`rq->donor` 会经 `put_prev_task()` 处理来理顺，而 `rq->curr` 没有对等机制——这是 Andrea 与 Peter 在 07/18 设计讨论中厘清的一点。
@@ -60,7 +60,7 @@ layout: article
 - 无新分歧；该点收敛。
 
 ## 合入评估
-*likelihood=medium*。系列整体仍受 08/18 的 WF_ON_RQ 语义开放项牵制（见 sched-20260916-002），本日仅 07/18 点状收敛，不改变整体格局。*blocking_issues*：08/18 语义与 09/18 清理时机仍待对齐。*next_action*：Andrea 发 v14，落实此前承诺的 05/07/09/14/15 改动并与 Peter 对齐 08/18。
+*likelihood=medium*。系列整体仍受 08/18 的 WF_ON_RQ 语义开放项牵制（见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-002-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260916-002</a>），本日仅 07/18 点状收敛，不改变整体格局。*blocking_issues*：08/18 语义与 09/18 清理时机仍待对齐。*next_action*：Andrea 发 v14，落实此前承诺的 05/07/09/14/15 改动并与 Peter 对齐 08/18。
 
 ## 效果评估
 无性能数据；属设计评审与语义确认。

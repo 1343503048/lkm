@@ -53,7 +53,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-012 / sched-20260908-008。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpuinfo.max_freq 随 boost 状态变化（4GHz vs 3GHz 例子），现有 __resolve_freq 方案救不了无频率表的驱动，并提出以「最大可持续频率」为固定参考的新方向，遗留问题是该频率从哪里取。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-012-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260909-012</a> / <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260908-008</a>。讨论从「谁来发 cpufreq 侧补丁」推进到语义层：Vincent Guittot 给出硬约束——压力参考频率必须在 boost 开/关下保持固定；Jianyong Wu 随即指出 intel_pstate（可能还有 amd-pstate）下 cpuinfo.max_freq 随 boost 状态变化（4GHz vs 3GHz 例子），现有 __resolve_freq 方案救不了无频率表的驱动，并提出以「最大可持续频率」为固定参考的新方向，遗留问题是该频率从哪里取。
 
 ## 背景与问题
 原补丁（Jianyong Wu，08-21）针对非频率不变（freq invariance 不成立）平台上 cpufreq 压力计算失真的问题，sched 侧用 arch_scale_freq_invariant() 门控。09-08 起讨论转向 Prateek Nayak 提出的 cpufreq 侧方案（__resolve_freq() 上界不越过 policy 可给频率），09-09 Hongyan Xia 建议把最高可达 OPP 缓存进 policy 对象、在 cpufreq_policy_online() 时更新，但补丁始终无人正式发出。

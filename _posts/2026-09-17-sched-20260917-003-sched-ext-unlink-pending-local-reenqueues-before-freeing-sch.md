@@ -46,7 +46,7 @@ layout: article
 增量更新：Andrea Righi 昨日（09-16）的"释放调度器前 unlink 挂起的 local reenqueue 请求"补丁被 Tejun Heo 判定为治标不治本——WARN 本就该触发、unlink 会掩盖下一处丢失的调度；根因已定位并用新补丁（Derive SCX_RQ_IN_WAKEUP，见 related）修复。Cheng-Yang Chou 补了一个 Acked-by。本补丁实质被取代。
 
 ## 背景与问题
-背景见 sched-20260916-004：sched_ext 在释放调度器 per-cpu 区域时，一个仍挂链的 local reenqueue 请求会指向已释放区域，下一次调度器从 `run_deferred()` 解引用导致 UAF。Andrea 的原始补丁在释放前主动 unlink 挂起请求。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.html">sched-20260916-004</a>：sched_ext 在释放调度器 per-cpu 区域时，一个仍挂链的 local reenqueue 请求会指向已释放区域，下一次调度器从 `run_deferred()` 解引用导致 UAF。Andrea 的原始补丁在释放前主动 unlink 挂起请求。
 
 ## 技术方案
 无方案演进。Tejun 的回帖给出根因链：`move_remote_task_to_local_dsq()` 会把移动者的 enq_flags 暂存给目标 enqueue；自 57ccf5ccdc56 起这些 flags 决定 SCX_RQ_IN_WAKEUP；对一个忙碌远端 CPU 的 IMMED 插入会请求 local reenqueue，此时标志位被置位，`schedule_deferred_locked()` 把它留给 `task_woken_scx()`，但该路径下没人调用它——调度被丢失。正确修复是只测试 core enqueue flags 的 wakeup 位，即"Derive SCX_RQ_IN_WAKEUP"补丁。

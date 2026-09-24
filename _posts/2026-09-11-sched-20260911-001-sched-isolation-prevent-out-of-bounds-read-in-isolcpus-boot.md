@@ -54,7 +54,7 @@ layout: article
 ---
 
 ## TL;DR
-Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes、Cc stable、Reviewed-by）现在全部可核对。
+Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html">sched-20260910-015</a>：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes、Cc stable、Reviewed-by）现在全部可核对。
 
 ## 背景与问题
 housekeeping_isolcpus_setup() 解析 isolcpus= 时假设各 flag 以逗号分隔。若最后一个子参数（合法或非法，如 `isolcpus=unknown`）后面没有逗号，strncmp 严格匹配失败后落入「跳过未知子参数」的兜底 for 循环：该循环消费字符直到逗号或 `'\0'`，终止时 str 恰好停在字符串结尾的 NULL 上；循环之后代码无条件执行 `str++`，指针越过字符串进入未初始化内存，外层 `while (isalpha(*str))` 随后读取越界数据，可能导致未定义行为或启动异常。该问题由 sashiko-bot@kernel.org 报告，修复指向 `Fixes: 3662daf023500 ("sched/isolation: Allow "isolcpus=" to skip unknown sub-parameters")` 并 Cc stable。
@@ -66,15 +66,15 @@ housekeeping_isolcpus_setup() 解析 isolcpus= 时假设各 flag 以逗号分隔
 *current_version: v16（指所属 multiqueue CPU isolation 系列的版本；修复本身的代码内容相对独立投递版无变化）*。
 
 - v1（2026-05-23，独立投递，msgid `<20260523210214.593704-1-atomlin@atomlin.com>`）：修复越界读，Valentin Schneider 给出 Reviewed-by，长期无进展。
-- 09-10：作者宣布把修复折叠进 multiqueue CPU isolation v16 作为系列内前置补丁，承诺保留 R-b、Fixes 与 Cc stable（见 sched-20260910-015）。
-- v16（09-10/09-11 入缓存）：修复以 `[PATCH v16 4/9]` 形态出现在系列中，补丁正文首次可见：Reported-by sashiko-bot、Reviewed-by Valentin Schneider、Fixes 3662daf023500、Cc stable 齐全。注意实际位置是系列第 4 个补丁，而非 sched-20260910-015 中推测的「patch 01」。
+- 09-10：作者宣布把修复折叠进 multiqueue CPU isolation v16 作为系列内前置补丁，承诺保留 R-b、Fixes 与 Cc stable（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html">sched-20260910-015</a>）。
+- v16（09-10/09-11 入缓存）：修复以 `[PATCH v16 4/9]` 形态出现在系列中，补丁正文首次可见：Reported-by sashiko-bot、Reviewed-by Valentin Schneider、Fixes 3662daf023500、Cc stable 齐全。注意实际位置是系列第 4 个补丁，而非 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html">sched-20260910-015</a> 中推测的「patch 01」。
 
 ## Maintainer 意见与讨论焦点
 - Valentin Schneider：早在独立投递阶段已给 Reviewed-by，v16 中保留。
 - 本日缓存内没有对 v16 4/9 的新讨论；该系列整体（multiqueue CPU isolation，9 个补丁、已迭代 16 版）的维护者表态情况在当日缓存中不可见，未获取到。
 
 ## 合入评估
-*likelihood=medium*：修复本身内容简单、带 R-b 与 stable 标记，但合入时点仍绑定在迭代了 16 版尚未进树的 v16 系列上。*blocking_issues*：与 sched-20260910-015 相同——修复跟着一个尚未被收取的大系列走，bisect 基线取决于系列排序；Valentin 对「折叠进 v16」处置方式本身的表态仍未获取到。*next_action*：跟踪 v16 系列在 sched 树的收取情况，确认 4/9 的 bisect 位置与其 Fixes 指向的 commit 顺序成立。
+*likelihood=medium*：修复本身内容简单、带 R-b 与 stable 标记，但合入时点仍绑定在迭代了 16 版尚未进树的 v16 系列上。*blocking_issues*：与 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.html">sched-20260910-015</a> 相同——修复跟着一个尚未被收取的大系列走，bisect 基线取决于系列排序；Valentin 对「折叠进 v16」处置方式本身的表态仍未获取到。*next_action*：跟踪 v16 系列在 sched 树的收取情况，确认 4/9 的 bisect 位置与其 Fixes 指向的 commit 顺序成立。
 
 ## 效果评估
 暂无效果数据：线程内没有复现报告或启动异常日志，sashiko-bot 的原始报告内容在缓存中未获取到（仅见 Reported-by 标签）。

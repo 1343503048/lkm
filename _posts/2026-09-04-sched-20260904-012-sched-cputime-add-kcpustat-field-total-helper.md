@@ -139,7 +139,7 @@ static inline u64 kcpustat_field_total(enum cpu_usage_stat usage, const struct c
   - Frederic Weisbecker 的 Acked-by: <https://lore.kernel.org/all/apmfne3iBct7oNTp@localhost.localdomain/>
   - v11 01/12（标签首次收集）: <https://lore.kernel.org/all/20260825103855.721013-2-sshegde@linux.ibm.com/>
 - 相关文章/系列：
-  - [[sched-20260903-002]] steal_governor v12 偏好 CPU + vCPU 回退。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a> steal_governor v12 偏好 CPU + vCPU 回退。
 - 相关代码/commit：
   - `include/linux/kernel_stat.h` `kcpustat_field_total()` / `kcpustat_field()`
   - `arch/s390/kernel/hiperdispatch.c` `hd_calculate_steal_percentage()`

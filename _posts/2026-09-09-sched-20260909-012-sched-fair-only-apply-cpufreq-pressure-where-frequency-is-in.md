@@ -60,7 +60,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景、三个互斥修法（sched 侧门控 / cpuutil 信号改用 arch_scale_freq_ref / cpufreq 侧 `__resolve_freq()`）的对比见 related_articles 中的 sched-20260908-008 / sched-20260907-006 / sched-20260903-010 / sched-20260902-008。09-08 作者已经表态采纳 Prateek 的 cpufreq 侧方案，09-09 出现两件推进：**Hongyan Xia（Transsion）给出 LGTM** 并提出把每次全量 `__resolve_freq()` 换成缓存；Prateek 认可并具体化为「在 `cpufreq_policy_online()` 时缓存进 policy 对象」，同时把发版归属推给 Jianyong Wu，明说若对方不发、他下周初自己发。也就是说方案侧现在无异议了，缺的仍是那枚还没被任何人正式发出的补丁。
+本文为增量更新，完整背景、三个互斥修法（sched 侧门控 / cpuutil 信号改用 arch_scale_freq_ref / cpufreq 侧 `__resolve_freq()`）的对比见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260908-008</a> / <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-006-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260907-006</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260903-010</a> / <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a>。09-08 作者已经表态采纳 Prateek 的 cpufreq 侧方案，09-09 出现两件推进：**Hongyan Xia（Transsion）给出 LGTM** 并提出把每次全量 `__resolve_freq()` 换成缓存；Prateek 认可并具体化为「在 `cpufreq_policy_online()` 时缓存进 policy 对象」，同时把发版归属推给 Jianyong Wu，明说若对方不发、他下周初自己发。也就是说方案侧现在无异议了，缺的仍是那枚还没被任何人正式发出的补丁。
 
 ## 背景与问题
 

@@ -56,13 +56,13 @@ layout: article
 `sched/isolation` 推迟释放 bootmem housekeeping cpumask（08-02 系列 001）在 08-03 进入释放时机的讨论：应将释放推迟到 bootmem 回收阶段而非即刻 `memblock_free`。低严重度，合入可能性高。
 
 ## 背景与问题
-`housekeeping` 初始化时用 memblock 动态分配 housekeeping cpumask。当前实现获取永久存储后立即 `memblock_free()` 掉临时 bootmem 分配。但若 early boot 某些路径在释放后仍引用该掩码（或释放时机早于 memblock 正式回收），可能访问到处于不确定状态的 memory。08-02 文章（sched-20260802-001）已覆盖 v1 的「推迟释放」方向。
+`housekeeping` 初始化时用 memblock 动态分配 housekeeping cpumask。当前实现获取永久存储后立即 `memblock_free()` 掉临时 bootmem 分配。但若 early boot 某些路径在释放后仍引用该掩码（或释放时机早于 memblock 正式回收），可能访问到处于不确定状态的 memory。08-02 文章（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html">sched-20260802-001</a>）已覆盖 v1 的「推迟释放」方向。
 
 ## 技术方案
 08-03 Mike Galbraith 的讨论进一步细化释放时机：不应在获得永久副本后即刻 `memblock_free()`，而应将 bootmem 分配的 cpumask **推迟到 bootmem 退出、memblock 统一回收阶段**再释放，确保 early 阶段所有潜在引用者都已完成访问。
 
 ## 版本演进与当前进展
-- 08-02：v1 提出推迟释放（sched-20260802-001）。
+- 08-02：v1 提出推迟释放（<a class="article-ref" href="/lkm/2026/08/02/sched-20260802-001-sched-isolation-defer-freeing-of-the-bootmem-housekeeping-cpumasks.html">sched-20260802-001</a>）。
 - 08-03：Mike Galbraith 在 16216 回帖，细化释放时机为「推迟到 bootmem 回收阶段」。
 
 ## Maintainer 意见与讨论焦点

@@ -46,13 +46,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方案；对 patch 5/8（idle 唤醒时重置 lag）给出 `vlag_seq` 的代码草案；对 6/8 建议把缓存放 `struct rq` 避免 cache miss；对 8/8 建议复用 `select_idle_sibling` 已有扫描。Vincent 表示会研究并部分采纳，系列仍处 review 迭代中。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html">sched-20260921-001</a>。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方案；对 patch 5/8（idle 唤醒时重置 lag）给出 `vlag_seq` 的代码草案；对 6/8 建议把缓存放 `struct rq` 避免 cache miss；对 8/8 建议复用 `select_idle_sibling` 已有扫描。Vincent 表示会研究并部分采纳，系列仍处 review 迭代中。
 
 ## 背景与问题
-背景见 sched-20260921-001。核心是修正 EEVDF 下短切片任务/睡眠实体 lag 处理的一系列边角问题，改善调度延迟。
+背景见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html">sched-20260921-001</a>。核心是修正 EEVDF 下短切片任务/睡眠实体 lag 处理的一系列边角问题，改善调度延迟。
 
 ## 技术方案
-方案总体见 sched-20260921-001。本日 review 聚焦四个 patch 的取舍：
+方案总体见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html">sched-20260921-001</a>。本日 review 聚焦四个 patch 的取舍：
 - **patch 4/8 衰减睡眠实体正 lag**：Peter 指出睡眠任务 runnable 时本应只占 `w/W` 的 runtime 份额而非 `w/w`，直接用全量睡眠时间衰减会过快；且 MIGRATED 情形重要，可近似 `(W1+W2)/2 + w`。
 - **patch 5/8 idle 唤醒重置 lag**：Peter 给出 `vlag_seq` 草案（`se->vlag_seq = cfs_rq->idle_seq`，`place_entity()` 中序号不匹配即置 0），能覆盖 `rq->curr == rq->idle` 及其它情形。
 - **patch 6/8 per-cpu cached min_slice**：Peter 建议放入 `struct rq`、靠近 `select_idle_siblings()` 已访问的数据，避免缓存缺失。
@@ -67,10 +67,10 @@ layout: article
 - **Kayra Cizmeci**：在 patch 5/8 线程参与讨论（`<20260922143230.5383-1-kayracizmeci@gmail.com>`）。
 
 ## 合入评估
-*likelihood=medium*。系列目标明确、有完整 benchmark 支撑（见 sched-20260921-001），但 patch 4/8 的 lag 衰减算法存在实质分歧（近似 vs 第二棵树 vs load_avg），Peter 尚未认可当前近似方向。*blocking_issues*：patch 4/8 衰减算法设计分歧未收敛；若干 patch 的实现位置/重复扫描待调整。*next_action*：Vincent 按 Peter 意见改进 patch 4/8 与 8/8，重新发版。
+*likelihood=medium*。系列目标明确、有完整 benchmark 支撑（见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html">sched-20260921-001</a>），但 patch 4/8 的 lag 衰减算法存在实质分歧（近似 vs 第二棵树 vs load_avg），Peter 尚未认可当前近似方向。*blocking_issues*：patch 4/8 衰减算法设计分歧未收敛；若干 patch 的实现位置/重复扫描待调整。*next_action*：Vincent 按 Peter 意见改进 patch 4/8 与 8/8，重新发版。
 
 ## 效果评估
-无本日新增数据；系列整体 benchmark（99th/99.9th/max 延迟改善、hackbench +11%~+30%）见 sched-20260921-001。
+无本日新增数据；系列整体 benchmark（99th/99.9th/max 延迟改善、hackbench +11%~+30%）见 <a class="article-ref" href="/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html">sched-20260921-001</a>。
 
 ## 我可以参与的点
 - **review**：对 patch 4/8 的衰减算法（`W+w`、完整权重和、`(W1+W2)/2+w`、第二棵树、load_avg 近似）做理论/数值对比，帮助在近似与复杂度之间定夺。

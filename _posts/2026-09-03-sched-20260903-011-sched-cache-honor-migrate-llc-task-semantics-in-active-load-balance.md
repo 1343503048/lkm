@@ -101,13 +101,13 @@ CAS 用 `migrate_llc_task` 把任务推向它的 preferred LLC，但被动负载
 
 邮件中未提供效果数据。v4 正文只有场景推演（p1/p2 的例子）、方案取舍与 diffstat，没有任何 benchmark、`perf sched` 或 `sched_stats` 对比，也没有说明该 bug 在真实负载上的可观测表现（例如误迁移次数、preferred LLC 命中率）。
 
-需要标注的证据缺口：v1~v3 及 08-03~08-24 全部回帖的正文未被邮件缓存保留，因此无法判断早期 review 轮次中是否曾给出过数据；本日 v4 与同日 Tim Chen 在 [[sched-20260903-012]] 中反馈的 CAS helper 编译问题都指向同一事实——CAS 这条线目前主要在 Intel 内部推进验证，公开线程里看不到量化结果。
+需要标注的证据缺口：v1~v3 及 08-03~08-24 全部回帖的正文未被邮件缓存保留，因此无法判断早期 review 轮次中是否曾给出过数据；本日 v4 与同日 Tim Chen 在 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a> 中反馈的 CAS helper 编译问题都指向同一事实——CAS 这条线目前主要在 Intel 内部推进验证，公开线程里看不到量化结果。
 
 ## 我可以参与的点
 
 1. 补上唯一的空白：把 v4 跑在一个 CAS 打开的多 LLC 机器上，用「同一 `src_rq` 上放一个 preferred LLC 指向 dst、另一个指向 src」的构造任务复现提交说明里的 p1/p2 场景，统计修复前后被 ALB 搬离 preferred LLC 的任务数（`sched_debug` 的 `llc_*` 统计或 `perf sched migrate`）。这类数据一旦回帖，基本可以收尾。
 2. 审 delayed dequeue 这条被刻意绕开的路径：作者拒绝穿过 stopper 传 `migration_type` 的理由是它对 delayed dequeue 任务另有含义，可以顺着这条论证去核 `DELAY_DEQUEUE` + `LBF_ACTIVE_LB_LLC` 组合下 `can_migrate_task()` 的新返回值是否会让本应被推迟出队的任务滞留在源 CPU。
-3. 与同线程反馈的编译问题（[[sched-20260903-012]]）呼应，确认本补丁在新基线 `ef9293b3b7` 上逐 patch 可编译——v4 只有 1 个补丁风险较低，但同族的 CAS 系列已被证明存在「只有整套能编、单 patch 编不过」的问题。
+3. 与同线程反馈的编译问题（<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a>）呼应，确认本补丁在新基线 `ef9293b3b7` 上逐 patch 可编译——v4 只有 1 个补丁风险较低，但同族的 CAS 系列已被证明存在「只有整套能编、单 patch 编不过」的问题。
 4. 回合判断：本补丁依附于 `migrate_llc_task` / `preferred_llc` / `LBF_*` 整套 CAS 基础设施，OLK-6.6 若未回合 `e4c9a4cb244a` 则无可回合对象；可移植的是那条设计约束——跨 stopper 传递 lb_env 状态时优先新增 flag 而非复用 `migration_type`，回合自研 LLC 亲和策略时同样适用。
 
 ## 参考链接
@@ -117,4 +117,4 @@ CAS 用 `migrate_llc_task` 把任务推向它的 preferred LLC，但被动负载
   - v3：https://lore.kernel.org/all/20260813045241.3039862-1-wanglu.priv@gmail.com/
   - v2：https://lore.kernel.org/all/20260809105343.1189051-1-wanglu.priv@gmail.com/
   - v1：https://lore.kernel.org/all/20260801122252.2476258-1-wanglu.priv@gmail.com/
-- 相关文章：[[sched-20260902-009]]（NUMA 细粒度 + sched/cache 辅助框架 RFC v2）、[[sched-20260903-012]]（同族 CAS helper 的编译问题反馈）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-009-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260902-009</a>（NUMA 细粒度 + sched/cache 辅助框架 RFC v2）、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a>（同族 CAS helper 的编译问题反馈）。

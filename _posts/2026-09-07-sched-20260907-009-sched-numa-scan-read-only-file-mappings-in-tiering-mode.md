@@ -74,7 +74,7 @@ if (vma->vm_file &&
 
 它诞生于 hint fault 只作为「socket 驻留信号」的年代：那时跳过一个只读映射只损失一点放置分辨率，而 trap 共享库页换来的迁移大多是负收益。内存分层（`NUMA_BALANCING_MEMORY_TIERING`）之后，同一次 hint fault 变成了**提升机制本身**——慢层 folio 只有先被标记、再被访问产生 fault，才会被考虑搬到顶层。于是「永不被扫描」等价于「永不被提升」，只读文件映射（可执行文件主段、共享库）在这类机器上会单向沉积到慢层。作者的实测就是这条链路：约 430G 的数据库服务，主程序 185M 中 169M（91%）留在 CXL。
 
-本补丁是该 2 补丁系列中的 2/2（1/2 处理 per-VMA PID 过滤器，系列整体论证与前后可见 [[sched-20260905-006]]），本篇只覆盖 2/2 这一补丁与其自身线程的进展。
+本补丁是该 2 补丁系列中的 2/2（1/2 处理 per-VMA PID 过滤器，系列整体论证与前后可见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260905-006</a>），本篇只覆盖 2/2 这一补丁与其自身线程的进展。
 
 ## 技术方案
 
@@ -118,7 +118,7 @@ if (vma->vm_file &&
 
 有的部分是 2/2 自己的观测（均来自 09-05 的补丁正文）：机器为 768G DRAM + 256G CXL，负载是约 430G 的数据库服务；补丁前主程序二进制 185M 中 169M（91%）积在 CXL 慢层；补丁后该二进制的层级驻留能跟随运行时负载变化（作者原话只到 "the binary's tier residency tracked runtime load" 这一程度）。
 
-必须标注的缺口：本篇（2/2）**没有**给出自己的前后延迟/带宽数字，也没有扫描耗时、hint fault 次数或 CPU 占用等开销侧证据——作者对 sashiko 的开销疑问回应的是推理而非测量；系列整体的带宽/延迟对比属于另一补丁的验证，见 [[sched-20260905-006]]。本日（09-07）邮件中没有任何新数据，v2 的承诺也未附测试计划细节。
+必须标注的缺口：本篇（2/2）**没有**给出自己的前后延迟/带宽数字，也没有扫描耗时、hint fault 次数或 CPU 占用等开销侧证据——作者对 sashiko 的开销疑问回应的是推理而非测量；系列整体的带宽/延迟对比属于另一补丁的验证，见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260905-006</a>。本日（09-07）邮件中没有任何新数据，v2 的承诺也未附测试计划细节。
 
 ## 我可以参与的点
 
@@ -136,4 +136,4 @@ if (vma->vm_file &&
   - 作者对 sashiko 意见的回应（重扫与并发扫描）：https://lore.kernel.org/all/apsX_E8GBzfp6lui@gourry-fedora-PF4VCD3F/
 - 相关代码：`kernel/sched/fair.c` `task_numa_work()` / `vma_is_ro_file()` / `reset_ptenuma_scan()` / `task_numa_fault()`；`include/linux/mm_types.h` `struct vma_numab_state`（`slow_only`）
 - 被修复的 commit：`c574bbe91703`；引入例外的 commit：`4591ce4f2d22`
-- 相关：[[sched-20260905-006]]（同一系列 0/2 封面的完整分析）
+- 相关：<a class="article-ref" href="/lkm/2026/09/05/sched-20260905-006-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260905-006</a>（同一系列 0/2 封面的完整分析）

@@ -51,7 +51,7 @@ layout: article
 本文为增量更新。Andrea Righi 的 v12 proxy-exec + sched_ext 共存系列（17 patch）本日继续收到 Tejun Heo 对 patch 12/17（remote DSQ transfers）和 14/17（proxy donor admission）的详细 review，Andrea 逐条回应并承诺调整。关键进展：Tejun 同意去掉 `SCX_TASK_ENQ_WAKEUP`、改用 `WF_ON_RQ` 直接传递；reject_dsq 处理讨论引入 generic deferred work flag 话题。完整背景见前日文章。
 
 ## 背景与问题
-（完整背景见 sched-20260817-001）proxy-exec 与 sched_ext 当前构建期互斥。v12 通过 `SCX_OPS_ENQ_BLOCKED` 能力位让 BPF 调度器控制 blocked donor 的接纳与排序，使二者运行时共存。
+（完整背景见 <a class="article-ref" href="/lkm/2026/08/17/sched-20260817-001-sched-ext-fix-ops-running-stopping-pairing-for-proxy-exec-do.html">sched-20260817-001</a>）proxy-exec 与 sched_ext 当前构建期互斥。v12 通过 `SCX_OPS_ENQ_BLOCKED` 能力位让 BPF 调度器控制 blocked donor 的接纳与排序，使二者运行时共存。
 
 ## 技术方案
 本日讨论集中在两个子 patch：

@@ -76,7 +76,7 @@ rq_set_donor(rq, donor);
 候选被放弃时直接丢弃，不做 sched-class 的 put_prev/set_next。连带两个语义修正：(1) 推迟提交改变了 `find_proxy_task()` 看到的 `rq->dl_server` 状态（原来 `put_prev_set_next_task()` 已消费并清空它），v3 在解析期间保存/清空并在成功时才恢复；(2) proxy 候选不再必然是已提交的 `rq->donor`，`proxy_deactivate()` 只在候选仍是已提交 donor 时才先切 idle，`zap_balance_callbacks()` 移入 `proxy_resched_idle()` 并用 `CONFIG_SCHED_PROXY_EXEC` 保护。
 
 ## 版本演进与当前进展
-- v1：2026-07-07 发出（07 月的讨论里首次给出重试频率数据，见 sched-20260810-007）。
+- v1：2026-07-07 发出（07 月的讨论里首次给出重试频率数据，见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-007-sched-proxy-defer-donor-commit-until-after-proxy-resolution.html">sched-20260810-007</a>）。
 - v2：2026-07-13：把最终的 `put_prev_set_next_task()`/`rq_set_donor()` 移到 proxy/非 proxy 分支之后；`zap_balance_callbacks()` 从 NULL/idle 路径移入 `proxy_resched_idle()`。
 - v3（本日）：补 motivation 与实测数据；处理 `rq->dl_server` 语义；donor/执行任务在 `__schedule()` 中显式区分；保住常见路径"先提交再刷新同 donor 的 sched-class 回调"的既有顺序；修 kernel test robot 报的 W=1 !CONFIG_SCHED_PROXY_EXEC unused-function 警告。
 - 当日无 review 回复。

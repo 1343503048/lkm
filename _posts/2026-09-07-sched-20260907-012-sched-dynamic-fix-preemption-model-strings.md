@@ -56,7 +56,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260905-004（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`）。本日新增的只是**第一个运行时功能验证**：Mete Durlu（IBM）在 s390 上实测 `preempt` 节点读写，输出已正确（`echo full > preempt` 后读回 `(full) lazy`，`echo lazy > preempt` 后读回 `full (lazy)`），并给出 `Tested-by`。合入状态没有变化——补丁本日早已在 tip，这个 tag 不会出现在那个 commit 里。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html">sched-20260905-004</a>（Mark Rutland 的单补丁，修 PREEMPT_DYNAMIC 简化后 `preempt_modes[]` 与被删枚举值不同步，导致栈回溯里的抢占模型字符串错位、`/sys/kernel/debug/sched/preempt` 输出为空；Peter Zijlstra 已在 09-02 收进 `tip/sched/core`）。本日新增的只是**第一个运行时功能验证**：Mete Durlu（IBM）在 s390 上实测 `preempt` 节点读写，输出已正确（`echo full > preempt` 后读回 `(full) lazy`，`echo lazy > preempt` 后读回 `full (lazy)`），并给出 `Tested-by`。合入状态没有变化——补丁本日早已在 tip，这个 tag 不会出现在那个 commit 里。
 
 ## 背景与问题
 
@@ -82,7 +82,7 @@ full (lazy)
 
 ## 版本演进与当前进展
 
-- 09-02 11:16 Mark Rutland 投递（无版本号，一次性投递）；同日 12:54 Peter Zijlstra 以 committer 身份合入 `tip/sched/core`。该 commit hash（`ef9293b3b797...`）来自前作 sched-20260905-004 的记录（tip-bot2 通知），**本日邮件本身不含任何 commit hash**。
+- 09-02 11:16 Mark Rutland 投递（无版本号，一次性投递）；同日 12:54 Peter Zijlstra 以 committer 身份合入 `tip/sched/core`。该 commit hash（`ef9293b3b797...`）来自前作 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html">sched-20260905-004</a> 的记录（tip-bot2 通知），**本日邮件本身不含任何 commit hash**。
 - 09-05 kernel test robot 报 74 个 config 全 BUILD SUCCESS（跨 22+ 架构），但那只是编译级验证。
 - 09-07 03:28 Mete Durlu（IBM）在 s390 上完成运行时验证并附 `Tested-by: Mete Durlu <meted@linux.ibm.com>`——这是该修复的第一份行为级证据。
 - 由于入树在前、验证在后，本线程中未见维护者用带 Tested-by 的版本重写 commit 的记录（未获取到）。
@@ -112,9 +112,9 @@ full (lazy)
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260905-004]] 前作：根因、diff 与 tip 合入记录。
-  - [[sched-20260903-013]] PREEMPT_DYNAMIC 简化 v2（引入该不一致的那轮改动）。
-  - [[sched-20260902-002]] PREEMPT_DYNAMIC 简化系列首发记录。
+  - <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-004-sched-dynamic-fix-preemption-model-strings.html">sched-20260905-004</a> 前作：根因、diff 与 tip 合入记录。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-013-sched-dynamic-simplify-preempt-dynamic.html">sched-20260903-013</a> PREEMPT_DYNAMIC 简化 v2（引入该不一致的那轮改动）。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a> PREEMPT_DYNAMIC 简化系列首发记录。
 - 原始补丁: https://lore.kernel.org/all/20260902101637.232129-1-mark.rutland@arm.com/
 - tip-bot2 合入通知（前作引用）: https://lore.kernel.org/all/178834676769.3717435.18409512288803533130.tip-bot2@tip-bot2/
 - 本日 Mete Durlu 的 s390 验证: https://lore.kernel.org/all/2eaa56ab-7013-4fc1-99f0-db9c7e4b5c5f@linux.ibm.com/

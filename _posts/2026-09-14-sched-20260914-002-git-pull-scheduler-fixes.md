@@ -44,17 +44,17 @@ layout: article
 ---
 
 ## TL;DR
-增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF augmented rbtree、两条 proxy execution 记账）正式从 tip 进入主线。
+增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 <a class="article-ref" href="/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html">sched-20260913-001</a> 一直缺失的「进主线时点」，四条修复（两条 EEVDF augmented rbtree、两条 proxy execution 记账）正式从 tip 进入主线。
 
 ## 背景与问题
-承 sched-20260913-001：Ingo 于 09-13 16:19（北京时间）向 Linus 发出 urgent pull（分支 `sched-urgent-2026-09-13`），内容为 4 条修复、2 位作者、3 files +46/-16。前文已判定 likelihood=merged、*status=merged_tip*，但当时缓存中**无 pr-tracker-bot 回执**，「进 Linus 树的合并 commit 与 -rc 归属未获取到」。今日回执补上了这一环节。
+承 <a class="article-ref" href="/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html">sched-20260913-001</a>：Ingo 于 09-13 16:19（北京时间）向 Linus 发出 urgent pull（分支 `sched-urgent-2026-09-13`），内容为 4 条修复、2 位作者、3 files +46/-16。前文已判定 likelihood=merged、*status=merged_tip*，但当时缓存中**无 pr-tracker-bot 回执**，「进 Linus 树的合并 commit 与 -rc 归属未获取到」。今日回执补上了这一环节。
 
 ## 技术方案
 无新代码。今日唯一内容是 pr-tracker-bot 的合并确认：回执引用 Linus 侧 pull 邮件（`aqZcjrj6NEVj6Vgq@gmail.com`，09-13 10:19:26 +0200），给出合并 commit 链接 `https://git.kernel.org/torvalds/c/b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。
 
 ## 版本演进与当前进展
-- 09-09/09-10：四条修复各自发出并被逐篇跟踪（sched-20260909-008、sched-20260910-004/005/016/017）。
-- 09-13：Ingo 汇总拉取（sched-20260913-001）。
+- 09-09/09-10：四条修复各自发出并被逐篇跟踪（<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-008-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260909-008</a>、<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260910-004</a>/005/016/017）。
+- 09-13：Ingo 汇总拉取（<a class="article-ref" href="/lkm/2026/09/13/sched-20260913-001-git-pull-scheduler-fixes.html">sched-20260913-001</a>）。
 - 09-14（本文窗口）：pr-tracker-bot 确认合入 torvalds/linux.git，commit `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。
 
 ## Maintainer 意见与讨论焦点

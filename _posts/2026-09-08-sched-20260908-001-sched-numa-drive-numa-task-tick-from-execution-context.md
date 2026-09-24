@@ -72,7 +72,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 related_articles 中的 sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not liking this, like at all. In fact, this is pretty terrible."），并直接贴出一版替代 PoC——把 `task_tick()` 的签名改成 `(rq, queued)`，让每个调度类自己在回调里取 `rq->curr` / `rq->donor` 并按类判断。作者 Hui Su 当天接受该方向并承诺发 v4。v3 已实质作废，v4 的形态基本被 Peter 锁定。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260905-001</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260904-001</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>。09-08 这条线发生了方向性变化：Chen Yu 先给 v3 的 1/2 和 2/2 都打了 `Reviewed-by`，但 Peter Zijlstra 随即明确否定 v3 的做法（"So I'm not liking this, like at all. In fact, this is pretty terrible."），并直接贴出一版替代 PoC——把 `task_tick()` 的签名改成 `(rq, queued)`，让每个调度类自己在回调里取 `rq->curr` / `rq->donor` 并按类判断。作者 Hui Su 当天接受该方向并承诺发 v4。v3 已实质作废，v4 的形态基本被 Peter 锁定。
 
 ## 背景与问题
 

@@ -45,7 +45,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260729-005。Luo Gengkun 在 review v8 时发现 `task_tick_cache()` 中 epoch 更新的竞态条件：lockless check 在 spinlock 保护之外，可能导致 epoch 回退。Tim Chen 也参与了讨论。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/29/sched-20260729-005-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html">sched-20260729-005</a>。Luo Gengkun 在 review v8 时发现 `task_tick_cache()` 中 epoch 更新的竞态条件：lockless check 在 spinlock 保护之外，可能导致 epoch 回退。Tim Chen 也参与了讨论。
 
 ## 背景与问题
 
@@ -106,4 +106,4 @@ Luo Gengkun 提出的竞态场景：
 - lore thread: 未获取到
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- related: sched-20260729-005
+- related: <a class="article-ref" href="/lkm/2026/07/29/sched-20260729-005-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html">sched-20260729-005</a>

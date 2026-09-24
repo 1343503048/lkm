@@ -41,13 +41,13 @@ layout: article
 本文为增量更新（完整背景见 related_articles，前述修复已合入 tip sched/urgent）。09-15 Tim Chen 回应 NVIDIA KobaK 09-14 的「观测方法」疑问，补上该修复的原始动机场景：Ricardo 在 Nova Lake（LP-E 核独占一个 LLC 域、E/P 核在另一 LLC 域）上把一个多线程进程 pin 到 LP-E 核再 unpin，期望进程迁往更强核却未发生——因为 cache-aware 调度占了优先，可以用 mpstat 直观看到。
 
 ## 背景与问题
-承 sched-20260914-007：混合架构（SD_ASYM_CPUCAPACITY）上 cache-aware balancing 为追 preferred LLC，把任务拉到装不下它的目标 CPU、人为制造 misfit；修复把 misfit 迁移优先级提到 LLC 聚合之上，已进 tip。09-14 NVIDIA KobaK 希望公开复现细节；09-15 Tim Chen 给出原始动机的实验场景。
+承 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html">sched-20260914-007</a>：混合架构（SD_ASYM_CPUCAPACITY）上 cache-aware balancing 为追 preferred LLC，把任务拉到装不下它的目标 CPU、人为制造 misfit；修复把 misfit 迁移优先级提到 LLC 聚合之上，已进 tip。09-14 NVIDIA KobaK 希望公开复现细节；09-15 Tim Chen 给出原始动机的实验场景。
 
 ## 技术方案
 无新代码。Tim Chen 描述动机测试：在 Nova Lake 上（LP-E 核在一个 LLC 域、E/P 核在另一个 LLC 域），把多线程进程 pin 到 LP-E 核再 unpin，预期进程迁往更强核但未发生（cache-aware 调度优先），用 mpstat 即能复现/观测。Tim 表示可将 Ricardo 引入线程做进一步细节讨论。
 
 ## 版本演进与当前进展
-本日为合入后的动机说明与讨论。该修复已合入 tip（commit 见 related_articles sched-20260914-007），当前处于「补全测试/复现方法学」的收尾沟通，无代码版本变化。
+本日为合入后的动机说明与讨论。该修复已合入 tip（commit 见 related_articles <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html">sched-20260914-007</a>），当前处于「补全测试/复现方法学」的收尾沟通，无代码版本变化。
 
 ## Maintainer 意见与讨论焦点
 - **Tim Chen (Intel)**：补充动机场景（Nova Lake LP-E 测试、mpstat 观测），并主动提出让 Ricardo 提供更多细节。
@@ -55,7 +55,7 @@ layout: article
 - 无分歧，属复现方法学的信息对齐。
 
 ## 合入评估
-*likelihood=merged*。修复已合入 tip sched/urgent（见 related_articles sched-20260914-007）。*blocking_issues*：无（仅剩复现细节的公开沟通）。*next_action*：Ricardo/Matt 补充 Nova Lake 测试细节供 NVIDIA 复现验证。
+*likelihood=merged*。修复已合入 tip sched/urgent（见 related_articles <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-007-sched-fair-avoid-creating-misfits-during-cache-aware-balanci.html">sched-20260914-007</a>）。*blocking_issues*：无（仅剩复现细节的公开沟通）。*next_action*：Ricardo/Matt 补充 Nova Lake 测试细节供 NVIDIA 复现验证。
 
 ## 效果评估
 Tim Chen 描述的行为现象：unpin 后进程未迁往更强核（cache-aware 调度影响），可用 mpstat 观察。为定性行为描述，未给定量化数字；修复是否恢复预期迁移行为需 NVIDIA 侧复现确认。

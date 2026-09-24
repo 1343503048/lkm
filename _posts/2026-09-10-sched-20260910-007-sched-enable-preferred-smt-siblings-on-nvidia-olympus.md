@@ -52,13 +52,13 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-007 / sched-20260904-002。v5 在 09-09 收获 Prateek 的 Reviewed-by+Tested-by、Peter 的 tentatively picked up，但 Will Deacon 拒绝 arm64 MIDR 拓扑检测方案；09-10 Peter 直接表态把该系列从收取队列里撤下（"I'll drop this, no worries"），并点出 Andrea 重发过快。系列合入路径回到「先解决 arm64 侧反对」的原点。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260909-007</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260904-002</a>。v5 在 09-09 收获 Prateek 的 Reviewed-by+Tested-by、Peter 的 tentatively picked up，但 Will Deacon 拒绝 arm64 MIDR 拓扑检测方案；09-10 Peter 直接表态把该系列从收取队列里撤下（"I'll drop this, no worries"），并点出 Andrea 重发过快。系列合入路径回到「先解决 arm64 侧反对」的原点。
 
 ## 背景与问题
 NVIDIA Olympus（Grace 类 arm64 平台）的 SMT 兄弟核存在非对称优先级（PE0/PE1），希望调度器在 idle 选核时优先选择高优先级 sibling，避免任务落在性能较差的兄弟核上。方案演进多版后（v5：仅删除冗余的 olympus_prefer_pe0 状态），sched 侧改动已获认可，争议集中在 arm64 侧如何检测「该平台需要此行为」。
 
 ## 技术方案
-本日无新代码。当前 v5 形态见 sched-20260909-007：调度器侧把 SMT 优先级调整收口在 select_idle_sibling() 选出 idle 候选之后（select_idle_smt_cpu()），arm64 侧以 MIDR 检测启用，diffstat 6 files changed, 163 insertions(+), 17 deletions(-)。未决的设计问题有两个：其一，Will Deacon 认为基于 MIDR 的拓扑检测不可接受（arm64 维护者反对，09-09 提出）；其二，Vincent Guittot 质疑新增 static key——Andrea 已在旧线程承诺去掉 static key、改用 sched_smt_active()（见同日文章 sched-20260910-008）。
+本日无新代码。当前 v5 形态见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260909-007</a>：调度器侧把 SMT 优先级调整收口在 select_idle_sibling() 选出 idle 候选之后（select_idle_smt_cpu()），arm64 侧以 MIDR 检测启用，diffstat 6 files changed, 163 insertions(+), 17 deletions(-)。未决的设计问题有两个：其一，Will Deacon 认为基于 MIDR 的拓扑检测不可接受（arm64 维护者反对，09-09 提出）；其二，Vincent Guittot 质疑新增 static key——Andrea 已在旧线程承诺去掉 static key、改用 sched_smt_active()（见同日文章 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260910-008</a>）。
 
 ## 版本演进与当前进展
 *current_version: v5（2026-09-09 发出，msgid `<20260909062649.469633-1-arighi@nvidia.com>`）*。09-09：Prateek Reviewed-by+Tested-by（4th gen EPYC 与 128C Ampere ARM 服务器无性能影响）；Peter tentatively picked up 但要求 arm64 ack；Will Deacon 拒绝 MIDR 检测；Vincent 质疑 static key。09-10：Peter 在 Will 的邮件下回复 "Yeah, Andrea is a wee bit fast with re-posting. I'll drop this, no worries."——正式撤下收取，等待 arm64 侧方案重做后的新版本。

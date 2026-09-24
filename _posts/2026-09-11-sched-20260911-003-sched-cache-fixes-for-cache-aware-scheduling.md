@@ -76,7 +76,7 @@ cover 同时点名两个尚在讨论、未进本系列的问题：donor 上下�
 ## 版本演进与当前进展
 *current_version: v1（当日首发，cover msgid `<cover.1789061845.git.tim.c.chen@linux.intel.com>`，09-11 01:46 起入缓存，共 5 封补丁 + 5 封讨论）*。
 
-- patch 2 为 Lu Wang v4 独立线程（20260903020656.3793626-1）的收编，带 Tim Chen 与 Chen Yu 双 Reviewed-by（见 sched-20260903-011）；
+- patch 2 为 Lu Wang v4 独立线程（20260903020656.3793626-1）的收编，带 Tim Chen 与 Chen Yu 双 Reviewed-by（见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html">sched-20260903-011</a>）；
 - 本日无新版本发出，v2 待发（Tim："Will clean it up and send an update"）。
 
 ## Maintainer 意见与讨论焦点

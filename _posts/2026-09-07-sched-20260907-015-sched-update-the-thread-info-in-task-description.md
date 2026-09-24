@@ -52,11 +52,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260726-006（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing this?`。没有任何 review 意见、没有版本变化（仍是 V2）、没有新代码。补丁从 06-09 起算已经挂了整整三个月无人处理，而它改的内容本身争议为零。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-006-sched-update-the-thread-info-in-task-description.html">sched-20260726-006</a>（Huacai Chen 的 `THREAD_INFO_IN_TASK` Kconfig 描述修正，V2 于 06-09 发出）。本日唯一一封邮件是**作者自己第二次 ping**：Huacai Chen 直接点名 `Hi, Ingo, Peter, Could you please spend some time reviewing this?`。没有任何 review 意见、没有版本变化（仍是 V2）、没有新代码。补丁从 06-09 起算已经挂了整整三个月无人处理，而它改的内容本身争议为零。
 
 ## 背景与问题
 
-补丁要修的是一处**过时且误导的 Kconfig help 文本**：`THREAD_INFO_IN_TASK` 的描述写于 4.9 引入时（当时只有 x86、且 thread_info 只剩 flags），要求 arch「移除除 flags 外的所有 thread_info 字段」；但随后 arm64、x86、riscv、powerpc 等架构都在 thread_info 里保留了多个字段且工作正常，实际要求只是移除 thread_info 中的 task_struct 指针。细节与改动内容见 [[sched-20260726-006]]。
+补丁要修的是一处**过时且误导的 Kconfig help 文本**：`THREAD_INFO_IN_TASK` 的描述写于 4.9 引入时（当时只有 x86、且 thread_info 只剩 flags），要求 arch「移除除 flags 外的所有 thread_info 字段」；但随后 arm64、x86、riscv、powerpc 等架构都在 thread_info 里保留了多个字段且工作正常，实际要求只是移除 thread_info 中的 task_struct 指针。细节与改动内容见 <a class="article-ref" href="/lkm/2026/07/26/sched-20260726-006-sched-update-the-thread-info-in-task-description.html">sched-20260726-006</a>。
 
 本日没有任何技术层面的新内容，因此这一节的「问题」变成了流程问题：一个 `init/Kconfig` 里的 4 增 3 删文档改动，为什么三个月推不动。
 
@@ -99,7 +99,7 @@ layout: article
 
 ## 参考链接
 
-- 相关文章：[[sched-20260726-006]] 前作（背景、改动内容与第一次 ping）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/07/26/sched-20260726-006-sched-update-the-thread-info-in-task-description.html">sched-20260726-006</a> 前作（背景、改动内容与第一次 ping）。
 - 本日作者的第二次 ping: https://lore.kernel.org/all/CAAhV-H55Lb4mAcubjc6hFka_RJB7pkQkJMzkVWaU4se7jt2-0g@mail.gmail.com/
 - V2 补丁本体（06-09）: https://lore.kernel.org/all/20260609031924.97092-1-chenhuacai@loongson.cn/
 - tip-bot commit: 未获取到

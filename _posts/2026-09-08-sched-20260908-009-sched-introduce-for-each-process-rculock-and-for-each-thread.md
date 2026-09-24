@@ -53,11 +53,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景与 v1→v2 的差异见 [[sched-20260907-004]]。09-08 本线程只有一封新邮件：SJ Park 在 05:20 给 patch 1/8 打上 `Reviewed-by`，条件是 Lorenzo Stoakes 提的缩进要求被采纳（「Assuming Lorenzo's indentation change requests are accepted」）。至此 1/8 已握有 `Acked-by: Michal Hocko` + 三份 `Reviewed-by`（Lorenzo 有条件、Oleg Nesterov 无条件、SJ Park 有条件），阻塞项依旧只剩「发一版落实缩进与 commit message 精简的 v3」以及收树路径未定。这类全树机械替换系列，review 侧已基本放行。
+本文为增量更新，完整背景与 v1→v2 的差异见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.html">sched-20260907-004</a>。09-08 本线程只有一封新邮件：SJ Park 在 05:20 给 patch 1/8 打上 `Reviewed-by`，条件是 Lorenzo Stoakes 提的缩进要求被采纳（「Assuming Lorenzo's indentation change requests are accepted」）。至此 1/8 已握有 `Acked-by: Michal Hocko` + 三份 `Reviewed-by`（Lorenzo 有条件、Oleg Nesterov 无条件、SJ Park 有条件），阻塞项依旧只剩「发一版落实缩进与 commit message 精简的 v3」以及收树路径未定。这类全树机械替换系列，review 侧已基本放行。
 
 ## 背景与问题
 
-摘要（详见 [[sched-20260907-004]]）：全树大量位置在为「遍历进程/线程」手工配对 RCU 读锁，循环里出现 `break`/`goto`/提前 `return` 时解锁点要靠人脑穷举；`guard(rcu)()` 的写法又把临界区撑得比循环大。Ye Liu 的 v2 在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把锁作用域绑到循环本身，另外 7 个补丁机械替换 mm/、kernel/、fs/、lib/、security/ 的调用点（17 files changed, 54 insertions(+), 81 deletions(-)）。命名从 `*_rcu` 改成 `*_rculock` 是为了不与「假定调用者已持锁」的既有约定混淆。
+摘要（详见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-004-sched-introduce-for-each-process-rculock-and-for-each-thread.html">sched-20260907-004</a>）：全树大量位置在为「遍历进程/线程」手工配对 RCU 读锁，循环里出现 `break`/`goto`/提前 `return` 时解锁点要靠人脑穷举；`guard(rcu)()` 的写法又把临界区撑得比循环大。Ye Liu 的 v2 在 `include/linux/sched/signal.h` 新增 `for_each_process_rculock()` / `for_each_thread_rculock()` / `for_each_process_thread_rculock()`，用 `scoped_guard(rcu)` 把锁作用域绑到循环本身，另外 7 个补丁机械替换 mm/、kernel/、fs/、lib/、security/ 的调用点（17 files changed, 54 insertions(+), 81 deletions(-)）。命名从 `*_rcu` 改成 `*_rculock` 是为了不与「假定调用者已持锁」的既有约定混淆。
 
 ## 技术方案
 

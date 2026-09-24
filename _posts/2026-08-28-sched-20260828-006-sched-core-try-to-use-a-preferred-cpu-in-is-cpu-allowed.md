@@ -56,7 +56,7 @@ layout: article
 
 ## TL;DR
 
-**本文为增量更新**（完整背景见 sched-20260825-001 与 sched-20260810-008）。Shrikanth Hegde（IBM）的 steal_governor / preferred CPU 系列 `v11 05/12` 在 8/28 被 Dietmar Eggemann（ARM）指出判据**漏了第三个 cpumask**：`task_can_sched_on_preferred()` 只测 `cpus_ptr ∩ cpu_preferred_mask` 是否非空，没有再与 `task_cpu_possible_mask(p)` 求交；他怀疑 arm64 上 32-bit EL0 任务（`allow_mismatched_32bit_el0`）在 `arch_setup_new_exec()` 调 `force_compatible_cpus_allowed_ptr()` 收紧亲和性之前存在一个时间窗。给出的替代写法 `cpumask_first_and_and(...) < nr_cpu_ids` 得到 Vincent Guittot 明确 "+1"，作者当天答复会并入 **v12，并可能在 7.3-rc1 落地后再发**。这条与 cpuset/亲和性直接相关，值得跟。
+**本文为增量更新**（完整背景见 <a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a> 与 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）。Shrikanth Hegde（IBM）的 steal_governor / preferred CPU 系列 `v11 05/12` 在 8/28 被 Dietmar Eggemann（ARM）指出判据**漏了第三个 cpumask**：`task_can_sched_on_preferred()` 只测 `cpus_ptr ∩ cpu_preferred_mask` 是否非空，没有再与 `task_cpu_possible_mask(p)` 求交；他怀疑 arm64 上 32-bit EL0 任务（`allow_mismatched_32bit_el0`）在 `arch_setup_new_exec()` 调 `force_compatible_cpus_allowed_ptr()` 收紧亲和性之前存在一个时间窗。给出的替代写法 `cpumask_first_and_and(...) < nr_cpu_ids` 得到 Vincent Guittot 明确 "+1"，作者当天答复会并入 **v12，并可能在 7.3-rc1 落地后再发**。这条与 cpuset/亲和性直接相关，值得跟。
 
 ## 背景与问题
 
@@ -121,16 +121,16 @@ static inline bool task_can_sched_on_preferred(int cpu, struct task_struct *p)
 **likelihood: likely**。
 
 - 有利：改动是一行判据收紧，无新增状态、无 uapi；提出者是 ARM 侧维护者且得到 Linaro 另一位 reviewer 明确背书；作者当场接受并给出 v12 计划；系列此前已推进到 v11 且作者声称功能层面已收敛。
-- 卡点：v12 的发版被显式排在 **7.3-rc1 之后**，也就是本轮 merge window 赶不上；arm64 那条时间窗尚未定性，若 Dietmar 后续测试表明还有更深的 exec 期竞态，可能牵出额外改动；此前站内 sched-20260831-007 记录显示"该在哪些架构上启用 preferred CPU"这一争论仍在继续（Yury Norov 主张只在实测过的 PPC+xPVM / x86+KVM 上开，Vincent 反对），说明该系列的外部争议不止本日这一处。
+- 卡点：v12 的发版被显式排在 **7.3-rc1 之后**，也就是本轮 merge window 赶不上；arm64 那条时间窗尚未定性，若 Dietmar 后续测试表明还有更深的 exec 期竞态，可能牵出额外改动；此前站内 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260831-007</a> 记录显示"该在哪些架构上启用 preferred CPU"这一争论仍在继续（Yury Norov 主张只在实测过的 PPC+xPVM / x86+KVM 上开，Vincent 反对），说明该系列的外部争议不止本日这一处。
 - `next_action`：v12 带上三求交改动；Dietmar 的 arm64 测试结果；架构默认开关之争收口。
 
 ## 效果评估
 
-本日线程为纯正确性讨论，**无数据、无 benchmark**。steal_governor 系列自身的收益数字不在本 threads 内（站内 sched-20260814-004 / sched-20260817-005 / sched-20260822-003 记过该系列此前的基准与一次 3.5% 回退讨论）。
+本日线程为纯正确性讨论，**无数据、无 benchmark**。steal_governor 系列自身的收益数字不在本 threads 内（站内 <a class="article-ref" href="/lkm/2026/08/14/sched-20260814-004-patch-v10-00-12-sched-steal-governor-introduce-preferred-cpu.html">sched-20260814-004</a> / <a class="article-ref" href="/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html">sched-20260817-005</a> / <a class="article-ref" href="/lkm/2026/08/22/sched-20260822-003-steal-governor-v10-benchmark-3-5pct-regression.html">sched-20260822-003</a> 记过该系列此前的基准与一次 3.5% 回退讨论）。
 
 ## 我可以参与的点
 
-- **直接可做的一件事：把 `cpuset` 视角补进这个判据**。`cpus_ptr` 本身就是 cpuset 收紧后的产物，`task_cpu_possible_mask()` 又与 `cpuset_cpus_allowed()`/`__cpuset_cpus_allowed_locked()` 的返回集合相互作用。用户对 cpuset 侧取集合的时序（`callback_lock`、热插拔期间的 `effective_cpus` 滞后）比多数 reviewer 熟，可以就"cpuset 收紧与 preferred mask 同时变化时三求交会不会给出假阴性/假阳性"回帖——这正好也是站内 sched-20260828-002 那条 cpuset GPF 的同一块代码邻域。
+- **直接可做的一件事：把 `cpuset` 视角补进这个判据**。`cpus_ptr` 本身就是 cpuset 收紧后的产物，`task_cpu_possible_mask()` 又与 `cpuset_cpus_allowed()`/`__cpuset_cpus_allowed_locked()` 的返回集合相互作用。用户对 cpuset 侧取集合的时序（`callback_lock`、热插拔期间的 `effective_cpus` 滞后）比多数 reviewer 熟，可以就"cpuset 收紧与 preferred mask 同时变化时三求交会不会给出假阴性/假阳性"回帖——这正好也是站内 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-002-bug-general-protection-fault-in-cpuset-cpus-allowed.html">sched-20260828-002</a> 那条 cpuset GPF 的同一块代码邻域。
 - **arm64 compat-el0 那条线索目前没人验**。如果手上有 64-bit arm64 + 32-bit 用户态 + `allow_mismatched_32bit_el0` 的环境，跑一遍 exec 期间读 `/proc/PID/status` 的 `Cpus_allowed_list` 变化并观察是否落到非 possible CPU，就是 Dietmar 说"Let me run more test on this"缺的那份数据。
 - **回合判断**：OLK-6.6 无 preferred CPU 框架，本补丁不可直接回合；但 `task_can_sched_on_preferred()` 的教训（凡"任务是否有可运行的 preferred CPU"的判断都必须带上 `task_cpu_possible_mask()`）对任何自研亲和/优选 CPU 逻辑都适用——检查内部是否有 `cpumask_intersects(cpus_ptr, 自定义掩码)` 而漏 possible_mask 的地方。
 
@@ -140,6 +140,6 @@ static inline bool task_can_sched_on_preferred(int cpu, struct task_struct *p)
 - Dietmar Eggemann 的三求交建议与 arm64 窗口疑问: https://lore.kernel.org/all/8262d2f9-9f2f-4821-8497-991d7c8448a3@arm.com/
 - Vincent Guittot 的 "+1": https://lore.kernel.org/all/CAKfTPtB27-eFXGG9GcXdm4=YLZy6-vQMAQqoCbHa5xZxA3YBpw@mail.gmail.com/
 - Shrikanth Hegde 确认并入 v12: https://lore.kernel.org/all/621386ee-7147-4110-a027-6f2f83b4f1cc@linux.ibm.com/
-- 相关文章: [[sched-20260825-001]]（v11 全量分析）、[[sched-20260810-008]]（更早版本）、[[sched-20260831-007]]（后续架构开关之争）
+- 相关文章: <a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a>（v11 全量分析）、<a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>（更早版本）、<a class="article-ref" href="/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260831-007</a>（后续架构开关之争）
 - tip-bot commit: 未获取到
 - stable backport: 未获取到

@@ -47,7 +47,7 @@ layout: article
 增量更新：Guopeng Zhang 的 cpuset 冗余 sched domain 重建清理发布 v2，按 Ridong Chen 的意见把易误导的 "defer" 标题改为「Remove redundant ...」，代码不变（仍为删除 `update_prstate()` 末尾两行冗余的 `rebuild_sched_domains_locked()`）。Ridong Chen 在 v2 上给出 Reviewed-by。
 
 ## 背景与问题
-背景见 sched-20260918-019：`update_prstate()` 的两个调用者 `cpuset_partition_write()` 与 `cpuset_css_killed()` 在其后都紧跟着调用 `cpuset_update_sd_hk_unlock()`，后者在释放锁前、`force_sd_rebuild` 置位时重建 sched domain，因此 `update_prstate()` 内的重建检查纯属冗余。commit 3bfe47967191 已从 `cpuset_write_resmask()` 移除同样的检查，本补丁删掉 `update_prstate()` 里剩余的一份。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html">sched-20260918-019</a>：`update_prstate()` 的两个调用者 `cpuset_partition_write()` 与 `cpuset_css_killed()` 在其后都紧跟着调用 `cpuset_update_sd_hk_unlock()`，后者在释放锁前、`force_sd_rebuild` 置位时重建 sched domain，因此 `update_prstate()` 内的重建检查纯属冗余。commit 3bfe47967191 已从 `cpuset_write_resmask()` 移除同样的检查，本补丁删掉 `update_prstate()` 里剩余的一份。
 
 ## 技术方案
 删除 `kernel/cgroup/cpuset.c` 中 `update_prstate()` 末尾两行：
@@ -60,7 +60,7 @@ layout: article
 sched domain 重建统一收敛到公共解锁路径 `cpuset_update_sd_hk_unlock()`。v2 与 v1 的 diff 完全一致（1 文件 2 删），仅改标题措辞。
 
 ## 版本演进与当前进展
-- v1（09-18，标题 "Defer sched domain rebuild to common unlock path"，`<20260918102730.72263-1-guopeng.zhang@linux.dev>`）：见 sched-20260918-019。
+- v1（09-18，标题 "Defer sched domain rebuild to common unlock path"，`<20260918102730.72263-1-guopeng.zhang@linux.dev>`）：见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-019-cgroup-cpuset-defer-sched-domain-rebuild-to-common-unlock-pa.html">sched-20260918-019</a>。
 - 本日作者回帖（`<f27e12d8-2e34-4c10-9773-d1af5b8538b6@linux.dev>`）回应 Ridong：承认标题 "Defer" 用词不当（实际只是删冗余代码，并非异步化），承诺 v2 修改。
 - v2（09-20，`<20260920025256.24991-1-guopeng.zhang@linux.dev>`）：重命名标题为 "Remove redundant ..."，代码不变。
 - Ridong Chen（`<a932b397-de99-42ba-91e7-cea923fa6f9f@linux.dev>`）在 v2 上给出 Reviewed-by。

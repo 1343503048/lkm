@@ -82,7 +82,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 sched-20260908-001 / sched-20260905-001 / sched-20260904-001 / sched-20260903-001。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁的 v4——彻底去掉 `sched_class::task_tick()` 的 `task_struct *` 参数，改由一个公共 `task_tick()` 分发器先调 donor 类、再调执行类；同一天 19:03/19:04 Peter 对 v4 的 3/5 与 4/5 各给了一条**结构性反对**（"that is rather weird given how task_tick() works"、"we're not going to be sprinkling rt bits like this in the middle of __schedule()"）。也就是说接口方向被认可了，但 4/5 的落地方式需要重做。
+本文为增量更新，v1/v2/v3 的完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-001-sched-numa-drive-numa-task-tick-from-execution-context.html">sched-20260908-001</a> / <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260905-001</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260904-001</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a>。09-09 这条线有两处实质变化：作者 Hui Su 在 17:28 按 Peter Zijlstra 的意见把 2 补丁的 v3 重构成 5 补丁的 v4——彻底去掉 `sched_class::task_tick()` 的 `task_struct *` 参数，改由一个公共 `task_tick()` 分发器先调 donor 类、再调执行类；同一天 19:03/19:04 Peter 对 v4 的 3/5 与 4/5 各给了一条**结构性反对**（"that is rather weird given how task_tick() works"、"we're not going to be sprinkling rt bits like this in the middle of __schedule()"）。也就是说接口方向被认可了，但 4/5 的落地方式需要重做。
 
 ## 背景与问题
 

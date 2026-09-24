@@ -55,7 +55,7 @@ layout: article
 增量更新：Andrea Righi 的非对称 SMT 首选 idle 选择系列（原 v4 起重构为 2 枚补丁：1/2 `sched/fair` idle 选择尊享 SMT 优先级、2/2 `sched/topology` 新增内核参数覆盖）本日集中收到 review——Vincent Guittot 与 Kayra Cizmeci 对 1/2 给出 Reviewed-by（Kayra 另附 Tested-by）；Shrikanth Hegde 对 2/2 的 kernel 参数设计提出三点疑问（changelog 缺失、为何不由 arch 提供、对不收益于 asym packing 的架构的困惑）。
 
 ## 背景与问题
-背景见 sched-20260912-008：在大小核/非对称 SMT 平台上，idle 选择希望优先选择高优先级 SMT sibling。系列此前为单补丁（v4 及以前），09-17 起重构为 2 枚补丁，把"是否启用 SMT 打包 override"拆成独立的内核参数（2/2）。
+背景见 <a class="article-ref" href="/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260912-008</a>：在大小核/非对称 SMT 平台上，idle 选择希望优先选择高优先级 SMT sibling。系列此前为单补丁（v4 及以前），09-17 起重构为 2 枚补丁，把"是否启用 SMT 打包 override"拆成独立的内核参数（2/2）。
 
 ## 技术方案
 - 1/2（`sched/fair: Honor asymmetric SMT priority in idle selection`）：在 `select_idle_smt_cpu()` 中按不对称 SMT 优先级选择 idle sibling，而非等权挑选。

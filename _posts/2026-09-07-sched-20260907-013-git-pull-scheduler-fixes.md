@@ -60,11 +60,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景与修复清单见 sched-20260906-004（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/linux.git`**，bot 给出的落地链接是 `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`——从发出到进主线不到 7 小时（13:22:58 +0200 发出，合并回执为 02:11:34 +08:00，即 20:11 +0200）。前作里那句「进入主线的确切时点未获取到」现在可以收口了。本篇不再重复 7 条修复的罗列，只讲进主线之后对下游意味着什么、以及回合价值排序。
+本文为增量更新，完整背景与修复清单见 <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html">sched-20260906-004</a>（Ingo 09-06 13:22:58 +0200 发出的 `tip/sched/urgent` 拉取，7 个修复、6 位提交者、`5 files changed, +64/-22`）。本日只有一条进展：pr-tracker-bot 于 09-07 02:11 回执，确认该 pull **已合入 `torvalds/linux.git`**，bot 给出的落地链接是 `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`——从发出到进主线不到 7 小时（13:22:58 +0200 发出，合并回执为 02:11:34 +08:00，即 20:11 +0200）。前作里那句「进入主线的确切时点未获取到」现在可以收口了。本篇不再重复 7 条修复的罗列，只讲进主线之后对下游意味着什么、以及回合价值排序。
 
 ## 背景与问题
 
-7 条修复各自的问题描述、作者与归属（fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的 `h_curr` 缺陷、RT/DL push 候选误选 migrate-disabled 任务、无效 `idle_stamp` 下的 `rq->avg_idle` 更新、hybrid cache-aware 平衡制造 misfit、x86 ITMT 对 debugfs 的依赖）见 [[sched-20260906-004]]。本日邮件本身没有新内容，它是合并回执，因此「背景」在这里应当换成：**这批修复此前只存在于 `tip/sched/urgent`，现在存在于 mainline 的祖先图里**，这个身份变化才是下游需要关心的事件。
+7 条修复各自的问题描述、作者与归属（fair 时间戳、CFS bandwidth 两处由 single-runqueue 转换引入的 `h_curr` 缺陷、RT/DL push 候选误选 migrate-disabled 任务、无效 `idle_stamp` 下的 `rq->avg_idle` 更新、hybrid cache-aware 平衡制造 misfit、x86 ITMT 对 debugfs 的依赖）见 <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html">sched-20260906-004</a>。本日邮件本身没有新内容，它是合并回执，因此「背景」在这里应当换成：**这批修复此前只存在于 `tip/sched/urgent`，现在存在于 mainline 的祖先图里**，这个身份变化才是下游需要关心的事件。
 
 关键差别有三点：一是 stable 流程的输入条件变了（进入 Linus 树后，带 `Fixes:` 的提交才会被 stable 维护者纳入回合候选）；二是任何以 mainline 为基准 rebase 的内部分支（OLK 这类）从下一个同步点开始会**自动带上这 7 条**，与手工回合的分支则会分叉出「别人已修我们没有」的差异；三是 `tip/sched/urgent` 被拉空后，sched 侧下一波变更（PREEMPT_DYNAMIC 简化、steal governor 排队、cache-aware 系列）的 rebase 基线会整体上移。
 
@@ -82,7 +82,7 @@ layout: article
 
 - 09-06 19:22:58（+08:00）/ 13:22:58（+0200）Ingo Molnar 发出 `[GIT PULL] scheduler fixes`（分支 `sched-urgent-2026-09-06`）。
 - 09-07 02:11 pr-tracker-bot 确认已合入 `torvalds/linux.git`，链接 `88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8`。**本轮 urgent 修复闭环完成。**
-- 同日 06:40 Tejun Heo 另把一条 sched_ext 自测侧的 qmap 修复应用到 `sched_ext/for-7.3-fixes`（见 [[sched-20260907-010]]），那是与本次 pull 并行的另一条 fixes 流，不在此 pull 内。
+- 同日 06:40 Tejun Heo 另把一条 sched_ext 自测侧的 qmap 修复应用到 `sched_ext/for-7.3-fixes`（见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-010-sched-ext-scx-qmap-fix-pending-partition-work-handoff.html">sched-20260907-010</a>），那是与本次 pull 并行的另一条 fixes 流，不在此 pull 内。
 - 本批 7 条各自的 stable 回合状态：未获取到（本日与 pull 正文都没有 `Cc: stable` 相关信息）。
 
 ## Maintainer 意见与讨论焦点
@@ -117,9 +117,9 @@ pull request 无 benchmark（前作同口径）。可量化的信息本日只增
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260906-004]] 前作：7 条修复的逐条内容与归属、diffstat、`sched-urgent-2026-09-06` 顶端 sha。
-  - [[sched-20260901-002]] 其中一条修复（`h_curr` bandwidth 路径）的补丁级分析。
-  - [[sched-20260902-011]] 其中一条修复（无效 `idle_stamp` 下跳过 `rq->avg_idle` 更新）的补丁级分析。
+  - <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-004-git-pull-scheduler-fixes.html">sched-20260906-004</a> 前作：7 条修复的逐条内容与归属、diffstat、`sched-urgent-2026-09-06` 顶端 sha。
+  - <a class="article-ref" href="/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html">sched-20260901-002</a> 其中一条修复（`h_curr` bandwidth 路径）的补丁级分析。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-011-sched-core-skip-rq-avg-idle-update-without-a-valid-idle-stamp.html">sched-20260902-011</a> 其中一条修复（无效 `idle_stamp` 下跳过 `rq->avg_idle` 更新）的补丁级分析。
 - pull request（09-06，Ingo Molnar）: https://lore.kernel.org/all/ap1NEllrD8nMsFiB@gmail.com/
 - 本日 pr-tracker-bot 合并回执: https://lore.kernel.org/all/178871829440.1639575.4127304395444817583.pr-tracker-bot@kernel.org/
 - mainline 落地: https://git.kernel.org/torvalds/c/88405f0ad1d5c680afe3ea0ce9345fa9e1deaac8

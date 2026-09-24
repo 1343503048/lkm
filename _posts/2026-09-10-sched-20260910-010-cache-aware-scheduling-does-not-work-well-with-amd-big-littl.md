@@ -56,7 +56,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 Klaus 的系统根本无效；新的候选是 Chen Yu 的 ITMT 与 cache-aware scheduling 协调补丁，Tim 请 Klaus 叠加 Mario 的 ITMT/debugfs 补丁测试，Chen Yu 跟进索要调度域 dump 等三项诊断信息。报告者仍在休假，验证悬空。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260909-009</a> / <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260905-007</a>。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 Klaus 的系统根本无效；新的候选是 Chen Yu 的 ITMT 与 cache-aware scheduling 协调补丁，Tim 请 Klaus 叠加 Mario 的 ITMT/debugfs 补丁测试，Chen Yu 跟进索要调度域 dump 等三项诊断信息。报告者仍在休假，验证悬空。
 
 ## 背景与问题
 Klaus Kusche 报告 AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L3）平台上 cache-aware scheduling 效果不佳：开启后部分负载反而变差，且需要打开 ITMT 才有改善。前几日线程已完成补丁归因澄清（被简称 patch 的是 Tim Chen 的 20260825174112.2580942-1，而非 Mario Limonciello 的 c1e7fe5e75ed debugfs 参数暴露补丁），报告者随后休假。
@@ -72,7 +72,7 @@ Klaus Kusche 报告 AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L
 
 ## Maintainer 意见与讨论焦点
 - Tim Chen（Intel，ITMT/cache-aware 相关工作作者）：主动修正自己补丁的适用范围，给出可执行的测试组合（Chen Yu 补丁 + Mario debugfs 补丁）。
-- Chen Yu（Intel，ITMT 兼容补丁作者）：确认补丁意图，给出三项诊断信息要求，并表态愿意跟进（前文 09-09 他已启动 sanity 测试，见 sched-20260910-011 关联线程）。
+- Chen Yu（Intel，ITMT 兼容补丁作者）：确认补丁意图，给出三项诊断信息要求，并表态愿意跟进（前文 09-09 他已启动 sanity 测试，见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260910-011</a> 关联线程）。
 - 焦点/未决：AMD 平台上 ITMT（x86 asym packing 机制）与 cache-aware scheduling 的交互尚无人在真实 AMD 大小核机器上按新组合验证；Tim 此前提过 CAS 主动负载均衡路径有两个待修问题，本线程仍未展开。
 
 ## 合入评估
@@ -84,7 +84,7 @@ Klaus Kusche 报告 AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L
 ## 我可以参与的点
 - 在 AMD 大小核机器（Strix Point/HX 类）上按新组合复现：基线 / +Chen Yu ITMT 补丁 / +Mario debugfs 补丁，并附上 Chen Yu 要的三项诊断信息（domains dump、sched_itmt_enabled、sched_core_priority）回帖——报告者休假中，这是当前线程最缺的数据（testing）。
 - 检查 AMD 平台（amd-pstate preferred core）下 SD_ASYM_PACKING 在 MC 域的设置路径与 Intel ITMT 的差异，判断 Chen Yu 补丁的 intel_pstate/ITMT 假设在 AMD 上是否成立（review）。
-- 追问 Tim 此前提到的 CAS active load balance 路径两个待修问题与 nr_pref_llc_running 讨论线（sched-20260910-011）是否同源（discussion）。
+- 追问 Tim 此前提到的 CAS active load balance 路径两个待修问题与 nr_pref_llc_running 讨论线（<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-011-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260910-011</a>）是否同源（discussion）。
 
 ## 参考链接
 - lore thread（本日 Tim 的修正）: https://lore.kernel.org/all/4da55124e32dd0587a3516c8f5ed512bffbbb42e.camel@linux.intel.com/

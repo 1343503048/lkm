@@ -46,11 +46,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260730-010。Luo Gengkun (Huawei) 的 cache-aware 调度补丁系列推进到 v9，核心优化是 task_cache_work 仅扫描已访问 CPU 以减少开销。v9 新增讨论焦点：Tim Chen 和 Chenyu 就 epoch 回退逻辑的正确性和锁获取时机展开讨论。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-010-sched-cache-task-cache-work-epoch-race.html">sched-20260730-010</a>。Luo Gengkun (Huawei) 的 cache-aware 调度补丁系列推进到 v9，核心优化是 task_cache_work 仅扫描已访问 CPU 以减少开销。v9 新增讨论焦点：Tim Chen 和 Chenyu 就 epoch 回退逻辑的正确性和锁获取时机展开讨论。
 
 ## 背景与问题
 
-（完整背景见 sched-20260730-010）task_cache_work 在每个调度周期扫描所有 CPU 的缓存状态，即使大部分 CPU 的缓存亲和性信息未变化，造成不必要的开销。v9 通过仅扫描自上次以来被访问过的 CPU 来减少开销。
+（完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-010-sched-cache-task-cache-work-epoch-race.html">sched-20260730-010</a>）task_cache_work 在每个调度周期扫描所有 CPU 的缓存状态，即使大部分 CPU 的缓存亲和性信息未变化，造成不必要的开销。v9 通过仅扫描自上次以来被访问过的 CPU 来减少开销。
 
 ## 技术方案
 
@@ -91,4 +91,4 @@ v9 核心变更：
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260731024417.1106503-1-luogengkun2@huawei.com
-- 前日分析: sched-20260730-010
+- 前日分析: <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-010-sched-cache-task-cache-work-epoch-race.html">sched-20260730-010</a>

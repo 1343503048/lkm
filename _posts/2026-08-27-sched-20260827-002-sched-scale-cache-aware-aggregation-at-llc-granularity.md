@@ -79,7 +79,7 @@ Jianyong Wu（Hygon）发出 23 补丁 RFC v2，把 cache-aware scheduling（CAS
 当日无人回复，无分歧记录。作者自己在 cover 中摆出的争议点：(1) 合成 LLC 距离矩阵"无物理意义、仅作 hint"，命名与可解释性可能被挑战；(2) 与 NUMA balancing 拆分（Chen Yu 建议）明确未完成；(3) 作者自述"far from perfect，仍含未解决问题"，本轮目的就是方向确认。此前方向性背书：Peter Zijlstra 建议按 LLC 粒度扩展资源（cover 原文），这也是 v1→v2 的路线拐点。
 
 ## 合入评估
-**unclear**。23 补丁 RFC、作者主动挂起求方向评审，且自认与 NUMA balancing 的冲突处理未完成；卡点是社区对"合成 LLC 距离矩阵 + 利用率前缀估算"这套机制复杂度的接受度（CAS 本身在主线也还在演进，同日 Zhan Xusheng 还在问 CAS 计数器的语义问题，见 sched-20260827-018）。`next_action`：等 Peter/其他维护者对 cover 的方向性表态。若方向确认，大概率还要经历按功能拆系列（拓扑设施 1–6 与迁移决策 11–16 可分拆）。
+**unclear**。23 补丁 RFC、作者主动挂起求方向评审，且自认与 NUMA balancing 的冲突处理未完成；卡点是社区对"合成 LLC 距离矩阵 + 利用率前缀估算"这套机制复杂度的接受度（CAS 本身在主线也还在演进，同日 Zhan Xusheng 还在问 CAS 计数器的语义问题，见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-018-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260827-018</a>）。`next_action`：等 Peter/其他维护者对 cover 的方向性表态。若方向确认，大概率还要经历按功能拆系列（拓扑设施 1–6 与迁移决策 11–16 可分拆）。
 
 ## 效果评估
 v2 邮件未给出 benchmark 数字；cover 仅提到 v1 方案在 schbench 上有饱和问题且本版修复（"Fix saturation issues in some tests like schbench"），具体数据未获取到。

@@ -51,7 +51,7 @@ fair hrtick 是 one-shot 定时器。hrtick 到期触发 `resched_curr()` 后进
 
 ## 版本演进与当前进展
 - **v3**（本日 105793，`<20260915-sched-fair-hrtick-restart-v3-1-7517f388f0c8@gentwo.org>`）：按 Zhan Xusheng 意见去掉 v2 里 SCHED_DEADLINE 的 SNT_REPICK hrtick rearm。
-- v2/v1 回顾：v2 把 fair 专属 rearm 状态换成 `SNT_REPICK`、同时重启 fair 与 DL；v1 为初始实现。完整背景见 sched-20260914-009。
+- v2/v1 回顾：v2 把 fair 专属 rearm 状态换成 `SNT_REPICK`、同时重启 fair 与 DL；v1 为初始实现。完整背景见 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.html">sched-20260914-009</a>。
 
 ## Maintainer 意见与讨论焦点
 - **Zhan Xusheng（reviewer）**：本日给出 `Reviewed-by`，并补充技术论证——`put_prev_task_fair()` 对 next==prev 同样被跳过，但 fair 因 `rq->cfs.curr` 持有实体、`pick_task_fair()` 的 `update_curr_eevdf()` 恰好刷新 `hrtick_start_fair()` 读取的实体，DL 没有对应物；建议给 `SNT_NORMAL` vs `SNT_PICK` 补注释以免三函数之外悄悄破坏不变量；用编译器验证过转换（逐类改回 bool 会编译失败），rt/stop/fair/idle/deadline W=1 干净，ext.c 因 BTF/pahole 缺失未编译但改名安全。

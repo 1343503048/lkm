@@ -53,7 +53,7 @@ layout: article
 增量更新：Gregory Price 的 NUMA tiering 修复（v2 系列 4/4，去掉 VMA PID 活动对 promotion 的门控）本日获 Peter Zijlstra 有条件点头——"我对 tiering 代码引发的问题不喜欢，但这版应该行，Mel?"（等待 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 messy、应用更简洁写法；作者回应已试 3~4 种方式、这是最不难看的，愿再美化一点。
 
 ## 背景与问题
-背景见 sched-20260917-013：NUMA memory-tiering 模式下，VMA 的 PID 活动被用作 promotion 的门控条件，导致部分应被提升的内存页无法提升。v2 系列将其改为 4/4 "do not let VMA PID activity gate promotion"（v1 名为 "stop VMA scan filters from gating promotion"）。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-013-sched-numa-stop-vma-scan-filters-from-gating-promotion.html">sched-20260917-013</a>：NUMA memory-tiering 模式下，VMA 的 PID 活动被用作 promotion 的门控条件，导致部分应被提升的内存页无法提升。v2 系列将其改为 4/4 "do not let VMA PID activity gate promotion"（v1 名为 "stop VMA scan filters from gating promotion"）。
 
 ## 技术方案
 移除 VMA PID 活动对 promotion 的门控，使 promotion 不再被该条件阻挡。当前实现的 `promo_only()` 计算被 David 认为过于绕。

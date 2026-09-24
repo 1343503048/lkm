@@ -51,13 +51,13 @@ layout: article
 ---
 
 ## TL;DR
-Davi Chaves Azevedo 的 llc_bytes 热插拔修复一日内走完 v1 review → v2 → 维护者认可：Chen Yu 在 Ryzen 8945HX（2 LLC）与 Xeon（每节点 4 LLC）上复现并给 Reviewed-by，Tim Chen 对 v2 表态「looks good to me」。v2 无功能变化（恢复启动期注释 + 补多 LLC 测试记录）。本文为增量更新，v1 分析见 sched-20260911-016。
+Davi Chaves Azevedo 的 llc_bytes 热插拔修复一日内走完 v1 review → v2 → 维护者认可：Chen Yu 在 Ryzen 8945HX（2 LLC）与 Xeon（每节点 4 LLC）上复现并给 Reviewed-by，Tim Chen 对 v2 表态「looks good to me」。v2 无功能变化（恢复启动期注释 + 补多 LLC 测试记录）。本文为增量更新，v1 分析见 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html">sched-20260911-016</a>。
 
 ## 背景与问题
 CPU 下线时 sched_cpu_deactivate() 先重建调度域、cacheinfo_cpu_pre_down() 才更新 shared_cpu_map，随后 sched_update_llc_bytes() 查到已 detach 的 sd_llc 直接返回，幸存 CPU 的 llc_bytes 停留旧值（Ryzen 5 7535U 上 16MiB 只算出 15,379,114 字节），可致 exceed_llc_capacity() 错误拒绝聚合。修复把 cacheinfo 已保留的共享掩码直接传给调度器并逐幸存 CPU 刷新。
 
 ## 技术方案
-（承 sched-20260911-016：cacheinfo 传 cpu_map 给 sched_update_llc_bytes()，online/pre_down 两路径对掩码内每个幸存 CPU 用各自 LLC 域刷新；Fixes: 7030513a0877。）v2 相对 v1：恢复 build_sched_domains()/cacheinfo_cpu_online() 启动期共享掩码的原有注释（Chen Yu 建议，与离线/cpuset 分区说明并存）、加入 Reviewed-by 与多平台验证记录；无功能变化。
+（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-016-sched-cache-refresh-llc-capacity-across-cpu-hotplug.html">sched-20260911-016</a>：cacheinfo 传 cpu_map 给 sched_update_llc_bytes()，online/pre_down 两路径对掩码内每个幸存 CPU 用各自 LLC 域刷新；Fixes: 7030513a0877。）v2 相对 v1：恢复 build_sched_domains()/cacheinfo_cpu_online() 启动期共享掩码的原有注释（Chen Yu 建议，与离线/cpuset 分区说明并存）、加入 Reviewed-by 与多平台验证记录；无功能变化。
 
 ## 版本演进与当前进展
 *current_version: v2（msgid `<20260911220229.1368887-1-davichazbh@gmail.com>`，09-12 06:02 入缓存）*。

@@ -44,7 +44,7 @@ layout: article
 增量更新：Sumit Gupta 的 CPPC v5 系列（保留 OSPM 设置的寄存器）获得 K Prateek Nayak 的 x86 实测 Tested-by——K Prateek 把 Kconfig 改成可在 x86 上编译驱动后，在 Zen3 共享内存 CPPC 上验证 `auto_select` 与 `energy_performance_preference_val` 在 offline-online 周期后正确保留。Sumit 确认会加 Tested-by 与 patch 2 的 Reviewed-by。
 
 ## 背景与问题
-背景见 sched-20260827-007：CPPC 驱动在 CPU 热插拔与驱动卸载时丢失 OSPM 设置的寄存器值。系列经 v1–v5 演进，此前一直以 arm64 PCC 为主要验证路径。
+背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-007-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html">sched-20260827-007</a>：CPPC 驱动在 CPU 热插拔与驱动卸载时丢失 OSPM 设置的寄存器值。系列经 v1–v5 演进，此前一直以 arm64 PCC 为主要验证路径。
 
 ## 技术方案
 无方案变化。本日增量是验证范围的扩展：K Prateek 在 x86 共享内存 CPPC（non-PCC 传输）上又验证了一轮离线-上线周期，补充了此前缺失的跨架构测试覆盖。

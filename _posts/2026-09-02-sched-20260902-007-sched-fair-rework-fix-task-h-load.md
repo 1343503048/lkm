@@ -56,7 +56,7 @@ Peter Zijlstra 8/28 那个 4 补丁系列里的 `4/4` 重做了 `task_h_load()`�
 
 `task_h_load()` 计算任务沿 cgroup 调度层级的「层级负载」。旧实现依赖 `for_each_sched_entity()` 遍历时
 顺带设置的 backlink，而 `__update_blocked_fair()` 这类调用方走的是 `leaf_cfs_rq_list`、不做逐级上溯，
-所以 `4/4` 的 rework 把层级信息参数化（两个允许为 NULL 的参数，见 [[sched-20260831-003]]）。
+所以 `4/4` 的 rework 把层级信息参数化（两个允许为 NULL 的参数，见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html">sched-20260831-003</a>）。
 
 rework 引入的 `for_each_sched_entity_bl(se, cfs_rq)` 是个会**改写循环变量**的遍历宏：`se` 会走到层级
 顶端、`cfs_rq` 同步被改掉。把它放进 `set_next_task_fair()` 之后，函数后半段继续使用的就是被改坏的值。
@@ -110,7 +110,7 @@ root cfs as well ?"。对第二版他仍给 "should work too"。他还补了一�
 - 8/28：Peter 发出 4 补丁系列；`4/4` 为 "sched/fair: Rework/fix task_h_load()"。`1/4`–`3/4` 的标题与正文
   未获取到（本地缺 2026-08-27 ~ 08-30 的缓存）。
 - 8/31：Vincent 要求给两个可空参数补注释并表态 "the rework looks good to me"，Peter 给出注释稿，Vincent 提
-  `s/then/when/`，Peter 接受；Vincent 同时说测试本周跑（[[sched-20260831-003]]）。
+  `s/then/when/`，Peter 接受；Vincent 同时说测试本周跑（<a class="article-ref" href="/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html">sched-20260831-003</a>）。
 - 9/2 13:26 Chen Yu 报 panic + 根因 + 建议；15:55 Vincent "I faced the same crash while testing"；
   16:13 Peter 第一版 fixlet 并说 "Let me go and try and reproduce"；18:36 Peter 第二版 + "I'll fold it in"；
   18:37 Vincent 提 `pse` 意见；18:39 Vincent "should work too"。
@@ -152,10 +152,10 @@ root cfs as well ?"。对第二版他仍给 "should work too"。他还补了一�
 - **扩大复现面**：192 核物理机 + autogroup + `+cpu` 的门槛不低，手上有大核数机器的人回帖本身就是有效输入；
   顺带确认虚拟机会不会掩盖同类 bug（Peter 当天就踩了这个坑）。
 - **看整个系列**：`1/4`–`3/4` 当日无人讨论；同时跟踪 flat-hierarchy 系列另一条独立故障
-  `[BUG] sched/fair: divide error in __calc_prop_weight()`（除零类，参见 [[sched-20260819-001]]）。
+  `[BUG] sched/fair: divide error in __calc_prop_weight()`（除零类，参见 <a class="article-ref" href="/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html">sched-20260819-001</a>）。
 - 对 OLK-6.6 回合判断：这条属于上游 flat-hierarchy/`h_load` 重构的自修过程，6.6 上没有 `for_each_sched_entity_bl()`
   与 `cfs_rq->h_curr` 这套基础设施，暂时无可回合；真正值得关注的是 `h_curr`/`h_load` 语义演进
-  （[[sched-20260901-002]]），它会决定后续几年 cpuset/cgroup 场景下的负载估算口径。
+  （<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html">sched-20260901-002</a>），它会决定后续几年 cpuset/cgroup 场景下的负载估算口径。
 
 ## 参考链接
 
@@ -167,4 +167,4 @@ root cfs as well ?"。对第二版他仍给 "should work too"。他还补了一�
 - Peter 第二版 fixlet（"I'll fold it in"）：https://lore.kernel.org/all/20260902103654.GB4121620@noisy.programming.kicks-ass.net/
 - Vincent 的 `pse = p->se` 意见：https://lore.kernel.org/all/CAKfTPtA2Xew+F9EAbmyz8ke5vU9wNTLzi7h2rtFNZ2qYdUiGhA@mail.gmail.com/
 - Vincent "should work too"：https://lore.kernel.org/all/CAKfTPtBcshM-BGr1qzfT233E3tr_bxZX6xkMTBjqdSKWFXz61A@mail.gmail.com/
-- 相关：[[sched-20260831-003]]、[[sched-20260819-001]]、[[sched-20260901-002]]
+- 相关：<a class="article-ref" href="/lkm/2026/08/31/sched-20260831-003-sched-fair-rework-fix-task-h-load.html">sched-20260831-003</a>、<a class="article-ref" href="/lkm/2026/08/19/sched-20260819-001-sched-fair-flat-hierarchy-tgcps-divide-zero-fix.html">sched-20260819-001</a>、<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html">sched-20260901-002</a>

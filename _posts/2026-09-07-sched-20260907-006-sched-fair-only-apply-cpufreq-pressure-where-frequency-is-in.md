@@ -66,7 +66,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 [[sched-20260902-008]] 与 [[sched-20260903-010]]。09-07 这个线程第一次出现了**实测数字**：Hongyan Xia（Transsion）在 AMD 5900X 上用 `trace_printk` 打出 cpufreq pressure 更新，`amd_pstate` + boost 时 `policy->cpuinfo.max_freq` 与 `policy->max` 相同（4683471 vs 4683471，不产生压力），强制关掉 pstate、改用 ACPI OPP + schedutil 而仍开 boost 时变成 4680714 vs 3300000（3300000 是最高非 boost OPP），于是 `policy->max < cpuinfo.max_freq` 在系统毫无真实限频时凭空算出压力，她的结论是「this is a wider problem than we realize」并怀疑 Intel 上用 ACPI cpufreq 的机器同样中招。同日 K Prateek Nayak（AMD）顺着 `cpufreq_policy_init_qos()` 读代码，指出 `cpuinfo.max_freq` 含 boost 与 `cpufreq_update_pressure()` 里 `max_freq <= capped_freq` 的语义彼此矛盾，给出两条修法（x86 实现 `arch_scale_freq_ref()`，或改 `!max_freq` 回退分支为 `__resolve_freq()`）。作者 Jianyong Wu 确认不是 AMD 独有，并承诺「I will address that in a separate patch」——修复重心正式从 sched 侧移到 cpufreq 侧。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a> 与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260903-010</a>。09-07 这个线程第一次出现了**实测数字**：Hongyan Xia（Transsion）在 AMD 5900X 上用 `trace_printk` 打出 cpufreq pressure 更新，`amd_pstate` + boost 时 `policy->cpuinfo.max_freq` 与 `policy->max` 相同（4683471 vs 4683471，不产生压力），强制关掉 pstate、改用 ACPI OPP + schedutil 而仍开 boost 时变成 4680714 vs 3300000（3300000 是最高非 boost OPP），于是 `policy->max < cpuinfo.max_freq` 在系统毫无真实限频时凭空算出压力，她的结论是「this is a wider problem than we realize」并怀疑 Intel 上用 ACPI cpufreq 的机器同样中招。同日 K Prateek Nayak（AMD）顺着 `cpufreq_policy_init_qos()` 读代码，指出 `cpuinfo.max_freq` 含 boost 与 `cpufreq_update_pressure()` 里 `max_freq <= capped_freq` 的语义彼此矛盾，给出两条修法（x86 实现 `arch_scale_freq_ref()`，或改 `!max_freq` 回退分支为 `__resolve_freq()`）。作者 Jianyong Wu 确认不是 AMD 独有，并承诺「I will address that in a separate patch」——修复重心正式从 sched 侧移到 cpufreq 侧。
 
 ## 背景与问题
 
@@ -142,4 +142,4 @@ Prateek 的论证路径值得记下来：他读 `cpufreq_policy_init_qos()` 后�
   - Hongyan Xia 将该问题重定性为 policy 字段语义：https://lore.kernel.org/all/49233994-f46f-4d41-99b3-b40cc23bcbc7@transsion.com/
   - 作者承诺复现（09-03）：https://lore.kernel.org/all/SI2PR04MB49315D05AB89CFA3B0E41BF3E3B62@SI2PR04MB4931.apcprd04.prod.outlook.com/
 - 相关代码：`drivers/cpufreq/cpufreq.c` `cpufreq_update_pressure()` / `cpufreq_policy_init_qos()` / `__resolve_freq()`；`kernel/sched/fair.c` `get_actual_cpu_capacity()`
-- 相关：[[sched-20260902-008]]、[[sched-20260903-010]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260903-010</a>

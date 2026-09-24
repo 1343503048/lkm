@@ -56,7 +56,7 @@ layout: article
 - Aaron Lu：现象与**任务数量**相关（vCPU 越多、qemu 线程越多）。他把自己 64core/128cpu Intel 机的 vCPU 加到 256、quota 4 CPU：**能启动**，但启动过程有多次 softlockup——他解读为 qemu 任务确实缺 CPU 时间，并推断再增 vCPU 或再减 quota 最终也会挂；另反问 chenjinghuang 的 guest 是否没开 softlockup 检测器（首报没有 softlockup 转储）。
 
 ## 版本演进与当前进展
-非补丁系列，是跨 08-25 至 08-27 的调试线程（references 根 `<20260825120629.2472938-1-chenjinghuang2@huawei.com>`）。08-26 完成双 revert 定位（见 sched-20260826-004），08-27 完成规模边界（96 vs 128 vCPU）与跨机型对照（Intel 机不复现但出现同方向 softlockup）。当前无人提出候选修复。
+非补丁系列，是跨 08-25 至 08-27 的调试线程（references 根 `<20260825120629.2472938-1-chenjinghuang2@huawei.com>`）。08-26 完成双 revert 定位（见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html">sched-20260826-004</a>），08-27 完成规模边界（96 vs 128 vCPU）与跨机型对照（Intel 机不复现但出现同方向 softlockup）。当前无人提出候选修复。
 
 ## Maintainer 意见与讨论焦点
 调度维护者未介入，参与者均非 sched maintainer。未解决点：(1) `e1f078f50478` 与 task-based throttle 两者叠加时的具体交互路径没走通——为什么 detach 合入 dequeue 会放大 throttle 的时间片碎片化；(2) guest 侧缺 softlockup 转储导致缺第一手现场；(3) "task gets throttled shortly after receiving a small time slice"仍只是猜想，无 ftrace 证据。

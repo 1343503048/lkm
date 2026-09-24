@@ -39,7 +39,7 @@ layout: article
 本日为增量更新：报告者 Klaus Kusche 反馈 Intel 侧（Chen Yu）最新一版补丁后，其 AMD big/little（大小核混合）平台上 cache-aware 调度的性能已基本追平无 cache-aware 的内核，比早期 cache-aware 内核快约 2%，核心柱状图上也未见明显错放进程。这是一个偏正面的修复确认，完整背景见 related_articles。
 
 ## 背景与问题
-原始问题是：cache-aware 调度在 AMD big/little（Zen4/Zen4c 混合架构，如 1CCX 大小核混排）平台上表现不佳——进程被错放到不适合的核心上，导致构建类负载变慢。线程的完整技术背景见 sched-20260914-001。
+原始问题是：cache-aware 调度在 AMD big/little（Zen4/Zen4c 混合架构，如 1CCX 大小核混排）平台上表现不佳——进程被错放到不适合的核心上，导致构建类负载变慢。线程的完整技术背景见 <a class="article-ref" href="/lkm/2026/09/14/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html">sched-20260914-001</a>。
 
 ## 技术方案
 Intel 侧（Chen Yu 等）针对该问题的补丁迭代（本日未在邮件正文给出具体 patch，Klaus 只引用了「你的上一个补丁」）。Klaus 不确定该补丁是否通过动态禁用大小核平台上的 cache-aware 调度来生效。
@@ -52,7 +52,7 @@ Intel 侧（Chen Yu 等）针对该问题的补丁迭代（本日未在邮件正
 - 无新分歧；这是修复方向的正面数据。
 
 ## 合入评估
-*likelihood=medium*。修复方向正在被实际用户验证有效（接近无 cache-aware 的基线），但补丁机制与后续收合路径仍需在 cache-aware 系列（见 sched-20260916-011/012/013）里统一推进。*blocking_issues*：无新增。*next_action*：Intel 侧确认补丁机制并把改动收敛进 cache-aware 系列提交。
+*likelihood=medium*。修复方向正在被实际用户验证有效（接近无 cache-aware 的基线），但补丁机制与后续收合路径仍需在 cache-aware 系列（见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-011-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260916-011</a>/012/013）里统一推进。*blocking_issues*：无新增。*next_action*：Intel 侧确认补丁机制并把改动收敛进 cache-aware 系列提交。
 
 ## 效果评估
 Klaus 实测：两个构建测试「几乎同速」于无 cache-aware 内核，约比早期 cache-aware 内核快 2%；核心柱状图无错放进程。属用户实测，非量化基准。

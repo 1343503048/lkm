@@ -56,10 +56,10 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260909-005。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_ext/for-7.4` topic 分支。另需修正前文的一处时序判断：Tejun 09-09 02:01 那两条意见（`p->cpus_ptr` 在 PREEMPT_RCU 下的假阳性、固定 `cpu_set_t` 在 >1024 CPU 时 EINVAL）回复的是 **v1** 而非 v2（已核对其 `in_reply_to` 指向 v1 msgid），因此 v2 更可能就是针对这两条的修订版；但 v2 的 changelog 与正文都不在缓存内，无法逐条核对。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html">sched-20260909-005</a>。09-10 01:57 Tejun Heo 回复作者以 text/plain 附件重发的那一版，"Hello, Tianyi. Applied to sched_ext/for-7.4."——这枚此前是本批四枚 sched_ext 自测补丁里**唯一被打回**的一枚，现在已进 `sched_ext/for-7.4` topic 分支。另需修正前文的一处时序判断：Tejun 09-09 02:01 那两条意见（`p->cpus_ptr` 在 PREEMPT_RCU 下的假阳性、固定 `cpu_set_t` 在 >1024 CPU 时 EINVAL）回复的是 **v1** 而非 v2（已核对其 `in_reply_to` 指向 v1 msgid），因此 v2 更可能就是针对这两条的修订版；但 v2 的 changelog 与正文都不在缓存内，无法逐条核对。
 
 ## 背景与问题
-（增量文章，完整背景见 sched-20260909-005。）
+（增量文章，完整背景见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html">sched-20260909-005</a>。）
 
 `scx_bpf_select_cpu_and()` 允许 BPF 调度器把选核限制在给定 cpumask 内，此前该约束没有自测覆盖，本补丁补的就是这一块。Tejun 对 v1 提出两条实现缺陷：
 
@@ -80,7 +80,7 @@ v1/v2 的补丁正文均不在邮箱缓存内，用例的具体组织方式与�
 - 当前版本 v2，状态由 under_review 转为已进 topic 分支。
 
 ## Maintainer 意见与讨论焦点
-- **Tejun Heo（sched_ext 维护者）**：本批四枚自测补丁（另三枚见 sched-20260909-003 / 004 / 006）中唯一被他打回的一枚，也是最后一枚被收取的。收取时未附加任何条件、未要求再出 v3。
+- **Tejun Heo（sched_ext 维护者）**：本批四枚自测补丁（另三枚见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-003-selftests-sched-ext-fail-interrupted-test-runs.html">sched-20260909-003</a> / 004 / 006）中唯一被他打回的一枚，也是最后一枚被收取的。收取时未附加任何条件、未要求再出 v3。
 - 焦点已从技术转向**投递工程**：作者明确记录了 Gmail 出站会折长行并破坏补丁空白符、改用 text/plain 附件即可通过 `b4` / `git am`。Tejun 在收到干净副本后两小时内即完成收取，说明此前拖延的直接原因确实是补丁无法被正常 `git am`，而非内容分歧。
 - 无 NAK、无遗留分歧。前文记录的「两条意见无人从技术角度回应」这一状态，随 v2 被收取而实际关闭——但**关闭方式是推断的**（收取即认可），线程里没有作者对两条意见的逐条书面回应。
 

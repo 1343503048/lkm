@@ -88,7 +88,7 @@ Cover letter 交代了来龙去脉：起因是 Peter Zijlstra 自己在 6/11 那
 ## 版本演进与当前进展
 
 - 前一版为 2026-06-24 的 `<20260624121327.190063948@infradead.org>`（cover letter 里以 [1] 引用），作者表示本版扩充过大，"so I didn't really bother keeping count"，因此 subject 不带 vN。
-- 8/28 本版：7 补丁。cover 只给功能性证据——"these patches survive both Aaron's test case [4] and Prateek's [5]"，即两个已知 core-sched 复现场景不再触发；没有性能数据，也没有说明跑过哪些 workload。（同日 PZ 的另一个系列 task_h_load 才写了 "Lightly tested."，见站内 sched-20260828-003。）
+- 8/28 本版：7 补丁。cover 只给功能性证据——"these patches survive both Aaron's test case [4] and Prateek's [5]"，即两个已知 core-sched 复现场景不再触发；没有性能数据，也没有说明跑过哪些 workload。（同日 PZ 的另一个系列 task_h_load 才写了 "Lightly tested."，见站内 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-003-sched-fair-rework-tash-h-load.html">sched-20260828-003</a>。）
 - 外部并行工作：Tejun Heo 8/07 面向 sched_ext 的 core-sched 修复（`<20260807210221.232543-1-tj@kernel.org>`），PZ 认为本系列落地后可简化它。
 
 ## Maintainer 意见与讨论焦点
@@ -104,7 +104,7 @@ Cover letter 交代了来龙去脉：起因是 Peter Zijlstra 自己在 6/11 那
 
 **likelihood: possible**。
 
-- 有利：作者是 sched/core 的主要维护者，改的是他自己引入的回归；1/7 与 3/7 是明确的正确性修复且带 `WARN_ON_ONCE` 兜底；7/7 删掉一个 `sched_class` 钩子属于长期收敛方向，此前站内 sched-20260821-005 已记过同类讨论。
+- 有利：作者是 sched/core 的主要维护者，改的是他自己引入的回归；1/7 与 3/7 是明确的正确性修复且带 `WARN_ON_ONCE` 兜底；7/7 删掉一个 `sched_class` 钩子属于长期收敛方向，此前站内 <a class="article-ref" href="/lkm/2026/08/21/sched-20260821-005-sched-remove-sched-class-balance.html">sched-20260821-005</a> 已记过同类讨论。
 - 卡点：系列同时动了 `pick_next_task()`、`pick_task_fair()`、`sched_balance_rq()` 三处最热的路径，且 3/7 只解决"偷任务"、并未真正打开 core-sched 的 newidle，5/7 却已经把 core-sched 的 newidle 禁掉那段删了——两个补丁之间读起来存在"5/7 依赖 3/7 的 `task_on_core()` 才安全"的顺序耦合，容易被要求拆分或重排。6/7 的 unlock 下推在没有数字的情况下很难被接受（作者自己标了 `XXX needs numbers`）。
 - `blocking_issues`：无人 review；patch 1/7 缺 forward-progress 说明；patch 6/7 缺 benchmark；与 Tejun Heo 的 sched_ext core-sched 修复存在重叠。
 - `next_action`：等 Prateek/Aaron 等人跑完回归并回帖测试结果；作者补 6/7 的数据与 1/7 的推进性论证。

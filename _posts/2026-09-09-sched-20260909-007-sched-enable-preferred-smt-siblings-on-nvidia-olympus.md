@@ -91,7 +91,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 sched-20260908-002 / sched-20260907-005 / sched-20260904-002 / sched-20260903-009。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nayak 的 `Reviewed-by`+`Tested-by`，按 Dietmar Eggemann 的要求补上了 OpenBLAS 公开基准（+3.20% 吞吐、ST→SMT 模式切换次数 -80.5%），Peter Zijlstra 21:14 说「I tentatively picked these up」——然后 22 分钟后 Will Deacon 以「Detecting topology based on MIDR is a non-starter, sorry」把 arm64 那一半直接否掉。调度器侧现在有人背书，arm64 侧被明确拒了。
+本文为增量更新，v1..v4 的动机与完整代码分析见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-002-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260908-002</a> / <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-005-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260907-005</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260904-002</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a>。09-09 是这个系列**最接近落地也最接近卡死**的一天：Andrea Righi 在几小时内连发 v4→v5，拿到 Prateek Nayak 的 `Reviewed-by`+`Tested-by`，按 Dietmar Eggemann 的要求补上了 OpenBLAS 公开基准（+3.20% 吞吐、ST→SMT 模式切换次数 -80.5%），Peter Zijlstra 21:14 说「I tentatively picked these up」——然后 22 分钟后 Will Deacon 以「Detecting topology based on MIDR is a non-starter, sorry」把 arm64 那一半直接否掉。调度器侧现在有人背书，arm64 侧被明确拒了。
 
 ## 背景与问题
 

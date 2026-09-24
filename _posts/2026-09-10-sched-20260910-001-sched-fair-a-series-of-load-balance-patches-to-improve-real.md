@@ -78,7 +78,7 @@ Xin Zhao 重发（RESEND）了 10 补丁的 RFC 系列，引入 LB_PROMOTE 特�
 - 03/10（在 active_load_balance_cpu_stop() 末尾清 active_balance）：Prateek 指出 detach_one_task 后 TASK_ON_RQ_MIGRATING 已立即摘除 busiest 的 PELT 信号，commit message 论证不准确；作者补充真实动机是目的端负载在 attach 前未更新，若提前清 flag，另一 CPU C 可能对同一目的地重复触发 active balance，并接受「清 flag 应放在开中断之前」的批评。
 
 ## 版本演进与当前进展
-- v1（2026-08-15 首发）：当时仅以单补丁形式被记录（见 sched-20260815-001），无 review 意见。
+- v1（2026-08-15 首发）：当时仅以单补丁形式被记录（见 <a class="article-ref" href="/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html">sched-20260815-001</a>），无 review 意见。
 - v1 RESEND（2026-09-10，msgid `<20260910042950.1619727-1-jackzxcui1989@163.com>`）：内容同上，本次引发 Vincent、Prateek、Kayra Cizmeci 三人共 11 封讨论，作者当天逐条回应。当前进展：05/10 方案需推倒重来（转向 nr_idle_scan/慢路径思路），03/10 需改写 commit message 并把清 flag 移到开中断前，02/10 的 smp_processor_id() 冗余论证被 Kayra 质疑、尚未见作者正面回答（当天作者未回 02/10 的第二问）。
 
 ## Maintainer 意见与讨论焦点
@@ -109,4 +109,4 @@ Xin Zhao 重发（RESEND）了 10 补丁的 RFC 系列，引入 LB_PROMOTE 特�
 - Prateek 对 01/10 的分析: https://lore.kernel.org/all/7735bbdb-2465-4ed3-9486-be9b82f3f42a@amd.com/
 - Prateek 对 03/10 的质疑: https://lore.kernel.org/all/f771bdd6-3e4b-47db-bfa9-b04bd58b9a06@amd.com/
 - 作者拓扑与 SD_BALANCE_WAKE 说明: https://lore.kernel.org/all/20260910155635.2101399-1-jackzxcui1989@163.com/
-- 首发 v1（08-15）记录: 见 related_articles sched-20260815-001（当时 lore 链接未获取到）
+- 首发 v1（08-15）记录: 见 related_articles <a class="article-ref" href="/lkm/2026/08/15/sched-20260815-001-sched-fair-not-goto-more-balance-if-newly-idle-and-has-pendi.html">sched-20260815-001</a>（当时 lore 链接未获取到）

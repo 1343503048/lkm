@@ -66,7 +66,7 @@ Hui Su 的 2 补丁系列把 NUMA / cache 的 task tick 从调度上下文（`rq
 - v1（09-02）→ v2（09-03）：从 `task_tick_fair()` 移到 `sched_tick()`，判据换成 curr 的调度类，补 `sched_tick_remote()`。
 - v2 → v3（09-04）：抽出 `sched_tick_exec_ctx()`；重写 NUMA 侧 rationale（执行上下文状态与其 task/mm，`sum_exec_runtime` 只是支持性论据）；把 review 中冒出来的 `task_tick_core()` 切片统计问题明确留在系列之外。
 - 09-05 状态：v3 已获 Tim Chen `Reviewed-by`，Chen Yu 称跑完测试回报，截至当日正文里没有该测试结论。系列本身接近可合入。
-- 与 [[sched-20260904-001]] / [[sched-20260903-001]] 为同一系列的不同版本记录。
+- 与 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260904-001</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> 为同一系列的不同版本记录。
 
 ## Maintainer 意见与讨论焦点
 
@@ -99,8 +99,8 @@ Hui Su 的 2 补丁系列把 NUMA / cache 的 task tick 从调度上下文（`rq
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260904-001]] 同系列 v3 记录。
-  - [[sched-20260903-001]] 同系列 v2。
+  - <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260904-001</a> 同系列 v3 记录。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-001-sched-fix-execution-context-tick-handling-under-proxy-execution.html">sched-20260903-001</a> 同系列 v2。
 - v3 cover letter：https://lore.kernel.org/all/20260904085244.799276-1-sh_def@163.com/
 - v3 1/2 / 2/2：https://lore.kernel.org/all/20260904085244.799276-2-sh_def@163.com/ 、https://lore.kernel.org/all/20260904085244.799276-3-sh_def@163.com/
 - Tim Chen 的 Reviewed-by 与 nit：https://lore.kernel.org/all/84f83c4dab930ff41cafbe614bbfa866003caa21.camel@linux.intel.com/

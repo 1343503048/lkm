@@ -41,7 +41,7 @@ layout: article
 增量更新：Tejun Heo 的 sched_ext 修复（从核心 enqueue flags 派生出 `SCX_RQ_IN_WAKEUP`，替代 sched_ext 自行维护的 wakeup 标记）本日被 Tejun 亲自合入 `sched_ext/for-7.3-fixes`，将随 7.3-rc 周期进入主线。
 
 ## 背景与问题
-背景见 sched-20260917-011：sched_ext 在 enqueue 路径自行维护 wakeup 场景标记，与核心调度器的 enqueue flags 存在不一致/重复，需要改成从核心 flags 派生，避免状态漂移。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-011-sched-ext-derive-scx-rq-in-wakeup-from-the-core-enqueue-flag.html">sched-20260917-011</a>：sched_ext 在 enqueue 路径自行维护 wakeup 场景标记，与核心调度器的 enqueue flags 存在不一致/重复，需要改成从核心 flags 派生，避免状态漂移。
 
 ## 技术方案
 从核心 enqueue flags 派生出 `SCX_RQ_IN_WAKEUP`，去掉 sched_ext 内部重复维护的标记位。

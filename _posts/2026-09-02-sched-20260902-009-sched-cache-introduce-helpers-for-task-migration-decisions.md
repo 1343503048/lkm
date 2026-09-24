@@ -75,7 +75,7 @@ distance matrix、`04/23` llc distance 计算、`08/23`+`09/23` per-CPU task NUM
 `20/23` 整个 thread group 的利用率估算。
 
 `11/23` 在这条链上的位置是**决策函数**：现有 `can_migrate_llc()` 只在单个 LLC 粒度上判断
-（`invalid_llc_nr()` / `exceed_llc_capacity()` / `task_cache_work()` 那一套，参见 [[sched-20260902-003]]），
+（`invalid_llc_nr()` / `exceed_llc_capacity()` / `task_cache_work()` 那一套，参见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-003-sched-cache-fix-use-after-free-mm-access-in-account-mm-sched.html">sched-20260902-003</a>），
 `11/23` 新增按 NUMA node 亲和序列遍历、并能给出「迁移 / 不迁移 / 不受限（`mig_unrestricted`）」三态判断的
 helper，为后面的 node 粒度均衡提供入口。RFC v2 的 cover 正文本地未缓存（缺 2026-08-27 邮件），动机段
 **未获取到**。
@@ -169,4 +169,4 @@ helper，为后面的 node 粒度均衡提供入口。RFC v2 的 cover 正文本
 - Peter Zijlstra inverse-christmas-tree 要求：https://lore.kernel.org/all/20260901113207.GZ687043@noisy.programming.kicks-ass.net/
 - 作者逐条答复：https://lore.kernel.org/all/226d79fa93a84193aa2507113747d348@hygon.cn/
 - 作者答复排序要求：https://lore.kernel.org/all/89add08a0761429a851196d7ea5a10a2@hygon.cn/
-- 相关：[[sched-20260902-003]]（sched/cache UAF，同一子系统）、[[sched-20260903-012]]、[[sched-20260904-006]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-003-sched-cache-fix-use-after-free-mm-access-in-account-mm-sched.html">sched-20260902-003</a>（sched/cache UAF，同一子系统）、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a>、<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>

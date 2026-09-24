@@ -93,13 +93,13 @@ Linux 7.2-rc6 的 `kernel/sched/ext/ext.h` 中该结构如下（行号为该版�
 ## 版本演进与当前进展
 - v1：`<20260909172740.36375-1-yphbchou0911@gmail.com>`（09-09 17:27 发出）。标题前缀为 `[PATCH sched_ext/for-7.4]`——作者按 Tejun 对 sched_ext 补丁的惯例把目标 topic 分支直接写进前缀，说明是定向投递而非泛发 LKML。该邮件**未投递到本邮箱**，正文未获取到。
 - **09-10 01:52:35（本日）**：Tejun Heo 回复 "Hello, Applied to sched_ext/for-7.4."（`<178897635522.2.2211845744379646092@kernel.org>`），称呼处未写名字。从发出到收取约 8.5 小时，中间无任何往返。
-- 同一批：同作者的 `selftests/sched_ext: Drop -rdynamic and stop clobbering LDFLAGS`（见 sched-20260910-019）在同一秒级批次内被收取（两封通知的 msgid 分别为 `178897635521.2.18013318571965009488@kernel.org` 与 `178897635522.2.2211845744379646092@kernel.org`，仅序号递增，属同一次批量 apply）；Tianyi Chen 的 `Validate select_cpu_and mask constraints` 也在 5 分钟后被收取（见 sched-20260910-018）。
+- 同一批：同作者的 `selftests/sched_ext: Drop -rdynamic and stop clobbering LDFLAGS`（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.html">sched-20260910-019</a>）在同一秒级批次内被收取（两封通知的 msgid 分别为 `178897635521.2.18013318571965009488@kernel.org` 与 `178897635522.2.2211845744379646092@kernel.org`，仅序号递增，属同一次批量 apply）；Tianyi Chen 的 `Validate select_cpu_and mask constraints` 也在 5 分钟后被收取（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-018-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html">sched-20260910-018</a>）。
 - 已进 `sched_ext/for-7.4`；缓存内无 tip-bot 回帖，主线尚未合入。无 v2。
 
 ## Maintainer 意见与讨论焦点
 - **Tejun Heo（sched_ext 维护者）**：唯一发言者，只有收取通知一句，未提任何修改要求。这类零风险的预处理整理正是维护者会直接收的类型。
 - 无 NAK、无争议、无未决问题。
-- 一个可记录的观察（非邮件内容）：本枚与 sched-20260910-019 出自同一新作者、同一晚被同一批次收取，且都带 `sched_ext/for-7.4` 前缀——说明 Tejun 正在为该 topic 分支集中收集构建/代码卫生类小补丁。对想参与 sched_ext 的人，这是一条低门槛的入口路径：定向投 `for-7.4` 前缀的小型清理，收取速度以小时计。
+- 一个可记录的观察（非邮件内容）：本枚与 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-019-selftests-sched-ext-drop-rdynamic-and-stop-clobbering-ldflag.html">sched-20260910-019</a> 出自同一新作者、同一晚被同一批次收取，且都带 `sched_ext/for-7.4` 前缀——说明 Tejun 正在为该 topic 分支集中收集构建/代码卫生类小补丁。对想参与 sched_ext 的人，这是一条低门槛的入口路径：定向投 `for-7.4` 前缀的小型清理，收取速度以小时计。
 
 ## 合入评估
 *likelihood: merged*。

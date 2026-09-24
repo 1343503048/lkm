@@ -51,7 +51,7 @@ layout: article
 
 ## TL;DR
 
-Hyunwoo Kim 单补丁修 cache-aware scheduling 记账路径上的一个 slab-use-after-free：`account_mm_sched()` 会在**别人的 rq** 上读 `rq->curr->mm` 并写 `mm->sc_stat`，而这个 mm 可能正被同一次 `execve()` 换掉并释放；补丁的做法是在 `exec_mm_put_old()` 真正 `mmput()` 之前插一次 `this_rq_lock_irq()` 的锁环，当作"穷人版 `synchronize_rcu()`"。作者给了完整 KASAN 报告（读侧 `update_se()`、释放侧 `setup_new_exec()`）与 CPU0/CPU1 时序图，带 `Fixes: df0d98475954` 和 `Cc: stable`。当天无人回复；次日 Chen Yu 认可技巧但追问"为什么不直接 `synchronize_rcu()`"（见 sched-20260831-009）。
+Hyunwoo Kim 单补丁修 cache-aware scheduling 记账路径上的一个 slab-use-after-free：`account_mm_sched()` 会在**别人的 rq** 上读 `rq->curr->mm` 并写 `mm->sc_stat`，而这个 mm 可能正被同一次 `execve()` 换掉并释放；补丁的做法是在 `exec_mm_put_old()` 真正 `mmput()` 之前插一次 `this_rq_lock_irq()` 的锁环，当作"穷人版 `synchronize_rcu()`"。作者给了完整 KASAN 报告（读侧 `update_se()`、释放侧 `setup_new_exec()`）与 CPU0/CPU1 时序图，带 `Fixes: df0d98475954` 和 `Cc: stable`。当天无人回复；次日 Chen Yu 认可技巧但追问"为什么不直接 `synchronize_rcu()`"（见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-009-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html">sched-20260831-009</a>）。
 
 ## 背景与问题
 
@@ -91,7 +91,7 @@ void sched_cache_exec_done(void)
 ## 版本演进与当前进展
 
 - 8/30 15:30（北京时间）v1 发出，当日**无人回复**、无 Reviewed-by/Tested-by。
-- 次日线程开始滚动：Chen Yu 认可技巧（"A smart fix, learnt!"）但问为什么不直接 `synchronize_rcu()`、并追问 `kernel/events/core.c` 那处 `guard(rcu)()` 是否与本 UAF 有关；后续 v2 于 9/1 出现（见 sched-20260831-009 与 9 月的几篇增量文）。本文只覆盖 v1 当日状态。
+- 次日线程开始滚动：Chen Yu 认可技巧（"A smart fix, learnt!"）但问为什么不直接 `synchronize_rcu()`、并追问 `kernel/events/core.c` 那处 `guard(rcu)()` 是否与本 UAF 有关；后续 v2 于 9/1 出现（见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-009-sched-cache-fix-use-after-free-of-the-mm-replaced-by-exec.html">sched-20260831-009</a> 与 9 月的几篇增量文）。本文只覆盖 v1 当日状态。
 
 ## Maintainer 意见与讨论焦点
 

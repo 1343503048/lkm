@@ -45,13 +45,13 @@ layout: article
 增量更新：Sumit Gupta 的 CPPC CPU hotplug 策略保留系列（v4）本日收到 Christian Loehle 的意见——他认为应在 hotplug 系列之前落地 ACPI 规范要求的"Minimum Performance ≤ Maximum Performance / Desired Performance 界内"顺序保证，并贴出一版草拟补丁（分批写入 control、快速切换只在变化时带 limits），请系列作者测 AUTOSEL 场景。
 
 ## 背景与问题
-背景见 sched-20260917-016：CPPC（ACPI Collaborative Processor Performance Control）在 CPU hotplug 时策略被丢失，系列旨在跨 hotplug 保留 policy。本日讨论引向一个相关但更底层的规范符合性问题。
+背景见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-016-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.html">sched-20260917-016</a>：CPPC（ACPI Collaborative Processor Performance Control）在 CPU hotplug 时策略被丢失，系列旨在跨 hotplug 保留 policy。本日讨论引向一个相关但更底层的规范符合性问题。
 
 ## 技术方案
 本日无系列方案变更。Christian Loehle 提出配套补丁：`cppc_set_perf()` 目前按固定顺序写 Minimum/Desired/Maximum Performance 三个 control，在固件重置 controls 或策略边界跨过当前 desired 值时会暴露非法三元组。其草拟补丁改为：读实时 limits，分三阶段非原子更新（先放宽区间→更新 Desired→再收紧），使每次提交的 PCC control 都满足规范；保留"完整元组在同一 PCC 命令"时的单命令路径；拒绝非法请求并在首个失败访问后停止；让 `cppc_cpufreq` 的快速切换仅在 limits 与上次成功请求不同时才带上 limits，resume 与失败请求后失效缓存。作者希望把该逻辑接到 hotplug 系列上并测 AUTOSEL。
 
 ## 版本演进与当前进展
-- v1（2026-08-06，`<20260806200857.601152-1-sumitg@nvidia.com>`）：原始 CPPC hotplug 策略保留系列（见 sched-20260917-016）。
+- v1（2026-08-06，`<20260806200857.601152-1-sumitg@nvidia.com>`）：原始 CPPC hotplug 策略保留系列（见 <a class="article-ref" href="/lkm/2026/09/17/sched-20260917-016-cpufreq-cppc-keep-the-policy-across-cpu-hotplug.html">sched-20260917-016</a>）。
 - 本日 Christian Loehle（`<1be30b2b-e1e5-41ed-a0dc-0dd5ad3c47cd@arm.com>`）对 v4 1/4 提出规范顺序问题，并给出草拟补丁。
 
 ## Maintainer 意见与讨论焦点

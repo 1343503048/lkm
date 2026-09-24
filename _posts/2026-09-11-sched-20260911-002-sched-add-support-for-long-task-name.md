@@ -54,7 +54,7 @@ layout: article
 ---
 
 ## TL;DR
-André Almeida（Igalia）把线程名从 16 字节扩展到 TASK_COMM_EXT_LEN=64 的系列发布 v6：新增 PR_{SET,GET}_EXT_NAME prctl 接口 + 保证 NUL 结尾的 copy_task_comm() helper，旧用户态 API 显式截断到 TASK_COMM_LEN。本文为增量更新，完整背景见 sched-20260828-009（v5）：v6 修复了 security/ 编译错误、i915/blktrace 缓冲区尺寸与 KUnit 测试逻辑；系列从 v5 到 v6 依旧零 review。
+André Almeida（Igalia）把线程名从 16 字节扩展到 TASK_COMM_EXT_LEN=64 的系列发布 v6：新增 PR_{SET,GET}_EXT_NAME prctl 接口 + 保证 NUL 结尾的 copy_task_comm() helper，旧用户态 API 显式截断到 TASK_COMM_LEN。本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html">sched-20260828-009</a>（v5）：v6 修复了 security/ 编译错误、i915/blktrace 缓冲区尺寸与 KUnit 测试逻辑；系列从 v5 到 v6 依旧零 review。
 
 ## 背景与问题
 调试/追踪数百线程的复杂程序时，16 字节 comm 不够用；pthread_setname_np()/prctl(PR_SET_NAME) 设置的名字受此限制，而 cmdline 不受。作者希望给用户态线程对齐 kthreads 已有的待遇（commit 6b59808bfe48 让 /proc/PID/{comm,stat,status} 显示最新 workqueue 名）。直接放大 comm 会带来缓冲区溢出风险与 tracing 开销，因此系列同时引入收口措施。
@@ -73,14 +73,14 @@ André Almeida（Igalia）把线程名从 16 字节扩展到 TASK_COMM_EXT_LEN=6
 - v1（2026-05-17）→ v2：新增 copy_task_comm()（memcpy 优先 + NUL 保证）与 KUnit 测试；
 - v3：简化 copy_task_comm() 为 memcpy + 末尾置 NUL；
 - v4：copy_task_comm() 只用于 task_struct，补 len 边界检查；
-- v5（08-27）：helper 限定到 task_struct 并补 len 检查（详见 sched-20260828-009）；
+- v5（08-27）：helper 限定到 task_struct 并补 len 检查（详见 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html">sched-20260828-009</a>）；
 - v6（09-10 发出）：修 security/ 编译错误；修 i915 与 blktrace 的 comm 缓冲区尺寸；修 KUnit 测试逻辑。
 
 ## Maintainer 意见与讨论焦点
 - 与 v5 时相同：本日缓存内 v6 没有收到任何回帖，sched/core 与 tracing 侧维护者均未表态，未获取到任何 Reviewed-by/Acked-by。系列已迭代 6 版约 4 个月，零反馈本身是最大的争议点。
 
 ## 合入评估
-*likelihood=unknown*：没有任何维护者意见可依据。*blocking_issues*：v6 依旧零 review；task_struct 增大 48 字节只有一句「no significant change」、无可复现数据；patch 1/2 是 treewide 改动需要 drm/audit/LSM/net/tracing 等多方 ack；新增 prctl UAPI 需与 man-pages/glibc 协调（均承 sched-20260828-009，当日缓存无新信息解除或加重这些卡点）。*next_action*：等待第一批维护者回帖；作者侧需补 task_struct 尺寸与 tracing 开销数据。
+*likelihood=unknown*：没有任何维护者意见可依据。*blocking_issues*：v6 依旧零 review；task_struct 增大 48 字节只有一句「no significant change」、无可复现数据；patch 1/2 是 treewide 改动需要 drm/audit/LSM/net/tracing 等多方 ack；新增 prctl UAPI 需与 man-pages/glibc 协调（均承 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-009-sched-add-support-for-long-task-name.html">sched-20260828-009</a>，当日缓存无新信息解除或加重这些卡点）。*next_action*：等待第一批维护者回帖；作者侧需补 task_struct 尺寸与 tracing 开销数据。
 
 ## 效果评估
 作者在 v6 cover 中重申：沿用 v2 时报告的 benchmark（[0] 20260526190625.3f4aca0a），「no significant change was found」——即 comm 16→64 无可测开销，但这是作者主观陈述，具体数字未在邮件中给出，第三方数据未获取到。

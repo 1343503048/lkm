@@ -51,7 +51,7 @@ layout: article
 增量更新：Qiurong Fang 推出 v4，落实 Tejun Heo 对 v3 的全部评审意见（终端分支注释措辞、删除未用的 @src_dsq 参数、修正 commit message 用词、selftest 从 run() 直接轮询）。该修复解决 consume/move 路径持源 DSQ 锁调用 ops.dequeue() 的自死锁问题，已 Cc: stable v7.1+，patch 1 带 Andrea Righi 的 Acked-by，合入可能性高。
 
 ## 背景与问题
-背景见 sched-20260916-006：consume 与 move 路径在持有源 user DSQ 锁时调用 ops.dequeue()，任何从 ops.dequeue() 内再锁同一 DSQ 的 BPF 调度器都会自死锁。方案是把调用移到 DSQ 解锁之后。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.html">sched-20260916-006</a>：consume 与 move 路径在持有源 user DSQ 锁时调用 ops.dequeue()，任何从 ops.dequeue() 内再锁同一 DSQ 的 BPF 调度器都会自死锁。方案是把调用移到 DSQ 解锁之后。
 
 ## 技术方案
 方案不变。关键语义澄清（据 Tejun 评审）：回调在 @dsq->lock 释放后运行，但 rq lock 在每条路径上都仍被持有，因此注释不能写"unlocked"，要写"after @dsq->lock is dropped"。

@@ -107,4 +107,4 @@ Shubhang Kaushik 的 RFC 1/2 新增 `Documentation/scheduler/sched-wake-affinity
 - 同区域的策略改动线索：
   - 作者自己的 sync wakeup v3 补丁：https://lore.kernel.org/all/20260727-b4-sched-sync-wakeup-v3-1-90cf481dbd85@gentwo.org/
   - K Prateek Nayak 把 sync 下推进 select_idle_sibling() 的原型：https://lore.kernel.org/all/f3d5530f-3811-42af-8c34-c40cf314deed@amd.com/
-- 相关文章：[[sched-20260826-004]]（本 RFC 首发日的记录）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/08/26/sched-20260826-004-userspace-throttling-combine-detach-dequeue-guest-hang.html">sched-20260826-004</a>（本 RFC 首发日的记录）。

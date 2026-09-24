@@ -138,4 +138,4 @@ v1 一次成型，无重发，本日即完成 review 与 apply（时间均为 +0
 - Sashiko 对 4/4 的 race 报告（msgid 取自本线程 in-reply-to，正文未拉取到本地缓存）: https://lore.kernel.org/all/20260905162223.6EF521F00A3A@smtp.kernel.org/
 - tip-bot commit: 未获取到
 - stable backport: 未获取到
-- 相关：[[sched-20260903-004]]、[[sched-20260904-011]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-004-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html">sched-20260903-004</a>、<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-011-sched-ext-fix-null-sched-deref-in-kfunc-sub-sched-error-paths.html">sched-20260904-011</a>

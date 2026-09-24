@@ -64,7 +64,7 @@ Juri（deadline 侧维护者之一）已 Ack；Peter/Ingo 未动作。无未解�
 无数据。除零属可判定的正确性问题，是否已有真实崩溃报告在缓存内未获取到。
 
 ## 我可以参与的点
-- OLK-6.6 若启用 dl_server（RT 走 deadline server 的架构），该修复与姊妹补丁（sched-20260827-017）是明确的回合候选；等 tip 落地后按 Fixes 标签对号回合即可。
+- OLK-6.6 若启用 dl_server（RT 走 deadline server 的架构），该修复与姊妹补丁（<a class="article-ref" href="/lkm/2026/08/27/sched-20260827-017-sched-deadline-fix-dl-server-initialization-for-initially-of.html">sched-20260827-017</a>）是明确的回合候选；等 tip 落地后按 Fixes 标签对号回合即可。
 - 补 Reviewed-by/Tested-by 空间不大——已有 Ack。
 
 ## 参考链接

@@ -59,10 +59,10 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景与补丁内容见 related_articles 中的 sched-20260902-012。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through sched/urgent."。也就是说这枚 +5/-4 的修复将由 sched 树、且走 urgent 分支收取。我对照本地内核树（与 Linux 7.2-rc6 逐字节一致，`git diff 075b74841bd0` 对该文件为空）确认 `kernel/sched/core.c:5803-5804` 仍是 `if (donor->flags & PF_WQ_WORKER) wq_worker_tick(donor);`，修复尚未落地，Peter 的表态是「愿意收」而非「已收」，缓存内无 tip-bot 回帖。
+本文为增量更新，完整背景与补丁内容见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>。09-10 的进展是**流程卡点被打通**：Peter Zijlstra 回答了 Tejun Heo 七天前（09-03）提出的路由问题——"Sorry, seems this got lost in the email deluge :/ I can take it through sched/urgent."。也就是说这枚 +5/-4 的修复将由 sched 树、且走 urgent 分支收取。我对照本地内核树（与 Linux 7.2-rc6 逐字节一致，`git diff 075b74841bd0` 对该文件为空）确认 `kernel/sched/core.c:5803-5804` 仍是 `if (donor->flags & PF_WQ_WORKER) wq_worker_tick(donor);`，修复尚未落地，Peter 的表态是「愿意收」而非「已收」，缓存内无 tip-bot 回帖。
 
 ## 背景与问题
-（增量文章，完整背景见 sched-20260902-012，此处只保留判断本日进展所需的部分。）
+（增量文章，完整背景见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>，此处只保留判断本日进展所需的部分。）
 
 proxy execution 把上下文拆成调度上下文 `rq->donor` 与执行上下文 `rq->curr`（上游 commit `af0c8b2bf67b` "sched: Split scheduler and execution contexts"，2024-10 进入主线）。`sched_tick()` 里调度侧记账走 donor，`sum_exec_runtime` 走 curr，但 `wq_worker_tick()` 挂错了边——它做的是「当前真正在跑的 kworker」的 CPU 时间统计与 `WORKER_CPU_INTENSIVE` 判定，属于执行上下文。
 
@@ -71,7 +71,7 @@ proxy execution 把上下文拆成调度上下文 `rq->donor` 与执行上下文
 触发前提需要说清楚：`CONFIG_SCHED_PROXY_EXEC` 在 `init/Kconfig:936` 依赖 `EXPERT`、且 `depends on !PREEMPT_RT`、`depends on !SCHED_CLASS_EXT`，默认不开启；未开启时 donor 恒等于 curr，本补丁无可观测影响。这也解释了为什么线程里没有 `Cc: stable`。
 
 ## 技术方案
-方案本日无变化（详见 sched-20260902-012）：只改 `kernel/sched/core.c` 的 `sched_tick()`，+5/-4，在局部变量 `donor` 旁增取 `curr = rq->curr`，然后
+方案本日无变化（详见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a>）：只改 `kernel/sched/core.c` 的 `sched_tick()`，+5/-4，在局部变量 `donor` 旁增取 `curr = rq->curr`，然后
 
 ```c
 -	if (donor->flags & PF_WQ_WORKER)
@@ -99,10 +99,10 @@ proxy execution 把上下文拆成调度上下文 `rq->donor` 与执行上下文
 - 仍是 v1，无 v2、无 tip-bot 回帖、无 stable 回帖。
 
 ## Maintainer 意见与讨论焦点
-- **Peter Zijlstra（sched 维护者）**：本日唯一的、也是决定性的一条意见——路由归 sched，且走 `sched/urgent`。urgent 分支意味着按「当前周期的修复」处理，而非压到下个合并窗口。他没有对补丁内容提任何修改要求，也没有要求作者把这批 donor/curr 修正合并成一个系列——**sched-20260902-012 中预判的「Peter 可能要求并为一个系列再来一次」的风险没有发生**。
+- **Peter Zijlstra（sched 维护者）**：本日唯一的、也是决定性的一条意见——路由归 sched，且走 `sched/urgent`。urgent 分支意味着按「当前周期的修复」处理，而非压到下个合并窗口。他没有对补丁内容提任何修改要求，也没有要求作者把这批 donor/curr 修正合并成一个系列——**<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-012-sched-core-call-wq-worker-tick-for-the-execution-context.html">sched-20260902-012</a> 中预判的「Peter 可能要求并为一个系列再来一次」的风险没有发生**。
 - **Tejun Heo**：09-03 的 `Acked-by` 无附加条件，内容层面此补丁自始无对手；他的关注点只在合入路径，本日已被回答。
-- **"email deluge" 不是客套话**：同日 Peter 在做的事情包括——对 PE + sched_ext v13 的 18 补丁系列逐条给出正式评审（见 sched-20260910-002）、把 Andrea 的 SMT 优先级系列 v5 从收取队列撤下（见 sched-20260910-007，"Andrea is a wee bit fast with re-posting. I'll drop this"）。对照之下可以看到他的收取标准：小、正确、有 `Fixes:`、已被对口维护者 ack 的修复走 urgent 快通道；而有争议或重复投递的系列会被直接 drop。
-- **一个当日无人提出的重叠风险**：本补丁与同作者正在评审中的 v4 五补丁 tick 系列（见 sched-20260910-003）改的是同一片代码——后者重构 `sched_tick()`/`task_tick()` 的上下文归属（含把 watchdog 记给 `rq->curr`、引入 sched_class 生命周期回调）。本补丁先经 urgent 落地后，v4 系列必然需要 rebase；反之若 v4 先进，本补丁的 `curr` 取值位置可能已被改写。两条线同作者、同函数、同语义主题，但分散在两条线程里推进，没人协调顺序。
+- **"email deluge" 不是客套话**：同日 Peter 在做的事情包括——对 PE + sched_ext v13 的 18 补丁系列逐条给出正式评审（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-002-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260910-002</a>）、把 Andrea 的 SMT 优先级系列 v5 从收取队列撤下（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-007-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260910-007</a>，"Andrea is a wee bit fast with re-posting. I'll drop this"）。对照之下可以看到他的收取标准：小、正确、有 `Fixes:`、已被对口维护者 ack 的修复走 urgent 快通道；而有争议或重复投递的系列会被直接 drop。
+- **一个当日无人提出的重叠风险**：本补丁与同作者正在评审中的 v4 五补丁 tick 系列（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a>）改的是同一片代码——后者重构 `sched_tick()`/`task_tick()` 的上下文归属（含把 watchdog 记给 `rq->curr`、引入 sched_class 生命周期回调）。本补丁先经 urgent 落地后，v4 系列必然需要 rebase；反之若 v4 先进，本补丁的 `curr` 取值位置可能已被改写。两条线同作者、同函数、同语义主题，但分散在两条线程里推进，没人协调顺序。
 - Tim Chen 在相邻线程提的「修正点应上移到 `sched_tick()` 而非 `task_tick_fair()`」意见对本补丁不适用——`wq_worker_tick()` 本来就挂在 `sched_tick()` 主干上。
 
 ## 合入评估
@@ -112,7 +112,7 @@ proxy execution 把上下文拆成调度上下文 `rq->donor` 与执行上下文
 
 *blocking_issues*：
 - 尚未实际落入 tip——缓存内无 tip-bot 回帖，`merged_branch` 仍为空；Peter 的措辞是 "I can take it"，不是 "applied"。
-- 与同作者 v4 tick 系列（sched-20260910-003）改同一片 `sched_tick()` 代码，先后顺序无人协调，存在 rebase/冲突成本。
+- 与同作者 v4 tick 系列（<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-003-sched-handle-split-scheduling-and-execution-contexts-in-task.html">sched-20260910-003</a>）改同一片 `sched_tick()` 代码，先后顺序无人协调，存在 rebase/冲突成本。
 - `sched_tick()` 是当前最热的改动点之一（PE + sched_ext v13 也在触碰），urgent 分支落地前可能需要重打基线。
 
 *next_action*：等 tip-bot 回帖确认进入 `tip/sched/urgent`；作者宜主动在 v4 tick 系列封面里说明与本补丁的先后关系，避免两条线互相踩。

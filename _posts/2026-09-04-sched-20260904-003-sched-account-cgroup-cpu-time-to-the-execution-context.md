@@ -116,7 +116,7 @@ layout: article
   - 作者接受意见的回帖: <https://lore.kernel.org/all/20260904023705.106589-1-sh_def@163.com/>
   - v1（反向方案）: <https://lore.kernel.org/all/5733b51108eda90c1bda98a68d58b5e6ccbc24ec.1788433334.git.sh_def@163.com/>
 - 相关文章/系列：
-  - [[sched-20260903-008]] 同一问题的 v1 方案（把 cgroup 字段记到调度上下文），已被本 v2 取代。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-008-sched-cputime-account-cgroup-fields-to-the-scheduling-context.html">sched-20260903-008</a> 同一问题的 v1 方案（把 cgroup 字段记到调度上下文），已被本 v2 取代。
 - 相关代码/commit：
   - `kernel/sched/fair.c` `update_se()`
   - `aa4f74dfd42b` "sched: Fix runtime accounting w/ split exec & sched contexts"

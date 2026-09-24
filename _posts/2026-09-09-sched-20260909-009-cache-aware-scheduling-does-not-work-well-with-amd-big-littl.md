@@ -57,7 +57,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 sched-20260905-007 / sched-20260831-006 / sched-20260829-003。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而**不是** Mario 的那枚；以及 Tim Chen 主动透露 CAS 的主动负载均衡路径还有两个已知问题需要修，并给出了补丁链接。Klaus 表明自己在休假（Linz 的 Ars Electronica Festival），未来几天不会有新数据。
+本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/05/sched-20260905-007-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260905-007</a> / <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260831-006</a> / <a class="article-ref" href="/lkm/2026/08/29/sched-20260829-003-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260829-003</a>。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而**不是** Mario 的那枚；以及 Tim Chen 主动透露 CAS 的主动负载均衡路径还有两个已知问题需要修，并给出了补丁链接。Klaus 表明自己在休假（Linz 的 Ars Electronica Festival），未来几天不会有新数据。
 
 ## 背景与问题
 
@@ -68,7 +68,7 @@ layout: article
 本日没有新代码，只有两条指向既有补丁的链接，值得单独记下来因为它们是 Tim Chen 主动给出的、尚未在本线程内展开的修复：
 
 - `20260903020656.3793626-1-wanglu.priv@gmail.com`（Lu Wang 的 active load balance guard）
-- `2b0a35122ee615c6fa51076e5d79330e633755ac.camel@linux.intel.com`（本线程另一条 ALB 讨论线，见 sched-20260909-015）
+- `2b0a35122ee615c6fa51076e5d79330e633755ac.camel@linux.intel.com`（本线程另一条 ALB 讨论线，见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a>）
 
 Tim 的原话："we have also found two issues with the active load balance paths for CAS that need fixes. You may want to add those patches and see if they are helpful to improve things."
 
@@ -86,7 +86,7 @@ Tim 的原话："we have also found two issues with the active load balance path
 
 ## 合入评估
 
-不适用：这是一份问题报告而非 patch 系列，没有可评估的合入对象。相关修复目前散在别处：Tim 提到的两枚 ALB 补丁在另一条线上推进（见 sched-20260909-015 与 Lu Wang 的链接），它们能否解释 HX-370 上的现象尚未验证。
+不适用：这是一份问题报告而非 patch 系列，没有可评估的合入对象。相关修复目前散在别处：Tim 提到的两枚 ALB 补丁在另一条线上推进（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a> 与 Lu Wang 的链接），它们能否解释 HX-370 上的现象尚未验证。
 
 ## 效果评估
 
@@ -96,7 +96,7 @@ Tim 的原话："we have also found two issues with the active load balance path
 
 - `testing`：这是当前最有价值也最缺的一件事——手上有 AMD Strix/HX 系列大小核机器的话，按明确表格复现一遍：基线内核、+Tim 的 `20260825174112.2580942-1`、+Mario 的 `c1e7fe5e75ed`（仅暴露参数）、+Lu Wang 的 ALB guard，逐个给出吞吐与 `perf` 侧的迁移/L3 命中数据。当天 Tim 自己说需要去找类似 HX-370 的机器，说明连 Intel 侧也缺复现平台。
 - `discussion`：直接把这些补丁链接回给 Klaus，并给出一份「他应该按什么顺序、在什么负载上试」的最小清单——他 09-09 之后要休假几天，这正是可以趁空档把实验设计定下来的窗口。
-- `review`：跟进 Tim 提到的「CAS 的主动负载均衡路径有两个问题需要修」这一说法——当天他没有在本线程里描述这两个问题分别是什么，只是丢了链接。把它们与 `nr_pref_llc_running` 那条讨论线（sched-20260909-015）对照，很可能能确认这两枚补丁是否就是同一件事。
+- `review`：跟进 Tim 提到的「CAS 的主动负载均衡路径有两个问题需要修」这一说法——当天他没有在本线程里描述这两个问题分别是什么，只是丢了链接。把它们与 `nr_pref_llc_running` 那条讨论线（<a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a>）对照，很可能能确认这两枚补丁是否就是同一件事。
 
 ## 参考链接
 

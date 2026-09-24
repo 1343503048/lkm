@@ -138,8 +138,8 @@ layout: article
   - Richard Cheng 对 17/18 的提问: <https://lore.kernel.org/all/apaDOhiWKcLH5iQt@MWDK4CY14F/>
   - v12 cover letter（上一版）: <https://lore.kernel.org/all/20260816173732.17162-1-arighi@nvidia.com/>
 - 相关文章/系列：
-  - [[sched-20260902-001]] Proxy Exec 批合入 tip（主线起点）。
-  - [[sched-20260904-008]] 本系列 12/18（reject DSQ 泛化）的讨论详情。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html">sched-20260902-001</a> Proxy Exec 批合入 tip（主线起点）。
+  - <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-008-sched-ext-generalize-the-reject-dsq-reenqueue-path.html">sched-20260904-008</a> 本系列 12/18（reject DSQ 泛化）的讨论详情。
 - 相关代码/commit：
   - `kernel/sched/ext/ext.c` / `kernel/sched/ext/sub.c` / `kernel/sched/core.c`
   - `SCX_OPS_ENQ_BLOCKED` / `SCX_ENQ_BLOCKED` / `SCX_RQ_PROXY_RETRY` / `WF_ON_RQ`

@@ -58,7 +58,7 @@ Tianyi Chen 为 sched_ext selftests 补 DSQ 创建路径的覆盖（重复创建
 
 ## Maintainer 意见与讨论焦点
 
-Tejun Heo 未提出任何意见即收取。值得对照的是同一天作者在另外两枚测试补丁上的态度完全不同：`selftests/sched_ext: Validate select_cpu_and mask constraints` 被打回要求两处实质修改（见 sched-20260909-005），而 `Handle CPU hotplug write failures`、`Fail interrupted test runs` 与本补丁一样直接收取。也就是说这轮里「需要作者改」的只有那一个用例，本补丁不在其中。
+Tejun Heo 未提出任何意见即收取。值得对照的是同一天作者在另外两枚测试补丁上的态度完全不同：`selftests/sched_ext: Validate select_cpu_and mask constraints` 被打回要求两处实质修改（见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-005-selftests-sched-ext-validate-select-cpu-and-mask-constraints.html">sched-20260909-005</a>），而 `Handle CPU hotplug write failures`、`Fail interrupted test runs` 与本补丁一样直接收取。也就是说这轮里「需要作者改」的只有那一个用例，本补丁不在其中。
 
 ## 合入评估
 

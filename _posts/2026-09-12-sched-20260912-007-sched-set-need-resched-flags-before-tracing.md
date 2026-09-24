@@ -46,7 +46,7 @@ layout: article
 ---
 
 ## TL;DR
-Andrea Righi 修复 sched_set_need_resched_tp 在 TIF_NEED_RESCHED 置位前触发、可被 BPF 程序递归重入直至内核栈溢出的问题；Gabriele Monaco 当即指出这与 Sechang Noh 六月的系列是同一修复，Andrea 确认逐行相同并主动撤回——「We can ignore this one and go with Sechang's」。本补丁本身就此终止，真正的修复在 Sechang 的 v3 系列（未入缓存）。后续报道见 sched-20260913-004。
+Andrea Righi 修复 sched_set_need_resched_tp 在 TIF_NEED_RESCHED 置位前触发、可被 BPF 程序递归重入直至内核栈溢出的问题；Gabriele Monaco 当即指出这与 Sechang Noh 六月的系列是同一修复，Andrea 确认逐行相同并主动撤回——「We can ignore this one and go with Sechang's」。本补丁本身就此终止，真正的修复在 Sechang 的 v3 系列（未入缓存）。后续报道见 <a class="article-ref" href="/lkm/2026/09/13/sched-20260913-004-sched-set-need-resched-flags-before-tracing.html">sched-20260913-004</a>。
 
 ## 背景与问题
 commit adcc3bfa8806（"sched: Adapt sched tracepoints for RV task model"）引入的 sched_set_need_resched_tp 在对应线程标志置位之前发出。若 BPF tracepoint 程序在离开 RCU 读临界区时又触发 rcu_read_unlock_special()（需推迟静息态时调 set_need_resched_current()），而 TIF_NEED_RESCHED 尚未置位，tracepoint 会再次发出并无限循环，直至内核栈溢出：`__trace_set_need_resched() → bpf_trace_run3() → rcu_read_unlock_migrate() → rcu_read_unlock_special() → set_need_resched_current() → set_tsk_need_resched() → __trace_set_need_resched()`。

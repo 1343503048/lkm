@@ -52,7 +52,7 @@ layout: article
 增量更新：Andrea Righi 推出 sched_ext/for-7.4 懒抢占系列 v6，落实 Tejun Heo 三条意见（把 slice_expires_lazy 塞进 scx.disallow 旁的 padding 而非让 task_struct 膨胀 8 字节、修正 LAZY_SLICE_EXPIRY 文档、先置 lazy resched 请求再恢复 tick 依赖）。Tejun 以 AI 辅助评审跑通 vng 下全部 selftest，并给出若干待修的小问题（autogen 头顺序、selftest 健壮性），合入可能性高。
 
 ## 背景与问题
-背景见 sched-20260916-007：fair 类可通过 lazy rescheduling 延迟调度边界，sched_ext 此前只暴露即时抢占给 BPF 调度器。本系列补齐懒抢占能力。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-007-sched-ext-add-lazy-preemption-support.html">sched-20260916-007</a>：fair 类可通过 lazy rescheduling 延迟调度边界，sched_ext 此前只暴露即时抢占给 BPF 调度器。本系列补齐懒抢占能力。
 
 ## 技术方案
 方案不变：新增 enqueue/kick 抢占标志的 lazy 变体，使运行中的 sched_ext 任务切片到期后可推迟调度边界直到返回用户态或下一次调度 tick；SCX_OPS_LAZY_SLICE_EXPIRY 选择默认懒切片到期，任务级可用 `scx_bpf_task_set_slice_expiry()` 双向覆盖；bypass 仍强制即时重调度；lazy enqueue/kick 请求还会在目标为 NO_HZ_FULL 上的无限切片任务时恢复调度 tick。

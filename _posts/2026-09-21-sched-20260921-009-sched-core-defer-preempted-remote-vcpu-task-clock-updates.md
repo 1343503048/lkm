@@ -47,7 +47,7 @@ layout: article
 增量更新：Dongli Zhang 的"延迟被抢占远程 vCPU 的 task clock 更新" RFC 昨日收到 KVM 维护者 Sean Christopherson 的技术质疑——该方案的关键约束"hypervisor 在清除 preempted 标记前发布最新 stealtime"在旧版 KVM 上无法保证，作者尚未回应。合入前景趋弱。
 
 ## 背景与问题
-背景见 sched-20260824-008：KVM 客户机里，当 vCPU A 为被抢占的 vCPU B 做远程记账时，host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 把 stolen 区间误计入任务运行时间，任务被施加错误调度惩罚。RFC 提出延迟远程 CPU 对已标记 preempted 的 vCPU 的 `clock_task` 更新。
+背景见 <a class="article-ref" href="/lkm/2026/08/24/sched-20260824-008-sched-core-defer-vcpu-task-clock.html">sched-20260824-008</a>：KVM 客户机里，当 vCPU A 为被抢占的 vCPU B 做远程记账时，host 直到 vCPU B 重新进入才更新 stealtime，导致 vCPU A 把 stolen 区间误计入任务运行时间，任务被施加错误调度惩罚。RFC 提出延迟远程 CPU 对已标记 preempted 的 vCPU 的 `clock_task` 更新。
 
 ## 技术方案
 本日无新代码。核心约束仍如 RFC 所述：需要 hypervisor 在清除 `preempted` 标记之前发布最新 stealtime。Sean 的质疑正落在这条约束的可实现性上。

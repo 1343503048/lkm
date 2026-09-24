@@ -178,4 +178,4 @@ being terminated."——拒绝即退出调度器，不影响正常调度路径�
   https://lore.kernel.org/all/1d5f2636-a5e3-4b67-bbb9-12922fa0d804@kylinos.cn/ 、
   https://lore.kernel.org/all/20260903032953.659847-1-liwanwu@kylinos.cn/ 、
   https://lore.kernel.org/all/7567d46cf1bbae3377b0c84aa5e4a030@kernel.org/
-- 相关：[[sched-20260903-003]]、[[sched-20260904-010]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260903-003</a>、<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-010-sched-ext-two-more-context-safety-fixes-found-in-the-nmi-kfunc-audit.html">sched-20260904-010</a>

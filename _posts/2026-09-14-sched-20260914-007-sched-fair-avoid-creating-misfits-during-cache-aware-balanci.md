@@ -36,16 +36,16 @@ layout: article
 ---
 
 ## TL;DR
-增量更新，全貌见 sched-20260904-006（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 schedstat lb_imbalance_misfit 或其他信号）。Tim 尚未回复。
+增量更新，全貌见 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>（该修复已合入 tip `sched/urgent`，commit `f0d243a96f2684ad771d678767d17972cf840bd7`）。09-14 NVIDIA KobaK 向作者 Tim Chen 提方法学问题：cover 解释了失败模式，但未说明观测方法，希望公开复现细节（hybrid 代际、workload、是否用 schedstat lb_imbalance_misfit 或其他信号）。Tim 尚未回复。
 
 ## 背景与问题
-承 sched-20260904-006：混合架构（SD_ASYM_CPUCAPACITY）上 cache-aware balancing 为了追 preferred LLC 把任务拉到装不下它的目标 CPU、人为制造 misfit；修复同时把 misfit 迁移优先级提到 LLC 聚合之上，已进 tip。今日为合入后的复现方法讨论——NVIDIA 侧想在自家平台复现并验证。
+承 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>：混合架构（SD_ASYM_CPUCAPACITY）上 cache-aware balancing 为了追 preferred LLC 把任务拉到装不下它的目标 CPU、人为制造 misfit；修复同时把 misfit 迁移优先级提到 LLC 聚合之上，已进 tip。今日为合入后的复现方法讨论——NVIDIA 侧想在自家平台复现并验证。
 
 ## 技术方案
 无新代码。今日是测试方法学的讨论：KobaK 承认 cover 描述的 LLC locality vs capacity loss 取舍清晰，但指出 "I did not find a note on the observation method"，请 Tim 分享测试与观测方式。
 
 ## 版本演进与当前进展
-- 08-25：Tim Chen 单补丁发出；09-04 前进 tip（sched-20260904-006）。
+- 08-25：Tim Chen 单补丁发出；09-04 前进 tip（<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>）。
 - 09-14（本文窗口）：KobaK 提复现方法问题，无新版本发出。
 
 ## Maintainer 意见与讨论焦点
@@ -54,10 +54,10 @@ layout: article
 - 分歧/未闭合处：复现方法未公开，第三方验证悬空。
 
 ## 合入评估
-*likelihood=merged*（已成事实，承 sched-20260904-006）。*blocking_issues*：无合入卡点；讨论性疑问待 Tim 补充复现方法。*next_action*：等 Tim 公开测试方法；NVIDIA 平台复现验证后可进一步确认修复的通用性。
+*likelihood=merged*（已成事实，承 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>）。*blocking_issues*：无合入卡点；讨论性疑问待 Tim 补充复现方法。*next_action*：等 Tim 公开测试方法；NVIDIA 平台复现验证后可进一步确认修复的通用性。
 
 ## 效果评估
-无新数据。原 patch 有 0day 在 58 个 config 上构建成功的记录（承 sched-20260904-006）。
+无新数据。原 patch 有 0day 在 58 个 config 上构建成功的记录（承 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a>）。
 
 ## 我可以参与的点
 - kind=discussion：如持有混合架构平台，可主动按 cover 描述尝试复现 misfit 并回帖观测方法，帮助社区补齐第三方验证面。

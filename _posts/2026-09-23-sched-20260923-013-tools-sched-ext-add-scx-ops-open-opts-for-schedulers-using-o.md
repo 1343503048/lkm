@@ -47,16 +47,16 @@ layout: article
 ---
 
 ## TL;DR
-- sched-20260922-006：Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun Heo 回帖建议 `SCX_OPS_OPEN()` 直接以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()` 来减少重复。
-- sched-20260923-013（今天）：Fuyu Zhao 发出 v2，按 Tejun Heo 建议让 `SCX_OPS_OPEN()` 内部以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，收敛为单份展开，消除两份宏实现的重复。实现已落地，待 Tejun 复审。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260922-006</a>：Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun Heo 回帖建议 `SCX_OPS_OPEN()` 直接以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()` 来减少重复。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260923-013</a>（今天）：Fuyu Zhao 发出 v2，按 Tejun Heo 建议让 `SCX_OPS_OPEN()` 内部以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，收敛为单份展开，消除两份宏实现的重复。实现已落地，待 Tejun 复审。
 
 ## 背景与问题
-- sched-20260922-006：`sched_ext` 调度器用 `SCX_OPS_OPEN()` 宏打开 BPF skeleton，内部做 kernel 版本兼容性检查（`hotplug_seq` 注入、`dump()` 字段存在性、`cgroup_set_bandwidth` 等）。有些调度器需要向 `bpf_object__open` 传额外 open opts，但 bpftool 生成的 `*_open_opts()` 接口会完全绕过 `SCX_OPS_OPEN()` 的兼容处理。
-- sched-20260923-013（今天）：背景无新增，沿用 v1 的问题定义。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260922-006</a>：`sched_ext` 调度器用 `SCX_OPS_OPEN()` 宏打开 BPF skeleton，内部做 kernel 版本兼容性检查（`hotplug_seq` 注入、`dump()` 字段存在性、`cgroup_set_bandwidth` 等）。有些调度器需要向 `bpf_object__open` 传额外 open opts，但 bpftool 生成的 `*_open_opts()` 接口会完全绕过 `SCX_OPS_OPEN()` 的兼容处理。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260923-013</a>（今天）：背景无新增，沿用 v1 的问题定义。
 
 ## 技术方案
-- sched-20260922-006：把 `__SCX_OPS_OPEN` 重构为接受一个 open 表达式（`__open_expr`），新增 `SCX_OPS_OPEN_OPTS(__ops_name, __scx_name, __opts)` 宏——内部仍走同一套兼容检查（`dump()` 检查、`hotplug_seq`、`SCX_ENUM_INIT`、`cgroup_set_bandwidth` 告警），只是把 skeleton 打开动作换成 `__scx_name##__open_opts(__opts)`。`SCX_OPS_OPEN()` 保留为旧宏，展开为以 `__scx_name##__open()` 为 open 表达式。`tools/sched_ext/include/scx/compat.h` 约 +15/-5 行。
-- sched-20260923-013（今天）：v2 把 `__SCX_OPS_OPEN` 重构为接受 `__opts` 参数，skeleton 打开动作统一为 `__scx_name##__open_opts(__opts)`；`SCX_OPS_OPEN()` 改为以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，消除两份宏展开的重复（Tejun 建议，v1→v2 的唯一实质变化）。`tools/sched_ext/include/scx/compat.h` 约 +8/-5 行。
+- <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260922-006</a>：把 `__SCX_OPS_OPEN` 重构为接受一个 open 表达式（`__open_expr`），新增 `SCX_OPS_OPEN_OPTS(__ops_name, __scx_name, __opts)` 宏——内部仍走同一套兼容检查（`dump()` 检查、`hotplug_seq`、`SCX_ENUM_INIT`、`cgroup_set_bandwidth` 告警），只是把 skeleton 打开动作换成 `__scx_name##__open_opts(__opts)`。`SCX_OPS_OPEN()` 保留为旧宏，展开为以 `__scx_name##__open()` 为 open 表达式。`tools/sched_ext/include/scx/compat.h` 约 +15/-5 行。
+- <a class="article-ref" href="/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html">sched-20260923-013</a>（今天）：v2 把 `__SCX_OPS_OPEN` 重构为接受 `__opts` 参数，skeleton 打开动作统一为 `__scx_name##__open_opts(__opts)`；`SCX_OPS_OPEN()` 改为以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，消除两份宏展开的重复（Tejun 建议，v1→v2 的唯一实质变化）。`tools/sched_ext/include/scx/compat.h` 约 +8/-5 行。
 
 ## 版本演进与当前进展
 - v1（09-22）：新增 `SCX_OPS_OPEN_OPTS()` 宏，保留兼容检查同时允许传 open opts；`SCX_OPS_OPEN()` 保留为旧宏。Tejun 建议收敛实现。

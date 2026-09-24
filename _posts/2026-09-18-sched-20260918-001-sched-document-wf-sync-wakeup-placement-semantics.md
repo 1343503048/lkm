@@ -55,7 +55,7 @@ layout: article
 增量更新：Shubhang Kaushik 的 WF_SYNC 语义文档系列推出 v2（去掉实现细节、只描述稳定的 fair 类语义），并修正 waitqueue API 中"wakee 不会被迁移"的错误保证。本日 Peter Zijlstra 质疑整篇文档是"bitrot 温床"、建议改成内联注释，Shrikanth Hegde 则支持文档化（WF_SYNC 已有 4+ 个改动提案、语义混乱）。核心分歧是"独立文档 vs 内联注释"的形式问题。
 
 ## 背景与问题
-背景见 sched-20260903-016（v1）：waitqueue API 注释声称同步唤醒的 wakee 不会被迁移到其他 CPU，但当前唤醒路径并不保证这一点；WF_SYNC 在 fair 类的语义从未被文档化。v1 用实现调用流程来描述语义，被 Vineeth Reddy 指出"太实现相关、易过时"。
+背景见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-016-sched-document-wf-sync-wakeup-placement-semantics.html">sched-20260903-016</a>（v1）：waitqueue API 注释声称同步唤醒的 wakee 不会被迁移到其他 CPU，但当前唤醒路径并不保证这一点；WF_SYNC 在 fair 类的语义从未被文档化。v1 用实现调用流程来描述语义，被 Vineeth Reddy 指出"太实现相关、易过时"。
 
 ## 技术方案
 - 1/2（sched: Document ...）：新增 `Documentation/scheduler/sched-wake-affinity.rst`（67 行），只描述稳定的 fair 类 WF_SYNC 语义：WF_SYNC 是 advisory hint，可影响 placement 与 preemption，但不保证 CPU 局部性、避免迁移或立即抢占；明确"本文只记录现有行为，不建立新的 placement 策略"。

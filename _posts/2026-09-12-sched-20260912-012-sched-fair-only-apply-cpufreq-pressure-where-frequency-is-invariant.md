@@ -44,16 +44,16 @@ layout: article
 ---
 
 ## TL;DR
-Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 sched-20260910-009 及其相关文章。
+Jianyong Wu 当日回应 K Prateek Nayak 09-09 的提问，认领后续工作：愿意按 Vincent 的跟进意见重构方案——在 boost 状态切换之间保持参考频率（reference frequency）固定。系列仍处于「作者重写中、等待新版本」状态。本文为增量更新，此前多轮覆盖见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260910-009</a> 及其相关文章。
 
 ## 背景与问题
-（承 sched-20260910-009）cpufreq pressure（IO/CPU 压力信号对频率的影响）只在频率不变（frequency invariant）平台上生效的系列；讨论聚焦 boost 状态切换时参考频率漂移导致的压力计算失真，Vincent 与 Prateek 先后给出方向性意见。
+（承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260910-009</a>）cpufreq pressure（IO/CPU 压力信号对频率的影响）只在频率不变（frequency invariant）平台上生效的系列；讨论聚焦 boost 状态切换时参考频率漂移导致的压力计算失真，Vincent 与 Prateek 先后给出方向性意见。
 
 ## 技术方案
 当日无新代码。Jianyong 的回应要点：「Thanks for asking, I would happy to take a stab at this. Based on Vincent's follow-up, I think we may need a different approach to keep the reference frequency fixed across boost state changes.」——即接受 Vincent 的跟进意见，放弃在现有实现上打补丁，转向「boost 切换间固定参考频率」的新方案。具体设计未在缓存中给出。
 
 ## 版本演进与当前进展
-*current_version: v3（承 sched-20260910-009 的覆盖时点；当日缓存仅作者回应一封，无新版本）*。
+*current_version: v3（承 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-009-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-in.html">sched-20260910-009</a> 的覆盖时点；当日缓存仅作者回应一封，无新版本）*。
 
 - 系列已多轮覆盖（09-02-008/09-03-010/09-07-006/09-08-008/09-09-012/09-10-009）；
 - 09-09 Prateek 提问 → 09-12 作者认领并宣布换方向。重写版本（预期 v4）未发出。

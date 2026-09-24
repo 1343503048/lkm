@@ -96,7 +96,7 @@ Zhan Xusheng（Xiaomi）的 2 补丁**纯注释修复**，对象是负载均衡�
 
 - v1（8/28 16:36）：2 补丁一次发出，无 cover letter。
 - 截至本次邮件数据源末尾（9/5），**这条线程没有任何回帖**，也未被任何 maintainer 打上标签。
-- 同一作者本周期内另外两次出现值得注意：8/27 他提出 `nr_pref_llc_running` 与 `h_nr_runnable` 集合不一致的疑问（站内 sched-20260827-018），8/28 Tim Chen 直接在该线程内联给出修复补丁并由他回 `Reviewed-by`（站内 sched-20260828-004）。这是一个"读码发现真 bug → 顺手修注释"的作者，注释修复的可信度因此比一般 clean-up 高。
+- 同一作者本周期内另外两次出现值得注意：8/27 他提出 `nr_pref_llc_running` 与 `h_nr_runnable` 集合不一致的疑问（站内 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-018-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260827-018</a>），8/28 Tim Chen 直接在该线程内联给出修复补丁并由他回 `Reviewed-by`（站内 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>）。这是一个"读码发现真 bug → 顺手修注释"的作者，注释修复的可信度因此比一般 clean-up 高。
 
 ## Maintainer 意见与讨论焦点
 

@@ -74,11 +74,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 [[sched-20260903-009]]。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_rq(cpu)->sd` 解引用和 `cpumask_test_cpu()`；并抛出两个更实质的问题：宽 SMT（SMT-4/SMT-8）上核已经忙时 rank 排序还值不值得那点额外搜索开销，以及既然每条路径都要走 `select_idle_smt_priority()`，能否只在 `select_idle_sibling()` 收口处做一次。Andrea 全部接受（「Yes, agreed. I like this way more.」）并进一步修掉了 Prateek diff 里末尾 fallback 会白做一次优先级查找的问题，最后明确「I'm going to run some tests with this and will send a v3 later」。本日无新版本发出，收益数据仍停留在 v1/v2 cover 里那组 9.4 → 10.1 TFLOP/s。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a>。09-07 上午 K Prateek Nayak（AMD）对 Andrea Righi（NVIDIA）这套「空闲选择时尊重非对称 SMT 优先级」的改动给出一个降开销的 nit——把 `sched_smt_asym_prefer()` 的判断内联进 `select_idle_sibling()` 路径，省掉每次 `cpu_rq(cpu)->sd` 解引用和 `cpumask_test_cpu()`；并抛出两个更实质的问题：宽 SMT（SMT-4/SMT-8）上核已经忙时 rank 排序还值不值得那点额外搜索开销，以及既然每条路径都要走 `select_idle_smt_priority()`，能否只在 `select_idle_sibling()` 收口处做一次。Andrea 全部接受（「Yes, agreed. I like this way more.」）并进一步修掉了 Prateek diff 里末尾 fallback 会白做一次优先级查找的问题，最后明确「I'm going to run some tests with this and will send a v3 later」。本日无新版本发出，收益数据仍停留在 v1/v2 cover 里那组 9.4 → 10.1 TFLOP/s。
 
 ## 背景与问题
 
-问题本体（详见 [[sched-20260903-009]]）：`SD_ASYM_PACKING` 会给共享同一个 SMT 核的 CPU 排序，但空闲 CPU 选择不参考这个顺序，任务可以落在任意兄弟线程上并停留到负载均衡纠正为止。NVIDIA Olympus/Vera 的痛点不是容量非对称（PE0/PE1 稳态容量相等），而是「换活跃兄弟」本身很贵——从两线程模式退回全资源单线程模式需要兄弟持续空闲约 10 Ki cycles 的 qualification interval（`293f9611ae735` 的结论）。POWER7 在 SMT 层同样使用 `SD_ASYM_PACKING`，且是 SMT4，属于同一套通用逻辑的第二个用户。
+问题本体（详见 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a>）：`SD_ASYM_PACKING` 会给共享同一个 SMT 核的 CPU 排序，但空闲 CPU 选择不参考这个顺序，任务可以落在任意兄弟线程上并停留到负载均衡纠正为止。NVIDIA Olympus/Vera 的痛点不是容量非对称（PE0/PE1 稳态容量相等），而是「换活跃兄弟」本身很贵——从两线程模式退回全资源单线程模式需要兄弟持续空闲约 10 Ki cycles 的 qualification interval（`293f9611ae735` 的结论）。POWER7 在 SMT 层同样使用 `SD_ASYM_PACKING`，且是 SMT4，属于同一套通用逻辑的第二个用户。
 
 本日新增的维度是**代价**：这套逻辑挂在 `select_idle_sibling()` 的多条快路径与 `select_idle_core()`/`select_idle_cpu()`/`select_idle_smt()`/`select_idle_capacity()` 的多个返回点上，AMD 侧关心的是这些 hook 在非 SMT-ASYM 机器上是否零成本、在宽 SMT 机器上多出来的搜索是否能被收益抵掉。
 
@@ -148,4 +148,4 @@ Andrea 在此基础上又收了一刀：末尾 fallback 不应该无条件做这
   - 09-04 重发 2/2：https://lore.kernel.org/all/20260904091838.3617894-3-arighi@nvidia.com/
   - Dietmar Eggemann 的四点意见：https://lore.kernel.org/all/0d02e284-9a07-4f54-bf63-8edaa5e224e5@arm.com/
   - 作者对 Eggemann 的逐条回应：https://lore.kernel.org/all/appeWCqxApU8NmuP@gpd4/
-- 相关：[[sched-20260903-009]]、[[sched-20260904-002]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-009-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260903-009</a>、<a class="article-ref" href="/lkm/2026/09/04/sched-20260904-002-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html">sched-20260904-002</a>

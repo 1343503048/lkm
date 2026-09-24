@@ -137,4 +137,4 @@ core scheduling、`fair_server`（cputime 虚拟化/限流）与 yield 语义的
 - Vincent Guittot Reviewed-by：https://lore.kernel.org/all/CAKfTPtCg78iZ=LYxVVtGm3QMqtHSX9jeqKhkU8QT1S_5aUYjgQ@mail.gmail.com/
 - tip-bot2 合入通告：https://lore.kernel.org/all/178833372528.3717435.3041801435295808244.tip-bot2@tip-bot2/
 - commit：https://git.kernel.org/tip/1719d035a6fa90b7467b6daf45a573f5180013b2 （引自合入通告正文）
-- 相关：[[sched-20260901-002]]（`->h_curr` 在 bandwidth 路径的使用）、[[sched-20260902-007]]（flat-hierarchy/h_load 同期问题）
+- 相关：<a class="article-ref" href="/lkm/2026/09/01/sched-20260901-002-sched-fair-use-cfs-rq-h-curr-in-the-bandwidth-paths.html">sched-20260901-002</a>（`->h_curr` 在 bandwidth 路径的使用）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-007-sched-fair-rework-fix-task-h-load.html">sched-20260902-007</a>（flat-hierarchy/h_load 同期问题）

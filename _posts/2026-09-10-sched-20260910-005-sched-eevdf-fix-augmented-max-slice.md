@@ -42,7 +42,7 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 related_articles 中的 sched-20260908-005。Vincent Guittot 的 max_slice 初始化修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 9a8bc9bb4c3f，09-10 10:22 +0200），与同日的多字段拷贝修复（sched-20260910-004）一起构成 EEVDF 增广树的两枚紧急修复。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-005-sched-eevdf-fix-augmented-max-slice.html">sched-20260908-005</a>。Vincent Guittot 的 max_slice 初始化修复已被 Peter Zijlstra 合入 tip/sched/urgent（commit 9a8bc9bb4c3f，09-10 10:22 +0200），与同日的多字段拷贝修复（<a class="article-ref" href="/lkm/2026/09/10/sched-20260910-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260910-004</a>）一起构成 EEVDF 增广树的两枚紧急修复。
 
 ## 背景与问题
 se->max_slice 是 EEVDF 运行树的增广字段之一，用于在父级维护子树内最大 slice。__enqueue_entity() 此前只用 se->slice 初始化了 se->min_vruntime 与 se->min_slice，没有初始化 se->max_slice，导致增广回调在父级计算 max_slice 时基于陈旧值，结果错误。Fixes: 6e3c0a4e1ad1 ("sched/fair: Fix lag clamp")。

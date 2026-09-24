@@ -40,7 +40,7 @@ layout: article
 
 ## TL;DR
 
-本文是 sched-20260821-001 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。
+本文是 <a class="article-ref" href="/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html">sched-20260821-001</a> 的增量更新。PeterZ 对 Michal Blaszczyk 的 v2 补丁提出命名建议：将锁重命名为 `cpu_weight_mutex` 和 `cpu_max_mutex`，使命名更精确反映锁保护的 cgroup 控制文件。
 
 ## 背景与问题
 
@@ -62,7 +62,7 @@ PeterZ: "Maybe cpu_weight_mutex? and cpu_max_mutex?"
 
 ## 合入评估
 
-- **likelihood**: high（与 sched-20260821-001 一致）
+- **likelihood**: high（与 <a class="article-ref" href="/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html">sched-20260821-001</a> 一致）
 - **blocking_issues**: 无
 - **next_action**: 作者出 v3 采用新命名
 
@@ -72,7 +72,7 @@ PeterZ: "Maybe cpu_weight_mutex? and cpu_max_mutex?"
 
 ## 我可以参与的点
 
-同 sched-20260821-001。
+同 <a class="article-ref" href="/lkm/2026/08/21/sched-20260821-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx-divergence.html">sched-20260821-001</a>。
 
 ## 参考链接
 

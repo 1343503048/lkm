@@ -66,12 +66,12 @@ Klaus Kusche（8/29 新线程）报告：AMD Ryzen HX 370（Zen 混合架构）�
 - 逃生门被有意关掉了：`migrate_degrades_llc()` 允许在 `sd->nr_balance_failed >= cache_nice_tries + 1` 时忽略 LLC 约束，但主循环里对因 LLC 局部性而没搬成任务的情况带 `LBF_LLC_PINNED` 标志**不累加** `nr_balance_failed`（注释明说这是 expected behavior），所以"失败太多次就放弃局部性"这条路径永远走不到。
 - 小核→大核的常规"上迁移"通道是 misfit（`rq->misfit_task_load` / `migrate_misfit`），它要求任务的 util 超出所在 CPU 容量。一个单线程 CPU-bound 任务的 util 会饱和在小核自身容量附近，因此**多数时候不构成 misfit**——这正是报告者看到"没人来救"的原因，也是为什么修复方向落在 misfit 判定而不是给 CAS 加新机制。
 
-相关的上游动作（非本邮件内容）：Tim Chen 8/25 的 `[PATCH] sched/fair: avoid creating misfits during cache-aware balancing` 走的就是"在 CAS 判定里尊重容量、别把任务做成 misfit"这条路，已在 sched-20260826-010 分析过；8/31 Chen Yu 在该报告线程里确认"当前代码里 CAS 覆盖了非对称调度策略"并把这份补丁指向报告者，见 sched-20260831-006。
+相关的上游动作（非本邮件内容）：Tim Chen 8/25 的 `[PATCH] sched/fair: avoid creating misfits during cache-aware balancing` 走的就是"在 CAS 判定里尊重容量、别把任务做成 misfit"这条路，已在 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-010-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260826-010</a> 分析过；8/31 Chen Yu 在该报告线程里确认"当前代码里 CAS 覆盖了非对称调度策略"并把这份补丁指向报告者，见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260831-006</a>。
 
 ## 版本演进与当前进展
 
 - 8/29 23:42（北京时间）：Klaus Kusche 发出报告，**当日线程内无任何回复**，也没有 `Reported-by`/补丁被关联。
-- 8/31：Chen Yu 确认根因并指向 Tim Chen 的 misfit 补丁；报告者回报实测有效（见 sched-20260831-006）。
+- 8/31：Chen Yu 确认根因并指向 Tim Chen 的 misfit 补丁；报告者回报实测有效（见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260831-006</a>）。
 - 本报告自身不携带补丁，因此没有版本演进可言；对应修复补丁当日仍是 v1。
 
 ## Maintainer 意见与讨论焦点
@@ -82,7 +82,7 @@ Klaus Kusche（8/29 新线程）报告：AMD Ryzen HX 370（Zen 混合架构）�
 
 ## 合入评估
 
-**unclear**（就"容量优先于缓存"这一策略诉求而言）。报告本身不产生可合入物。当日能观察到的事实是：问题被完整描述、无人反对、也无人接手；后续（8/31）社区给出的答案是复用 misfit 路线的局部修复，而不是报告者要求的通用优先级反转。因此"报告者的诉求被完整满足"可能性偏低，而"以 misfit 防护的形式部分收口"已在推进（那条补丁的合入评估见 sched-20260831-006，为 likely）。
+**unclear**（就"容量优先于缓存"这一策略诉求而言）。报告本身不产生可合入物。当日能观察到的事实是：问题被完整描述、无人反对、也无人接手；后续（8/31）社区给出的答案是复用 misfit 路线的局部修复，而不是报告者要求的通用优先级反转。因此"报告者的诉求被完整满足"可能性偏低，而"以 misfit 防护的形式部分收口"已在推进（那条补丁的合入评估见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260831-006</a>，为 likely）。
 
 ## 效果评估
 
@@ -99,6 +99,6 @@ Klaus Kusche（8/29 新线程）报告：AMD Ryzen HX 370（Zen 混合架构）�
 
 - lore thread（本报告，当日唯一邮件）: https://lore.kernel.org/all/2180ea5a-eb28-4152-8d4d-cd00b0c24b2e@computerix.info/
 - 相关修复补丁（Tim Chen，8/25）: https://lore.kernel.org/all/20260825174112.2580942-1-tim.c.chen@linux.intel.com/
-- 本报告线程的后续讨论（8/31 分析）: 见 sched-20260831-006
+- 本报告线程的后续讨论（8/31 分析）: 见 <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-006-cache-aware-scheduling-does-not-work-well-with-amd-big-little-cores.html">sched-20260831-006</a>
 - tip-bot commit: 未获取到
 - stable backport: 未获取到

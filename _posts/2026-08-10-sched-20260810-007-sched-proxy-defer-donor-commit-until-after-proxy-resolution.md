@@ -73,4 +73,4 @@ proxy execution 中，donor 任务被临时选为实际运行任务，但此时 
 
 ## 参考链接
 - lore: 未获取到
-- 关联: sched-20260810-001（proxy+scx v11）
+- 关联: <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-001-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260810-001</a>（proxy+scx v11）

@@ -54,7 +54,7 @@ layout: article
 ## 技术方案
 
 - 本日邮件无代码改动，属社区反馈与调优讨论。
-- 涉及的两处上游改动：Mario 的 ITMT/debugfs 解耦（已入 tip/sched/urgent，`Fixes: d04013a4b21b`）与 Tim Chen 的 CAS 避免制造 misfit（站内 sched-20260904-006 记为已进 tip/sched/urgent，但本批缓存正文里未获取到对应的 tip-bot 通知，无法独立确认）。
+- 涉及的两处上游改动：Mario 的 ITMT/debugfs 解耦（已入 tip/sched/urgent，`Fixes: d04013a4b21b`）与 Tim Chen 的 CAS 避免制造 misfit（站内 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a> 记为已进 tip/sched/urgent，但本批缓存正文里未获取到对应的 tip-bot 通知，无法独立确认）。
 - Peter Zijlstra 08-31 对 Tim Chen 那份 misfit 补丁提过流程性意见（作者自己漏了 `Signed-off-by`，以及 subject 在子系统前缀后应大写），说明该补丁在讨论期间本身还在移动。
 
 ## 版本演进与当前进展
@@ -99,7 +99,7 @@ layout: article
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260904-006]] cache-aware 均衡避免制造 misfit。
+  - <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-006-sched-fair-avoid-creating-misfits-during-cache-aware-balancing.html">sched-20260904-006</a> cache-aware 均衡避免制造 misfit。
 - 本日实测反馈（Klaus Kusche）：https://lore.kernel.org/all/14630984-9287-4454-b52f-3a1e526e1fdf@computerix.info/
 - Tim Chen 索要调参数据：https://lore.kernel.org/all/406a5c407bbe60cafc24f715e089f5552a0791f9.camel@linux.intel.com/
 - Chen Yu 的根因判断（CAS 覆盖非对称调度）：https://lore.kernel.org/all/b475039b-defe-46e7-ab85-46e3196da667@intel.com/

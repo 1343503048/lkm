@@ -42,7 +42,7 @@ layout: article
 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。
 
 ## 背景与问题
-背景见 sched-20260920-002：`update_prstate()` 在 cpuset 分区状态切换时会不必要地触发一次 `rebuild_sched_domains_locked()`，与调用链上其他路径的调度域重建重复，属于冗余开销。
+背景见 <a class="article-ref" href="/lkm/2026/09/20/sched-20260920-002-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html">sched-20260920-002</a>：`update_prstate()` 在 cpuset 分区状态切换时会不必要地触发一次 `rebuild_sched_domains_locked()`，与调用链上其他路径的调度域重建重复，属于冗余开销。
 
 ## 技术方案
 本日无新代码。修复为从 `update_prstate()` 中删除这次冗余的调度域（sched domain）重建，依赖调用方的既有重建路径，属无功能逻辑变化的清理/修复。

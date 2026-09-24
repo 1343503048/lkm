@@ -54,7 +54,7 @@ layout: article
 
 ## TL;DR
 
-**本文为增量更新**（完整背景见 sched-20260827-014）。Xueqin Luo（KylinOS）8/28 发出的 **v2 逐字采纳了 Rafael J. Wysocki 8/27 的替代写法**：不再在决策完成后"事后回退到最浅启用状态"，而是在约束钳制之前先把下界抬高——`if (constraint_idx < idx0) constraint_idx = idx0;`，其中 `idx0` 就是主循环顺带记录的"第一个启用 idle state 下标"。改动是单文件 11 行纯新增，changelog 明确标注 "(suggested by Rafael J. Wysocki)"，`Fixes: c410a9a142f1` 保留。ARM 的 Christian Loehle 当晚给出 **`Reviewed-by`**，这是该补丁拿到的第一个 review 标签。方案分歧已消失，剩下只是队列节奏。**OLK-6.6 的 `teo_select()` 有同一处缺陷**（已在本地树核对，见末节）。
+**本文为增量更新**（完整背景见 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-014-cpuidle-teo-do-not-return-a-disabled-idle-state.html">sched-20260827-014</a>）。Xueqin Luo（KylinOS）8/28 发出的 **v2 逐字采纳了 Rafael J. Wysocki 8/27 的替代写法**：不再在决策完成后"事后回退到最浅启用状态"，而是在约束钳制之前先把下界抬高——`if (constraint_idx < idx0) constraint_idx = idx0;`，其中 `idx0` 就是主循环顺带记录的"第一个启用 idle state 下标"。改动是单文件 11 行纯新增，changelog 明确标注 "(suggested by Rafael J. Wysocki)"，`Fixes: c410a9a142f1` 保留。ARM 的 Christian Loehle 当晚给出 **`Reviewed-by`**，这是该补丁拿到的第一个 review 标签。方案分歧已消失，剩下只是队列节奏。**OLK-6.6 的 `teo_select()` 有同一处缺陷**（已在本地树核对，见末节）。
 
 ## 背景与问题
 
@@ -99,7 +99,7 @@ v2 把这句话变成代码，插在指标统计循环之后、钳位之前：
 | 8/28 11:24 | **v2** `<20260828032457.2317326-1-luoxueqin@kylinos.cn>`，changelog 记 "Instead of falling back to idx0 after the candidate index has been capped to a disabled state, ensure that constraint_idx is at least equal to idx0 before the capping check (suggested by Rafael J. Wysocki)" |
 | 8/28 23:49 | Christian Loehle（ARM）`Reviewed-by: Christian Loehle <christian.loehle@arm.com>` |
 
-同作者的姊妹补丁 `cpuidle: menu: Do not return a disabled idle state`（menu governor 提前返回分支短路 disable 检查，站内 sched-20260827-015）**到 9/5 缓存末尾仍未出现 v2**，两封没有被打包推进。
+同作者的姊妹补丁 `cpuidle: menu: Do not return a disabled idle state`（menu governor 提前返回分支短路 disable 检查，站内 <a class="article-ref" href="/lkm/2026/08/27/sched-20260827-015-cpuidle-menu-do-not-return-a-disabled-idle-state.html">sched-20260827-015</a>）**到 9/5 缓存末尾仍未出现 v2**，两封没有被打包推进。
 
 ## Maintainer 意见与讨论焦点
 

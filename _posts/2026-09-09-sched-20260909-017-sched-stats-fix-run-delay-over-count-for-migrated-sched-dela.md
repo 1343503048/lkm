@@ -90,7 +90,7 @@ v1，09-09 21:33 发出（`<20260909133345.1572954-1-albin_yang@163.com>`），`
 
 1. **没有 `Reported-by`，也没给可观测实例**。整条描述是代码路径推演，看不出是自己在真实机器上观察到 `run_delay` 异常，还是纯静态审查发现。前者通常会有 trace 或 `/proc/sched` 数字，后者往往就停在文字层面。这直接影响维护者把它排在 urgent 还是常规窗口。
 2. **`__migrate_swap_task()` 这条路径被点名，但没有测试**。`move_queued_task_locked()` 用于 `MIGRATION_SWAPER`，需要用户态主动 `migrate_swap()`（典型使用者是 mm 相关的换出/换入实验），比 `move_queued_task()` 冷得多。也就是说这条更隐蔽的触发路径目前没有验证。
-3. **修复点位置是否最合适**。`sched_info_enqueue()` 现在同时读 `rq` 与 `se.sched_delayed`，即 sched stats 层直接依赖 fair 层的 delayed-dequeue 状态位。这与 09-09 另一条讨论（`nr_pref_llc_running` 与 `h_nr_queued` 的口径之争，见 sched-20260909-015）实际上是同一类问题：`DELAY_DEQUEUE` 之后，凡是拿「排队/运行」计数或时间戳做判断的地方都得重新对齐一次口径。这个补丁是这一系列对齐工作中最新的一枚。
+3. **修复点位置是否最合适**。`sched_info_enqueue()` 现在同时读 `rq` 与 `se.sched_delayed`，即 sched stats 层直接依赖 fair 层的 delayed-dequeue 状态位。这与 09-09 另一条讨论（`nr_pref_llc_running` 与 `h_nr_queued` 的口径之争，见 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a>）实际上是同一类问题：`DELAY_DEQUEUE` 之后，凡是拿「排队/运行」计数或时间戳做判断的地方都得重新对齐一次口径。这个补丁是这一系列对齐工作中最新的一枚。
 
 ## 合入评估
 
@@ -105,7 +105,7 @@ v1，09-09 21:33 发出（`<20260909133345.1572954-1-albin_yang@163.com>`），`
 ## 我可以参与的点
 
 - `testing`：这是当天最容易做出实证的一条。写一个小用例：让一个任务长时间睡眠（保证它以 `sched_delayed` 留在 rq 上），期间从另一 CPU 触发 `move_queued_task()`（`MIGRATION_SWAPER` 路径可用 `migrate_swap()` 系统调用），对比 `/proc/<pid>/sched` 里 `run_delay` 与真实 runnable 等待时间。有 `CONFIG_SCHED_CORE`/`migrate_swap` 权限的环境就能做，做完把数字贴到线程里就是这条补丁最缺的东西。
-- `review`：顺着 `DELAY_DEQUEUE` 把其它读 `nr_running` / 时间戳 / 计数的地方扫一遍（`sched_info_*`、`avg_idle`、`nr_pref_llc_running`、`h_nr_runnable`），确认是否还有同类「delayed 任务被算成等待或被漏算」的地方。本线程与 sched-20260909-015 的争议都源于同一个缺口，这类横向检查通常能直接产出后续补丁。
+- `review`：顺着 `DELAY_DEQUEUE` 把其它读 `nr_running` / 时间戳 / 计数的地方扫一遍（`sched_info_*`、`avg_idle`、`nr_pref_llc_running`、`h_nr_runnable`），确认是否还有同类「delayed 任务被算成等待或被漏算」的地方。本线程与 <a class="article-ref" href="/lkm/2026/09/09/sched-20260909-015-sched-fair-which-tasks-should-nr-pref-llc-running-be-compare.html">sched-20260909-015</a> 的争议都源于同一个缺口，这类横向检查通常能直接产出后续补丁。
 - `discussion`：可以问清作者这是静态审查还是实测发现；若是实测，请他把数据贴出来；若是静态审查，则建议明确说明，因为这会影响维护者的定级。
 - `new_patch`：`Fixes: 152e11f6df29` 意味着凡是回合过 delayed dequeue 的分支都受影响；OLK 6.6 类分支若含该特性，这枚单行修复适合回合，但 `Fixes` 需指向自家分支中引入 delayed dequeue 的 commit 而不是上游 hash。
 

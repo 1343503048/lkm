@@ -41,10 +41,10 @@ layout: article
 ---
 
 ## TL;DR
-增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺序；Kayra 认可 "Yeah, I think this is cleaner"。这是对 sched-20260911-003 中 Kayra 质疑的延续收口。
+增量更新。Kayra Cizmeci 09-10 投出的「把 nr_pref_llc_running 收进 runnable 域」补丁（4 补丁系列 patch 1/4）今日获 Chen Yu 回复：Chen Yu 实测了 Kayra 建议的「在 h_nr_runnable 更新点顺带维护」方案，结论是更复杂、角落案例更多，维持现有较简版本，改为补注释与调整 clear_delayed() 代码顺序；Kayra 认可 "Yeah, I think this is cleaner"。这是对 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a> 中 Kayra 质疑的延续收口。
 
 ## 背景与问题
-承 sched-20260828-004（原 nr_pref_llc_running 计数口径 bug：DELAY_DEQUEUE 下 nr_pref_llc_running 跟随 queued 语义、cfs.h_nr_runnable 扣除 delay-dequeued 任务，两计数集合不同导致 alb_break_llc() 判断失效）与 sched-20260911-003（Tim Chen 的 Fixes 系列 patch 1）。Kayra 曾在 Fixes 讨论中质疑：既然 nr_pref_llc_running 是 h_nr_runnable 的子集，为何不在前者的更新点顺带维护，省掉独立判据与四处调用。Tim 以 set_delayed() 顺序约束和 per-rq/per-cfs_rq 作用域差异自辩后，Kayra 09-10 自投了带改动建议的 patch 1/4。
+承 <a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>（原 nr_pref_llc_running 计数口径 bug：DELAY_DEQUEUE 下 nr_pref_llc_running 跟随 queued 语义、cfs.h_nr_runnable 扣除 delay-dequeued 任务，两计数集合不同导致 alb_break_llc() 判断失效）与 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a>（Tim Chen 的 Fixes 系列 patch 1）。Kayra 曾在 Fixes 讨论中质疑：既然 nr_pref_llc_running 是 h_nr_runnable 的子集，为何不在前者的更新点顺带维护，省掉独立判据与四处调用。Tim 以 set_delayed() 顺序约束和 per-rq/per-cfs_rq 作用域差异自辩后，Kayra 09-10 自投了带改动建议的 patch 1/4。
 
 ## 技术方案
 Chen Yu 实测 Kayra 方案后（自述 "It seems that the code becomes more complex and brings more headache :-( due to several corner cases"），给出替代 Version：
@@ -55,8 +55,8 @@ Chen Yu 实测 Kayra 方案后（自述 "It seems that the code becomes more com
 - 结论：维持较简版本 + 注释，并请 Tim 复核 "if this makes sense"。
 
 ## 版本演进与当前进展
-- 08-27/08-28：Zhan Xusheng 提问、Tim Chen 给出原始修复（sched-20260828-004）。
-- 09-10/09-11：Kayra 质疑并入 Fixes 系列，自投带改动建议的 patch 1/4（sched-20260911-003）。
+- 08-27/08-28：Zhan Xusheng 提问、Tim Chen 给出原始修复（<a class="article-ref" href="/lkm/2026/08/28/sched-20260828-004-sched-cache-keep-nr-pref-llc-running-in-the-runnable-domain.html">sched-20260828-004</a>）。
+- 09-10/09-11：Kayra 质疑并入 Fixes 系列，自投带改动建议的 patch 1/4（<a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a>）。
 - 09-14（本文窗口）：Chen Yu 实测 Kayra 方案、维持较简版本 + 注释；Kayra 认可，无新版本发出。
 
 ## Maintainer 意见与讨论焦点
@@ -66,14 +66,14 @@ Chen Yu 实测 Kayra 方案后（自述 "It seems that the code becomes more com
 - 分歧/未闭合处：Tim 对 Chen Yu 注释版 patch 1 的复核未回；设计取舍（单判据 vs 顺带维护）最终由 Tim 定夺。
 
 ## 合入评估
-*likelihood=medium*（承 Fixes 系列整体 medium）：本线程 patch 1 设计已收敛（Chen Yu 与 Kayra 就「维持较简版本 + 注释」达成一致），但随 Fixes 系列 v2 一起打包推进，Tim 复核与 PeterZ 对系列整体的意见仍是前提。*blocking_issues*：无独立卡点，随 sched-20260911-003 的 v2 推进。*next_action*：等 Tim 对注释版 patch 1 的复核；该计数口径随 Fixes v2 一并合入。
+*likelihood=medium*（承 Fixes 系列整体 medium）：本线程 patch 1 设计已收敛（Chen Yu 与 Kayra 就「维持较简版本 + 注释」达成一致），但随 Fixes 系列 v2 一起打包推进，Tim 复核与 PeterZ 对系列整体的意见仍是前提。*blocking_issues*：无独立卡点，随 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a> 的 v2 推进。*next_action*：等 Tim 对注释版 patch 1 的复核；该计数口径随 Fixes v2 一并合入。
 
 ## 效果评估
 无性能数据。计数正确性靠注释内两个时序图（case 1/2）推演，未见运行测试报告。
 
 ## 我可以参与的点
 - kind=review：核对注释版中 case 2（LB for delayed task）的 DO-NOT-DECREASE/DO-NOT-INCREASE 与 account_llc_* 实际实现是否一致。
-- kind=testing：DELAY_DEQUEUE + active balance 压力下验证计数不重不漏（承 sched-20260911-003 的验证点）。
+- kind=testing：DELAY_DEQUEUE + active balance 压力下验证计数不重不漏（承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a> 的验证点）。
 
 ## 参考链接
 - Chen Yu 注释版回帖：https://lore.kernel.org/all/aqdVpO66OfmHvvqB@chenyu-dev/

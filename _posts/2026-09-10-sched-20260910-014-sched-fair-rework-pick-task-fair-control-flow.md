@@ -140,7 +140,7 @@ static struct task_struct *pick_task_fair_rq(struct rq *rq)
 - v1（2026-09-09 18:17 发出，本缓存收件时间 2026-09-10 02:17，`<20260909181712.1050224-1-ynorov@nvidia.com>`），单补丁，`kernel/sched/fair.c` 27 insertions / 24 deletions。
 - 补丁基线 `kernel/sched/fair.c` index `ade1eceb39b8`；上下文显示基线已是 `h_nr_queued` + `update_curr_eevdf()` + `pick_next_entity(rq, true)`（层级下降已内聚到 `pick_next_entity()`）的形态。
 - 截至 09-10 缓存结束：**v1 刚发出，暂无 review 意见**，无 Reviewed-by / Acked-by，无 NAK。
-- 作者近况值得一提：同一天（09-10 01:19）Yury 给 steal_governor v13 的 07/13 补丁打了 Reviewed-by（见 sched-20260910-012），他此前多轮深度评审该系列，本补丁属于他在 `kernel/sched` 里顺手做的清理，而非某个系列的一部分。
+- 作者近况值得一提：同一天（09-10 01:19）Yury 给 steal_governor v13 的 07/13 补丁打了 Reviewed-by（见 <a class="article-ref" href="/lkm/2026/09/10/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.html">sched-20260910-012</a>），他此前多轮深度评审该系列，本补丁属于他在 `kernel/sched` 里顺手做的清理，而非某个系列的一部分。
 
 ## Maintainer 意见与讨论焦点
 本日无任何维护者发言。需要如实标注的是：

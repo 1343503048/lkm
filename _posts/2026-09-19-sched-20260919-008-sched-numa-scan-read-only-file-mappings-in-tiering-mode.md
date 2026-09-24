@@ -46,13 +46,13 @@ layout: article
 增量更新：Gregory Price 的 NUMA tiering 修复系列 3/4（让 tiering 模式也扫描只读文件映射）本日继续被 mm 维护者 Lorenzo Stoakes 敲打——他指出该补丁的 VMA 判定函数名不符实、实际会囊括 write-sealed memfd 与 MAP_PRIVATE 文件映射等，不建议在此引入新的 VMA helper，主张 hotfix 用内联代码+注释；作者回应"给我周末时间清理"。
 
 ## 背景与问题
-背景见 sched-20260918-014：NUMA tiering 模式下只读文件映射此前不被扫描，导致某些 tiering 场景下 numa balancing 行为缺失。3/4 试图让 tiering 模式也扫描这类映射。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-014-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260918-014</a>：NUMA tiering 模式下只读文件映射此前不被扫描，导致某些 tiering 场景下 numa balancing 行为缺失。3/4 试图让 tiering 模式也扫描这类映射。
 
 ## 技术方案
 3/4（`sched/numa: scan read-only file mappings in tiering mode`）：新增 VMA 判定，让 tiering 模式扫描只读文件映射。本日讨论集中在判定语义与 helper 形式。
 
 ## 版本演进与当前进展
-- v2 3/4（2026-09-11，`<20260911001826.2109390-4-gourry@gourry.net>`）：扫描只读文件映射（见 sched-20260918-014）。
+- v2 3/4（2026-09-11，`<20260911001826.2109390-4-gourry@gourry.net>`）：扫描只读文件映射（见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-014-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html">sched-20260918-014</a>）。
 - 本日 Lorenzo Stoakes（`<aq1inYWiNWtZlyoo@gremlin>`）继续反对该 VMA helper 的写法；作者 Gregory Price（`<aq1o3TYZR9JNkXXP@gourry-fedora-PF4VCD3F>`）回应"给我周末时间清理"。
 
 ## Maintainer 意见与讨论焦点

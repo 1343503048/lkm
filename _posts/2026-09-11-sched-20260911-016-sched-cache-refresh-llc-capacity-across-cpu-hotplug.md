@@ -62,7 +62,7 @@ llc_bytes = cache_size * span_weight / shared_weight。CPU 下线时 sched_cpu_d
 暂无维护者或社区回帖（当日缓存零回复），未获取到任何表态。
 
 ## 合入评估
-*likelihood=unknown*：无 review 可依据。有利面：修复有清晰的时序论证、真实平台复现与多场景验证（见下），且 Fixes 指向明确的 CAS 基础设施 commit（Tim Chen 的 sched/cache 系列，承 sched-20260911-003 的语境）；不利面：驱动侧（cacheinfo）与调度侧（topology）的接口改动需要两侧认可，作者非该子系统常客。*blocking_issues*：零 review；驱动侧 include 变化是否被 cacheinfo 维护者接受未定。*next_action*：等待 cacheinfo/sched 两边维护者首轮意见。
+*likelihood=unknown*：无 review 可依据。有利面：修复有清晰的时序论证、真实平台复现与多场景验证（见下），且 Fixes 指向明确的 CAS 基础设施 commit（Tim Chen 的 sched/cache 系列，承 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-003-sched-cache-fixes-for-cache-aware-scheduling.html">sched-20260911-003</a> 的语境）；不利面：驱动侧（cacheinfo）与调度侧（topology）的接口改动需要两侧认可，作者非该子系统常客。*blocking_issues*：零 review；驱动侧 include 变化是否被 cacheinfo 维护者接受未定。*next_action*：等待 cacheinfo/sched 两边维护者首轮意见。
 
 ## 效果评估
 作者给出了完整的验证矩阵（均为一手的、可核对的数字）：

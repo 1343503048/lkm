@@ -56,7 +56,7 @@ layout: article
 本文为增量更新（完整背景见 related_articles）。08-27 的讨论收敛到一个具体的代码问题：`task_can_sched_on_preferred()` 里针对 32-bit Arm 用户的防御性 `task_cpu_possible()` 检查是否多余。Dietmar Eggemann 给出肯定推理（`p->cpus_ptr` 恒为 `task_cpu_possible_mask(p)` 子集，与 preferred mask 相交不可能引入架构上不可运行的 CPU），作者 Shrikanth Hegde 愿意据此在 v12 删掉该检查，但以"我担心有例外才加的防御"反问，**当日 Dietmar 未回复，问题悬空**。
 
 ## 背景与问题
-该系列（Shrikanth Hegde, IBM）为虚机场景引入 preferred CPUs 与基于 steal time 的 vCPU 退避。v11（08-25，见 sched-20260825-001）曾加入/讨论过 32-bit 任务的特判。08-27 的线程挂在 v10 cover 下继续：焦点是 preferred mask 与异构架构约束（部分 Arm64 SoC 的 asymmetric AArch32 EL0——32-bit 用户态只能在部分核运行）能否自然组合。
+该系列（Shrikanth Hegde, IBM）为虚机场景引入 preferred CPUs 与基于 steal time 的 vCPU 退避。v11（08-25，见 <a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a>）曾加入/讨论过 32-bit 任务的特判。08-27 的线程挂在 v10 cover 下继续：焦点是 preferred mask 与异构架构约束（部分 Arm64 SoC 的 asymmetric AArch32 EL0——32-bit 用户态只能在部分核运行）能否自然组合。
 
 ## 技术方案
 Dietmar 的分析：若要让 `cpu_preferred_mask` 与 AArch32-EL0 特性配合，需把
@@ -71,7 +71,7 @@ Dietmar 的分析：若要让 `cpu_preferred_mask` 与 AArch32-EL0 特性配合�
 
 ## 版本演进与当前进展
 - v10：2026-08-12（12 补丁，本线程挂靠版本）。
-- v11：08-25（含 32-bit 任务的防御性改动，见 sched-20260825-001）。
+- v11：08-25（含 32-bit 任务的防御性改动，见 <a class="article-ref" href="/lkm/2026/08/25/sched-20260825-001-sched-steal-governor-introduce-preferred-cpus-v11.html">sched-20260825-001</a>）。
 - 08-27：v10 线程内完成上述"防御检查是否必要"的一来一回；等待 Dietmar 二次确认才能定 v12 内容。
 
 ## Maintainer 意见与讨论焦点

@@ -83,7 +83,7 @@ Wanwu Li 的修复是改用 `scx_task_sched_rcu()` 在 RCU 下读该指针。本
 
 *likelihood: possible*。
 依据：`Fixes: a5fa0708cbfd` + `Cc: stable`，且是可从 BPF 侧稳定触发的内核 oops（作者附了完整 Oops 与 RIP/CR2），严重性无争议；Andrea Righi 已在 v2 给 `Reviewed-by`；v3 已按维护者意见把语义收敛到最小面（判定不出即拒绝，不再牵连 root 调度器）。
-卡点：一是 v3 距离上一版评审只有约 10 小时，09-03 内 Tejun 未对 v3 表态，`Reviewed-by` 仍是 v2 的；二是 v3 偏离了 Tejun 提的「root sched 加标志 + 打印一次告警」方案，改用「静默拒绝」，需要他确认这不会丢掉他想观测的信号；三是本补丁与同作者的 NMI 拒绝系列（[[sched-20260903-003]]）共用 `scx_kfunc_context_filter()` 可达性论证，前者已进 `for-7.4`，本补丁存在基线交叉，可能需要在同一分支上重排。
+卡点：一是 v3 距离上一版评审只有约 10 小时，09-03 内 Tejun 未对 v3 表态，`Reviewed-by` 仍是 v2 的；二是 v3 偏离了 Tejun 提的「root sched 加标志 + 打印一次告警」方案，改用「静默拒绝」，需要他确认这不会丢掉他想观测的信号；三是本补丁与同作者的 NMI 拒绝系列（<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260903-003</a>）共用 `scx_kfunc_context_filter()` 可达性论证，前者已进 `for-7.4`，本补丁存在基线交叉，可能需要在同一分支上重排。
 
 ## 效果评估
 
@@ -108,7 +108,7 @@ Wanwu Li 的修复是改用 `scx_task_sched_rcu()` 在 RCU 下读该指针。本
   - Tejun Heo 的三处反驳：https://lore.kernel.org/all/d819e8358fffc09015feffad57794f7c@kernel.org/
   - Tejun Heo 的「可直接忽略」补充：https://lore.kernel.org/all/aph7j7b_rqqqcSwR@slm.duckdns.org/
 - 相关文章/系列：
-  - [[sched-20260902-006]] sched_ext select_cpu_and NULL deref（本补丁的 v1 阶段）。
-  - [[sched-20260903-003]] NMI 拒绝取锁 kfuncs（同一作者的同一轮审计）。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-006-sched-ext-fix-null-sched-deref-in-select-cpu-and-sub-sched-error-path.html">sched-20260902-006</a> sched_ext select_cpu_and NULL deref（本补丁的 v1 阶段）。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-003-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260903-003</a> NMI 拒绝取锁 kfuncs（同一作者的同一轮审计）。
 - 相关代码：
   - `kernel/sched/ext/ext.c` COMPAT 包装与 `scx_error()` / `scx_vexit()` 错误上报路径

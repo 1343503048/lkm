@@ -81,7 +81,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 sched-20260907-011 / sched-20260903-002 / sched-20260902-014 / sched-20260831-007。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Peter/Ingo「能否考虑进 sched/core、目标 7.4」，并把上一轮 Yury Norov 的三条评审意见全部收掉（字段改名 `npc_push_work_pending`、挪到 `steal_*` 旁边、加 `CONFIG_PREFERRED_CPU` 守卫）。同一天上午还有 Yury 与作者关于 `struct rq` 布局的收尾对话，作者用 pahole 数据证明改动不增加 cacheline 数。
+本文为增量更新，问题建模与 v8..v12 的演进见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-011-sched-core-push-current-task-from-non-preferred-cpu.html">sched-20260907-011</a> / <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-002-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260903-002</a> / <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-014-sched-steal-governor-introduce-preferred-cpus-and-steal-driven-vcpu.html">sched-20260902-014</a> / <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-007-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260831-007</a>。09-09 是这个系列**正式请求排队**的一天：Shrikanth Hegde 21:56 发出 v13（13 补丁），封面直接问 Peter/Ingo「能否考虑进 sched/core、目标 7.4」，并把上一轮 Yury Norov 的三条评审意见全部收掉（字段改名 `npc_push_work_pending`、挪到 `steal_*` 旁边、加 `CONFIG_PREFERRED_CPU` 守卫）。同一天上午还有 Yury 与作者关于 `struct rq` 布局的收尾对话，作者用 pahole 数据证明改动不增加 cacheline 数。
 
 ## 背景与问题
 

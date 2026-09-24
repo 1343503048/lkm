@@ -58,7 +58,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 related_articles 中的 sched-20260904-007 / sched-20260904-008 / sched-20260831-001。09-08 是这个 18 补丁的 v13 系列开始「解冻」的一天：Peter Zijlstra 首次表态（本周会看，粗略看"do indeed seem fine"），作者 Andrea Righi 在同一天集中回掉了三条一直挂着无人应答的 review——Prateek Nayak 关于 02/18 出队顺序的追问、Tejun 在 12/18 的一批 nit、Richard Cheng 关于 17/18 scx_qmap CID 竞态的质疑。系列的技术争议面基本清零，剩下的瓶颈是 Peter 的正式评审与 v14 落地。
+本文为增量更新，完整背景见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-007-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260904-007</a> / <a class="article-ref" href="/lkm/2026/09/04/sched-20260904-008-sched-ext-generalize-the-reject-dsq-reenqueue-path.html">sched-20260904-008</a> / <a class="article-ref" href="/lkm/2026/08/31/sched-20260831-001-sched-make-proxy-execution-compatible-with-sched-ext.html">sched-20260831-001</a>。09-08 是这个 18 补丁的 v13 系列开始「解冻」的一天：Peter Zijlstra 首次表态（本周会看，粗略看"do indeed seem fine"），作者 Andrea Righi 在同一天集中回掉了三条一直挂着无人应答的 review——Prateek Nayak 关于 02/18 出队顺序的追问、Tejun 在 12/18 的一批 nit、Richard Cheng 关于 17/18 scx_qmap CID 竞态的质疑。系列的技术争议面基本清零，剩下的瓶颈是 Peter 的正式评审与 v14 落地。
 
 ## 背景与问题
 

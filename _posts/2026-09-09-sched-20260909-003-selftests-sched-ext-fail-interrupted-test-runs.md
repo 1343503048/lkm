@@ -44,7 +44,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，`runner.c` 退出码问题的完整来龙去脉见 related_articles 中的 sched-20260906-003。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」，这枚单行改动被收下：被 SIGINT/SIGTERM 打断的 sched_ext 测试运行不再返回 0，CI 从此能把「中断」和「通过」区分开。
+本文为增量更新，`runner.c` 退出码问题的完整来龙去脉见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-003-selftests-sched-ext-fail-interrupted-test-runs.html">sched-20260906-003</a>。09-09 02:01 Tejun Heo 回「Applied to sched_ext/for-7.4」，这枚单行改动被收下：被 SIGINT/SIGTERM 打断的 sched_ext 测试运行不再返回 0，CI 从此能把「中断」和「通过」区分开。
 
 ## 背景与问题
 

@@ -114,4 +114,4 @@ layout: article
   - Marc Zyngier 的 EL2 展开 + handover 新反对（本日）：https://lore.kernel.org/all/878q5i6ay6.wl-maz@kernel.org/
   - 作者逐条回应与硬件能力要求（本日）：https://lore.kernel.org/all/apkli5dC8z3rcXBy@U-2FWC9VHC-2323.local/
   - 作者关于 TSC 前例与其它架构的坦白（本日）：https://lore.kernel.org/all/apkqtgN3c3LUTmy-@U-2FWC9VHC-2323.local/
-- 相关文章：[[sched-20260902-013]]（同一补丁在 09-02 的首发记录）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-013-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260902-013</a>（同一补丁在 09-02 的首发记录）。

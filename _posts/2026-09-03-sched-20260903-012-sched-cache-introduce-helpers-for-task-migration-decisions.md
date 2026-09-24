@@ -89,7 +89,7 @@ RFC v2（08-27 投递，23 个补丁）走的是「先补拓扑与统计底座�
 
 依据（正向）：系列已经进入 Peter Zijlstra 的逐补丁细读阶段，这本身是稀缺信号——他在两天内覆盖 11 个子补丁，作者逐条接受并要求式修改，说明讨论是有效推进而非否决；分层（底座 → helper → 放置改动）的拆法正是应对大体量系列的标准手法。
 
-卡点：一是本日暴露的「单 commit 编不过」说明该系列的分层在编译意义上并未真正独立，而 PZ 逐条细读的前提恰恰是每层可独立验证、可二分；作者承诺的逐 commit 编译测试是下一版的硬门槛。二是 11/23 的语义问题尚未闭环——`!p` 的合法性、与 `can_migrate_llc()` 的行为差异（提前返回与 `src_util` 扣减）、以及「跳过 locality 最好的中间节点」这条解释目前只有作者单方陈述，没有 PZ 的认可。三是 23 补丁 RFC 体量大、涉及 NUMA 细粒度均衡与放置主路径，无任何 tag，也没有跨平台数据支撑；四是同一作者同期还在推进 cpufreq 压力一侧的讨论（[[sched-20260903-010]]）与 11/23 的下游依赖 [[sched-20260903-011]]，合入顺序需要明确。
+卡点：一是本日暴露的「单 commit 编不过」说明该系列的分层在编译意义上并未真正独立，而 PZ 逐条细读的前提恰恰是每层可独立验证、可二分；作者承诺的逐 commit 编译测试是下一版的硬门槛。二是 11/23 的语义问题尚未闭环——`!p` 的合法性、与 `can_migrate_llc()` 的行为差异（提前返回与 `src_util` 扣减）、以及「跳过 locality 最好的中间节点」这条解释目前只有作者单方陈述，没有 PZ 的认可。三是 23 补丁 RFC 体量大、涉及 NUMA 细粒度均衡与放置主路径，无任何 tag，也没有跨平台数据支撑；四是同一作者同期还在推进 cpufreq 压力一侧的讨论（<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-010-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260903-010</a>）与 11/23 的下游依赖 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html">sched-20260903-011</a>，合入顺序需要明确。
 
 ## 效果评估
 
@@ -114,4 +114,4 @@ RFC v2（08-27 投递，23 个补丁）走的是「先补拓扑与统计底座�
   - Peter Zijlstra 的结构性质询：https://lore.kernel.org/all/20260901090843.GQ4120091@noisy.programming.kicks-ass.net/
   - Peter Zijlstra 的 inverse xmas tree 要求：https://lore.kernel.org/all/20260901113207.GZ687043@noisy.programming.kicks-ass.net/
   - 作者对 PZ 的逐条答复：https://lore.kernel.org/all/226d79fa93a84193aa2507113747d348@hygon.cn/
-- 相关文章：[[sched-20260902-009]]（本系列 RFC v2 的整体讨论）、[[sched-20260903-011]]（11/23 helper 的下游使用方）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-009-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260902-009</a>（本系列 RFC v2 的整体讨论）、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html">sched-20260903-011</a>（11/23 helper 的下游使用方）。

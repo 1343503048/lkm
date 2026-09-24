@@ -44,7 +44,7 @@ layout: article
 ---
 
 ## TL;DR
-Kayra Cizmeci 当日深夜独立投递的清理补丁：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3）。它与 Peter Zijlstra 在 place_entity 系列讨论（sched-20260911-015）中给出的删除 diff 内容完全一致——可视为作者按 PeterZ 方向把 v3 的落点单独成篇，两条线索正在合流。当日无回帖。
+Kayra Cizmeci 当日深夜独立投递的清理补丁：删除 enqueue_task_fair() 中不可达的 `cfs_rq->curr == se` 分支（-13/+3）。它与 Peter Zijlstra 在 place_entity 系列讨论（<a class="article-ref" href="/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html">sched-20260911-015</a>）中给出的删除 diff 内容完全一致——可视为作者按 PeterZ 方向把 v3 的落点单独成篇，两条线索正在合流。当日无回帖。
 
 ## 背景与问题
 enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(cfs_rq, se, flags) 独立分支、跳过常规入队路径。补丁说明该路径「seems to be unachievable」：enqueue 时 se 不可能是 cfs_rq->curr。这一前提在当日 place_entity 系列讨论中被 PeterZ 论证（08-13 即有此说）并由作者的 WARN_ON_ONCE 测试佐证。
@@ -57,7 +57,7 @@ enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 ## 版本演进与当前进展
 *current_version: v1（msgid `<20260911155449.1249726-1-kayracizmeci@gmail.com>`，09-11 23:54 入缓存）*，v1 刚发出、暂无 review 意见。
 
-与 sched-20260911-015 的关系：PeterZ 在该讨论中贴出的 diff 与本补丁逐行等价（基线索引略有差异：4d0b94465d19 vs ade1eceb39b8）；作者在该线程承诺「今天或明天发 v3」——本补丁或即为该方向的独立实现，两线如何归并（本补丁吸收进 v3、或 v3 不再包含该清理）待后续确认。
+与 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html">sched-20260911-015</a> 的关系：PeterZ 在该讨论中贴出的 diff 与本补丁逐行等价（基线索引略有差异：4d0b94465d19 vs ade1eceb39b8）；作者在该线程承诺「今天或明天发 v3」——本补丁或即为该方向的独立实现，两线如何归并（本补丁吸收进 v3、或 v3 不再包含该清理）待后续确认。
 
 ## Maintainer 意见与讨论焦点
 本补丁自身当日无回帖；但同一改动在 place_entity 线程已有 PeterZ 的明确支持（给出 diff）与作者接受（承诺发 v3）。潜在关注点：place_entity() 的 curr 分支语义是否有调用方依赖、以及 `/* XXX comment on the curr thing */` 的历史疑问随代码删除而消散。
@@ -69,7 +69,7 @@ enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 无性能数据；效果为代码可读性与路径简化（enqueue 热路径少一个分支判定）。与 place_entity 系列的定位一致：性能影响作者自评不可测量，属清理性质。
 
 ## 我可以参与的点
-- kind=testing：core-sched/异常 enqueue 配置下长跑 WARN_ON_ONCE(cfs_rq->curr == se)，为删除提供作者之外的不可达证据（与 sched-20260911-015 的验证点共享）。
+- kind=testing：core-sched/异常 enqueue 配置下长跑 WARN_ON_ONCE(cfs_rq->curr == se)，为删除提供作者之外的不可达证据（与 <a class="article-ref" href="/lkm/2026/09/11/sched-20260911-015-sched-fair-avoid-recalculating-curr-status-in-place-entity-a.html">sched-20260911-015</a> 的验证点共享）。
 - kind=review：对照 PeterZ 在 015 线程的 diff 核对等价性，并跟进两条线索的归并结果（防止主线收到重复/冲突的清理）。
 
 ## 参考链接

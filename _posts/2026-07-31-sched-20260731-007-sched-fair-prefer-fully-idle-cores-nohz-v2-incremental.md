@@ -48,11 +48,11 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260730-008。Andrea Righi (NVIDIA) 的 "Prefer fully idle cores for NOHZ balancing" v2 补丁在 20260731 收到 Mete Durlu 的 s390 测试反馈和代码优化建议。Andrea 指出 Mete 建议的 `is_core_idle()` 实现存在不检查目标 CPU 本身的逻辑问题，并提出了修正方案。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-008-sched-fair-prefer-fully-idle-cores-nohz-balancing-v2.html">sched-20260730-008</a>。Andrea Righi (NVIDIA) 的 "Prefer fully idle cores for NOHZ balancing" v2 补丁在 20260731 收到 Mete Durlu 的 s390 测试反馈和代码优化建议。Andrea 指出 Mete 建议的 `is_core_idle()` 实现存在不检查目标 CPU 本身的逻辑问题，并提出了修正方案。
 
 ## 背景与问题
 
-（完整背景见 sched-20260730-008）NOHZ 负载均衡器可能选择在空闲 SMT 兄弟上运行，这会减少其忙碌兄弟的可用容量。此补丁系列旨在优先选择完全空闲的 SMT 核心。
+（完整背景见 <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-008-sched-fair-prefer-fully-idle-cores-nohz-balancing-v2.html">sched-20260730-008</a>）NOHZ 负载均衡器可能选择在空闲 SMT 兄弟上运行，这会减少其忙碌兄弟的可用容量。此补丁系列旨在优先选择完全空闲的 SMT 核心。
 
 ## 新增讨论（20260731）
 
@@ -84,4 +84,4 @@ layout: article
 ## 参考链接
 
 - lore thread: https://lore.kernel.org/lkml/20260729163225.1987068-1-arighi@nvidia.com
-- 前日分析: sched-20260730-008
+- 前日分析: <a class="article-ref" href="/lkm/2026/07/30/sched-20260730-008-sched-fair-prefer-fully-idle-cores-nohz-balancing-v2.html">sched-20260730-008</a>

@@ -117,4 +117,4 @@ v1 只有 1 个补丁、`kernel/sched/fair.c` 9 增 2 删，改动点全部在 `
   - 作者提出 `boost_freqs_outside_table` / `table_max` 方案：https://lore.kernel.org/all/SI2PR04MB4931F65C44962845CE345B79E3B72@SI2PR04MB4931.apcprd04.prod.outlook.com/
   - Hongyan Xia 的 Ryzen 7840U 复现线索：https://lore.kernel.org/all/44993024-f1bb-4b4f-802b-a22f95101171@transsion.com/
   - 本日作者的复现承诺：https://lore.kernel.org/all/SI2PR04MB49315D05AB89CFA3B0E41BF3E3B62@SI2PR04MB4931.apcprd04.prod.outlook.com/
-- 相关文章：[[sched-20260902-008]]（同一线程在 09-02 的讨论）。
+- 相关文章：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-008-sched-fair-only-apply-cpufreq-pressure-where-frequency-is-invariant.html">sched-20260902-008</a>（同一线程在 09-02 的讨论）。

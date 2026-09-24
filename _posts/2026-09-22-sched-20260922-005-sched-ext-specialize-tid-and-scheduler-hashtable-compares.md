@@ -43,7 +43,7 @@ layout: article
 ---
 
 ## TL;DR
-Usama Arif 为 sched_ext 的 TID 与 scheduler 两张 rhashtable 提供专用比较回调，把 `scx_bpf_tid_to_task()`（热路径，用于 tid→task 反查）和 `scx_find_sub_sched()`（被子调度器 dispatch 与管理 kfunc 调用）上的泛型 `rhashtable_compare()`/`memcmp()` 折叠为编译期单次 u64 比较。这是 DSQ hashtable（见 sched-20260922-004）的跟进。Tejun Heo 已把 1-2 合入 `sched_ext/for-7.4`。bpf-ci 的 AI review 建议两处比较函数可用生成宏合并。
+Usama Arif 为 sched_ext 的 TID 与 scheduler 两张 rhashtable 提供专用比较回调，把 `scx_bpf_tid_to_task()`（热路径，用于 tid→task 反查）和 `scx_find_sub_sched()`（被子调度器 dispatch 与管理 kfunc 调用）上的泛型 `rhashtable_compare()`/`memcmp()` 折叠为编译期单次 u64 比较。这是 DSQ hashtable（见 <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html">sched-20260922-004</a>）的跟进。Tejun Heo 已把 1-2 合入 `sched_ext/for-7.4`。bpf-ci 的 AI review 建议两处比较函数可用生成宏合并。
 
 ## 背景与问题
 `scx_tid_hash` 与 `scx_sched_hash` 都用自然对齐的 u64 key，但没提供 `obj_cmpfn`，导致 rhashtable 在每次查找时回落 `rhashtable_compare()`：`memcmp(ptr + ht->p.key_offset, arg->key, ht->p.key_len)`。虽只比 8 字节，但泛型路径在运行时加载 offset/length 并 emit out-of-line `memcmp()`。`scx_bpf_tid_to_task()` 与 `scx_find_sub_sched()` 都可能出现在调度热路径上。
@@ -62,7 +62,7 @@ v1（`<20260921185943.4031480-1-usama.arif@linux.dev>`）当日发出。Tejun �
 *likelihood=merged*。已合入 `sched_ext/for-7.4`。blocking_issues 无；bpf-ci 的宏建议属可选后续。
 
 ## 效果评估
-作者在 cover 声明无功能变化（No functional change intended），编译产物确认查找循环不再 call `memcmp()` 或 out-of-line 比较器；未给出独立 benchmark 数字（收益与 DSQ 系列同类，见 sched-20260922-004 的 2.9x 数据）。
+作者在 cover 声明无功能变化（No functional change intended），编译产物确认查找循环不再 call `memcmp()` 或 out-of-line 比较器；未给出独立 benchmark 数字（收益与 DSQ 系列同类，见 <a class="article-ref" href="/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html">sched-20260922-004</a> 的 2.9x 数据）。
 
 ## 我可以参与的点
 - **testing**：在基于 sched_ext 的调度器上验证 tid→task 反查与 sub-sched 查找路径无功能/性能回退。

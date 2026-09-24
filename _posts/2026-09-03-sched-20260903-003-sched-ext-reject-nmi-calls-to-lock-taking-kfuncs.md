@@ -101,6 +101,6 @@ layout: article
   - Tejun Heo applied 到 sched_ext/for-7.4：https://lore.kernel.org/all/27793d61e70c3d4df415729e1d150ad0@kernel.org/
 - 后续系列（本日发出）：[PATCH 0/2] sched_ext: two more context-safety fixes found in the NMI kfunc audit，https://lore.kernel.org/all/20260903032953.659847-1-liwanwu@kylinos.cn/
 - 相关文章/系列：
-  - [[sched-20260902-004]] 本系列初版评审记录。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-004-sched-ext-reject-nmi-calls-to-lock-taking-kfuncs.html">sched-20260902-004</a> 本系列初版评审记录。
 - 相关代码：
   - `kernel/sched/ext.c` kfunc 上下文过滤与 `scx_kf_allowed_ctx()`；`kernel/sched/ext/idle.c`

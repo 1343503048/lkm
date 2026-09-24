@@ -50,7 +50,7 @@ layout: article
 增量更新：Ananthu C V 的 schedutil boost 频率处理修复（v2）本日新增一轮 review 与实测——Oleg Keri 在 Lenovo Yoga Slim 7x（scmi-cpufreq）上验证通过并给出 Tested-by；Zhongqiu Han 质疑 Fixes 标签应指向 `6e39ba4e5a82`（cpufreq boost_freq_req QoS），并指出 acpi-cpufreq 场景下"是否有 freq 表"判断不足以覆盖 boost 频率，条件应改为"freq 表是否列有 boost 频率"。
 
 ## 背景与问题
-背景见 sched-20260915-012：schedutil 在 boost 关闭后仍无法回到非 boost 频率上限。v2 为该 2-patch 系列（1/2 修负 pressure 处理，2/2 修 boost 关闭后 scaling_max_freq 不回落到非 boost 值）。
+背景见 <a class="article-ref" href="/lkm/2026/09/15/sched-20260915-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260915-012</a>：schedutil 在 boost 关闭后仍无法回到非 boost 频率上限。v2 为该 2-patch 系列（1/2 修负 pressure 处理，2/2 修 boost 关闭后 scaling_max_freq 不回落到非 boost 值）。
 
 ## 技术方案
 沿用 v2 方案，本日关注点是 2/2 的判定条件：作者当前用"是否存在 freq 表"作为依据，但 acpi-cpufreq 有 freq 表却不设置 `CPUFREQ_BOOST_FREQ`，导致 `max_table_freq == max_base_freq == _PSS P0`，真正的 boost 上限（`cpuinfo.max_freq`）丢失。

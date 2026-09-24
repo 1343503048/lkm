@@ -56,7 +56,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，缺陷成因与补丁的完整代码分析见 related_articles 中的 sched-20260908-004。09-09 这条单补丁拿到了 K Prateek Nayak 的 `Reviewed-by` + `Tested-by`，而且他说明自己 2025 年 2 月就撞上过同一个问题、当时是在调度器层面绕开的——这等于独立确认了缺陷真实存在且此前的绕行方案不如泛化 rb 模板。剩下唯一未处理的意见是一条注释 nit，作者当天 21:20 已承认「就是复制粘贴的结果」。
+本文为增量更新，缺陷成因与补丁的完整代码分析见 related_articles 中的 <a class="article-ref" href="/lkm/2026/09/08/sched-20260908-004-sched-eevdf-fix-rb-augmented-with-multi-fields.html">sched-20260908-004</a>。09-09 这条单补丁拿到了 K Prateek Nayak 的 `Reviewed-by` + `Tested-by`，而且他说明自己 2025 年 2 月就撞上过同一个问题、当时是在调度器层面绕开的——这等于独立确认了缺陷真实存在且此前的绕行方案不如泛化 rb 模板。剩下唯一未处理的意见是一条注释 nit，作者当天 21:20 已承认「就是复制粘贴的结果」。
 
 ## 背景与问题
 

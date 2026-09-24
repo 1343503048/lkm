@@ -57,7 +57,7 @@ layout: article
 
 ## TL;DR
 
-本文为增量更新，完整背景见 sched-20260906-005（Thomas Gleixner 09-06 的明确 NAK）与 sched-20260903-015（Marc Zyngier 的三条反对）。本日是这条线程的**收尾**：Feng Tang 09-07 17:05 接受「补丁 hacky」的判断，放弃改 epoch 的原方案，转而按 Marc 的建议拿出一个形状完全不同的 diff——不新增 cmdline 开关、不动 epoch，只在 `sched_clock_register()` 已有的那行 `pr_info` 里多打一个「计数器自复位以来已运行多少 ns」的字段；Marc 17:37 回：这正是大家历来在本地做的事，而且只在 bring-up 新硬件/新固件且它是坏的时候才有意义，kernel 不是这类东西的落脚点（他 09-02 就已表态 `reluctant to burden the kernel with something that is, by definition, unreliable`）；Feng 18:57 回「I see your point now, thanks!」。线程到此终止，**没有 v2、没有新版本号**，方向彻底关闭。
+本文为增量更新，完整背景见 <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-005-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260906-005</a>（Thomas Gleixner 09-06 的明确 NAK）与 <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-015-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260903-015</a>（Marc Zyngier 的三条反对）。本日是这条线程的**收尾**：Feng Tang 09-07 17:05 接受「补丁 hacky」的判断，放弃改 epoch 的原方案，转而按 Marc 的建议拿出一个形状完全不同的 diff——不新增 cmdline 开关、不动 epoch，只在 `sched_clock_register()` 已有的那行 `pr_info` 里多打一个「计数器自复位以来已运行多少 ns」的字段；Marc 17:37 回：这正是大家历来在本地做的事，而且只在 bring-up 新硬件/新固件且它是坏的时候才有意义，kernel 不是这类东西的落脚点（他 09-02 就已表态 `reluctant to burden the kernel with something that is, by definition, unreliable`）；Feng 18:57 回「I see your point now, thanks!」。线程到此终止，**没有 v2、没有新版本号**，方向彻底关闭。
 
 ## 背景与问题
 
@@ -136,9 +136,9 @@ Feng Tang 本日贴出的 diff（以引用块形式出现在回帖里，不是�
 ## 参考链接
 
 - 相关文章/系列：
-  - [[sched-20260906-005]] 前作：Thomas Gleixner 的 NAK 与线程整体判断。
-  - [[sched-20260903-015]] 更早一篇：Marc Zyngier 的 EL2 / handover 两条实质反对与作者的让步过程。
-  - [[sched-20260902-013]] v1 首发记录。
+  - <a class="article-ref" href="/lkm/2026/09/06/sched-20260906-005-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260906-005</a> 前作：Thomas Gleixner 的 NAK 与线程整体判断。
+  - <a class="article-ref" href="/lkm/2026/09/03/sched-20260903-015-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260903-015</a> 更早一篇：Marc Zyngier 的 EL2 / handover 两条实质反对与作者的让步过程。
+  - <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-013-sched-clock-add-option-to-use-absolute-time-against-hardware-clock-reset.html">sched-20260902-013</a> v1 首发记录。
 - 本日 Feng Tang 的新形状 diff: https://lore.kernel.org/all/ap5-ZM-2RMih3iQ7@U-2FWC9VHC-2323.local/
 - 本日 Marc Zyngier 的再次反对: https://lore.kernel.org/all/86h5k14d34.wl-maz@kernel.org/
 - 本日 Feng Tang 的收尾: https://lore.kernel.org/all/ap6Ypbz4wkftPgBa@U-2FWC9VHC-2323.local/

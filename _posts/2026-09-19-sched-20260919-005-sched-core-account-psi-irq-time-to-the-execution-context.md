@@ -41,13 +41,13 @@ layout: article
 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。
 
 ## 背景与问题
-背景见 sched-20260918-018：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响启用 proxy execution 的配置。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260918-018</a>：proxy execution 下 `sched_tick()` 把 PSI IRQ 时间记到 `rq->donor`，而 `__schedule()` 记到 `rq->curr`，二者不一致导致 IRQ 时间被记到错误的 cgroup。修复是让 `sched_tick()` 改传 `rq->curr`（恢复 split 之前的语义）。仅影响启用 proxy execution 的配置。
 
 ## 技术方案
-见 sched-20260918-018：统一 IRQ 时间的记账目标为执行上下文 `rq->curr`。本日无方案变更，仅补充测试证据。
+见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260918-018</a>：统一 IRQ 时间的记账目标为执行上下文 `rq->curr`。本日无方案变更，仅补充测试证据。
 
 ## 版本演进与当前进展
-- v1（2026-09-18，`<20260918132915.1236312-1-zhanxusheng@xiaomi.com>`）：修复补丁（见 sched-20260918-018）。
+- v1（2026-09-18，`<20260918132915.1236312-1-zhanxusheng@xiaomi.com>`）：修复补丁（见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-018-sched-core-account-psi-irq-time-to-the-execution-context.html">sched-20260918-018</a>）。
 - 本日 Hui Su（`<fe5e2c51f5b90447bbedde4eabf4cfd4.sh_def@163.com>`）给出 Tested-by 与实测数据。
 
 ## Maintainer 意见与讨论焦点

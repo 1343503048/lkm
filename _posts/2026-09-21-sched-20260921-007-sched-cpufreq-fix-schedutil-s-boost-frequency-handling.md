@@ -44,7 +44,7 @@ layout: article
 增量更新：Ananthu C V 的 schedutil boost 频率处理修复（v2）昨日有两则作者回复——回应 Oleg 关于 `cpuinfo->max_freq` 只升不降设计的疑问，并接受 Zhongqiu 建议、将在下一版给补丁补上 `Fixes: 538b0188da46` 标签，同时考虑把 `policy_has_boost_freq` 从 freq_table.c 导出复用。修复方向清晰，正按 review 意见迭代。
 
 ## 背景与问题
-背景见 sched-20260918-005：schedutil 在关闭 boost 后频率无法回落到非 boost 值，根因是 commit 538b0188da46 给 `cpuinfo->max_freq` 加了"只向上更新"的 guard，导致该值降不回来，schedutil 随之持续停留在 boost 频率。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html">sched-20260918-005</a>：schedutil 在关闭 boost 后频率无法回落到非 boost 值，根因是 commit 538b0188da46 给 `cpuinfo->max_freq` 加了"只向上更新"的 guard，导致该值降不回来，schedutil 随之持续停留在 boost 频率。
 
 ## 技术方案
 v2 系列为两补丁：1/2 让 schedutil 的 boost 频率处理在运行时尽量不依赖 `cpuinfo_max_freq`；2/2 修复关闭 boost 后 schedutil 无法回到非 boost 频率。昨日讨论进一步明确：`cpuinfo->max_freq` 的向上 guard 是"为保留驱动设定值"的有意设计，故不能简单移除，需用补丁 1 的方式绕开，并计划复用/导出 `policy_has_boost_freq` 判断逻辑。

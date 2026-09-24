@@ -48,7 +48,7 @@ layout: article
 增量更新：Oleg Keri 推出 v4，针对 Snapdragon X2 Elite（boost 4723200 kHz > 4194304 kHz）修复 arm64 频率上报与跟踪的两处溢出/失真：arch_freq_get_on_cpu() 的 u64 乘积被截断为 unsigned int 导致回绕，以及 capacity_freq_ref 不包含 boost 频率导致调度器无法区分 boost 与持续频率。Dietmar Eggemann 就 v3 的 capacity_freq_ref 讨论补充了 cpufreq pressure 的机制与实测数据。
 
 ## 背景与问题
-背景见 sched-20260907-003：首个 boost OPP 超 4194304 kHz 的 arm64 笔记本（Glymur），两处独立问题都让内核误判 boost 后的 CPU 比实际更慢。v4 明确了两枚补丁的因果顺序。
+背景见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html">sched-20260907-003</a>：首个 boost OPP 超 4194304 kHz 的 arm64 笔记本（Glymur），两处独立问题都让内核误判 boost 后的 CPU 比实际更慢。v4 明确了两枚补丁的因果顺序。
 
 ## 技术方案
 - patch 1：修 arch_freq_get_on_cpu() 溢出——频率 scale 与参考频率的 u64 乘积在右移前被截断为 unsigned int，任何参考频率超 2^32/SCHED_CAPACITY_SCALE（4194304 kHz）即回绕。
@@ -56,7 +56,7 @@ layout: article
 - 顺序约束：patch 2 会把参考推到 4194304 kHz 以上，因此 patch 1 必须先落地。
 
 ## 版本演进与当前进展
-- v1–v3：见 sched-20260907-003（v1 首版）及此前演进。
+- v1–v3：见 <a class="article-ref" href="/lkm/2026/09/07/sched-20260907-003-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html">sched-20260907-003</a>（v1 首版）及此前演进。
 - v3（09-10）：patch 2 命名为"cpufreq: update capacity_freq_ref when the boost state changes"。
 - v4（09-17，`<20260917125112.2283-1-okerixx@gmail.com>`）：重命名并重排为上述两枚。
 

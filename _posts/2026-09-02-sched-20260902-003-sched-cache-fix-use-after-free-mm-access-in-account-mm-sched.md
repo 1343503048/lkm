@@ -161,4 +161,4 @@ numa_group instead of on a single mm"——这句是本仓库读者最该关心�
 - KASAN 报告：https://lore.kernel.org/all/apPb-Dr4nPYuHQOK@v4bel/
 - 母系列（cache-aware prctl RFC）：https://lore.kernel.org/all/cover.1787955777.git.tim.c.chen@linux.intel.com/
 - 统计口径讨论：https://lore.kernel.org/all/06ed8af87506f858176a81a4c29acf92d24b6dc7.camel@linux.intel.com/
-- 相关：[[sched-20260902-009]]、[[sched-20260903-011]]、[[sched-20260903-012]]
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-009-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260902-009</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-011-sched-cache-honor-migrate-llc-task-semantics-in-active-load-balance.html">sched-20260903-011</a>、<a class="article-ref" href="/lkm/2026/09/03/sched-20260903-012-sched-cache-introduce-helpers-for-task-migration-decisions.html">sched-20260903-012</a>

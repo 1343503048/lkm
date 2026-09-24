@@ -107,7 +107,7 @@ proxy execution 把上下文拆成两半之后（`af0c8b2bf67b`），`sched_tick
   这一条对本补丁同样是提醒：`wq_worker_tick()` 现在挂在 `sched_tick()` 主干上，proxy exec 下
   `curr` 的 worker 身份判定与 `!scx_switched_all()` 分支的相对位置需要 sched 侧确认。
 - **一个提交规范风险**：v1 只发了 `-2-` 这一封，缓存里没有 `-1-`。同一批邮件里 Peter 对 kcov 作者
-  的同类问题说过得很重（见 [[sched-20260902-016]]）："You've send me a partial series; which is the
+  的同类问题说过得很重（见 <a class="article-ref" href="/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html">sched-20260902-016</a>）："You've send me a partial series; which is the
   same as not sending me anything at all."
 - 无 NAK。
 
@@ -149,4 +149,4 @@ proxy exec 的窗口里持续读到不变的 runtime，修复后未再观察到�
 - 紧邻同语义线 v1（UID 74644 / 74668）：https://lore.kernel.org/all/20260902163336.1552840-1-sh_def@163.com/
 - Tim Chen 的「上移到 sched_tick() + 补 sched_tick_remote()」意见：https://lore.kernel.org/all/c5a2d651a5d647fb29f13fe483301b3b6e292b4d.camel@linux.intel.com/
 - 该线 v2 封面（UID 75867）：https://lore.kernel.org/all/20260903041154.2479761-1-sh_def@163.com/
-- 相关：[[sched-20260902-001]]（proxy execution 批合入，`af0c8b2bf67b` 的来源）、[[sched-20260902-002]]（同期调度核心清理）
+- 相关：<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-001-sleeping-owner-handling-for-proxy-execution-v31.html">sched-20260902-001</a>（proxy execution 批合入，`af0c8b2bf67b` 的来源）、<a class="article-ref" href="/lkm/2026/09/02/sched-20260902-002-sched-dynamic-simplify-preempt-dynamic.html">sched-20260902-002</a>（同期调度核心清理）

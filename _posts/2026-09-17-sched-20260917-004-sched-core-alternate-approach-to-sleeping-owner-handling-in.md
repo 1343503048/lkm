@@ -46,7 +46,7 @@ layout: article
 增量更新：K Prateek Nayak 的 proxy execution「sleeping-owner 处理替代方案」PoC（00/16）在 John Stultz 的 torture 压力测试中触发 `sched_change_begin` 的 WARNING，随后 kernel BUG（rt.c:1020）。K Prateek 已认领排查。该系列仍是 PoC（RFC），非合入候选。
 
 ## 背景与问题
-背景见 sched-20260916-003：这是对 proxy execution 中 sleeping-owner 处理机制的替代设计 PoC（K Prateek Nayak 提出）。本次新增的是正确性 bug 报告。
+背景见 <a class="article-ref" href="/lkm/2026/09/16/sched-20260916-003-sched-core-alternate-approach-to-sleeping-owner-handling-in.html">sched-20260916-003</a>：这是对 proxy execution 中 sleeping-owner 处理机制的替代设计 PoC（K Prateek Nayak 提出）。本次新增的是正确性 bug 报告。
 
 ## 技术方案
 当日无方案变化，焦点转为 bug 复现。John Stultz 在 7.2.0-rc4-00032-gf14e36dcc837（QEMU, PREEMPT full）上跑 torture_shuffle 时：先触发 `WARNING: kernel/sched/sched.h:1645 at sched_change_begin`（栈：`__set_cpus_allowed_ptr_locked` ← `torture_shuffle`），随后 `kernel BUG at kernel/sched/rt.c:1020`。

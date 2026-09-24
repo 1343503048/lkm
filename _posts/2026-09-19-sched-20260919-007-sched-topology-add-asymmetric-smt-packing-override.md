@@ -48,13 +48,13 @@ layout: article
 增量更新：Andrea Righi 非对称 SMT 系列 2/2（新增内核参数覆盖 asymmetric SMT packing）本日收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意按 Vincent 建议砍掉 `auto`/`off`、只保留显式强制项。
 
 ## 背景与问题
-背景见 sched-20260918-008：在大小核/非对称 SMT 平台上，idle 选择希望优先选择高优先级 SMT sibling。系列重构后 2/2 把"是否启用 SMT 打包 override"拆成独立内核参数，允许在固件无法描述 SMT 偏好时由命令行显式覆盖。
+背景见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260918-008</a>：在大小核/非对称 SMT 平台上，idle 选择希望优先选择高优先级 SMT sibling。系列重构后 2/2 把"是否启用 SMT 打包 override"拆成独立内核参数，允许在固件无法描述 SMT 偏好时由命令行显式覆盖。
 
 ## 技术方案
 2/2（`sched/topology: Add asymmetric SMT packing override`）：新增内核参数，原设计含 `auto`/`off`/`on` 三档，用于显式开启 SMT 层 asymmetric packing。本日讨论聚焦该参数取值设计。
 
 ## 版本演进与当前进展
-- 09-17 迭代（`<20260917140707.3807229-1-arighi@nvidia.com>`）：重构为 1/2 + 2/2（见 sched-20260918-008）。
+- 09-17 迭代（`<20260917140707.3807229-1-arighi@nvidia.com>`）：重构为 1/2 + 2/2（见 <a class="article-ref" href="/lkm/2026/09/18/sched-20260918-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html">sched-20260918-008</a>）。
 - 本日 Vincent Guittot（`<CAKfTPtD6i7BMpfnj4pEPJMMOSXyMWL63YDX00d+jRTn0x+ot7A@mail.gmail.com>`）质疑 `auto` 必要性。
 - Andrea Righi（`<aq2B612KT5JGdsaf@gpd4>`、`<aq2CqGXjH_lrZVnS@gpd4>`）回应并同意简化接口。
 

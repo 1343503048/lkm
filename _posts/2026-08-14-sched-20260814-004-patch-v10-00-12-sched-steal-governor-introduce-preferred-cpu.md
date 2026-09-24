@@ -80,4 +80,4 @@ Mete（s390）希望有类似 cpuidle 的公共基础设施（init/exit/方法�
 
 ## 参考链接
 - lore: 未获取到
-- 关联: preferred CPU（见 sched-20260810-008）
+- 关联: preferred CPU（见 <a class="article-ref" href="/lkm/2026/08/10/sched-20260810-008-sched-core-try-to-use-a-preferred-cpu-in-is-cpu-allowed.html">sched-20260810-008</a>）

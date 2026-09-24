@@ -48,7 +48,7 @@ layout: article
 ---
 
 ## TL;DR
-Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系列在沉寂两周后当日出现大量进展：作者确认按 Zhan Xusheng 的意见改条件并承诺 v2，Peter Zijlstra 给出把 set_next_task() 的 `bool first` 改成枚举（SNT_PICK/SNT_REPICK）并覆盖全部调度类（含 DL）的重构方向，Vincent Guittot 参与了 protect slice 的折叠讨论。本文为增量更新，v1 背景见 sched-20260826-009。
+Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系列在沉寂两周后当日出现大量进展：作者确认按 Zhan Xusheng 的意见改条件并承诺 v2，Peter Zijlstra 给出把 set_next_task() 的 `bool first` 改成枚举（SNT_PICK/SNT_REPICK）并覆盖全部调度类（含 DL）的重构方向，Vincent Guittot 参与了 protect slice 的折叠讨论。本文为增量更新，v1 背景见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.html">sched-20260826-009</a>。
 
 ## 背景与问题
 当 pick_next_task 走 same-task repick 路径（任务继续运行而非切换）时，hrtick（hrtimer 驱动的公平 tick）不会重新启动，导致该任务的运行时限控制失效。v1 补丁在 same-task repick 路径上补充 hrtick 重启逻辑，08-26 曾被 Zhan Xusheng 指出 delayed dequeue 条件缺陷与设计冗余。
@@ -63,7 +63,7 @@ Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系
 *current_version: v1（v1 msgid `<20260813-sched-fair-hrtick-restart-v1-1-4230d1e18fbb@gentwo.org>`，08-13 发出；当日缓存只有回帖，v2 未发出）*。
 
 - v1（08-13）：首发，修复 same-task repick 后 hrtick 缺失；
-- 08-26：Zhan Xusheng 指出 delayed dequeue 条件缺陷与 rq flag 冗余（见 sched-20260826-009）；
+- 08-26：Zhan Xusheng 指出 delayed dequeue 条件缺陷与 rq flag 冗余（见 <a class="article-ref" href="/lkm/2026/08/26/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.html">sched-20260826-009</a>）；
 - 09-11：作者回应 review 并承诺 v2（h_nr_runnable > 1、去掉 rq flag）；同日 PeterZ 抛出 snt_e 枚举重构方向，Vincent/PeterZ 就 protect slice 与 vprot 交换意见。
 
 ## Maintainer 意见与讨论焦点
@@ -78,7 +78,7 @@ Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系
 暂无效果数据：线程内无 benchmark 或 trace 量化结果，作者承诺在 v2 附带混合负载测试（delayed dequeue 场景），测试结果未获取到。
 
 ## 我可以参与的点
-- kind=testing：作者承诺的混合负载测试（真实 runnable 竞争者 + 无关 delayed 实体）正是此前条件失效的场景，可用 ftrace 验证 repick 路径 hrtick 重启行为并回帖（sched-20260826-009 提出的验证点在 v2 依然适用）。
+- kind=testing：作者承诺的混合负载测试（真实 runnable 竞争者 + 无关 delayed 实体）正是此前条件失效的场景，可用 ftrace 验证 repick 路径 hrtick 重启行为并回帖（<a class="article-ref" href="/lkm/2026/08/26/sched-20260826-009-sched-fair-restart-hrtick-after-same-task-repicks.html">sched-20260826-009</a> 提出的验证点在 v2 依然适用）。
 - kind=review：v2 发出后对照 PeterZ 的 snt_e diff，评估局部修复与全类重构两条路线的差异与合并空间。
 
 ## 参考链接
