@@ -60,7 +60,7 @@ v2（`<20260922083101.99685-1-quchaosheng000406@163.com>`）当日发出，改�
 - **Sebastian Andrzej Siewior**（Suggested-by 本人）：v1 时要求鸟瞰视角，v2 回应后当天回复「looks good... please add it」认可方向。无争议。
 
 ## 合入评估
-likelihood=high。文档补丁、Suggested-by 维护者认可、无争议。blocking_issues 无；next_action 等待文档维护者收取。
+*likelihood=high*。文档补丁、Suggested-by 维护者认可、无争议。blocking_issues 无；next_action 等待文档维护者收取。
 
 ## 效果评估
 纯文档，无性能数据；澄清了 lazy 抢占的真实动机（run-to-completion，非省 IPI）。

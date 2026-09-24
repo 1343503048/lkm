@@ -37,7 +37,7 @@
 
 ## 合入评估
 
-likelihood: **likely**（事实上已进入 `sched_ext/for-7.4` 分支）。
+*likelihood: likely*（事实上已进入 `sched_ext/for-7.4` 分支）。
 依据：维护者本人在 09-03 明确 applied，并附了他自己做的两处修改，等价于带 maintainer 改动的接受；补丁是纯入口守卫、不改语义，且建立在 `e06ece82d7b0` 与 `f883dbb64ca5` 已铺好的 NMI 安全前提上。
 卡点：只剩下游同步——该分支尚未进入 tip 主线，7.4 合并窗口的最终拉取由 Peter Zijlstra/Ingo 决定；另外本补丁的守卫清单依赖 `scx_kfunc_context_filter()` 当前的暴露集合，将来新增取锁 kfunc 时容易漏加，这一点作者用「集中到一处 helper、可单点审计」来缓解但没有强制机制。残留的 `scx_locked_rq()` 与 nodemask 两处问题由后续 2 patch 系列承接，本线程内不闭合。
 

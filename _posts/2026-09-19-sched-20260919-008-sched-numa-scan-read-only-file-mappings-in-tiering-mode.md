@@ -61,7 +61,7 @@ layout: article
 - 分歧/未决：3/4 的 VMA 判定语义（MAP_PRIVATE、write-sealed memfd 是否应纳入）与实现形式（独立 helper vs 内联+注释）未定。
 
 ## 合入评估
-likelihood=medium。3/4 的 VMA 判定仍需按 Lorenzo 意见重写（内联+注释或厘清语义），但方向（tiering 模式扫描只读文件映射）本身未被否定。blocking_issues：VMA helper 语义与形式待作者重写。next_action：作者重写 3/4（内联+注释，或先厘清 MAP_PRIVATE/write-sealed memfd 语义），Lorenzo 表示可协助跟进。
+*likelihood=medium*。3/4 的 VMA 判定仍需按 Lorenzo 意见重写（内联+注释或厘清语义），但方向（tiering 模式扫描只读文件映射）本身未被否定。*blocking_issues*：VMA helper 语义与形式待作者重写。*next_action*：作者重写 3/4（内联+注释，或先厘清 MAP_PRIVATE/write-sealed memfd 语义），Lorenzo 表示可协助跟进。
 
 ## 效果评估
 本日无新增测试数据；讨论为 VMA 语义与代码形式，无性能数字。

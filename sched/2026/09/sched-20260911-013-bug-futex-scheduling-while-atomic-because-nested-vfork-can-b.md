@@ -10,7 +10,7 @@ Jann Horn 报告的 futex bug（原始报告 09-10 深夜入箱）当日获得�
 Peter Zijlstra 的修正（内核/fork.c，2 行）：把 need_futex_hash_allocate_default() 的条件从 `(clone_flags & (CLONE_VM | CLONE_VFORK)) == CLONE_VM` 改为 `clone_flags & CLONE_VM`——不再排除 vfork，任何共享父 mm 的克隆都分配默认私有 hash。PeterZ 确认该改动「does in fact cure your testcase」。代价是 vfork+exec 进程也会分配私有 hash（正是当初被优化掉的路径），这层权衡待 tglx/Sebastian 确认。该修正以线程内联 diff 形式出现，尚未作为正式 PATCH 投递。
 
 ## 版本演进与当前进展
-current_version: 无版本化补丁（bug 报告 + 内联修正提案）。原始报告未入当日缓存（msgid `<CAG48ez26PrUOb8er9TP1gWLsqVLU8TEDr+1Zs25fgH0++=zhUQ@mail.gmail.com>`，据前一日缓存为 Jann Horn 于 09-10 23:27 发出）；当日 5 封均为跟进：
+*current_version: 无版本化补丁（bug 报告 + 内联修正提案）*。原始报告未入当日缓存（msgid `<CAG48ez26PrUOb8er9TP1gWLsqVLU8TEDr+1Zs25fgH0++=zhUQ@mail.gmail.com>`，据前一日缓存为 Jann Horn 于 09-10 23:27 发出）；当日 5 封均为跟进：
 
 - 09-11 16:36 PeterZ：确认该状态转换本不该可能，指出 vfork 排除可疑，「需要更多思考是否带来其他问题」；（同时抱怨报告邮件在 text/plain 里带 markdown 标签）
 - 09-11 17:04 PeterZ：贴出修正 diff 并确认治愈测试用例，向 tglx 汇报 ee9dce44362b 排除 vfork 的动机（性能 + 认为不可能有影响）已被证伪；
@@ -24,7 +24,7 @@ current_version: 无版本化补丁（bug 报告 + 内联修正提案）。原�
 - 分歧/未闭合：移除 vfork 排除会让 vfork+exec 多一次私有 hash 分配，性能回退是否可接受尚无人评估；修正尚未成为正式补丁。
 
 ## 合入评估
-likelihood=medium：修复由子树维护者亲自提出并验证有效，技术路线无争议；但需要 Sebastian/tglx 确认移除排除无其他副作用（PeterZ 自己也说「need more thinking」），且尚未转正为带 Fixes 标签的补丁。blocking_issues：等待 bigeasy 对「当初为何排除 vfork」的答复；正式补丁（带 Fixes: ee9dce44362b）未投递。next_action：PeterZ（或报告者）把内联 diff 转正为补丁，附 Fixes 与报告者 Tested-by；Sebastian 确认性能权衡后收进入口树。
+*likelihood=medium*：修复由子树维护者亲自提出并验证有效，技术路线无争议；但需要 Sebastian/tglx 确认移除排除无其他副作用（PeterZ 自己也说「need more thinking」），且尚未转正为带 Fixes 标签的补丁。*blocking_issues*：等待 bigeasy 对「当初为何排除 vfork」的答复；正式补丁（带 Fixes: ee9dce44362b）未投递。*next_action*：PeterZ（或报告者）把内联 diff 转正为补丁，附 Fixes 与报告者 Tested-by；Sebastian 确认性能权衡后收进入口树。
 
 ## 效果评估
 效果证据为修复断言：PeterZ 明确「I can confirm that the below does in fact cure your testcase」——即 nested vfork 测试用例不再触发 scheduling-while-atomic。除此之外无线程数/性能影响的量化数据：vfork+exec 路径新增 hash 分配的开销只有定性预期，未见测量。

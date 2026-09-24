@@ -17,7 +17,7 @@ Christian Loehle 的 CPPC v7 系列尾部两枚补丁（19/20、20/20）修 FIE�
 当日无维护者针对这两枚补丁回帖。两枚均带 Fixes: 997c021abc6e（"cpufreq: CPPC: Update FIE arch_freq_scale in ticks for non-PCC regs"）与 Cc: stable，属回归修复。
 
 ## 合入评估
-likelihood=high。明确的空指针解引用修复，带 Fixes 与 stable 标签，改动集中在 drivers/cpufreq/cppc_cpufreq.c；无争议点，等待 cpufreq 维护者（Viresh/Rafael）收取。blocking_issues：无实质阻塞，缺维护者 Ack。next_action：等待 cpufreq 维护者评审收取。
+*likelihood=high*。明确的空指针解引用修复，带 Fixes 与 stable 标签，改动集中在 drivers/cpufreq/cppc_cpufreq.c；无争议点，等待 cpufreq 维护者（Viresh/Rafael）收取。*blocking_issues*：无实质阻塞，缺维护者 Ack。*next_action*：等待 cpufreq 维护者评审收取。
 
 ## 效果评估
 无性能数据；属正确性修复。作者以 NULL 解引用崩溃路径为修复对象，未给出 benchmark。

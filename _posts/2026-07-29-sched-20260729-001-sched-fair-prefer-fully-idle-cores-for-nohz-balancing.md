@@ -79,7 +79,7 @@ NVIDIA 的 Andrea Righi 让 NOHZ idle load balancer 优先挑"整个物理核都
 
 ## 合入评估
 
-likelihood: high。方案动机清晰、有硬数据、review 意见集中在实现细节而非方向，PeterZ 已参与且无阻塞性异议。卡点只剩 v2 吸收剪枝优化并证明无回退。
+*likelihood: high*。方案动机清晰、有硬数据、review 意见集中在实现细节而非方向，PeterZ 已参与且无阻塞性异议。卡点只剩 v2 吸收剪枝优化并证明无回退。
 
 ## 效果评估
 

@@ -71,7 +71,7 @@ layout: article
 
 ## 合入评估
 
-likelihood: **unclear**（无补丁可评估）。
+*likelihood: unclear*（无补丁可评估）。
 依据与卡点：修复本身没有对象——本日内没有补丁、没有维护者对该回归的技术判断、也没有确认「已修复」的回复。真正的信号是流程性的：进入 Thorsten Leemhuis 的 tracked regression 清单意味着它会在 `Documentation/admin-guide/bug-hunting` 类的追踪列表中被持续点名，若下一周期仍无回应，通常会升级为对 `dd29c017aed6` 的回退要求。
 因此下一步取决于 Steven Rostedt 或 RT 维护者是否回帖：要么说明已解决（则本条关闭），要么给出对 `NO_RT_PUSH_IPI` 与 PI-boost 交互的正式立场。
 

@@ -71,7 +71,7 @@ fair 调度类可通过 lazy rescheduling 推迟调度边界（推迟到返回�
 - 作者解释 selftest 一处 `autoconf.h` 依赖问题，将在下一版修复。
 
 ## 合入评估
-likelihood=high。已迭代四版、selftest 全绿（`preempt=lazy` 下 kick 6 PASSED、`nohz_full=8-15` 下 nohz_tick 1 PASSED），v4 基本消化完 Tejun 与 Sashiko 的全部意见，仅剩 selftest 一处小修待 v5。blocking_issues：selftest 的 `autoconf.h` 依赖修正未落地。next_action：作者发 v5 修 selftest 后，待 Tejun 收入 sched_ext/for-7.4。
+*likelihood=high*。已迭代四版、selftest 全绿（`preempt=lazy` 下 kick 6 PASSED、`nohz_full=8-15` 下 nohz_tick 1 PASSED），v4 基本消化完 Tejun 与 Sashiko 的全部意见，仅剩 selftest 一处小修待 v5。*blocking_issues*：selftest 的 `autoconf.h` 依赖修正未落地。*next_action*：作者发 v5 修 selftest 后，待 Tejun 收入 sched_ext/for-7.4。
 
 ## 效果评估
 作者 virtme-ng 实测（cover 原文）：`preempt=lazy` 下 `runner -t kick` → PASSED 6 / FAILED 0；`preempt=lazy nohz_full=8-15` 下 `runner -t nohz_tick` → CPU 8 收到 7 个 finite-slice tick，PASSED 1 / FAILED 0。无性能回退/提升的量化数据，本轮以正确性验证为主。

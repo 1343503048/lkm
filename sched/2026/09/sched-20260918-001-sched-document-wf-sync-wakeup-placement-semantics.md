@@ -21,7 +21,7 @@
 - 分歧点：独立 Documentation 页 vs WF_SYNC 处内联注释；2/2 两个函数注释的去重；UP 相关表述是否仍值得保留。
 
 ## 合入评估
-likelihood=medium。文档/注释修正本身低风险、无行为变更，且确实修正了一处错误的 API 保证（有实际价值）；但 Peter 作为 sched 维护者对"独立文档"形式持保留态度，倾向内联注释。blocking_issues：文档形式（独立页 vs 内联注释）未与 Peter 达成一致；2/2 注释去重与 UP 表述待处理。next_action：作者回应 Peter 的意见，决定是否收敛为内联注释、去重 wait.c 两个函数注释、评估 UP 表述的取舍，然后发 v3。
+*likelihood=medium*。文档/注释修正本身低风险、无行为变更，且确实修正了一处错误的 API 保证（有实际价值）；但 Peter 作为 sched 维护者对"独立文档"形式持保留态度，倾向内联注释。*blocking_issues*：文档形式（独立页 vs 内联注释）未与 Peter 达成一致；2/2 注释去重与 UP 表述待处理。*next_action*：作者回应 Peter 的意见，决定是否收敛为内联注释、去重 wait.c 两个函数注释、评估 UP 表述的取舍，然后发 v3。
 
 ## 效果评估
 纯文档/注释修正，无性能数据。价值在于消除 waitqueue API 对 WF_SYNC 的误导性保证（避免调用者误解同步唤醒的迁移行为），属"作者主观判断，未见测试数据"。

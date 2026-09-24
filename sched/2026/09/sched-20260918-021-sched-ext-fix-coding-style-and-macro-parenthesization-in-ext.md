@@ -20,7 +20,7 @@
 - 本日无维护者回复。独立提交者为新贡献者（无实名），纯格式清理类补丁。
 
 ## 合入评估
-likelihood=medium。无功能风险、符合风格规范；但这类纯风格补丁能否合入取决于 sched_ext 维护者（Tejun）是否愿意收取碎片化清理。blocking_issues：无阻塞；等待维护者 review。next_action：等待 Tejun 审阅；若被要求合并/精简条目，按意见调整。
+*likelihood=medium*。无功能风险、符合风格规范；但这类纯风格补丁能否合入取决于 sched_ext 维护者（Tejun）是否愿意收取碎片化清理。*blocking_issues*：无阻塞；等待维护者 review。*next_action*：等待 Tejun 审阅；若被要求合并/精简条目，按意见调整。
 
 ## 效果评估
 无性能数据；纯编码风格清理，无行为变化。

@@ -70,7 +70,7 @@ v8。当日进展：Tim Chen（Intel）review 通过；作者 Luo 自己提出�
 
 ## 合入评估
 
-likelihood: medium。review 基本通过，但 sched/cache 整个方向仍在迭代中（已到 v8），该 patch 的合入节奏取决于整个系列的推进。下一步动作明确：按建议改注释。
+*likelihood: medium*。review 基本通过，但 sched/cache 整个方向仍在迭代中（已到 v8），该 patch 的合入节奏取决于整个系列的推进。下一步动作明确：按建议改注释。
 
 ## 效果评估
 

@@ -18,7 +18,7 @@ RFC 仍为 v1（`<20260914165455.2126134-2-sh_def@163.com>`）。当天是维护
 - **Peter Zijlstra**：明确「PI futex 和 rt_mutex 都已返回 -EDEADLK，鉴于 proxy 硬依赖 block 图无环，在暴露给用户态前强制检测 + 返回 -EDEADLK 几乎是必须的（rather mandatory）」。
 
 ## 合入评估
-likelihood=unknown（本 RFC 本身仍待方向决策）。方向获得 John 与 Peter 认可（环检测必要），但尚未确定具体方案是否采纳，且 -EDEADLK 语义引入新的接口设计问题。blocking_issues：方案与「返回 -EDEADLK 到用户态」的结合方式未定；Brent 检出环起点是否满足错误语义未决。next_action：作者回应 K Prateek/ Peter 的 -EDEADLK 问题，明确环检测与用户态错误返回的接口。
+*likelihood=unknown*（本 RFC 本身仍待方向决策）。方向获得 John 与 Peter 认可（环检测必要），但尚未确定具体方案是否采纳，且 -EDEADLK 语义引入新的接口设计问题。*blocking_issues*：方案与「返回 -EDEADLK 到用户态」的结合方式未定；Brent 检出环起点是否满足错误语义未决。*next_action*：作者回应 K Prateek/ Peter 的 -EDEADLK 问题，明确环检测与用户态错误返回的接口。
 
 ## 效果评估
 无本日新增数据；RFC 性能对比线索见 sched-20260915-009（正常无环路径 ns/call 在测试深度上与 v5 相当）。

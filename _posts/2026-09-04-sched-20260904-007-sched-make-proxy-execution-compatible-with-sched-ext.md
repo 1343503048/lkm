@@ -103,7 +103,7 @@ layout: article
 
 ## 合入评估
 
-likelihood: **possible**（明显偏积极，但不由 sched_ext 维护者单方决定）。
+*likelihood: possible*（明显偏积极，但不由 sched_ext 维护者单方决定）。
 
 依据：sched_ext 维护者 Tejun Heo 已给出「ready to merge and iterate in tree」的定性结论；系列已到 v13 且最后一轮改动全部是对维护者意见的落实；目标分支标签写在主题里（`sched_ext/for-7.4`），说明作者与维护者已就落点达成一致；18 个补丁中前 11 个基本是 core 侧的准备改动与 sched_ext 内部重构，风险边界清晰。
 

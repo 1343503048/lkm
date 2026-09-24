@@ -18,7 +18,7 @@ POWER7 与 NVIDIA Olympus 在共享容量的 SMT 层用 SD_ASYM_PACKING 给硬�
 - 本线程内无其他未决问题。
 
 ## 合入评估
-likelihood: medium（仅就本线程的 static key 争议而言已解决；系列整体合入前景受制于 sched-20260910-007 记录的 arm64 检测机制僵局，Peter 已 drop v5）。blocking_issues：static key 移除尚未以新版本邮件形式发出；系列层面的 MIDR 替代机制未定。next_action：Andrea 在 v6 中以 sched_smt_active() 替换 static key，并与 arm64 侧检测方案一并解决。
+*likelihood: medium*（仅就本线程的 static key 争议而言已解决；系列整体合入前景受制于 sched-20260910-007 记录的 arm64 检测机制僵局，Peter 已 drop v5）。*blocking_issues*：static key 移除尚未以新版本邮件形式发出；系列层面的 MIDR 替代机制未定。*next_action*：Andrea 在 v6 中以 sched_smt_active() 替换 static key，并与 arm64 侧检测方案一并解决。
 
 ## 效果评估
 本线程无新数据。既有数据见 related_articles（Prateek 对 v5 的 Tested-by：4th gen EPYC 与 128C Ampere ARM 无性能影响）。

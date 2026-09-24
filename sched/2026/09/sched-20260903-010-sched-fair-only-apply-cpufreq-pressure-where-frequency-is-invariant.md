@@ -44,7 +44,7 @@ v1 只有 1 个补丁、`kernel/sched/fair.c` 9 增 2 删，改动点全部在 `
 
 ## 合入评估
 
-likelihood: **unclear**。
+*likelihood: unclear*。
 
 依据（正向）：问题定位是可信的——`Fixes: d2d5c129d07e` 明确指出了可达性来源，改动只有 9 增 2 删且被 `arch_scale_freq_invariant()` 门控，对 x86/arm64 主流平台（均有频率不变性）零行为变化，属于纯收敛性修补，作为 `fixes` 路线的候选并不昂贵。
 

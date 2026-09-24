@@ -103,7 +103,7 @@ if (unlikely(!list_empty(&sch->children))) {
 
 ## 合入评估
 
-likelihood: **likely**（已合入 fixes 树）。
+*likelihood: likely*（已合入 fixes 树）。
 
 依据：Tejun Heo 09-04 明确 applied 到 `sched_ext/for-7.3-fixes`，并且把 stable Cc 补成 `# v7.1+`；此前已有 Andrea Righi 的 `Reviewed-by`，v3 已把维护者三条纠正全部落实，无遗留异议；补丁带 `Fixes:`、规模 18 增 4 删，属典型 fixes 通道内容。
 

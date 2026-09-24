@@ -17,7 +17,7 @@
 - **Andrea Righi**：给出 Reviewed-by，无异议。
 
 ## 合入评估
-likelihood=merged，status=merged_tip。已进入 `sched_ext/for-7.3-fixes` 分支，后续将随 v7.3-rc3 的 GIT PULL 进入 mainline（见 sched-20260916-009）。blocking_issues：无。next_action：等随 pull 请求进入 Linus 主线。
+*likelihood=merged*，*status=merged_tip*。已进入 `sched_ext/for-7.3-fixes` 分支，后续将随 v7.3-rc3 的 GIT PULL 进入 mainline（见 sched-20260916-009）。*blocking_issues*：无。*next_action*：等随 pull 请求进入 Linus 主线。
 
 ## 效果评估
 无性能量化数据；属修复窗口内的正确性补丁。

@@ -76,7 +76,7 @@ Hui Su 的单补丁（本日 19:07 发出）把 cgroup 字段统一按**调度�
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 依据：问题定义清晰且有实测差分（usage 与 system 落到不同 cgroup），带指向已合入 tip 提交的 `Fixes` 标签；作者用 `CONFIG_SCHED_PROXY_EXEC` + `sched_proxy_exec()` 双重门控，明确声明 per-task/thread-group/force-idle 记账不变，所以对非代理执行配置零风险——这大幅降低了合入阻力。
 卡点：一是 197 行改动全部落在 cputime/vtime 这个历史上极易出并发问题的区域，而线程内目前零评审；二是 cgroup 侧维护者（Tejun Heo）尚未确认「cgroup 字段按调度上下文」这一新口径，该口径会直接影响 cgroup v2 的对外统计契约，属于必须拿到 ack 的部分；三是 `deferred cputime boundary + 持旧 owner 引用` 是一个新的生命周期，需要 Peter Zijlstra/Thomas Gleixner 侧确认 vtime 序列与引用释放顺序无窗；四是与同作者另外两个上下文修正补丁共享基线，很可能被要求作为一个簇统一排队。
 

@@ -21,7 +21,7 @@
 - 无 NAK；方向获多位维护者认可。
 
 ## 合入评估
-likelihood=medium。v6 把争议最大的 MIDR 特判改为通用、可显式开关的 boot 选项，回应了核心反对意见，前景较 v5（low）明显改善；但新 boot 选项的命名/语义仍待 sched 维护者（Peter/Ingo）最终评审，且尚无 v6 当日回帖。blocking_issues：boot 选项语义待维护者评审；v6 当日无回帖。next_action：等待 sched 维护者对 v6 的评审。
+*likelihood=medium*。v6 把争议最大的 MIDR 特判改为通用、可显式开关的 boot 选项，回应了核心反对意见，前景较 v5（low）明显改善；但新 boot 选项的命名/语义仍待 sched 维护者（Peter/Ingo）最终评审，且尚无 v6 当日回帖。*blocking_issues*：boot 选项语义待维护者评审；v6 当日无回帖。*next_action*：等待 sched 维护者对 v6 的评审。
 
 ## 效果评估
 双节点 Vera（NUMA node 0 的 88 物理核，88-thread sgemm，允许选任一兄弟，各 5 次运行）：OpenBLAS sgemm 7.11876→7.34669 TFLOP/s（+3.20%）；NVPL 9.64742→10.29695 TFLOP/s（+6.73%）；标准差显著下降（结果更可预测）。

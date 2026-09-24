@@ -65,7 +65,7 @@ layout: article
 - Jianyong 的提议：用一个排除 boost、且不随 boost 开关变化的固定 max_sustainable_freq 作参考；policy->max 继续作为当前有效上限。语义自检：boost 开启未限频时 policy->max > max_sustainable_freq、关闭未限频时相等、限频时小于——现有 max_freq <= capped_freq 判断在两种未限频情形都给零压力，限频低于可持续频率时压力与 boost 状态无关。遗留问题（作者原话）："the next question might be how to obtain the max_sustainable_freq."
 
 ## 版本演进与当前进展
-current_version: v1（sched 侧原补丁，作者已放弃、转向 cpufreq 侧方案）。cpufreq 侧补丁仍未发出；09-09 共识（policy 对象缓存最高可达 OPP）现在需要叠加「boost 不变参考频率」的新约束，方案实际上要重新设计——单纯缓存 __resolve_freq() 上界不满足 Vincent 的约束（intel_pstate 场景）。Prateek 的「下周初兜底发版」时点临近，但发出前需先回答 max_sustainable_freq 的获取问题。
+*current_version: v1（sched 侧原补丁，作者已放弃、转向 cpufreq 侧方案）*。cpufreq 侧补丁仍未发出；09-09 共识（policy 对象缓存最高可达 OPP）现在需要叠加「boost 不变参考频率」的新约束，方案实际上要重新设计——单纯缓存 __resolve_freq() 上界不满足 Vincent 的约束（intel_pstate 场景）。Prateek 的「下周初兜底发版」时点临近，但发出前需先回答 max_sustainable_freq 的获取问题。
 
 ## Maintainer 意见与讨论焦点
 - Vincent Guittot（09-10）：给出 boost 不变性硬约束，认可「参考频率固定即可」的方向。
@@ -74,7 +74,7 @@ current_version: v1（sched 侧原补丁，作者已放弃、转向 cpufreq 侧�
 - 未决焦点：max_sustainable_freq 的数据来源（驱动回调？policy 缓存？ACPI/固件表？）无人给出。
 
 ## 合入评估
-likelihood: medium（语义方向在收敛，但可评审的补丁仍未出现，且新约束推翻了 09-09 方案的完备性）。blocking_issues：cpufreq 侧补丁未发出；max_sustainable_freq 获取机制无答案；intel_pstate/amd-pstate 这类无频率表驱动的支持路径未定；改动落 drivers/cpufreq/ 需 cpufreq 维护者 ack。next_action：先在线程回答 Jianyong 的语义确认问题，确定参考频率来源后由作者或 Prateek 发出 cpufreq 侧补丁。
+*likelihood: medium*（语义方向在收敛，但可评审的补丁仍未出现，且新约束推翻了 09-09 方案的完备性）。*blocking_issues*：cpufreq 侧补丁未发出；max_sustainable_freq 获取机制无答案；intel_pstate/amd-pstate 这类无频率表驱动的支持路径未定；改动落 drivers/cpufreq/ 需 cpufreq 维护者 ack。*next_action*：先在线程回答 Jianyong 的语义确认问题，确定参考频率来源后由作者或 Prateek 发出 cpufreq 侧补丁。
 
 ## 效果评估
 本日无 benchmark。既有问题数据（x86 acpi-cpufreq 机器上无真实限频但容量小于 1024 的现象）见 related_articles。Jianyong 的 4GHz/3GHz/2GHz 推演为语义分析，非实测。

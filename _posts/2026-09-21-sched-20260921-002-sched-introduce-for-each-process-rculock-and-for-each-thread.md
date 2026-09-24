@@ -60,7 +60,7 @@ Ye Liu 的进程/线程遍历 RCU 化系列发到 v4（共 15 个补丁），新
 - 讨论焦点已从"是否值得做"收敛到"自动评审告警的真伪核查"——v4 cover 明确列出三处误报及理由，说明社区对该系列方向认可、当前无实质分歧。
 
 ## 合入评估
-likelihood=high。系列被 mm 维护者（Michal Hocko）主动提出并 Acked，核心调度与信号头改动获多位维护者 Reviewed-by，v4 只做措辞/标题修正、无方向性争议。blocking_issues：无。next_action：等待 sched/信号子系统维护者（Peter Zijlstra 等）最终 pickup，关注是否会因横跨 mm/kernel/fs 多子系统而要求拆分或按树分拍合入。
+*likelihood=high*。系列被 mm 维护者（Michal Hocko）主动提出并 Acked，核心调度与信号头改动获多位维护者 Reviewed-by，v4 只做措辞/标题修正、无方向性争议。*blocking_issues*：无。*next_action*：等待 sched/信号子系统维护者（Peter Zijlstra 等）最终 pickup，关注是否会因横跨 mm/kernel/fs 多子系统而要求拆分或按树分拍合入。
 
 ## 效果评估
 纯代码清理，无功能变化、无性能数据。收益体现在可维护性与安全性（RCU 读锁作用域收敛，减少漏放锁/提前返回的隐患）。

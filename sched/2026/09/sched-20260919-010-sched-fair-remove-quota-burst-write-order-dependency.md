@@ -18,7 +18,7 @@
 - 分歧/未决：无。
 
 ## 合入评估
-likelihood=high。带宽维护者 Ben Segall Reviewed-by、无反对意见，等待收取。blocking_issues：暂无（需确认全系列 3 patch 均已覆盖 review）。next_action：维护者收取。
+*likelihood=high*。带宽维护者 Ben Segall Reviewed-by、无反对意见，等待收取。*blocking_issues*：暂无（需确认全系列 3 patch 均已覆盖 review）。*next_action*：维护者收取。
 
 ## 效果评估
 本日无新增测试数据；该系列为正确性/健壮性改动（消除写顺序依赖），无性能数字。

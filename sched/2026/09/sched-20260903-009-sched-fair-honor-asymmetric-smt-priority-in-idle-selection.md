@@ -42,7 +42,7 @@ Olympus 的特殊性不在于容量非对称，而在于「换兄弟」这件事
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：方向上无人生疑——放置层的兄弟偏好问题已有 `293f9611ae735` 这条同源前例，作者把它从 NOHZ 路径延伸到普通任务放置；改动被 `sched_smt_asym_active()` 静态分支和「架构必须提供带 `SD_ASYM_PACKING` 的 SMT 域」双重门控，x86 与绝大多数 arm64 平台行为不变，回归面小；作者给了明确的量化收益；EAS 维护者当天下场细读并给出可落地写法，属于良性推进节奏。
 

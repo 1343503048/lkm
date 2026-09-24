@@ -26,7 +26,7 @@
 - 形式之争（独立文档 vs 内联注释）以采纳 Peter 意见结束，无遗留分歧。
 
 ## 合入评估
-likelihood=high。修正了一处真实的误导性 API 保证、纯注释/文档改动零风险，且已按维护者偏好收敛为内联注释。blocking_issues：无明确项（仅待维护者审 v3 细节）。next_action：Peter 审 v3 注释措辞后收取。
+*likelihood=high*。修正了一处真实的误导性 API 保证、纯注释/文档改动零风险，且已按维护者偏好收敛为内联注释。*blocking_issues*：无明确项（仅待维护者审 v3 细节）。*next_action*：Peter 审 v3 注释措辞后收取。
 
 ## 效果评估
 纯文档/注释修正，无性能数据。价值在于消除 waitqueue API 对 WF_SYNC 的误导性保证，属「作者主观判断（消除误解），未见测试数据」。

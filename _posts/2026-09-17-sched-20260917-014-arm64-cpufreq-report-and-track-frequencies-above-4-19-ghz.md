@@ -65,7 +65,7 @@ layout: article
 - 无 NAK；方向获资深成员认可。
 
 ## 合入评估
-likelihood=medium。溢出修复路径清晰、获 Dietmar 机制层面支持；但 cpufreq/arm64 维护者尚未正式 Ack，且 capacity_freq_ref 语义变更需确认与 CPPC 路径的一致性。blocking_issues：缺 cpufreq/arm64 维护者 Ack；patch 2 语义变更待确认。next_action：等待维护者评审，尤其确认 capacity_freq_ref 语义与两补丁顺序。
+*likelihood=medium*。溢出修复路径清晰、获 Dietmar 机制层面支持；但 cpufreq/arm64 维护者尚未正式 Ack，且 capacity_freq_ref 语义变更需确认与 CPPC 路径的一致性。*blocking_issues*：缺 cpufreq/arm64 维护者 Ack；patch 2 语义变更待确认。*next_action*：等待维护者评审，尤其确认 capacity_freq_ref 语义与两补丁顺序。
 
 ## 效果评估
 Glymur 上以临时 /proc/schedstat 采样验证；Dietmar 给出 RADXA Orion 06 的 pressure 数字（173 → 0）。属正确性修复，无直接性能提升数据。

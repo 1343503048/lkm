@@ -64,7 +64,7 @@ layout: article
 - 无分歧；属"按 review 修订"的正常收敛。
 
 ## 合入评估
-likelihood=high。方向获维护者认可（"looks good overall"），作者已承诺修订所有意见；有独立 Tested-by 与量化数据。blocking_issues：v7 未发出（落实 Tejun 的命名/枚举/测试整改项）。next_action：作者发 v7 落实 Tejun 全部意见，预期即可合入。
+*likelihood=high*。方向获维护者认可（"looks good overall"），作者已承诺修订所有意见；有独立 Tested-by 与量化数据。*blocking_issues*：v7 未发出（落实 Tejun 的命名/枚举/测试整改项）。*next_action*：作者发 v7 落实 Tejun 全部意见，预期即可合入。
 
 ## 效果评估
 Tao Cui 实测（v6，4-CPU KVM，scx_simple + SCX_OPS_LAZY_SLICE_EXPIRY，2000 次迭代）：1ms 周期 timer 任务唤醒延迟 avg/p50/p99 在惰性(59/59/64 us)与立即(59/58/64)抢占下均与 CFS(60/59/66)持平，无常见场景回退；上下文切换率从 ~1000/s 降至 ~215/s。

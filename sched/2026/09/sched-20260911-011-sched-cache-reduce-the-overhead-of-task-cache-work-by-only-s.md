@@ -10,7 +10,7 @@ cache-aware scheduling 的 task_cache_work（per-task 周期性缓存统计工�
 （承 sched-20260728-005 的 v8：for_each_cpu_and + visited_cpus 只扫访问过的 CPU。）v8 阶段的关键结论：华为开发者提出的并发安全疑问由 Chenyu 确认——try_cmpxchg 保证同一时刻只有一个 scanner，并发访问位图是安全的。v9 相对 v8 的具体 diff 未入当日缓存，作者声明「All comments have been addressed and there are no outstanding issues」。
 
 ## 版本演进与当前进展
-current_version: v9（v9 root msgid `<20260731024417.1106503-1-luogengkun2@huawei.com>`，msgid 时间戳 07-31；当日入缓存为作者的 09-11 ping）。
+*current_version: v9（v9 root msgid `<20260731024417.1106503-1-luogengkun2@huawei.com>`，msgid 时间戳 07-31；当日入缓存为作者的 09-11 ping）*。
 
 - v8（07-27，承 sched-20260728-005）：引入 visited_cpus 扫描收敛；并发安全性经 Chenyu 确认；
 - v9（07-31）：作者称吸收全部意见；
@@ -22,7 +22,7 @@ current_version: v9（v9 root msgid `<20260731024417.1106503-1-luogengkun2@huawe
 - 无反对意见记录；争议点为空，问题是彻底的沉默。
 
 ## 合入评估
-likelihood=unknown：技术讨论已收敛（作者声明无未决问题），但核心维护者六周未表态，无法评估收取意愿。blocking_issues：Tim Chen 未回应 ping；sched/cache 相关讨论当前由 Tim 的 0/4 修复系列与 prctl RFC 占据注意力（见 sched-20260911-003、sched-20260911-006），本系列可能需要重发或换基线才能进入队列。next_action：等 Tim Chen 回应 ping；若仍无回应，考虑 rebase 到 sched/urgent 基线（0/4 系列同款）后重发。
+*likelihood=unknown*：技术讨论已收敛（作者声明无未决问题），但核心维护者六周未表态，无法评估收取意愿。*blocking_issues*：Tim Chen 未回应 ping；sched/cache 相关讨论当前由 Tim 的 0/4 修复系列与 prctl RFC 占据注意力（见 sched-20260911-003、sched-20260911-006），本系列可能需要重发或换基线才能进入队列。*next_action*：等 Tim Chen 回应 ping；若仍无回应，考虑 rebase 到 sched/urgent 基线（0/4 系列同款）后重发。
 
 ## 效果评估
 方案目标是降低 task_cache_work 的扫描开销（从全 CPU 收敛到 visited CPU），但邮件窗口内未获取到量化的开销对比数字（v8/v9 正文未入缓存）；「只扫访问过的 CPU」的收益面为作者设计主张，未见实测数据。

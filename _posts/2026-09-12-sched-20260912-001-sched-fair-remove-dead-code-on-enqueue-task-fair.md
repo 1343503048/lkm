@@ -59,7 +59,7 @@ enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 - 顺带删除遗留的 `/* XXX comment on the curr thing */` 注释；requeue_delayed_entity() 与 dl_server_start() 逻辑不动。
 
 ## 版本演进与当前进展
-current_version: v3（msgid `<20260911160253.1249960-1-kayracizmeci@gmail.com>`，09-12 00:02 入缓存）。
+*current_version: v3（msgid `<20260911160253.1249960-1-kayracizmeci@gmail.com>`，09-12 00:02 入缓存）*。
 
 - 09-11 23:54：以无版本号的 `[PATCH]` 投递（见 sched-20260911-020）；
 - 09-12 00:02：补发 `[PATCH v3]`，cover 注明「Ah.. I forgot to add v3. Sorry of the other one.」——diff 与前次投递完全一致（同一 blob 对 440e4fdebe2f），本次只是把版本号补上；
@@ -69,7 +69,7 @@ current_version: v3（msgid `<20260911160253.1249960-1-kayracizmeci@gmail.com>`�
 本补丁自身当日无新回帖；既有的支持性意见来自 PeterZ（09-11 在 place_entity 线程给出等价 diff）。无反对意见记录；潜在关注点仍是删除后 enqueue 路径确无 curr == se 的隐藏入口。
 
 ## 合入评估
-likelihood=medium：方向有 PeterZ 的 diff 背书、版本号已补齐；但维护者尚未对独立补丁表态，且 place_entity 系列 v3 仍未发出——存在同一清理双线推进的重复风险。blocking_issues：独立补丁与 place_entity 系列 v3 的归属未定。next_action：等维护者择一收取；若 place_entity v3 出现并包含本清理，本补丁应标记 superseded。
+*likelihood=medium*：方向有 PeterZ 的 diff 背书、版本号已补齐；但维护者尚未对独立补丁表态，且 place_entity 系列 v3 仍未发出——存在同一清理双线推进的重复风险。*blocking_issues*：独立补丁与 place_entity 系列 v3 的归属未定。*next_action*：等维护者择一收取；若 place_entity v3 出现并包含本清理，本补丁应标记 superseded。
 
 ## 效果评估
 无性能数据；效果为热路径去分支与可读性清理，作者此前自评性能影响不可测量。

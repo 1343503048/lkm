@@ -29,7 +29,7 @@ raw static key 不带类型信息，无法防止误配（例如对默认为 TRUE
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 依据：纯清理、无功能变化、改动面 8 行，且是既有废弃 API 迁移序列的收尾（前序补丁已合入），维护者一般不会有异议；作者已主动 rebase 到当前基线并解决冲突。
 卡点：一是零评审、零 tag，本日为 v2 首发；二是与 PREEMPT_DYNAMIC 精简系列存在明确的代码区域竞争，`fair.c` 那半部分基本无风险，`core.c` 那半部分需要与 [[sched-20260903-013]] 的落地顺序协商，很可能被要求等 Mark 的 v3 之后再 rebase；三是这类收尾补丁通常由 maintainer 直接收进 tip 的 cleanup 分支，不会单独催促进度。
 

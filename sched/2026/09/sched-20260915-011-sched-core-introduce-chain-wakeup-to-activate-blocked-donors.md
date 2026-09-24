@@ -17,7 +17,7 @@
 - 未决点：作者 Prateek 尚未回应该修法；锁释放-重取窗口内的并发正确性需作者确认。
 
 ## 合入评估
-likelihood=unknown。RFC/PoC 阶段，patch 14/16 还有 lockdep 告警待修，方向尚未收敛。blocking_issues：rq 锁 pin 下的 lockdep 告警需按 Stultz 建议改 unlock/relock；锁窗口内的并发语义待作者论证。next_action：作者按 Stultz 建议改 `proxy_activate_blocked_task()` 的锁处理并回应并发正确性。
+*likelihood=unknown*。RFC/PoC 阶段，patch 14/16 还有 lockdep 告警待修，方向尚未收敛。*blocking_issues*：rq 锁 pin 下的 lockdep 告警需按 Stultz 建议改 unlock/relock；锁窗口内的并发语义待作者论证。*next_action*：作者按 Stultz 建议改 `proxy_activate_blocked_task()` 的锁处理并回应并发正确性。
 
 ## 效果评估
 无性能数据。John Stultz 报告的是一致性/lockdep 层面问题（"hitting a lot of lockdep warnings"），属正确性缺陷，非性能回退。

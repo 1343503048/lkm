@@ -56,7 +56,7 @@ v1 当日发出，附 `Fixes:` 与 `Tested-by`。未见当日 review 回复。
 当日无 review 回复，为作者（cpufreq 维护者本人）自提修复。无争议。
 
 ## 合入评估
-likelihood=high。作者即 cpufreq 子系统维护者，带 Fixes 与 Tested-by，改动小而聚焦；但当日尚未见其他维护者表态或合入通知，故取 high 而非 merged。blocking_issues 无明确项；next_action 等待合入或后续 review。
+*likelihood=high*。作者即 cpufreq 子系统维护者，带 Fixes 与 Tested-by，改动小而聚焦；但当日尚未见其他维护者表态或合入通知，故取 high 而非 merged。blocking_issues 无明确项；next_action 等待合入或后续 review。
 
 ## 效果评估
 无量化 benchmark；本质是正确性修复——避免 cpufreq pressure 信号在容量参考频率未知时误报进负载均衡。

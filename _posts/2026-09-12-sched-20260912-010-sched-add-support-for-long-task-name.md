@@ -59,7 +59,7 @@ André Almeida 的 comm 16→64 字节系列发到 v7：修 bpf selftest 与 sec
 （承前文，接口设计不变。）v7 相对 v6 的变化：「Fixed build errors (for good): bpf test and security/smack」——继续收口 treewide 改动暴露的编译问题；v6 修过 security/、i915、blktrace，v7 补 bpf selftest 与 smack。当日缓存含 v7 cover 与 4/6 补丁，其余补丁未入缓存。
 
 ## 版本演进与当前进展
-current_version: v7（cover msgid `<20260911-tonyk-long_name-v7-0-34e1ee1564ae@igalia.com>`，09-12 09:23 入缓存）。
+*current_version: v7（cover msgid `<20260911-tonyk-long_name-v7-0-34e1ee1564ae@igalia.com>`，09-12 09:23 入缓存）*。
 
 - v1（05-17）→ v7（09-11 发出）的完整链路见 cover 变更史；v5/v6 的分析见相关文章；
 - v7（09-12 入缓存）：修 bpf test 与 security/smack 编译错误；
@@ -69,7 +69,7 @@ current_version: v7（cover msgid `<20260911-tonyk-long_name-v7-0-34e1ee1564ae@i
 与 v5/v6 相同：本日缓存内 v7 零回帖，sched/core 与 tracing 侧维护者均未表态，未获取到任何 review 标签。系列已 7 版约 4 个月，零反馈仍是最大风险。
 
 ## 合入评估
-likelihood=unknown（不变）：无维护者意见可依据。blocking_issues 承前：task_struct 增大 48 字节无可复现数据；treewide 收口的漏网调用点仍在暴露（v6/v7 连修三处+两处）；prctl UAPI 需与 man-pages/glibc 协调。next_action：等第一批维护者回帖；treewide 补丁建议用全量构建矩阵（allyesconfig/allmodconfig + 各 arch）先行自证。
+*likelihood=unknown*（不变）：无维护者意见可依据。blocking_issues 承前：task_struct 增大 48 字节无可复现数据；treewide 收口的漏网调用点仍在暴露（v6/v7 连修三处+两处）；prctl UAPI 需与 man-pages/glibc 协调。*next_action*：等第一批维护者回帖；treewide 补丁建议用全量构建矩阵（allyesconfig/allmodconfig + 各 arch）先行自证。
 
 ## 效果评估
 承 v6：作者沿用 v2 时 benchmark，「no significant change was found」为作者主观陈述，无具体数字，第三方数据未获取到。

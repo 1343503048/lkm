@@ -16,7 +16,7 @@ Xin Zhao 的 10 补丁 RFC（LB_PROMOTE：为交互式 CFS 负载减少调度延
 - patch 2（作者回应 Kayra 09-10 的质疑）：active_load_balance_cpu_stop() 本就运行在 busiest_cpu 上，除非 CPU 正在 offline，busiest_cpu 恒等于 smp_processor_id()；Kayra 接受，只要求把这个论证写进下一版 commit message。
 
 ## 版本演进与当前进展
-current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989@163.com>`，09-10 发出；当日无新版本，作者以回帖响应 review）。
+*current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989@163.com>`，09-10 发出；当日无新版本，作者以回帖响应 review）*。
 
 ## Maintainer 意见与讨论焦点
 - **Vincent Guittot**：从「拒绝 05/10 的函数」升级为「质疑整个 LB_PROMOTE 前提 + 要求作者改用 interactive 表述」——系列的核心叙事被挑战；
@@ -25,7 +25,7 @@ current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989
 - 分歧焦点：overload 语义的作用域之争（Prateek vs 作者）未闭合；RT vs interactive 的定位之争未闭合。
 
 ## 合入评估
-likelihood=low：核心补丁 05/10 已被 Vincent 两度拒绝且反对面扩大到 LB_PROMOTE 本身；01/10 被要求补数据且出现竞争方案。blocking_issues：作者需正面回答「为什么不用 RT 调度器/为何叫 real-time」；patch 1 缺少独立收益数据；Prateek 反方案与作者方案的取舍未决；效果数据全部来自作者单一嵌入式平台。next_action：作者明确问题定位（交互式而非实时）、按 Vincent 09-10 建议改做 nr_idle_scan 小 LLC 自适应或放弃 thin 选核、补 patch 1 数据后发正式 v2。
+*likelihood=low*：核心补丁 05/10 已被 Vincent 两度拒绝且反对面扩大到 LB_PROMOTE 本身；01/10 被要求补数据且出现竞争方案。*blocking_issues*：作者需正面回答「为什么不用 RT 调度器/为何叫 real-time」；patch 1 缺少独立收益数据；Prateek 反方案与作者方案的取舍未决；效果数据全部来自作者单一嵌入式平台。*next_action*：作者明确问题定位（交互式而非实时）、按 Vincent 09-10 建议改做 nr_idle_scan 小 LLC 自适应或放弃 thin 选核、补 patch 1 数据后发正式 v2。
 
 ## 效果评估
 无新数据：当日讨论为机理与方案之争，作者未提供 patch 1 的独立收益数字（Prateek 明确索要而未获回应）；既有数据承 sched-20260910-001（单一嵌入式 arm64 平台，CONFIG_HZ_250）。

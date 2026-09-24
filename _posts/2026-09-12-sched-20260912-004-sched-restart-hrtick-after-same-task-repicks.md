@@ -67,7 +67,7 @@ hrtick 到期 → task_tick 触发 resched_curr() → schedule() 里 pick_task_f
 - 测试：基线 08df884136f1 与 v2 均开 CONFIG_HIGH_RES_TIMERS/CONFIG_SCHED_HRTICK，HRTICK+DELAY_DEQUEUE、base_slice_ns=3ms，CPU 0 上钉 2 个 CPU-bound nice-0 fair 任务 + 周期性 sleeper，各采 5 次 10 秒 perf sched trace。
 
 ## 版本演进与当前进展
-current_version: v2（msgid `<20260911-sched-fair-hrtick-restart-v2-1-0d34db26ecd1@gentwo.org>`，09-12 06:08 入缓存；另含作者 02:56 对 PeterZ 方案的确认回帖）。
+*current_version: v2（msgid `<20260911-sched-fair-hrtick-restart-v2-1-0d34db26ecd1@gentwo.org>`，09-12 06:08 入缓存；另含作者 02:56 对 PeterZ 方案的确认回帖）*。
 
 - v1（08-13）→ Zhan Xusheng 08-26 review → 作者 09-11 承诺 v2；
 - 09-12：作者先回帖认可 SNT_REPICK 设计（"Yes, this works for me"、"cleaner than the fair specific rq flag"、补上 DL 缺失），随后发出 v2——与 PeterZ 的提案同构。
@@ -78,7 +78,7 @@ current_version: v2（msgid `<20260911-sched-fair-hrtick-restart-v2-1-0d34db26ec
 - 当日缓存内未见 PeterZ/Vincent 对 v2 的复核——枚举化跨 6 个调度类文件，评审面仍在。无分歧记录。
 
 ## 合入评估
-likelihood=medium：v2 采用了维护者提出的架构方向、带首份量化数据；但跨类接口变更需要 PeterZ 亲自复核，且 set_protect_slice 拆分项悬空。blocking_issues：v2 尚无维护者复核；DL hrtick 场景的验证只有作者承诺（"will test ... a DL hrtick case"）。next_action：等 PeterZ 对 v2 的复核与 DL 场景测试结果；独立修复（repick 不延长 protect slice）需另起补丁。
+*likelihood=medium*：v2 采用了维护者提出的架构方向、带首份量化数据；但跨类接口变更需要 PeterZ 亲自复核，且 set_protect_slice 拆分项悬空。*blocking_issues*：v2 尚无维护者复核；DL hrtick 场景的验证只有作者承诺（"will test ... a DL hrtick case"）。*next_action*：等 PeterZ 对 v2 的复核与 DL 场景测试结果；独立修复（repick 不延长 protect slice）需另起补丁。
 
 ## 效果评估
 作者一手数据（5 次 10 秒 perf sched trace，条件见上）：CPU-bound fair 任务最大运行时长 baseline 5.227ms → v2 3.386ms；>4ms 样本 6 → 0。方向与幅度自洽（base_slice_ns 3ms 下 hrtick 缺失会让任务跑到 4ms+ 才被抢占），暂无第三方复现。

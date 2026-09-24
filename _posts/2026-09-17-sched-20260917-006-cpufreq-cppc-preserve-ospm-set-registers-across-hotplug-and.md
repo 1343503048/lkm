@@ -59,7 +59,7 @@ layout: article
 - 无分歧；系列进入合入前的标签收尾阶段。
 
 ## 合入评估
-likelihood=medium。跨架构（arm64 + x86）实测均通过，系列已成熟；但当日未见 cpufreq 维护者（Viresh/Rafael）最终 Ack，合入仍待维护者拍板。blocking_issues：缺 cpufreq 维护者 Ack。next_action：作者附上新增标签后等待维护者收取。
+*likelihood=medium*。跨架构（arm64 + x86）实测均通过，系列已成熟；但当日未见 cpufreq 维护者（Viresh/Rafael）最终 Ack，合入仍待维护者拍板。*blocking_issues*：缺 cpufreq 维护者 Ack。*next_action*：作者附上新增标签后等待维护者收取。
 
 ## 效果评估
 无性能数据；属电源管理寄存器保留的正确性验证。K Prateek 的测试为功能正确性，非性能收益。

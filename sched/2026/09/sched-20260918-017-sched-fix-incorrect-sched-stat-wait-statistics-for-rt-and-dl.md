@@ -17,7 +17,7 @@ fair 类自 commit b9c88f752268 起已免疫（在 fair 包装器里跳过零 wa
 - 本日无维护者回复。补丁自带 Fixes 与清晰的复现说明，并指出 2024 年 Zhang Qiao 的等价修复（https://lore.kernel.org/r/20240322081521.2687856-1-zhangqiao22@huawei.com）未合入，暗示此问题长期存在。
 
 ## 合入评估
-likelihood=medium。修复小、逻辑清晰、带 Fixes 与 mainline 复现，且与既有 fair 类免疫方式完全同构；但本日尚无人 review。blocking_issues：无阻塞；等待维护者 review（fair 类类似检查早已合入，阻力应小）。next_action：等待 sched 维护者 review 即可；若无人响应可 ping 或对比 Zhang Qiao 2024 版本补充差异说明。
+*likelihood=medium*。修复小、逻辑清晰、带 Fixes 与 mainline 复现，且与既有 fair 类免疫方式完全同构；但本日尚无人 review。*blocking_issues*：无阻塞；等待维护者 review（fair 类类似检查早已合入，阻力应小）。*next_action*：等待 sched 维护者 review 即可；若无人响应可 ping 或对比 Zhang Qiao 2024 版本补充差异说明。
 
 ## 效果评估
 作者复现：开机 ~1058 s 时 SCHED_RR 任务 `wait_max` 显示 `1058533.555050`（恰为 uptime 量级，即虚假值）。修复后该统计应回到真实等待时间（作者未附修复前后对比数据）。

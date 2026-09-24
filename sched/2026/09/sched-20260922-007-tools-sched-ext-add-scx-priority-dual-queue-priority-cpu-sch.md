@@ -16,7 +16,7 @@ v1 当日发出，尚无作者对 Andrea 意见的回复。
 - **Andrea Righi**（sched_ext 维护者）：明确不看好合入内核——`tools/sched_ext` 下的调度器主要是演示 API 用法的示例，此补丁功能已被现有示例充分代表；若目标是提供实际可用的调度器，建议提 PR 到社区调度器仓库 <https://github.com/sched-ext/scx>。
 
 ## 合入评估
-likelihood=low。维护者明确建议改投社区仓库，未 NAK 但方向不认可内核合入。blocking_issues：功能与现有示例重叠、定位不符 `tools/sched_ext` 的示例意图。next_action：作者改投 sched-ext/scx 社区仓库，或补充说明该示例相对现有示例的独特教学价值。
+*likelihood=low*。维护者明确建议改投社区仓库，未 NAK 但方向不认可内核合入。*blocking_issues*：功能与现有示例重叠、定位不符 `tools/sched_ext` 的示例意图。*next_action*：作者改投 sched-ext/scx 社区仓库，或补充说明该示例相对现有示例的独特教学价值。
 
 ## 效果评估
 无 benchmark 数据；作者自述「tracking live throughput」的用户态 monitor，但未见量化结果。

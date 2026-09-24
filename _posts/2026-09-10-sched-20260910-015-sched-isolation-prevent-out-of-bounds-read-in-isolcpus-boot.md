@@ -118,16 +118,16 @@ layout: article
 - Ingo Molnar / Peter Zijlstra 当日未参与。
 
 ## 合入评估
-likelihood: medium。
+*likelihood: medium*。
 
 依据：修复本身阻力极小——已有 Valentin 的 Reviewed-by、有 `Fixes:` 标签、`Cc: stable`、改动局限在启动期一个解析函数、无功能行为变更风险。但它现在的命运与 multiqueue CPU isolation v16 绑定，而该系列 15 版未合入说明其自身仍有未解决的争议或规模问题，因此实际合入时点不可预测。
 
-blocking_issues：
+*blocking_issues*：
 - 修复不再独立投递，进度取决于 v16 系列能否被 sched 维护者接受。
 - Valentin 尚未对「折叠进 v16」这一处置表态；若他认为应先独立进 stable，作者需要改回单发。
 - 补丁正文与 `Fixes:` 指向的具体 commit 均未获取到，无法核验修复范围是否覆盖上述越界路径的全部入口。
 
-next_action：作者在 v16 中把该修复作为 patch 01 发出；更稳的做法是先按 v1 原样（或带 changelog 说明）单独重发一次争取进 `sched/urgent` + stable，v16 再 rebase。
+*next_action*：作者在 v16 中把该修复作为 patch 01 发出；更稳的做法是先按 v1 原样（或带 changelog 说明）单独重发一次争取进 `sched/urgent` + stable，v16 再 rebase。
 
 ## 效果评估
 暂无效果数据。这是一个越界读修复，不涉及性能；邮件中也未提及复现方式（KASAN splat、具体命令行、触发架构）——这些都在未获取到的原始补丁正文里。

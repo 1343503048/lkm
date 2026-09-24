@@ -20,7 +20,7 @@ v32 相对上一版：rebase 到当前 `-tip/sched/core`；加入 K Prateek 的�
 - 争议核心：两套 sleeping-owner 处理的实现路径取舍尚未由维护者定夺。
 
 ## 合入评估
-likelihood=unknown。proxy execution 整体仍处 RFC 阶段（前置阶段补丁正被 Peter 陆续收取），本阶段补丁等待 Peter 对方案取舍的表态。blocking_issues：两套方案未定、逻辑复杂度高且作者自述 locking 部分尤其别扭、需更多 review。next_action：Peter 在两方案间表态，随后作者按选择打磨并吸收反馈。
+*likelihood=unknown*。proxy execution 整体仍处 RFC 阶段（前置阶段补丁正被 Peter 陆续收取），本阶段补丁等待 Peter 对方案取舍的表态。*blocking_issues*：两套方案未定、逻辑复杂度高且作者自述 locking 部分尤其别扭、需更多 review。*next_action*：Peter 在两方案间表态，随后作者按选择打磨并吸收反馈。
 
 ## 效果评估
 无性能数据，仅为 proxy execution 正确性功能补丁；作者自述该逻辑「简单的东西藏着微妙」，正确性风险集中在唤醒级联与竞态。

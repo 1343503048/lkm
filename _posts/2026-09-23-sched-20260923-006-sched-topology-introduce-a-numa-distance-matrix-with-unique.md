@@ -64,7 +64,7 @@ layout: article
 本日无 Peter Zijlstra 新表态，参与者为 Tim Chen（Intel）与作者 Jianyong Wu。分歧点：`llc_next` 数组（节点内 cache 排序）是否足以表达作者要的「系统级 LLC 亲和排序」。Tim 的方案更省存储、更直白且无「距离槽耗尽」风险；作者的方案针对跨节点等距消歧，二者解决的不是完全同一层问题。路线未收敛。
 
 ## 合入评估
-likelihood=unknown。仍是 23 枚架构性 RFC 的早期评审，去重矩阵的数据结构路线（节点级去重矩阵 vs `llc_next`）尚未与 Tim 的方案对齐；且此前 Peter 提出的 `__build_all_zonelists()` mm 侧联动、着色算法上界等 open 项依旧未决。blocking_issues：去重矩阵 vs `llc_next` 路线未定；系列整体仍缺跨平台收益数据与 v3。next_action：作者与 Tim 就「节点级去重矩阵」与「节点内 cache 排序」的职责边界对齐，再决定 02/23 采用哪种结构。
+*likelihood=unknown*。仍是 23 枚架构性 RFC 的早期评审，去重矩阵的数据结构路线（节点级去重矩阵 vs `llc_next`）尚未与 Tim 的方案对齐；且此前 Peter 提出的 `__build_all_zonelists()` mm 侧联动、着色算法上界等 open 项依旧未决。*blocking_issues*：去重矩阵 vs `llc_next` 路线未定；系列整体仍缺跨平台收益数据与 v3。*next_action*：作者与 Tim 就「节点级去重矩阵」与「节点内 cache 排序」的职责边界对齐，再决定 02/23 采用哪种结构。
 
 ## 效果评估
 本日无性能数据。设计层面的静态论点为：`llc_next` 存储效率与无「槽耗尽」风险 vs 节点级去重矩阵的跨节点等距消歧能力；均属设计论证，无实测。

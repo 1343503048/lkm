@@ -67,7 +67,7 @@ layout: article
 - **Kayra Cizmeci**：在 patch 5/8 线程参与讨论（`<20260922143230.5383-1-kayracizmeci@gmail.com>`）。
 
 ## 合入评估
-likelihood=medium。系列目标明确、有完整 benchmark 支撑（见 sched-20260921-001），但 patch 4/8 的 lag 衰减算法存在实质分歧（近似 vs 第二棵树 vs load_avg），Peter 尚未认可当前近似方向。blocking_issues：patch 4/8 衰减算法设计分歧未收敛；若干 patch 的实现位置/重复扫描待调整。next_action：Vincent 按 Peter 意见改进 patch 4/8 与 8/8，重新发版。
+*likelihood=medium*。系列目标明确、有完整 benchmark 支撑（见 sched-20260921-001），但 patch 4/8 的 lag 衰减算法存在实质分歧（近似 vs 第二棵树 vs load_avg），Peter 尚未认可当前近似方向。*blocking_issues*：patch 4/8 衰减算法设计分歧未收敛；若干 patch 的实现位置/重复扫描待调整。*next_action*：Vincent 按 Peter 意见改进 patch 4/8 与 8/8，重新发版。
 
 ## 效果评估
 无本日新增数据；系列整体 benchmark（99th/99.9th/max 延迟改善、hackbench +11%~+30%）见 sched-20260921-001。

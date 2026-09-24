@@ -89,7 +89,7 @@ Xin Zhao 重发（RESEND）了 10 补丁的 RFC 系列，引入 LB_PROMOTE 特�
 - 注意：02/10 的 subject 存在笔误 "scbed/fair"（应为 sched/fair），尚无人指出。
 
 ## 合入评估
-likelihood: low。RFC 阶段即遭两位核心维护者对关键补丁的方向性否定：05/10 被 Vincent 明确不要（yet another select idle cpu function），01/10、03/10 的论证被 Prateek 质疑。但讨论并未关门——Vincent 主动给出 nr_idle_scan 小 LLC 放宽的口子，01/10 的 rq->flag 方案与 redo 时加回 dst_cpu 的语义也形成了新共识。下一步需要作者按这些方向重构后发正式 v2（去 RFC），且 10 补丁应拆分推进：1/2/3/9 这类前置修复可独立先行。
+*likelihood: low*。RFC 阶段即遭两位核心维护者对关键补丁的方向性否定：05/10 被 Vincent 明确不要（yet another select idle cpu function），01/10、03/10 的论证被 Prateek 质疑。但讨论并未关门——Vincent 主动给出 nr_idle_scan 小 LLC 放宽的口子，01/10 的 rq->flag 方案与 redo 时加回 dst_cpu 的语义也形成了新共识。下一步需要作者按这些方向重构后发正式 v2（去 RFC），且 10 补丁应拆分推进：1/2/3/9 这类前置修复可独立先行。
 
 ## 效果评估
 封面信给出两组数据（fillback 场景）：

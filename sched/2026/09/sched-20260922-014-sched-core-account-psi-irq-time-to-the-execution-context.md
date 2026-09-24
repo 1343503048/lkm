@@ -17,7 +17,7 @@
 - **Zhan Xusheng**（作者）：指出补丁依赖 commit `f5741d2b3451`（"sched/core: Call wq_worker_tick() for the execution context"），该 commit 在 sched/urgent 与 master 而不在 sched/core，补丁可干净应用到前两者；若 Peter 希望放 sched/core，他愿意改用调用点的 `rq->curr` 重发。
 
 ## 合入评估
-likelihood=merged。Peter 明确「In it goes」确认合入。blocking_issues 无；当天缓存未见 tip-bot 提交通知，具体 commit hash 与目标分支未获取到。
+*likelihood=merged*。Peter 明确「In it goes」确认合入。blocking_issues 无；当天缓存未见 tip-bot 提交通知，具体 commit hash 与目标分支未获取到。
 
 ## 效果评估
 无本日新增数据；PSI 记账正确性修复（详见 sched-20260919-005）。

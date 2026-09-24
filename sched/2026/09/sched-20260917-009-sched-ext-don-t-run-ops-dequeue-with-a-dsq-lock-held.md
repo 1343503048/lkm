@@ -19,7 +19,7 @@
 - 无分歧；处于合入前的最终收尾。
 
 ## 合入评估
-likelihood=high。带 Cc: stable 的自死锁修复，评审已收敛到纯文案/清理层面，Tejun 无实质异议。blocking_issues：无实质阻塞。next_action：等待 Tejun 应用到 sched_ext/for-7.3-fixes 或相应分支。
+*likelihood=high*。带 Cc: stable 的自死锁修复，评审已收敛到纯文案/清理层面，Tejun 无实质异议。*blocking_issues*：无实质阻塞。*next_action*：等待 Tejun 应用到 sched_ext/for-7.3-fixes 或相应分支。
 
 ## 效果评估
 无性能数据；属正确性（死锁）修复。

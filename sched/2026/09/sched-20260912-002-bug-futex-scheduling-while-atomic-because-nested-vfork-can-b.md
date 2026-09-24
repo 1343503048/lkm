@@ -10,7 +10,7 @@ need_futex_hash_allocate_default() 排除 CLONE_VFORK（commit ee9dce44362b 引�
 （承 sched-20260911-013：`need_futex_hash_allocate_default()` 的条件从 `(clone_flags & (CLONE_VM | CLONE_VFORK)) == CLONE_VM` 改为 `clone_flags & CLONE_VM`。）当日无新代码；新增的是关键证词——Davidlohr Bueso 回应 Jann Horn 的动机分析（该排除只是单线程 vfork+exec 的性能优化）：「Right, but didn't really measure anything and am certainly fine with Peter's fixlet. Sorry for breaking things.」——即当初未做测量、接受 Peter 的修法并致歉。
 
 ## 版本演进与当前进展
-current_version: 无版本化补丁（修复仍以 09-11 PeterZ 的线程内联 diff 形态存在，尚未转正为带 Fixes 的正式 PATCH）。当日线程新增 1 封（Davidlohr Bueso，09-12 01:51 入缓存）。
+*current_version: 无版本化补丁（修复仍以 09-11 PeterZ 的线程内联 diff 形态存在，尚未转正为带 Fixes 的正式 PATCH）*。当日线程新增 1 封（Davidlohr Bueso，09-12 01:51 入缓存）。
 
 ## Maintainer 意见与讨论焦点
 - **Davidlohr Bueso**（ee9dce44362b 作者）：承认当初未测量、接受 Peter 的修正并致歉——修复的最大不确定性（移除排除的动机与代价）就此解除；
@@ -18,7 +18,7 @@ current_version: 无版本化补丁（修复仍以 09-11 PeterZ 的线程内联 
 - 至此 tglx 转问 bigeasy 的历史问题实际已由原作者作答；当日缓存内未见 Sebastian/tglx 的后续确认。
 
 ## 合入评估
-likelihood=high：修复作者与引入者双方认可，技术路线无分歧；修正体积极小且已验证治愈用例。blocking_issues：修正尚未转正为正式补丁（无 Fixes: ee9dce44362b 标签的 PATCH 邮件）；Sebastian/tglx 的最终收取动作未发生（当日缓存内不可见）。next_action：PeterZ（或社区）把内联 diff 转正为补丁并附 Fixes/报告者 tag，随后走 futex 树收取。
+*likelihood=high*：修复作者与引入者双方认可，技术路线无分歧；修正体积极小且已验证治愈用例。*blocking_issues*：修正尚未转正为正式补丁（无 Fixes: ee9dce44362b 标签的 PATCH 邮件）；Sebastian/tglx 的最终收取动作未发生（当日缓存内不可见）。*next_action*：PeterZ（或社区）把内联 diff 转正为补丁并附 Fixes/报告者 tag，随后走 futex 树收取。
 
 ## 效果评估
 效果证据不变：PeterZ 确认 nested vfork 测试用例不再触发 scheduling-while-atomic。Davidlohr 明确「didn't really measure anything」——移除排除给 vfork+exec 增加的私有 hash 分配开销仍无量化数据，但现在被双方接受为可忽略代价（作者主观判断，未见数据）。

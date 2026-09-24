@@ -60,7 +60,7 @@ PoC（00/16，`<20260826062901.2137-1-kprateek.nayak@amd.com>`）无新版本。
 - 无 NAK，但也无人认可该 PoC 方向；系列仍停留在 PoC 阶段。
 
 ## 合入评估
-likelihood=unknown。PoC 尚未进入正式评审，本次还出现可复现的正确性 bug，短期内无合入可能。blocking_issues：sleeping-owner 处理机制 bug 待修；与既有 PE 系列的关系待明确。next_action：作者先修复 stress 测试暴露的 sched_change_begin/rt.c 崩溃。
+*likelihood=unknown*。PoC 尚未进入正式评审，本次还出现可复现的正确性 bug，短期内无合入可能。*blocking_issues*：sleeping-owner 处理机制 bug 待修；与既有 PE 系列的关系待明确。*next_action*：作者先修复 stress 测试暴露的 sched_change_begin/rt.c 崩溃。
 
 ## 效果评估
 无性能数据；出现负面的正确性回归（WARNING + kernel BUG）。

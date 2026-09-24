@@ -57,7 +57,7 @@ proxy execution 沿 blocked_on 关系找可运行 lock owner；若该链存在�
 本日无维护者回帖。作者的自我评估点（cover 原文）：Online Brent 会在延迟检测点之前短暂安装 blocked_donor 环；自然恢复路径下被选中的环成员在 mutex_unlock() 前 blocked_donor 已清除；强制的 forced-stale 对照确认既有 blocked_on revalidation 会拒绝 stale handoff。作者明确「不证明所有调度交错」——这是本 RFC 的核心待审争议点（接受短暂 backlink 窗口 vs 持久访问状态）。
 
 ## 合入评估
-likelihood=unknown。RFC 且无人表态，方案取舍（短暂环窗口 vs v5 的持久标记）尚无维护者裁决。blocking_issues：短暂 blocked_donor 环的安全窗口未被独立论证；与 v5 的取舍需维护者判断。next_action：等 proxy_exec 相关维护者（John Stultz/Prateek 等）就该取舍表态；可补充更多调度交错下的证明或测试。
+*likelihood=unknown*。RFC 且无人表态，方案取舍（短暂环窗口 vs v5 的持久标记）尚无维护者裁决。*blocking_issues*：短暂 blocked_donor 环的安全窗口未被独立论证；与 v5 的取舍需维护者判断。*next_action*：等 proxy_exec 相关维护者（John Stultz/Prateek 等）就该取舍表态；可补充更多调度交错下的证明或测试。
 
 ## 效果评估
 作者给出与 v5 同基、同配置（x86_64、KVM、4 vCPU、host affinity 8-11）下无环 find_proxy_task() 的 ns/call 中位数对比（五轮取中位）：depth 16→442 vs 500（0.884）、32→612 vs 584（1.048）、64→988 vs 1314（0.752）、128→1942 vs 2276（0.853）、256→4815 vs 4561（1.056）、512→8396 vs 9338（0.899）、1024 深度在 cover 中未截全。总体与 v5 相当、互有胜负。作者注明这些是 staging 测试用例下的结果，不覆盖全部调度交错。

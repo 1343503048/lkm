@@ -17,7 +17,7 @@
 本日无维护者直接表态。Hui Su 的测试覆盖了原作者测试缺失的"donor != curr"路径：两个 proxy execution 进程分属两个 cgroup v2，owner 持 CPU0 互斥锁 20s，SCHED_FIFO donor 阻塞其上；x86_64 QEMU（4 vCPU、2GiB）、开启 PSI 与 IRQ 时间记账。无分歧或反对意见。
 
 ## 合入评估
-likelihood=high。修复方向明确、有针对性测试补齐缺口（donor != curr），无反对意见；等待 sched 维护者收取。blocking_issues：暂无。next_action：维护者 review 后收取。
+*likelihood=high*。修复方向明确、有针对性测试补齐缺口（donor != curr），无反对意见；等待 sched 维护者收取。*blocking_issues*：暂无。*next_action*：维护者 review 后收取。
 
 ## 效果评估
 Hui Su 实测的 `irq.pressure` 总增量（us）：未打补丁 owner 22,053 / donor 401,127；打补丁后 owner 552,740 / donor 31,566。两次运行均成功完成，归属确实从 donor 移到了执行上下文（owner）。定量印证了"IRQ 时间此前被错记到 donor"。

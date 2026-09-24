@@ -57,7 +57,7 @@ Aaron Tomlin 的 panic 期 per-CPU runqueue 摘要补丁当日完成 v1→v2：k
 （承 sched-20260911-010：trylock + READ_ONCE 回退与 " (contended)" 标注、rcu_read_lock() 保护采样、省略 cgroup path。）v2 相对 v1 的唯一变化：sched_show_runqueues() 中经 rcu_dereference() 访问 rq->curr，消除 microblaze randconfig（W=1 构建）下的 sparse __rcu 地址空间告警（kernel/sched/debug.c 多处 incorrect type in argument/assignment）。
 
 ## 版本演进与当前进展
-current_version: v2（msgid `<20260912013240.545742-1-atomlin@atomlin.com>`，09-12 09:32 入缓存）。
+*current_version: v2（msgid `<20260912013240.545742-1-atomlin@atomlin.com>`，09-12 09:32 入缓存）*。
 
 - v1（09-11）→ kernel test robot 09-12 04:45 报 sparse 告警（akpm-mm/mm-everything 基线，microblaze-randconfig-r132）；
 - 09-12 09:00：作者回帖（Hi Andrew, Peter）致谢机器人并预告 v2；
@@ -67,7 +67,7 @@ current_version: v2（msgid `<20260912013240.545742-1-atomlin@atomlin.com>`，09
 人类维护者（Andrew、Peter 已被作者点名收件）仍未回复；当日全部推进来自 KTR 告警与作者响应。无分歧记录；panic 路径的 trylock/RCU/printk 洪泛控制论证（v1 分析中列出的评审点）尚待第一轮人类评审。
 
 ## 合入评估
-likelihood=unknown：构建卫生问题已快速清理，但评审未开始。blocking_issues：零人类 review；panic_sys_info 位分配（0x100）与既有位的冲突检查未见讨论。next_action：等 Andrew（sys_info/lib）与 Peter（sched/debug）两侧的首轮意见。
+*likelihood=unknown*：构建卫生问题已快速清理，但评审未开始。*blocking_issues*：零人类 review；panic_sys_info 位分配（0x100）与既有位的冲突检查未见讨论。*next_action*：等 Andrew（sys_info/lib）与 Peter（sched/debug）两侧的首轮意见。
 
 ## 效果评估
 暂无效果数据（承 v1：无 panic 输出样张、无高线程数日志体量对比）。

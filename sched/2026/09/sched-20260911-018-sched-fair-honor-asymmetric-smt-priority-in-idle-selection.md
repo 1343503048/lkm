@@ -10,7 +10,7 @@ Andrea Righi 让 idle 选核遵守非对称 SMT 优先级的系列当日收到 D
 Dietmar 的意见针对 select_idle_smt_cpu() 的域遍历实现：不用 for_each_domain()（宏会引入对 per-CPU 域链表的隐式遍历方式），而是直接取 `sd = rcu_dereference_all(cpu_rq(cpu)->sd)`——在持锁/RCU 语义上更显式。该 helper 的功能定位（在 SMT 域内按优先级挑 idle sibling）承 v4 不变，当日无新代码。
 
 ## 版本演进与当前进展
-current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com>`；当日缓存仅 Dietmar 对 2/2 的回帖一封）。
+*current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com>`；当日缓存仅 Dietmar 对 2/2 的回帖一封）*。
 
 - v4（09-08/09）：慢路径遵守 sibling 优先级、helper 定名（承 sched-20260910-008）；
 - 09-10：Andrea 确认移除 static key、改 sched_smt_active()，将落入下一版（与 v5 线程合流为 v6）；
@@ -21,7 +21,7 @@ current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com
 - 承前未解：Vincent 的 static key 质疑已由作者接受但未落版；PeterZ drop 系列的连带影响未消除。当日无新分歧。
 
 ## 合入评估
-likelihood=medium（维持 sched-20260910-008 的评估）：技术路线未被否定、作者积极整改，但 v6 未发出且 arm64 检测机制（连带自 sched-20260911-017）未决。blocking_issues：v6 未发出（static key 替换 + Dietmar 的域遍历意见都要落进去）；sched-20260910-007 的 drop 波及本系列。next_action：v6 中一并落实 sched_smt_active() 替换与 rcu_dereference_all 取域，再请 PeterZ 重新收取。
+*likelihood=medium*（维持 sched-20260910-008 的评估）：技术路线未被否定、作者积极整改，但 v6 未发出且 arm64 检测机制（连带自 sched-20260911-017）未决。*blocking_issues*：v6 未发出（static key 替换 + Dietmar 的域遍历意见都要落进去）；sched-20260910-007 的 drop 波及本系列。*next_action*：v6 中一并落实 sched_smt_active() 替换与 rcu_dereference_all 取域，再请 PeterZ 重新收取。
 
 ## 效果评估
 无新效果数据：本日仅实现规范讨论。承 sched-20260910-008：系列收益数据限于作者的 Olympus 平台陈述。

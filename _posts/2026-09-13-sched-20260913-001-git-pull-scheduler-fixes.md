@@ -85,7 +85,7 @@ Ingo Molnar 于 09-13 16:19（北京时间）向 Linus 发出 `tip/sched/urgent`
 - 本日无任何反对或保留意见出现在 pull 正文里。
 
 ## 合入评估
-likelihood=merged（已成事实）：`status=merged_tip`，合入分支 `tip/sched/urgent`（`sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3）。blocking_issues：落到 Linus 树的合并 commit 与 -rc 归属未获取到（本日无 pr-tracker-bot 回执）；四条修复各自的 stable 回合情况未获取到。next_action：跟踪 pr-tracker-bot 的合并回执确认进主线时点；之后按 commit 与内部分支/OLK 分支逐条比对回合状态。
+*likelihood=merged*（已成事实）：`status=merged_tip`，合入分支 `tip/sched/urgent`（`sched-urgent-2026-09-13`，顶端 f5741d2b34519d387edf6e9798fc7030c20a35f3）。*blocking_issues*：落到 Linus 树的合并 commit 与 -rc 归属未获取到（本日无 pr-tracker-bot 回执）；四条修复各自的 stable 回合情况未获取到。*next_action*：跟踪 pr-tracker-bot 的合并回执确认进主线时点；之后按 commit 与内部分支/OLK 分支逐条比对回合状态。
 
 ## 效果评估
 pull request 无 benchmark 数据。可量化信息是规模与时延：4 条修复、3 个文件、+46/-16，从最后一批（Hui Su 两条，09-10 发出）到进 tip 约 3 天。收益属正确性一类：EEVDF 的 `max_slice` 与 augmented rbtree 重平衡不再出错；proxy execution 下 cgroup CPU 时间与 wq worker tick 记到真正执行的上下文。

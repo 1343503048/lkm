@@ -68,7 +68,7 @@ André Almeida（Igalia）把线程名从 16 字节扩展到 TASK_COMM_EXT_LEN=6
 - patch 6：扩展 selftests/prctl/set-process-name.c 覆盖新接口。
 
 ## 版本演进与当前进展
-current_version: v6（cover msgid `<20260910-tonyk-long_name-v6-0-d70afbf194c5@igalia.com>`，09-11 00:49 入缓存）。
+*current_version: v6（cover msgid `<20260910-tonyk-long_name-v6-0-d70afbf194c5@igalia.com>`，09-11 00:49 入缓存）*。
 
 - v1（2026-05-17）→ v2：新增 copy_task_comm()（memcpy 优先 + NUL 保证）与 KUnit 测试；
 - v3：简化 copy_task_comm() 为 memcpy + 末尾置 NUL；
@@ -80,7 +80,7 @@ current_version: v6（cover msgid `<20260910-tonyk-long_name-v6-0-d70afbf194c5@i
 - 与 v5 时相同：本日缓存内 v6 没有收到任何回帖，sched/core 与 tracing 侧维护者均未表态，未获取到任何 Reviewed-by/Acked-by。系列已迭代 6 版约 4 个月，零反馈本身是最大的争议点。
 
 ## 合入评估
-likelihood=unknown：没有任何维护者意见可依据。blocking_issues：v6 依旧零 review；task_struct 增大 48 字节只有一句「no significant change」、无可复现数据；patch 1/2 是 treewide 改动需要 drm/audit/LSM/net/tracing 等多方 ack；新增 prctl UAPI 需与 man-pages/glibc 协调（均承 sched-20260828-009，当日缓存无新信息解除或加重这些卡点）。next_action：等待第一批维护者回帖；作者侧需补 task_struct 尺寸与 tracing 开销数据。
+*likelihood=unknown*：没有任何维护者意见可依据。*blocking_issues*：v6 依旧零 review；task_struct 增大 48 字节只有一句「no significant change」、无可复现数据；patch 1/2 是 treewide 改动需要 drm/audit/LSM/net/tracing 等多方 ack；新增 prctl UAPI 需与 man-pages/glibc 协调（均承 sched-20260828-009，当日缓存无新信息解除或加重这些卡点）。*next_action*：等待第一批维护者回帖；作者侧需补 task_struct 尺寸与 tracing 开销数据。
 
 ## 效果评估
 作者在 v6 cover 中重申：沿用 v2 时报告的 benchmark（[0] 20260526190625.3f4aca0a），「no significant change was found」——即 comm 16→64 无可测开销，但这是作者主观陈述，具体数字未在邮件中给出，第三方数据未获取到。

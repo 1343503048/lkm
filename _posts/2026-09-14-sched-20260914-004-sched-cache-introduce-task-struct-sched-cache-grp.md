@@ -64,7 +64,7 @@ Chen Yu 的 rcu_dereference 修正（自述 "will fix it"）：
 - 分歧/未闭合处：v2 的抽象程度（exec/exit 路径函数化到什么程度）仍待验证。
 
 ## 合入评估
-likelihood=medium（承 sched-20260911-003 的整体判断）：rcu_dereference 口径已定稿，但 v2 未发、PeterZ 复核待。blocking_issues：v2 重写（函数化 + rcu_dereference 修正）未发出；patch 3/4 与 4/4 打包合入互相绑定（承 sched-20260911-003）。next_action：等 v2 发出后核对 4/4 是否落实 PeterZ 两条批评。
+*likelihood=medium*（承 sched-20260911-003 的整体判断）：rcu_dereference 口径已定稿，但 v2 未发、PeterZ 复核待。*blocking_issues*：v2 重写（函数化 + rcu_dereference 修正）未发出；patch 3/4 与 4/4 打包合入互相绑定（承 sched-20260911-003）。*next_action*：等 v2 发出后核对 4/4 是否落实 PeterZ 两条批评。
 
 ## 效果评估
 无性能数据——UAF 修复的正确性工程（KASAN 实锤的 use-after-free，承 sched-20260911-003）。

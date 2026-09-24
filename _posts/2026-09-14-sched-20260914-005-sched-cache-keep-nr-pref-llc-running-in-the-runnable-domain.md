@@ -66,7 +66,7 @@ Chen Yu 实测 Kayra 方案后（自述 "It seems that the code becomes more com
 - 分歧/未闭合处：Tim 对 Chen Yu 注释版 patch 1 的复核未回；设计取舍（单判据 vs 顺带维护）最终由 Tim 定夺。
 
 ## 合入评估
-likelihood=medium（承 Fixes 系列整体 medium）：本线程 patch 1 设计已收敛（Chen Yu 与 Kayra 就「维持较简版本 + 注释」达成一致），但随 Fixes 系列 v2 一起打包推进，Tim 复核与 PeterZ 对系列整体的意见仍是前提。blocking_issues：无独立卡点，随 sched-20260911-003 的 v2 推进。next_action：等 Tim 对注释版 patch 1 的复核；该计数口径随 Fixes v2 一并合入。
+*likelihood=medium*（承 Fixes 系列整体 medium）：本线程 patch 1 设计已收敛（Chen Yu 与 Kayra 就「维持较简版本 + 注释」达成一致），但随 Fixes 系列 v2 一起打包推进，Tim 复核与 PeterZ 对系列整体的意见仍是前提。*blocking_issues*：无独立卡点，随 sched-20260911-003 的 v2 推进。*next_action*：等 Tim 对注释版 patch 1 的复核；该计数口径随 Fixes v2 一并合入。
 
 ## 效果评估
 无性能数据。计数正确性靠注释内两个时序图（case 1/2）推演，未见运行测试报告。

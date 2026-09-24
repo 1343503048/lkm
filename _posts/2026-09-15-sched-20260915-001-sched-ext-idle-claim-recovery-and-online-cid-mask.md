@@ -74,7 +74,7 @@ Andrea Righi 指出 v1 patch 1 会改变 cid-form 调度器 `ops.update_idle()` 
 - 无分歧遗留：v1 的语义争议已通过换方案消解。
 
 ## 合入评估
-likelihood=high。Tejun Heo 本人是 sched_ext 维护者、系列直接基于 for-7.3-fixes 分支，v2 已获共同维护者 Andrea Righi Reviewed-by，无阻塞项。blocking_issues：无。next_action：等 Tejun 将 v2 收入 `sched_ext/for-7.3-fixes` 分支并入 7.3。
+*likelihood=high*。Tejun Heo 本人是 sched_ext 维护者、系列直接基于 for-7.3-fixes 分支，v2 已获共同维护者 Andrea Righi Reviewed-by，无阻塞项。*blocking_issues*：无。*next_action*：等 Tejun 将 v2 收入 `sched_ext/for-7.3-fixes` 分支并入 7.3。
 
 ## 效果评估
 作者验证方式（cover 自述）：构建并加载同时消费两个新接口的 cid-form 调度器；本地 selftest 覆盖带/不带 flag 的 CPU-form 与 cid-form idle 通知；本地 selftest 在 VM 中 offline/online 一个 CPU 并逐步检查掩码与回调。未见 benchmark 数字，属功能正确性验证。

@@ -16,7 +16,7 @@
 - **Tejun Heo**：直接 "Applied to sched_ext/for-7.3-fixes. Thanks."，无分歧。
 
 ## 合入评估
-likelihood=merged。已合入 sched_ext 的 for-7.3-fixes 分支，等待随该分支提交进入主线。blocking_issues：无。next_action：跟踪该 Fixes 分支是否被 Linus 收纳。
+*likelihood=merged*。已合入 sched_ext 的 for-7.3-fixes 分支，等待随该分支提交进入主线。*blocking_issues*：无。*next_action*：跟踪该 Fixes 分支是否被 Linus 收纳。
 
 ## 效果评估
 邮件未附性能数据；属状态维护类重构/修复，无直接性能影响。

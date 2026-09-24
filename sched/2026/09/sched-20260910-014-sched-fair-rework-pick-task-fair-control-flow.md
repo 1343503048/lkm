@@ -101,13 +101,13 @@ static struct task_struct *pick_task_fair_rq(struct rq *rq)
 - 一个**未被改动但被这次重构放大可见度**的既有风险：内层 `while` 若遇到 `h_nr_queued > 0` 而 `pick_next_entity()` 持续返回 NULL 的状态，会在持有 rq lock 的情况下空转（原 `goto again` 形态完全相同，不是本补丁引入）。重构后这段循环更紧凑，反而更容易被读者注意到这个前提。
 
 ## 合入评估
-likelihood: unknown。
+*likelihood: unknown*。
 
 理由：证据面只有一封 v1 邮件、零回帖，没有任何维护者信号可供外推。倾向性判断（非邮件结论）：改动小、可验证、带实测代码体积数据，且 `pick_task_fair()` 近期本身就在被频繁重构，这类清理被接受的概率不低；但「No functional changes intended」用的是 *intended* 而非断言，核心路径的重构通常需要至少一位 fair 类维护者逐行确认等价性才会收。
 
-blocking_issues：无人评审；核心热路径重构需要维护者确认语义等价；与 `kernel/sched/fair.c` 上其他在飞补丁（如 pick 路径相关的 EEVDF 改动）存在合并冲突风险。
+*blocking_issues*：无人评审；核心热路径重构需要维护者确认语义等价；与 `kernel/sched/fair.c` 上其他在飞补丁（如 pick 路径相关的 EEVDF 改动）存在合并冲突风险。
 
-next_action：等 Peter / Vincent 回复；若一周无回应，作者可在原线程 ping 一次并附上 objdump 对比（96/124 字节的数据已给出，但未见反汇编差异片段）。
+*next_action*：等 Peter / Vincent 回复；若一周无回应，作者可在原线程 ping 一次并附上 objdump 对比（96/124 字节的数据已给出，但未见反汇编差异片段）。
 
 ## 效果评估
 有具体数据，且是这类补丁唯一可量化的收益：

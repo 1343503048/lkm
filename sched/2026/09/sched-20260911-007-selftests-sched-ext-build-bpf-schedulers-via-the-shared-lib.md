@@ -12,14 +12,14 @@ sched_ext selftests 的 Makefile 自带一整套 BPF 构建机制：libbpf 静�
 - Makefile 净减 97 行（26+/123-）。
 
 ## 版本演进与当前进展
-current_version: v5（v5 cover msgid `<20260910233303.1063501-1-ziyang.meme@gmail.com>`，由 4/4 补丁的 In-Reply-To 落实；4/4 于 09-11 07:33 入缓存）。本日缓存仅含 4/4 与 bot 回评，系列其余补丁未入缓存。v5 之前的演进承 sched-20260909-011（早期版本曾按 review 迭代，本次缓存窗口内未获取到 1-3/4 的差异说明）。
+*current_version: v5（v5 cover msgid `<20260910233303.1063501-1-ziyang.meme@gmail.com>`，由 4/4 补丁的 In-Reply-To 落实；4/4 于 09-11 07:33 入缓存）*。本日缓存仅含 4/4 与 bot 回评，系列其余补丁未入缓存。v5 之前的演进承 sched-20260909-011（早期版本曾按 review 迭代，本次缓存窗口内未获取到 1-3/4 的差异说明）。
 
 ## Maintainer 意见与讨论焦点
 - **bot+bpf-ci（AI review，非人类维护者）**：两条「不是 bug 但值得考虑」：(1) 生成的 `*.bpf.subskel.h` 在目录里没有任何 .c/.h 消费（pre-patch 规则也生成它们，行为等价保留），问是否可作为后续补丁去掉 `BPF_GEN_SUBSKEL` 以省每个调度器一次 bpftool 运行；(2) 替换后丢掉了原注释里「为什么每个 testcase 依赖全部 BPF prog」的动机说明，建议保留原措辞。CI run 摘要：kernel-patches/bpf actions run 34573210499。
 - 人类维护者（Eduard Zingerman/Mykola Lysenko 为 Suggested-by）当日缓存内无新表态；sched_ext 树维护者（Tejun）未入场。分歧未获取到。
 
 ## 合入评估
-likelihood=unknown：方向有 Suggested-by 背书、且 cgroup/hid 两个先例在先，但 4/4 之后的版本演进与维护者表态在缓存中不可见。blocking_issues：bot 两条建议待作者取舍（尤其 subskel 裁剪会改变生成物集合）；系列其余补丁的评审状态未获取到。next_action：等作者对两条 bot 建议的回应与后续版本；关注 sched_ext 树是否收整套系列。
+*likelihood=unknown*：方向有 Suggested-by 背书、且 cgroup/hid 两个先例在先，但 4/4 之后的版本演进与维护者表态在缓存中不可见。*blocking_issues*：bot 两条建议待作者取舍（尤其 subskel 裁剪会改变生成物集合）；系列其余补丁的评审状态未获取到。*next_action*：等作者对两条 bot 建议的回应与后续版本；关注 sched_ext 树是否收整套系列。
 
 ## 效果评估
 可量化的是构建面变化：Makefile -97 行、sched_ext 成为 lib.bpf.mk 第三个 in-tree 消费者。运行时行为（skeleton API、runner 链接）声明保持不变，无 benchmark 类数据；AI review 确认「This isn't a bug」。

@@ -61,7 +61,7 @@ layout: article
 - 分歧点：prep 的去留与归属层级仍是开放小项，未闭合。
 
 ## 合入评估
-likelihood=medium。评审在收尾但 prep 归属未定，且涉及与 Sumit 自身 v5 系列的重叠；当日无 cpufreq 维护者最终表态。blocking_issues：MIN/MAX prep 的去留与归属层级待定；与 Sumit v5 系列的关系需厘清。next_action：Christian 明确是否同意丢弃 prep，或由作者把顺序化更新下沉/拆分。
+*likelihood=medium*。评审在收尾但 prep 归属未定，且涉及与 Sumit 自身 v5 系列的重叠；当日无 cpufreq 维护者最终表态。*blocking_issues*：MIN/MAX prep 的去留与归属层级待定；与 Sumit v5 系列的关系需厘清。*next_action*：Christian 明确是否同意丢弃 prep，或由作者把顺序化更新下沉/拆分。
 
 ## 效果评估
 无性能数据；属正确性/电源管理语义讨论。

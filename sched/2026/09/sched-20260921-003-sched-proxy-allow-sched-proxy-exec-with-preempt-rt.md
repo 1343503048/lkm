@@ -24,7 +24,7 @@ Quchaosheng 发补丁允许 `CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_PREEMPT_RT` �
 - 作者在回帖中承认这一点："enabling a config that silently does nothing is a fair objection, and teaching the RT mutex to maintain blocked_on is the real work here."，并明确表态"如果这不值得携带，我宁愿撤回补丁，而不是为之争辩"。
 
 ## 合入评估
-likelihood=low。补丁本身让一个 Kconfig 已自述为 broken 的组合重新可编译，纯属使能动作；但 RT 维护者的"运行时无实际效果"质疑成立，作者已表示愿意撤回。blocking_issues：该组合在 RT 下不产生真实代理执行语义，仅为死代码编译通过。next_action：要么作者落地"让 RT mutex 维护 blocked_on"的真正工作，要么撤回；若以纯编译修复定位，需说服维护者接受"为将来铺路"的价值。
+*likelihood=low*。补丁本身让一个 Kconfig 已自述为 broken 的组合重新可编译，纯属使能动作；但 RT 维护者的"运行时无实际效果"质疑成立，作者已表示愿意撤回。*blocking_issues*：该组合在 RT 下不产生真实代理执行语义，仅为死代码编译通过。*next_action*：要么作者落地"让 RT mutex 维护 blocked_on"的真正工作，要么撤回；若以纯编译修复定位，需说服维护者接受"为将来铺路"的价值。
 
 ## 效果评估
 无性能数据。补丁仅解决编译层面的兼容性，作者明确说明运行期行为在 RT 下改变为零。

@@ -35,13 +35,13 @@ Tejun Heo 于 09-10 01:52 回复 "Applied to sched_ext/for-7.4."，收取了 `yp
 - 线程中**无人**提到与 Ziyang Men lib.bpf.mk 转换的相互作用，这是一个当前没人盯的协调缺口。
 
 ## 合入评估
-likelihood: merged。
+*likelihood: merged*。
 
 已进 `sched_ext/for-7.4` topic 分支，剩下只是随分支进主线的时间问题。改动限于 selftests 构建脚本，不影响内核运行时行为。
 
-blocking_issues：无（就已收取这件事而言）。两点需要留意而非阻塞：一是 v2 是否连带处理了 `lib.bpf.mk` 相关的其他赋值方式未知；二是 Ziyang Men 的 v4 4/4 若后续被收取，需要 rebase 到本补丁之上，否则两处缺陷会被带回。
+*blocking_issues*：无（就已收取这件事而言）。两点需要留意而非阻塞：一是 v2 是否连带处理了 `lib.bpf.mk` 相关的其他赋值方式未知；二是 Ziyang Men 的 v4 4/4 若后续被收取，需要 rebase 到本补丁之上，否则两处缺陷会被带回。
 
-next_action：等 `sched_ext/for-7.4` 合入主线；建议有人在 Ziyang Men 的 lib.bpf.mk 线程里提一句「`-rdynamic` 与 `LDFLAGS =` 已在 for-7.4 中被修掉，v5 请基于该版本」，避免重复回退。
+*next_action*：等 `sched_ext/for-7.4` 合入主线；建议有人在 Ziyang Men 的 lib.bpf.mk 线程里提一句「`-rdynamic` 与 `LDFLAGS =` 已在 for-7.4 中被修掉，v5 请基于该版本」，避免重复回退。
 
 ## 效果评估
 无 benchmark（构建脚本改动）。线程内也**没有任何构建验证记录**：作者未给出 `make -C tools/testing/selftests TARGETS=sched_ext` 的结果，Tejun 未要求，缓存里没有 CI（bpf-ci bot）回帖。

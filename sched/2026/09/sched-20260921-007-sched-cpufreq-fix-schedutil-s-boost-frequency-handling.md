@@ -19,7 +19,7 @@ v2 系列为两补丁：1/2 让 schedutil 的 boost 频率处理在运行时尽�
 - 讨论焦点集中在 fix 归属（Fixes 标签）与 helper 复用（`policy_has_boost_freq` 的导出位置），无反对意见。
 
 ## 合入评估
-likelihood=medium。修复逻辑清晰、有明确 Fixes 指向、作者积极响应 review；仍处 v2 迭代期（需落下一版补 Fixes 标签与 helper 复用），尚未见维护者最终 pickup。
+*likelihood=medium*。修复逻辑清晰、有明确 Fixes 指向、作者积极响应 review；仍处 v2 迭代期（需落下一版补 Fixes 标签与 helper 复用），尚未见维护者最终 pickup。
 
 ## 效果评估
 无新增性能数据。修复的预期效果是关闭 boost 后频率能正确回落到非 boost 值（Oleg 已帮忙测试补丁，作者致谢）。

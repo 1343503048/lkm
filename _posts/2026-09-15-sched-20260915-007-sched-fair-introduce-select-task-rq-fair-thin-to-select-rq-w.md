@@ -62,7 +62,7 @@ layout: article
 - 争议点：作者用「real-time performance」作为系列立意（见 series 标题），与维护者「fair 不是实时」的立场直接冲突；`sched_feature` 的使用方式被明确否定，作者需换实现接口。
 
 ## 合入评估
-likelihood=medium。方向未获维护者认可（术语与立意、sched_feature 接口两处实质分歧），作者需换接口并重定位立意，但维护者仍在给建设性意见、未 NAK。blocking_issues：sched_feature 动态开关被反对；「real-time」立意需改为 interactive 叙事；EEVDF slice 对比未做。next_action：作者回应三条意见，改 sched_feature 为实现层默认开关或独立 sysctl，并补与 EEVDF 的对比论证。
+*likelihood=medium*。方向未获维护者认可（术语与立意、sched_feature 接口两处实质分歧），作者需换接口并重定位立意，但维护者仍在给建设性意见、未 NAK。*blocking_issues*：sched_feature 动态开关被反对；「real-time」立意需改为 interactive 叙事；EEVDF slice 对比未做。*next_action*：作者回应三条意见，改 sched_feature 为实现层默认开关或独立 sysctl，并补与 EEVDF 的对比论证。
 
 ## 效果评估
 无效果数据。本日为设计层面的维护者反馈，不涉及 benchmark。

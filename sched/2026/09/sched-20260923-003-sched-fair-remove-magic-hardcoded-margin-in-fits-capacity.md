@@ -20,7 +20,7 @@ Chen Yu 进一步建议把这步换成 `x * 5 < y * 4`，因为 `y * 4` 是左�
 本日参与者为 Zhan Xusheng 与 Chen Yu（均非该 patch 作者，作者 Qais Yousef 未在本日出现），无维护者表态。讨论焦点集中在 `fits_capacity()` 新签名与 `invalid_llc_nr()` 的静默参数错绑这一正确性隐患，以及 `fits_llc_nr()` helper 的常数优化（乘 100/80 vs 乘 5/4 移位）。无争议、无 NAK。
 
 ## 合入评估
-likelihood=unknown。原 patch 属大型 capacity-aware 系列（13 枚）的组成部分，今日讨论只是其与主线 cache-aware 代码交互的一个侧面问题，作者尚未回应，也无维护者涉入。blocking_issues：`fits_capacity()` 新签名与 `invalid_llc_nr()` 的参数错绑需先拆解（独立 `fits_llc_nr()` 或其它方式），否则 04/13 无法安全应用。next_action：Zhan/Chen 的意见需作者 Qais Yousef 确认承接（拆 helper 或并入系列拆分）。
+*likelihood=unknown*。原 patch 属大型 capacity-aware 系列（13 枚）的组成部分，今日讨论只是其与主线 cache-aware 代码交互的一个侧面问题，作者尚未回应，也无维护者涉入。*blocking_issues*：`fits_capacity()` 新签名与 `invalid_llc_nr()` 的参数错绑需先拆解（独立 `fits_llc_nr()` 或其它方式），否则 04/13 无法安全应用。*next_action*：Zhan/Chen 的意见需作者 Qais Yousef 确认承接（拆 helper 或并入系列拆分）。
 
 ## 效果评估
 无性能数据。`fits_llc_nr()` 建议被明确标注为「no functional change」（`x*1280 < y*1024` 等价于 `x*100 < y*80`，进而等价于 `x*5 < y*4`），属正确性拆分而非性能优化；Chen Yu 的移位建议仅为更快的常数运算。

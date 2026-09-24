@@ -18,7 +18,7 @@
 - 分歧/未决：两条技术路线（boost 参考频率 vs 窄化 intel_pstate 回退）尚未收敛，作者尚未回应 Rafael 的替代方案。
 
 ## 合入评估
-likelihood=medium。维护者对当前 fix 的方向提出替代主张，作者需回应/验证后才能继续。blocking_issues：Rafael 认为修复不应绑 boost、主张窄化 scope，需作者测试并回应替代补丁。next_action：作者（或 Ricardo）测试 Rafael 的 `intel_pstate` 窄化补丁，回复哪种方案更合适。
+*likelihood=medium*。维护者对当前 fix 的方向提出替代主张，作者需回应/验证后才能继续。*blocking_issues*：Rafael 认为修复不应绑 boost、主张窄化 scope，需作者测试并回应替代补丁。*next_action*：作者（或 Ricardo）测试 Rafael 的 `intel_pstate` 窄化补丁，回复哪种方案更合适。
 
 ## 效果评估
 本日无新增测试数据。Rafael 的替代补丁明确标注"completely untested"，并请作者与 Ricardo 验证。

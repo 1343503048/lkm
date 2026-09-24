@@ -59,7 +59,7 @@ v1（`<20260921185943.4031480-1-usama.arif@linux.dev>`）当日发出。Tejun �
 - **bpf-ci AI review**（bot+bpf-ci）：指 `scx_sched_cmpfn()` 与 `scx_tid_cmpfn()` 只差容器类型与字段，问是否用小生成宏合并更清晰，还是两处拼写出来更直白。此为风格建议，未阻塞合入。
 
 ## 合入评估
-likelihood=merged。已合入 `sched_ext/for-7.4`。blocking_issues 无；bpf-ci 的宏建议属可选后续。
+*likelihood=merged*。已合入 `sched_ext/for-7.4`。blocking_issues 无；bpf-ci 的宏建议属可选后续。
 
 ## 效果评估
 作者在 cover 声明无功能变化（No functional change intended），编译产物确认查找循环不再 call `memcmp()` 或 out-of-line 比较器；未给出独立 benchmark 数字（收益与 DSQ 系列同类，见 sched-20260922-004 的 2.9x 数据）。

@@ -19,7 +19,7 @@ v1 刚发出（`<20260916161125.2548499-1-hi@tychen.cc>`），暂无 review 意�
 当日线程无维护者或资深成员表态。作者自述"新 shell 测试在 GCC/Clang ASan/UBSan 下通过、在未打补丁的 perf 上失败"。
 
 ## 合入评估
-likelihood=medium。小范围工具修复，带 Fixes 标签与回归测试，门槛低；但尚无 perf 维护者（Arnaldo/Namhyung 等）评审，配对策略是否被接受待观察。blocking_issues：无 perf 维护者评审。next_action：等待 perf 维护者评审。
+*likelihood=medium*。小范围工具修复，带 Fixes 标签与回归测试，门槛低；但尚无 perf 维护者（Arnaldo/Namhyung 等）评审，配对策略是否被接受待观察。*blocking_issues*：无 perf 维护者评审。*next_action*：等待 perf 维护者评审。
 
 ## 效果评估
 无性能数据。作者自述：新 shell 测试通过，live/record/report/diff 用临时 /proc/schedstat fixture 校验通过，未打补丁时测试失败（证明测试有效）。

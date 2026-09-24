@@ -50,13 +50,13 @@ io_uring 任务在内核态 inline 提交请求时可能阻塞；目前 sched_su
 - kernel/fork.c：copy_process() 清位列表加入 PF_IO_HANDOFF，防止标志跨 fork 泄漏。
 
 ## 版本演进与当前进展
-current_version: v1（本补丁 msgid `<20260911154148.644489-3-axboe@kernel.dk>`，[PATCH 02/15]，09-11 23:40 入缓存）。系列其余 14 个补丁与 cover letter 未入当日缓存，系列整体动机、目标树与评审状态未获取到。
+*current_version: v1（本补丁 msgid `<20260911154148.644489-3-axboe@kernel.dk>`，[PATCH 02/15]，09-11 23:40 入缓存）*。系列其余 14 个补丁与 cover letter 未入当日缓存，系列整体动机、目标树与评审状态未获取到。
 
 ## Maintainer 意见与讨论焦点
 当日缓存内无任何回帖；io_uring 侧与 sched 侧维护者的表态均未获取到。占位函数意味着设计（移交什么、如何唤醒）尚未展开，讨论焦点尚待后续补丁出现。
 
 ## 合入评估
-likelihood=unknown：系列只露出 1/15 个补丁，无法评估整体；调度器侧改动本身极小（3 行 + 一个标志位）。blocking_issues：封面与设计补丁未获取到；PF 标志位占用（原 hole 0x00800000）与 sched_submit_work() 回调链的扩展是否被 sched 侧接受未知。next_action：跟踪系列的完整投递（lore 上应有 00/15 cover），重点看 io_uring_task_sleeping() 从占位变为实作后的阻塞路径设计。
+*likelihood=unknown*：系列只露出 1/15 个补丁，无法评估整体；调度器侧改动本身极小（3 行 + 一个标志位）。*blocking_issues*：封面与设计补丁未获取到；PF 标志位占用（原 hole 0x00800000）与 sched_submit_work() 回调链的扩展是否被 sched 侧接受未知。*next_action*：跟踪系列的完整投递（lore 上应有 00/15 cover），重点看 io_uring_task_sleeping() 从占位变为实作后的阻塞路径设计。
 
 ## 效果评估
 暂无效果数据：占位补丁，无 benchmark 或行为差异说明。

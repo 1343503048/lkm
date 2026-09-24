@@ -19,7 +19,7 @@
 - 无争议点；该修复为单一、针对性明确的小修复。
 
 ## 合入评估
-likelihood=merged。已合入主线 torvalds/linux.git。blocking_issues：无。next_action：无需跟进，仅需确认是否需向 stable 分支回合（当前邮件未见 stable 回合动作）。
+*likelihood=merged*。已合入主线 torvalds/linux.git。*blocking_issues*：无。*next_action*：无需跟进，仅需确认是否需向 stable 分支回合（当前邮件未见 stable 回合动作）。
 
 ## 效果评估
 无性能数据；修复消除 proxy execution 场景下 `set_task_cpu()` 的误报迁移告警，属正确性/日志类修复。

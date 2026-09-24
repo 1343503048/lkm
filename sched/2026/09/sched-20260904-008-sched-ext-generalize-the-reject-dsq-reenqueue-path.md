@@ -37,7 +37,7 @@
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：它是 v13 的准备性补丁，v13 整体已获 sched_ext 维护者「ready to merge and iterate in tree」的评价，方向无争议；本补丁净减少代码（+25/-31），不新增外部行为，作为系列第 12 片会随系列一起排队。
 

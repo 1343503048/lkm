@@ -63,7 +63,7 @@ v2（`<20260921102712.3245860-1-quchaosheng000406@163.com>`）后，当天 Peter
 - **Quchaosheng**（作者）：回应 Peter 与 Sebastian 的共同质疑——承认「没有今天的构建失败、正是没人碰过这个组合、Kconfig 已写明 broken 是循环论证」，补丁是引入该组合而非修复它；Peter 的表述比自己更准确：该特性在 PREEMPT_RT 下实质上 broken，携带这样一个状态的 build 选项毫无意义。作者声明撤回补丁，并指出若 proxy execution 要在 PREEMPT_RT 上真正有意义，得等 RT mutex 维护 `blocked_on`，届时该工作需自证其价值。
 
 ## 合入评估
-likelihood=rejected（作者主动撤回，维护者明确推迟）。blocking_issues：特性在 RT 下无实际效果，需先让 rt_mutex 维护 `blocked_on`。next_action：无——待未来 RT mutex 支持 blocked_on 后另起炉灶。
+*likelihood=rejected*（作者主动撤回，维护者明确推迟）。*blocking_issues*：特性在 RT 下无实际效果，需先让 rt_mutex 维护 `blocked_on`。*next_action*：无——待未来 RT mutex 支持 blocked_on 后另起炉灶。
 
 ## 效果评估
 无性能数据。作者自述此前 boot/压力测试真实但测试的是一个本不该存在的组合，作为论证无价值。

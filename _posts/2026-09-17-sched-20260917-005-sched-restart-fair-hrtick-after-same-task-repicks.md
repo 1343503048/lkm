@@ -62,7 +62,7 @@ layout: article
 - 无 NAK；方向稳定，属收尾性修改。
 
 ## 合入评估
-likelihood=medium。修复目标明确、评审已进入文案收尾；但尚未见 sched 维护者（Peter/Vincent 等）表态，且需确认 DL 类 SNT_REPICK 语义是否也要一并处理。blocking_issues：缺 sched 维护者评审；DL 侧陈旧 runtime 是否需要单独修复待确认。next_action：作者提交下一版（changelog/注释/文档），并等待维护者评审。
+*likelihood=medium*。修复目标明确、评审已进入文案收尾；但尚未见 sched 维护者（Peter/Vincent 等）表态，且需确认 DL 类 SNT_REPICK 语义是否也要一并处理。*blocking_issues*：缺 sched 维护者评审；DL 侧陈旧 runtime 是否需要单独修复待确认。*next_action*：作者提交下一版（changelog/注释/文档），并等待维护者评审。
 
 ## 效果评估
 无性能数据；属正确性修复（hrtick 抢占失效场景）。

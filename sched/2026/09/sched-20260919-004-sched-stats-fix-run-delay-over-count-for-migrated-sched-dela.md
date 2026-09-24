@@ -23,7 +23,7 @@
 - 分歧/未决：无明显对立，Kayra 的纠正补强了"bug 真实存在且路径不止一条"的结论，但也提示 commit message 的迁移路径论证需更精确。
 
 ## 合入评估
-likelihood=high。作者有可复现的 reproducer、Chen Yu 已 Reviewed-by、无否决意见；但尚无 sched 统计维护者的最终收取，且 Kayra 对迁移路径的纠正建议 commit message 论证修正后更稳妥。blocking_issues：迁移路径论证（尤其 active load balance 路径）需在 commit message 中澄清。next_action：作者回应 Kayra 的路径纠正、必要时补一句 active load balance 的说明，等待维护者收取。
+*likelihood=high*。作者有可复现的 reproducer、Chen Yu 已 Reviewed-by、无否决意见；但尚无 sched 统计维护者的最终收取，且 Kayra 对迁移路径的纠正建议 commit message 论证修正后更稳妥。*blocking_issues*：迁移路径论证（尤其 active load balance 路径）需在 commit message 中澄清。*next_action*：作者回应 Kayra 的路径纠正、必要时补一句 active load balance 的说明，等待维护者收取。
 
 ## 效果评估
 作者 20 轮迭代数据：凡迁移落在 sched_delayed 睡眠期间，run_delay 虚增 ~148.03–148.94ms（即迁移到唤醒的整段睡眠时长），verdict 均标 BUG；其余迁移未命中该窗口的轮次 run_delay 增量为 0。打补丁后所有轮次 run_delay 增量 ~0。属真实、定量的用户可见统计误差。

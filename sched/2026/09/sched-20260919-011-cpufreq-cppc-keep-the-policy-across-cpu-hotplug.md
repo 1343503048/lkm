@@ -18,7 +18,7 @@
 - 分歧/未决：顺序保证补丁应先于 hotplug 系列与否、草拟补丁的 AUTOSEL 场景验证。
 
 ## 合入评估
-likelihood=medium。系列本身推进中，但讨论引出了应先落地的规范顺序保证，范围可能扩大。blocking_issues：Christian 主张顺序保证应先于 hotplug 系列落地，需作者评估并测 AUTOSEL。next_action：系列作者把 Christian 的顺序保证补丁接入并测 AUTOSEL 场景，回复落地顺序。
+*likelihood=medium*。系列本身推进中，但讨论引出了应先落地的规范顺序保证，范围可能扩大。*blocking_issues*：Christian 主张顺序保证应先于 hotplug 系列落地，需作者评估并测 AUTOSEL。*next_action*：系列作者把 Christian 的顺序保证补丁接入并测 AUTOSEL 场景，回复落地顺序。
 
 ## 效果评估
 本日无新增 benchmark。Christian 的草拟补丁"轻测未见违规"，明确尚需热插拔 + AUTOSEL 测试。

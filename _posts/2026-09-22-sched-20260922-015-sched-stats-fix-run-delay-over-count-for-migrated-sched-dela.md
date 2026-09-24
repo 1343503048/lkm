@@ -72,7 +72,7 @@ layout: article
 - 无反对意见；已有多位 reviewer/tested（Chen Yu、Kayra、K Prateek）。
 
 ## 合入评估
-likelihood=high。补丁修正路径清晰、多组 review/test 已到位；唯一待办是回应 Peter 关于 proxy exec 场景的疑问。blocking_issues：Peter 的 proxy exec 同类问题未回应。next_action：作者澄清 proxy exec 场景（是否 `is_blocked` 更合适），随后可合。
+*likelihood=high*。补丁修正路径清晰、多组 review/test 已到位；唯一待办是回应 Peter 关于 proxy exec 场景的疑问。*blocking_issues*：Peter 的 proxy exec 同类问题未回应。*next_action*：作者澄清 proxy exec 场景（是否 `is_blocked` 更合适），随后可合。
 
 ## 效果评估
 无本日新增 benchmark；为统计记账正确性修复（详见 sched-20260921-006）。

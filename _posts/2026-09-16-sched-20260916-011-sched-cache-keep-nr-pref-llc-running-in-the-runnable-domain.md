@@ -60,7 +60,7 @@ Tim Chen 的 cache-aware 系列 patch 1/4（本日为 Peter Zijlstra 评审轮�
 - 无 NAK。
 
 ## 合入评估
-likelihood=medium。方向明确、Peter 已参与且只提可执行的补标签意见，但尚未有最终 Ack，系列还涉及 3/4、4/4 的评审（见 sched-20260916-012 / 013）。blocking_issues：缺 `Fixes:` 标签。next_action：作者补 `Fixes: 714059f79ff0` 并加后续移除 TODO 后重发。
+*likelihood=medium*。方向明确、Peter 已参与且只提可执行的补标签意见，但尚未有最终 Ack，系列还涉及 3/4、4/4 的评审（见 sched-20260916-012 / 013）。*blocking_issues*：缺 `Fixes:` 标签。*next_action*：作者补 `Fixes: 714059f79ff0` 并加后续移除 TODO 后重发。
 
 ## 效果评估
 本日评审未涉及性能数据，属记账正确性修复讨论。

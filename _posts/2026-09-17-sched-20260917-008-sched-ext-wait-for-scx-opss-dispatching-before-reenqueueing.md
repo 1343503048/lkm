@@ -55,7 +55,7 @@ layout: article
 - **Tejun Heo**（维护者+作者）：直接应用该补丁，无异议。此前 Andrea Righi 已参与评审（见 sched-20260916-005）。
 
 ## 合入评估
-likelihood=merged。已进入 sched_ext/for-7.3-fixes 分支（tip）。blocking_issues：无。next_action：等待随 sched_ext fixes PR 进入 mainline v7.3-rc。
+*likelihood=merged*。已进入 sched_ext/for-7.3-fixes 分支（tip）。*blocking_issues*：无。*next_action*：等待随 sched_ext fixes PR 进入 mainline v7.3-rc。
 
 ## 效果评估
 无性能数据；属正确性/竞态修复。

@@ -17,7 +17,7 @@ cache-aware 调度需要按任务记录其所属的 `sched_cache_group`。此前
 - 无 NAK，意见可直接落实。
 
 ## 合入评估
-likelihood=medium。意见明确且是 API 用法定型问题，Peter 参与积极，但尚需作者按建议修订并重发，且整个 4-patch 系列（1/3/4）都要过一遍评审。blocking_issues：RCU 解引用写法需按 Peter 建议重构成助手宏。next_action：作者抽助手宏并重发，协调 1/4 的 Fixes 标签。
+*likelihood=medium*。意见明确且是 API 用法定型问题，Peter 参与积极，但尚需作者按建议修订并重发，且整个 4-patch 系列（1/3/4）都要过一遍评审。*blocking_issues*：RCU 解引用写法需按 Peter 建议重构成助手宏。*next_action*：作者抽助手宏并重发，协调 1/4 的 Fixes 标签。
 
 ## 效果评估
 本日评审未涉及性能数据，属 RCU 用法与代码可维护性讨论。

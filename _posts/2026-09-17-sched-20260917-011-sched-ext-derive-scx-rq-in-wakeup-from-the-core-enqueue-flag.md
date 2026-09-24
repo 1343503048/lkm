@@ -60,7 +60,7 @@ v1（09-17，`<20260916215713.2701551-1-tj@kernel.org>`）刚发出，Andrea Rig
 - 无分歧；这是此前"Unlink pending"补丁的正确替代。
 
 ## 合入评估
-likelihood=high。带 Fixes: 57ccf5ccdc56、Cc: stable v7.1+ 的根因修复，已有 Reviewed-by，无异议。blocking_issues：无。next_action：等待应用到 sched_ext/for-7.3-fixes。
+*likelihood=high*。带 Fixes: 57ccf5ccdc56、Cc: stable v7.1+ 的根因修复，已有 Reviewed-by，无异议。*blocking_issues*：无。*next_action*：等待应用到 sched_ext/for-7.3-fixes。
 
 ## 效果评估
 无性能数据；属 UAF/正确性修复。

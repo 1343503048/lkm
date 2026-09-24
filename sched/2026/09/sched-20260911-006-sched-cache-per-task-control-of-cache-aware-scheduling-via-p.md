@@ -16,7 +16,7 @@ CAS 默认按进程（mm）分组，但部分负载的正确分组只有用户�
 - 接口使用：应用零改动——管理员或独立守护进程通过 prctl 指定要分组的 pid 对（PR_SCHED_CACHE_SHARE_FROM，见 patch 7 文档）即可。
 
 ## 版本演进与当前进展
-current_version: v1（RFC 0/7，cover msgid `<cover.1787955777.git.tim.c.chen@linux.intel.com>`，08-27 发出）。
+*current_version: v1（RFC 0/7，cover msgid `<cover.1787955777.git.tim.c.chen@linux.intel.com>`，08-27 发出）*。
 
 - 08-27：RFC 首发至 09-09 无回应；
 - 09-09：Shrikanth 提出四问；
@@ -28,7 +28,7 @@ current_version: v1（RFC 0/7，cover msgid `<cover.1787955777.git.tim.c.chen@li
 - 分歧未闭合处：Shrikanth 是否接受这些答案、以及「不改代码的负载如何发现该分组」的实操依据仍缺数据支撑；cgroup vs prctl 的取舍论证是单方陈述，未见第三方评估。
 
 ## 合入评估
-likelihood=unknown：RFC 阶段、无新版本、维护者（PeterZ 等）未入场。blocking_issues：接口的收益量化缺失（CAS 在异构平台效果不佳仍无归因清楚的对照数据）；作者与 Shrikanth 的问答尚无结论性后续；cgroup 载体被拒的理由是作者单方陈述。next_action：等 Shrikanth（或其他 reviewer）对回答的回应；关注 Tim 在 sched/cache 修复系列（sched-20260911-003）里预埋的「group 可挂到用户自定义分组」重构是否作为该 RFC 的前两补丁先行落地。
+*likelihood=unknown*：RFC 阶段、无新版本、维护者（PeterZ 等）未入场。*blocking_issues*：接口的收益量化缺失（CAS 在异构平台效果不佳仍无归因清楚的对照数据）；作者与 Shrikanth 的问答尚无结论性后续；cgroup 载体被拒的理由是作者单方陈述。*next_action*：等 Shrikanth（或其他 reviewer）对回答的回应；关注 Tim 在 sched/cache 修复系列（sched-20260911-003）里预埋的「group 可挂到用户自定义分组」重构是否作为该 RFC 的前两补丁先行落地。
 
 ## 效果评估
 暂无效果数据：回帖全部是动机与接口讨论，无 benchmark；腾讯用例为定性描述（哪些任务共享更多数据），未给出分组前后 LLC 命中率或延迟数字。

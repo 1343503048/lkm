@@ -72,7 +72,7 @@ layout: article
 - 分歧/未决：2/2 的 kernel 参数设计（arch 归属、命名与适用范围）尚未回应，1/2 已获认可。
 
 ## 合入评估
-likelihood=medium。1/2 获两位维护者/资深 reviewer 认可，方向明确；2/2 的 override 参数设计仍有 Shrikanth 三点质疑待作者回应。blocking_issues：2/2 内核参数设计（arch 归属、changelog 补充、对非相关架构的影响）未解决。next_action：作者回应 Shrikanth 关于 2/2 的质疑，补充 changelog 或改为 arch 提供方式后重发。
+*likelihood=medium*。1/2 获两位维护者/资深 reviewer 认可，方向明确；2/2 的 override 参数设计仍有 Shrikanth 三点质疑待作者回应。*blocking_issues*：2/2 内核参数设计（arch 归属、changelog 补充、对非相关架构的影响）未解决。*next_action*：作者回应 Shrikanth 关于 2/2 的质疑，补充 changelog 或改为 arch 提供方式后重发。
 
 ## 效果评估
 本日无新增 benchmark；Kayra 在 SMT2 平台验证补丁未引入行为变化（符合预期）。

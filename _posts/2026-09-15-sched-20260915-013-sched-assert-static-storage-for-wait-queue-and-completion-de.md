@@ -56,7 +56,7 @@ Yury Norov 09-15 发 17 补丁系列的 patch 06/17：给 `DECLARE_WAIT_QUEUE_HE
 - 无真人维护者表态；该补丁属 17 补丁跨子系统系列中的 sched 相关单发，评审口径仍在系列层面。
 
 ## 合入评估
-likelihood=unknown。自动化审查通过但无维护者 A/N/T；作为跨子系统系列的 06/17，其合入依赖整个系列的推进节奏。blocking_issues：无维护者表态；系列其余 16 补丁的进度未在本日可见。next_action：等系列维护者（wait/completion 相关）整体评审，或作者说明该补丁是否可独立提前合入。
+*likelihood=unknown*。自动化审查通过但无维护者 A/N/T；作为跨子系统系列的 06/17，其合入依赖整个系列的推进节奏。*blocking_issues*：无维护者表态；系列其余 16 补丁的进度未在本日可见。*next_action*：等系列维护者（wait/completion 相关）整体评审，或作者说明该补丁是否可独立提前合入。
 
 ## 效果评估
 无效果数据。这是编译期断言 + 静态存储正确性的改动，无运行时性能影响；价值在于把 lockdep class key 的持久性约束固化、防误用。

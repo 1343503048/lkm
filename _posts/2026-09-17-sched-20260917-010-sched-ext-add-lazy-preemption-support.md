@@ -66,7 +66,7 @@ layout: article
 - 无 NAK；评审是"小修即可"级别。
 
 ## 合入评估
-likelihood=high。面向 for-7.4 的特性系列，测试全绿，评审只剩排版/健壮性小修，作者积极迭代。blocking_issues：v7 需落实 Tejun 剩余小修。next_action：作者发 v7 落实上述收尾点。
+*likelihood=high*。面向 for-7.4 的特性系列，测试全绿，评审只剩排版/健壮性小修，作者积极迭代。*blocking_issues*：v7 需落实 Tejun 剩余小修。*next_action*：作者发 v7 落实上述收尾点。
 
 ## 效果评估
 无性能数据；功能验证：vng 下 kick 6/6、nohz_tick 1/1 通过，lazy/full/none 三模式均过。

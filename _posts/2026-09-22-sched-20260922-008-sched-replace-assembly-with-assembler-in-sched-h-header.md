@@ -52,7 +52,7 @@ v1 当日发出，当日即由 tip-bot 合入 `tip/sched/core`（`a9b3c7570564de
 无公开 review 讨论，Ingo Molnar 直接收取。无争议。
 
 ## 合入评估
-likelihood=merged。已合入 `tip/sched/core`。blocking_issues 无。
+*likelihood=merged*。已合入 `tip/sched/core`。blocking_issues 无。
 
 ## 效果评估
 无性能影响，纯头文件宏标准化（消除语义混淆）。

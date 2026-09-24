@@ -49,7 +49,7 @@ Closes: https://lore.kernel.org/oe-kbuild-all/202609040234.7zfFgTWS-lkp@intel.co
 
 ## 合入评估
 
-likelihood: **unclear**。
+*likelihood: unclear*。
 
 依据：单行注解级修复、不涉及行为改变、机器人已给出 `reproduce` 与 `config` 链接，修复门槛极低；提交对象（sched_ext 维护者）明确，历史上此类 0day 告警通常都会跟一个小补丁。
 

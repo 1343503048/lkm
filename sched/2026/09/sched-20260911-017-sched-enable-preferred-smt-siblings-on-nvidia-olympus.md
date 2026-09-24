@@ -13,7 +13,7 @@ Olympus 平台的 SMT 兄弟不等价，需要调度器在选核时偏向首选 
 - 机理质疑：trace 显示 32 个基准任务 10 秒持续运行、无休眠唤醒——任务数 ≤ 核数时 select_idle_sibling() 已把任务一核一个铺开并驻留，「看不到你的收益如何发生」（作者的 88 核场景任务数同样不大于核数）。
 
 ## 版本演进与当前进展
-current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com>`；当日缓存为 Dietmar 对该线程的回帖， subject 因回复旧邮件而显示 v4 0/2）。
+*current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com>`；当日缓存为 Dietmar 对该线程的回帖， subject 因回复旧邮件而显示 v4 0/2）*。
 
 - v1-v4：承 sched-20260904-002/09-09-007（Olympus 平台引入偏好 + 多轮收口）；
 - v5（09-09）：Prateek R-b/T-b、PeterZ tentative picked up；随后 Will Deacon 拒绝 MIDR 检测、Vincent 质疑 static key；
@@ -27,7 +27,7 @@ current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com
 - 分歧焦点扩大：不只检测机制未定，收益本身的普适性也开始被质疑——Olympus 之外的 SMT 不对称平台（THX2）上收益不可见。
 
 ## 合入评估
-likelihood=low（维持并强化 sched-20260910-007 的 low）：PeterZ 已撤下、arm64 检测机制无提案，新增的独立平台数据表明收益不显著。blocking_issues：收益需要在「任务数 > 核数、唤醒频繁」的真实场景重新论证（Dietmar 的质疑点）；MIDR 替代机制仍无方案；v6（sched_smt_active() 替换 static key）未发出。next_action：作者要么给出门控更精确的收益场景与数据（拥挤/唤醒型负载），要么收缩系列范围；与 arm64 维护者商定检测机制后重发。
+*likelihood=low*（维持并强化 sched-20260910-007 的 low）：PeterZ 已撤下、arm64 检测机制无提案，新增的独立平台数据表明收益不显著。*blocking_issues*：收益需要在「任务数 > 核数、唤醒频繁」的真实场景重新论证（Dietmar 的质疑点）；MIDR 替代机制仍无方案；v6（sched_smt_active() 替换 static key）未发出。*next_action*：作者要么给出门控更精确的收益场景与数据（拥挤/唤醒型负载），要么收缩系列范围；与 arm64 维护者商定检测机制后重发。
 
 ## 效果评估
 Dietmar 的数据（唯一新增）：ThunderX2 SGEMM 七种布局下 v5/v1/基线 MFLOPS 差异均在噪声量级（如全节点场景 868,285 vs 861,663 vs 861,663 上下）。作者此前宣称的 Olympus 收益（88 核场景）在本次缓存窗口内没有出现新的第三方复现。

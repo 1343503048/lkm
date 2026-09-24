@@ -18,7 +18,7 @@
 - **Dietmar Eggemann（ARM 调度维护者）**：认可该代码只惠及 Spatial SMT，但提出关键疑问——收益假设是"88 个持续运行的 benchmark 线程 + 新代码让它们更可能落在 PE0 上"带来吞吐提升，想确认作者的 benchmark 任务模型是否正是如此（以及 NVPL 是否带少量 sleep/wakeup 的同类模型）。
 
 ## 合入评估
-likelihood=medium。功能正确性已有独立平台 Tested-by 背书，无 NAK 与反对；但合入前的关键缺口是**实测吞吐数据**（Breno 未测、Dietmar 也在追问负载模型），以及 Spatial SMT 收益是否足够普适到值得进主线。blocking_issues：缺少 throughput 验证数据。next_action：作者补充在 Olympus 上的吞吐对比数据并回应 Dietmar 的负载模型问题。
+*likelihood=medium*。功能正确性已有独立平台 Tested-by 背书，无 NAK 与反对；但合入前的关键缺口是**实测吞吐数据**（Breno 未测、Dietmar 也在追问负载模型），以及 Spatial SMT 收益是否足够普适到值得进主线。*blocking_issues*：缺少 throughput 验证数据。*next_action*：作者补充在 Olympus 上的吞吐对比数据并回应 Dietmar 的负载模型问题。
 
 ## 效果评估
 功能层面：唤醒重定向 800/800 命中（vs 基线 13/800），正确性无告警。性能层面：尚未给出吞吐提升数字，收益仍属"机制推演 + 作者早前主观声称"，未见新的 benchmark 数字支撑。

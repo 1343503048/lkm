@@ -18,7 +18,7 @@ proxy execution 允许把 blocked donor 的调度上下文（scheduling context�
 - 无遗留争议。
 
 ## 合入评估
-likelihood=high。这是一个明确的误报修复，带 `Fixes:` 标签指向具体引入 commit，已获 sched 维护者 Peter Zijlstra 认可单发、John Stultz Acked-by，且在最新 tip/master 上复现确认。blocking_issues：无。next_action：待 Peter 收取进入 tip/sched/core（或 urgent）。
+*likelihood=high*。这是一个明确的误报修复，带 `Fixes:` 标签指向具体引入 commit，已获 sched 维护者 Peter Zijlstra 认可单发、John Stultz Acked-by，且在最新 tip/master 上复现确认。*blocking_issues*：无。*next_action*：待 Peter 收取进入 tip/sched/core（或 urgent）。
 
 ## 效果评估
 复现器在未修复内核上稳定触发 `WARNING: kernel/sched/core.c:3389 at set_task_cpu+0x1d3/0x280`，调用栈为 `try_to_wake_up -> __mutex_unlock_slowpath -> owner_fn`；修复后该路径不再误报。属正确性修复，无性能量化数据。

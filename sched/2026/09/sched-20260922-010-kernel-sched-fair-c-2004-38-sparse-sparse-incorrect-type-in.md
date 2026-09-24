@@ -16,7 +16,7 @@ sparse 报告（`<202609221957.fJCjN9uZ-lkp@intel.com>`）当日发出，无开�
 当日无维护者表态。此类 sparse `__rcu` 噪音通常由对应代码 owner 认领后补齐标注或加 `rcu_dereference`。
 
 ## 合入评估
-likelihood=low。无修复者认领，非运行时 bug（仅 sparse 类型检查），优先级低。blocking_issues：无修复者、非功能性、需定位宏展开路径上的 `__rcu` 访问。next_action：sched/fair maintainer 或有兴趣者补齐 `__rcu` 标注/`rcu_dereference` 并提交修复。
+*likelihood=low*。无修复者认领，非运行时 bug（仅 sparse 类型检查），优先级低。*blocking_issues*：无修复者、非功能性、需定位宏展开路径上的 `__rcu` 访问。*next_action*：sched/fair maintainer 或有兴趣者补齐 `__rcu` 标注/`rcu_dereference` 并提交修复。
 
 ## 效果评估
 无运行时影响；仅为 W=1 sparse 静态检查的 address-space 类型告警。

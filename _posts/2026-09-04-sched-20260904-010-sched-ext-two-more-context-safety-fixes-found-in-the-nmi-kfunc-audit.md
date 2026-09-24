@@ -79,7 +79,7 @@ Wanwu Li 把 sashiko 机器人挑起的 NMI kfunc 审计继续推下去，从「
 
 ## 合入评估
 
-likelihood: **likely**（已合入维护者树）。
+*likelihood: likely*（已合入维护者树）。
 
 依据：Tejun Heo 09-04 明确 `Applied 1-2 to sched_ext/for-7.4`，两个补丁一次通过、无人提异议，实现本身就是维护者指定的写法。
 

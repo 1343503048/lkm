@@ -16,7 +16,7 @@ deferred local DSQ reenqueue 把链表节点嵌入 `struct scx_sched_pcpu` 并�
 本日暂无维护者回复（Andy 刚发出）。补丁正文给出了完整的复现路径与崩溃签名，属自包含的明确修复。
 
 ## 合入评估
-likelihood=high。明确的 use-after-free 修复，`Fixes:` 与 stable 标签齐全，复现清晰（352-CPU arm64 上反复 attach/detach + hackbench 稳定触发），改动小而聚焦。blocking_issues：无。next_action：待 Tejun 收入 sched_ext/for-7.3-fixes 并回合 stable v7.1+。
+*likelihood=high*。明确的 use-after-free 修复，`Fixes:` 与 stable 标签齐全，复现清晰（352-CPU arm64 上反复 attach/detach + hackbench 稳定触发），改动小而聚焦。*blocking_issues*：无。*next_action*：待 Tejun 收入 sched_ext/for-7.3-fixes 并回合 stable v7.1+。
 
 ## 效果评估
 复现步骤：循环 100 次 `scx_cidland --stats 1` + `hackbench -l 2000 -g 100`。第二次 detach 时 `scx_sched_free_rcu_work()` 报告 pending 节点告警，随后 hackbench 进程命中悬空节点：`Unable to handle kernel paging request at 000000000010b8bf`，调用栈 `run_deferred -> task_woken_scx -> wake_up_new_task -> kernel_clone`；oops 后中断被关闭并伴随持续 RCU stall，「系统不可用」。修复后不再触发。

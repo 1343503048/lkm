@@ -51,11 +51,11 @@ steal_governor 系列把 CPU 超配场景下的 vCPU 抢占代价（锁持有者
 - 作者已声明的系列级遗留争议（与本补丁相关的部分）：机制只对 FAIR 类生效，RT/DL 与 sched_ext 明确推迟；stopper 只推 `rq->curr` 不推该 rq 上全部排队任务——本补丁让均衡与 push 不再打架，但 push 侧覆盖不全的问题依旧存在。
 
 ## 合入评估
-likelihood: medium（就本补丁而言：实现只有 3+/5-，已获 Yury R-b，无未决技术分歧；但补丁不能脱离系列单独合入——`cpu_preferred_mask` 由系列 04/13 引入，缺了它本补丁无法编译，因此实际节奏由系列整体决定）。
+*likelihood: medium*（就本补丁而言：实现只有 3+/5-，已获 Yury R-b，无未决技术分歧；但补丁不能脱离系列单独合入——`cpu_preferred_mask` 由系列 04/13 引入，缺了它本补丁无法编译，因此实际节奏由系列整体决定）。
 
-blocking_issues：Peter/Ingo 未对「排入 sched/core 冲 7.4」表态；fair 类维护者（Vincent）未评审本补丁；系列横跨 driver core / drivers/virt / s390 / procfs 仍缺对应维护者 ack（见 sched-20260909-010）。
+*blocking_issues*：Peter/Ingo 未对「排入 sched/core 冲 7.4」表态；fair 类维护者（Vincent）未评审本补丁；系列横跨 driver core / drivers/virt / s390 / procfs 仍缺对应维护者 ack（见 sched-20260909-010）。
 
-next_action：等 Peter 对排队时点的回应；本补丁可主动抄送/提请 Vincent Guittot 评审 `sched_balance_rq` 的 span 收窄与 `sched_balance_newidle` 的提前返回，补上公平类维护者的认可。
+*next_action*：等 Peter 对排队时点的回应；本补丁可主动抄送/提请 Vincent Guittot 评审 `sched_balance_rq` 的 span 收窄与 `sched_balance_newidle` 的提前返回，补上公平类维护者的认可。
 
 ## 效果评估
 本日邮件无任何新数据（Yury 的回帖只有一行 R-b）。

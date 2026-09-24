@@ -13,13 +13,13 @@ Aaron Tomlin 提出新 patch：给 panic 时的 sys_info 机制新增 cpu_runque
 - Suggested-by: Rishil Sandip Shah。
 
 ## 版本演进与当前进展
-current_version: v1（msgid `<20260911022844.521413-1-atomlin@atomlin.com>`，09-11 10:28 入缓存），v1 刚发出、暂无 review 意见。改动面：Documentation/admin-guide/sysctl/kernel.rst、include/linux/sched/debug.h、include/linux/sys_info.h、kernel/sched/debug.c（+70/-13）、lib/sys_info.c。
+*current_version: v1（msgid `<20260911022844.521413-1-atomlin@atomlin.com>`，09-11 10:28 入缓存）*，v1 刚发出、暂无 review 意见。改动面：Documentation/admin-guide/sysctl/kernel.rst、include/linux/sched/debug.h、include/linux/sys_info.h、kernel/sched/debug.c（+70/-13）、lib/sys_info.c。
 
 ## Maintainer 意见与讨论焦点
 暂无维护者或社区回帖（当日缓存零回复），未获取到任何表态。
 
 ## 合入评估
-likelihood=unknown：无 review 可依据。可参照的事实：作者同日在 sched/isolation 领域活跃，sys_info 框架（lib/sys_info.c 的 SYS_INFO_* 家族）已有多位（blocked_tasks、all_bt 等先例）。blocking_issues：panic 路径代码评审标准高（trylock/rcu/printk 洪泛控制都要被细看），尚无维护者意见；与 print_rq() 的代码复用程度（作者选择建模而非复用）可能被问。next_action：等待第一轮 review（预计涉及 sched/debug 与 panic/sys_info 两方维护者）。
+*likelihood=unknown*：无 review 可依据。可参照的事实：作者同日在 sched/isolation 领域活跃，sys_info 框架（lib/sys_info.c 的 SYS_INFO_* 家族）已有多位（blocked_tasks、all_bt 等先例）。*blocking_issues*：panic 路径代码评审标准高（trylock/rcu/printk 洪泛控制都要被细看），尚无维护者意见；与 print_rq() 的代码复用程度（作者选择建模而非复用）可能被问。*next_action*：等待第一轮 review（预计涉及 sched/debug 与 panic/sys_info 两方维护者）。
 
 ## 效果评估
 暂无效果数据：邮件未附 panic 输出示例的完整样张（diff 上下文可见输出格式），也无高线程数系统上 ring buffer 压力的量化对比；「保持精简、防冲爆」为作者设计主张。

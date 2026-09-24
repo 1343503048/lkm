@@ -18,7 +18,7 @@
 - 无剩余未解决分歧；上日关于 !idle 语义的讨论已随 v2 的 U64_MAX reservoir 收敛。
 
 ## 合入评估
-likelihood=high。1/2、2/2 均已获 Reviewed-by，Peter 明确表示将排队合入，接近合入。blocking_issues：无明显阻塞（等待 Peter 实际合入）。next_action：等待 Peter 将系列收进 tip/sched/core；作者无需进一步动作，除非合入时出现冲突。
+*likelihood=high*。1/2、2/2 均已获 Reviewed-by，Peter 明确表示将排队合入，接近合入。*blocking_issues*：无明显阻塞（等待 Peter 实际合入）。*next_action*：等待 Peter 将系列收进 tip/sched/core；作者无需进一步动作，除非合入时出现冲突。
 
 ## 效果评估
 本日无新增 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 sched-20260916-015。

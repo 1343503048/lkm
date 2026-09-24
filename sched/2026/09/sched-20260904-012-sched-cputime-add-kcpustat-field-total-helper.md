@@ -53,7 +53,7 @@ static inline u64 kcpustat_field_total(enum cpu_usage_stat usage, const struct c
 
 ## 合入评估
 
-likelihood: **likely**。
+*likelihood: likely*。
 
 依据（就第 1 片本身）：三个必要标签齐了——cputime 维护者 `Acked-by`、两名 reviewer `Reviewed-by`、且它是纯提取（+15/-12，无行为改变），同时还顺手简化了 s390 与 `/proc/uptime` 两处既有代码；这类基础 helper 通常不会被打回。
 

@@ -18,7 +18,7 @@ fair hrtick 是 one-shot 定时器。hrtick 到期触发 `resched_curr()` 后进
 - 无 NAK；遗留项仅注释与 ext.c 的编译验证。
 
 ## 合入评估
-likelihood=medium。修复目标明确、带实测延迟数据、已获 Reviewed-by，但尚未有 sched 维护者 Ack，且 `SNT_NORMAL/SNT_PICK` 语义注释与 ext.c 的 BTF 编译验证尚未完成。blocking_issues：无实质阻塞，待维护者评审 + 补注释/ext 编译验证。next_action：作者补注释、请有 BTF 环境者编译 ext.c，等维护者收取。
+*likelihood=medium*。修复目标明确、带实测延迟数据、已获 Reviewed-by，但尚未有 sched 维护者 Ack，且 `SNT_NORMAL/SNT_PICK` 语义注释与 ext.c 的 BTF 编译验证尚未完成。*blocking_issues*：无实质阻塞，待维护者评审 + 补注释/ext 编译验证。*next_action*：作者补注释、请有 BTF 环境者编译 ext.c，等维护者收取。
 
 ## 效果评估
 作者测试（HRTICK + DELAY_DEQUEUE，base_slice_ns=3000000）：p90 延迟 3.998ms→3.053ms，p99 5.144ms→4.533ms。HRTICK_DL stress-ng 冒烟测试 baseline 与 v3 均完成 2691 bogo ops、无新增 dmesg 告警；`CONFIG_HIGH_RES_TIMERS=n`（禁用 HRTICK）也能正常启动并跑完 stress-ng。Zhan 4 CPU 开机 + panic_on_warn=1 下四个 spinner 干净，未复现延迟数字。

@@ -60,7 +60,7 @@ layout: article
 - **Gregory Price（作者）**：这些问题是与 Joshua 的 tiered memcg limits 补丁一起测公平性控制时发现的——不同 tier 之间带宽严重偏斜；去掉所有 memcg 扩展单独测这些补丁后，发现 numa balancing 完全失效（始于 Johannes 的 shmem 修复之后）。工作负载没有使用任何其他 NUMA 控制（无 numactl、无 mbind/set_mempolicy、无 cpuset.mems）；修复影响的是 fault 注入侧（PROT_NONE 喷洒）而非 fault 处理侧，故 mempolicy/cpuset 不涉及，属 numa balancing 自身的内部一致性问题。
 
 ## 合入评估
-likelihood=medium。系列方向与测试边界已澄清，但具体 patch（3/4 的 VMA 判定、4/4 的 promo_only 计算）仍各有 review 意见待解决。blocking_issues：3/4、4/4 的具体实现意见（见 sched-20260919-008 与 sched-20260918-013）。next_action：按 Zi Yan 建议补充"预期行为列表"，推进 3/4、4/4 的重写。
+*likelihood=medium*。系列方向与测试边界已澄清，但具体 patch（3/4 的 VMA 判定、4/4 的 promo_only 计算）仍各有 review 意见待解决。*blocking_issues*：3/4、4/4 的具体实现意见（见 sched-20260919-008 与 sched-20260918-013）。*next_action*：按 Zi Yan 建议补充"预期行为列表"，推进 3/4、4/4 的重写。
 
 ## 效果评估
 本日无新增 benchmark。Gregory 描述的现象（tier 间带宽极度偏斜、numa balancing 完全失效）为定性观察，未附具体数字。

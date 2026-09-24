@@ -54,7 +54,7 @@ layout: article
 - **Tejun Heo**："Applied 1-2 to sched_ext/for-7.3-fixes. Thanks."，无分歧。
 
 ## 合入评估
-likelihood=merged。已合入 sched_ext/for-7.3-fixes 分支。blocking_issues：无。next_action：跟踪该 Fixes 分支是否被 Linus 收纳。
+*likelihood=merged*。已合入 sched_ext/for-7.3-fixes 分支。*blocking_issues*：无。*next_action*：跟踪该 Fixes 分支是否被 Linus 收纳。
 
 ## 效果评估
 邮件未附性能数据；属锁顺序/正确性修复，无直接性能影响。

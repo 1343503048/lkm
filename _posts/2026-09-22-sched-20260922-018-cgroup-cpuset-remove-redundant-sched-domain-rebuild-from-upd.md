@@ -59,7 +59,7 @@ v2（`<20260920025256.24991-1-guopeng.zhang@linux.dev>`）后，当天 Tejun Heo
 - **Tejun Heo**（cgroup 维护者）：「Applied to cgroup/for-7.4.」无争议，直接收取。
 
 ## 合入评估
-likelihood=merged。已合入 `cgroup/for-7.4` 维护者树。blocking_issues 无；next_action 无（等待随 cgroup 树进入主线）。
+*likelihood=merged*。已合入 `cgroup/for-7.4` 维护者树。blocking_issues 无；next_action 无（等待随 cgroup 树进入主线）。
 
 ## 效果评估
 无性能数据；清理冗余操作（见 sched-20260921-008）。

@@ -14,7 +14,7 @@ Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗�
 - v2 回帖：分配失败回退处改用断言 `WARN_ON_ONCE(scx_set_enable_state(SCX_DISABLED) != SCX_ENABLING)`；同步更新被移动的注释；「分配失败仍本地回退（unwind locally），完整 disabling 只在 scx_alloc_and_add_sched() 成功之后才适用」。
 
 ## 版本演进与当前进展
-current_version: v2（截至 09-11 当日；v3 于 09-12 发出并合入，见 sched-20260913-003）。
+*current_version: v2（截至 09-11 当日；v3 于 09-12 发出并合入，见 sched-20260913-003）*。
 
 - v1（msgid `<20260910084533.2420199-1-fangqiurong@kylinos.cn>`，msgid 时间戳 09-10）：Tejun 09-11 05:40 回复，删不可达 hunk、移动状态转换、保留分配失败重置；
 - v2（msgid `<20260911024256.125287-1-fangqiurong@kylinos.cn>`，msgid 时间戳 09-11）：Tejun 09-11 23:24 回复，确认无 disable 竞争并给出 WARN_ON_ONCE 断言写法，要求更新被移动的注释。
@@ -24,7 +24,7 @@ current_version: v2（截至 09-11 当日；v3 于 09-12 发出并合入，见 s
 - 无其他参与者出现在本日线程邮件中。
 
 ## 合入评估
-likelihood=high（按 09-11 当日时点）：维护者评审两轮收敛、给出的修改全部是收窄性的，无待决问题——属「评审无异议待收取」。blocking_issues：无（当日时点）；仅剩 v3 按 Tejun 意见落实后等待应用。后续事实（供补跑读者）：v3 于 09-12 发出，09-13 被 Tejun 以 minor wording cleanups 应用到 sched_ext/for-7.3-fixes，详见 sched-20260913-003。next_action：回合该修复的内部分支以最终合入形态为准。
+*likelihood=high*（按 09-11 当日时点）：维护者评审两轮收敛、给出的修改全部是收窄性的，无待决问题——属「评审无异议待收取」。*blocking_issues*：无（当日时点）；仅剩 v3 按 Tejun 意见落实后等待应用。后续事实（供补跑读者）：v3 于 09-12 发出，09-13 被 Tejun 以 minor wording cleanups 应用到 sched_ext/for-7.3-fixes，详见 sched-20260913-003。*next_action*：回合该修复的内部分支以最终合入形态为准。
 
 ## 效果评估
 暂无效果数据：这是使能路径竞态窗口的修复，邮件中没有复现触发条件（如特定 CONFIG、负载）或失败日志的描述；原始报告动机未获取到。

@@ -65,7 +65,7 @@ cpu.max 与 cpu.max.burst 的写入顺序会影响结果：quota 无限时配置
 - patch 2：selftests/cgroup/test_cpu.c 增加两种写序的覆盖（+40 行）；patch 3：更新 cgroup-v2 与 sched-bwc 文档描述配置值与运行时截断的关系。
 
 ## 版本演进与当前进展
-current_version: v3（cover msgid `<20260911092258.660771-1-liuzhe1@kylinos.cn>`，09-11 17:22 入缓存；含 0/3 与 1/3，2/3、3/3 未入缓存）。
+*current_version: v3（cover msgid `<20260911092258.660771-1-liuzhe1@kylinos.cn>`，09-11 17:22 入缓存；含 0/3 与 1/3，2/3、3/3 未入缓存）*。
 
 - v1（08-20，承 sched-20260904-004）；
 - v2（09-04）：配置 burst 独立于 quota 更新；quota 相对限制移到 refill 路径；新增自测与文档；
@@ -75,7 +75,7 @@ current_version: v3（cover msgid `<20260911092258.660771-1-liuzhe1@kylinos.cn>`
 当日缓存内 v3 无任何回帖，未获取到维护者意见（v2 阶段的 review 内容在当日缓存亦不可见，承 sched-20260904-004 的记录：无量化验证数据是当时的主要保留）。
 
 ## 合入评估
-likelihood=medium：问题真实（写序导致 -EINVAL/配置被拦）、修复语义自洽、带自测与文档；但 v3 仍无任何维护者意见，cgroup 带宽控制路径（core.c/fair.c）的评审尚未开始。blocking_issues：零 review；v3 刚改了核心语义（独立上限替代 quota 相对限制），需要确认该上限与历史行为的兼容论证被接受；效果无量化数据。next_action：等待 sched/fair 与 cgroup 两侧维护者的首轮意见；关注 v1 时被去掉的 Cc: stable 是否影响回合预期。
+*likelihood=medium*：问题真实（写序导致 -EINVAL/配置被拦）、修复语义自洽、带自测与文档；但 v3 仍无任何维护者意见，cgroup 带宽控制路径（core.c/fair.c）的评审尚未开始。*blocking_issues*：零 review；v3 刚改了核心语义（独立上限替代 quota 相对限制），需要确认该上限与历史行为的兼容论证被接受；效果无量化数据。*next_action*：等待 sched/fair 与 cgroup 两侧维护者的首轮意见；关注 v1 时被去掉的 Cc: stable 是否影响回合预期。
 
 ## 效果评估
 无量化数据：系列目标是消除写序敏感性（任意顺序可配置），效果为行为语义改进；邮件窗口内无 benchmark 或复现耗时数字，selftests 的断言结果未入缓存。

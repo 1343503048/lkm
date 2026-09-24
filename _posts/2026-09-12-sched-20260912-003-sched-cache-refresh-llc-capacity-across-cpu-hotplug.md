@@ -60,7 +60,7 @@ CPU 下线时 sched_cpu_deactivate() 先重建调度域、cacheinfo_cpu_pre_down
 （承 sched-20260911-016：cacheinfo 传 cpu_map 给 sched_update_llc_bytes()，online/pre_down 两路径对掩码内每个幸存 CPU 用各自 LLC 域刷新；Fixes: 7030513a0877。）v2 相对 v1：恢复 build_sched_domains()/cacheinfo_cpu_online() 启动期共享掩码的原有注释（Chen Yu 建议，与离线/cpuset 分区说明并存）、加入 Reviewed-by 与多平台验证记录；无功能变化。
 
 ## 版本演进与当前进展
-current_version: v2（msgid `<20260911220229.1368887-1-davichazbh@gmail.com>`，09-12 06:02 入缓存）。
+*current_version: v2（msgid `<20260911220229.1368887-1-davichazbh@gmail.com>`，09-12 06:02 入缓存）*。
 
 - v1（09-11）：Chen Yu 当日 review：指出 v1 注释只覆盖启动时序、遗漏运行时热插拔场景，建议保留原启动期注释并补离线/分区说明；同时在 **AMD Ryzen 8945HX（2 LLC、每 LLC 8 核）** 与 **Xeon（每节点 4 LLC）** 上复现问题、确认 v1 恢复正常 sd->llc_bytes，给 Reviewed-by；
 - v2（09-12）：按上述意见补注释与验证记录，无功能变化；
@@ -72,7 +72,7 @@ current_version: v2（msgid `<20260911220229.1368887-1-davichazbh@gmail.com>`，
 - 无分歧记录。维护者两侧（评审 + 认可）齐备，v1 时「缺多 LLC 数据」的缺口已由 Chen Yu 的 8945HX/Xeon 复现补上。
 
 ## 合入评估
-likelihood=high：修复需求经两平台复现、实现经 Chen Yu 评审与 Tim Chen 认可、v2 已收敛；仅差合入动作。blocking_issues：当日缓存内未见应用动作；cacheinfo（驱动侧）的接口改动是否需要 drivers/base 侧 ack 未在邮件中出现。next_action：跟踪 Tim Chen 侧的收取（预计随 sched/cache 相关树走）；v2 与 v1 无功能差异，回合验证可沿用 v1 的测试矩阵。
+*likelihood=high*：修复需求经两平台复现、实现经 Chen Yu 评审与 Tim Chen 认可、v2 已收敛；仅差合入动作。*blocking_issues*：当日缓存内未见应用动作；cacheinfo（驱动侧）的接口改动是否需要 drivers/base 侧 ack 未在邮件中出现。*next_action*：跟踪 Tim Chen 侧的收取（预计随 sched/cache 相关树走）；v2 与 v1 无功能差异，回合验证可沿用 v1 的测试矩阵。
 
 ## 效果评估
 承 v1 的一手数据（Ryzen 5 7535U 修复前后 15,379,114 → 16,777,216 字节、20 轮热插拔、8 场景夹具 5/8→8/8、多架构构建）；新增 Chen Yu 的独立复现平台（Ryzen 8945HX、Xeon 每节点 4 LLC）——「缺多 LLC 硬件结果」的边界已在 v2 中补齐。

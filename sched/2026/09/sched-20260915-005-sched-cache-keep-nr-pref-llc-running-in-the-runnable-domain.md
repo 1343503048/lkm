@@ -18,7 +18,7 @@
 - 无 NAK；分歧点在「注释如何写才既准确又不冗长」，非方案方向之争。
 
 ## 合入评估
-likelihood=medium。方向已获 Tim 与 Chen Yu 双重认可，但注释修改未落实、作者未回应，尚无 Ack。blocking_issues：注释的场景前提与代码块归属需按 Tim 意见修订；作者未回应。next_action：作者按 Tim 意见收紧 patch 1/4 注释并出新版，争取 Ack。
+*likelihood=medium*。方向已获 Tim 与 Chen Yu 双重认可，但注释修改未落实、作者未回应，尚无 Ack。*blocking_issues*：注释的场景前提与代码块归属需按 Tim 意见修订；作者未回应。*next_action*：作者按 Tim 意见收紧 patch 1/4 注释并出新版，争取 Ack。
 
 ## 效果评估
 无效果数据。本日讨论聚焦代码可读性与注释准确性，不涉及性能或行为变化验证。

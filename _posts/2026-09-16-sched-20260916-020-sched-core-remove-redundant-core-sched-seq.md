@@ -55,7 +55,7 @@ Hui Su 的单枚整洁性补丁：删掉 `struct rq` 里的 `core_sched_seq` 字
 本日暂无维护者或 reviewer 回复。补丁自带测试说明（instrumented 对比新旧 pending 谓词、core-cookie 生命周期、forced idle、CPU hotplug 压测），但需等待 core scheduling（Peter Zijlstra 等）确认语义等价性。
 
 ## 合入评估
-likelihood=unknown。纯整洁性改动、有自测支撑，但 core-sched 的 pending/pick 语义相当微妙，去掉一个字段的正确性需维护者在这个领域确认，暂无任何表态。blocking_issues：无明确阻塞，但缺 core-sched 维护者评审。next_action：等 Peter 或 core scheduling 相关维护者评审确认 `core_pick` 可完全替代 `core_sched_seq`。
+*likelihood=unknown*。纯整洁性改动、有自测支撑，但 core-sched 的 pending/pick 语义相当微妙，去掉一个字段的正确性需维护者在这个领域确认，暂无任何表态。*blocking_issues*：无明确阻塞，但缺 core-sched 维护者评审。*next_action*：等 Peter 或 core scheduling 相关维护者评审确认 `core_pick` 可完全替代 `core_sched_seq`。
 
 ## 效果评估
 无性能数据；属代码整洁性改动，作者侧自测表示新旧谓词无分歧、无新增告警。

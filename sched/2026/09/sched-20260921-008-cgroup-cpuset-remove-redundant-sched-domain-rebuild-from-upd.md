@@ -17,7 +17,7 @@
 - **Waiman Long（cpuset 维护者）**：给出 Reviewed-by，认可该冗余重建确可删除，无异议。
 
 ## 合入评估
-likelihood=high。cpuset 维护者已明确 Review 通过，冗余重建的删除逻辑清晰、风险低。next_action：等待 cpuset/cgroup 维护者（Tejun Heo / Waiman Long）合入。
+*likelihood=high*。cpuset 维护者已明确 Review 通过，冗余重建的删除逻辑清晰、风险低。*next_action*：等待 cpuset/cgroup 维护者（Tejun Heo / Waiman Long）合入。
 
 ## 效果评估
 无性能数据；收益定性为消除每次分区状态切换时的多余 sched domain 重建，属轻微但确定的 CPU 与锁开销节省。

@@ -59,7 +59,7 @@ v2（09-08，见 related_articles）本日获 Dietmar 评测，无新版本。�
 - 无 NAK；唯一待澄清点是作者是否认同 102→79 属预期行为。
 
 ## 合入评估
-likelihood=high。维护者方向性认可、实测数据支持，仅一处压力口径的轻微说明。blocking_issues：102 vs 79 压力差异是否「预期」待作者确认（Dietmar 已倾向预期行为）。next_action：作者回应 pressure 口径说明后即可推进。
+*likelihood=high*。维护者方向性认可、实测数据支持，仅一处压力口径的轻微说明。*blocking_issues*：102 vs 79 压力差异是否「预期」待作者确认（Dietmar 已倾向预期行为）。*next_action*：作者回应 pressure 口径说明后即可推进。
 
 ## 效果评估
 Dietmar 实测（ARM64 Juno R0）：boost=0 时 policy[0,3-5] max=700000/pressure=102、policy[1-2] max=800000/pressure=280；切 boost=1 后两 policy pressure 均 0；再切 boost=0 后恢复 pressure=280 / 79。关键验证点是压力随 boost 开关正确联动（尤其大核从 102 修正为 79 的 uarch+频率差异口径）。这是维护者实测数据，非作者自报。

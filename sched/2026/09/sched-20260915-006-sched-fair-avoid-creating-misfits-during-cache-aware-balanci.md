@@ -18,7 +18,7 @@
 - 无分歧，属复现方法学的信息对齐。
 
 ## 合入评估
-likelihood=merged。修复已合入 tip sched/urgent（见 related_articles sched-20260914-007）。blocking_issues：无（仅剩复现细节的公开沟通）。next_action：Ricardo/Matt 补充 Nova Lake 测试细节供 NVIDIA 复现验证。
+*likelihood=merged*。修复已合入 tip sched/urgent（见 related_articles sched-20260914-007）。*blocking_issues*：无（仅剩复现细节的公开沟通）。*next_action*：Ricardo/Matt 补充 Nova Lake 测试细节供 NVIDIA 复现验证。
 
 ## 效果评估
 Tim Chen 描述的行为现象：unpin 后进程未迁往更强核（cache-aware 调度影响），可用 mpstat 观察。为定性行为描述，未给定量化数字；修复是否恢复预期迁移行为需 NVIDIA 侧复现确认。

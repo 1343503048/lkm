@@ -18,7 +18,7 @@
 - 分歧点：Fixes 标签与判定条件需作者确认/修正。
 
 ## 合入评估
-likelihood=high。方案已获两位维护者/资深成员认可与多平台实测，方向确定；剩余 Zhongqiu 关于 Fixes 标签与判定条件的意见需作者回应。blocking_issues：Fixes 标签指向待确认；acpi-cpufreq 无 boost 表场景下的判定条件待修正。next_action：作者回应 Zhongqiu 意见，确认/修正 Fixes 与表扫描判定条件后即可推进。
+*likelihood=high*。方案已获两位维护者/资深成员认可与多平台实测，方向确定；剩余 Zhongqiu 关于 Fixes 标签与判定条件的意见需作者回应。*blocking_issues*：Fixes 标签指向待确认；acpi-cpufreq 无 boost 表场景下的判定条件待修正。*next_action*：作者回应 Zhongqiu 意见，确认/修正 Fixes 与表扫描判定条件后即可推进。
 
 ## 效果评估
 Oleg Keri 实测（Lenovo Yoga Slim 7x Gen 11，next-20260915）：workload 固定 CPU 在 boost 关/开下跑 4032000/4723200，3.14s vs 2.50s；`scaling_max_freq` 随 boost 开关在 4032000/4723200 间正确切换。另报 cpuinfo_max_freq 在 boost 关闭后仍为 4723200（未解决的次要观察，未见后续结论）。

@@ -68,7 +68,7 @@ layout: article
 - **Will Deacon**：直言 "you really need to try something more recent if we're going to help you"，—— 5.15.131 过于陈旧，上游无法基于它排查，需要在新内核（或至少更近的 LTS）上复现。
 
 ## 合入评估
-likelihood=unknown。这是 bug 报告而非补丁，无法谈合入；当前被卡在"需在新内核复现"。blocking_issues：旧内核（5.15.131）无法获得上游支持；vmcore 分析亦无结论。next_action：报告者在更新内核上尝试复现，若能复现则携带 vmcore/复制脚本重新上报。
+*likelihood=unknown*。这是 bug 报告而非补丁，无法谈合入；当前被卡在"需在新内核复现"。*blocking_issues*：旧内核（5.15.131）无法获得上游支持；vmcore 分析亦无结论。*next_action*：报告者在更新内核上尝试复现，若能复现则携带 vmcore/复制脚本重新上报。
 
 ## 效果评估
 无性能数据。严重度为 hard lockup（整机 panic），但触发条件未知（运行 744 天后出现、疑似偶发/平台相关）。

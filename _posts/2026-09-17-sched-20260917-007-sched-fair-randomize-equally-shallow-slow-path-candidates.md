@@ -73,7 +73,7 @@ layout: article
 - 分歧点：!idle CPU 的采样资格与候选计数复位语义仍未最终闭合，作者倾向与当前上游行为保持一致。
 
 ## 合入评估
-likelihood=medium。1/2 已获 Reviewed-by、2/2 方向获 Vincent 认可但仍有 !idle 处理与计数复位两个设计点待收敛；作者承诺出 v3（U64_MAX reservoir + 独立的 idle helper）。blocking_issues：2/2 的 !idle 候选语义与候选计数复位待定；v3 未发出。next_action：作者发 v3 落实 U64_MAX reservoir 与 idle helper 拆解，回应 Vincent/Shubhang 剩余意见。
+*likelihood=medium*。1/2 已获 Reviewed-by、2/2 方向获 Vincent 认可但仍有 !idle 处理与计数复位两个设计点待收敛；作者承诺出 v3（U64_MAX reservoir + 独立的 idle helper）。*blocking_issues*：2/2 的 !idle 候选语义与候选计数复位待定；v3 未发出。*next_action*：作者发 v3 落实 U64_MAX reservoir 与 idle helper 拆解，回应 Vincent/Shubhang 剩余意见。
 
 ## 效果评估
 本日 v2 未附新的 benchmark；v1 数据（160 核 Altra stress-ng fork 中位数吞吐最高 +4.13%、stale-pick 率近乎减半）见 sched-20260916-015。

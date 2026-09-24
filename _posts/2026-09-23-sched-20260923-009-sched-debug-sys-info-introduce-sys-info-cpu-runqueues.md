@@ -75,7 +75,7 @@ layout: article
 - **Aaron Tomlin（作者）**：说明场景是「kdump 未配 / vmcore 截断或失败时，dmesg（pstore/serial）常是唯一存活诊断物」；澄清 `print_rq()` 不调 `print_cfs_stats()`（那是 `print_cpu()` 的、无条件拿 `rq->lock` 的部分）；坚持 trylock 对所有 `__sys_info()` 调用者（NMI hardlockup / hardirq softlockup / khungtaskd，此时 `oops_in_progress=0`）都是必需的，无条件 `raw_spin_rq_lock()` 会自死锁/AB-BA 死锁；`trylock` + `(contended)` 标注已足够；改动严格限于 `kernel/sched/debug.c`、复用 `print_rq()`/`print_task()` 与两个 flag。
 
 ## 合入评估
-likelihood=low。首轮人类评审刚启动，Peter 对「是否真需要」仍持保留（虽非强烈反对），并新增「rq->lock 路径需加注释防退化」的要求。blocking_issues：Peter 的「是否需要」质疑未消解；需补 rq->lock 路径注释；Andrew（sys_info/lib）侧仍未表态。next_action：作者补注释并进一步论证存在必要性，回应 Peter 的 kdump 经济性论点。
+*likelihood=low*。首轮人类评审刚启动，Peter 对「是否真需要」仍持保留（虽非强烈反对），并新增「rq->lock 路径需加注释防退化」的要求。*blocking_issues*：Peter 的「是否需要」质疑未消解；需补 rq->lock 路径注释；Andrew（sys_info/lib）侧仍未表态。*next_action*：作者补注释并进一步论证存在必要性，回应 Peter 的 kdump 经济性论点。
 
 ## 效果评估
 无 panic 输出样张、无高线程数日志体量对比（承前作）。本日为「是否值得合入」的定性讨论。

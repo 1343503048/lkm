@@ -22,7 +22,7 @@
 - 已获 **Zhan Xusheng** 的 Reviewed-by。暂无维护者明确 NAK 或阻塞意见。
 
 ## 合入评估
-likelihood=medium。方向明确、逻辑自洽、带实测数据且有 Reviewed-by，但尚未获得 Peter/Vincent 等核心维护者的 Ack。blocking_issues：核心维护者尚未表态；SNT_REPICK 复用路径的接口改动需要维护者确认。next_action：等待维护者 review；如有意见按反馈出 v5。
+*likelihood=medium*。方向明确、逻辑自洽、带实测数据且有 Reviewed-by，但尚未获得 Peter/Vincent 等核心维护者的 Ack。*blocking_issues*：核心维护者尚未表态；SNT_REPICK 复用路径的接口改动需要维护者确认。*next_action*：等待维护者 review；如有意见按反馈出 v5。
 
 ## 效果评估
 作者 v3 实测（HRTICK + DELAY_DEQUEUE，base_slice_ns=3000000）：p90 从 3.998ms 降到 3.053ms，p99 从 5.144ms 降到 4.533ms；HRTICK_DL stress-ng 冒烟 2691 bogo ops 无新 dmesg 告警；CONFIG_HIGH_RES_TIMERS=n（禁用 HRTICK）内核可正常启动、30 秒 stress-ng 无新告警。

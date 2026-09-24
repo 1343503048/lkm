@@ -74,7 +74,7 @@ layout: article
 
 ## 合入评估
 
-likelihood: **unclear**。
+*likelihood: unclear*。
 
 依据：改动是机械性的 API 迁移，风险低、行数小（+14/-19），且 `kthread_create_worker()` 的上游方向本身就是替换手搓 worker 模式，被接受的可能性不低。
 

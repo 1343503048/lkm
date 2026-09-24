@@ -41,14 +41,14 @@ proxy execution 把调度上下文（`rq->donor`）与执行上下文（`rq->cur
 - 无 NAK、无新分歧。焦点已从「改不改」转移到「谁把 donated/gifted 统计做出来」。
 
 ## 合入评估
-likelihood: high（与 sched-20260909-013 持平，但支撑更实：此前依赖 John 的让步式 ack，现在有 cgroup 维护者主动给出设计原则）。
+*likelihood: high*（与 sched-20260909-013 持平，但支撑更实：此前依赖 John 的让步式 ack，现在有 cgroup 维护者主动给出设计原则）。
 
-blocking_issues：
+*blocking_issues*：
 - John Stultz 的 ack 仍是 "Tentatively"，且他未回复 Tejun 本日的定调邮件。
 - Peter Zijlstra 未表态收取；补丁既不在 sched 树也不在 wq/cgroup 树里（`cgroup_account_cputime()` 的调用点在 `kernel/sched/fair.c`，路由天然归 sched）。
 - commit message 仍未写入「usage 跟 `rq->curr`、bandwidth 跟调度上下文」这一区分——现在有了 Tejun 的原话可引，比 09-09 时更容易补。
 
-next_action：作者把 Tejun 这段表态引进 commit message（或直接作为 cover 说明），请 John 把 Tentatively 转正，然后请 Peter 收取；考虑到同日 Peter 已愿意用 `sched/urgent` 收同作者的相邻修复，本补丁完全可以一并提出。
+*next_action*：作者把 Tejun 这段表态引进 commit message（或直接作为 cover 说明），请 John 把 Tentatively 转正，然后请 Peter 收取；考虑到同日 Peter 已愿意用 `sched/urgent` 收同作者的相邻修复，本补丁完全可以一并提出。
 
 ## 效果评估
 本日无新增测试数据，也无性能影响面（只改统计归属）。

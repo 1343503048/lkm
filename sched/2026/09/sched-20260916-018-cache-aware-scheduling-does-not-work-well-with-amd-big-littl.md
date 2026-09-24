@@ -17,7 +17,7 @@ Intel 侧（Chen Yu 等）针对该问题的补丁迭代（本日未在邮件正
 - 无新分歧；这是修复方向的正面数据。
 
 ## 合入评估
-likelihood=medium。修复方向正在被实际用户验证有效（接近无 cache-aware 的基线），但补丁机制与后续收合路径仍需在 cache-aware 系列（见 sched-20260916-011/012/013）里统一推进。blocking_issues：无新增。next_action：Intel 侧确认补丁机制并把改动收敛进 cache-aware 系列提交。
+*likelihood=medium*。修复方向正在被实际用户验证有效（接近无 cache-aware 的基线），但补丁机制与后续收合路径仍需在 cache-aware 系列（见 sched-20260916-011/012/013）里统一推进。*blocking_issues*：无新增。*next_action*：Intel 侧确认补丁机制并把改动收敛进 cache-aware 系列提交。
 
 ## 效果评估
 Klaus 实测：两个构建测试「几乎同速」于无 cache-aware 内核，约比早期 cache-aware 内核快 2%；核心柱状图无错放进程。属用户实测，非量化基准。

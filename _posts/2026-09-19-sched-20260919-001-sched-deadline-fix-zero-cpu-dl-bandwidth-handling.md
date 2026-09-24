@@ -77,7 +77,7 @@ v2 把零 CPU 处理下沉到公共 helper，而不是继续在调用点打补�
 - 分歧/未决：暂无实质分歧；两个 patch 各自配了不同 `Fixes:` 与 stable Cc，backport 范围是否合理需维护者确认。
 
 ## 合入评估
-likelihood=medium。修复方向明确、有真实崩溃报告支撑、Cc stable，且 v2 已按 reviewer 建议重构；但 v2 刚发出（本日 23:31），尚无 deadline 维护者的 review/ack。blocking_issues：等待 Juri/Daniel 对 v2 拆分与 `__dl_sub()`/`__dl_add()` 守卫方式的确认。next_action：deadline 维护者 review v2，确认两个 Fixes 与 stable backport 范围后收取。
+*likelihood=medium*。修复方向明确、有真实崩溃报告支撑、Cc stable，且 v2 已按 reviewer 建议重构；但 v2 刚发出（本日 23:31），尚无 deadline 维护者的 review/ack。*blocking_issues*：等待 Juri/Daniel 对 v2 拆分与 `__dl_sub()`/`__dl_add()` 守卫方式的确认。*next_action*：deadline 维护者 review v2，确认两个 Fixes 与 stable backport 范围后收取。
 
 ## 效果评估
 作者在 x86_64 上自测：cpus=0/1/2/4 的 DL bandwidth 记账、`task_non_contending()`/`inactive_task_timer()` 零 CPU 路径、100 轮 root-domain 重建/offline-online 循环、200 次跨 root-domain SCHED_DEADLINE cpuset 迁移、SCHED_FLAG_RECLAIM 策略切换、并发 SCHED_DEADLINE/SCHED_OTHER 切换 + CPU hotplug、100 轮 CPU hotplug/debugfs 更新，全部通过；并做了 inactive-but-online debugfs 窗口的 A/B 验证（仅 patch 1 时写被接受、两 patch 后写被拒且 runtime 不变）。Mikhail 的 s390x 崩溃栈为最直接的效果证据。

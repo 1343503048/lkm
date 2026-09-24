@@ -18,7 +18,7 @@ v3 把三条路径上的 `ops.dequeue()` 调用统一移到 DSQ 解锁之后：`
 - 无 NAK 与遗留争议。
 
 ## 合入评估
-likelihood=high。清晰的自死锁缺陷，带 `Fixes:` 与 stable 标签，patch 1 带 Andrea Righi Acked-by，v3 完整落实 Tejun 评审且 selftest 规范，无阻塞项。blocking_issues：无。next_action：待 Tejun 收入 sched_ext 修复分支并回合 stable v7.1+。
+*likelihood=high*。清晰的自死锁缺陷，带 `Fixes:` 与 stable 标签，patch 1 带 Andrea Righi Acked-by，v3 完整落实 Tejun 评审且 selftest 规范，无阻塞项。*blocking_issues*：无。*next_action*：待 Tejun 收入 sched_ext 修复分支并回合 stable v7.1+。
 
 ## 效果评估
 selftest（patch 2）描述：未修复内核上首个被消费的任务在 `ops.dequeue()` 迭代源 DSQ 时自死锁、watchdog 无法恢复（「wedges the system」）；修复内核上调度器干净运行、测试以 SCX_EXIT_UNREG 通过。属正确性验证，无性能量化数据。

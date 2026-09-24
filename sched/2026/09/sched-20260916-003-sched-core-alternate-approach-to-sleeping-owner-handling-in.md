@@ -19,7 +19,7 @@ Prateek 的方案核心：当任务 blocked 且 queued 到睡眠 owner 上时（
 - 两人正在做的关键取舍：John 想尽快推进自己那套 sleeping-owner enqueuing 上游，纠结是继续自己的大 patch 还是转向 Prateek 的系列。
 
 ## 合入评估
-likelihood=unknown。作者明确表示这是 PoC/讨论性质，尚需大量打磨；Peter Zijlstra 尚未表态（作者计划在 LPC 上找 Peter 交流）；且与 John Stultz 的上游路线存在取舍关系，方向本身未定。blocking_issues：与 John 方案的上游取舍未决、04/16 的 idle 空转 bug、PELT/SCHED_DEADLINE 语义风险、Peter 尚未评审。next_action：等 John/Peter 定方向；作者 rebase 后发 v2。
+*likelihood=unknown*。作者明确表示这是 PoC/讨论性质，尚需大量打磨；Peter Zijlstra 尚未表态（作者计划在 LPC 上找 Peter 交流）；且与 John Stultz 的上游路线存在取舍关系，方向本身未定。*blocking_issues*：与 John 方案的上游取舍未决、04/16 的 idle 空转 bug、PELT/SCHED_DEADLINE 语义风险、Peter 尚未评审。*next_action*：等 John/Peter 定方向；作者 rebase 后发 v2。
 
 ## 效果评估
 作者称在 John 的堆栈中间测试过、未到 futex 位就「脑袋打转」，无公开基准数据。John 称「在测试中表现还行」。均属主观观察，未见量化数据。

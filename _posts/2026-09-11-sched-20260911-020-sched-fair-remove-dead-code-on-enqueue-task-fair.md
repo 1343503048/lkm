@@ -55,7 +55,7 @@ enqueue_task_fair() 中 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 - 顺带删除上方遗留的 `/* XXX comment on the curr thing */` 注释；requeue_delayed_entity() 调用与 dl_server_start() 检查不动。
 
 ## 版本演进与当前进展
-current_version: v1（msgid `<20260911155449.1249726-1-kayracizmeci@gmail.com>`，09-11 23:54 入缓存），v1 刚发出、暂无 review 意见。
+*current_version: v1（msgid `<20260911155449.1249726-1-kayracizmeci@gmail.com>`，09-11 23:54 入缓存）*，v1 刚发出、暂无 review 意见。
 
 与 sched-20260911-015 的关系：PeterZ 在该讨论中贴出的 diff 与本补丁逐行等价（基线索引略有差异：4d0b94465d19 vs ade1eceb39b8）；作者在该线程承诺「今天或明天发 v3」——本补丁或即为该方向的独立实现，两线如何归并（本补丁吸收进 v3、或 v3 不再包含该清理）待后续确认。
 
@@ -63,7 +63,7 @@ current_version: v1（msgid `<20260911155449.1249726-1-kayracizmeci@gmail.com>`�
 本补丁自身当日无回帖；但同一改动在 place_entity 线程已有 PeterZ 的明确支持（给出 diff）与作者接受（承诺发 v3）。潜在关注点：place_entity() 的 curr 分支语义是否有调用方依赖、以及 `/* XXX comment on the curr thing */` 的历史疑问随代码删除而消散。
 
 ## 合入评估
-likelihood=medium：改动方向已有 PeterZ 的 diff 背书，作者测试（WARN_ON_ONCE 长跑未命中）佐证不可达；风险在于与 place_entity 系列 v3 的归并关系未明——若 v3 一并删除，本补丁可能被标记 superseded。blocking_issues：独立投稿与 v3 的重复投递需作者自行去重；「不可达」论证还需在更多配置（core-sched 等）下确认。next_action：等待维护者对独立补丁或 v3 的收取表态，避免同一清理双线推进。
+*likelihood=medium*：改动方向已有 PeterZ 的 diff 背书，作者测试（WARN_ON_ONCE 长跑未命中）佐证不可达；风险在于与 place_entity 系列 v3 的归并关系未明——若 v3 一并删除，本补丁可能被标记 superseded。*blocking_issues*：独立投稿与 v3 的重复投递需作者自行去重；「不可达」论证还需在更多配置（core-sched 等）下确认。*next_action*：等待维护者对独立补丁或 v3 的收取表态，避免同一清理双线推进。
 
 ## 效果评估
 无性能数据；效果为代码可读性与路径简化（enqueue 热路径少一个分支判定）。与 place_entity 系列的定位一致：性能影响作者自评不可测量，属清理性质。

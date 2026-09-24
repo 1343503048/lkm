@@ -37,7 +37,7 @@
 
 ## 合入评估
 
-likelihood: **likely**。
+*likelihood: likely*。
 
 依据：cgroup 侧维护者 Tejun Heo 已给出 Acked-by；补丁带 `Fixes:`，是对 `aa4f74dfd42b` 引入的行为缺口的直接修正；改动只有 1 行、方向与既有 per-task / tg 记账一致，不新增机制；作者给出了 cgroup v2、RT donor、cgroup v1 cpuacct、`sched_proxy_exec=off` 对照组四类验证。
 

@@ -80,7 +80,7 @@ layout: article
 维护者 Sebastian Andrzej Siewior（Suggested-by、Reviewed-by 本人）此前已认可（「looks good... please add it」），v3 的措辞修正即回应其要求。无争议、无 NAK。
 
 ## 合入评估
-likelihood=high。纯文档补丁、Suggested-by/Reviewed-by 维护者已给、无争议。blocking_issues：无。next_action：等待文档维护者（或 sched 侧）收取合入。
+*likelihood=high*。纯文档补丁、Suggested-by/Reviewed-by 维护者已给、无争议。*blocking_issues*：无。*next_action*：等待文档维护者（或 sched 侧）收取合入。
 
 ## 效果评估
 纯文档，无性能数据；澄清了 lazy 抢占真实动机（run-to-completion，非省 IPI，见 v2 分析）。

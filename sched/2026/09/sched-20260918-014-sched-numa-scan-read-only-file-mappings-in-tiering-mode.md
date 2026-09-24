@@ -21,7 +21,7 @@
 - 分歧点：本补丁该"最小可回移修复"还是"顺带重写 VMA 判定语义"；VMA 判定 helper 的最终语义。
 
 ## 合入评估
-likelihood=medium。方向明确、作者坚持最小可回移修复，但 VMA 判定语义尚未收敛（David/Lorenzo 要求更清晰语义，作者请其另提 patch）。blocking_issues：VMA 判定 helper 语义与命名待定；清理 patch 是否拆分。next_action：作者与 David/Lorenzo 就 VMA 判定语义达成一致（最小修复 + 独立的清理 patch），再推进。
+*likelihood=medium*。方向明确、作者坚持最小可回移修复，但 VMA 判定语义尚未收敛（David/Lorenzo 要求更清晰语义，作者请其另提 patch）。*blocking_issues*：VMA 判定 helper 语义与命名待定；清理 patch 是否拆分。*next_action*：作者与 David/Lorenzo 就 VMA 判定语义达成一致（最小修复 + 独立的清理 patch），再推进。
 
 ## 效果评估
 本日无新增 benchmark。作者强调该系列是"可回移的 bugfix"，并指出 tiering 特性自 ~6.14 起的使用数据已被此 bug 影响（定性陈述，未见量化数据）。

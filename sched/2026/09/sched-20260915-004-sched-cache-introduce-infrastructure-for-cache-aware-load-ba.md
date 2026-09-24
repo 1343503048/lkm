@@ -20,7 +20,7 @@ Tim Chen 的回应指向其 4 补丁系列（cover `cover.1789061845`），称�
 - 潜在分歧/未决点：Zenghui 的最小化「只记账当前任务」方案 vs Tim 的「引用计数 + call_rcu 的 sched_cache_group」综合方案（见 related_articles），两者未在当日直接交锋。
 
 ## 合入评估
-likelihood=unknown。修复方向未收敛（内联最小修 vs 综合 refcount 重构），当日无人 Ack。blocking_issues：Zenghui 内联修复未经评审；Tim 未确认其 4 补丁系列是否覆盖「远端 CPU 跨写」路径。next_action：Zenghui 与 Tim 对齐修复路径（内联修 vs 采用/补齐 4 补丁系列），并确认覆盖远端记账场景。
+*likelihood=unknown*。修复方向未收敛（内联最小修 vs 综合 refcount 重构），当日无人 Ack。*blocking_issues*：Zenghui 内联修复未经评审；Tim 未确认其 4 补丁系列是否覆盖「远端 CPU 跨写」路径。*next_action*：Zenghui 与 Tim 对齐修复路径（内联修 vs 采用/补齐 4 补丁系列），并确认覆盖远端记账场景。
 
 ## 效果评估
 Zenghui 报告的具体现象：`[Poison overwritten] 0xffff8001076ec8e8... First byte 0xff instead of 0x6b`，`BUG mm_struct (Tainted: G N): Object corrupt`，allocated in `copy_process`、freed in `__mmdrop`，覆写恒为 4 字节 `0xffffffff`（-1），四周 poison 完好。这是明确的 memory corruption 证据，非性能数据。

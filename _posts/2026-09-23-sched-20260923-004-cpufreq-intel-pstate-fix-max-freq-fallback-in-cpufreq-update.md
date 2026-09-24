@@ -62,7 +62,7 @@ layout: article
 - **Rafael J. Wysocki**（作者、cpufreq 维护者）：谢谢后明确「In the absence of objections or concerns, I'll queue up this patch as a fix for 7.3.」。无争议、无反对。
 
 ## 合入评估
-likelihood=high。作者即 cpufreq 维护者，带 Fixes、Reported/Tested-by 与新增的 Intel hybrid 实测 Tested-by，且维护者本人已宣布将作为 7.3 fix 排队。blocking_issues：无（仅待正式合入动作）。next_action：Rafael 合入 tip（cpufreq 树）并流向 7.3。
+*likelihood=high*。作者即 cpufreq 维护者，带 Fixes、Reported/Tested-by 与新增的 Intel hybrid 实测 Tested-by，且维护者本人已宣布将作为 7.3 fix 排队。*blocking_issues*：无（仅待正式合入动作）。*next_action*：Rafael 合入 tip（cpufreq 树）并流向 7.3。
 
 ## 效果评估
 无新增 benchmark 数字；Ricardo 的验证为行为正确性验证（任务按压力散开/迁出/回流符合预期），非量化性能数据。

@@ -60,7 +60,7 @@ Shubhang 修复「同一任务被重新选中时 hrtick 不重新编程」的系
 - Vincent 提出 hrtick_start_fair() 中 `vdelta = se->deadline - se->vruntime` 改用 vprot——PeterZ 要求拆成独立补丁，并建议在本补丁中把 set_protect_slice() 移到 repick 路径（「既然又被选中，应该重新设置 vprot」）；Vincent 同意折叠 protect slice，但收回了自己 vprot 的提议：超过 vprot 之后仍需要 deadline 才能允许尽快切换到新 eligible 任务，不能一律用 vprot 替代 deadline。
 
 ## 版本演进与当前进展
-current_version: v1（v1 msgid `<20260813-sched-fair-hrtick-restart-v1-1-4230d1e18fbb@gentwo.org>`，08-13 发出；当日缓存只有回帖，v2 未发出）。
+*current_version: v1（v1 msgid `<20260813-sched-fair-hrtick-restart-v1-1-4230d1e18fbb@gentwo.org>`，08-13 发出；当日缓存只有回帖，v2 未发出）*。
 
 - v1（08-13）：首发，修复 same-task repick 后 hrtick 缺失；
 - 08-26：Zhan Xusheng 指出 delayed dequeue 条件缺陷与 rq flag 冗余（见 sched-20260826-009）；
@@ -72,7 +72,7 @@ current_version: v1（v1 msgid `<20260813-sched-fair-hrtick-restart-v1-1-4230d1e
 - 分歧/未闭合：PeterZ 的 snt_e 重构与作者的 v2（局部改法）如何合流未定——v2 是先发局部版还是直接按 snt_e 重做，当日无结论。
 
 ## 合入评估
-likelihood=medium：问题诊断一致（作者、PeterZ、Vincent 均认可是缺陷），但最终形态未定——作者 v2 与 PeterZ 的跨类重构需要协调。blocking_issues：v2 未发出；snt_e 重构是跨 fair/dl/scx/rt/idle/stop 的接口变更，评审面大；Vincent 的 vprot 议题被拆为独立补丁后无人认领。next_action：作者发 v2（预期 h_nr_runnable > 1 + 去 rq flag），随后与 PeterZ 商定是否并入 snt_e 重构。
+*likelihood=medium*：问题诊断一致（作者、PeterZ、Vincent 均认可是缺陷），但最终形态未定——作者 v2 与 PeterZ 的跨类重构需要协调。*blocking_issues*：v2 未发出；snt_e 重构是跨 fair/dl/scx/rt/idle/stop 的接口变更，评审面大；Vincent 的 vprot 议题被拆为独立补丁后无人认领。*next_action*：作者发 v2（预期 h_nr_runnable > 1 + 去 rq flag），随后与 PeterZ 商定是否并入 snt_e 重构。
 
 ## 效果评估
 暂无效果数据：线程内无 benchmark 或 trace 量化结果，作者承诺在 v2 附带混合负载测试（delayed dequeue 场景），测试结果未获取到。

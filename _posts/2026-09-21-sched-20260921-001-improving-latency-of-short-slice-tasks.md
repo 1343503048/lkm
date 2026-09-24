@@ -71,7 +71,7 @@ v1 刚发出（2026-09-21），尚无 review 意见。系列基于 `tip/sched/co
 作者本人即 sched/eevdf 的核心维护者，v1 发出当日（09-21）无其他维护者回复。系列关注点在于 min slice 语义的改动是否会在其他负载（尤其长 slice / 突发负载）引入回归，需等社区 review。
 
 ## 合入评估
-likelihood=unknown。这是维护者自研的延迟优化系列，方向（短 slice 任务延迟）与既有 EEVDF 工作一脉相承，但 v1 尚无任何 reviewer 表态，具体合入走向取决于后续 review 与可能出现的争议点，现阶段证据不足以判断。
+*likelihood=unknown*。这是维护者自研的延迟优化系列，方向（短 slice 任务延迟）与既有 EEVDF 工作一脉相承，但 v1 尚无任何 reviewer 表态，具体合入走向取决于后续 review 与可能出现的争议点，现阶段证据不足以判断。
 
 ## 效果评估
 cover letter 给出 dragonboard rb5 上三组测试（130s 每组）：

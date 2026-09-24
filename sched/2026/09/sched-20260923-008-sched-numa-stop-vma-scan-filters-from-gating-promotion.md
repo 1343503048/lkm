@@ -23,7 +23,7 @@
 本日无维护者新表态（v3 首日）。此前 Zi Yan 的「测试范围」质询在 v3 cover 中以明确的生产部署背景与量化数据得到回应。无 NAK；3/4、4/4 的 VMA 判定实现意见（`promo_only()` 计算过绕、`vma_is_accessed()` 改名与扫描续态位置）是否已全部落实，需待复审。
 
 ## 合入评估
-likelihood=medium。系列方向清晰、带 `Fixes:`/`Cc: stable` 与首次量化收益数据，可回合性增强；但仍属 mm + sched 跨子系统改动（10 文件），需 mm 维护者与 sched 侧复审，3/4、4/4 的既有实现意见待确认。blocking_issues：mm 侧（mempolicy/memory-tiers 等）维护者 ack 未取得；3/4、4/4 既有 review 意见待落实。next_action：等 mm/sched 维护者对 v3 复审，确认修复集可单独回退。
+*likelihood=medium*。系列方向清晰、带 `Fixes:`/`Cc: stable` 与首次量化收益数据，可回合性增强；但仍属 mm + sched 跨子系统改动（10 文件），需 mm 维护者与 sched 侧复审，3/4、4/4 的既有实现意见待确认。*blocking_issues*：mm 侧（mempolicy/memory-tiers 等）维护者 ack 未取得；3/4、4/4 既有 review 意见待落实。*next_action*：等 mm/sched 维护者对 v3 复审，确认修复集可单独回退。
 
 ## 效果评估
 cover 给出首个量化收益（768 GB DRAM + 256 GB CXL，两个 ~430 GB 数据库负载）：

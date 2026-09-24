@@ -64,7 +64,7 @@ PeterZ 未对内容提出异议，直接询问是否按紧急修复处理——�
 
 ## 合入评估
 
-likelihood: high。维护者已明确表态走 sched/urgent 通道，剩余动作只是排队。若下周未见 tip-bot 通知，可关注是否需要 rebase。
+*likelihood: high*。维护者已明确表态走 sched/urgent 通道，剩余动作只是排队。若下周未见 tip-bot 通知，可关注是否需要 rebase。
 
 ## 效果评估
 

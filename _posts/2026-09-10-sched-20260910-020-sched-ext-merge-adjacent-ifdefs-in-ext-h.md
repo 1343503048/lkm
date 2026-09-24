@@ -102,13 +102,13 @@ Linux 7.2-rc6 的 `kernel/sched/ext/ext.h` 中该结构如下（行号为该版�
 - 一个可记录的观察（非邮件内容）：本枚与 sched-20260910-019 出自同一新作者、同一晚被同一批次收取，且都带 `sched_ext/for-7.4` 前缀——说明 Tejun 正在为该 topic 分支集中收集构建/代码卫生类小补丁。对想参与 sched_ext 的人，这是一条低门槛的入口路径：定向投 `for-7.4` 前缀的小型清理，收取速度以小时计。
 
 ## 合入评估
-likelihood: merged。
+*likelihood: merged*。
 
 已进 `sched_ext/for-7.4` topic 分支，剩下的只是随该分支进入主线的时间问题。改动限于 `kernel/sched/ext/ext.h` 的预处理结构，编译产物不变，风险为零。
 
-blocking_issues：无。
+*blocking_issues*：无。
 
-next_action：等 `sched_ext/for-7.4` 合入主线。需要注意的唯一现实风险是**与其他在飞 sched_ext 补丁的上下文冲突**——`ext.h` 是接口声明的集中地，任何新增 scx_* 接口的补丁都会碰到这两段；本补丁合并后会改变它们的行位置，后进的补丁需要 rebase。
+*next_action*：等 `sched_ext/for-7.4` 合入主线。需要注意的唯一现实风险是**与其他在飞 sched_ext 补丁的上下文冲突**——`ext.h` 是接口声明的集中地，任何新增 scx_* 接口的补丁都会碰到这两段；本补丁合并后会改变它们的行位置，后进的补丁需要 rebase。
 
 ## 效果评估
 暂无效果数据，且这类补丁不需要数据：合并相邻同条件 ifdef 不改变预处理输出，编译产物逐字节相同。

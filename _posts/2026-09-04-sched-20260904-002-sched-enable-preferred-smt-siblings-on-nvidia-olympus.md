@@ -90,7 +90,7 @@ Olympus 以两个对称 PE 实现 SMT：只有一个 PE 活跃时核运行在单
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：v2 已完整吸收 v1 唯一 reviewer（Dietmar Eggemann，ARM 拓扑侧）的意见并逐条回复，说明文字与实现都被修正；有明确的 Vera 实测收益数据；通用路径全部由 `sched_smt_asym_active()` / `SD_ASYM_PACKING` 门控，非对称 packing 平台零影响，回归风险可控。
 

@@ -78,7 +78,7 @@ With patch 1:
 v2 的 selftest 结构改动是本日主要演进：GET 的系统调用状态与返回的 cookie 值分离（`get_cs_cookie(pid, &cookie)` 返回错误码），致命错误走 `get_cs_cookie_or_die()` 直接 `handle_error()` 中止——错误值永远不会再被当 cookie 比对；最后一次重试后不再 usleep。
 
 ## 版本演进与当前进展
-current_version: v2（v1 与 v2 同日发出：09-13 14:34 与 22:10，北京时间）。
+*current_version: v2（v1 与 v2 同日发出：09-13 14:34 与 22:10，北京时间）*。
 
 - v1→v2：补丁 1（内核修复）不变；selftest 在 PR_SCHED_CORE_GET 故障注入为 EBUSY 时，v1 会以错误哨兵继续执行 5 个失败的 cookie 断言，v2 直接中止不再评估断言；返回值路径改为直接返回 cookie 保持比对代码紧凑；避免最终重试后睡眠；rebase 到 2f0c1cf72f46。
 - 截至当日无任何回帖，v2 刚发出。
@@ -87,7 +87,7 @@ current_version: v2（v1 与 v2 同日发出：09-13 14:34 与 22:10，北京时
 无维护者或社区成员回帖——两个版本发出当天即结束，本节无内容可摘。风险点（作者自述的故障注入对比）显示作者对 selftest 失败语义做过自审，但这不是外部评审信号。
 
 ## 合入评估
-likelihood: unknown——干净的小修复（内核侧 3 行 + selftest），带 Fixes: 与 Cc: stable，但发出当天零反馈，无人表态即无从判断。blocking_issues：无维护者评审；selftest 的中止语义（get_cs_cookie_or_die + __builtin_unreachable）是否符合 tools/testing/selftests 的惯例未经确认。next_action：等 core scheduling 侧维护者（Peter Zijlstra / Ingo Molnar 的 sched 树）收取或提出意见。
+*likelihood: unknown*——干净的小修复（内核侧 3 行 + selftest），带 Fixes: 与 Cc: stable，但发出当天零反馈，无人表态即无从判断。*blocking_issues*：无维护者评审；selftest 的中止语义（get_cs_cookie_or_die + __builtin_unreachable）是否符合 tools/testing/selftests 的惯例未经确认。*next_action*：等 core scheduling 侧维护者（Peter Zijlstra / Ingo Molnar 的 sched 树）收取或提出意见。
 
 ## 效果评估
 补丁正文数据（作者自述，x86_64 QEMU）：

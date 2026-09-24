@@ -48,7 +48,7 @@ Tejun Heo 发出的 sched_ext v7.3-rc3 修复 GIT PULL（10 枚 fix），已被 
 - **Linus/pr-tracker-bot**：已合入，无异议。
 
 ## 合入评估
-likelihood=merged，status=merged_tip。已进 mainline（merge commit `9b87fdc9af2fbfcdb5c24a64139685ef80f6573f`）。blocking_issues：无。next_action：相关带 stable 标签的修复后续回合 stable。
+*likelihood=merged*，*status=merged_tip*。已进 mainline（merge commit `9b87fdc9af2fbfcdb5c24a64139685ef80f6573f`）。*blocking_issues*：无。*next_action*：相关带 stable 标签的修复后续回合 stable。
 
 ## 效果评估
 无性能量化数据；属正确性/稳定性修复集合。

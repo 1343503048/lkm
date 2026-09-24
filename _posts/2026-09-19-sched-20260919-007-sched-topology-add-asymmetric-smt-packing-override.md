@@ -63,7 +63,7 @@ layout: article
 - **Andrea Righi**：解释固件描述的 ACPI 属性是长期首选，但跨固件/Linux/其他 OS 定义并验证接口、完成 ACPI 标准化需要时间；命令行选项是过渡 workaround 与"固件无法升级的已部署系统"的兜底。Will Deacon 不喜欢用 Olympus CPU quirk 探测、要求固件描述属性，故改走 boot-time override。作者同意 Vincent 的意见：`auto` 冗余、省略参数即保留架构/固件提供的拓扑；无具体用例需要暴露 `off`；将把接口简化为"仅显式 force 选项"。
 
 ## 合入评估
-likelihood=medium（收敛中）。1/2 已获多位 reviewer 认可，2/2 的接口正在按 Vincent 意见简化（去 auto/off 留 force）。blocking_issues：2/2 参数接口待按"仅 force"重发并补 changelog 说明。next_action：作者重发简化后的 2/2，说明该参数为 ACPI 固件属性标准化前的过渡方案。
+*likelihood=medium*（收敛中）。1/2 已获多位 reviewer 认可，2/2 的接口正在按 Vincent 意见简化（去 auto/off 留 force）。*blocking_issues*：2/2 参数接口待按"仅 force"重发并补 changelog 说明。*next_action*：作者重发简化后的 2/2，说明该参数为 ACPI 固件属性标准化前的过渡方案。
 
 ## 效果评估
 本日无新增 benchmark；讨论为接口设计收敛，无性能数据。

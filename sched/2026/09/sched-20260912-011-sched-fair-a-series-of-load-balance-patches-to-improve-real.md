@@ -14,7 +14,7 @@ Xin Zhao 当日对 LB_PROMOTE RFC 的质疑做出最实质的一轮回应：给�
 - **回应 Prateek 的 all_pinned 反方案（01/10 线程，两封内容相同、作者要求以后一封为准）**：用两簇×2 CPU、5 任务的 T0/T1/T2 场景走查 can_migrate_task() 的 LBF_ALL_PINNED 语义——该标志不代表「任务全部 pin 死」，只表示 src 任务无法迁往 dst CPU；构造出 newidle balance 先错误清掉 rd->overload、随后 newidle 提前返回的场景，反驳「清 overload 只是避免无谓周期」的论证。
 
 ## 版本演进与当前进展
-current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989@163.com>`；当日无新版本，作者以回帖响应）。
+*current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989@163.com>`；当日无新版本，作者以回帖响应）*。
 
 ## Maintainer 意见与讨论焦点
 - **Xin Zhao（作者）**：首次给出可核查的生产数据与新的接口方向（SD_BALANCE_WAKE 切换）；对 Prateek 的反驳带完整代码走查；
@@ -22,7 +22,7 @@ current_version: v1（RESEND 版，root `<20260910042950.1619727-1-jackzxcui1989
 - 争议焦点：①SD_BALANCE_WAKE 动态加/撤域 flag 的可行性（无人评估）；②patch 1 的 overload 语义之争（双方各有一套场景论证，未收敛）。
 
 ## 合入评估
-likelihood=low（不变）：作者的辩护质量显著提升，但 Vincent 对前提的否定仍未被正面化解，维护者无跟进。blocking_issues：SD_BALANCE_WAKE 方案无人评估；patch 1 数据仍缺（Prateek 索要的独立收益数字）；效果数据仍限作者单一嵌入式平台。next_action：等 Vincent/Prateek 对新论据的回应；若 SD_BALANCE_WAKE 方向被接受，等作者出正式 v2。
+*likelihood=low*（不变）：作者的辩护质量显著提升，但 Vincent 对前提的否定仍未被正面化解，维护者无跟进。*blocking_issues*：SD_BALANCE_WAKE 方案无人评估；patch 1 数据仍缺（Prateek 索要的独立收益数字）；效果数据仍限作者单一嵌入式平台。*next_action*：等 Vincent/Prateek 对新论据的回应；若 SD_BALANCE_WAKE 方向被接受，等作者出正式 v2。
 
 ## 效果评估
 新增一手数据为静态构成表（各 CPU RT/总任务数，如 CPU0 369/197、CPU1 293/132），用于论证「RT 无法扩容」，非 LB_PROMOTE 的收益数据。0.3% 平均开销与 ≥4ms 延迟消除的交换仍是作者主张（其早前测试平台承 sched-20260910-001），patch 1 的独立收益数字仍未提供。

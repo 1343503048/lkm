@@ -38,7 +38,7 @@ $ vng -a "preempt=lazy nohz_full=8-15" -- .../runner -t nohz_tick
 - 分歧/未闭合处：Tejun 对 v2/v3 未表态；`SCX_OPS_LAZY_SLICE_EXPIRY` 默认 lazy 的行为对存量 BPF 调度器（scx_simple 等）的兼容性未见讨论。
 
 ## 合入评估
-likelihood=high：维护者方向认可、意见被逐条落实、selftest 齐备且全绿。blocking_issues：Tejun 尚未对 v2/v3 复核；Cheng-Yang 的 PREEMPT_DYNAMIC=n selftest 兼容修复需落地。next_action：等 Tejun 对 v3 复核；落地 Cheng-Yang 的 selftest 修复后可望进入 for-7.4。
+*likelihood=high*：维护者方向认可、意见被逐条落实、selftest 齐备且全绿。*blocking_issues*：Tejun 尚未对 v2/v3 复核；Cheng-Yang 的 PREEMPT_DYNAMIC=n selftest 兼容修复需落地。*next_action*：等 Tejun 对 v3 复核；落地 Cheng-Yang 的 selftest 修复后可望进入 for-7.4。
 
 ## 效果评估
 无性能数字——系列是能力对齐（与 fair 同等 lazy 选择权）而非性能优化。正确性由 selftest 覆盖：kick 6/0/0、nohz_tick 1/0/0（CPU 8 收到 7 个 finite-slice ticks，间接验证 NO_HZ_FULL forward-progress）。系列仍缺 lazy 抢占对调度延迟/吞吐的量化对比。

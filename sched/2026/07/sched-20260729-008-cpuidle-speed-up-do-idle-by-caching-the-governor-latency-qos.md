@@ -21,7 +21,7 @@ cpuidle_governor_latency_req() 在每次 idle 状态选择时都会执行，它�
 暂无任何 review 意见。潜在关注点（个人判断，非邮件内容）：QoS notifier 失效是否覆盖所有约束更新入口、缓存与 QoS 更新之间是否存在短暂过期窗口（idle 选择读到旧约束的后果）、以及该复杂度换 ~1.6us/次是否值得——这些都需要 Rafael Wysocki 等 cpuidle 维护者表态。
 
 ## 合入评估
-likelihood: unknown。方向（削减 idle 热路径重复计算）有先例可循，且附带 selftest 是加分项；但系列无人回复、作者非社区常客、cpuidle 对正确性（错选 idle state 影响延迟保证）敏感，在维护者表态前无法判断。若 review 中确认失效路径无漏洞，前景中性偏乐观。
+*likelihood: unknown*。方向（削减 idle 热路径重复计算）有先例可循，且附带 selftest 是加分项；但系列无人回复、作者非社区常客、cpuidle 对正确性（错选 idle state 影响延迟保证）敏感，在维护者表态前无法判断。若 review 中确认失效路径无漏洞，前景中性偏乐观。
 
 ## 效果评估
 作者给出 ftrace function_graph 前后对比：cpuidle_governor_latency_req 占 menu_select 的比例 19.93% → 约 4.2%，单次调用 ~1.9us → ~0.3us，约 6 倍降低（作者实测数据，测试平台未在 cover letter 中明确说明）。未给出端到端功耗/唤醒延迟收益数据。

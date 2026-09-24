@@ -18,7 +18,7 @@
 - **Ingo Molnar**：作为 sched/urgent 维护者整理并发送拉取请求，无异议。
 
 ## 合入评估
-likelihood=merged。已合入 tip/sched/urgent，正等待 Linus 拉取进入主线。blocking_issues：无。next_action：跟踪 sched-urgent 拉取在主线落地。
+*likelihood=merged*。已合入 tip/sched/urgent，正等待 Linus 拉取进入主线。*blocking_issues*：无。*next_action*：跟踪 sched-urgent 拉取在主线落地。
 
 ## 效果评估
 无性能数据；kernel test robot 对 tip/sched/urgent 分支 BUILD SUCCESS（178 config 通过），构建层面无回归。

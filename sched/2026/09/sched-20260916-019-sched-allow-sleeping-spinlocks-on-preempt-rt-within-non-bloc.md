@@ -18,7 +18,7 @@ commit `312364f3534c ("kernel.h: Add non_block_start/end()")` 引入 `non_block_
 - 无 NAK；本日暂无新的反对意见。
 
 ## 合入评估
-likelihood=medium。syzbot 报告的明确 RT splat、方案清晰且已有 Acked-by，但改动横跨 kernel.h/sched.h 与调度核心的 `__might_resched()` 语义，需 RT/locking 维护者最终确认。blocking_issues：无实质阻塞。next_action：待 RT/locking 维护者收取。
+*likelihood=medium*。syzbot 报告的明确 RT splat、方案清晰且已有 Acked-by，但改动横跨 kernel.h/sched.h 与调度核心的 `__might_resched()` 语义，需 RT/locking 维护者最终确认。*blocking_issues*：无实质阻塞。*next_action*：待 RT/locking 维护者收取。
 
 ## 效果评估
 未给出量化数据；属 syzbot 触发的告警修复，目标是在 `non_block` 块内消除 RT 自旋锁的 splat。

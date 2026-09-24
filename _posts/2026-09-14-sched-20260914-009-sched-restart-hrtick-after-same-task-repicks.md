@@ -61,7 +61,7 @@ hrtick 到期 → task_tick 触发 resched_curr() → schedule() 里 pick 再次
 - 分歧/未闭合处：DL 场景是否确有「same-task repick 需重新武装 hrtick」的用例尚未定论，作者倾向删除。
 
 ## 合入评估
-likelihood=medium（承 sched-20260912-004）：fair 部分方向已获维护者认可，DL 部分回退使系列更聚焦。blocking_issues：DL 部分待删除；v2 维护者复核仍待。next_action：作者发 v3（删除 DL 部分），等 PeterZ 复核。
+*likelihood=medium*（承 sched-20260912-004）：fair 部分方向已获维护者认可，DL 部分回退使系列更聚焦。*blocking_issues*：DL 部分待删除；v2 维护者复核仍待。*next_action*：作者发 v3（删除 DL 部分），等 PeterZ 复核。
 
 ## 效果评估
 承 sched-20260912-004 的 fair 量化数据（CPU-bound fair 任务最大运行时长 5.227ms → 3.386ms、>4ms 样本 6 → 0）；DL 部分无数据且将被删除。

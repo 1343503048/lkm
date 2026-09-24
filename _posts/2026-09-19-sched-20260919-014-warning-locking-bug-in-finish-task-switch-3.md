@@ -50,7 +50,7 @@ syzbot 报告 lockdep 告警 `WARNING: locking bug in finish_task_switch`（本�
 本日无调度维护者表态。关键未决点：该告警是 rq 锁在"持 socket 锁后 schedule"场景下的真实 wait-context 问题，还是 lockdep 对该路径的误报/已知噪音；以及 `[net?]` 标签下归属 net 还是 sched 尚未定论。
 
 ## 合入评估
-likelihood=unknown。已有提议补丁但复测未通过，根因未明、无维护者介入，证据不足。blocking_issues：提议补丁未解决告警；根因（真实 wait-context bug vs lockdep 误报）待 triage。next_action：sched/lockdep 维护者 triage 该 wait-context 告警的根因与归属。
+*likelihood=unknown*。已有提议补丁但复测未通过，根因未明、无维护者介入，证据不足。*blocking_issues*：提议补丁未解决告警；根因（真实 wait-context bug vs lockdep 误报）待 triage。*next_action*：sched/lockdep 维护者 triage 该 wait-context 告警的根因与归属。
 
 ## 效果评估
 syzbot 复测：提议补丁下 reproducer 仍触发 `WARNING: locking bug in finish_task_switch`。无其他数据。

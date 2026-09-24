@@ -20,7 +20,7 @@ Davi Chaves Azevedo 的 v3（tag-only）：修复 CPU hotplug 时 LLC 容量被�
 - 无 NAK 或遗留争议。
 
 ## 合入评估
-likelihood=high。带 `Fixes: 7030513a0877 ("sched/cache: Calculate the LLC size and store it in sched_domain")`，已集齐三位 reviewer 的 R-b/T-b、单/多 LLC 与 hotplug 场景均有验证，改动聚焦 hotplug 路径无稳态开销。blocking_issues：无。next_action：待 sched 维护者收取。
+*likelihood=high*。带 `Fixes: 7030513a0877 ("sched/cache: Calculate the LLC size and store it in sched_domain")`，已集齐三位 reviewer 的 R-b/T-b、单/多 LLC 与 hotplug 场景均有验证，改动聚焦 hotplug 路径无稳态开销。*blocking_issues*：无。*next_action*：待 sched 维护者收取。
 
 ## 效果评估
 本地（单 LLC 主机）：在 7.2.3-arch1-3 上复现陈旧值，补丁内核存活 CPU 均保持 16777216；十轮 SMT-thread 与十轮 whole-core hotplug 周期通过；8 个 source-level 状态场景从 5 失败修复后 8 全过。Chen Yu 在双 LLC Ryzen 8945HX 与四 LLC Xeon 上确认修复。无性能对比数据，属容量记账正确性修复。

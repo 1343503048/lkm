@@ -20,7 +20,7 @@
 - 未决：Mel Gorman 尚未表态；promo_only() 的可读性待改。
 
 ## 合入评估
-likelihood=medium。Peter 已给出"this will do"的倾向性认可，但需 Mel Gorman 确认、且代码可读性有改进空间。blocking_issues：等待 Mel Gorman 反馈；promo_only() 可读性待优化。next_action：作者按 David 意见简化 promo_only() 写法，等待 Mel 表态后推进。
+*likelihood=medium*。Peter 已给出"this will do"的倾向性认可，但需 Mel Gorman 确认、且代码可读性有改进空间。*blocking_issues*：等待 Mel Gorman 反馈；promo_only() 可读性待优化。*next_action*：作者按 David 意见简化 promo_only() 写法，等待 Mel 表态后推进。
 
 ## 效果评估
 本日无新增 benchmark；作者强调这是"可回移的 bugfix"（tiering 自 ~6.14 起的数据都被该 bug 影响，见 3/4 讨论语境）。

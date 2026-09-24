@@ -56,7 +56,7 @@ commit adcc3bfa8806（"sched: Adapt sched tracepoints for RV task model"）引�
 - __resched_curr()：本地路径先 set_ti_thread_flag()/set_preempt_need_resched() 再发 tracepoint；远程路径保留 set_nr_and_not_polling() 的返回值，先置标志、发 tracepoint、再按返回值决定是否发 IPI——保证 tracing 始终先于 IPI 投递、且观察到已更新的标志。
 
 ## 版本演进与当前进展
-current_version: v1（msgid `<20260911213300.1305763-1-arighi@nvidia.com>`，09-12 05:33 入缓存），随即被撤回。
+*current_version: v1（msgid `<20260911213300.1305763-1-arighi@nvidia.com>`，09-12 05:33 入缓存）*，随即被撤回。
 
 - 09-12 05:33：Andrea 独立发出修复（Fixes: adcc3bfa8806，include/linux/sched.h + kernel/sched/core.c，+9/-3）；
 - 09-12 15:13：Gabriele Monaco 指出与 2026-06-27 Sechang Noh 的补丁（lore 20260627081657.499781-1-rhkrqnwk98@gmail.com）基本相同、疑似被遗忘，且当时讨论的疑点不构成合并阻碍；
@@ -68,7 +68,7 @@ current_version: v1（msgid `<20260911213300.1305763-1-arighi@nvidia.com>`，09-
 - 无分歧。真正的评审对象是 Sechang Noh 的 v3 系列（本日缓存未收到，其修复内容与演进未获取到）。
 
 ## 合入评估
-likelihood=low（对本补丁）：已被作者主动 superseded，合入可能性为零；问题本身的修复前景取决于 Sechang v3 的收取情况。blocking_issues：Sechang v3 系列的内容、review 状态与卡点均未入缓存，未获取到。next_action：跟踪 Sechang Noh v3 的评审与收取；对照本补丁 diff 可作为该系列修复正确性的独立参照（两者经 Andrea 确认等价）。
+*likelihood=low*（对本补丁）：已被作者主动 superseded，合入可能性为零；问题本身的修复前景取决于 Sechang v3 的收取情况。*blocking_issues*：Sechang v3 系列的内容、review 状态与卡点均未入缓存，未获取到。*next_action*：跟踪 Sechang Noh v3 的评审与收取；对照本补丁 diff 可作为该系列修复正确性的独立参照（两者经 Andrea 确认等价）。
 
 ## 效果评估
 无实测数据：补丁说明给出的是递归路径推演（栈溢出机理），无 BPF+RV 场景的复现日志或溢出样本；Gabriele 的评论亦未附复现结果。

@@ -49,7 +49,7 @@ CAS 用 `migrate_llc_task` 把任务推向它的 preferred LLC，但被动负载
 
 ## 合入评估
 
-likelihood: **likely**。
+*likelihood: likely*。
 
 依据：Intel 两位 reviewer 都已 `Reviewed-by`，其中一位（Chen Yu）还是方案建议者；带指向已合入提交的 `Fixes: e4c9a4cb244a`，符合 fixes 通道条件；改动仅 51 增 6 删、单文件、无新增结构体字段、无 Kconfig 与 ABI 影响，且全部逻辑位于 `sched_cache_enabled()` 之后，未启用 CAS 的平台零风险；v4 唯一变化是 rebase 到已含相关修复的 sched tip 基线，属于「等合入」形态而非「等讨论」形态；连续四个版本的迭代已把实现路线的取舍写成文档。
 

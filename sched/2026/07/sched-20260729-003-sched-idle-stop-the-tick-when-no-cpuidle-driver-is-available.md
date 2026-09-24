@@ -28,7 +28,7 @@ v1 刚发出，暂无 review 意见。作者附言 "I'd still be curious about w
 
 ## 合入评估
 
-likelihood: high。带 Fixes 标签的回退修复、影响真实生产环境（OCI）、改动一行且语义回到旧行为，通常会较快进入 tip/sched/urgent。风险点仅在于如果社区想"彻底理解机理"再合入，可能多一轮讨论。
+*likelihood: high*。带 Fixes 标签的回退修复、影响真实生产环境（OCI）、改动一行且语义回到旧行为，通常会较快进入 tip/sched/urgent。风险点仅在于如果社区想"彻底理解机理"再合入，可能多一轮讨论。
 
 ## 效果评估
 

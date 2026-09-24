@@ -25,7 +25,7 @@ __trace_set_need_resched()
 - `__resched_curr()`：本地 CPU 分支改为 `set_ti_thread_flag()` 之后发 tp；远程分支保留 `set_nr_and_not_polling()` 的返回值用于 IPI 决策，但把 tracepoint 移到标志存储之后——commit message 的理由是「tracing 领先于 IPI 传递，同时仍能观察到已更新的标志」。
 
 ## 版本演进与当前进展
-current_version: v1（09-11 21:33 UTC 发出，北京收件 09-12 05:33，属本报 09-12 窗口；该日运行缺失，本次随 09-13 的审查回帖一并覆盖）。v1 发出后无人工 review；09-13 AI 审查 bot 回帖提出上述 nrp monitor 时序问题，线程停在这里。
+*current_version: v1（09-11 21:33 UTC 发出，北京收件 09-12 05:33，属本报 09-12 窗口；该日运行缺失，本次随 09-13 的审查回帖一并覆盖）*。v1 发出后无人工 review；09-13 AI 审查 bot 回帖提出上述 nrp monitor 时序问题，线程停在这里。
 
 ## Maintainer 意见与讨论焦点
 09-13 唯一回帖来自 kernel-patches CI 的 AI 审查 bot（自动化审查，非维护者；回帖落款「AI reviewed your patch. Please fix the bug or email reply why it's not a bug」，见 vmtest CI 的 claude README）。其反对意见很具体，构成本线程当前唯一未决分歧：
@@ -36,7 +36,7 @@ current_version: v1（09-11 21:33 UTC 发出，北京收件 09-12 05:33，属本
 - 无人工维护者表态；作者未回应。
 
 ## 合入评估
-likelihood: unknown——无人工维护者信号；AI 审查的反对意见直指修复方案与 RV monitor 的正确性互斥（要么改顺序要么论证可接受），在作者回应前无法判断走向。blocking_issues：AI 审查的 nrp monitor 时序问题无人裁决；作者未回应审查。next_action：作者回应审查（远程分支顺序调整或文档化乱序可接受性）；关注 sched 维护者是否直接收取。
+*likelihood: unknown*——无人工维护者信号；AI 审查的反对意见直指修复方案与 RV monitor 的正确性互斥（要么改顺序要么论证可接受），在作者回应前无法判断走向。*blocking_issues*：AI 审查的 nrp monitor 时序问题无人裁决；作者未回应审查。*next_action*：作者回应审查（远程分支顺序调整或文档化乱序可接受性）；关注 sched 维护者是否直接收取。
 
 ## 效果评估
 无 benchmark 数据。修复收益是消除一类确定性递归（栈溢出 = 崩溃）；补丁自身引入的回归风险即审查指出的 RV monitor 误报/panic。补丁未提供任何测试结果。

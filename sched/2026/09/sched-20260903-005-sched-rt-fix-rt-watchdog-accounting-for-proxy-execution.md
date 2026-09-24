@@ -30,7 +30,7 @@
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 依据：缺陷本身无争议——`RLIMIT_RTTIME` 记错对象会导致对正确任务漏发 `SIGXCPU`、对 donor 误发；带指向已合入 tip 提交的 `Fixes` 标签；改动面极小且以 `sched_proxy_exec()` 严格门控，非代理执行路径行为不变；作者给了可复现的行为差分（见效果评估）。
 卡点：一是线程内零评审，`watchdog()` 参数改动会牵连 `rt.timeout` 的对外语义，需要 RT 维护者明确认可；二是两处 `rt.timeout = 0` 的插入点对 `__schedule()` 快路径增加了无条件判断（虽由 static key 级别的 `sched_proxy_exec()` 保护），可能被要求合并到一处或改为在 donor 切换钩子内完成；三是与同作者 008 一样依赖 `rq->donor`/`rq->curr` 拆分基线，需要与 proxy execution 主线的推进顺序协调。
 

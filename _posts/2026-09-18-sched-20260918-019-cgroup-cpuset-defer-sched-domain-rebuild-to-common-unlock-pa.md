@@ -64,7 +64,7 @@ sched domain 重建统一收敛到公共解锁路径 `cpuset_update_sd_hk_unlock
 - 分歧点：补丁标题措辞（作者需澄清或改标题）。
 
 ## 合入评估
-likelihood=medium。纯冗余删除、语义等价、风险极低；标题措辞需澄清后即可合入。blocking_issues：标题 "defer" 用词待澄清/修正。next_action：作者回应 Ridong 意见，说明并非异步化、仅删冗余，或修改标题后重发。
+*likelihood=medium*。纯冗余删除、语义等价、风险极低；标题措辞需澄清后即可合入。*blocking_issues*：标题 "defer" 用词待澄清/修正。*next_action*：作者回应 Ridong 意见，说明并非异步化、仅删冗余，或修改标题后重发。
 
 ## 效果评估
 无性能数据；纯代码清理（删 2 行），无行为变化。

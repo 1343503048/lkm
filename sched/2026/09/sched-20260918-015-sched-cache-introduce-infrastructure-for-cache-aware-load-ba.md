@@ -17,7 +17,7 @@
 - 本日无维护者层面的新分歧或 NAK。
 
 ## 合入评估
-likelihood=medium。系列处于逐 patch review 阶段，本日进展有限；无阻塞性反对。blocking_issues：暂无明确阻塞（整体 22 补丁仍在 review 中）。next_action：持续跟踪后续 patch 的 review 反馈与作者是否出下一版。
+*likelihood=medium*。系列处于逐 patch review 阶段，本日进展有限；无阻塞性反对。*blocking_issues*：暂无明确阻塞（整体 22 补丁仍在 review 中）。*next_action*：持续跟踪后续 patch 的 review 反馈与作者是否出下一版。
 
 ## 效果评估
 本日无新增数据；历史数据见 sched-20260915-004 及系列内相关文章。

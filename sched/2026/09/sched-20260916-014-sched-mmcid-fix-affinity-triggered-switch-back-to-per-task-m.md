@@ -17,7 +17,7 @@ Hui Su 的修复补丁：sched/mmcid（rseq 使用的 per-mm/per-task 内存上�
 - 分歧点：暂无实质分歧，主要是补测试的要求。
 
 ## 合入评估
-likelihood=medium。方向被 rseq 维护者认可，但尚需补 selftests 覆盖状态转换、确认与既有 rseq 测试的关系，未见最终 Ack。blocking_issues：需要补 rseq selftest。next_action：作者补充 selftests 并回应 Mathieu 关于既有测试的询问。
+*likelihood=medium*。方向被 rseq 维护者认可，但尚需补 selftests 覆盖状态转换、确认与既有 rseq 测试的关系，未见最终 Ack。*blocking_issues*：需要补 rseq selftest。*next_action*：作者补充 selftests 并回应 Mathieu 关于既有测试的询问。
 
 ## 效果评估
 本日回复未涉及性能或复现数据，属正确性修复与测试覆盖讨论。

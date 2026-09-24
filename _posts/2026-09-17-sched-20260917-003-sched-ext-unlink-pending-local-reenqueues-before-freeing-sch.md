@@ -61,7 +61,7 @@ layout: article
 - 分歧点：unlink 的防御式修复被维护者否定，方向收敛到根因修复。
 
 ## 合入评估
-likelihood=rejected。该补丁按原样不会被合并，被 Tejun 的根因修复（Derive SCX_RQ_IN_WAKEUP）取代。blocking_issues：维护者认为 unlink 掩盖真实问题、方向错误。next_action：无需继续推进本补丁，跟进根因修复的评审与合入。
+*likelihood=rejected*。该补丁按原样不会被合并，被 Tejun 的根因修复（Derive SCX_RQ_IN_WAKEUP）取代。*blocking_issues*：维护者认为 unlink 掩盖真实问题、方向错误。*next_action*：无需继续推进本补丁，跟进根因修复的评审与合入。
 
 ## 效果评估
 无性能数据；属正确性/UAF 类修复讨论。

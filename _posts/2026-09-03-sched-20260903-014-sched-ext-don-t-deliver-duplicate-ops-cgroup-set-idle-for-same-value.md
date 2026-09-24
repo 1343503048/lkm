@@ -87,7 +87,7 @@ sched_ext 支持按 cgroup 打开 idle 偏好：`scx_cgroup_enabled` 时，`scx_
 
 ## 合入评估
 
-likelihood: **likely**（已合入）。
+*likelihood: likely*（已合入）。
 
 依据：Tejun Heo 本日已明确 applied 到 `sched_ext/for-7.3-fixes`，带 `Reviewed-by: Andrea Righi`；改动 2 增 1 删、单函数、无 Kconfig 与 ABI 影响，且只收紧回调下发；`Fixes:` 指向引入该回调的提交，属于 fixes 通道。
 

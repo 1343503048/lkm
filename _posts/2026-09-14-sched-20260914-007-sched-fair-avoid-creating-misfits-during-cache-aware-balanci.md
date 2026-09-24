@@ -54,7 +54,7 @@ layout: article
 - 分歧/未闭合处：复现方法未公开，第三方验证悬空。
 
 ## 合入评估
-likelihood=merged（已成事实，承 sched-20260904-006）。blocking_issues：无合入卡点；讨论性疑问待 Tim 补充复现方法。next_action：等 Tim 公开测试方法；NVIDIA 平台复现验证后可进一步确认修复的通用性。
+*likelihood=merged*（已成事实，承 sched-20260904-006）。*blocking_issues*：无合入卡点；讨论性疑问待 Tim 补充复现方法。*next_action*：等 Tim 公开测试方法；NVIDIA 平台复现验证后可进一步确认修复的通用性。
 
 ## 效果评估
 无新数据。原 patch 有 0day 在 58 个 config 上构建成功的记录（承 sched-20260904-006）。

@@ -64,7 +64,7 @@ Andrea 的回应揭示了两点此前未在邮件列表写清的硬件/平台差
 4. 提出替代验证：在 THX2（32 个 SMT4 核、4 级 sibling 优先级）上验证**放置行为**而非性能——32 任务应先占满全部 PE0，64 任务占 PE0+PE1，再随 runnable 数向 PE2/PE3 扩展。
 
 ## 版本演进与当前进展
-current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com>`；当日缓存为 Andrea 在 v4 0/2 主题下的回帖一封）。
+*current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com>`；当日缓存为 Andrea 在 v4 0/2 主题下的回帖一封）*。
 
 - v5（09-09）→ Will 拒 MIDR、PeterZ drop（09-10）→ Dietmar THX2 实测无收益（09-11）→ 09-12 Andrea 的机理回应与替代验证方案。无新代码。
 
@@ -74,7 +74,7 @@ current_version: v5（v5 cover msgid `<20260908082345.103087-1-arighi@nvidia.com
 - 分歧焦点转移：从「有没有收益」转为「收益该在什么平台上、用什么方式验证」——放置行为验证方案是当前唯一的建设性出口，无人接手。
 
 ## 合入评估
-likelihood=low（不变）：PeterZ 已 drop、arm64 检测机制仍无替代提案；机理回应提升了论证质量但未改变系列状态。blocking_issues：与 09-11 相同（检测机制无方案、v6 未发、static key 待换）；新增——放置行为验证需要有人执行并回帖。next_action：Dietmar（或第三方）在 THX2 上跑放置行为验证；作者侧与 arm64 维护者解决检测机制后重发。
+*likelihood=low*（不变）：PeterZ 已 drop、arm64 检测机制仍无替代提案；机理回应提升了论证质量但未改变系列状态。*blocking_issues*：与 09-11 相同（检测机制无方案、v6 未发、static key 待换）；新增——放置行为验证需要有人执行并回帖。*next_action*：Dietmar（或第三方）在 THX2 上跑放置行为验证；作者侧与 arm64 维护者解决检测机制后重发。
 
 ## 效果评估
 无新性能数据。Andrea 的回应本身给出可验证的预测（THX2 上 32/64/128 任务的 PE 分层放置模式）——这比吞吐数字更容易第三方复现，是该线程当前最有价值的可检验陈述。

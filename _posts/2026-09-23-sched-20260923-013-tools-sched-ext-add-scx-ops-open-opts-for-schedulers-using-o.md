@@ -66,7 +66,7 @@ layout: article
 Tejun Heo 上轮的建议（`SCX_OPS_OPEN()` 直接以 0 opts 调 `SCX_OPS_OPEN_OPTS()`）已被 v2 采纳，作者回帖「Yes, that makes sense. I'll update the patch accordingly.」。无争议、无 NAK。
 
 ## 合入评估
-likelihood=medium。方向无异议、实现已按维护者建议收敛，纯工具链改动低风险；但 v2 尚未得到 Tejun 的复审确认。blocking_issues：无明确项（仅待 Tejun 审 v2）。next_action：Tejun 复审 v2 后收取。
+*likelihood=medium*。方向无异议、实现已按维护者建议收敛，纯工具链改动低风险；但 v2 尚未得到 Tejun 的复审确认。*blocking_issues*：无明确项（仅待 Tejun 审 v2）。*next_action*：Tejun 复审 v2 后收取。
 
 ## 效果评估
 无性能数据，纯工具链易用性增强（允许传 open opts 而不丢兼容检查）。

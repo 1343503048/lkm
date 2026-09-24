@@ -24,7 +24,7 @@ Prateek 确认了触发场景的合理性（proxy execution 的 `find_proxy_task
 
 ## 合入评估
 
-likelihood: high。语义上是恢复被重构丢掉的原有检查，带 Fixes 标签 + Reviewed-by，改动小且动机清楚。
+*likelihood: high*。语义上是恢复被重构丢掉的原有检查，带 Fixes 标签 + Reviewed-by，改动小且动机清楚。
 
 ## 效果评估
 

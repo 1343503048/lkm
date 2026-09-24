@@ -15,13 +15,13 @@ fair 调度类支持 lazy rescheduling：lazy 请求不在下一个内核抢占�
 - patch 2（selftests，新增 kick.bpf.c 144 行 + kick.c 479 行）：在 __resched_curr() 挂 fexit 探针记录实际 reschedule TIF，配合 stopping callback 覆盖立即/ lazy kick、两种顺序的合并、tick 驱动的 slice 过期与非法 flag 组合；内核不含对应 flag 时跳过对应模式。
 
 ## 版本演进与当前进展
-current_version: v1（cover msgid `<20260911195800.974364-1-arighi@nvidia.com>`，09-12 03:56 入缓存），v1 刚发出、暂无 review 意见。subject 前缀 `[PATCHSET sched_ext/for-7.4]` 表明系列瞄准 Tejun 的 for-7.4 分支。
+*current_version: v1（cover msgid `<20260911195800.974364-1-arighi@nvidia.com>`，09-12 03:56 入缓存）*，v1 刚发出、暂无 review 意见。subject 前缀 `[PATCHSET sched_ext/for-7.4]` 表明系列瞄准 Tejun 的 for-7.4 分支。
 
 ## Maintainer 意见与讨论焦点
 当日缓存内零回帖，未获取到任何维护者表态。可关注的评审点（系列自身暴露的设计选择）：立即与 lazy 请求并存时的合并语义、KICK_WAIT 拒绝的边界、未知 flag 从忽略改为拒绝的兼容性影响（对已有 BPF 调度器是行为变化）。
 
 ## 合入评估
-likelihood=unknown：无 review 可依据；投递目标为维护者树（for-7.4）说明作者预期直接进树，但 Tejun 未表态。blocking_issues：未知 kick flag 拒绝化对存量 BPF 调度器的影响需要核对；selftest 对 fexit 探针的依赖需要在无 BTF/精简内核上验证。next_action：等 Tejun/SCX 社区首轮 review；关注行为收紧项是否被要求回退或加兼容层。
+*likelihood=unknown*：无 review 可依据；投递目标为维护者树（for-7.4）说明作者预期直接进树，但 Tejun 未表态。*blocking_issues*：未知 kick flag 拒绝化对存量 BPF 调度器的影响需要核对；selftest 对 fexit 探针的依赖需要在无 BTF/精简内核上验证。*next_action*：等 Tejun/SCX 社区首轮 review；关注行为收紧项是否被要求回退或加兼容层。
 
 ## 效果评估
 暂无 benchmark 数据：cover 描述的是能力对齐（与 fair 同等 lazy 选择权）而非性能数字；selftest 验证的是语义正确性（TIF 记录、合并顺序），无延迟/吞吐对比。

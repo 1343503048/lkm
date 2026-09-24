@@ -58,7 +58,7 @@ layout: article
 本日无维护者表态，为作者的追加验证。作者的控制流论断：remote-owner 迁移前 `find_proxy_task()` 尚未为该 owner 边安装 backlink，故 `proxy_migrate_task()` 看到的是由当前 donor 构建的有限前缀；一旦本地 backlink 环可闭合，这些 owner 已在持 rq 锁时通过 same-rq 校验。作者也自我限定"这不能证明所有可能的 owner 变更交织"。
 
 ## 合入评估
-likelihood=unknown。仍为 RFC，本日仅有作者追加验证，无维护者评论，证据不足以判断合入可能性。blocking_issues：RFC 阶段、无维护者对环检测方案的反馈。next_action：等待 proxy execution 相关维护者/社区对 RFC 方案与追加验证的评估。
+*likelihood=unknown*。仍为 RFC，本日仅有作者追加验证，无维护者评论，证据不足以判断合入可能性。*blocking_issues*：RFC 阶段、无维护者对环检测方案的反馈。*next_action*：等待 proxy execution 相关维护者/社区对 RFC 方案与追加验证的评估。
 
 ## 效果评估
 作者在 tip/sched/core `e81ee0630837` 上的插桩结果：非环 depth-1024 用例 2921/2921 次全链迁移完成、最大 backlink 前缀 1016 个任务；`curr_in_chain`/current-task 保护被触发 959 次且无 current task 进入迁移前缀；同对象复用 100 轮 + 亲和性变化强制 remote-owner 放置下 226/226 次迁移完成；观测中未见 backlink 环/重复任务/错 rq 任务/离 rq 任务；干净内核 + 干净 KCSAN 构建的环用例也无报告。

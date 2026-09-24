@@ -25,7 +25,7 @@ v1（RFC，09-17，`<20260917043339.2093426-1-suleiman@google.com>`）刚发出�
 - 分歧点：路线时机（Peter 认为 premature）、无界链与死锁检测缺失。
 
 ## 合入评估
-likelihood=low。RFC 阶段，维护者明确认为为时过早，且存在死锁/无界链等未解决的正确性问题。blocking_issues：Peter 认为在 rt_mutex 退化为普通 mutex 之前为时过早；find_proxy_task 环遍历死锁待解决；无界 proxy 链需硬上限与 -EDEADLK。next_action：作者回应 Peter 的时机质疑，补环检测与链长上限后重新寻求对齐。
+*likelihood=low*。RFC 阶段，维护者明确认为为时过早，且存在死锁/无界链等未解决的正确性问题。*blocking_issues*：Peter 认为在 rt_mutex 退化为普通 mutex 之前为时过早；find_proxy_task 环遍历死锁待解决；无界 proxy 链需硬上限与 -EDEADLK。*next_action*：作者回应 Peter 的时机质疑，补环检测与链长上限后重新寻求对齐。
 
 ## 效果评估
 无性能数据；作者以"避免把每次加锁变成调度事件"作为动机，未见 benchmark。

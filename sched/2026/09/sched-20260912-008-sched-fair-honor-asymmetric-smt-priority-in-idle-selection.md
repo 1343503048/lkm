@@ -10,7 +10,7 @@ Andrea Righi 当日确认 Dietmar Eggemann 09-11 的实现意见已就地落实�
 本日无新代码。Andrea 回复确认实现方向：「Correct, I've changed it locally already to inspect the lowest scheduling domain directly.」——即取最低调度域的改法已在本地完成，待落入下一版（v6，连同 sched_smt_active() 替换 static key）。
 
 ## 版本演进与当前进展
-current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com>`；当日缓存仅 Andrea 的确认回帖一封）。
+*current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com>`；当日缓存仅 Andrea 的确认回帖一封）*。
 
 - v4（09-08/09）→ 09-10 static key 移除决定 → 09-11 Dietmar 取域意见 → 09-12 Andrea 确认已改、待发 v6。
 
@@ -19,7 +19,7 @@ current_version: v4（v4 cover msgid `<20260909062649.469633-1-arighi@nvidia.com
 - 未解事项不变：v6 未发出；sched-20260910-007 的 Olympus 系列被 PeterZ drop 的连带影响仍在；「sched_smt_active() 为真但无 SD_ASYM_PACKING 平台的无谓扫描」问题（09-10-008 提出）仍无人回答。
 
 ## 合入评估
-likelihood=medium（不变）：评审意见收敛、作者响应积极，但 v6 未发出前无新信息改变评估。blocking_issues 与 next_action 均承 sched-20260911-018：v6 一并落实 static key 替换与取域修改后再请 PeterZ 重新收取。
+*likelihood=medium*（不变）：评审意见收敛、作者响应积极，但 v6 未发出前无新信息改变评估。blocking_issues 与 next_action 均承 sched-20260911-018：v6 一并落实 static key 替换与取域修改后再请 PeterZ 重新收取。
 
 ## 效果评估
 无新效果数据（承前：收益数据限于作者的 Olympus 平台陈述）。

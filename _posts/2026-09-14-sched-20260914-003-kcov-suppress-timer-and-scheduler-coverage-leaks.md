@@ -76,7 +76,7 @@ v3 相对 v2 的实质变化：共享 flag helper（pause 与上下文切换抑�
 - 分歧/未闭合处：注释措辞待定稿（Potapenko 还在替 Peter 把关）；sched/core 三处 open-code guard 是否被调度侧最终接受仍无正面信号。
 
 ## 合入评估
-likelihood=medium：v3 已按意见高度收敛、测试矩阵极充分；但 Peter 对 sched/core 内联 guard 的最终认可仍待获取。blocking_issues：注释措辞需按 Peter 口径定稿；sched/core 侧最终 Ack 未获取到。next_action：作者按 Potapenko 建议改措辞后发 v4，等 Peter 对 sched/core 部分表态。
+*likelihood=medium*：v3 已按意见高度收敛、测试矩阵极充分；但 Peter 对 sched/core 内联 guard 的最终认可仍待获取。*blocking_issues*：注释措辞需按 Peter 口径定稿；sched/core 侧最终 Ack 未获取到。*next_action*：作者按 Potapenko 建议改措辞后发 v4，等 Peter 对 sched/core 部分表态。
 
 ## 效果评估
 无性能数字——这是抑制覆盖泄漏的正确性修复，收益是「覆盖率不再被调度器内部行为污染」。可量化的是测试规模（见版本演进）与正确性：KCOV selftest 全绿、无 buffer 饱和或 disable 竞态、USB 目标符号与 task tracing 保持存活。

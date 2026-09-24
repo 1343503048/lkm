@@ -84,7 +84,7 @@ cache-aware 负载均衡会偏向任务的 preferred LLC。在 CPU 容量不对�
 
 ## 合入评估
 
-likelihood: **likely**（实际已合入 tip 树，等待进入主线）。
+*likelihood: likely*（实际已合入 tip 树，等待进入主线）。
 
 依据（全部来自邮件正文，非推断）：`tip.git` 的 `sched/urgent` 分支 HEAD 已是 `f0d243a96f2684ad771d678767d17972cf840bd7`，标题与本补丁一致；0day 已在 58 个 config 上构建成功且无回归报告；两位 reviewer 已给 Reviewed-by / Tested-by；维护者只提了格式要求并已满足。
 

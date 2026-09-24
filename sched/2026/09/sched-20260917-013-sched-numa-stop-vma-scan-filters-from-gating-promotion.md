@@ -20,7 +20,7 @@
 - 分歧点：无技术对立，但缺 sched/fair.c 侧的专家审查。
 
 ## 合入评估
-likelihood=medium。影响面被确认为长期性功能失效，维护者已重视；但 Andrew Morton 对 Fixes/stable 标签的疑问尚未闭环，且 sched/fair.c 侧无人审查。blocking_issues：Fixes/stable 标签的正当性待澄清；缺 sched/fair.c 侧评审。next_action：作者澄清修复引入前的基线行为，并等待 MM + sched 两侧评审。
+*likelihood=medium*。影响面被确认为长期性功能失效，维护者已重视；但 Andrew Morton 对 Fixes/stable 标签的疑问尚未闭环，且 sched/fair.c 侧无人审查。*blocking_issues*：Fixes/stable 标签的正当性待澄清；缺 sched/fair.c 侧评审。*next_action*：作者澄清修复引入前的基线行为，并等待 MM + sched 两侧评审。
 
 ## 效果评估
 无新增性能数据；作者以"功能长期失效"定性，未附新的 benchmark。

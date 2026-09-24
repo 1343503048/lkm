@@ -16,7 +16,7 @@ sparse 静态检查在 `kernel/sched/core.c:5791` 报告 `incorrect type in assi
 当日无维护者表态；相关提交对象（proxy execution / sched core）的维护者未回应。
 
 ## 合入评估
-likelihood=unknown。仅 W=1 + randconfig 下的编译期告警，常规构建不受影响，缺处理压力；且无人回帖，无法判断是否会单独修、并入下一批 fix、或视作噪音不处理。blocking_issues：无回帖无补丁。next_action：等待 sched 维护者决定是否修复或忽略。
+*likelihood=unknown*。仅 W=1 + randconfig 下的编译期告警，常规构建不受影响，缺处理压力；且无人回帖，无法判断是否会单独修、并入下一批 fix、或视作噪音不处理。*blocking_issues*：无回帖无补丁。*next_action*：等待 sched 维护者决定是否修复或忽略。
 
 ## 效果评估
 无运行时影响；属构建期类型安全告警。

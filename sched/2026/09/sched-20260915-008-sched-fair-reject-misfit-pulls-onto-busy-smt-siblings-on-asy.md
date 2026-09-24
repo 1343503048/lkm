@@ -24,7 +24,7 @@ kernel/sched/fair.c:9912:53: error: implicit declaration of function 'is_core_id
 - 未决问题：该 stable 候选在 6.1 上应被 drop 还是补依赖 backport，尚无结论。
 
 ## 合入评估
-likelihood=unknown。这是 stable 回合内部的正确性提示，不涉及 mainline 合入；v6.1 候选大概率需修正或丢弃。blocking_issues：补丁依赖 `is_core_idle()`，6.1 缺失该函数。next_action：Sasha/stable 维护者确认 6.1 候选处理方式（drop 或 backport 依赖函数）。
+*likelihood=unknown*。这是 stable 回合内部的正确性提示，不涉及 mainline 合入；v6.1 候选大概率需修正或丢弃。*blocking_issues*：补丁依赖 `is_core_idle()`，6.1 缺失该函数。*next_action*：Sasha/stable 维护者确认 6.1 候选处理方式（drop 或 backport 依赖函数）。
 
 ## 效果评估
 无性能数据。核心证据是 6.1 上的编译报错（`implicit declaration of function 'is_core_idle'`），属构建层面问题。

@@ -57,7 +57,7 @@ sparse（v0.6.5-rc1，clang 22.1.3，x86_64-randconfig）在 master（head 9b87f
 - 无维护者回应。属 0-day robot 报告，通常由相关子系统作者认领并修 `__rcu` 标注。
 
 ## 合入评估
-likelihood=low。纯 W=1 静态告警、无运行时影响，且无认领人。blocking_issues：无修复者认领；仅稀疏告警。next_action：相关 maintainer 或作者认领，补齐 `__rcu` 标注并加 Fixes/Closes 标签提交修复。
+*likelihood=low*。纯 W=1 静态告警、无运行时影响，且无认领人。*blocking_issues*：无修复者认领；仅稀疏告警。*next_action*：相关 maintainer 或作者认领，补齐 `__rcu` 标注并加 Fixes/Closes 标签提交修复。
 
 ## 效果评估
 无性能/运行时影响；sparse W=1 编译期地址空间告警。

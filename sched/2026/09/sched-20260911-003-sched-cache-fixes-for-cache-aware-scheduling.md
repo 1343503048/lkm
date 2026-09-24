@@ -19,7 +19,7 @@ CAS 在 v7.2 进主线后陆续暴露问题，作者收拢为系列便于跟踪�
 cover 同时点名两个尚在讨论、未进本系列的问题：donor 上下文传给 task_tick_cache() 不正确（20260909092901.2989564-1-sh_def@163.com）、CAS 干扰 ITMT（yu.c.chen@intel.com 两封）。
 
 ## 版本演进与当前进展
-current_version: v1（当日首发，cover msgid `<cover.1789061845.git.tim.c.chen@linux.intel.com>`，09-11 01:46 起入缓存，共 5 封补丁 + 5 封讨论）。
+*current_version: v1（当日首发，cover msgid `<cover.1789061845.git.tim.c.chen@linux.intel.com>`，09-11 01:46 起入缓存，共 5 封补丁 + 5 封讨论）*。
 
 - patch 2 为 Lu Wang v4 独立线程（20260903020656.3793626-1）的收编，带 Tim Chen 与 Chen Yu 双 Reviewed-by（见 sched-20260903-011）；
 - 本日无新版本发出，v2 待发（Tim："Will clean it up and send an update"）。
@@ -32,7 +32,7 @@ current_version: v1（当日首发，cover msgid `<cover.1789061845.git.tim.c.ch
 - 分歧未闭合处：patch 1 的实现路线 Tim 已自辩，Kayra 未再回；patch 4 的重写幅度（抽象到什么程度）待 v2 验证。
 
 ## 合入评估
-likelihood=medium：修复需求真实（UAF 是 KASAN 实锤、stranding 有明确机理），patch 2 已有双 R-b，patch 1 口径论证完整；但 patch 4/4 被 PeterZ 打回、整体必须出 v2。blocking_issues：4/4 按批评重写（函数抽象 + 撤掉 rcu_dereference_protected(true)）；PeterZ 情绪强烈，v2 需要他点头；patch 3/4 打包合入的承诺（"they want to go in together"）使两个补丁的合入互相绑定。next_action：等 v2 重写后 PeterZ 的复核；关注 prctl RFC 讨论（分组抽象的动机）是否反过来影响 3/4 的形态。
+*likelihood=medium*：修复需求真实（UAF 是 KASAN 实锤、stranding 有明确机理），patch 2 已有双 R-b，patch 1 口径论证完整；但 patch 4/4 被 PeterZ 打回、整体必须出 v2。*blocking_issues*：4/4 按批评重写（函数抽象 + 撤掉 rcu_dereference_protected(true)）；PeterZ 情绪强烈，v2 需要他点头；patch 3/4 打包合入的承诺（"they want to go in together"）使两个补丁的合入互相绑定。*next_action*：等 v2 重写后 PeterZ 的复核；关注 prctl RFC 讨论（分组抽象的动机）是否反过来影响 3/4 的形态。
 
 ## 效果评估
 本系列为修复向，无 benchmark 数字。patch 1/2 的效果是消除「任务被拽离首选 LLC」的具体场景（Zhan Xusheng 报告、Lu Wang 的 p1/p2 场景推演），UAF 由 KASAN 报告并带 Hyunwoo 的 Tested-by（3/4 补丁标签）；均无量化性能数据，属作者/reviewer 场景级证据。

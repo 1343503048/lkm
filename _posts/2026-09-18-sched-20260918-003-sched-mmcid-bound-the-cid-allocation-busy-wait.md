@@ -64,7 +64,7 @@ Jiakai Xu 提交修复：为 `mm_get_cid()` 的无界自旋加 32 次重试上�
 - 核心分歧：Peter 认为返回 `MM_CID_UNSET` 让任务无 CID 运行可能破坏用户态语义，且作者没有论证"为什么不能正常完成 CID 分配/切换"。
 
 ## 合入评估
-likelihood=low。方向（避免无界自旋）合理，但 Peter 的质疑直指方案正确性与用户态影响，当前版本不足以合入。blocking_issues：需解释为何 transition 无法推进、以及无 CID 运行对用户态的正确性影响；注释风格需统一。next_action：作者回帖说明切换卡住的根因与 `MM_CID_UNSET` 对用户态的兼容性（或改用其他收敛方案），修复注释风格后重发。
+*likelihood=low*。方向（避免无界自旋）合理，但 Peter 的质疑直指方案正确性与用户态影响，当前版本不足以合入。*blocking_issues*：需解释为何 transition 无法推进、以及无 CID 运行对用户态的正确性影响；注释风格需统一。*next_action*：作者回帖说明切换卡住的根因与 `MM_CID_UNSET` 对用户态的兼容性（或改用其他收敛方案），修复注释风格后重发。
 
 ## 效果评估
 邮件未附性能/复现数据。作者描述了 CID 耗尽导致 RCU stall / lockup / livelock 的机理（推理，未见实测数据）。修正确实消除了一类潜在整机 hang，但 Peter 对其正确性存疑。

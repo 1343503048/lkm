@@ -45,7 +45,7 @@
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：v12 已把 v8 之后所有评审意见逐条落到 changelog 里并点名提出者，作者自认收敛且主动请求排队；实现刻意保持简单（作者原话 "deliberately kept simple"），基线就是当日 `tip/sched/core`；有跨三种架构的真实收益数据；测试矩阵覆盖热插拔、housekeeping/`nohz_full` 组合、用户亲和、`taskset -cp` 迁移、极端负载（480 CPU 上 4800 个 stress-ng 线程）。
 

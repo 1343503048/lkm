@@ -68,7 +68,7 @@ layout: article
 - 分歧点：08/18 的 `WF_ON_RQ` 方案与「用 `is_blocked` + `{EN,DE}QUEUE_BLOCKED` 重构」两条路线尚未定论，属于需要进一步讨论的开放项。
 
 ## 合入评估
-likelihood=medium。系列方向被认可、无 NAK，Andrea 积极回应并已在收敛 v14；但 08/18 涉及核心唤醒路径语义与一个潜在的大重构方向，Peter 自己也标注「未测试」「可能是 pain in the arse」，短期内难以全部落地。blocking_issues：08/18 `WF_ON_RQ` 语义需重新定义或按 Peter 思路重构；09/18 清理时机重构需验证 sched_ext enable / ownership-transition 两条路径。next_action：Andrea 发 v14 落实上述改动，08/18 方向与 Peter 对齐。
+*likelihood=medium*。系列方向被认可、无 NAK，Andrea 积极回应并已在收敛 v14；但 08/18 涉及核心唤醒路径语义与一个潜在的大重构方向，Peter 自己也标注「未测试」「可能是 pain in the arse」，短期内难以全部落地。*blocking_issues*：08/18 `WF_ON_RQ` 语义需重新定义或按 Peter 思路重构；09/18 清理时机重构需验证 sched_ext enable / ownership-transition 两条路径。*next_action*：Andrea 发 v14 落实上述改动，08/18 方向与 Peter 对齐。
 
 ## 效果评估
 本日讨论未涉及性能数据，属设计评审与正确性论证。

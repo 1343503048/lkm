@@ -30,13 +30,13 @@ v1/v2 的补丁正文均不在邮箱缓存内，用例的具体组织方式与�
 - 无 NAK、无遗留分歧。前文记录的「两条意见无人从技术角度回应」这一状态，随 v2 被收取而实际关闭——但**关闭方式是推断的**（收取即认可），线程里没有作者对两条意见的逐条书面回应。
 
 ## 合入评估
-likelihood: merged。
+*likelihood: merged*。
 
 已进 `sched_ext/for-7.4` topic 分支，剩下的只是随该分支进入 mainline 的时间问题。改动范围限于 `tools/testing/selftests/sched_ext`，不影响内核运行时行为，风险接近零。
 
-blocking_issues：无。需要留意的是「v2 是否真的解决了 PREEMPT_RCU 假阳性与 >1024 CPU 的 EINVAL」这一点在线程中没有书面确认，若实际未解决，问题会在相应配置上跑测试时才暴露。
+*blocking_issues*：无。需要留意的是「v2 是否真的解决了 PREEMPT_RCU 假阳性与 >1024 CPU 的 EINVAL」这一点在线程中没有书面确认，若实际未解决，问题会在相应配置上跑测试时才暴露。
 
-next_action：等 `sched_ext/for-7.4` 合入主线；作者/测试者宜在 `CONFIG_PREEMPT_RCU` 与 `nr_cpu_ids > 1024` 两类环境上实跑一次，确认 Tejun 提的两个失效模式确实已消除。
+*next_action*：等 `sched_ext/for-7.4` 合入主线；作者/测试者宜在 `CONFIG_PREEMPT_RCU` 与 `nr_cpu_ids > 1024` 两类环境上实跑一次，确认 Tejun 提的两个失效模式确实已消除。
 
 ## 效果评估
 无 benchmark（自测补丁）。

@@ -59,7 +59,7 @@ layout: article
 - 此前维护者（Rafael J. Wysocki）追问过方案的有效性（原邮件不在本日缓存），作者昨日以实测数据正面回应。当前无 NAK 或未解决分歧。
 
 ## 合入评估
-likelihood=medium。修复方向明确、有双平台实测验证、能恢复既有（d2d5c129d07e 之前）的 cache aware 调度聚合行为；仍处 v1 讨论期，未见维护者最终 pickup。
+*likelihood=medium*。修复方向明确、有双平台实测验证、能恢复既有（d2d5c129d07e 之前）的 cache aware 调度聚合行为；仍处 v1 讨论期，未见维护者最终 pickup。
 
 ## 效果评估
 作者实测（Hygon 与 AMD 平台，acpi-cpufreq）：CPU pressure 重新归零，cache aware 调度恢复把任务聚合到最高 50% 的 LLC 容量，与回归前（d2d5c129d07e 之前）一致。

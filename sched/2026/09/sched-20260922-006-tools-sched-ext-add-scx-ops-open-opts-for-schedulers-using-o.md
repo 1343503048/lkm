@@ -16,7 +16,7 @@ v1 当日发出。Tejun Heo 回帖提问：「Can SCX_OPS_OPEN() just call SCX_O
 - **Tejun Heo**：方向认可（保留兼容处理是对的），但希望实现上避免两份 `SCX_OPS_OPEN`/`SCX_OPS_OPEN_OPTS` 的重复展开，建议 `SCX_OPS_OPEN` 内部以 0 opts 调 `SCX_OPS_OPEN_OPTS`。无争议性反对。
 
 ## 合入评估
-likelihood=medium。方向无异议，但需按 Tejun 建议收敛实现后再审。blocking_issues：宏实现有重复、待作者按「SCX_OPS_OPEN 调 SCX_OPS_OPEN_OPTS(0)」方向改版。next_action：作者改版后重新提交。
+*likelihood=medium*。方向无异议，但需按 Tejun 建议收敛实现后再审。*blocking_issues*：宏实现有重复、待作者按「SCX_OPS_OPEN 调 SCX_OPS_OPEN_OPTS(0)」方向改版。*next_action*：作者改版后重新提交。
 
 ## 效果评估
 无性能数据，纯工具链易用性增强（允许传入 open opts 而不丢兼容检查）。

@@ -86,7 +86,7 @@ v1 的做法是「写 quota 时把不兼容的 burst 重置为 0」。Michal Kou
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：这是有 `Fixes:` 与 `Cc: stable` 的行为修复，解决的是用户态可复现的配置顺序坑；方向已被 cgroup 侧 reviewer 认可并落成 v2；selftest 与文档齐全，且已有 `Tested-by`。
 

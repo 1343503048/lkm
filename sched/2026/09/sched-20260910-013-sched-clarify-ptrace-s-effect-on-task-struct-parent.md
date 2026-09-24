@@ -54,13 +54,13 @@ v2 放弃这种写法，改用 Oleg 提议的单行版本，把「或然关系�
 - Ingo Molnar / Peter Zijlstra（`include/linux/sched.h` 的实际归口）当天未参与。
 
 ## 合入评估
-likelihood: medium。
+*likelihood: medium*。
 
 理由：措辞由该领域的权威评审者本人给出，作者已带 `Suggested-by` 标签发出 v2，改动只有 1 行注释、零功能风险、不需要任何测试数据。但**尚无正式的 Reviewed-by/Acked-by**，且 Oleg 开头那句「不确定是否需要更新」的保留意见没有被明确消除；这类一行注释补丁在 tip 树里通常随大批量注释清理一起进，也可能被静默搁置。
 
-blocking_issues：缺 Oleg（或 Ingo/Peter）对 v2 的显式 R-b/A-b；Oleg 对「是否需要这条注释」的初始保留未正式表态。
+*blocking_issues*：缺 Oleg（或 Ingo/Peter）对 v2 的显式 R-b/A-b；Oleg 对「是否需要这条注释」的初始保留未正式表态。
 
-next_action：等 Oleg 对 v2 回一句 Reviewed-by；若数日无回应，作者可在原线程 ping 一次并说明 v2 已完全采用其建议措辞。
+*next_action*：等 Oleg 对 v2 回一句 Reviewed-by；若数日无回应，作者可在原线程 ping 一次并说明 v2 已完全采用其建议措辞。
 
 ## 效果评估
 无性能/行为数据可言——补丁自陈 "No functional change."，diff 只涉及注释文本，编译产物不变。可验证的正确性只有一条：v2 的措辞与 `kernel/ptrace.c` 中 `__ptrace_link()` / `__ptrace_unlink()` 的实际行为一致（`parent` 指向 tracer，`real_parent` 不变），已对照本地主线代码确认。

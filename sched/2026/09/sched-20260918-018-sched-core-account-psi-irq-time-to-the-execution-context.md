@@ -16,7 +16,7 @@ Zhan Xusheng 提交修复：proxy execution 下 `sched_tick()` 把 PSI IRQ 时�
 - 本日无维护者回复。作者自述：已在 x86_64 + `CONFIG_SCHED_PROXY_EXEC=y` + PSI + IRQ_TIME_ACCOUNTING 下构建并启动，但**没能构造出 donor 与 curr 分属不同 cgroup 的用例**——即修复的主观正确性（基于语义推理）尚未用实际场景验证。
 
 ## 合入评估
-likelihood=medium。1 行改动、口径清晰、带 Fixes，且方向与 split 前的既有语义一致；但作者未构造出复现场景，可能影响维护者确认。blocking_issues：暂无阻塞；缺实际复现/验证用例。next_action：等待维护者 review；可补充一个能区分 donor/curr 的 PSI 计量用例。
+*likelihood=medium*。1 行改动、口径清晰、带 Fixes，且方向与 split 前的既有语义一致；但作者未构造出复现场景，可能影响维护者确认。*blocking_issues*：暂无阻塞；缺实际复现/验证用例。*next_action*：等待维护者 review；可补充一个能区分 donor/curr 的 PSI 计量用例。
 
 ## 效果评估
 无性能数据。作者声明未构造 donor 与 curr 不同的场景，修复正确性基于代码语义推理（"作者主观判断，未见测试数据"）。

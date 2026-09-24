@@ -22,7 +22,7 @@ v1/RFC 刚发出（本日 23:36），暂无 review 意见。
 本日无维护者/社区回复。可预见的讨论焦点：DAS 与现有机制的边界——proxy execution（阻塞的 donor 迁移）、优先级继承、EEVDF 的 lag/虚拟截止期，以及"ordering 而非 entitlement"不变式在 EEVDF 框架下是否自洽、是否会破坏公平性保证。
 
 ## 合入评估
-likelihood=unknown。纯设计 RFC、未附补丁、无任何社区反馈，证据不足以判断合入可能性。blocking_issues：无社区反馈；方案与现有调度机制的边界未评估。next_action：等待社区（尤其 sched/fair 维护者）判断是否已有等价机制、方案是否值得继续。
+*likelihood=unknown*。纯设计 RFC、未附补丁、无任何社区反馈，证据不足以判断合入可能性。*blocking_issues*：无社区反馈；方案与现有调度机制的边界未评估。*next_action*：等待社区（尤其 sched/fair 维护者）判断是否已有等价机制、方案是否值得继续。
 
 ## 效果评估
 作者引用的"80% 改善"等为其 HEDFS-4/MUDOS 上下文数据，作者明确说明不代表对 Linux 成立、需 Linux 原生实现 + 受控 ablation 才能判定——属"作者主观判断，未见 Linux 测试数据"。无 Linux 性能数据。

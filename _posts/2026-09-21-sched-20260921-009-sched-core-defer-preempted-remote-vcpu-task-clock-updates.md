@@ -60,7 +60,7 @@ layout: article
 - **Sean Christopherson（KVM/x86 维护者）**：质疑本方案依赖的约束不可强制——"What happens if the hypervisor doesn't do that? Because it's infeasible to guarantee this will never run on an older version of KVM."（如果 hypervisor 不这么做会怎样？因为无法保证它永远不会在旧版 KVM 上运行。）这直指方案的兼容性缺口：旧版/其他 hypervisor 未必满足"先发布 stealtime 再清 preempted 标记"的时序。
 
 ## 合入评估
-likelihood=low。RFC 方案的核心假设被维护者质疑为不可强制保证（旧版 KVM 不满足时序约束），问题真实但方案依赖无法控制的 hypervisor 行为。blocking_issues：需解释在 hypervisor 不满足时序约束时的降级行为，或改用不需要 hypervisor 配合的方案。next_action：作者回应 Sean 的问题，说明该约束不满足时的后果与回退策略。
+*likelihood=low*。RFC 方案的核心假设被维护者质疑为不可强制保证（旧版 KVM 不满足时序约束），问题真实但方案依赖无法控制的 hypervisor 行为。*blocking_issues*：需解释在 hypervisor 不满足时序约束时的降级行为，或改用不需要 hypervisor 配合的方案。*next_action*：作者回应 Sean 的问题，说明该约束不满足时的后果与回退策略。
 
 ## 效果评估
 无性能数据；修复目标（消除 KVM 客户机中被抢占任务的错误调度惩罚）仍停留在机制层面，未见实测验证。

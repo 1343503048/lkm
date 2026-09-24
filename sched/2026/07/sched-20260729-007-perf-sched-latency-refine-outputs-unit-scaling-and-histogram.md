@@ -25,7 +25,7 @@ v1→v3 演进记录在 sched-20260726-003。v4（2026-07-29）为回应 pipe mo
 v4 暂无新的 review 意见。从 v4 changelog 看，前一轮意见集中在 pipe mode 的正确性（header 回调缺失、空表输出），均已在 v4 处理；未见 NAK 或方向性反对。
 
 ## 合入评估
-likelihood: high。理由：改动限于 perf 工具侧不触及内核核心、每版都逐条回应意见、无方向性争议。剩余不确定性是 perf tools 维护者对 v4 pipe mode 修复方式的最终确认。卡点仅为 review 带宽。
+*likelihood: high*。理由：改动限于 perf 工具侧不触及内核核心、每版都逐条回应意见、无方向性争议。剩余不确定性是 perf tools 维护者对 v4 pipe mode 修复方式的最终确认。卡点仅为 review 带宽。
 
 ## 效果评估
 该系列为工具功能改进，无性能数据语义。v4 未附带新的输出示例（v3 曾给出直方图效果示例，见 sched-20260726-003）。

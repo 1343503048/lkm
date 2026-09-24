@@ -17,7 +17,7 @@
 - **John Stultz**：Acked-by。
 
 ## 合入评估
-likelihood=merged。已合入 tip `sched/urgent` 分支（Commit-ID fe3c73d7bc769e7afc252f867a3421fe168b898d）。blocking_issues：无。next_action：跟踪该 commit 随 sched/urgent 进入主线。
+*likelihood=merged*。已合入 tip `sched/urgent` 分支（Commit-ID fe3c73d7bc769e7afc252f867a3421fe168b898d）。*blocking_issues*：无。*next_action*：跟踪该 commit 随 sched/urgent 进入主线。
 
 ## 效果评估
 作者给出复现场景（CPU1 建 mutex owner、CPU0 建 migration-disabled waiter）会触发 `WARNING: kernel/sched/core.c:3389 at set_task_cpu`；修复后该路径不再误报。无性能数据。

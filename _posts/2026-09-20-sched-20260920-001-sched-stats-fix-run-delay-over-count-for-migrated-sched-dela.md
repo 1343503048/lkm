@@ -81,7 +81,7 @@ static inline void sched_info_enqueue(struct rq *rq, struct task_struct *t)
 - 分歧/未决：无明显对立；遗留一个小问题——`sched_info_enqueue()` 的注释待修正（Kayra 已表示会补，不阻塞本补丁）。
 
 ## 合入评估
-likelihood=high。v2 已获 Chen Yu、Kayra 双 Reviewed-by，修复为一行条件判断、带 `Fixes:` 标签与 reproducer 支撑，无否决意见。blocking_issues：暂无实质性阻塞，仅 `sched_info_enqueue()` 注释错误待 Kayra 单独补丁修正。next_action：等待 sched/stats 维护者收取入 tip。
+*likelihood=high*。v2 已获 Chen Yu、Kayra 双 Reviewed-by，修复为一行条件判断、带 `Fixes:` 标签与 reproducer 支撑，无否决意见。*blocking_issues*：暂无实质性阻塞，仅 `sched_info_enqueue()` 注释错误待 Kayra 单独补丁修正。*next_action*：等待 sched/stats 维护者收取入 tip。
 
 ## 效果评估
 本版无新增 benchmark 数据；reproducer 实测见 sched-20260919-004（迁移落在 delayed 睡眠期间 run_delay 虚增约 148ms、打补丁后归零）。

@@ -56,7 +56,7 @@ Tejun Heo 的 sched_ext 修复：`ebf1ccff79c4` 把 dispatcher 的最终 `ops_st
 - **Andrea Righi**：`Reviewed-by: Andrea Righi <arighi@nvidia.com>`——「Thanks for fixing this, it makes sense to me.」无异议。
 
 ## 合入评估
-likelihood=high。作者即 sched_ext 维护者 Tejun Heo，修复路径清晰、逻辑自洽，已获 Andrea Righi Reviewed-by，带 `Fixes:` 与 stable 标签，无争议。blocking_issues：无。next_action：Tejun 自收进 sched_ext/for-7.3-fixes 并回合 stable v7.1+。
+*likelihood=high*。作者即 sched_ext 维护者 Tejun Heo，修复路径清晰、逻辑自洽，已获 Andrea Righi Reviewed-by，带 `Fixes:` 与 stable 标签，无争议。*blocking_issues*：无。*next_action*：Tejun 自收进 sched_ext/for-7.3-fixes 并回合 stable v7.1+。
 
 ## 效果评估
 正文未给出量化复现数据，属基于代码时序分析的竞态修复（reenqueue 窗口内的状态覆盖）。

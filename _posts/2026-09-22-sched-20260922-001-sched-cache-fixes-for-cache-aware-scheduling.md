@@ -81,7 +81,7 @@ CAS（cache-aware scheduling）在 v7.2 合入后，社区陆续报出若干正�
 - **争议点/未解决**：系列之外还有两个独立问题在讨论中未纳入——(1) `task_tick_cache()` 传入错误的 donor 上下文（<https://lore.kernel.org/lkml/20260909092901.2989564-1-sh_def@163.com/>）；(2) CAS 与 ITMT 的干扰（<https://lore.kernel.org/lkml/20260810033742.1688718-1-yu.c.chen@intel.com/>）。
 
 ## 合入评估
-likelihood=merged。六补丁已全部合入 `tip/sched/urgent`，UAF 修复（patch 3-4）尤其关键，作者还在 cover 中邀请 Hyunwoo/Zhenhui 补 Tested-by。blocking_issues 无（已合入）；系列之外的 donor 上下文与 ITMT 问题需后续单独推进。
+*likelihood=merged*。六补丁已全部合入 `tip/sched/urgent`，UAF 修复（patch 3-4）尤其关键，作者还在 cover 中邀请 Hyunwoo/Zhenhui 补 Tested-by。blocking_issues 无（已合入）；系列之外的 donor 上下文与 ITMT 问题需后续单独推进。
 
 ## 效果评估
 本系列为正确性修复，未附 benchmark。patch 6 给出具体复现数：Ryzen 5 7535U（12 逻辑 CPU 共享 16MiB LLC）下线一个 SMT 兄弟后，剩余 CPU 的 `llc_bytes` 被错算为 `floor(16777216*11/12)=15379114`，正确值应为 16777216，低估会让 `exceed_llc_capacity()` 错误拒绝本该放得下的进程聚合。

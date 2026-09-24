@@ -44,7 +44,7 @@
 
 ## 合入评估
 
-likelihood: **likely**。
+*likelihood: likely*。
 
 依据：两个补丁都带 `Fixes:` 标签，属代理执行框架的行为正确性修复；review 意见（收敛 helper、补注释、改写动机）已在 v3 全部落实；Tim Chen 09-05 给出 Reviewed-by，Chen Yu 亦已表态准备验证；改动面小（3 文件 26 行新增），与 cache/NUMA 主线（`sched/cache` 系列）无接口冲突。
 

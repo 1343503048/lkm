@@ -22,7 +22,7 @@
 本日为 Jihan LIN 的单条评审意见，无维护者新表态。其「sleep 前死锁检测 + 返回 -EDEADLK」的观点与 Peter Zijlstra 此前明确提出的「死锁检测应在 block 时做、那是返回 -EDEADLK 的理想上下文」方向一致，是对该设计点的社区侧呼应。分歧仍为 Peter 此前列出的路线问题（新 futex op vs 复用 mutex、严格性归属、死锁检测实现位置），未见收敛。
 
 ## 合入评估
-likelihood=low。仍处早期 RFC，Peter 明确「不急着合」并要求死锁检测器与路线论证；本日新增意见强化了「block 时死锁检测 + -EDEADLK」这一设计点，但作者尚未回应。blocking_issues：缺用户态死锁检测器；「新 futex vs mutex-based」路线未定；PI 严格性语义自洽问题。next_action：作者回应死锁检测设计与路线质疑后才有推进空间。
+*likelihood=low*。仍处早期 RFC，Peter 明确「不急着合」并要求死锁检测器与路线论证；本日新增意见强化了「block 时死锁检测 + -EDEADLK」这一设计点，但作者尚未回应。*blocking_issues*：缺用户态死锁检测器；「新 futex vs mutex-based」路线未定；PI 严格性语义自洽问题。*next_action*：作者回应死锁检测设计与路线质疑后才有推进空间。
 
 ## 效果评估
 无本日新增 benchmark。历史上 Rostedt 曾以「FUTEX_PI 强制公平导致 SCHED_OTHER 性能崩溃」论证新 futex 的动机，本日未重复。

@@ -85,7 +85,7 @@ layout: article
 本日为 v14 首日，尚无对 v14 的复审；但 v14 是对 v13 评审意见的逐条落实。v13 阶段的核心分歧——`WF_ON_RQ` 语义 vs Peter 提出的 `is_blocked`+`{EN,DE}QUEUE_BLOCKED` 大重构——在 v14 以「`WF_TTUW_RQ` 精确定义 + 拆预备 patch」的方式落地，未采纳 Peter 标注「未测试」的 `is_blocked` 全量重构路线，这一路线取舍仍需 Peter 复审确认。无 NAK。
 
 ## 合入评估
-likelihood=medium。方向获认可、无 NAK，v13 的维护者意见几乎全部落实、且带 kselftest 实测数据；但系列规模大（16 枚、改动 ~2051 行、触及 core.c 与 ext 核心路径），v14 本身尚未被复审，`WF_TTUW_RQ` 与 NOHZ tick 保守策略需 Peter 最终认可。blocking_issues：v14 待复审；`WF_ON_RQ` 改名方案 vs Peter 原 `is_blocked` 重构思路的最终取舍未定。next_action：等 Peter/Tejun 对 v14 复审；若 `WF_TTUW_RQ` 被接受则可推进合入。
+*likelihood=medium*。方向获认可、无 NAK，v13 的维护者意见几乎全部落实、且带 kselftest 实测数据；但系列规模大（16 枚、改动 ~2051 行、触及 core.c 与 ext 核心路径），v14 本身尚未被复审，`WF_TTUW_RQ` 与 NOHZ tick 保守策略需 Peter 最终认可。*blocking_issues*：v14 待复审；`WF_ON_RQ` 改名方案 vs Peter 原 `is_blocked` 重构思路的最终取舍未定。*next_action*：等 Peter/Tejun 对 v14 复审；若 `WF_TTUW_RQ` 被接受则可推进合入。
 
 ## 效果评估
 cover 中 kselftest `enq_blocked` 给出实测（10 trials，16 contenders，nice -20 donor / +19 owner）：

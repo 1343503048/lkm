@@ -39,7 +39,7 @@ v2 的做法是把两个「执行上下文 tick」整体上移一层，而不是
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：两个 patch 都带指向已合入 tip 的 `Fixes:` 标签，属 proxy execution 落地后的上下文一致性修补簇（同日 005/008 与 09-02 的 wq_worker_tick 同源）；review 由 Intel/AMD 三方实质推动且已在一天内迭代出 v2，改动面小（19 增 9 删）、无 ABI 影响。
 

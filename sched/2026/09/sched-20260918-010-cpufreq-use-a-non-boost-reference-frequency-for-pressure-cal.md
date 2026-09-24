@@ -19,7 +19,7 @@ Jianyong Wu 提交修复：cpufreq 的 CPU pressure 计算改用"非 boost 参�
 - 分歧点：参考频率的命名与语义（nominal vs sustainable）；是否应统一到 `cpuinfo.nominal_freq`。
 
 ## 合入评估
-likelihood=medium。问题真实（作者三平台复现 + 影响 cache-aware 负载均衡），方向获 Vincent 既有口径背书；但命名/实现方式仍在收敛（Rafael 对语义的追问未完全闭合）。blocking_issues：参考频率命名与实现方式（nominal_freq 复用 vs 独立字段）待定；Rafael 的语义追问待回应。next_action：作者按 nominal_freq 方向改版，回应 Rafael 关于"可持续频率"语义的疑问后重发。
+*likelihood=medium*。问题真实（作者三平台复现 + 影响 cache-aware 负载均衡），方向获 Vincent 既有口径背书；但命名/实现方式仍在收敛（Rafael 对语义的追问未完全闭合）。*blocking_issues*：参考频率命名与实现方式（nominal_freq 复用 vs 独立字段）待定；Rafael 的语义追问待回应。*next_action*：作者按 nominal_freq 方向改版，回应 Rafael 关于"可持续频率"语义的疑问后重发。
 
 ## 效果评估
 作者实测（amd/intel/hygon）：acpi-cpufreq + boost 开启 + 无频率上限时出现本不应有的 CPU pressure；影响 cache-aware scheduling 无法按 50% LLC 容量聚合任务。为定性描述 + 行为复现，未见具体量化 benchmark 数据。

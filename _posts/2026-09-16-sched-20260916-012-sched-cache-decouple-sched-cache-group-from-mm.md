@@ -60,7 +60,7 @@ patch 本体代码不在今日邮件正文，仅 Peter 评审意见可见。Pete
 - 分歧点：生命周期/发布语义尚未对齐，作者还未公开回应。
 
 ## 合入评估
-likelihood=medium。Peter 已深度参与并提出具体的正确性关切（store-release/TOCTOU/RT），方向未否，但需要作者逐条回应并可能调整 patch 结构。blocking_issues：store-release 发布语义、TOCTOU 疑点、注释与 RT 上下文描述需修正。next_action：作者回应 Peter 并给出修订版。
+*likelihood=medium*。Peter 已深度参与并提出具体的正确性关切（store-release/TOCTOU/RT），方向未否，但需要作者逐条回应并可能调整 patch 结构。*blocking_issues*：store-release 发布语义、TOCTOU 疑点、注释与 RT 上下文描述需修正。*next_action*：作者回应 Peter 并给出修订版。
 
 ## 效果评估
 本日评审未涉及性能数据，属生命周期/内存序正确性讨论。

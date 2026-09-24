@@ -68,7 +68,7 @@ Qiurong Fang（kylinos）修复 sched_ext 使能路径上「ops 错误认领窗�
 - v2 中 Tejun 给出具体断言写法：分配失败回退处用 `WARN_ON_ONCE(scx_set_enable_state(SCX_DISABLED) != SCX_ENABLING)` 断言状态仍为 ENABLING，同时更新被移动的注释；「分配失败仍本地回退（unwind locally），完整 disabling 只在 scx_alloc_and_add_sched() 成功之后才适用」。
 
 ## 版本演进与当前进展
-current_version: v3。时间线（原始补丁均未入邮箱缓存，日期为对应 Tejun 回帖时间）：
+*current_version: v3*。时间线（原始补丁均未入邮箱缓存，日期为对应 Tejun 回帖时间）：
 
 - v1（不晚于 09-11）：Tejun 09-11 05:40 回复，要求删掉一处不可达错误路径的 hunk、移动既有状态转换并保留分配失败时的重置。
 - v2（不晚于 09-11 深夜）：Tejun 09-11 23:24 回复，给出 WARN_ON_ONCE 断言写法并要求更新被移动的注释，澄清「无 disable 竞争」的依据。
@@ -79,7 +79,7 @@ current_version: v3。时间线（原始补丁均未入邮箱缓存，日期为�
 - 无其他参与者出现在本邮箱收到的线程邮件中；原始补丁的完整实现未获取到，无法评估是否还有未讨论的角落。
 
 ## 合入评估
-likelihood=merged（已成事实）：`status=merged_tip`，合入分支 `sched_ext/for-7.3-fixes`（Tejun 应用，带 minor wording cleanups）。blocking_issues：无——该修复已进维护者树；落到 Linus 树的时点与随哪个 pull 进入 mainline 未获取到。next_action：跟踪 `sched_ext/for-7.3-fixes` 的后续 pull；回合该分支的内部分支以合入后的最终形态（含 wording cleanup）为准。
+*likelihood=merged*（已成事实）：`status=merged_tip`，合入分支 `sched_ext/for-7.3-fixes`（Tejun 应用，带 minor wording cleanups）。*blocking_issues*：无——该修复已进维护者树；落到 Linus 树的时点与随哪个 pull 进入 mainline 未获取到。*next_action*：跟踪 `sched_ext/for-7.3-fixes` 的后续 pull；回合该分支的内部分支以合入后的最终形态（含 wording cleanup）为准。
 
 ## 效果评估
 未获取到。线程邮件中没有测试数据或复现信息；属使能错误路径的正确性收尾修复，预期影响仅限使能失败场景的报错与状态一致性。

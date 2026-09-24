@@ -61,7 +61,7 @@ fair class 能通过 lazy rescheduling 推迟内核内的调度边界，但 sche
 - 无 NAK；本日 v5 尚未见新的反对意见。
 
 ## 合入评估
-likelihood=high。功能方向明确、selftest 覆盖全面（含 `NO_HZ_FULL` 无限 slice 前向进展、非法 flag 与优先级组合），改动已收敛到只有 kselftest 层面的 v5 修正，merget 窗口面向 sched_ext/for-7.4。blocking_issues：无。next_action：待 Tejun 评审 v5 并收入 for-7.4。
+*likelihood=high*。功能方向明确、selftest 覆盖全面（含 `NO_HZ_FULL` 无限 slice 前向进展、非法 flag 与优先级组合），改动已收敛到只有 kselftest 层面的 v5 修正，merget 窗口面向 sched_ext/for-7.4。*blocking_issues*：无。*next_action*：待 Tejun 评审 v5 并收入 for-7.4。
 
 ## 效果评估
 selftest 结果（cover）：`vng -a "preempt=lazy"` 下 kick 组 6 PASSED / 0 FAILED；`preempt=lazy nohz_full=8-15` 下 nohz_tick PASSED，CPU8 收到 7 个有限 slice tick。属功能验证，无性能对比数据。

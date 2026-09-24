@@ -17,7 +17,7 @@ v2（cover `<20260919153150.2618403-1-sh_def@163.com>`）发出后，当天 Juri
 - 无反对意见。
 
 ## 合入评估
-likelihood=high。两补丁均获 deadline 维护者 Acked，仅需修正 2/2 的 Fixes 标签。blocking_issues：2/2 的 Fixes 标签待改。next_action：作者按 Juri 意见更新 2/2 的 Fixes 标签后重发或由维护者直接调整。
+*likelihood=high*。两补丁均获 deadline 维护者 Acked，仅需修正 2/2 的 Fixes 标签。*blocking_issues*：2/2 的 Fixes 标签待改。*next_action*：作者按 Juri 意见更新 2/2 的 Fixes 标签后重发或由维护者直接调整。
 
 ## 效果评估
 无本日新增数据；正确性修复（除零 crash 风险、debugfs 非法写）。

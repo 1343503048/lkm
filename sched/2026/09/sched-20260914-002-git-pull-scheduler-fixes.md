@@ -4,7 +4,7 @@
 增量更新：pr-tracker-bot 回执确认 09-13 Ingo Molnar 发出的 `tip/sched/urgent` 拉取请求已被合入 torvalds/linux.git，合并 commit 为 `b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。这是 sched-20260913-001 一直缺失的「进主线时点」，四条修复（两条 EEVDF augmented rbtree、两条 proxy execution 记账）正式从 tip 进入主线。
 
 ## 背景与问题
-承 sched-20260913-001：Ingo 于 09-13 16:19（北京时间）向 Linus 发出 urgent pull（分支 `sched-urgent-2026-09-13`），内容为 4 条修复、2 位作者、3 files +46/-16。前文已判定 likelihood=merged、status=merged_tip，但当时缓存中**无 pr-tracker-bot 回执**，「进 Linus 树的合并 commit 与 -rc 归属未获取到」。今日回执补上了这一环节。
+承 sched-20260913-001：Ingo 于 09-13 16:19（北京时间）向 Linus 发出 urgent pull（分支 `sched-urgent-2026-09-13`），内容为 4 条修复、2 位作者、3 files +46/-16。前文已判定 likelihood=merged、*status=merged_tip*，但当时缓存中**无 pr-tracker-bot 回执**，「进 Linus 树的合并 commit 与 -rc 归属未获取到」。今日回执补上了这一环节。
 
 ## 技术方案
 无新代码。今日唯一内容是 pr-tracker-bot 的合并确认：回执引用 Linus 侧 pull 邮件（`aqZcjrj6NEVj6Vgq@gmail.com`，09-13 10:19:26 +0200），给出合并 commit 链接 `https://git.kernel.org/torvalds/c/b2a8a7669e9befcec50fec990e1e1ee96f040cdf`。
@@ -18,7 +18,7 @@
 本日无维护者技术意见，只有 bot 的合并通知。「被合入 torvalds/linux.git」即 Linus 接受该 pull 的事实信号。四条修复未再出现反对或保留意见。
 
 ## 合入评估
-likelihood=merged（已成事实）：四条修复已进入主线。blocking_issues：无合入层面的卡点；四条修复各自的 stable 回合情况仍未获取到（邮件中未讨论）。next_action：按 commit 与内部分支/OLK 分支逐条比对回合状态；关注是否进入 stable 队列。
+*likelihood=merged*（已成事实）：四条修复已进入主线。*blocking_issues*：无合入层面的卡点；四条修复各自的 stable 回合情况仍未获取到（邮件中未讨论）。*next_action*：按 commit 与内部分支/OLK 分支逐条比对回合状态；关注是否进入 stable 队列。
 
 ## 效果评估
 无 benchmark 数据。可量化的是时间线：从最后一批修复（Hui Su 两条，09-10 发出）到进 tip 约 3 天，再到进主线约 5 天。收益属正确性一类（EEVDF 的 max_slice 与 augmented rbtree 重平衡不再出错；proxy execution 下 cgroup CPU 时间与 wq_worker_tick 记到执行上下文）。

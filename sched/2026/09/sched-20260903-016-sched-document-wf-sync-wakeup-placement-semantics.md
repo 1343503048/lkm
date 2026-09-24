@@ -37,7 +37,7 @@ Shubhang Kaushik 的 RFC 1/2 新增 `Documentation/scheduler/sched-wake-affinity
 
 ## 合入评估
 
-likelihood: **possible**。
+*likelihood: possible*。
 
 依据：文档类补丁的成本收益很容易成立，而且本主题确实有真实缺口（`WF_SYNC` 被大量调用方使用，而它对调用方可见的提示语义此前只存在于代码里）；回帖者认可语义、只要求改写法，是「可修」而非「可否」的反对；作者本人是这块区域的活跃改动者，重写文档的门槛低；133 行的结构（四条路径 + 一节契约）本身已经具备可拆分性。
 

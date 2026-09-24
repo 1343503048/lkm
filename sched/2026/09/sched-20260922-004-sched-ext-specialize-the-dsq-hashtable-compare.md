@@ -16,7 +16,7 @@ v1 当日发出，附 A/B 数据。Tejun Heo 回帖已合入 `sched_ext/for-7.4`
 - **Tejun Heo**：合入无异议，并主动提示 TID/scheduler 两处同类优化点。无争议。
 
 ## 合入评估
-likelihood=merged。已合入 `sched_ext/for-7.4`。blocking_issues 无。
+*likelihood=merged*。已合入 `sched_ext/for-7.4`。blocking_issues 无。
 
 ## 效果评估
 作者给出实测数据：在 Meta 机群对 `scx_layered` 创建的 DSQ id 做内核内 A/B（两组参数编进同一内核），查找快 **2.9x**；disassembly 确认查找循环不再调用 `memcmp()` 或 out-of-line 比较器。无功能变化（No functional change intended）。

@@ -49,7 +49,7 @@ Mark Rutland 的 `sched: dynamic` 精简系列 v2（0/6，08-04 投递）在 09-
 
 ## 合入评估
 
-likelihood: **likely**（已合入）。
+*likelihood: likely*（已合入）。
 
 依据：6 个补丁与后续修复都已在 09-02 进入 `tip:sched/core`，committer 是 Peter Zijlstra，commit-id 由 tip-bot2 通告，无回退迹象；review 阶段的三条意见（JUMP_LABEL、注释、模型串）都已有明确处置，其中两条落到代码、一条被作者说明后保留；`Reported-by`/`Fixes` 链完整。
 

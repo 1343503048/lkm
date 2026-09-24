@@ -25,7 +25,7 @@ AMD 大小核（Strix/HX 类，大核 16MB L3、小核 8MB L3）平台上 CAS（
 - 分歧/未闭合处：禁用方案尚未在任何真实 AMD 混合平台验证；Klaus 三组数据混入多个补丁变量（7.2.5 自带 misfit 补丁 + 单独叠加 ITMT 协调补丁），因果隔离仍不干净。
 
 ## 合入评估
-likelihood=medium：方向已收敛到「ASYM_PACKING 与 CAS 互斥」，根因定位明确，但方案未经真实硬件验证。blocking_issues：编译验证、无多 LLC 混合 AMD 平台实测；需确认禁用 CAS 是否会在纯 AMD 平台本可受益的场景上造成损失。next_action：Klaus 在其平台实测 Chen Yu 的禁用补丁并回传数据；若有效，Chen Yu 需补真实 patch 系列与测试矩阵再进入评审。
+*likelihood=medium*：方向已收敛到「ASYM_PACKING 与 CAS 互斥」，根因定位明确，但方案未经真实硬件验证。*blocking_issues*：编译验证、无多 LLC 混合 AMD 平台实测；需确认禁用 CAS 是否会在纯 AMD 平台本可受益的场景上造成损失。*next_action*：Klaus 在其平台实测 Chen Yu 的禁用补丁并回传数据；若有效，Chen Yu 需补真实 patch 系列与测试矩阵再进入评审。
 
 ## 效果评估
 Klaus 三组数据（AMD 大小核，wallclock 时间）：

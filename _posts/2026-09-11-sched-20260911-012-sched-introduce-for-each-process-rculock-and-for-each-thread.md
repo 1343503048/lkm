@@ -70,7 +70,7 @@ Ye Liu（kylinos）的 RCU 迭代宏系列发到 v3：新增 for_each_process_rc
 - sched 部分（10/15）：core.c 的 uclamp_sync_util_min_rt_default() 与 debug.c 的 print_rq() 两处 guard(rcu)+for_each 组合换成单宏，-5/+2 行。
 
 ## 版本演进与当前进展
-current_version: v3（cover msgid `<20260911075800.491472-1-ye.liu@linux.dev>`，09-11 15:57 入缓存；当日缓存含 00/15、01/15、10/15 三封，其余补丁未入缓存）。
+*current_version: v3（cover msgid `<20260911075800.491472-1-ye.liu@linux.dev>`，09-11 15:57 入缓存；当日缓存含 00/15、01/15、10/15 三封，其余补丁未入缓存）*。
 
 - v1（08-13 起，oom_kill 单点）：Michal Hocko 建议推广为宏；
 - v2（09-07）：宏改名 *_rcu → *_rculock（Steven Rostedt 提出、Thomas Gleixner 认可，避免与要求调用方持锁的 *_rcu() 迭代器混淆）；hung_task 标签改名等；
@@ -84,7 +84,7 @@ current_version: v3（cover msgid `<20260911075800.491472-1-ye.liu@linux.dev>`�
 - 当前无未解决分歧；剩余风险是 15 个补丁逐个过各子系统维护者的进度。
 
 ## 合入评估
-likelihood=medium：宏设计与转换无功能变化、review 意见逐条落实、sched 补丁已有 A-b + 3 个 R-b；但 15 补丁的收取路径复杂（跨 mm/sched/fs/lib/security 多树），单系列合入周期长。blocking_issues：各子系统补丁需各自维护者 ack（sched 之外的状态未获取到）；patch 1 的宏进入 include/linux/sched/signal.h 需要 sched 树先收。next_action：等待各子系统维护者对 v3 对应补丁的表态；sched 侧 10/15 可望先走。
+*likelihood=medium*：宏设计与转换无功能变化、review 意见逐条落实、sched 补丁已有 A-b + 3 个 R-b；但 15 补丁的收取路径复杂（跨 mm/sched/fs/lib/security 多树），单系列合入周期长。*blocking_issues*：各子系统补丁需各自维护者 ack（sched 之外的状态未获取到）；patch 1 的宏进入 include/linux/sched/signal.h 需要 sched 树先收。*next_action*：等待各子系统维护者对 v3 对应补丁的表态；sched 侧 10/15 可望先走。
 
 ## 效果评估
 无性能数据（作者明确 No functional change）；收益是正确性/可读性：break/goto/return 不再可能漏解锁。效果为设计主张，无量化对比。

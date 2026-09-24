@@ -22,7 +22,7 @@ ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的
 当日无维护者回复（报告直指 Peter Zijlstra 为收件人）。报告人主动提出可补充更多测试或完整 bisect 数据，态度是「求证而非断言」，无争议。
 
 ## 合入评估
-likelihood=unknown。这是对已合入主线（v7.3）的调度改动提出的性能回退质疑，需先确认是否为预期权衡。blocking_issues：回退是否属「预期取舍」尚无定论；单运行队列改动本身无 Fixes 可回退（改的是架构层面），若有问题需进一步针对性修复。next_action：Peter 及 EEVDF 相关维护者回应定性，作者补充完整 bisect/测试数据。
+*likelihood=unknown*。这是对已合入主线（v7.3）的调度改动提出的性能回退质疑，需先确认是否为预期权衡。*blocking_issues*：回退是否属「预期取舍」尚无定论；单运行队列改动本身无 Fixes 可回退（改的是架构层面），若有问题需进一步针对性修复。*next_action*：Peter 及 EEVDF 相关维护者回应定性，作者补充完整 bisect/测试数据。
 
 ## 效果评估
 报告给出的为 schbench p99 实测数字（上文已列），为定量数据；但整体 schbench 结果为混合（无全局回退），作者明确「这不像是普遍的延迟劣化」。定性判断：特定 cgroup/层级调度配置的 p99 尾部回退。

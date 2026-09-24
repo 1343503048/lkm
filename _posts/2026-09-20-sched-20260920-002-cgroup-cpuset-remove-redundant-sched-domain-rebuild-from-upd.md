@@ -70,7 +70,7 @@ sched domain 重建统一收敛到公共解锁路径 `cpuset_update_sd_hk_unlock
 - 分歧/未决：无，标题歧义已在 v2 解决。
 
 ## 合入评估
-likelihood=high。纯冗余删除、语义等价、风险极低，Ridong Chen 已 Reviewed-by，且沿用了 commit 3bfe47967191 的既有清理模式。blocking_issues：无。next_action：等待 cpuset 维护者（Waiman Long / Tejun Heo）收取。
+*likelihood=high*。纯冗余删除、语义等价、风险极低，Ridong Chen 已 Reviewed-by，且沿用了 commit 3bfe47967191 的既有清理模式。*blocking_issues*：无。*next_action*：等待 cpuset 维护者（Waiman Long / Tejun Heo）收取。
 
 ## 效果评估
 无性能数据；纯代码清理（删 2 行），无行为变化。

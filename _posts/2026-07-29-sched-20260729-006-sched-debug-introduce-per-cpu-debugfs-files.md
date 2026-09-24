@@ -71,7 +71,7 @@ Aaron Tomlin 的 v2 补丁在 debugfs 下为每个 CPU 增加独立的调度调�
 v1 阶段 Peter Zijlstra 的核心质疑是动机——为什么需要这个接口，这类"便利性 debugfs 接口"历来需要说服维护者其价值大于维护成本。v2 是否化解了这个质疑还没有回音。目前没有明确 NAK，也没有 Reviewed-by。
 
 ## 合入评估
-likelihood: medium。改动小、无功能风险、v1 意见均已回应，这些是加分项；但 debugfs 接口扩充需要 PeterZ 认可动机，v1 他的态度偏保留，v2 重写后尚未表态，这是主要不确定性。pre-existing issues 的处理边界如果被要求扩大范围，系列可能拖长。
+*likelihood: medium*。改动小、无功能风险、v1 意见均已回应，这些是加分项；但 debugfs 接口扩充需要 PeterZ 认可动机，v1 他的态度偏保留，v2 重写后尚未表态，这是主要不确定性。pre-existing issues 的处理边界如果被要求扩大范围，系列可能拖长。
 
 ## 效果评估
 暂无效果数据（该类改动无性能语义，价值在于调试体验，作者未给量化对比）。

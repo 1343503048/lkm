@@ -86,7 +86,7 @@ layout: article
 
 ## 合入评估
 
-likelihood: **unlikely**（以当前形态）。
+*likelihood: unlikely*（以当前形态）。
 
 依据：本 thread 唯一的维护者级意见是明确保留态度的（「... reluctant to burden the kernel with something that is, by definition, unreliable.」），而且第二封回帖又追加了一个作者尚未回答的结构性问题（`sched_clock()` handover 在新旧时钟切换点不再连续）；作者的定位是「只在特定 baremetal 平台上、由使用者自证硬件能力」的调试开关，这类「依赖平台前提、无能力检测、语义为 debug」的 cmdline 参数在内核里本就少见；`kernel/time/sched_clock.c` 属于 timekeeping 维护范围，本 thread 中 timekeeping 维护者尚未发言，缺少最关键的支持者；此外 `0400` 权限的 `core_param` 只影响启动期，覆盖面有限，收益却只在单一厂商的 RAS 调试场景中被提及。
 

@@ -68,7 +68,7 @@ NUMA balancing 有两个 VMA 级过滤会阻止 hinting fault，进而在分层�
 - 作者对 v1 review 的收尾（cover 回帖）：sashiko 遗留意见多为误报——patch 2 注释「bounce horizontally between slow tiers」系笔误级问题；patch 3/4 是既有检查抽 helper，「要更新可以另开补丁」；并指出本工作存在回合 stable 的冲突（backport conflicts），理由是「分层 NUMA balancing 自 2022/2023 年起已被这些过滤机制反复弄坏」。
 
 ## 版本演进与当前进展
-current_version: v2（v2 cover msgid `<20260911001826.2109390-1-gourry@gourry.net>`，msgid 时间戳 09-11 00:18；当日入缓存 3/4、4/4 与 cover 回帖，1/2/4 补丁未入缓存）。
+*current_version: v2（v2 cover msgid `<20260911001826.2109390-1-gourry@gourry.net>`，msgid 时间戳 09-11 00:18；当日入缓存 3/4、4/4 与 cover 回帖，1/2/4 补丁未入缓存）*。
 
 - v1（2026-09-04/05，root `<20260904182006.1562449-1-gourry@gourry.net>`）：sashiko 提出无谓重扫与并发扫描疑问，作者逐条反驳后于 09-07 自认 v1 捆绑过多、承诺测后发 v2（详见 sched-20260907-009）；
 - v2（09-11）：3/4 抽出 vma_is_ro_file() helper 并收敛分层判断；4/4 新增 prev_placement_scan_seq 处理并发扫描与饥饿兜底——正是 v1 自认缺失的两点；两补丁均带 Fixes 与 Cc stable，署名 Assisted-by: LLM。
@@ -78,7 +78,7 @@ current_version: v2（v2 cover msgid `<20260911001826.2109390-1-gourry@gourry.ne
 - 无人类维护者（mm/sched 两侧）当日表态；v1 时 sashiko（机器人）意见已被作者判定误报。与 v1 相比，「作者自认捆绑过多」的阻力在 v2 已消除，但维护者真空依旧。
 
 ## 合入评估
-likelihood=medium：v2 直接回应了 v1 自认的两个结构性问题（并发扫描、mode=3），数据完整、Fixes+stable 齐备；但整个系列自 v1 起无任何人类维护者回帖。blocking_issues：维护者真空（需 mm 与调度两侧同时认可）；回合 stable 的冲突需要子系统树先行；「promo_only」扫描对放置语义的长期影响只有推理。next_action：等 mm/sched 维护者首次表态；作者侧核对 v2 1/2/4 的发出与测试声明。
+*likelihood=medium*：v2 直接回应了 v1 自认的两个结构性问题（并发扫描、mode=3），数据完整、Fixes+stable 齐备；但整个系列自 v1 起无任何人类维护者回帖。*blocking_issues*：维护者真空（需 mm 与调度两侧同时认可）；回合 stable 的冲突需要子系统树先行；「promo_only」扫描对放置语义的长期影响只有推理。*next_action*：等 mm/sched 维护者首次表态；作者侧核对 v2 1/2/4 的发出与测试声明。
 
 ## 效果评估
 patch 3/4：768GB DRAM + 256GB CXL 主机、约 430GB 数据库服务——修复前 185MB 主程序二进制中 169MB 积压在 CXL，修复后层级驻留随运行负载分布。

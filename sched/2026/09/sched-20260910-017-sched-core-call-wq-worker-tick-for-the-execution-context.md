@@ -48,16 +48,16 @@ proxy execution 把上下文拆成调度上下文 `rq->donor` 与执行上下文
 - Tim Chen 在相邻线程提的「修正点应上移到 `sched_tick()` 而非 `task_tick_fair()`」意见对本补丁不适用——`wq_worker_tick()` 本来就挂在 `sched_tick()` 主干上。
 
 ## 合入评估
-likelihood: high。
+*likelihood: high*。
 
 依据：对口维护者（Tejun，workqueue）无条件 `Acked-by`；sched 维护者（Peter）明确承诺收取且指定 urgent 分支；补丁 5 行、带真实 `Fixes:` 标签、无技术争议；我已确认缺陷在当前主线仍存在，修复有实际意义而非纸上清理。
 
-blocking_issues：
+*blocking_issues*：
 - 尚未实际落入 tip——缓存内无 tip-bot 回帖，`merged_branch` 仍为空；Peter 的措辞是 "I can take it"，不是 "applied"。
 - 与同作者 v4 tick 系列（sched-20260910-003）改同一片 `sched_tick()` 代码，先后顺序无人协调，存在 rebase/冲突成本。
 - `sched_tick()` 是当前最热的改动点之一（PE + sched_ext v13 也在触碰），urgent 分支落地前可能需要重打基线。
 
-next_action：等 tip-bot 回帖确认进入 `tip/sched/urgent`；作者宜主动在 v4 tick 系列封面里说明与本补丁的先后关系，避免两条线互相踩。
+*next_action*：等 tip-bot 回帖确认进入 `tip/sched/urgent`；作者宜主动在 v4 tick 系列封面里说明与本补丁的先后关系，避免两条线互相踩。
 
 ## 效果评估
 线程内**没有任何测试数据**，本日也无新增：作者未给出 worker CPU 时间偏差量、`WORKER_CPU_INTENSIVE` 误判次数或 pool 并发管理延迟的数字，也没人报告过线上症状。

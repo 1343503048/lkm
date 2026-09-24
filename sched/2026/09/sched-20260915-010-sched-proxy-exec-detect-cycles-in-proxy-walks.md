@@ -17,7 +17,7 @@ v5 自 07-22 发出后进入长尾讨论；本日是 Hui Su 的旁路回应（�
 - 无维护者对 v5 的直接表态；两个方案（序列标记 vs Online Brent）尚未有定论。
 
 ## 合入评估
-likelihood=unknown。v5 本身无维护者 A/N/T，且出现了竞争方案；环检测的设计取舍（持久状态 vs 短暂环窗口）未决。blocking_issues：无维护者评审结论；存在替代方案分流。next_action：等 proxy_exec 维护者比较 v5 与 Hui Su RFC 两个方案后定方向。
+*likelihood=unknown*。v5 本身无维护者 A/N/T，且出现了竞争方案；环检测的设计取舍（持久状态 vs 短暂环窗口）未决。*blocking_issues*：无维护者评审结论；存在替代方案分流。*next_action*：等 proxy_exec 维护者比较 v5 与 Hui Su RFC 两个方案后定方向。
 
 ## 效果评估
 Hui Su 附带的对比结论（相对 v5）：正常无环 find_proxy_task() 的 ns/call 在测试深度上相当（详见其 RFC cover 的 depth 16-1024 表格）。v5 自身的性能数据在更早线程中，未在本日邮件重复。属作者主观对比描述，测试覆盖有限（作者已声明不覆盖所有调度交错）。

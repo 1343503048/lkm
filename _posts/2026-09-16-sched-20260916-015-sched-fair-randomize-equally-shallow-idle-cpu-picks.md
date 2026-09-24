@@ -60,7 +60,7 @@ Christian Loehle（ARM）的两枚新 patch：慢路径 CPU 选择存在扫描�
 - 无 NAK；设计取舍（随机化 vs 可预测 fallback）仍在讨论。
 
 ## 合入评估
-likelihood=medium。有扎实的 benchmark 与 stale-pick 数据支撑，方向无反对；但尚无 sched 维护者表态，且随机化在小核数/可预测性上的设计分歧尚未完全闭合。blocking_issues：小核数系统收益与随机不可预测性的设计分歧待收敛；缺维护者评审。next_action：等待 Vincent/Peter 等维护者评审，回应 Kayra/Sashiko 的剩余关切。
+*likelihood=medium*。有扎实的 benchmark 与 stale-pick 数据支撑，方向无反对；但尚无 sched 维护者表态，且随机化在小核数/可预测性上的设计分歧尚未完全闭合。*blocking_issues*：小核数系统收益与随机不可预测性的设计分歧待收敛；缺维护者评审。*next_action*：等待 Vincent/Peter 等维护者评审，回应 Kayra/Sashiko 的剩余关切。
 
 ## 效果评估
 160 核双插槽 Altra，stress-ng 中位数吞吐（bogo ops/s）：`--fork 1/1` +4.13%、`8/1` +0.06%、`16/1` +3.48%、`16/4` +1.81%、`32/1` -0.22%、`64/1` +1.82%。stale-pick 率（最终返回时候选仍忙）：fork 32 creators 0.771%→0.407%，64 creators 1.242%→0.672%。

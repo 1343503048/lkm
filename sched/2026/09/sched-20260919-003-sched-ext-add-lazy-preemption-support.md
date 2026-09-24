@@ -19,7 +19,7 @@
 - 无未决分歧。
 
 ## 合入评估
-likelihood=merged。v7 已由 Tejun 应用到 `sched_ext/for-7.4`。blocking_issues：无。next_action：随 7.4 开发周期进主线。
+*likelihood=merged*。v7 已由 Tejun 应用到 `sched_ext/for-7.4`。*blocking_issues*：无。*next_action*：随 7.4 开发周期进主线。
 
 ## 效果评估
 v7 cover 给出测试结果：`vng -a "preempt=lazy"` 下 kick selftest 6/6 通过；`vng --cpus 4 -a "nohz_full=1-3"` 下 nohz_tick 通过（CPU 1 收到 6 次有限 slice tick）。Tejun 另报在 lazy/full 两种模式、nohz_full 于 2-3 与 1-3 的 vng 运行均成功。Tao Cui 在 4-CPU KVM guest 上测 v6：惰性与即时 wakeup 抢占平均 59us、CFS 60us（2000 次迭代）；lazy slice 到期减少了上下文切换（数字后续被截断，未获取到完整值）。

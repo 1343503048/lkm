@@ -73,7 +73,7 @@ proxy execution 下调度上下文（rq->donor）与执行上下文（rq->curr�
 - **1/5 与 sched_ext 的协同**：Andrea Righi 主动提示其 v13 系列（见 sched-20260910-002）会让两系列「很快兼容」，建议本系列一并处理 SCX donor/execution context 所有权或双方协调改动。作者回应：本地草稿中 task_tick_scx() 显式 donor-gated，未复制 v13 的 donor 记账改动；分发器 donor 类先调、执行类不同时再调；SCX 仅作为非 EXT donor 的执行类被触达时，task_tick_scx() 直接返回不做 SCX 策略与 slice 工作。作者曾用 v13 + 早期 5 补丁系列建过集成树，唯一文本冲突就在 task_tick_scx() hunk；该树在 CONFIG_SCHED_CLASS_EXT=y + CONFIG_SCHED_PROXY_EXEC=y 下能构建并启动，但没有稳定的 EXT→FAIR、FAIR→EXT、EXT→EXT、RT/DL→EXT 全混合运行时矩阵，且早于本轮 P4 转换路径改动、未重新验证。
 
 ## 版本演进与当前进展
-current_version: v4（2026-09-09 发出）。09-09：Peter 要求重排 3/5、NAK 4/5。09-10：作者逐条回应（3/5 已重排待复核、4/5 改生命周期回调设计、5/5 改 task-clock 谓词、1/5 与 Andrea 对齐 SCX 所有权边界），明确「若布局认可即携带进 v5 并发出更新系列」。1/5 改 sched_class::task_tick() 签名波及全部调度类，仍需 Peter 收下。
+*current_version: v4（2026-09-09 发出）*。09-09：Peter 要求重排 3/5、NAK 4/5。09-10：作者逐条回应（3/5 已重排待复核、4/5 改生命周期回调设计、5/5 改 task-clock 谓词、1/5 与 Andrea 对齐 SCX 所有权边界），明确「若布局认可即携带进 v5 并发出更新系列」。1/5 改 sched_class::task_tick() 签名波及全部调度类，仍需 Peter 收下。
 
 ## Maintainer 意见与讨论焦点
 - Peter Zijlstra（09-09，见前文）：3/5 重排要求与 4/5 NAK 是本日回应的直接对象；09-10 当天 Peter 尚未对作者的新设计表态。
@@ -81,7 +81,7 @@ current_version: v4（2026-09-09 发出）。09-09：Peter 要求重排 3/5、NA
 - 未解决焦点：4/5 的 sched_class 回调设计是否满足 Peter「不把 RT 散落进 __schedule()」的底线（新设计把判断移进 RT 类自身消费回调，方向一致但未获确认）；5/5 的 task-clock 谓词是否说服 Tim Chen（作者称系「跟进与 Tim 和 Chen Yu 的讨论」，但本日无 Tim 回帖确认）。
 
 ## 合入评估
-likelihood: medium（从 09-09 的 low 上调：作者对全部 blocking 意见给出了具体且方向正确的新设计，v5 路线清晰）。blocking_issues：Peter 对 4/5 新回调设计与 3/5 重排布局尚未点头；1/5 的 task_tick() 签名改动必须经 Peter 收取；与 Andrea v13 系列的 task_tick_scx() 冲突需在两系列合入顺序上协调；混合 EXT 运行时矩阵未验证。next_action：作者发 v5 携带 3/5 新布局、4/5 回调设计与 5/5 task-clock 谓词，并与 v13 系列约定合入顺序后做集成验证。
+*likelihood: medium*（从 09-09 的 low 上调：作者对全部 blocking 意见给出了具体且方向正确的新设计，v5 路线清晰）。*blocking_issues*：Peter 对 4/5 新回调设计与 3/5 重排布局尚未点头；1/5 的 task_tick() 签名改动必须经 Peter 收取；与 Andrea v13 系列的 task_tick_scx() 冲突需在两系列合入顺序上协调；混合 EXT 运行时矩阵未验证。*next_action*：作者发 v5 携带 3/5 新布局、4/5 回调设计与 5/5 task-clock 谓词，并与 v13 系列约定合入顺序后做集成验证。
 
 ## 效果评估
 无 benchmark 数据。有的量化信息是结构开销：per-task generation state 方案会使 task_struct 增加一个 64 字节分配单元（已放弃）；per-entity baseline 在 i386 + CONFIG_SCHED_CORE=y 下使 sched_entity 从 224 增至 256 字节（已改为存 struct rq）。集成树「能构建并启动」属作者自述，未见运行时测试数据。

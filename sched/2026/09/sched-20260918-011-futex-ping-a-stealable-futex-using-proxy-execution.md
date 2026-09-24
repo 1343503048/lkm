@@ -20,7 +20,7 @@
 - 分歧点：新 futex op vs 复用 mutex；严格性归属（锁类型 vs 调度类）；死锁检测器的实现位置与时序。
 
 ## 合入评估
-likelihood=low。早期 RFC，Peter 明确"不急着合"，并要求引入死锁检测器、论证新 futex 与 mutex 路线取舍。blocking_issues：缺乏用户态死锁检测器；"新 futex vs mutex-based"路线未定；PI 严格性语义自洽问题。next_action：作者回应 Peter 的路线质疑（为何不能复用 mutex）、设计并实现 block 时的死锁检测，再谈推进。
+*likelihood=low*。早期 RFC，Peter 明确"不急着合"，并要求引入死锁检测器、论证新 futex 与 mutex 路线取舍。*blocking_issues*：缺乏用户态死锁检测器；"新 futex vs mutex-based"路线未定；PI 严格性语义自洽问题。*next_action*：作者回应 Peter 的路线质疑（为何不能复用 mutex）、设计并实现 block 时的死锁检测，再谈推进。
 
 ## 效果评估
 本日无新增 benchmark。Rostedt 提及历史上 FUTEX_PI 换性能大幅回退、SCHED_OTHER 不公平化后几乎回到普通 FUTEX 水平（Google 内部测试，未公开具体数字）。

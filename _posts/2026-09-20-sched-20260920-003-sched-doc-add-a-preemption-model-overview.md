@@ -58,7 +58,7 @@ Quchaosheng 提交文档补丁（[PATCH 1/2]）：新增 `Documentation/schedule
 暂无维护者或 reviewer 表态（v1 刚发出）。
 
 ## 合入评估
-likelihood=unknown。文档类补丁、无实质风险，但尚无任何 review 反馈，合入可能性暂无法判断。blocking_issues：缺 review 反馈，且需确认 2/2 内容与整体系列完整性。next_action：等待调度文档维护者/资深成员 review，尤其核对 PREEMPT_LAZY 机制描述的准确性。
+*likelihood=unknown*。文档类补丁、无实质风险，但尚无任何 review 反馈，合入可能性暂无法判断。*blocking_issues*：缺 review 反馈，且需确认 2/2 内容与整体系列完整性。*next_action*：等待调度文档维护者/资深成员 review，尤其核对 PREEMPT_LAZY 机制描述的准确性。
 
 ## 效果评估
 暂无效果数据（纯文档，无运行时可度量项）。

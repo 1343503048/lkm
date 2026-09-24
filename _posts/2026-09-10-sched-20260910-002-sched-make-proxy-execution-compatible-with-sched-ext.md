@@ -76,7 +76,7 @@ layout: article
 - **15/18（Delegate proxy donor admission to BPF schedulers）**：两条具体改法——入口封装成带 `scx_enabled()` 判断的 inline；并参照另一处的写法 "Just have it be always instead of for ext-ext only"（准入检查应总是执行，而不是只在 ext→ext 场景）。
 
 ## 版本演进与当前进展
-current_version: v13（2026-08-31 发出，msgid `<20260831134338.1531664-1-arighi@nvidia.com>`）。09-08 作者集中回应了 Prateek/Tejun/Richard 的遗留意见；09-10 Peter 的正式评审到达，v13 尚未有作者对这些意见的公开回应（当天 Andrea 在另一线程对 Hui Su 表示两个系列「很快会兼容」，见 sched-20260910-003）。v14 需要落实：03/18 收敛进 sched_proxy_exec() 分支并论证 FAIR donor + RT curr 场景是否真实存在、04/18 解释主线为何未触发、05/18 处理 {EN,DE}QUEUE_CLASS 引起的类变化、07/18 说明 scx_proxy_resolved()、08/18 重新定义 WF_ON_RQ 想表达的区分（或撤回）、09/18 按 Peter 给出的 switching_to_scx() 方案重构、14/18 删除组合 3/4、15/18 inline 化并改为总是检查。
+*current_version: v13（2026-08-31 发出，msgid `<20260831134338.1531664-1-arighi@nvidia.com>`）*。09-08 作者集中回应了 Prateek/Tejun/Richard 的遗留意见；09-10 Peter 的正式评审到达，v13 尚未有作者对这些意见的公开回应（当天 Andrea 在另一线程对 Hui Su 表示两个系列「很快会兼容」，见 sched-20260910-003）。v14 需要落实：03/18 收敛进 sched_proxy_exec() 分支并论证 FAIR donor + RT curr 场景是否真实存在、04/18 解释主线为何未触发、05/18 处理 {EN,DE}QUEUE_CLASS 引起的类变化、07/18 说明 scx_proxy_resolved()、08/18 重新定义 WF_ON_RQ 想表达的区分（或撤回）、09/18 按 Peter 给出的 switching_to_scx() 方案重构、14/18 删除组合 3/4、15/18 inline 化并改为总是检查。
 
 ## Maintainer 意见与讨论焦点
 Peter Zijlstra 一人留下全部 10 条意见，性质分三档：
@@ -86,7 +86,7 @@ Peter Zijlstra 一人留下全部 10 条意见，性质分三档：
 分歧焦点在 08/18 与 09/18：两者都是 Peter 明确表示不喜欢/困惑的设计，作者需要在 v14 里给出实质性重构而不只是辩护。没有出现 NAK 整个系列的信号——评审细到给出具体代码建议，说明方向被接受。
 
 ## 合入评估
-likelihood: medium（较 09-08 的评估持平略降：评审落地暴露出 8 个补丁需要修改，但全部意见都是可操作的，且 Peter 给出了 09/18、15/18 的具体改法）。blocking_issues：08/18 WF_ON_RQ 的语义站不住，需要重新论证或撤回；09/18 必须重构为只在切入 scx 时 gate 调用；03/18、14/18 中「不可能发生」的场景需要从补丁前提中移除；04/18 需要解释主线未触发的原因，否则该修复的必要性存疑。next_action：作者按上述清单出 v14，仍走 sched_ext/for-7.4（Tejun 树），由 Peter 复核后收取。
+*likelihood: medium*（较 09-08 的评估持平略降：评审落地暴露出 8 个补丁需要修改，但全部意见都是可操作的，且 Peter 给出了 09/18、15/18 的具体改法）。*blocking_issues*：08/18 WF_ON_RQ 的语义站不住，需要重新论证或撤回；09/18 必须重构为只在切入 scx 时 gate 调用；03/18、14/18 中「不可能发生」的场景需要从补丁前提中移除；04/18 需要解释主线未触发的原因，否则该修复的必要性存疑。*next_action*：作者按上述清单出 v14，仍走 sched_ext/for-7.4（Tejun 树），由 Peter 复核后收取。
 
 ## 效果评估
 本日邮件均为设计评审，无新的 benchmark 或复现数据。暂无效果数据。

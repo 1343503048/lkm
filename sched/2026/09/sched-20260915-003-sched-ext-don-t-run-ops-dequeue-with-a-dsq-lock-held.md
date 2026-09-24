@@ -17,7 +17,7 @@ Qiurong Fang v2：`ops.dequeue()` 在 consume、move、terminal insert 三条路
 - **Andrea Righi**：对 patch 1 给出 `Acked-by`；v1 时纠正了回调时序的表述（DISPATCHING / rq 锁对 callback 的保持），并要求补 selftest——v2 均已落实。
 
 ## 合入评估
-likelihood=high。修的是明确的死锁缺陷且带 `Fixes:`（`ebf1ffcc79c4 "sched_ext: Fix ops.dequeue() semantics"`）、已获 sched_ext 维护者 Andrea Righi Acked-by、v2 补了回归 selftest，无遗留争议。blocking_issues：无。next_action：待 Tejun 收入 sched_ext 修复分支。
+*likelihood=high*。修的是明确的死锁缺陷且带 `Fixes:`（`ebf1ffcc79c4 "sched_ext: Fix ops.dequeue() semantics"`）、已获 sched_ext 维护者 Andrea Righi Acked-by、v2 补了回归 selftest，无遗留争议。*blocking_issues*：无。*next_action*：待 Tejun 收入 sched_ext 修复分支。
 
 ## 效果评估
 patch 2 描述：在未修复内核上跑该 selftest，首个被消费的任务会自死锁该 CPU 直到 watchdog 触发、以 UEI 失败；在修复后内核上调度器干净运行、测试通过。无性能量化数据，属死锁修复的正确性验证。

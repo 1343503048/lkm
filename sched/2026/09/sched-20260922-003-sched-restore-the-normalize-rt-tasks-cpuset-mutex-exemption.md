@@ -25,7 +25,7 @@ v1 当日发出，附带 qemu-x86_64 复现与修复前后对照表。Juri Lelli
 - **Juri Lelli**：确认问题成立，回帖「Ah, yes indeed. Acked-by: Juri Lelli」。无反对意见。
 
 ## 合入评估
-likelihood=high。已获 deadline/cpuset 相关维护者 Acked，改动极小且带完整复现，无争议点。blocking_issues 无；next_action 等待被收取进 tip（或作者跟进催合）。
+*likelihood=high*。已获 deadline/cpuset 相关维护者 Acked，改动极小且带完整复现，无争议点。blocking_issues 无；next_action 等待被收取进 tip（或作者跟进催合）。
 
 ## 效果评估
 作者给出修复前后对照（qemu-x86_64, -smp 2, tip/sched/core `e81ee0630837`）：

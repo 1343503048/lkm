@@ -69,7 +69,7 @@ cid-form API（sched_ext 为 7.3 引入、当时标记为 unpublished）有一�
 - **Tejun Heo**：采纳全部意见；最终把 1-2 应用到 `sched_ext/for-7.3-fixes`，1/2 加 Andrea 的 Reviewed-by，2/2 用回复中贴出的 v2（已按 nit 修正）。作者还自测：新 selftest 在 4-CPU VM 上独立跑三次+全套 suite 通过；`scx_qmap` 在 fork churn 下约 55k 次 enable 比对无失配。
 
 ## 合入评估
-likelihood=merged。Tejun 已应用 1-2 至 `sched_ext/for-7.3-fixes`（cid-form API 属 7.3 未发布接口，改签名无兼容负担）。blocking_issues：无。next_action：随 7.3 周期经 tip 进主线。
+*likelihood=merged*。Tejun 已应用 1-2 至 `sched_ext/for-7.3-fixes`（cid-form API 属 7.3 未发布接口，改签名无兼容负担）。*blocking_issues*：无。*next_action*：随 7.3 周期经 tip 进主线。
 
 ## 效果评估
 纯 API 修复，无性能数据。自测集中在正确性：55k 次 enable 的掩码比对无失配、selftest 全套通过。cid-form 属未发布接口，对存量用户无影响。

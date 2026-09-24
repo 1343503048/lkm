@@ -61,7 +61,7 @@ NVIDIA Olympus（Grace 类 arm64 平台）的 SMT 兄弟核存在非对称优先
 本日无新代码。当前 v5 形态见 sched-20260909-007：调度器侧把 SMT 优先级调整收口在 select_idle_sibling() 选出 idle 候选之后（select_idle_smt_cpu()），arm64 侧以 MIDR 检测启用，diffstat 6 files changed, 163 insertions(+), 17 deletions(-)。未决的设计问题有两个：其一，Will Deacon 认为基于 MIDR 的拓扑检测不可接受（arm64 维护者反对，09-09 提出）；其二，Vincent Guittot 质疑新增 static key——Andrea 已在旧线程承诺去掉 static key、改用 sched_smt_active()（见同日文章 sched-20260910-008）。
 
 ## 版本演进与当前进展
-current_version: v5（2026-09-09 发出，msgid `<20260909062649.469633-1-arighi@nvidia.com>`）。09-09：Prateek Reviewed-by+Tested-by（4th gen EPYC 与 128C Ampere ARM 服务器无性能影响）；Peter tentatively picked up 但要求 arm64 ack；Will Deacon 拒绝 MIDR 检测；Vincent 质疑 static key。09-10：Peter 在 Will 的邮件下回复 "Yeah, Andrea is a wee bit fast with re-posting. I'll drop this, no worries."——正式撤下收取，等待 arm64 侧方案重做后的新版本。
+*current_version: v5（2026-09-09 发出，msgid `<20260909062649.469633-1-arighi@nvidia.com>`）*。09-09：Prateek Reviewed-by+Tested-by（4th gen EPYC 与 128C Ampere ARM 服务器无性能影响）；Peter tentatively picked up 但要求 arm64 ack；Will Deacon 拒绝 MIDR 检测；Vincent 质疑 static key。09-10：Peter 在 Will 的邮件下回复 "Yeah, Andrea is a wee bit fast with re-posting. I'll drop this, no worries."——正式撤下收取，等待 arm64 侧方案重做后的新版本。
 
 ## Maintainer 意见与讨论焦点
 - Peter Zijlstra（09-10）：撤下收取。语气无否定技术方向之意（"no worries"），更多是流程信号：在 arm64 维护者明确反对的情况下不该急于重发。
@@ -70,7 +70,7 @@ current_version: v5（2026-09-09 发出，msgid `<20260909062649.469633-1-arighi
 - 焦点：arm64 侧「如何识别需要 SMT 优先级偏好的平台」没有双方都能接受的机制。
 
 ## 合入评估
-likelihood: low（从 09-09 的 tentatively picked up 倒退：Peter 已撤下，arm64 维护者反对未解决）。blocking_issues：MIDR 检测被 Will Deacon 拒绝且无替代方案；static key 需按 Andrea 承诺改为 sched_smt_active()；需要 arm64 维护者可接受的拓扑/平台描述机制后才可能有 v6。next_action：Andrea 与 Will/arm64 侧商定平台检测机制，去掉 static key 后发 v6，再请 Peter 重新收取。
+*likelihood: low*（从 09-09 的 tentatively picked up 倒退：Peter 已撤下，arm64 维护者反对未解决）。*blocking_issues*：MIDR 检测被 Will Deacon 拒绝且无替代方案；static key 需按 Andrea 承诺改为 sched_smt_active()；需要 arm64 维护者可接受的拓扑/平台描述机制后才可能有 v6。*next_action*：Andrea 与 Will/arm64 侧商定平台检测机制，去掉 static key 后发 v6，再请 Peter 重新收取。
 
 ## 效果评估
 本日无新数据。既有数据为 Prateek 在 v5 的 Tested-by：4th gen EPYC 与 128C Ampere ARM 服务器上无性能影响（具体数字未展开，未获取到）；Olympus 平台上的收益数据在更早版本邮件中（见 related_articles）。

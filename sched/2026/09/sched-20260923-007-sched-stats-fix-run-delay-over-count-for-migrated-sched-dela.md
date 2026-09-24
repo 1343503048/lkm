@@ -22,7 +22,7 @@
 Peter 上轮的问题（proxy 同类问题、`is_blocked` 是否更合适）本日得到作者与测试者的正面回应，确认「proxy 侧确有同类 over-count」，但对「是否、如何把 proxy 场景纳入本补丁」尚未定论，Wei Yang 明确想先复现确认。无 NAK。
 
 ## 合入评估
-likelihood=high（delayed 场景部分）：补丁本身集齐 Chen Yu/Kayra/K Prateek 的 Reviewed-by 与 K Prateek 的 Tested-by，delayed 修复路径清晰；唯一悬而未决的是是否要在同一补丁里顺带处理 proxy 场景。blocking_issues：proxy 场景是否纳入本补丁未定；若纳入需先复现确认 donor run_delay 语义。next_action：作者决定 delayed-only 或扩到 proxy 场景，回应 Peter 后即可合。
+*likelihood=high*（delayed 场景部分）：补丁本身集齐 Chen Yu/Kayra/K Prateek 的 Reviewed-by 与 K Prateek 的 Tested-by，delayed 修复路径清晰；唯一悬而未决的是是否要在同一补丁里顺带处理 proxy 场景。*blocking_issues*：proxy 场景是否纳入本补丁未定；若纳入需先复现确认 donor run_delay 语义。*next_action*：作者决定 delayed-only 或扩到 proxy 场景，回应 Peter 后即可合。
 
 ## 效果评估
 无本日新增 benchmark；为统计记账正确性修复（修复使 sched_delayed 任务迁移期间的睡眠时长不再被误计入 run_delay）。

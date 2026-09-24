@@ -53,7 +53,7 @@ layout: article
 - **K Prateek Nayak（AMD 调度资深开发者）**：给出 Reviewed-by + Tested-by，表明代码审阅通过且已实测验证，无异议。
 
 ## 合入评估
-likelihood=high。统计类缺陷修复、影响面清晰、已有资深开发者审阅并实测背书，v2 无争议。next_action：等待 sched/stats 维护者（或 tip 树的 sched/core 维护者）pickup 合入。
+*likelihood=high*。统计类缺陷修复、影响面清晰、已有资深开发者审阅并实测背书，v2 无争议。*next_action*：等待 sched/stats 维护者（或 tip 树的 sched/core 维护者）pickup 合入。
 
 ## 效果评估
 无具体数字；修复定性为消除 `run_delay` 的多计数，使统计回归真实（K Prateek 已实测验证）。

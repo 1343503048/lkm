@@ -61,7 +61,7 @@ layout: article
 - 分歧点：能耗部分去留与「优化 vs trade-off」的属性之争无人回应。
 
 ## 合入评估
-likelihood=medium。RFC 性质、有 Vincent 此前 review 与 Kayra 本轮的连续置疑，作者尚未回应；能耗敏感场景的正当性存疑（与「面向嵌入式」动机冲突）。blocking_issues：能耗部分被整体移除的正当性未论证、无标准性能数据支撑、作者未回应本轮置疑。next_action：作者回应 Kayra（标准工具测量 + 能耗取舍论证），或收紧为特定小众场景的明确定位。
+*likelihood=medium*。RFC 性质、有 Vincent 此前 review 与 Kayra 本轮的连续置疑，作者尚未回应；能耗敏感场景的正当性存疑（与「面向嵌入式」动机冲突）。*blocking_issues*：能耗部分被整体移除的正当性未论证、无标准性能数据支撑、作者未回应本轮置疑。*next_action*：作者回应 Kayra（标准工具测量 + 能耗取舍论证），或收紧为特定小众场景的明确定位。
 
 ## 效果评估
 本日讨论未带新数据；Kayra 明确点出作者自制测量方式存疑。

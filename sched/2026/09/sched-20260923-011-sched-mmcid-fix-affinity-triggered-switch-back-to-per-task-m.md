@@ -22,7 +22,7 @@
 - 无 NAK；分歧仅在测试覆盖的完备性上，作者已正面接住。
 
 ## 合入评估
-likelihood=medium。方向获 rseq 维护者认可，作者已承诺补 selftest 并发 v2；但 v2 与测试尚未落地，未见最终 Ack。blocking_issues：selftest 尚未提交；v2 未发。next_action：作者提交带 selftest 的 v2，回应 Mathieu 关于既有测试的询问。
+*likelihood=medium*。方向获 rseq 维护者认可，作者已承诺补 selftest 并发 v2；但 v2 与测试尚未落地，未见最终 Ack。*blocking_issues*：selftest 尚未提交；v2 未发。*next_action*：作者提交带 selftest 的 v2，回应 Mathieu 关于既有测试的询问。
 
 ## 效果评估
 无性能/复现数据，属正确性修复与测试覆盖讨论。

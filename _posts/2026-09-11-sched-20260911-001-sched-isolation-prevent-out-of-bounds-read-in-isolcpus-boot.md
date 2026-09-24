@@ -63,7 +63,7 @@ housekeeping_isolcpus_setup() 解析 isolcpus= 时假设各 flag 以逗号分隔
 补丁仅 2 行：在内层循环与 `str++` 之间加 `if (!*str) break;`——到达字符串末尾时干净退出解析循环，不再越过 NULL 终结符。diff 见 kernel/sched/isolation.c 的 housekeeping_isolcpus_setup()，在 `pr_info("isolcpus: Skipped unknown flag %.*s\n", ...)` 之后插入边界检查。
 
 ## 版本演进与当前进展
-current_version: v16（指所属 multiqueue CPU isolation 系列的版本；修复本身的代码内容相对独立投递版无变化）。
+*current_version: v16（指所属 multiqueue CPU isolation 系列的版本；修复本身的代码内容相对独立投递版无变化）*。
 
 - v1（2026-05-23，独立投递，msgid `<20260523210214.593704-1-atomlin@atomlin.com>`）：修复越界读，Valentin Schneider 给出 Reviewed-by，长期无进展。
 - 09-10：作者宣布把修复折叠进 multiqueue CPU isolation v16 作为系列内前置补丁，承诺保留 R-b、Fixes 与 Cc stable（见 sched-20260910-015）。
@@ -74,7 +74,7 @@ current_version: v16（指所属 multiqueue CPU isolation 系列的版本；修�
 - 本日缓存内没有对 v16 4/9 的新讨论；该系列整体（multiqueue CPU isolation，9 个补丁、已迭代 16 版）的维护者表态情况在当日缓存中不可见，未获取到。
 
 ## 合入评估
-likelihood=medium：修复本身内容简单、带 R-b 与 stable 标记，但合入时点仍绑定在迭代了 16 版尚未进树的 v16 系列上。blocking_issues：与 sched-20260910-015 相同——修复跟着一个尚未被收取的大系列走，bisect 基线取决于系列排序；Valentin 对「折叠进 v16」处置方式本身的表态仍未获取到。next_action：跟踪 v16 系列在 sched 树的收取情况，确认 4/9 的 bisect 位置与其 Fixes 指向的 commit 顺序成立。
+*likelihood=medium*：修复本身内容简单、带 R-b 与 stable 标记，但合入时点仍绑定在迭代了 16 版尚未进树的 v16 系列上。*blocking_issues*：与 sched-20260910-015 相同——修复跟着一个尚未被收取的大系列走，bisect 基线取决于系列排序；Valentin 对「折叠进 v16」处置方式本身的表态仍未获取到。*next_action*：跟踪 v16 系列在 sched 树的收取情况，确认 4/9 的 bisect 位置与其 Fixes 指向的 commit 顺序成立。
 
 ## 效果评估
 暂无效果数据：线程内没有复现报告或启动异常日志，sashiko-bot 的原始报告内容在缓存中未获取到（仅见 Reported-by 标签）。

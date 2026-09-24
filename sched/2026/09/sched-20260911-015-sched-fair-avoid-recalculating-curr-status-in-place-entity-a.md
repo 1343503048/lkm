@@ -12,7 +12,7 @@ enqueue_task_fair() 里 `curr = (cfs_rq->curr == se)` 为真时走 place_entity(
 - 作者验证：此前在 v1/v2 上做过 WARN_ON_ONCE 测试，该情况从未命中（自述测试量有限）；接受 PeterZ 方向，v3 将直接删除死代码。
 
 ## 版本演进与当前进展
-current_version: v2（v1 cover msgid `<20260824125223.508178-1-kayracizmeci@gmail.com>`、v2 2/2 msgid `<60fd4fc5d17b706766a428b63760d1f69e6d11bb.1787737648.git.kayracizmeci@gmail.com>`，均 08-24 前后发出；当日入缓存 5 封均为讨论）。
+*current_version: v2（v1 cover msgid `<20260824125223.508178-1-kayracizmeci@gmail.com>`、v2 2/2 msgid `<60fd4fc5d17b706766a428b63760d1f69e6d11bb.1787737648.git.kayracizmeci@gmail.com>`，均 08-24 前后发出；当日入缓存 5 封均为讨论）*。
 
 - v1/v2（08-24 前后）：发出后无人回复，直至 09-11 作者 gentle ping；
 - 09-11：Vincent 与 PeterZ 相继表态，作者接受 PeterZ 的删除方向，承诺「今天或明天发 v3」。
@@ -24,7 +24,7 @@ current_version: v2（v1 cover msgid `<20260824125223.508178-1-kayracizmeci@gmai
 - 分歧焦点已从「怎么优化」转为「删多少」：PeterZ 主张全删，v3 形态待验证。
 
 ## 合入评估
-likelihood=medium：PeterZ 给出了明确方向（删除不可达分支）且作者接受；但「分支不可达」的论证尚需 PeterZ 08-13 邮件的完整推理获得认可，v3 未发出。blocking_issues：v3 未投递；删除后 place_entity 的 curr 分支语义（注释里遗留的 "XXX comment on the curr thing"）如何处理未说明；需要确认 enqueue 路径确无 curr == se 的隐藏入口（如 core-sched/force 组合）。next_action：作者发 v3（删除死代码），附 WARN_ON_ONCE 断言版测试结果佐证不可达。
+*likelihood=medium*：PeterZ 给出了明确方向（删除不可达分支）且作者接受；但「分支不可达」的论证尚需 PeterZ 08-13 邮件的完整推理获得认可，v3 未发出。*blocking_issues*：v3 未投递；删除后 place_entity 的 curr 分支语义（注释里遗留的 "XXX comment on the curr thing"）如何处理未说明；需要确认 enqueue 路径确无 curr == se 的隐藏入口（如 core-sched/force 组合）。*next_action*：作者发 v3（删除死代码），附 WARN_ON_ONCE 断言版测试结果佐证不可达。
 
 ## 效果评估
 作者自评收益为「1 次 avg_vruntime_weight() 的增减，不可测量」（"not measurable in any means"）；PeterZ 视整补丁为 no-op。无任何 benchmark 数字；效果评估应视为可忽略的性能影响 + 死代码清理。

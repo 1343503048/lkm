@@ -57,7 +57,7 @@ layout: article
 - 无反对意见。
 
 ## 合入评估
-likelihood=medium（维持 sched-20260921-007 判断）。测试佐证补丁方向正确、问题 commit 已定位，但当日未见维护者最终合入表态。blocking_issues 见 sched-20260921-007；next_action：等待维护者基于定位结论收取或要求改版。
+*likelihood=medium*（维持 sched-20260921-007 判断）。测试佐证补丁方向正确、问题 commit 已定位，但当日未见维护者最终合入表态。blocking_issues 见 sched-20260921-007；*next_action*：等待维护者基于定位结论收取或要求改版。
 
 ## 效果评估
 无量化数字；Zhongqiu 给出问题引入 commit 的二分定位（`db80ad776cd2`）与因果链条，佐证修复必要性。

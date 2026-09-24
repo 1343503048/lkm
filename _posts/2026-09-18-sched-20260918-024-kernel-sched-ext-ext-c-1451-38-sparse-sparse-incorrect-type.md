@@ -57,7 +57,7 @@ sparse（v0.6.5-rc1，sparc64-linux-gcc 15.2.0，sparc-randconfig）在 master�
 - 无维护者回应。属 0-day robot 报告。
 
 ## 合入评估
-likelihood=low。纯 W=1 静态告警、无运行时影响且无认领人。blocking_issues：无认领者。next_action：sched_ext maintainer（Tejun）或相关作者认领，补齐 `__rcu` 标注并加 Fixes/Closes 标签提交修复。
+*likelihood=low*。纯 W=1 静态告警、无运行时影响且无认领人。*blocking_issues*：无认领者。*next_action*：sched_ext maintainer（Tejun）或相关作者认领，补齐 `__rcu` 标注并加 Fixes/Closes 标签提交修复。
 
 ## 效果评估
 无性能/运行时影响；sparse W=1 编译期地址空间告警。

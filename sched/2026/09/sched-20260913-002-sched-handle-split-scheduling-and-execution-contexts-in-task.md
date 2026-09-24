@@ -17,7 +17,7 @@ v5 四补丁（基线 cba2348ab114391f5b1a00fa65c5b739f13f0563）：
 RT watchdog 不再在本系列内：作者 09-13 凌晨在 v4 4/5（sched/rt: Fix RT watchdog accounting for proxy execution）回帖说明，新 WIP 从调度核心暴露通用 proxy 生命周期事件（`enum sched_proxy_event { START, BLOCK, STOP }` + `sched_class::proxy_event()` 回调），RT 类消费这些事件维持 watchdog 区间语义——watchdog 记 rq->curr、RT service 跟 effective donor class；mutex handoff 不再直接调回调，等执行任务下次进 __schedule() 持 rq 锁时上报 STOP。该 WIP 需要先与 Zhidao Su 的 proxy-walk 环检测工作调和（新的 retained blocked_donor 遍历假设链无环），并与 Andrea 的 sched_ext/proxy 工作处理 task_tick() 所有权重叠，因此下一版将是含补丁 1、2、3 和 core-slice 补丁的 4 补丁系列，RT 独立推进。
 
 ## 版本演进与当前进展
-current_version: v5（2026-09-13 发出）。Changes since v4（cover letter 自述）：
+*current_version: v5（2026-09-13 发出）*。Changes since v4（cover letter 自述）：
 
 - FAIR task tick 重排为一个 donor 块 + 一个执行上下文块，NUMA 与 cache 工作进后者（落实 Peter 09-09 的重排要求）；
 - task_tick_scx() 保持 donor-gated，等待 sched_ext/proxy 集成单独推进；
@@ -33,7 +33,7 @@ current_version: v5（2026-09-13 发出）。Changes since v4（cover letter 自
 - 未解决焦点：RT watchdog 的 proxy_event 生命周期设计还没有任何维护者意见；它与 Zhidao Su 环检测工作的调和是作者自认的前置条件。
 
 ## 合入评估
-likelihood: medium（v4 分析的 medium 维持：作者对全部 blocking 意见交付了 v5，但 Peter 尚未复核，且 1/4 的签名改动是高侵入面改动）。blocking_issues：Peter 对 v5（尤其 1/4 签名改动与 4/4 谓词）未表态；补丁 1 与补丁 2 是否合并待定；RT watchdog 生命周期设计未成形且需与 proxy-walk 环检测调和；sched_ext/proxy 混合运行时矩阵仍未验证（当前 Kconfig 两者互斥）。next_action：作者改写 1/4 commit message 后等 Peter 复核；RT 工作与环检测调和后单独立系列。
+*likelihood: medium*（v4 分析的 medium 维持：作者对全部 blocking 意见交付了 v5，但 Peter 尚未复核，且 1/4 的签名改动是高侵入面改动）。*blocking_issues*：Peter 对 v5（尤其 1/4 签名改动与 4/4 谓词）未表态；补丁 1 与补丁 2 是否合并待定；RT watchdog 生命周期设计未成形且需与 proxy-walk 环检测调和；sched_ext/proxy 混合运行时矩阵仍未验证（当前 Kconfig 两者互斥）。*next_action*：作者改写 1/4 commit message 后等 Peter 复核；RT 工作与环检测调和后单独立系列。
 
 ## 效果评估
 无 benchmark 数据。v5 cover 给出的验证（作者自述）：

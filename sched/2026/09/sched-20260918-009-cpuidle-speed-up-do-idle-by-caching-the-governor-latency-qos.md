@@ -19,7 +19,7 @@ Yaxiong Tian 的 cpuidle 系列（v2，6 补丁）试图通过缓存 cpuidle gov
 - 分歧点：优化目标是否真实存在、复杂度是否值得；作者基本放弃，无继续推进迹象。
 
 ## 合入评估
-likelihood=low。维护者对动机与收益均不认可，作者本人已倾向放弃。blocking_issues：缺乏可见收益数据；维护者明确 unconvinced。next_action：若无作者提供更硬的收益证据，系列将停滞；否则作者需先给出真实 workload 下的 do_idle() 路径开销数据。
+*likelihood=low*。维护者对动机与收益均不认可，作者本人已倾向放弃。*blocking_issues*：缺乏可见收益数据；维护者明确 unconvinced。*next_action*：若无作者提供更硬的收益证据，系列将停滞；否则作者需先给出真实 workload 下的 do_idle() 路径开销数据。
 
 ## 效果评估
 无有效性能数据——作者只测了无负载场景，且 menu_update() 被编译器优化掉、无法用 ftrace 量化，收益不可见（作者自述"主观，未见有效数据"）。

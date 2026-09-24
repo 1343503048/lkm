@@ -17,7 +17,7 @@ Kayra Cizmeci 对 08-22 投出的注释 typo 修复补丁发 gentle ping（"This
 未获取到任何维护者表态——这正是作者发 ping 的原因。
 
 ## 合入评估
-likelihood=unknown：纯 typo 修复通常会被顺手合入，但三周无响应、无任何维护者表态，无法判断收取时点。blocking_issues：无实质技术卡点，仅缺维护者收取。next_action：等待维护者收取，此类 trivial 修复通常随下一批 sched/fair 补丁一并合入。
+*likelihood=unknown*：纯 typo 修复通常会被顺手合入，但三周无响应、无任何维护者表态，无法判断收取时点。*blocking_issues*：无实质技术卡点，仅缺维护者收取。*next_action*：等待维护者收取，此类 trivial 修复通常随下一批 sched/fair 补丁一并合入。
 
 ## 效果评估
 无（纯注释修正）。
