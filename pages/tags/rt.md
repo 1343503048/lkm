@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 21
+article_count: 22
 ---
 
+- [sched-20260924-001](/lkm/2026/09/24/sched-20260924-001-sched-rt-rebuild-domains-only-after-successful-rt-sysctl-wri.html) `fix/medium/under_review` — sched/rt: Rebuild domains only after successful RT sysctl writes
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl
 - [sched-20260914-003](/lkm/2026/09/14/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks

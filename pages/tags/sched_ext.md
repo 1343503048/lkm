@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 154
+article_count: 160
 ---
 
+- [sched-20260924-003](/lkm/2026/09/24/sched-20260924-003-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.html) `fix/critical/under_review` — sched_ext: Fix CPU hotplug hang when a dying CPU's tasks sit in the BPF scheduler
+- [sched-20260924-004](/lkm/2026/09/24/sched-20260924-004-sched-ext-avoid-relocking-dsq-during-remote-dsq-moves.html) `fix/low/merged_tip` — sched_ext: Avoid relocking DSQ during remote DSQ moves
+- [sched-20260924-005](/lkm/2026/09/24/sched-20260924-005-sched-ext-update-scx-dispatch-dequeue-comments.html) `fix/none/under_review` — sched_ext: Update scx_dispatch_dequeue() comments
+- [sched-20260924-006](/lkm/2026/09/24/sched-20260924-006-tools-sched-ext-increment-nr-queued-when-a-task-is-queued-to.html) `fix/low/under_review` — tools/sched_ext: Increment nr_queued when a task is queued to user space
+- [sched-20260924-007](/lkm/2026/09/24/sched-20260924-007-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260924-016](/lkm/2026/09/24/sched-20260924-016-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260923-002](/lkm/2026/09/23/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260923-013](/lkm/2026/09/23/sched-20260923-013-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare

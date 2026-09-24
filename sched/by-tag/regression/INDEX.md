@@ -1,7 +1,8 @@
 # tag: regression
 
-共 18 篇
+共 19 篇
 
+- [sched-20260924-009](../../2026/09/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，Fastpath 自动 bisect 定位到「sched/eevdf: Move to a single runqueue」这个 commit；整体 schbench 中性、但个别线程配置出现
 - [sched-20260923-001](../../2026/09/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，用 Fastpath 自动化 bisect 定位到「sched/eevdf: Move to a single runqueue」这一 commit。整体 schbench 结果为中性（部分配置改善、部分回退），但个别线程配置出现 ~
 - [sched-20260912-002](../../2026/09/sched-20260912-002-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.md) `bug/medium/under_review` — nested vfork 触发 scheduling-while-atomic 的 futex bug 当日迎来关键收尾：引入问题排除逻辑的 Davidlohr Bueso 亲自回帖——「没真正测过，完全接受 Peter 的 fixlet，抱歉弄坏了东西」，解除了 09-11 遗留的「当初为何排除 vfork」疑问。修复路线（PeterZ 的 2 行改动）获当事双方认可，仅剩正式补丁未投递。本文为
 - [sched-20260911-013](../../2026/09/sched-20260911-013-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.md) `bug/medium/under_review` — Jann Horn 报告的 futex bug（原始报告 09-10 深夜入箱）当日获得快速定性与修复：nested vfork 可以使私有 futex hash 从未分配的进程进入本应持有 guard 的路径，触发 scheduling-while-atomic；Peter Zijlstra 定位到 need_futex_hash_allocate_default() 对 vfork 的排除（c

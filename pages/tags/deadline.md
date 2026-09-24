@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 19
+article_count: 20
 ---
 
+- [sched-20260924-002](/lkm/2026/09/24/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()
 - [sched-20260922-003](/lkm/2026/09/22/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.html) `fix/high/under_review` — sched: Restore the normalize_rt_tasks() cpuset_mutex exemption
 - [sched-20260922-012](/lkm/2026/09/22/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.html) `feature/none/rfc` — sched/proxy_exec: detect cycles in proxy walks
 - [sched-20260922-017](/lkm/2026/09/22/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/medium/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling

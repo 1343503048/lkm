@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 110
+article_count: 113
 ---
 
+- [sched-20260924-008](/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
+- [sched-20260924-010](/lkm/2026/09/24/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260924-014](/lkm/2026/09/24/sched-20260924-014-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260923-003](/lkm/2026/09/23/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `discussion/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
 - [sched-20260923-004](/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260923-006](/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

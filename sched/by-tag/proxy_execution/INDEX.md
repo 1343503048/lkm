@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 50 篇
+共 52 篇
 
+- [sched-20260924-007](../../2026/09/sched-20260924-007-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — - sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/18、14
+- [sched-20260924-002](../../2026/09/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.md) `fix/low/under_review` — Zhan Xusheng 的一致性修复：`prio_changed_dl()` 的 else 分支询问「p 是否应抢占当前调度上下文」，在 proxy execution 下该上下文是 `rq->donor`，但代码仍与 `rq->curr` 比较。补丁把它改为与 `rq->donor` 比较，与同 commit 已修好的 `prio_changed_rt()` 对齐。作者声明无行为变化意图，并在
 - [sched-20260923-012](../../2026/09/sched-20260923-012-futex-make-futex-ping-use-proxy-execution.md) `feature/rfc` — - sched-20260917-012：Suleiman Souhlal（Google，与 John Stultz 联合）发布 RFC 系列（12 枚），引入名为 PING（"PI Next Generation"）的新型 PI futex：可被偷取、内部用 Proxy Execution 而非 rtmutex，目标是让争锁者有机会不阻塞直接抢锁、并为 fair 任务带来优先级继承。Peter 
 - [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — - sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审落地——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/
 - [sched-20260922-013](../../2026/09/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/superseded` — 本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。

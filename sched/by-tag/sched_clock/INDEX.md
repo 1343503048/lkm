@@ -1,7 +1,8 @@
 # tag: sched_clock
 
-共 10 篇
+共 11 篇
 
+- [sched-20260924-015](../../2026/09/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.md) `discussion/low/rfc` — - sched-20260921-009：Dongli Zhang 的「延迟被抢占远程 vCPU 的 task clock 更新」RFC 被 KVM 维护者 Sean Christopherson 质疑——方案关键约束「hypervisor 在清除 preempted 标记前发布最新 stealtime」在旧版 KVM 上无法保证，作者尚未回应。 - sched-20260924-015（今天，增
 - [sched-20260921-009](../../2026/09/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.md) `discussion/low/rfc` — 增量更新：Dongli Zhang 的"延迟被抢占远程 vCPU 的 task clock 更新" RFC 昨日收到 KVM 维护者 Sean Christopherson 的技术质疑——该方案的关键约束"hypervisor 在清除 preempted 标记前发布最新 stealtime"在旧版 KVM 上无法保证，作者尚未回应。合入前景趋弱。
 - [sched-20260914-009](../../2026/09/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — 增量更新，v2 全貌见 sched-20260912-004。09-14 作者 Shubhang Kaushik 自报 v2 的 DL 部分有缺陷：非 tick 重调度且 same-task repick SCHED_DEADLINE 时 `next == prev` 跳过 put_prev_task_dl()，update_curr_dl() 可能未对 exec_start 后的执行记账，SNT
 - [sched-20260912-004](../../2026/09/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）按 Peter Zijlstra 的设计发出 v2：把 set_next_task() 的 `bool first` 换成 SNT_NORMAL/SNT_PICK/SNT_REPICK 枚举，same-task repick 时 fair 与 DL 都重启 hrtick，并删除 fair 特有的 rq 状态与 runnable 计数条件。首份量化数据

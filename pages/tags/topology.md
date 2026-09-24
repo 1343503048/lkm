@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 93
+article_count: 94
 ---
 
+- [sched-20260924-008](/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260923-006](/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260922-018](/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/low/merged_tip` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()
 - [sched-20260921-004](/lkm/2026/09/21/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

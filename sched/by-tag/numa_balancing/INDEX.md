@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 32 篇
+共 33 篇
 
+- [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—
 - [sched-20260923-008](../../2026/09/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — - sched-20260918-013：Gregory Price 的 NUMA tiering 修复 v2 系列 4/4（去掉 VMA PID 活动对 promotion 的门控）获 Peter Zijlstra 有条件点头（等 Mel Gorman 确认）；David Hildenbrand 批评 `promo_only()` 计算太 messy；作者回应已试 3~4 种写法、这是最不难看的
 - [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，P
 - [sched-20260919-009](../../2026/09/sched-20260919-009-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 增量更新：Gregory Price 的 NUMA tiering 修复系列（v2 4-patch，整体目标是移除 VMA 扫描过滤器对 promotion 的门控）本日在 cover 信层面收到 Zi Yan 的测试范围质询——询问是否用了 numactl 等 NUMA 控制；Gregory 澄清这些修复源于 Joshua 的 tiered memcg limits 补丁测试时发现的"numa 

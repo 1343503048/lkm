@@ -1,7 +1,8 @@
 # tag: topology
 
-共 93 篇
+共 94 篇
 
+- [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—
 - [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，P
 - [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
 - [sched-20260921-008](../../2026/09/sched-20260921-008-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/under_review` — 增量更新：Guopeng Zhang 的 cpuset `update_prstate()` 冗余调度域重建删除补丁（v2）昨日获 cpuset 维护者 Waiman Long 的 Reviewed-by，评审背书到位，合入概率高。

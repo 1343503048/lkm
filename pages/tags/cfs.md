@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 140
+article_count: 146
 ---
 
+- [sched-20260924-009](/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20260924-010](/lkm/2026/09/24/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260924-011](/lkm/2026/09/24/sched-20260924-011-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/under_review` — sched: Clarify WF_SYNC wakeup semantics
+- [sched-20260924-012](/lkm/2026/09/24/sched-20260924-012-sched-core-account-psi-irq-time-to-the-execution-context-not.html) `fix/low/merged_tip` — sched/core: Account PSI IRQ time to the execution context, not the scheduling context
+- [sched-20260924-013](/lkm/2026/09/24/sched-20260924-013-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks
+- [sched-20260924-015](/lkm/2026/09/24/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260923-003](/lkm/2026/09/23/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `discussion/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
 - [sched-20260923-005](/lkm/2026/09/23/sched-20260923-005-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/under_review` — sched: Clarify WF_SYNC wakeup semantics
 - [sched-20260923-007](/lkm/2026/09/23/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks

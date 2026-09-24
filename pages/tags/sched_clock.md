@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_clock"
 title: "标签: sched_clock"
-article_count: 10
+article_count: 11
 ---
 
+- [sched-20260924-015](/lkm/2026/09/24/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260921-009](/lkm/2026/09/21/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260914-009](/lkm/2026/09/14/sched-20260914-009-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks
 - [sched-20260912-004](/lkm/2026/09/12/sched-20260912-004-sched-restart-hrtick-after-same-task-repicks.html) `fix/low/under_review` — sched: Restart hrtick after same-task repicks

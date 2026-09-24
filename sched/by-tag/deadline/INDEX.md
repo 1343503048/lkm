@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 19 篇
+共 20 篇
 
+- [sched-20260924-002](../../2026/09/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.md) `fix/low/under_review` — Zhan Xusheng 的一致性修复：`prio_changed_dl()` 的 else 分支询问「p 是否应抢占当前调度上下文」，在 proxy execution 下该上下文是 `rq->donor`，但代码仍与 `rq->curr` 比较。补丁把它改为与 `rq->donor` 比较，与同 commit 已修好的 `prio_changed_rt()` 对齐。作者声明无行为变化意图，并在
 - [sched-20260922-017](../../2026/09/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reje
 - [sched-20260922-012](../../2026/09/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 blo
 - [sched-20260922-003](../../2026/09/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.md) `fix/high/under_review` — Donggeun Yoo 修复 sysrq-n（Nice All RT Tasks）在存在 SCHED_DEADLINE 任务时于原子上下文睡眠的死锁/挂起：`normalize_rt_tasks()` 持 `tasklist_lock` 走 `__sched_setscheduler()`，而后者对 deadline 策略会取 `cpuset_mutex`（普通 `mutex_lock`），导致

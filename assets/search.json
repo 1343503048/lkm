@@ -11648,6 +11648,275 @@
     "tldr": "- sched-20260922-006：Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun Heo 回帖建议 `SCX_OPS_OPEN()` 直接以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()` 来减少重复。 - sched-2"
   },
   {
+    "title": "sched/rt: Rebuild domains only after successful RT sysctl writes",
+    "id": "sched-20260924-001",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "Joseph Salisbury"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-001-sched-rt-rebuild-domains-only-after-successful-rt-sysctl-wri.html",
+    "tldr": "Joseph Salisbury 的修复补丁：把 `rebuild_sched_domains()` 从「每次 RT sysctl 写入前无条件执行」改为「仅当写入成功且值真实变化时」才执行，消除 RT 周期/运行时间参数每次读取都触发全量调度域重建的开销。本日 Chengfeng Lin 给出独立实测：在 v7.2 上该补丁把 RT sysctl 读延迟从约 8.57us 降到 0.264us（-96.9%），并确认写入语义不变。属副作用可控的纯优化修复，离合入只差一轮维护者收尾。"
+  },
+  {
+    "title": "sched/deadline: Compare against the donor in prio_changed_dl()",
+    "id": "sched-20260924-002",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "deadline",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html",
+    "tldr": "Zhan Xusheng 的一致性修复：`prio_changed_dl()` 的 else 分支询问「p 是否应抢占当前调度上下文」，在 proxy execution 下该上下文是 `rq->donor`，但代码仍与 `rq->curr` 比较。补丁把它改为与 `rq->donor` 比较，与同 commit 已修好的 `prio_changed_rt()` 对齐。作者声明无行为变化意图，并在 `CONFIG_SCHED_PROXY_EXEC` 开/关两种配置下验证（关闭时 `build_policy.o` 字节级一致）。本日新发、无 review。"
+  },
+  {
+    "title": "sched_ext: Fix CPU hotplug hang when a dying CPU's tasks sit in the BPF scheduler",
+    "id": "sched-20260924-003",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "sched_ext",
+      "hang"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-003-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.html",
+    "tldr": "Tejun Heo（sched_ext 维护者）的 CPU 热插拔挂起修复（`sched_ext/for-7.3-fixes`）：正关机的 CPU 若还有任务停在 user DSQ 或被 BPF 调度器持有，`cpu_down()` 会永久挂起或直到 watchdog 弹掉调度器。补丁在 rq 下线时把非本地 DSQ 上的任务全部重新入队到本地 DSQ，并让 `ops.dispatch()` 一直运行到 rq 真正离线。带双 `Fixes:` 与 `Cc: stable # v6.12+`（30 insertions / 9 deletions），影响 sched_ext 的 CPU 热插拔正"
+  },
+  {
+    "title": "sched_ext: Avoid relocking DSQ during remote DSQ moves",
+    "id": "sched-20260924-004",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Usama Arif"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-004-sched-ext-avoid-relocking-dsq-during-remote-dsq-moves.html",
+    "tldr": "Usama Arif 的小优化补丁：`scx_bpf_dsq_move*()` 把任务从非本地 DSQ 移到远端本地 DSQ 时，`move_task_between_dsqs()` 会先丢掉 `src_dsq->lock`（但保留 `p->scx.dsq`），随后的 `deactivate_task()` 又在 `scx_dispatch_dequeue()` 里重新获取同一把锁来 unlink。补丁在释放锁前直接调用 `dispatch_dequeue_locked()`，让后续 `deactivate_task()` 走免锁的 `!dsq` 路径，省掉一次冗余加锁。Tejun Heo 已"
+  },
+  {
+    "title": "sched_ext: Update scx_dispatch_dequeue() comments",
+    "id": "sched-20260924-005",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Usama Arif"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-005-sched-ext-update-scx-dispatch-dequeue-comments.html",
+    "tldr": "Usama Arif 的纯注释修正（v2）：`scx_dispatch_dequeue()` 的两段注释描述的是过时的转移路径与竞争对象——`!dsq` 分支如今也因「远端消费」而带上 `holding_cpu`，`dsq` 分支的竞争对方其实是 `unlink_dsq_and_switch_rq_lock()` 而非 `dispatch_to_local_dsq()`。v2 按 Tejun Heo 意见改写了这两段注释并重排为 80 列，已获 Andrea Righi 的 Reviewed-by。无功能变化。"
+  },
+  {
+    "title": "tools/sched_ext: Increment nr_queued when a task is queued to user space",
+    "id": "sched-20260924-006",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Wanwu Li"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-006-tools-sched-ext-increment-nr-queued-when-a-task-is-queued-to.html",
+    "tldr": "Wanwu Li（麒麟）的 `scx_userland` 示例调度器修复（1/3）：`enqueue_task_in_user_space()` 从未递增 `nr_queued`，导致 `userland_update_idle()` 里「`if (nr_queued || nr_scheduled)`」的 idle 唤醒判定永远退化为只看 `nr_scheduled`——坐在 enqueued map 里、尚未被用户态调度器 drain 的任务对即将 idle 的 CPU 不可见。补丁在 push 成功时递增 `nr_queued`（用户态侧已按文档在 drain 后清零）。带 `Fixes"
+  },
+  {
+    "title": "sched: Make proxy execution compatible with sched_ext",
+    "id": "sched-20260924-007",
+    "date": "2026-09-24",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-007-sched-make-proxy-execution-compatible-with-sched-ext.html",
+    "tldr": "- sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/18、14/18 的前提被指「不可能发生」，15/18 给了明确可接受的改法。 - sched-20260916-002：Peter 继续逐 patch 评审 v13，焦点在 08/18 的 `WF_ON_RQ"
+  },
+  {
+    "title": "sched/topology: Introduce a NUMA distance matrix with unique distance values",
+    "id": "sched-20260924-008",
+    "date": "2026-09-24",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "numa_balancing",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html",
+    "tldr": "- sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论——Tim Chen 提出用 `llc_next` 数组替代「人造 LLC 距离矩阵」（更省存储），Jianyong 澄清系列目标是系统级 LLC 亲和排序、去重只作用于节点层。路线未收敛。 - sch"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20260924-009",
+    "date": "2026-09-24",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "regression"
+    ],
+    "authors": [
+      "Aishwarya Rambhadran"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "- sched-20260923-001：ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，Fastpath 自动 bisect 定位到「sched/eevdf: Move to a single runqueue」这个 commit；整体 schbench 中性、但个别线程配置出现 ~30% 的 p99 回退，正待 Peter Zijlstra 定性是否为预期取舍。 - sched-20260924-009（今天，增量更新）：社区把怀疑点收敛到 **WA_WEIGHT / ta"
+  },
+  {
+    "title": "Cache-aware scheduling does not work well with amd big/little cores",
+    "id": "sched-20260924-010",
+    "date": "2026-09-24",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Klaus Kusche"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html",
+    "tldr": "- sched-20260916-018：Klaus Kusche 反馈 Intel（Chen Yu）侧最新补丁后，其 AMD big/little 平台上 cache-aware 调度性能已基本追平无 cache-aware 内核、比早期 cache-aware 内核快约 2%，核心柱状图未见明显错放进程——偏正面的修复确认。 - sched-20260924-010（今天，增量更新）：Tim Chen 给出 Chen Yu 补丁之外的**替代补丁**（`sched/cache: Honor asym packing over cache aware scheduling on hybrid"
+  },
+  {
+    "title": "sched: Clarify WF_SYNC wakeup semantics",
+    "id": "sched-20260924-011",
+    "date": "2026-09-24",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-011-sched-clarify-wf-sync-wakeup-semantics.html",
+    "tldr": "- sched-20260903-016：Shubhang Kaushik 的 RFC 1/2 新增 `Documentation/scheduler/sched-wake-affinity.rst`，首次把 fair 类的 `WF_SYNC` 唤醒放置与抢占行为成文；唯一回帖 Vineeth Reddy 反对的不是结论而是「文档逐字复述实现、易过时」。 - sched-20260918-001：v2（去掉实现细节、修正 waitqueue API「wakee 不会被迁移」的错误保证）；Peter Zijlstra 质疑整篇文档是「bitrot 温床」、建议改内联注释，Shrikanth He"
+  },
+  {
+    "title": "sched/core: Account PSI IRQ time to the execution context, not the scheduling context",
+    "id": "sched-20260924-012",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "psi",
+      "cfs"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-012-sched-core-account-psi-irq-time-to-the-execution-context-not.html",
+    "tldr": "- sched-20260918-018 / sched-20260919-005 / sched-20260922-014：Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁，与 Peter Zijlstra 多轮往返后被确认合入。 - sched-20260924-012（今天，合并确认）：tip-bot2 发出正式合入通知——该补丁已进 tip 的 `sched/urgent` 分支，提交 `a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3`，作者 Zhan Xusheng，committer Ingo Molnar，同时带 Pet"
+  },
+  {
+    "title": "sched/fair: Randomize equally shallow idle CPU picks",
+    "id": "sched-20260924-013",
+    "date": "2026-09-24",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "idle"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-013-sched-fair-randomize-equally-shallow-idle-cpu-picks.html",
+    "tldr": "- sched-20260916-015（v1）/ sched-20260918-004、sched-20260921-005（v2）：Christian Loehle 的 idle CPU 选择随机化系列——消除 slow-path idle 扫描「总是挑第一个满足条件的 CPU」带来的扫描顺序偏置，v2 起标题改为「Randomize equally shallow idle CPU picks」，并对 review 关心的「未发布 idle 状态」候选做了量化回应（占比仅 0.1-0.5%）。 - sched-20260924-013（今天，增量更新）：Muhammad Usama An"
+  },
+  {
+    "title": "cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()",
+    "id": "sched-20260924-014",
+    "date": "2026-09-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "load_balance"
+    ],
+    "authors": [
+      "Rafael J. Wysocki"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-014-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html",
+    "tldr": "- sched-20260922-009：Rafael Wysocki 修复 `d2d5c129d07e` 引入的回归——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致负载均衡器意外出现 cpufreq 压力信号；补丁新增 `.scale_freq_ref()` 回调让 intel_pstate 仅在容量参考频率已知时才回落。 - sched-20260924-014（今天，增量更新）：Chen Yu 在 4LLCs/节点 Xeon 上跑 cache"
+  },
+  {
+    "title": "sched/core: Defer preempted remote vCPU task clock updates",
+    "id": "sched-20260924-015",
+    "date": "2026-09-24",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_clock"
+    ],
+    "authors": [
+      "Dongli Zhang"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html",
+    "tldr": "- sched-20260921-009：Dongli Zhang 的「延迟被抢占远程 vCPU 的 task clock 更新」RFC 被 KVM 维护者 Sean Christopherson 质疑——方案关键约束「hypervisor 在清除 preempted 标记前发布最新 stealtime」在旧版 KVM 上无法保证，作者尚未回应。 - sched-20260924-015（今天，增量更新）：Dongli Zhang 回应 Sean 的质疑，承认约束确实不成立并详述失败模式——旧版 KVM 会先清 `st->preempted`、后发布 stealtime，导致客户机观察到 `!"
+  },
+  {
+    "title": "tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts",
+    "id": "sched-20260924-016",
+    "date": "2026-09-24",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Fuyu Zhao"
+    ],
+    "url": "/lkm/2026/09/24/sched-20260924-016-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html",
+    "tldr": "- sched-20260922-006：Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查；Tejun Heo 建议 `SCX_OPS_OPEN()` 以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()` 减少重复。 - sched-20260923-013：v2 采纳 Tejun 建议，`SCX_OPS_OPEN()` 内部以 0 opts 调 `SCX_OPS_O"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

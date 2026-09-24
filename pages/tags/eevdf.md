@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 31
+article_count: 32
 ---
 
+- [sched-20260924-009](/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260923-001](/lkm/2026/09/23/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20260921-001](/lkm/2026/09/21/sched-20260921-001-improving-latency-of-short-slice-tasks.html) `feature/none/rfc` — Improving latency of short slice tasks

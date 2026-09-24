@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 110 篇
+共 113 篇
 
+- [sched-20260924-014](../../2026/09/sched-20260924-014-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — - sched-20260922-009：Rafael Wysocki 修复 `d2d5c129d07e` 引入的回归——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致负载均衡器意外出现 cpufreq 压力信号；补丁新增 `.scale_freq_re
+- [sched-20260924-010](../../2026/09/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — - sched-20260916-018：Klaus Kusche 反馈 Intel（Chen Yu）侧最新补丁后，其 AMD big/little 平台上 cache-aware 调度性能已基本追平无 cache-aware 内核、比早期 cache-aware 内核快约 2%，核心柱状图未见明显错放进程——偏正面的修复确认。 - sched-20260924-010（今天，增量更新）：Tim 
+- [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—
 - [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，P
 - [sched-20260923-004](../../2026/09/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — - sched-20260922-009：Rafael Wysocki 修复 `d2d5c129d07e` 引入的 regression——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致调度器负载均衡中意外出现 cpufreq 压力信号。补丁新增 dri
 - [sched-20260923-003](../../2026/09/sched-20260923-003-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `discussion/under_review` — Qais Yousef 早期 capacity-aware 系列（v2 04/13）中的清理补丁——把 `fits_capacity()` 的魔数 margin（`cap*1280 < max*1024`）换成 per-rq 的 `fits_capacity_threshold`——在今日被 Zhan Xusheng 指出一个与主线交互的隐患：`fits_capacity()` 改了签名后，新合入

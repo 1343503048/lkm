@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 31 篇
+共 32 篇
 
+- [sched-20260924-009](../../2026/09/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，Fastpath 自动 bisect 定位到「sched/eevdf: Move to a single runqueue」这个 commit；整体 schbench 中性、但个别线程配置出现
 - [sched-20260923-001](../../2026/09/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，用 Fastpath 自动化 bisect 定位到「sched/eevdf: Move to a single runqueue」这一 commit。整体 schbench 结果为中性（部分配置改善、部分回退），但个别线程配置出现 ~
 - [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方
 - [sched-20260921-001](../../2026/09/sched-20260921-001-improving-latency-of-short-slice-tasks.md) `feature/rfc` — Vincent Guittot 发出新一轮 EEVDF 短 slice 任务延迟优化系列（v1，共 8 个补丁，全部落在 `kernel/sched/fair.c`），修复 min slice 相关的若干 corner case 并首次在多短 slice 任务并发场景下做 CPU 选择优化。cyclictest 99.9 分位与最大延迟显著下降（最大延迟最高 -55%），hackbench pip

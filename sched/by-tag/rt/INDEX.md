@@ -1,7 +1,8 @@
 # tag: rt
 
-共 21 篇
+共 22 篇
 
+- [sched-20260924-001](../../2026/09/sched-20260924-001-sched-rt-rebuild-domains-only-after-successful-rt-sysctl-wri.md) `fix/medium/under_review` — Joseph Salisbury 的修复补丁：把 `rebuild_sched_domains()` 从「每次 RT sysctl 写入前无条件执行」改为「仅当写入成功且值真实变化时」才执行，消除 RT 周期/运行时间参数每次读取都触发全量调度域重建的开销。本日 Chengfeng Lin 给出独立实测：在 v7.2 上该补丁把 RT sysctl 读延迟从约 8.57us 降到 0.264us（
 - [sched-20260918-017](../../2026/09/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.md) `fix/low/under_review` — Liang Luo 提交修复：rt/dl 调度类的 `sched_stat_wait` 统计在 schedstats 运行时才开启的场景下会输出"自开机以来"的虚假等待时间（wait_max/wait_sum 被永久污染）。修复是把 fair 类既有的"零 wait_start 跳过"检查下沉到公共的 `__update_stats_wait_end()`，让所有调度类共享。值得注意的是：该补丁明
 - [sched-20260914-003](../../2026/09/sched-20260914-003-kcov-suppress-timer-and-scheduler-coverage-leaks.md) `fix/low/under_review` — 增量更新，v1/v2 全貌见 sched-20260902-016。Karl Mehltretter 发出 v3（6 补丁，其中 4/5/6 落在 kernel/sched/core.c）：相对 v2，rebase 到 mainline `22098763a10d`、按 Potapenko 意见共享 pause 与上下文切换抑制的 flag helper 并加 READ_ONCE/WRITE_ON
 - [sched-20260913-002](../../2026/09/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 related_articles（sched-20260910-003 为 v4 分析）。Hui Su 于 09-13 14:47 发出 v5（4 补丁）：按 Peter 意见把 FAIR tick 重排为「donor 块 + 执行上下文块」、砍掉 RT watchdog 补丁改为独立的生命周期回调设计、task_tick_scx() 显式 donor-gated、co

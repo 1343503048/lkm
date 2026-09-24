@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 32
+article_count: 33
 ---
 
+- [sched-20260924-008](/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260923-006](/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260923-008](/lkm/2026/09/23/sched-20260923-008-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion
 - [sched-20260919-008](/lkm/2026/09/19/sched-20260919-008-sched-numa-scan-read-only-file-mappings-in-tiering-mode.html) `fix/medium/under_review` — sched/numa: scan read-only file mappings in tiering mode
