@@ -47,20 +47,20 @@ layout: article
 ---
 
 ## TL;DR
-本文为增量更新，完整背景见 sched-20260922-006（v1）。Fuyu Zhao 发出 v2：按 Tejun Heo 的建议让 `SCX_OPS_OPEN()` 内部以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，收敛为单份展开，消除两份宏实现的重复。实现已落地，待 Tejun 复审。
+- sched-20260922-006：Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传入自定义 `bpf_object_open_opts`，同时保留 `SCX_OPS_OPEN()` 的兼容性检查。此前直接用 bpftool 生成的 `*_open_opts()` 会绕过 `SCX_OPS_OPEN()` 的兼容校验。Tejun Heo 回帖建议 `SCX_OPS_OPEN()` 直接以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()` 来减少重复。
+- sched-20260923-013（今天）：Fuyu Zhao 发出 v2，按 Tejun Heo 建议让 `SCX_OPS_OPEN()` 内部以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，收敛为单份展开，消除两份宏实现的重复。实现已落地，待 Tejun 复审。
 
 ## 背景与问题
-背景见 sched-20260922-006：sched_ext 调度器用 `SCX_OPS_OPEN()` 打开 BPF skeleton 并做内核版本兼容检查，但需要向 `bpf_object__open` 传额外 open opts 的调度器若直接用 bpftool 生成的 `*_open_opts()` 会绕过这些兼容校验。新增 `SCX_OPS_OPEN_OPTS()` 让二者兼得。
+- sched-20260922-006：`sched_ext` 调度器用 `SCX_OPS_OPEN()` 宏打开 BPF skeleton，内部做 kernel 版本兼容性检查（`hotplug_seq` 注入、`dump()` 字段存在性、`cgroup_set_bandwidth` 等）。有些调度器需要向 `bpf_object__open` 传额外 open opts，但 bpftool 生成的 `*_open_opts()` 接口会完全绕过 `SCX_OPS_OPEN()` 的兼容处理。
+- sched-20260923-013（今天）：背景无新增，沿用 v1 的问题定义。
 
 ## 技术方案
-v2 把 `__SCX_OPS_OPEN` 重构为接受 `__opts` 参数，skeleton 打开动作统一为 `__scx_name##__open_opts(__opts)`：
-
-- `SCX_OPS_OPEN_OPTS(__ops_name, __scx_name, __opts)`：内部走同一套兼容检查（`dump()` 检查、`hotplug_seq`、`SCX_ENUM_INIT`、`cgroup_set_bandwidth` 告警），打开动作传 `__opts`。
-- `SCX_OPS_OPEN()` 改为以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，消除重复（Tejun 建议，v1→v2 的唯一实质变化）。`tools/sched_ext/include/scx/compat.h` 约 +8/-5 行。
+- sched-20260922-006：把 `__SCX_OPS_OPEN` 重构为接受一个 open 表达式（`__open_expr`），新增 `SCX_OPS_OPEN_OPTS(__ops_name, __scx_name, __opts)` 宏——内部仍走同一套兼容检查（`dump()` 检查、`hotplug_seq`、`SCX_ENUM_INIT`、`cgroup_set_bandwidth` 告警），只是把 skeleton 打开动作换成 `__scx_name##__open_opts(__opts)`。`SCX_OPS_OPEN()` 保留为旧宏，展开为以 `__scx_name##__open()` 为 open 表达式。`tools/sched_ext/include/scx/compat.h` 约 +15/-5 行。
+- sched-20260923-013（今天）：v2 把 `__SCX_OPS_OPEN` 重构为接受 `__opts` 参数，skeleton 打开动作统一为 `__scx_name##__open_opts(__opts)`；`SCX_OPS_OPEN()` 改为以 0 为 opts 调 `SCX_OPS_OPEN_OPTS()`，消除两份宏展开的重复（Tejun 建议，v1→v2 的唯一实质变化）。`tools/sched_ext/include/scx/compat.h` 约 +8/-5 行。
 
 ## 版本演进与当前进展
-- v1（09-22）：见 sched-20260922-006。
-- **v2**（09-22 23:56 UTC，`<20260923035613.20099-1-zhaofuyu@vivo.com>`）：本日进入缓存，采纳 Tejun 建议收敛实现；作者另回帖确认采纳。
+- v1（09-22）：新增 `SCX_OPS_OPEN_OPTS()` 宏，保留兼容检查同时允许传 open opts；`SCX_OPS_OPEN()` 保留为旧宏。Tejun 建议收敛实现。
+- **v2**（09-22 23:56 UTC，`<20260923035613.20099-1-zhaofuyu@vivo.com>`）：本日进入缓存，采纳 Tejun 建议（`SCX_OPS_OPEN()` 以 0 opts 调 `SCX_OPS_OPEN_OPTS()`）收敛实现；作者另回帖确认采纳。
 
 ## Maintainer 意见与讨论焦点
 Tejun Heo 上轮的建议（`SCX_OPS_OPEN()` 直接以 0 opts 调 `SCX_OPS_OPEN_OPTS()`）已被 v2 采纳，作者回帖「Yes, that makes sense. I'll update the patch accordingly.」。无争议、无 NAK。
@@ -77,4 +77,4 @@ likelihood=medium。方向无异议、实现已按维护者建议收敛，纯工
 
 ## 参考链接
 - lore（v2 补丁）: https://lore.kernel.org/all/20260923035613.20099-1-zhaofuyu@vivo.com/
-- lore（v1，见前作）: https://lore.kernel.org/all/20260922031618.2858-1-zhaofuyu@vivo.com/
+- lore（v1）: https://lore.kernel.org/all/20260922031618.2858-1-zhaofuyu@vivo.com/

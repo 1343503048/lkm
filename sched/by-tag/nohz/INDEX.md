@@ -2,7 +2,7 @@
 
 共 24 篇
 
-- [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260916-002（v13，18 枚）及更早文章。Andrea Righi 发出 v14（16 枚）：基本落实了 Peter Zijlstra 在 v13 评审中的全部意见——`WF_ON_RQ` 更名 `WF_TTUW_RQ` 并拆为预备 patch、blocked-donor admission 用 `scx_enabled()` static k
+- [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — - sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审落地——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/
 - [sched-20260911-001](../../2026/09/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/under_review` — Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes
 - [sched-20260910-015](../../2026/09/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/superseded` — 这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`F
 - [sched-20260910-012](../../2026/09/sched-20260910-012-sched-fair-load-balance-only-among-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-010（steal_governor 系列 v13 整体分析）与 sched-20260903-002。09-10 的唯一进展是 Yury Norov 给本补丁（v13 07/13）打了 `Reviewed-by: Yury Norov <ynorov@nvidia.com>`——他是该系列最严格的评

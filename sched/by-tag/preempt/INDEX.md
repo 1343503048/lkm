@@ -2,7 +2,7 @@
 
 共 57 篇
 
-- [sched-20260923-010](../../2026/09/sched-20260923-010-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260922-016（v2）。Quchaosheng 快速迭代：v3 按 Sebastian Andrzej Siewior 的要求把「such a call」明确写为 `cond_resched()`（保留其 Reviewed-by），随后仅因第二枚 patch 变化而重发 v4（diff 无变化）。文档已获 Suggested-by/Reviewed
+- [sched-20260923-010](../../2026/09/sched-20260923-010-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — - sched-20260920-003：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并澄清最易误解的 PREEMPT_LAZY 机制。首发，暂无 review。 - sched-20260922-0
 - [sched-20260922-016](../../2026/09/sched-20260922-016-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260920-003（v1）。Quchaosheng 发出 v2：按 Sebastian Andrzej Siewior 的意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误的测量段与 yield 措辞，并把 debugfs 段并入运
 - [sched-20260922-013](../../2026/09/sched-20260922-013-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/superseded` — 本文为增量更新，完整背景见 sched-20260921-003。此前 Quchaosheng 发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译。当天 Peter Zijlstra 明确表示想等「真正准备 drop rt_mutex」时才合并该选项，作者 Quchaosheng 随即公开撤回补丁（withdraw）。系列以 superseded 收尾。
 - [sched-20260921-003](../../2026/09/sched-20260921-003-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `feature/under_review` — Quchaosheng 发补丁允许 `CONFIG_SCHED_PROXY_EXEC` 与 `CONFIG_PREEMPT_RT` 同时编译，修掉此前 Kconfig `depends on !PREEMPT_RT` 挡住的一批编译错误。v2 当日紧跟 v1 发出（只改 Cc、注释缩进与措辞）。但 PREEMPT_RT 维护者（linutronix）在回帖中质疑该组合在 RT 下运行时是"空转"（
