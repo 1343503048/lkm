@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 80
+article_count: 82
 ---
 
+- [sched-20260925-015](/lkm/2026/09/25/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.html) `feature/none/rfc` — sched/fair: add cfs_bandwidth_charge() for kernel work done for a cgroup
+- [sched-20260925-016](/lkm/2026/09/25/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.html) `feature/none/rfc` — psi: charge pressure to the task's active cgroup
 - [sched-20260922-003](/lkm/2026/09/22/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.html) `fix/high/under_review` — sched: Restore the normalize_rt_tasks() cpuset_mutex exemption
 - [sched-20260922-017](/lkm/2026/09/22/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/medium/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260922-018](/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/low/merged_tip` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()

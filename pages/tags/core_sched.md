@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 25
+article_count: 27
 ---
 
+- [sched-20260925-004](/lkm/2026/09/25/sched-20260925-004-sched-core-remove-redundant-core-sched-seq.html) `fix/none/merged_tip` — sched/core: Remove redundant core_sched_seq
+- [sched-20260925-012](/lkm/2026/09/25/sched-20260925-012-sched-core-fix-pick-next-task-self-recursion.html) `fix/medium/under_review` — sched/core: Fix pick_next_task() self recursion
 - [sched-20260922-002](/lkm/2026/09/22/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v32)
 - [sched-20260916-020](/lkm/2026/09/16/sched-20260916-020-sched-core-remove-redundant-core-sched-seq.html) `feature/none/under_review` — sched/core: Remove redundant core_sched_seq
 - [sched-20260913-002](/lkm/2026/09/13/sched-20260913-002-sched-handle-split-scheduling-and-execution-contexts-in-task.html) `fix/medium/under_review` — sched: Handle split scheduling and execution contexts in task ticks

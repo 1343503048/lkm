@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 5 篇
+共 6 篇
 
+- [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；
 - [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_
 - [sched-20260827-017](../../2026/08/sched-20260827-017-sched-deadline-fix-dl-server-initialization-for-initially-of.md) `fix/medium/under_review` — 同作者的姊妹 ping：针对"初始离线 CPU 上 DL server 初始化"的修复（8 月 11 日发出）同样**已有 Juri Lelli 的 Acked-by**，08-27 作者催办，等 Peter/Ingo 收取。与 sched-20260827-016 一起构成 deadline server 在 CPU 热插拔/离线生命周期下的两个正确性补丁。补丁正文细节不在本日缓存，未获取到。
 - [sched-20260827-016](../../2026/08/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.md) `fix/high/under_review` — Hui Su 对 8 月 12 日发出的 DL server 除零修复发出 gentle ping：该补丁**已获 Juri Lelli 的 Acked-by**，正等 Peter/Ingo 收取。当日线程无新增技术内容，信息价值集中在合入状态——deadline server 激活路径在 CPU 非活跃时除零的问题已被维护者背书。补丁本体与复现细节不在本日缓存（原文 08-12 发出），此处不重

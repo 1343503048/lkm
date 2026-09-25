@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 57
+article_count: 58
 ---
 
+- [sched-20260925-010](/lkm/2026/09/25/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260923-007](/lkm/2026/09/23/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20260923-009](/lkm/2026/09/23/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.html) `feature/low/under_review` — sched/debug, sys_info: Introduce SYS_INFO_CPU_RUNQUEUES
 - [sched-20260922-008](/lkm/2026/09/22/sched-20260922-008-sched-replace-assembly-with-assembler-in-sched-h-header.html) `fix/none/merged_tip` — sched: Replace __ASSEMBLY__ with __ASSEMBLER__ in sched.h header

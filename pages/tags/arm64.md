@@ -2,9 +2,10 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 27
+article_count: 28
 ---
 
+- [sched-20260925-010](/lkm/2026/09/25/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260918-016](/lkm/2026/09/18/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.html) `bug/critical/stalled` — [BUG] arm64/sched: hard lockup with rq->__lock stuck locked and no apparent owner
 - [sched-20260917-014](/lkm/2026/09/17/sched-20260917-014-arm64-cpufreq-report-and-track-frequencies-above-4-19-ghz.html) `bug/medium/under_review` — arm64/cpufreq: report and track frequencies above 4.19 GHz
 - [sched-20260912-008](/lkm/2026/09/12/sched-20260912-008-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/low/under_review` — sched/fair: Honor asymmetric SMT priority in idle selection

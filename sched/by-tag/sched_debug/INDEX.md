@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 57 篇
+共 58 篇
 
+- [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260923-009](../../2026/09/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — - sched-20260911-010：Aaron Tomlin 提出新 patch——给 panic 时 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发当日无回帖。 - sched-202609
 - [sched-20260923-007](../../2026/09/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — - sched-20260921-006：Wei Yang 的 run_delay 多计数修复 v2 又获 K Prateek Nayak 的 Reviewed-by + Tested-by，评审背书加强，合入概率高。更早 v1 时该修复即被定位为「sched_delayed 任务跨 CPU 迁移时 run_delay 重复累计」。 - sched-20260922-015：Wei Yang 发出
 - [sched-20260922-015](../../2026/09/sched-20260922-015-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260921-006（v2）。Wei Yang 发出 v3：新增收集 Kayra Cizmeci、K Prateek Nayak 的 Reviewed-by 与 K Prateek 的 Tested-by。Peter Zijlstra 回帖提出新问题——proxy execution 是否存在同类 over-count（是否该用 `t->is_block

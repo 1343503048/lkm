@@ -1,7 +1,9 @@
 # tag: idle
 
-共 53 篇
+共 55 篇
 
+- [sched-20260925-006](../../2026/09/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260917-007。Christian Loehle 的「用 reservoir sampling 随机化同等 exit latency 的 slow-path 候选」补丁（v2 系列 2/2）已被 Peter Zijlstra 合入 tip/sched/core（com
+- [sched-20260925-005](../../2026/09/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260916-015。Christian Loehle 的「slow-path CPU 选择去掉 idle-recency 偏好」补丁（v2 系列 1/2）已被 Peter Zijlstra 合入 tip/sched/core（commit abe440b3770fce8e
 - [sched-20260924-013](../../2026/09/sched-20260924-013-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — - sched-20260916-015（v1）/ sched-20260918-004、sched-20260921-005（v2）：Christian Loehle 的 idle CPU 选择随机化系列——消除 slow-path idle 扫描「总是挑第一个满足条件的 CPU」带来的扫描顺序偏置，v2 起标题改为「Randomize equally shallow idle CPU pick
 - [sched-20260921-005](../../2026/09/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/under_review` — 增量更新：Christian Loehle 回复 Vincent Guittot 的 review，补充了 idle CPU 选择随机化方案中"未发布 idle 状态"（unpublished idle state）CPU 的处理思路——实测这类候选只占约 0.1-0.5%，把它们按 `U64_MAX` 退出延迟对待后极少成为最优候选，因此随机化引入的偏置风险可控。这是对既有 v2 的补充论证，无
 - [sched-20260921-004](../../2026/09/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 的"在 NVIDIA Olympus 上启用优先 SMT 兄弟"系列（v6，其中 1/2 为 `sched/fair: Honor asymmetric SMT priority in idle selection`）昨日又获两则实质反馈——Breno Leitao 给出完整 Tested-by（实测唤醒重定向 800/800 生效、无 KASAN/lockde

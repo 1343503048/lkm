@@ -1,7 +1,8 @@
 # tag: psi
 
-共 11 篇
+共 12 篇
 
+- [sched-20260925-016](../../2026/09/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（「把内核为某 cgroup 做的活计费到该 cgroup」）中的 3/7：让 `task_psi_group()` 改用 active cgroup，使内核线程在 `set_active_cgroup()` 下的 stall（如内存回收）计入该 cgroup 的 PSI 压力。纯 RFC、无人回帖。
 - [sched-20260924-012](../../2026/09/sched-20260924-012-sched-core-account-psi-irq-time-to-the-execution-context-not.md) `fix/low/merged_tip` — - sched-20260918-018 / sched-20260919-005 / sched-20260922-014：Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁，与 Peter Zijlstra 多轮往返后被确认合入。 - sched-20260924-012（今天，合并确认）：tip-bot2 发出正式合入通知——该补丁已进 tip 的 `sched/ur
 - [sched-20260922-014](../../2026/09/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260918-018 与 sched-20260919-005。Zhan Xusheng 的「把 PSI IRQ 时间计入执行上下文」补丁当天完成与 Peter Zijlstra 的来回：先因应用分支问题被拒，经作者指出依赖 commit `f5741d2b3451` 只在 sched/urgent/master、不在 sched/core 后，Pete
 - [sched-20260919-005](../../2026/09/sched-20260919-005-sched-core-account-psi-irq-time-to-the-execution-context.md) `fix/low/under_review` — 增量更新：Zhan Xusheng 的 proxy execution PSI IRQ 记账修复本日获 Hui Su 的 Tested-by——作者实测补丁把 IRQ 时间归属从 donor 移到执行上下文（`rq->curr`），且补上了原测试缺失的 donor != curr 场景。定量的 irq.pressure 归属迁移数据支持修复方向，系列等待维护者收取。

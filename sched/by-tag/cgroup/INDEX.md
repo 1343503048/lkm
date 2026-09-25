@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 80 篇
+共 82 篇
 
+- [sched-20260925-016](../../2026/09/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（「把内核为某 cgroup 做的活计费到该 cgroup」）中的 3/7：让 `task_psi_group()` 改用 active cgroup，使内核线程在 `set_active_cgroup()` 下的 stall（如内存回收）计入该 cgroup 的 PSI 压力。纯 RFC、无人回帖。
+- [sched-20260925-015](../../2026/09/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（7 补丁，「把内核为某 cgroup 做的活计费到该 cgroup」）中的 4/7：新增 `cfs_bandwidth_charge()`，让内核线程经 `set_active_cgroup()` 为某 cgroup 做的 CPU 活不仅体现在 cpu.stat，还能真正扣减该 cgroup 的 `cpu.max` 配额池。纯 RFC、无人回帖，合入走向
 - [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。
 - [sched-20260922-017](../../2026/09/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reje
 - [sched-20260922-003](../../2026/09/sched-20260922-003-sched-restore-the-normalize-rt-tasks-cpuset-mutex-exemption.md) `fix/high/under_review` — Donggeun Yoo 修复 sysrq-n（Nice All RT Tasks）在存在 SCHED_DEADLINE 任务时于原子上下文睡眠的死锁/挂起：`normalize_rt_tasks()` 持 `tasklist_lock` 走 `__sched_setscheduler()`，而后者对 deadline 策略会取 `cpuset_mutex`（普通 `mutex_lock`），导致

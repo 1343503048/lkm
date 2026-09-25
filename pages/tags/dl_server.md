@@ -2,9 +2,10 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 5
+article_count: 6
 ---
 
+- [sched-20260925-013](/lkm/2026/09/25/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260919-001](/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/high/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling
 - [sched-20260827-016](/lkm/2026/08/27/sched-20260827-016-sched-deadline-fix-dl-server-divide-by-zero-for-inactive-cpu.html) `fix/high/under_review` — sched/deadline: Fix DL server divide-by-zero for inactive CPUs
 - [sched-20260827-017](/lkm/2026/08/27/sched-20260827-017-sched-deadline-fix-dl-server-initialization-for-initially-of.html) `fix/medium/under_review` — sched/deadline: Fix DL server initialization for initially offline CPUs

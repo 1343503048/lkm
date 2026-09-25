@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 44 篇
+共 45 篇
 
+- [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260923-011](../../2026/09/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.md) `fix/medium/under_review` — - sched-20260916-014：Hui Su 的修复补丁——sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 回复态度正面（「you're onto something」），但要求用 `tools/testing/sel
 - [sched-20260916-014](../../2026/09/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.md) `fix/medium/under_review` — Hui Su 的修复补丁：sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误地切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 本日回复态度正面（「you're onto something」），但要求用 selftests（`tools/testing/selftests/rs
 - [sched-20260911-001](../../2026/09/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/under_review` — Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes

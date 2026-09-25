@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 32
+article_count: 35
 ---
 
+- [sched-20260925-007](/lkm/2026/09/25/sched-20260925-007-sched-eevdf-ensure-that-vprot-will-never-go-above-a-min-slic.html) `fix/low/merged_tip` — sched/eevdf: Ensure that vprot will never go above a min slice
+- [sched-20260925-008](/lkm/2026/09/25/sched-20260925-008-sched-eevdf-align-update-protect-slice-to-set-protect-slice.html) `fix/low/merged_tip` — sched/eevdf: Align update_protect_slice to set_protect_slice
+- [sched-20260925-009](/lkm/2026/09/25/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.html) `fix/low/merged_tip` — sched/eevdf: Handle more short slice waking cases
 - [sched-20260924-009](/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260923-001](/lkm/2026/09/23/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

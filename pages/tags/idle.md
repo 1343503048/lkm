@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 53
+article_count: 55
 ---
 
+- [sched-20260925-005](/lkm/2026/09/25/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.html) `feature/none/merged_tip` — sched/fair: Drop idle recency from slow-path CPU selection
+- [sched-20260925-006](/lkm/2026/09/25/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/merged_tip` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260924-013](/lkm/2026/09/24/sched-20260924-013-sched-fair-randomize-equally-shallow-idle-cpu-picks.html) `feature/none/under_review` — sched/fair: Randomize equally shallow idle CPU picks
 - [sched-20260921-004](/lkm/2026/09/21/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260921-005](/lkm/2026/09/21/sched-20260921-005-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/under_review` — sched/fair: Randomize equally shallow slow-path candidates

@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 113 篇
+共 117 篇
 
+- [sched-20260925-025](../../2026/09/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260925-006](../../2026/09/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260917-007。Christian Loehle 的「用 reservoir sampling 随机化同等 exit latency 的 slow-path 候选」补丁（v2 系列 2/2）已被 Peter Zijlstra 合入 tip/sched/core（com
+- [sched-20260925-005](../../2026/09/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260916-015。Christian Loehle 的「slow-path CPU 选择去掉 idle-recency 偏好」补丁（v2 系列 1/2）已被 Peter Zijlstra 合入 tip/sched/core（commit abe440b3770fce8e
 - [sched-20260924-014](../../2026/09/sched-20260924-014-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.md) `fix/medium/under_review` — - sched-20260922-009：Rafael Wysocki 修复 `d2d5c129d07e` 引入的回归——`cpufreq_update_pressure()` 在 `arch_scale_freq_ref()` 返回 0 时无条件回落到 `policy->cpuinfo.max_freq`，导致负载均衡器意外出现 cpufreq 压力信号；补丁新增 `.scale_freq_re
 - [sched-20260924-010](../../2026/09/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — - sched-20260916-018：Klaus Kusche 反馈 Intel（Chen Yu）侧最新补丁后，其 AMD big/little 平台上 cache-aware 调度性能已基本追平无 cache-aware 内核、比早期 cache-aware 内核快约 2%，核心柱状图未见明显错放进程——偏正面的修复确认。 - sched-20260924-010（今天，增量更新）：Tim 
 - [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—

@@ -2,9 +2,19 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 146
+article_count: 156
 ---
 
+- [sched-20260925-001](/lkm/2026/09/25/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/merged_tip` — sched: Restart fair hrtick after same-task repicks
+- [sched-20260925-002](/lkm/2026/09/25/sched-20260925-002-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/merged_tip` — sched: Clarify WF_SYNC wakeup semantics
+- [sched-20260925-003](/lkm/2026/09/25/sched-20260925-003-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/none/merged_tip` — sched/fair: Remove dead code on enqueue_task_fair()
+- [sched-20260925-005](/lkm/2026/09/25/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.html) `feature/none/merged_tip` — sched/fair: Drop idle recency from slow-path CPU selection
+- [sched-20260925-006](/lkm/2026/09/25/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/merged_tip` — sched/fair: Randomize equally shallow slow-path candidates
+- [sched-20260925-007](/lkm/2026/09/25/sched-20260925-007-sched-eevdf-ensure-that-vprot-will-never-go-above-a-min-slic.html) `fix/low/merged_tip` — sched/eevdf: Ensure that vprot will never go above a min slice
+- [sched-20260925-008](/lkm/2026/09/25/sched-20260925-008-sched-eevdf-align-update-protect-slice-to-set-protect-slice.html) `fix/low/merged_tip` — sched/eevdf: Align update_protect_slice to set_protect_slice
+- [sched-20260925-009](/lkm/2026/09/25/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.html) `fix/low/merged_tip` — sched/eevdf: Handle more short slice waking cases
+- [sched-20260925-015](/lkm/2026/09/25/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.html) `feature/none/rfc` — sched/fair: add cfs_bandwidth_charge() for kernel work done for a cgroup
+- [sched-20260925-025](/lkm/2026/09/25/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260924-009](/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260924-010](/lkm/2026/09/24/sched-20260924-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260924-011](/lkm/2026/09/24/sched-20260924-011-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/under_review` — sched: Clarify WF_SYNC wakeup semantics

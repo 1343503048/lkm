@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 24 篇
+共 25 篇
 
+- [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；
 - [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — - sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审落地——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/
 - [sched-20260911-001](../../2026/09/sched-20260911-001-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/under_review` — Aaron Tomlin 修复 isolcpus= 启动参数解析器在字符串末尾无尾随逗号时的越界读（2 行加一个边界检查）。本文为增量更新，完整背景见 sched-20260910-015：独立投递的修复已按作者 09-10 的宣布折叠进 multiqueue CPU isolation v16 系列，当日缓存收到 v16 的 patch 4/9 全文，此前一直缺失的补丁正文（diff、Fixes
 - [sched-20260910-015](../../2026/09/sched-20260910-015-sched-isolation-prevent-out-of-bounds-read-in-isolcpus-boot.md) `fix/low/superseded` — 这不是技术讨论，而是一次**处置方式的变更通知**：Aaron Tomlin 的 `isolcpus=` 解析器越界读修复自 2026-05-23 发出、经 Valentin Schneider 评审后至今无进展，作者宣布放弃单独推进，把它作为前置补丁折叠进即将到来的 multiqueue CPU isolation 系列 v16，并承诺保留 Valentin 的 `Reviewed-by`、`F

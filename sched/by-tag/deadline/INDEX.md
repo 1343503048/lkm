@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 20 篇
+共 22 篇
 
+- [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；
+- [sched-20260925-001](../../2026/09/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-002 / sched-20260917-005 / sched-20260916-017。Shubhang Kaushik (Ampere) 的「同一任务重新选中的 same-task repick 之后重启 fair hrtick」修复（v4）已被 Peter Zijlstra 合入 tip/sc
 - [sched-20260924-002](../../2026/09/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.md) `fix/low/under_review` — Zhan Xusheng 的一致性修复：`prio_changed_dl()` 的 else 分支询问「p 是否应抢占当前调度上下文」，在 proxy execution 下该上下文是 `rq->donor`，但代码仍与 `rq->curr` 比较。补丁把它改为与 `rq->donor` 比较，与同 commit 已修好的 `prio_changed_rt()` 对齐。作者声明无行为变化意图，并在
 - [sched-20260922-017](../../2026/09/sched-20260922-017-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/medium/under_review` — 本文为增量更新，完整背景见 sched-20260919-001。Hui Su 的 v2 系列（修复零 CPU 的 DL 带宽除零 + 拒绝向 inactive CPU 写 debugfs dl_server）当天获 Juri Lelli 两封 Acked。Juri 对 2/2 提出一个修正意见：`Fixes:` 标签应指向 `4043f5498416`（"sched/deadline: Reje
 - [sched-20260922-012](../../2026/09/sched-20260922-012-sched-proxy-exec-detect-cycles-in-proxy-walks.md) `feature/rfc` — 本文为增量更新，完整背景见 sched-20260915-009 与 sched-20260919-012。Hui Su 的 proxy_exec 环检测 RFC（Online Brent，免持久 walk 状态）当天迎来实质性三方讨论：John Stultz 认可其以极小开销尽早检出小环，并仍建议保留 max-depth 兜底；Peter Zijlstra 强调 proxy 机制「硬依赖 blo

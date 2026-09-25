@@ -2,9 +2,18 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 160
+article_count: 169
 ---
 
+- [sched-20260925-011](/lkm/2026/09/25/sched-20260925-011-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260925-017](/lkm/2026/09/25/sched-20260925-017-sched-ext-use-fetching-atomics-for-cmask-instead-of-a-cmpxch.html) `fix/none/under_review` — sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop
+- [sched-20260925-018](/lkm/2026/09/25/sched-20260925-018-sched-ext-add-a-cid-numa-node-lookup-kfunc.html) `feature/none/under_review` — sched_ext: Add a CID NUMA node lookup kfunc
+- [sched-20260925-019](/lkm/2026/09/25/sched-20260925-019-sched-ext-count-cap-rejected-local-dsq-inserts-in-scx-ev-sub.html) `fix/low/under_review` — sched_ext: Count cap-rejected local DSQ inserts in SCX_EV_SUB_REJECT
+- [sched-20260925-020](/lkm/2026/09/25/sched-20260925-020-sched-ext-place-dsq-vtime-next-to-dsq-priq.html) `feature/none/merged_tip` — sched_ext: Place dsq_vtime next to dsq_priq
+- [sched-20260925-021](/lkm/2026/09/25/sched-20260925-021-sched-ext-update-scx-dispatch-dequeue-comments.html) `fix/none/merged_tip` — sched_ext: Update scx_dispatch_dequeue() comments
+- [sched-20260925-022](/lkm/2026/09/25/sched-20260925-022-sched-ext-test-scx-has-subs-inline-before-calling-sub-sched.html) `feature/none/merged_tip` — sched_ext: Test scx_has_subs() inline before calling sub-sched hooks
+- [sched-20260925-023](/lkm/2026/09/25/sched-20260925-023-sched-ext-fixes-for-v7-3-rc4.html) `fix/medium/merged_tip` — sched_ext: Fixes for v7.3-rc4
+- [sched-20260925-024](/lkm/2026/09/25/sched-20260925-024-tools-sched-ext-fix-three-example-scheduler-bugs.html) `fix/low/under_review` — tools/sched_ext: Fix three example scheduler bugs
 - [sched-20260924-003](/lkm/2026/09/24/sched-20260924-003-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.html) `fix/critical/under_review` — sched_ext: Fix CPU hotplug hang when a dying CPU's tasks sit in the BPF scheduler
 - [sched-20260924-004](/lkm/2026/09/24/sched-20260924-004-sched-ext-avoid-relocking-dsq-during-remote-dsq-moves.html) `fix/low/merged_tip` — sched_ext: Avoid relocking DSQ during remote DSQ moves
 - [sched-20260924-005](/lkm/2026/09/24/sched-20260924-005-sched-ext-update-scx-dispatch-dequeue-comments.html) `fix/none/under_review` — sched_ext: Update scx_dispatch_dequeue() comments
