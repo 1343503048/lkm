@@ -1,7 +1,9 @@
 # tag: x86
 
-共 16 篇
+共 18 篇
 
+- [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
+- [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260914-001](../../2026/09/sched-20260914-001-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/under_review` — 本文为增量更新，完整背景见 related_articles。09-14 报告者 Klaus Kusche 结束休假返回，给出三组快速实测：cache-aware scheduling（CAS）在 7.2.5（已含 Tim Chen 的 misfit 补丁）下相对关闭仍整体略慢、wallclock 无改善；而之前被点名叠加的 Chen Yu ITMT 协调补丁（20260810033742）显著恶
 - [sched-20260910-010](../../2026/09/sched-20260910-010-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，完整背景见 related_articles 中的 sched-20260909-009 / sched-20260905-007。09-10 线程出现关键技术修正：Tim Chen 经 Ricardo 提醒确认 AMD 混合 CPU 依赖 SD_ASYM_PACKING 而非 SD_ASYM_CPUCAPACITY，因此他此前被当作对照组的补丁（20260825174112）对 
 - [sched-20260909-009](../../2026/09/sched-20260909-009-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `bug/medium/stalled` — 本文为增量更新，问题背景与前几轮的参数/拓扑讨论见 related_articles 中的 sched-20260905-007 / sched-20260831-006 / sched-20260829-003。09-09 这个线程没有推进结论，只澄清了两件事：报告者 Klaus Kusche 说明他对比的「with/without patch」指的是 Tim Chen 08-31 那枚补丁而*

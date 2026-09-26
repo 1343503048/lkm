@@ -1,7 +1,8 @@
 # tag: idle
 
-共 55 篇
+共 56 篇
 
+- [sched-20260926-010](../../2026/09/sched-20260926-010-documentation-power-cpuidle-fix-repeating-phrase.md) `fix/merged_tip` — Norsyazwina Fazrul 提交的 cpuidle 文档修订（去掉一处重复措辞）获 Rafael Wysocki 应用为 7.4 material。属纯文档打磨，无技术风险。
 - [sched-20260925-006](../../2026/09/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260917-007。Christian Loehle 的「用 reservoir sampling 随机化同等 exit latency 的 slow-path 候选」补丁（v2 系列 2/2）已被 Peter Zijlstra 合入 tip/sched/core（com
 - [sched-20260925-005](../../2026/09/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260916-015。Christian Loehle 的「slow-path CPU 选择去掉 idle-recency 偏好」补丁（v2 系列 1/2）已被 Peter Zijlstra 合入 tip/sched/core（commit abe440b3770fce8e
 - [sched-20260924-013](../../2026/09/sched-20260924-013-sched-fair-randomize-equally-shallow-idle-cpu-picks.md) `feature/under_review` — - sched-20260916-015（v1）/ sched-20260918-004、sched-20260921-005（v2）：Christian Loehle 的 idle CPU 选择随机化系列——消除 slow-path idle 扫描「总是挑第一个满足条件的 CPU」带来的扫描顺序偏置，v2 起标题改为「Randomize equally shallow idle CPU pick

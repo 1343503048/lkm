@@ -12337,6 +12337,204 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260916-018：Klaus 反馈 Chen Yu 侧补丁后 AMD big/little 上 cache-aware 性能已基本追平无 cache-aware，偏正面修复确认。 - sched-20260924-010：Tim Chen 给出替代补丁（hybrid 上让 asym packing 优先于 cache-aware），请 Klaus 复测。 - sched-20260925-025（今天）：Klaus 回复——替代补丁打 7.2.7 时大段 fuzz 且 `fair.c` 编译失败（`sch"
   },
   {
+    "title": "sched/wait: Clarify WF_SYNC wakeup semantics",
+    "id": "sched-20260926-001",
+    "date": "2026-09-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Shubhang Kaushik (Ampere)"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-005：Shubhang Kaushik 的 WF_SYNC 唤醒语义文档修复 v3（单枚）——在 `WF_SYNC` 标志定义旁内联注释契约、删除 waitqueue 过时措辞，获 Peter Zijlstra 认可。 - sched-20260925-002：tip-bot 首次发出合入通知——commit e4c353c3933968fe8efecb269fdbe3baa1d1ddd0 已进 tip/sched/core。 - sched-20260926-001（今天）：tip-bot "
+  },
+  {
+    "title": "sched/debug: Add migration stats due to non preferred CPUs",
+    "id": "sched-20260926-002",
+    "date": "2026-09-26",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_debug",
+      "load_balance",
+      "affinity"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。  - sched-20260909-010：Shrikanth Hegde 发出 steal_governor v13（13 补丁），本片（09/13）在 sched/debug 侧新增因「非 preferred CPU」引起的迁移统计。 - sched-20260925-010：Peter Zijlstra 首次逐枚细读，对 09/13 提两条——迁移计数的语义需在 changelog 写清、以及「改了输出格式是否该 bump schedstat 版本」。 - sched-20260"
+  },
+  {
+    "title": "sched/cputime: Add kcpustat_field_total helper",
+    "id": "sched-20260926-003",
+    "date": "2026-09-26",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-003-sched-cputime-add-kcpustat-field-total-helper.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列第 1 片）。  - sched-20260904-012：Shrikanth Hegde 在 `include/linux/kernel_stat.h` 加 `kcpustat_field_total(usage, cpus)`，把「按 cpumask 累加某类 cpu_usage_stat」收成 inline，替换 s390 hiperdispatch 与 fs/proc/uptime.c 两处手写循环；已集齐 Frederic Weisbecker 的 Acked-by 与 Yury "
+  },
+  {
+    "title": "Cache-aware scheduling does not work well with amd big/little cores",
+    "id": "sched-20260926-004",
+    "date": "2026-09-26",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "cfs",
+      "x86"
+    ],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260916-018：Klaus 反馈 Chen Yu 侧补丁后 AMD big/little 上 cache-aware 性能基本追平基线。 - sched-20260924-010：Tim Chen 给出替代补丁（hybrid 上让 asym packing 优先于 cache-aware），请 Klaus 复测。 - sched-20260925-025：Klaus 报告替代补丁打 7.2.7 大段 fuzz、`fair.c` 编译失败，并质疑新增 `sched_asym` 调用不会真正内联。 - sc"
+  },
+  {
+    "title": "sched_ext: cid: Represent clusters explicitly",
+    "id": "sched-20260926-005",
+    "date": "2026-09-26",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "topology",
+      "x86"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.html",
+    "tldr": "Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。"
+  },
+  {
+    "title": "sched/doc: add a preemption model overview",
+    "id": "sched-20260926-006",
+    "date": "2026-09-26",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-006-sched-doc-add-a-preemption-model-overview.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260920-003：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及运行时选择方式，并澄清最易误解的 PREEMPT_LAZY。 - sched-20260922-016：v2——按 Sebastian Siewior 意见重写为「围绕调度请求」的鸟瞰视角，删错误测量段与 yield 措辞。 - sched-20260923-010"
+  },
+  {
+    "title": "kernel/sched/topology.c:2606:24: sparse: sparse: incorrect type in assignment (different address spaces)",
+    "id": "sched-20260926-007",
+    "date": "2026-09-26",
+    "type": "bug",
+    "status": "stalled",
+    "severity": "low",
+    "tags": [
+      "topology",
+      "sched_debug"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.html",
+    "tldr": "kernel test robot 的 sparse（v0.6.5-rc1，parisc-randconfig W=1 构建）报告：把 `__rcu` 标注的 `struct sched_domain *parent` / `struct task_struct *curr` 赋给普通指针，触发 `incorrect type in assignment / argument`（different address spaces）。该告警被 bisect 到已合入 commit `5a7b576b3ec1`（\"sched/topology: Extract \"imb_numa_nr\" calcu"
+  },
+  {
+    "title": "ACPI / cpufreq: CPPC: Add ospm_nominal_perf support",
+    "id": "sched-20260926-008",
+    "date": "2026-09-26",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-008-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260808-004：Sumit Gupta 的 v7 三片 CPPC 系列——新增 OSPM nominal perf（操作系统电源管理设定的标称性能）支持，把标称性能如实反映到 cpufreq 的 boost 与频率上限。 - sched-20260926-008（今天）：cpufreq 维护者 Rafael Wysocki 主动催稿——\"Dear CPPC cpufreq driver reviewers, please let me know what you think. This is not g"
+  },
+  {
+    "title": "cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload",
+    "id": "sched-20260926-009",
+    "date": "2026-09-26",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-009-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260827-007：Sumit Gupta 的 CPPC 系列（在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值）经 v1–v5 演进，以 arm64 PCC 为主要验证路径。 - sched-20260917-006：v5 获得 K Prateek Nayak 的 x86 实测 Tested-by（Zen3 共享内存 CPPC，`auto_select` 与 `energy_performance_preference_val` 离线-上线后正确保留）。 - sched-20260926-00"
+  },
+  {
+    "title": "Documentation: power/cpuidle: Fix repeating phrase",
+    "id": "sched-20260926-010",
+    "date": "2026-09-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Norsyazwina Fazrul"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-010-documentation-power-cpuidle-fix-repeating-phrase.html",
+    "tldr": "Norsyazwina Fazrul 提交的 cpuidle 文档修订（去掉一处重复措辞）获 Rafael Wysocki 应用为 7.4 material。属纯文档打磨，无技术风险。"
+  },
+  {
+    "title": "thermal/cpufreq_cooling: Simplify cpufreq_set_cur_state()",
+    "id": "sched-20260926-011",
+    "date": "2026-09-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "thermal",
+      "cpufreq"
+    ],
+    "authors": [
+      "Thorsten Blum"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-011-thermal-cpufreq-cooling-simplify-cpufreq-set-cur-state.html",
+    "tldr": "Thorsten Blum 提交的 cpufreq_cooling 清理补丁——`cpufreq_set_cur_state()` 直接返回 `freq_qos_update_request()` 的错误，去掉 `ret >= 0` 分支的冗余包裹。获 Rafael Wysocki 应用为 7.4 material。"
+  },
+  {
+    "title": "sched_ext: Update scx_dispatch_dequeue() comments",
+    "id": "sched-20260926-012",
+    "date": "2026-09-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Usama Arif"
+    ],
+    "url": "/lkm/2026/09/26/sched-20260926-012-sched-ext-update-scx-dispatch-dequeue-comments.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260924-005：Usama Arif 的纯注释修正 v2——`scx_dispatch_dequeue()` 两段过时注释按 Tejun 意见改写，获 Andrea Righi Reviewed-by。 - sched-20260925-021：Tejun Heo 把 v2 应用到 sched_ext/for-7.4，附 Reviewed-by。 - sched-20260926-012（今天）：bpf CI 的 AI review（Claude）质疑 v2 注释「远端消费（remote consump"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

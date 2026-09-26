@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 94
+article_count: 96
 ---
 
+- [sched-20260926-005](/lkm/2026/09/26/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
+- [sched-20260926-007](/lkm/2026/09/26/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:2606:24: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260924-008](/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260923-006](/lkm/2026/09/23/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260922-018](/lkm/2026/09/22/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.html) `fix/low/merged_tip` — cgroup/cpuset: Remove redundant sched domain rebuild from update_prstate()

@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 47
+article_count: 50
 ---
 
+- [sched-20260926-008](/lkm/2026/09/26/sched-20260926-008-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support
+- [sched-20260926-009](/lkm/2026/09/26/sched-20260926-009-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `feature/none/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
+- [sched-20260926-011](/lkm/2026/09/26/sched-20260926-011-thermal-cpufreq-cooling-simplify-cpufreq-set-cur-state.html) `fix/none/merged_tip` — thermal/cpufreq_cooling: Simplify cpufreq_set_cur_state()
 - [sched-20260924-014](/lkm/2026/09/24/sched-20260924-014-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260923-004](/lkm/2026/09/23/sched-20260923-004-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()
 - [sched-20260922-009](/lkm/2026/09/22/sched-20260922-009-cpufreq-intel-pstate-fix-max-freq-fallback-in-cpufreq-update.html) `fix/medium/under_review` — cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()

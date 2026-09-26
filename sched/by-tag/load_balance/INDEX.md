@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 117 篇
+共 119 篇
 
+- [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260926-002](../../2026/09/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。
 - [sched-20260925-025](../../2026/09/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-006](../../2026/09/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260917-007。Christian Loehle 的「用 reservoir sampling 随机化同等 exit latency 的 slow-path 候选」补丁（v2 系列 2/2）已被 Peter Zijlstra 合入 tip/sched/core（com

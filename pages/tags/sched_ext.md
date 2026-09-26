@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 169
+article_count: 171
 ---
 
+- [sched-20260926-005](/lkm/2026/09/26/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
+- [sched-20260926-012](/lkm/2026/09/26/sched-20260926-012-sched-ext-update-scx-dispatch-dequeue-comments.html) `fix/none/merged_tip` — sched_ext: Update scx_dispatch_dequeue() comments
 - [sched-20260925-011](/lkm/2026/09/25/sched-20260925-011-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260925-017](/lkm/2026/09/25/sched-20260925-017-sched-ext-use-fetching-atomics-for-cmask-instead-of-a-cmpxch.html) `fix/none/under_review` — sched_ext: Use fetching atomics for cmask instead of a cmpxchg loop
 - [sched-20260925-018](/lkm/2026/09/25/sched-20260925-018-sched-ext-add-a-cid-numa-node-lookup-kfunc.html) `feature/none/under_review` — sched_ext: Add a CID NUMA node lookup kfunc

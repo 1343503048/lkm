@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 45 篇
+共 46 篇
 
+- [sched-20260926-002](../../2026/09/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。
 - [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260923-011](../../2026/09/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.md) `fix/medium/under_review` — - sched-20260916-014：Hui Su 的修复补丁——sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 回复态度正面（「you're onto something」），但要求用 `tools/testing/sel
 - [sched-20260916-014](../../2026/09/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.md) `fix/medium/under_review` — Hui Su 的修复补丁：sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误地切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 本日回复态度正面（「you're onto something」），但要求用 selftests（`tools/testing/selftests/rs

@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 58 篇
+共 59 篇
 
+- [sched-20260926-006](../../2026/09/sched-20260926-006-sched-doc-add-a-preemption-model-overview.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-001](../../2026/09/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-002 / sched-20260917-005 / sched-20260916-017。Shubhang Kaushik (Ampere) 的「同一任务重新选中的 same-task repick 之后重启 fair hrtick」修复（v4）已被 Peter Zijlstra 合入 tip/sc
 - [sched-20260923-010](../../2026/09/sched-20260923-010-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — - sched-20260920-003：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并澄清最易误解的 PREEMPT_LAZY 机制。首发，暂无 review。 - sched-20260922-0
 - [sched-20260922-016](../../2026/09/sched-20260922-016-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260920-003（v1）。Quchaosheng 发出 v2：按 Sebastian Andrzej Siewior 的意见把文档重写为「围绕调度请求」的鸟瞰视角（wakeup → 决定谁让出 CPU → 置 TIF_NEED_RESCHED[LAZY] → 抢占模型决定在哪兑现），删掉错误的测量段与 yield 措辞，并把 debugfs 段并入运

@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 156 篇
+共 158 篇
 
+- [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260926-001](../../2026/09/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-025](../../2026/09/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-015](../../2026/09/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（7 补丁，「把内核为某 cgroup 做的活计费到该 cgroup」）中的 4/7：新增 `cfs_bandwidth_charge()`，让内核线程经 `set_active_cgroup()` 为某 cgroup 做的 CPU 活不仅体现在 cpu.stat，还能真正扣减该 cgroup 的 `cpu.max` 配额池。纯 RFC、无人回帖，合入走向
 - [sched-20260925-009](../../2026/09/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260922-011 / sched-20260921-001（Vincent Guittot 的「Improving latency of short slice tasks」系列）。本枚已被 Peter Zijlstra 合入 tip/sched/core（commit d2e0100827578641df2f

@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 117
+article_count: 119
 ---
 
+- [sched-20260926-002](/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
+- [sched-20260926-004](/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260925-005](/lkm/2026/09/25/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.html) `feature/none/merged_tip` — sched/fair: Drop idle recency from slow-path CPU selection
 - [sched-20260925-006](/lkm/2026/09/25/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.html) `feature/none/merged_tip` — sched/fair: Randomize equally shallow slow-path candidates
 - [sched-20260925-010](/lkm/2026/09/25/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff

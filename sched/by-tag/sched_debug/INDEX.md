@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 58 篇
+共 60 篇
 
+- [sched-20260926-007](../../2026/09/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（v0.6.5-rc1，parisc-randconfig W=1 构建）报告：把 `__rcu` 标注的 `struct sched_domain *parent` / `struct task_struct *curr` 赋给普通指针，触发 `incorrect type in assignment / argument`（different
+- [sched-20260926-002](../../2026/09/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。
 - [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260923-009](../../2026/09/sched-20260923-009-sched-debug-sys-info-introduce-sys-info-cpu-runqueues.md) `feature/low/under_review` — - sched-20260911-010：Aaron Tomlin 提出新 patch——给 panic 时 sys_info 机制新增 cpu_runqueues 开关，panic 时把 per-CPU runqueue 深度与可运行任务打进 log_buf，填补「debugfs 有数据但 panic/crash dump 抓不到」的诊断空白。v1 首发当日无回帖。 - sched-202609
 - [sched-20260923-007](../../2026/09/sched-20260923-007-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/medium/under_review` — - sched-20260921-006：Wei Yang 的 run_delay 多计数修复 v2 又获 K Prateek Nayak 的 Reviewed-by + Tested-by，评审背书加强，合入概率高。更早 v1 时该修复即被定位为「sched_delayed 任务跨 CPU 迁移时 run_delay 重复累计」。 - sched-20260922-015：Wei Yang 发出

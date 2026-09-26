@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 169 篇
+共 171 篇
 
+- [sched-20260926-012](../../2026/09/sched-20260926-012-sched-ext-update-scx-dispatch-dequeue-comments.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
 - [sched-20260925-024](../../2026/09/sched-20260925-024-tools-sched-ext-fix-three-example-scheduler-bugs.md) `fix/low/under_review` — Wanwu Li（kylinos.cn）发了一组修复 sched_ext 三个示例调度器 bug 的补丁（PATCH 0/3），但 Tejun Heo 复审发现 3/3 一出场就会触发运行时错误——作者根本没有跑过这些补丁，直接打回要求「先复现每个 bug、验证修复再发」。作者道歉并承诺重做。这是一次「未测试就投稿」被当场拦下的典型案例。
 - [sched-20260925-023](../../2026/09/sched-20260925-023-sched-ext-fixes-for-v7-3-rc4.md) `fix/medium/merged_tip` — Tejun Heo 发起的 v7.3-rc4 sched_ext 修复 GIT PULL（tag `sched_ext-for-7.3-rc4-fixes`，6 项修复 + selftests）已被 Linus 合入 torvalds/linux.git（merge commit ee9c669f9bf5fd2c24206746ded9382fe810df89）。含一个 UAF 修复（跨 CPU 
 - [sched-20260925-022](../../2026/09/sched-20260925-022-sched-ext-test-scx-has-subs-inline-before-calling-sub-sched.md) `feature/merged_tip` — Usama Arif 的 sched_ext 小优化补丁：在调用 sub-scheduler（子调度器）hooks 之前先 inline 地测试 `scx_has_subs()`，无子调度器时省掉后续判断/调用开销。已被 Tejun Heo 应用到 sched_ext/for-7.4。补丁正文不在当日缓存中，细节未获取到。

@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 156
+article_count: 158
 ---
 
+- [sched-20260926-001](/lkm/2026/09/26/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.html) `fix/none/merged_tip` — sched/wait: Clarify WF_SYNC wakeup semantics
+- [sched-20260926-004](/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260925-001](/lkm/2026/09/25/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/merged_tip` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260925-002](/lkm/2026/09/25/sched-20260925-002-sched-clarify-wf-sync-wakeup-semantics.html) `feature/none/merged_tip` — sched: Clarify WF_SYNC wakeup semantics
 - [sched-20260925-003](/lkm/2026/09/25/sched-20260925-003-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/none/merged_tip` — sched/fair: Remove dead code on enqueue_task_fair()

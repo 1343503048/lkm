@@ -1,7 +1,9 @@
 # tag: topology
 
-共 94 篇
+共 96 篇
 
+- [sched-20260926-007](../../2026/09/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（v0.6.5-rc1，parisc-randconfig W=1 构建）报告：把 `__rcu` 标注的 `struct sched_domain *parent` / `struct task_struct *curr` 赋给普通指针，触发 `incorrect type in assignment / argument`（different
+- [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
 - [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—
 - [sched-20260923-006](../../2026/09/sched-20260923-006-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账被要求改成按需累加（作者同意删）、per-sd 数组补 `__counted_by_ptr`；未定：距离矩阵去重算法（贪心边着色只能到 2Δ+1，P
 - [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。

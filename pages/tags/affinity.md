@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 45
+article_count: 46
 ---
 
+- [sched-20260926-002](/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
 - [sched-20260925-010](/lkm/2026/09/25/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260923-011](/lkm/2026/09/23/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html) `fix/medium/under_review` — sched/mmcid: Fix affinity-triggered switch back to per-task mode
 - [sched-20260916-014](/lkm/2026/09/16/sched-20260916-014-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.html) `fix/medium/under_review` — sched/mmcid: Fix affinity-triggered switch back to per-task mode
