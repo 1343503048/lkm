@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 82 篇
+共 83 篇
 
+- [sched-20260927-009](../../2026/09/sched-20260927-009-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-awa
 - [sched-20260925-016](../../2026/09/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（「把内核为某 cgroup 做的活计费到该 cgroup」）中的 3/7：让 `task_psi_group()` 改用 active cgroup，使内核线程在 `set_active_cgroup()` 下的 stall（如内存回收）计入该 cgroup 的 PSI 压力。纯 RFC、无人回帖。
 - [sched-20260925-015](../../2026/09/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（7 补丁，「把内核为某 cgroup 做的活计费到该 cgroup」）中的 4/7：新增 `cfs_bandwidth_charge()`，让内核线程经 `set_active_cgroup()` 为某 cgroup 做的 CPU 活不仅体现在 cpu.stat，还能真正扣减该 cgroup 的 `cpu.max` 配额池。纯 RFC、无人回帖，合入走向
 - [sched-20260922-018](../../2026/09/sched-20260922-018-cgroup-cpuset-remove-redundant-sched-domain-rebuild-from-upd.md) `fix/low/merged_tip` — 本文为增量更新，完整背景见 sched-20260921-008。Guopeng Zhang 的 v2 补丁（从 `update_prstate()` 移除冗余的调度域重建）当天获 Tejun Heo 回复「Applied to cgroup/for-7.4」——已被合入 cgroup 树，等待进入下一合入窗口。系列以 merged 收尾。

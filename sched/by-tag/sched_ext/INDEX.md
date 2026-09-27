@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 171 篇
+共 175 篇
 
+- [sched-20260927-004](../../2026/09/sched-20260927-004-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260927-003](../../2026/09/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260927-002](../../2026/09/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.md) `fix/medium/merged_tip` — Tejun Heo 为 sched_ext 发的一枚 ABI 前向兼容修复：给 `scx_bpf_cid_topo()` kfunc 增加 buffer size 参数，拷贝「程序大小与内核结构大小中较小者」并把剩余部分置 -1，使 `struct scx_cid_topo` 以后能通过追加字段安全增长、不再破坏按旧 vmlinux.h 构建的 BPF 调度器。已获 Andrea Righi Re
+- [sched-20260927-001](../../2026/09/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-012](../../2026/09/sched-20260926-012-sched-ext-update-scx-dispatch-dequeue-comments.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
 - [sched-20260925-024](../../2026/09/sched-20260925-024-tools-sched-ext-fix-three-example-scheduler-bugs.md) `fix/low/under_review` — Wanwu Li（kylinos.cn）发了一组修复 sched_ext 三个示例调度器 bug 的补丁（PATCH 0/3），但 Tejun Heo 复审发现 3/3 一出场就会触发运行时错误——作者根本没有跑过这些补丁，直接打回要求「先复现每个 bug、验证修复再发」。作者道歉并承诺重做。这是一次「未测试就投稿」被当场拦下的典型案例。

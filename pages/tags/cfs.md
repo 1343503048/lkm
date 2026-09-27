@@ -2,9 +2,10 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 158
+article_count: 159
 ---
 
+- [sched-20260927-008](/lkm/2026/09/27/sched-20260927-008-sched-minor-comment-fixes-and-cleanups.html) `fix/none/under_review` — sched: Minor comment fixes and cleanups
 - [sched-20260926-001](/lkm/2026/09/26/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.html) `fix/none/merged_tip` — sched/wait: Clarify WF_SYNC wakeup semantics
 - [sched-20260926-004](/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260925-001](/lkm/2026/09/25/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/merged_tip` — sched: Restart fair hrtick after same-task repicks

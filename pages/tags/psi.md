@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 12
+article_count: 13
 ---
 
+- [sched-20260927-009](/lkm/2026/09/27/sched-20260927-009-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260925-016](/lkm/2026/09/25/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.html) `feature/none/rfc` — psi: charge pressure to the task's active cgroup
 - [sched-20260924-012](/lkm/2026/09/24/sched-20260924-012-sched-core-account-psi-irq-time-to-the-execution-context-not.html) `fix/low/merged_tip` — sched/core: Account PSI IRQ time to the execution context, not the scheduling context
 - [sched-20260922-014](/lkm/2026/09/22/sched-20260922-014-sched-core-account-psi-irq-time-to-the-execution-context.html) `fix/low/merged_tip` — sched/core: Account PSI IRQ time to the execution context

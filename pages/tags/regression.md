@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 19
+article_count: 20
 ---
 
+- [sched-20260927-005](/lkm/2026/09/27/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260924-009](/lkm/2026/09/24/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260923-001](/lkm/2026/09/23/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260912-002](/lkm/2026/09/12/sched-20260912-002-bug-futex-scheduling-while-atomic-because-nested-vfork-can-b.html) `bug/medium/under_review` — [BUG] futex: scheduling-while-atomic because nested vfork can break guard(private_hash)

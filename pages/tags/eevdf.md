@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 35
+article_count: 37
 ---
 
+- [sched-20260927-006](/lkm/2026/09/27/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
+- [sched-20260927-007](/lkm/2026/09/27/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260925-007](/lkm/2026/09/25/sched-20260925-007-sched-eevdf-ensure-that-vprot-will-never-go-above-a-min-slic.html) `fix/low/merged_tip` — sched/eevdf: Ensure that vprot will never go above a min slice
 - [sched-20260925-008](/lkm/2026/09/25/sched-20260925-008-sched-eevdf-align-update-protect-slice-to-set-protect-slice.html) `fix/low/merged_tip` — sched/eevdf: Align update_protect_slice to set_protect_slice
 - [sched-20260925-009](/lkm/2026/09/25/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.html) `fix/low/merged_tip` — sched/eevdf: Handle more short slice waking cases

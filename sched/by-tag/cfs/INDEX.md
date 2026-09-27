@@ -1,7 +1,8 @@
 # tag: cfs
 
-共 158 篇
+共 159 篇
 
+- [sched-20260927-008](../../2026/09/sched-20260927-008-sched-minor-comment-fixes-and-cleanups.md) `fix/under_review` — Kayra Cizmeci 发出的 3 枚调度子系统注释/清理小补丁（`kernel/sched/fair.c` 与 `kernel/sched/stats.h`，合计 +3/-4）：修正 `sched_info_enqueue()` 的过时注释、改正 `requeue_delayed_entity()` 注释拼写（elegibility→eligibility）、删除 fair.c 未使用的 `
 - [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-001](../../2026/09/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-025](../../2026/09/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

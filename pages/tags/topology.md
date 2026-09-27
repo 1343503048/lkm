@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 96
+article_count: 99
 ---
 
+- [sched-20260927-001](/lkm/2026/09/27/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
+- [sched-20260927-002](/lkm/2026/09/27/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.html) `fix/medium/merged_tip` — sched_ext: Add a size argument to scx_bpf_cid_topo() so struct scx_cid_topo can grow
+- [sched-20260927-003](/lkm/2026/09/27/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.html) `feature/none/merged_tip` — sched_ext: Add a CID NUMA node lookup kfunc
 - [sched-20260926-005](/lkm/2026/09/26/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
 - [sched-20260926-007](/lkm/2026/09/26/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:2606:24: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260924-008](/lkm/2026/09/24/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 119 篇
+共 123 篇
 
+- [sched-20260927-009](../../2026/09/sched-20260927-009-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-awa
+- [sched-20260927-007](../../2026/09/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
+- [sched-20260927-006](../../2026/09/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
+- [sched-20260927-005](../../2026/09/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-002](../../2026/09/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。
 - [sched-20260925-025](../../2026/09/sched-20260925-025-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

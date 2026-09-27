@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 171
+article_count: 175
 ---
 
+- [sched-20260927-001](/lkm/2026/09/27/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
+- [sched-20260927-002](/lkm/2026/09/27/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.html) `fix/medium/merged_tip` — sched_ext: Add a size argument to scx_bpf_cid_topo() so struct scx_cid_topo can grow
+- [sched-20260927-003](/lkm/2026/09/27/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.html) `feature/none/merged_tip` — sched_ext: Add a CID NUMA node lookup kfunc
+- [sched-20260927-004](/lkm/2026/09/27/sched-20260927-004-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260926-005](/lkm/2026/09/26/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
 - [sched-20260926-012](/lkm/2026/09/26/sched-20260926-012-sched-ext-update-scx-dispatch-dequeue-comments.html) `fix/none/merged_tip` — sched_ext: Update scx_dispatch_dequeue() comments
 - [sched-20260925-011](/lkm/2026/09/25/sched-20260925-011-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext

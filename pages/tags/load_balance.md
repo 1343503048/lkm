@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 119
+article_count: 123
 ---
 
+- [sched-20260927-005](/lkm/2026/09/27/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
+- [sched-20260927-006](/lkm/2026/09/27/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
+- [sched-20260927-007](/lkm/2026/09/27/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
+- [sched-20260927-009](/lkm/2026/09/27/sched-20260927-009-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260926-002](/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
 - [sched-20260926-004](/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260925-005](/lkm/2026/09/25/sched-20260925-005-sched-fair-drop-idle-recency-from-slow-path-cpu-selection.html) `feature/none/merged_tip` — sched/fair: Drop idle recency from slow-path CPU selection

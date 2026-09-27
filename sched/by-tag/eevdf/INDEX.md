@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 35 篇
+共 37 篇
 
+- [sched-20260927-007](../../2026/09/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
+- [sched-20260927-006](../../2026/09/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
 - [sched-20260925-009](../../2026/09/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260922-011 / sched-20260921-001（Vincent Guittot 的「Improving latency of short slice tasks」系列）。本枚已被 Peter Zijlstra 合入 tip/sched/core（commit d2e0100827578641df2f
 - [sched-20260925-008](../../2026/09/sched-20260925-008-sched-eevdf-align-update-protect-slice-to-set-protect-slice.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260922-011 / sched-20260921-001（Vincent Guittot 的「Improving latency of short slice tasks」系列）。本枚已被 Peter Zijlstra 合入 tip/sched/core（commit 4bf32ec3327d2d2286e9
 - [sched-20260925-007](../../2026/09/sched-20260925-007-sched-eevdf-ensure-that-vprot-will-never-go-above-a-min-slic.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260922-011 / sched-20260921-001（Vincent Guittot 的「Improving latency of short slice tasks」8 补丁 EEVDF 短切片延迟改进系列）。本枚已被 Peter Zijlstra 合入 tip/sched/core（commit aa

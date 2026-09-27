@@ -1,7 +1,10 @@
 # tag: topology
 
-共 96 篇
+共 99 篇
 
+- [sched-20260927-003](../../2026/09/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260927-002](../../2026/09/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.md) `fix/medium/merged_tip` — Tejun Heo 为 sched_ext 发的一枚 ABI 前向兼容修复：给 `scx_bpf_cid_topo()` kfunc 增加 buffer size 参数，拷贝「程序大小与内核结构大小中较小者」并把剩余部分置 -1，使 `struct scx_cid_topo` 以后能通过追加字段安全增长、不再破坏按旧 vmlinux.h 构建的 BPF 调度器。已获 Andrea Righi Re
+- [sched-20260927-001](../../2026/09/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-007](../../2026/09/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.md) `bug/low/stalled` — kernel test robot 的 sparse（v0.6.5-rc1，parisc-randconfig W=1 构建）报告：把 `__rcu` 标注的 `struct sched_domain *parent` / `struct task_struct *curr` 赋给普通指针，触发 `incorrect type in assignment / argument`（different
 - [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
 - [sched-20260924-008](../../2026/09/sched-20260924-008-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — - sched-20260901-004：Jianyong Wu（海光）的 23 补丁 RFC v2（NUMA/LLC 两级亲和性打分负载均衡）进入 Peter Zijlstra 逐片精读。已定型：per-node `numa_counts[]` 记账改为按需累加；未定：距离矩阵去重算法上界与 commit message 质量。 - sched-20260923-006：继续 02/23 讨论—
