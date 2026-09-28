@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 46 篇
+共 47 篇
 
+- [sched-20260928-001](../../2026/09/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代
 - [sched-20260926-002](../../2026/09/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor v13 系列）。
 - [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260923-011](../../2026/09/sched-20260923-011-sched-mmcid-fix-affinity-triggered-switch-back-to-per-task-m.md) `fix/medium/under_review` — - sched-20260916-014：Hui Su 的修复补丁——sched/mmcid（rseq 使用的 per-mm/per-task 内存上下文 ID）在 CPU affinity 变化触发时错误切回 per-task 模式。rseq 维护者 Mathieu Desnoyers 回复态度正面（「you're onto something」），但要求用 `tools/testing/sel

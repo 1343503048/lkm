@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 50 篇
+共 52 篇
 
+- [sched-20260928-011](../../2026/09/sched-20260928-011-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 CPPC 系列——在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值，避免离线-上线周期后电源管理配置失效。
+- [sched-20260928-010](../../2026/09/sched-20260928-010-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 v7 三片 CPPC 系列——新增 OSPM nominal perf 支持，把 OS 电源管理设定的标称性能如实反映到 cpufreq 的 boost 与频率上限。
 - [sched-20260926-011](../../2026/09/sched-20260926-011-thermal-cpufreq-cooling-simplify-cpufreq-set-cur-state.md) `fix/merged_tip` — Thorsten Blum 提交的 cpufreq_cooling 清理补丁——`cpufreq_set_cur_state()` 直接返回 `freq_qos_update_request()` 的错误，去掉 `ret >= 0` 分支的冗余包裹。获 Rafael Wysocki 应用为 7.4 material。
 - [sched-20260926-009](../../2026/09/sched-20260926-009-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-008](../../2026/09/sched-20260926-008-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

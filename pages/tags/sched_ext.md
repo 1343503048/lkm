@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 175
+article_count: 177
 ---
 
+- [sched-20260928-002](/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260928-006](/lkm/2026/09/28/sched-20260928-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260927-001](/lkm/2026/09/27/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly
 - [sched-20260927-002](/lkm/2026/09/27/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.html) `fix/medium/merged_tip` — sched_ext: Add a size argument to scx_bpf_cid_topo() so struct scx_cid_topo can grow
 - [sched-20260927-003](/lkm/2026/09/27/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.html) `feature/none/merged_tip` — sched_ext: Add a CID NUMA node lookup kfunc

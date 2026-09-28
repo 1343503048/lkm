@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 54
+article_count: 56
 ---
 
+- [sched-20260928-002](/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260928-007](/lkm/2026/09/28/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `discussion/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
 - [sched-20260927-004](/lkm/2026/09/27/sched-20260927-004-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260925-011](/lkm/2026/09/25/sched-20260925-011-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260924-002](/lkm/2026/09/24/sched-20260924-002-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()

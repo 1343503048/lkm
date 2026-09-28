@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 123
+article_count: 126
 ---
 
+- [sched-20260928-001](/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/merged_tip` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
+- [sched-20260928-004](/lkm/2026/09/28/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `feature/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state
+- [sched-20260928-009](/lkm/2026/09/28/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260927-005](/lkm/2026/09/27/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores
 - [sched-20260927-006](/lkm/2026/09/27/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
 - [sched-20260927-007](/lkm/2026/09/27/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU

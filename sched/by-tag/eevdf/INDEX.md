@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 37 篇
+共 39 篇
 
+- [sched-20260928-008](../../2026/09/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。这是对「sched/eevdf: Move to a single runqueue」引入的 schbench p99 延迟回归的持续定位讨论。
+- [sched-20260928-005](../../2026/09/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.md) `fix/medium/under_review` — Hui Su 修复 `place_entity()` 里的 s64 溢出：`lag * (load + weight) / load` 在除法前就可能因 `lag * (load + weight)` 的中间乘积溢出 s64，即使最终商可表示，也会破坏 EEVDF 实体的虚拟 lag 放置。修复把表达式重写为等价的 `lag + lag * weight / load`，避免用虚拟 lag 乘以总
 - [sched-20260927-007](../../2026/09/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
 - [sched-20260927-006](../../2026/09/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
 - [sched-20260925-009](../../2026/09/sched-20260925-009-sched-eevdf-handle-more-short-slice-waking-cases.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260922-011 / sched-20260921-001（Vincent Guittot 的「Improving latency of short slice tasks」系列）。本枚已被 Peter Zijlstra 合入 tip/sched/core（commit d2e0100827578641df2f

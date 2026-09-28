@@ -1,7 +1,8 @@
 # tag: regression
 
-共 20 篇
+共 21 篇
 
+- [sched-20260928-008](../../2026/09/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。这是对「sched/eevdf: Move to a single runqueue」引入的 schbench p99 延迟回归的持续定位讨论。
 - [sched-20260927-005](../../2026/09/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260924-009](../../2026/09/sched-20260924-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，Fastpath 自动 bisect 定位到「sched/eevdf: Move to a single runqueue」这个 commit；整体 schbench 中性、但个别线程配置出现
 - [sched-20260923-001](../../2026/09/sched-20260923-001-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — ARM 的 Aishwarya Rambhadran 报告 v7.2 → v7.3 周期在 AWS Graviton3 上的 schbench p99 请求延迟回归，用 Fastpath 自动化 bisect 定位到「sched/eevdf: Move to a single runqueue」这一 commit。整体 schbench 结果为中性（部分配置改善、部分回退），但个别线程配置出现 ~

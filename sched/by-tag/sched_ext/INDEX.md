@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 175 篇
+共 177 篇
 
+- [sched-20260928-006](../../2026/09/sched-20260928-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留原有的内核版本兼容检查。
+- [sched-20260928-002](../../2026/09/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。本系列的目标是让 proxy execution 与 sched_ext 可扩展调度类兼容——proxy execution 把阻塞在互斥量上的任务（donor）的调度上下文借给锁持有者运行，sched_ext 需要一组 hook 才能在这一机制下正确记账。
 - [sched-20260927-004](../../2026/09/sched-20260927-004-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260927-003](../../2026/09/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260927-002](../../2026/09/sched-20260927-002-sched-ext-add-a-size-argument-to-scx-bpf-cid-topo-so-struct.md) `fix/medium/merged_tip` — Tejun Heo 为 sched_ext 发的一枚 ABI 前向兼容修复：给 `scx_bpf_cid_topo()` kfunc 增加 buffer size 参数，拷贝「程序大小与内核结构大小中较小者」并把剩余部分置 -1，使 `struct scx_cid_topo` 以后能通过追加字段安全增长、不再破坏按旧 vmlinux.h 构建的 BPF 调度器。已获 Andrea Righi Re

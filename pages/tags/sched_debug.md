@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 60
+article_count: 61
 ---
 
+- [sched-20260928-001](/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/merged_tip` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260926-002](/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
 - [sched-20260926-007](/lkm/2026/09/26/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:2606:24: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20260925-010](/lkm/2026/09/25/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff

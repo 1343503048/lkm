@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 159
+article_count: 162
 ---
 
+- [sched-20260928-004](/lkm/2026/09/28/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `feature/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state
+- [sched-20260928-005](/lkm/2026/09/28/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/under_review` — sched/fair: Avoid overflow in place_entity()
+- [sched-20260928-008](/lkm/2026/09/28/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260927-008](/lkm/2026/09/27/sched-20260927-008-sched-minor-comment-fixes-and-cleanups.html) `fix/none/under_review` — sched: Minor comment fixes and cleanups
 - [sched-20260926-001](/lkm/2026/09/26/sched-20260926-001-sched-wait-clarify-wf-sync-wakeup-semantics.html) `fix/none/merged_tip` — sched/wait: Clarify WF_SYNC wakeup semantics
 - [sched-20260926-004](/lkm/2026/09/26/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.html) `discussion/medium/under_review` — Cache-aware scheduling does not work well with amd big/little cores

@@ -1,7 +1,9 @@
 # tag: preempt
 
-共 59 篇
+共 61 篇
 
+- [sched-20260928-012](../../2026/09/sched-20260928-012-documentation-sched-preemption-add-a-spdx-license-identifier.md) `fix/under_review` — Quchaosheng 给 `Documentation/scheduler/sched-preemption.rst` 补上缺失的 SPDX 许可证标识（`GPL-2.0`），与 `Documentation/scheduler/` 下其它文件保持一致。这是 Jonathan Corbet（文档维护者）建议的 2 行 trivial 补丁，v1 刚发出。
+- [sched-20260928-007](../../2026/09/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `discussion/superseded` — 本文为增量更新，完整脉络见 sched-20260922-013。作者 Quchaosheng 此前发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译，被 Peter Zijlstra 与 Sebastian 指出该组合「effectively broken」后已撤回。28 日作者发帖做最终澄清：系列正式撤回，v2 只让组合能 build + boot、并未让
 - [sched-20260926-006](../../2026/09/sched-20260926-006-sched-doc-add-a-preemption-model-overview.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-001](../../2026/09/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-002 / sched-20260917-005 / sched-20260916-017。Shubhang Kaushik (Ampere) 的「同一任务重新选中的 same-task repick 之后重启 fair hrtick」修复（v4）已被 Peter Zijlstra 合入 tip/sc
 - [sched-20260923-010](../../2026/09/sched-20260923-010-sched-doc-add-a-preemption-model-overview.md) `feature/under_review` — - sched-20260920-003：Quchaosheng 提交文档补丁 1/2——新增 `Documentation/scheduler/sched-preemption.rst`，系统介绍内核四种抢占模型（none/voluntary/full/lazy）及其运行时选择方式，并澄清最易误解的 PREEMPT_LAZY 机制。首发，暂无 review。 - sched-20260922-0

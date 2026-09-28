@@ -12689,6 +12689,210 @@
     "tldr": "Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-aware 调度）** 与一条 **sched/core PSI IRQ 记账**修复：LLC 误调度（Tim Chen、Lu Wang）、cache 分组统计 UAF（Tim Chen 两条）、跳过 kt"
   },
   {
+    "title": "sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff",
+    "id": "sched-20260928-001",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "affinity",
+      "topology",
+      "sched_debug"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代价。  - sched-20260909-010：v13（13 补丁）发出，封面请求 Peter/Ingo 考虑排入 sched/core、目标 7.4。 - sched-20260925-010：P"
+  },
+  {
+    "title": "sched: Make proxy execution compatible with sched_ext",
+    "id": "sched-20260928-002",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。本系列的目标是让 proxy execution 与 sched_ext 可扩展调度类兼容——proxy execution 把阻塞在互斥量上的任务（donor）的调度上下文借给锁持有者运行，sched_ext 需要一组 hook 才能在这一机制下正确记账。  - sched-20260925-011：Peter 表态「I'll apply your patches as is」并问 Tejun 分区方式；前一天卡住的「Tejun 未回复分区问题」随后解除。 - sched-20260927-004：Tejun 回复「I can p"
+  },
+  {
+    "title": "cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only",
+    "id": "sched-20260928-003",
+    "date": "2026-09-28",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "deadline"
+    ],
+    "authors": [
+      "Waiman Long"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html",
+    "tldr": "Waiman Long 修复 cpuset 里 SCHED_DEADLINE 带宽收缩检查的误触发——当 CS_CPU_EXCLUSIVE 标志被错误地设在并非有效 partition root 的 cpuset 上时，`validate_change()` 的 shrink 测试会在存在 deadline 任务的系统里被误触发，导致改 cpuset 控制文件时意外返回 `-EBUSY`。v1 发出后当天即出 v2，已获 Reviewed-by（Guopeng Zhang），方向明确、待维护者收取。"
+  },
+  {
+    "title": "sched/fair: Update decision matrix and rename pinned-task group state",
+    "id": "sched-20260928-004",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html",
+    "tldr": "Jemmy Wong 发的 3 补丁系列，纯代码澄清/清理、明确标注「No functional change」：patch 1 把 `sched_balance_find_src_group()` 上方的 group-type 决策矩阵注释表补齐（此前新增 `smt_balance`、`llc_balance` 两类组时没人更新这张表）；patch 2-3 把「因 cpus_ptr 固定任务导致的负载均衡失败」状态从 `group_imbalanced`/`sgc->imbalance` 改名为 `group_pinned_task`/`sgc->pinned_task`，消除与 `env-"
+  },
+  {
+    "title": "sched/fair: Avoid overflow in place_entity()",
+    "id": "sched-20260928-005",
+    "date": "2026-09-28",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.html",
+    "tldr": "Hui Su 修复 `place_entity()` 里的 s64 溢出：`lag * (load + weight) / load` 在除法前就可能因 `lag * (load + weight)` 的中间乘积溢出 s64，即使最终商可表示，也会破坏 EEVDF 实体的虚拟 lag 放置。修复把表达式重写为等价的 `lag + lag * weight / load`，避免用虚拟 lag 乘以总运行队列权重。补丁附了 UBSAN、`__int128` oracle 十万随机用例、x86_64/i386/arm64 构建等多重验证，v1 刚发出。"
+  },
+  {
+    "title": "tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts",
+    "id": "sched-20260928-006",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Fuyu Zhao"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留原有的内核版本兼容检查。  - sched-20260922-006：初版加 `SCX_OPS_OPEN_OPTS()`，Tejun 建议 `SCX_OPS_OPEN()` 以 0 为 opts 调用它减少重复。 - sched-20260924-016：Tejun 复审"
+  },
+  {
+    "title": "sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT",
+    "id": "sched-20260928-007",
+    "date": "2026-09-28",
+    "type": "discussion",
+    "status": "superseded",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html",
+    "tldr": "本文为增量更新，完整脉络见 sched-20260922-013。作者 Quchaosheng 此前发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译，被 Peter Zijlstra 与 Sebastian 指出该组合「effectively broken」后已撤回。28 日作者发帖做最终澄清：系列正式撤回，v2 只让组合能 build + boot、并未让 proxy execution 在 RT 下真正可用；构建失败本身是真实存在且仍在树上的，因此 Kconfig `depends on !PREEMPT_RT` 现状正确。"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20260928-008",
+    "date": "2026-09-28",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "regression"
+    ],
+    "authors": [
+      "Aishwarya Rambhadran"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是对「sched/eevdf: Move to a single runqueue」引入的 schbench p99 延迟回归的持续定位讨论。  - sched-20260923-001：Fastpath 在 AWS Graviton3 上报告个别 schbench 线程配置 p99 回退（~30%），bisect 指向单运行队列 commit。 - sched-20260924-009：怀疑点收敛到 WA_WEIGHT/task_h_load，社区提议试 `NO_WA_WEIGHT` 与 `cgroup_mode`。 - sch"
+  },
+  {
+    "title": "sched/topology: Introduce a NUMA distance matrix with unique distance values",
+    "id": "sched-20260928-009",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "numa_balancing",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。  - sched-20260923-006：Tim Chen 提 `llc_next` 数组替代人造 LLC 距离矩阵，路线未收敛。 - sched-20260924-008：分歧收敛到「去重矩阵必要性」——Tim 主张 raw distance + 平局决胜即可，Jianyong 坚持去重是为强制对称性，唯一 open 点是「对称是否必需」。 - sched-20260928-009（今天）：Jianyong 在对称性问"
+  },
+  {
+    "title": "ACPI / cpufreq: CPPC: Add ospm_nominal_perf support",
+    "id": "sched-20260928-010",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-010-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 v7 三片 CPPC 系列——新增 OSPM nominal perf 支持，把 OS 电源管理设定的标称性能如实反映到 cpufreq 的 boost 与频率上限。  - sched-20260808-004：v7 三片发出（ACPI 寄存器 + cpufreq `ospm_nominal_freq` sysfs + policy 反映）。 - sched-20260926-008：cpufreq 维护者 Rafael Wysocki 主动催稿——近 7 周无人评审、无人评论则不合入。 - sch"
+  },
+  {
+    "title": "cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload",
+    "id": "sched-20260928-011",
+    "date": "2026-09-28",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-011-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 CPPC 系列——在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值，避免离线-上线周期后电源管理配置失效。  - sched-20260827-007：系列经 v1–v5 演进，以 arm64 PCC 为主要验证路径。 - sched-20260917-006：v5 获 K Prateek Nayak 的 x86 实测 Tested-by。 - sched-20260926-009：Rafael Wysocki 催评审输入（「没有他人输入就不合入」）。 - sched-20260928-"
+  },
+  {
+    "title": "Documentation: sched-preemption: Add a SPDX license identifier",
+    "id": "sched-20260928-012",
+    "date": "2026-09-28",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/28/sched-20260928-012-documentation-sched-preemption-add-a-spdx-license-identifier.html",
+    "tldr": "Quchaosheng 给 `Documentation/scheduler/sched-preemption.rst` 补上缺失的 SPDX 许可证标识（`GPL-2.0`），与 `Documentation/scheduler/` 下其它文件保持一致。这是 Jonathan Corbet（文档维护者）建议的 2 行 trivial 补丁，v1 刚发出。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

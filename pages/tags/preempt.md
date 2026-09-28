@@ -2,9 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 59
+article_count: 61
 ---
 
+- [sched-20260928-007](/lkm/2026/09/28/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `discussion/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
+- [sched-20260928-012](/lkm/2026/09/28/sched-20260928-012-documentation-sched-preemption-add-a-spdx-license-identifier.html) `fix/none/under_review` — Documentation: sched-preemption: Add a SPDX license identifier
 - [sched-20260926-006](/lkm/2026/09/26/sched-20260926-006-sched-doc-add-a-preemption-model-overview.html) `feature/none/merged_tip` — sched/doc: add a preemption model overview
 - [sched-20260925-001](/lkm/2026/09/25/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/merged_tip` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260923-010](/lkm/2026/09/23/sched-20260923-010-sched-doc-add-a-preemption-model-overview.html) `feature/none/under_review` — sched/doc: add a preemption model overview

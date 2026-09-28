@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 123 篇
+共 126 篇
 
+- [sched-20260928-009](../../2026/09/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20260928-004](../../2026/09/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.md) `feature/under_review` — Jemmy Wong 发的 3 补丁系列，纯代码澄清/清理、明确标注「No functional change」：patch 1 把 `sched_balance_find_src_group()` 上方的 group-type 决策矩阵注释表补齐（此前新增 `smt_balance`、`llc_balance` 两类组时没人更新这张表）；patch 2-3 把「因 cpus_ptr 固定任务导致
+- [sched-20260928-001](../../2026/09/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代
 - [sched-20260927-009](../../2026/09/sched-20260927-009-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-awa
 - [sched-20260927-007](../../2026/09/sched-20260927-007-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
 - [sched-20260927-006](../../2026/09/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
