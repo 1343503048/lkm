@@ -2,9 +2,16 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 177
+article_count: 184
 ---
 
+- [sched-20260929-008](/lkm/2026/09/29/sched-20260929-008-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.html) `fix/high/merged_tip` — sched_ext: Fix CPU hotplug hang when a dying CPU's tasks sit in the BPF scheduler
+- [sched-20260929-011](/lkm/2026/09/29/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
+- [sched-20260929-014](/lkm/2026/09/29/sched-20260929-014-sched-ext-count-cap-rejected-local-dsq-inserts-in-scx-ev-sub.html) `fix/low/superseded` — sched_ext: Count cap-rejected local DSQ inserts in SCX_EV_SUB_REJECT
+- [sched-20260929-015](/lkm/2026/09/29/sched-20260929-015-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
+- [sched-20260929-021](/lkm/2026/09/29/sched-20260929-021-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-i.html) `bug/low/under_review` — kernel/sched/ext/sub.c:288:16: sparse: sparse: incorrect type in argument 1 (different address spaces)
+- [sched-20260929-022](/lkm/2026/09/29/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/merged_tip` — sched_ext: cid: Represent clusters explicitly
+- [sched-20260929-023](/lkm/2026/09/29/sched-20260929-023-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/merged_tip` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260928-002](/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260928-006](/lkm/2026/09/28/sched-20260928-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.html) `feature/none/under_review` — tools/sched_ext: Add SCX_OPS_OPEN_OPTS for schedulers using open opts
 - [sched-20260927-001](/lkm/2026/09/27/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly

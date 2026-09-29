@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 39
+article_count: 41
 ---
 
+- [sched-20260929-017](/lkm/2026/09/29/sched-20260929-017-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
+- [sched-20260929-018](/lkm/2026/09/29/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260928-005](/lkm/2026/09/28/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/under_review` — sched/fair: Avoid overflow in place_entity()
 - [sched-20260928-008](/lkm/2026/09/28/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20260927-006](/lkm/2026/09/27/sched-20260927-006-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine

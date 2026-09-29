@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 61
+article_count: 65
 ---
 
+- [sched-20260929-005](/lkm/2026/09/29/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.html) `fix/low/under_review` — sched: set TIF_NEED_RESCHED before calling __trace_set_need_resched()
+- [sched-20260929-013](/lkm/2026/09/29/sched-20260929-013-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/under_review` — sched: Add task enqueue/dequeue trace points
+- [sched-20260929-016](/lkm/2026/09/29/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
+- [sched-20260929-021](/lkm/2026/09/29/sched-20260929-021-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-i.html) `bug/low/under_review` — kernel/sched/ext/sub.c:288:16: sparse: sparse: incorrect type in argument 1 (different address spaces)
 - [sched-20260928-001](/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/merged_tip` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260926-002](/lkm/2026/09/26/sched-20260926-002-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
 - [sched-20260926-007](/lkm/2026/09/26/sched-20260926-007-kernel-sched-topology-c-2606-24-sparse-sparse-incorrect-type.html) `bug/low/stalled` — kernel/sched/topology.c:2606:24: sparse: sparse: incorrect type in assignment (different address spaces)

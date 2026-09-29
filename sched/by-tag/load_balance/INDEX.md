@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 126 篇
+共 130 篇
 
+- [sched-20260929-018](../../2026/09/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
+- [sched-20260929-017](../../2026/09/sched-20260929-017-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
+- [sched-20260929-016](../../2026/09/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor 系列）。
+- [sched-20260929-003](../../2026/09/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台上的性能回退」发出的修复补丁：asym packing 想把任务放到最高优先级 CPU，cache-aware 调度想把同一进程的任务都聚到一个 LLC（不管 LLC 内 CPU 优先级）。补丁让 asym packing 在「要把任务迁到一个优先级更高的空核」时**优先于** cache-aware 策
 - [sched-20260928-009](../../2026/09/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20260928-004](../../2026/09/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.md) `feature/under_review` — Jemmy Wong 发的 3 补丁系列，纯代码澄清/清理、明确标注「No functional change」：patch 1 把 `sched_balance_find_src_group()` 上方的 group-type 决策矩阵注释表补齐（此前新增 `smt_balance`、`llc_balance` 两类组时没人更新这张表）；patch 2-3 把「因 cpus_ptr 固定任务导致
 - [sched-20260928-001](../../2026/09/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代

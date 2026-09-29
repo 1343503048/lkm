@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 84 篇
+共 86 篇
 
+- [sched-20260929-011](../../2026/09/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列：层级式 BPF 调度器在分配 group-wide 权重时需要知道某个 cgroup 能在多少 CPU 上运行，新 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair 的 `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpu
+- [sched-20260929-007](../../2026/09/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-003](../../2026/09/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/under_review` — Waiman Long 修复 cpuset 里 SCHED_DEADLINE 带宽收缩检查的误触发——当 CS_CPU_EXCLUSIVE 标志被错误地设在并非有效 partition root 的 cpuset 上时，`validate_change()` 的 shrink 测试会在存在 deadline 任务的系统里被误触发，导致改 cpuset 控制文件时意外返回 `-EBUSY`。v1 发
 - [sched-20260927-009](../../2026/09/sched-20260927-009-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-awa
 - [sched-20260925-016](../../2026/09/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（「把内核为某 cgroup 做的活计费到该 cgroup」）中的 3/7：让 `task_psi_group()` 改用 active cgroup，使内核线程在 `set_active_cgroup()` 下的 stall（如内存回收）计入该 cgroup 的 PSI 压力。纯 RFC、无人回帖。

@@ -1,7 +1,10 @@
 # tag: topology
 
-共 101 篇
+共 104 篇
 
+- [sched-20260929-022](../../2026/09/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-003](../../2026/09/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台上的性能回退」发出的修复补丁：asym packing 想把任务放到最高优先级 CPU，cache-aware 调度想把同一进程的任务都聚到一个 LLC（不管 LLC 内 CPU 优先级）。补丁让 asym packing 在「要把任务迁到一个优先级更高的空核」时**优先于** cache-aware 策
 - [sched-20260928-009](../../2026/09/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20260928-001](../../2026/09/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代
 - [sched-20260927-003](../../2026/09/sched-20260927-003-sched-ext-add-a-cid-numa-node-lookup-kfunc.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

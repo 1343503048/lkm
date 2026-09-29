@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 84
+article_count: 86
 ---
 
+- [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
+- [sched-20260929-011](/lkm/2026/09/29/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260928-003](/lkm/2026/09/28/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/under_review` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
 - [sched-20260927-009](/lkm/2026/09/27/sched-20260927-009-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260925-015](/lkm/2026/09/25/sched-20260925-015-sched-fair-add-cfs-bandwidth-charge-for-kernel-work-done-for.html) `feature/none/rfc` — sched/fair: add cfs_bandwidth_charge() for kernel work done for a cgroup

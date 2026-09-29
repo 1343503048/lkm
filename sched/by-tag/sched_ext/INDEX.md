@@ -1,7 +1,14 @@
 # tag: sched_ext
 
-共 177 篇
+共 184 篇
 
+- [sched-20260929-023](../../2026/09/sched-20260929-023-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留内核版本兼容检查。
+- [sched-20260929-022](../../2026/09/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-021](../../2026/09/sched-20260929-021-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-i.md) `bug/low/under_review` — kernel test robot（0day）报出 `sched_ext: Eject the top rescue consumer on overload`（commit `bb70e4fb626b`）上的一批 sparse 地址空间（`__rcu`）告警：`rq->donor`/`->curr` 作为 `__rcu` 指针被当作非 `__rcu` 使用，告警横跨 `kernel/sched/
+- [sched-20260929-015](../../2026/09/sched-20260929-015-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。本系列的目标是让 proxy execution 与 sched_ext 可扩展调度类兼容——proxy execution 把阻塞在互斥量上的任务（donor）的调度上下文借给锁持有者运行，sched_ext 需要一组 hook 才能在这一机制下正确记账。
+- [sched-20260929-014](../../2026/09/sched-20260929-014-sched-ext-count-cap-rejected-local-dsq-inserts-in-scx-ev-sub.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-011](../../2026/09/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列：层级式 BPF 调度器在分配 group-wide 权重时需要知道某个 cgroup 能在多少 CPU 上运行，新 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair 的 `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpu
+- [sched-20260929-008](../../2026/09/sched-20260929-008-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-006](../../2026/09/sched-20260928-006-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留原有的内核版本兼容检查。
 - [sched-20260928-002](../../2026/09/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。本系列的目标是让 proxy execution 与 sched_ext 可扩展调度类兼容——proxy execution 把阻塞在互斥量上的任务（donor）的调度上下文借给锁持有者运行，sched_ext 需要一组 hook 才能在这一机制下正确记账。
 - [sched-20260927-004](../../2026/09/sched-20260927-004-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

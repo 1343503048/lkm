@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 101
+article_count: 104
 ---
 
+- [sched-20260929-003](/lkm/2026/09/29/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
+- [sched-20260929-019](/lkm/2026/09/29/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
+- [sched-20260929-022](/lkm/2026/09/29/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/merged_tip` — sched_ext: cid: Represent clusters explicitly
 - [sched-20260928-001](/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/merged_tip` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260928-009](/lkm/2026/09/28/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20260927-001](/lkm/2026/09/27/sched-20260927-001-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/under_review` — sched_ext: cid: Represent clusters explicitly

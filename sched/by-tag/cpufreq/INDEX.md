@@ -1,7 +1,13 @@
 # tag: cpufreq
 
-共 52 篇
+共 58 篇
 
+- [sched-20260929-020](../../2026/09/sched-20260929-020-cpufreq-use-hardware-feedback-for-cpuinfo-avg-freq.md) `feature/under_review` — Chuyi Zhou（ByteDance）发起的 3 补丁系列中的 2/3 在本日迎来 Beata Michalska 的 review：补丁让 `cpuinfo_avg_freq` 采用硬件反馈（hardware feedback），Beata 追问 changelog 里「temporary sampling gaps」的具体含义，并质疑「是否需要为读取该属性而唤醒 target CPU」。本
+- [sched-20260929-010](../../2026/09/sched-20260929-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.md) `feature/under_review` — Christian Loehle 的 3 补丁系列：无频率表的 cppc-cpufreq 缺少「频率→性能级」的解析，内核会原样返回请求的 kHz，即使固件只暴露少数几个 CPPC performance level，不同 kHz 请求会miss schedutil 的缓存却写同一个 Desired Performance 值。系列新增 `->resolve_freq()` 回调让 table-l
+- [sched-20260929-009](../../2026/09/sched-20260929-009-cpufreq-amd-pstate-update-zen6-client-epp-tuning-values.md) `feature/merged_tip` — Vishal Badole 的 amd-pstate Zen6 客户端 EPP（Energy Performance Preference）调参补丁：在平台特性刻画基础上进一步调整 per-CPU-type EPP 值（performance 核的 `power` 档 64→115、low-power 核的 `balance_performance` 51→64、`power` 115→64），使
+- [sched-20260929-006](../../2026/09/sched-20260929-006-rust-cpufreq-reject-null-from-cpufreq-cpu-get.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-004](../../2026/09/sched-20260929-004-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260929-001](../../2026/09/sched-20260929-001-cpufreq-schedutil-serialize-start-against-rate-limit-updates.md) `fix/low/under_review` — Hui Su 发的一枚 schedutil 并发竞态修复：`rate_limit_us_store()`（sysfs 写 `rate_limit_us`）持 governor 属性集的 `update_lock`，而 `sugov_start()` 读写同一 tunable 时**不加锁**，两条路径交错会让 sysfs 里显示新值、内存里 `freq_update_delay_ns` 还是旧值，
 - [sched-20260928-011](../../2026/09/sched-20260928-011-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 CPPC 系列——在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值，避免离线-上线周期后电源管理配置失效。
 - [sched-20260928-010](../../2026/09/sched-20260928-010-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 v7 三片 CPPC 系列——新增 OSPM nominal perf 支持，把 OS 电源管理设定的标称性能如实反映到 cpufreq 的 boost 与频率上限。
 - [sched-20260926-011](../../2026/09/sched-20260926-011-thermal-cpufreq-cooling-simplify-cpufreq-set-cur-state.md) `fix/merged_tip` — Thorsten Blum 提交的 cpufreq_cooling 清理补丁——`cpufreq_set_cur_state()` 直接返回 `freq_qos_update_request()` 的错误，去掉 `ret >= 0` 分支的冗余包裹。获 Rafael Wysocki 应用为 7.4 material。

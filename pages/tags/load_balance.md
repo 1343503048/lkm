@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 126
+article_count: 130
 ---
 
+- [sched-20260929-003](/lkm/2026/09/29/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
+- [sched-20260929-016](/lkm/2026/09/29/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs
+- [sched-20260929-017](/lkm/2026/09/29/sched-20260929-017-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
+- [sched-20260929-018](/lkm/2026/09/29/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260928-001](/lkm/2026/09/28/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/none/merged_tip` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260928-004](/lkm/2026/09/28/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `feature/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state
 - [sched-20260928-009](/lkm/2026/09/28/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

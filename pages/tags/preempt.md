@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 61
+article_count: 62
 ---
 
+- [sched-20260929-005](/lkm/2026/09/29/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.html) `fix/low/under_review` — sched: set TIF_NEED_RESCHED before calling __trace_set_need_resched()
 - [sched-20260928-007](/lkm/2026/09/28/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `discussion/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT
 - [sched-20260928-012](/lkm/2026/09/28/sched-20260928-012-documentation-sched-preemption-add-a-spdx-license-identifier.html) `fix/none/under_review` — Documentation: sched-preemption: Add a SPDX license identifier
 - [sched-20260926-006](/lkm/2026/09/26/sched-20260926-006-sched-doc-add-a-preemption-model-overview.html) `feature/none/merged_tip` — sched/doc: add a preemption model overview

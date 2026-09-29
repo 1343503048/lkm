@@ -2,9 +2,15 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 52
+article_count: 58
 ---
 
+- [sched-20260929-001](/lkm/2026/09/29/sched-20260929-001-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/under_review` — cpufreq: schedutil: Serialize start against rate limit updates
+- [sched-20260929-004](/lkm/2026/09/29/sched-20260929-004-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
+- [sched-20260929-006](/lkm/2026/09/29/sched-20260929-006-rust-cpufreq-reject-null-from-cpufreq-cpu-get.html) `fix/medium/under_review` — rust: cpufreq: reject NULL from cpufreq_cpu_get()
+- [sched-20260929-009](/lkm/2026/09/29/sched-20260929-009-cpufreq-amd-pstate-update-zen6-client-epp-tuning-values.html) `feature/none/merged_tip` — cpufreq: amd-pstate: Update Zen6 client EPP tuning values
+- [sched-20260929-010](/lkm/2026/09/29/sched-20260929-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.html) `feature/none/under_review` — cpufreq: Resolve CPPC frequencies to performance levels
+- [sched-20260929-020](/lkm/2026/09/29/sched-20260929-020-cpufreq-use-hardware-feedback-for-cpuinfo-avg-freq.html) `feature/none/under_review` — cpufreq: Use hardware feedback for cpuinfo_avg_freq
 - [sched-20260928-010](/lkm/2026/09/28/sched-20260928-010-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support
 - [sched-20260928-011](/lkm/2026/09/28/sched-20260928-011-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `feature/none/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20260926-008](/lkm/2026/09/26/sched-20260926-008-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support

@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 23
+article_count: 24
 ---
 
+- [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
 - [sched-20260928-003](/lkm/2026/09/28/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/under_review` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
 - [sched-20260925-001](/lkm/2026/09/25/sched-20260925-001-sched-restart-fair-hrtick-after-same-task-repicks.html) `fix/low/merged_tip` — sched: Restart fair hrtick after same-task repicks
 - [sched-20260925-013](/lkm/2026/09/25/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
