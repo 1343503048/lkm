@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 104
+article_count: 106
 ---
 
+- [sched-20260930-013](/lkm/2026/09/30/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
+- [sched-20260930-014](/lkm/2026/09/30/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260929-003](/lkm/2026/09/29/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
 - [sched-20260929-019](/lkm/2026/09/29/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260929-022](/lkm/2026/09/29/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.html) `feature/none/merged_tip` — sched_ext: cid: Represent clusters explicitly

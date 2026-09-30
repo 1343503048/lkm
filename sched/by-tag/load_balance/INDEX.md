@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 130 篇
+共 131 篇
 
+- [sched-20260930-013](../../2026/09/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-018](../../2026/09/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。
 - [sched-20260929-017](../../2026/09/sched-20260929-017-sched-eevdf-compare-min-slice-during-wake-affine.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 7/8）。
 - [sched-20260929-016](../../2026/09/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor 系列）。

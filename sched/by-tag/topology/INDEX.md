@@ -1,7 +1,9 @@
 # tag: topology
 
-共 104 篇
+共 106 篇
 
+- [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260930-013](../../2026/09/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-022](../../2026/09/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-003](../../2026/09/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台上的性能回退」发出的修复补丁：asym packing 想把任务放到最高优先级 CPU，cache-aware 调度想把同一进程的任务都聚到一个 LLC（不管 LLC 内 CPU 优先级）。补丁让 asym packing 在「要把任务迁到一个优先级更高的空核」时**优先于** cache-aware 策

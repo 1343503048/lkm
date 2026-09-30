@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 41
+article_count: 43
 ---
 
+- [sched-20260930-008](/lkm/2026/09/30/sched-20260930-008-sched-eevdf-fix-slice-protection-across-state-changes.html) `fix/medium/under_review` — sched/eevdf: Fix slice protection across state changes
+- [sched-20260930-009](/lkm/2026/09/30/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.html) `fix/medium/under_review` — sched/fair: Take slice protection into account when arming HRTICK
 - [sched-20260929-017](/lkm/2026/09/29/sched-20260929-017-sched-eevdf-compare-min-slice-during-wake-affine.html) `feature/none/under_review` — sched/eevdf: Compare min slice during wake_affine
 - [sched-20260929-018](/lkm/2026/09/29/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260928-005](/lkm/2026/09/28/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/under_review` — sched/fair: Avoid overflow in place_entity()

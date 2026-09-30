@@ -1,7 +1,8 @@
 # tag: idle
 
-共 57 篇
+共 58 篇
 
+- [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-010](../../2026/09/sched-20260926-010-documentation-power-cpuidle-fix-repeating-phrase.md) `fix/merged_tip` — Norsyazwina Fazrul 提交的 cpuidle 文档修订（去掉一处重复措辞）获 Rafael Wysocki 应用为 7.4 material。属纯文档打磨，无技术风险。
 - [sched-20260925-006](../../2026/09/sched-20260925-006-sched-fair-randomize-equally-shallow-slow-path-candidates.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260918-004 / sched-20260917-007。Christian Loehle 的「用 reservoir sampling 随机化同等 exit latency 的 slow-path 候选」补丁（v2 系列 2/2）已被 Peter Zijlstra 合入 tip/sched/core（com

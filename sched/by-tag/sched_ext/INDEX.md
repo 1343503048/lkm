@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 184 篇
+共 189 篇
 
+- [sched-20260930-005](../../2026/09/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260930-004](../../2026/09/sched-20260930-004-sched-ext-sync-tools-headers-from-the-scx-repo.md) `feature/under_review` — Tejun Heo 为 sched_ext/for-7.4 发的工具头文件同步补丁集（2 补丁）：内核侧 `tools/sched_ext/include` 与 scx 仓库 `scheds/include` 的共享 BPF 头自上次同步后分叉（内核给 `scx_bpf_cid_topo()` 等加了 size 参数、加了 lazy preemption/proxy-exec 标志与 `SCX_O
+- [sched-20260930-003](../../2026/09/sched-20260930-003-sched-ext-work-around-pahole-1-32-dropping-scx-bpf-task-set.md) `fix/medium/merged_tip` — Tejun Heo 的 sched_ext 修复：clang + pahole 1.32 下 x86-64 vmlinux BTF 缺失 `scx_bpf_task_set_lazy_resched()`，导致 sched_ext 初始化失败（`Failed to register kfunc sets (-22)`）。原因是 clang 只在 prologue 把 `lazy` 参数挪进 cal
+- [sched-20260930-002](../../2026/09/sched-20260930-002-sched-ext-hold-dsq-refs-for-deferred-reenqueues.md) `fix/high/under_review` — Hui Su 的 sched_ext use-after-free 修复：`scx_bpf_dsq_reenq()` 的 deferred reenqueue 路径上，被 deferral 的用户 DSQ 节点可能在 RCU 回调 `exit_dsq()` 到达前就被 detach，之后 deferred 路径仍在释放 `deferred_reenq_lock` 后继续用裸 DSQ 指针，回调可能
+- [sched-20260930-001](../../2026/09/sched-20260930-001-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.md) `fix/medium/under_review` — Kuba Piecuch 的 sched_ext 修复：自 ebf1ccff79c4（"sched_ext: Fix ops.dequeue() semantics"）后，任务被迁到**另一 CPU 的 local DSQ**（SCX_DSQ_LOCAL_ON 派发、scx_bpf_dsq_move_to_local() 等）时，`ops.dequeue()` 不会在插入目标 DSQ 时被调用，而
 - [sched-20260929-023](../../2026/09/sched-20260929-023-tools-sched-ext-add-scx-ops-open-opts-for-schedulers-using-o.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留内核版本兼容检查。
 - [sched-20260929-022](../../2026/09/sched-20260929-022-sched-ext-cid-represent-clusters-explicitly.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-021](../../2026/09/sched-20260929-021-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-i.md) `bug/low/under_review` — kernel test robot（0day）报出 `sched_ext: Eject the top rescue consumer on overload`（commit `bb70e4fb626b`）上的一批 sparse 地址空间（`__rcu`）告警：`rq->donor`/`->curr` 作为 `__rcu` 指针被当作非 `__rcu` 使用，告警横跨 `kernel/sched/

@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 14
+article_count: 15
 ---
 
+- [sched-20260930-010](/lkm/2026/09/30/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260929-002](/lkm/2026/09/29/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260927-009](/lkm/2026/09/27/sched-20260927-009-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20260925-016](/lkm/2026/09/25/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.html) `feature/none/rfc` — psi: charge pressure to the task's active cgroup

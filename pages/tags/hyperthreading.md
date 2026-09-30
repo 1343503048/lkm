@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 26
+article_count: 27
 ---
 
+- [sched-20260930-014](/lkm/2026/09/30/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260929-019](/lkm/2026/09/29/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260921-004](/lkm/2026/09/21/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260919-007](/lkm/2026/09/19/sched-20260919-007-sched-topology-add-asymmetric-smt-packing-override.html) `feature/none/under_review` — sched/topology: Add asymmetric SMT packing override

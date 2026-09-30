@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 184
+article_count: 189
 ---
 
+- [sched-20260930-001](/lkm/2026/09/30/sched-20260930-001-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.html) `fix/medium/under_review` — sched_ext: Fix missing ops.dequeue() on remote local DSQ moves
+- [sched-20260930-002](/lkm/2026/09/30/sched-20260930-002-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html) `fix/high/under_review` — sched_ext: Hold DSQ refs for deferred reenqueues
+- [sched-20260930-003](/lkm/2026/09/30/sched-20260930-003-sched-ext-work-around-pahole-1-32-dropping-scx-bpf-task-set.html) `fix/medium/merged_tip` — sched_ext: Work around pahole 1.32 dropping scx_bpf_task_set_lazy_resched() from BTF
+- [sched-20260930-004](/lkm/2026/09/30/sched-20260930-004-sched-ext-sync-tools-headers-from-the-scx-repo.html) `feature/none/under_review` — sched_ext: Sync tools headers from the scx repo
+- [sched-20260930-005](/lkm/2026/09/30/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260929-008](/lkm/2026/09/29/sched-20260929-008-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.html) `fix/high/merged_tip` — sched_ext: Fix CPU hotplug hang when a dying CPU's tasks sit in the BPF scheduler
 - [sched-20260929-011](/lkm/2026/09/29/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260929-014](/lkm/2026/09/29/sched-20260929-014-sched-ext-count-cap-rejected-local-dsq-inserts-in-scx-ev-sub.html) `fix/low/superseded` — sched_ext: Count cap-rejected local DSQ inserts in SCX_EV_SUB_REJECT

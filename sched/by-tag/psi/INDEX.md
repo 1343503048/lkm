@@ -1,7 +1,8 @@
 # tag: psi
 
-共 14 篇
+共 15 篇
 
+- [sched-20260930-010](../../2026/09/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-002](../../2026/09/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — David Stevens 的 PSI 修复：在 stable clock 系统上 `cpu_clock(cpu)` 会忽略 cpu 参数，导致 PSI 内部出现跨 CPU 的时间戳比较，负 skew 会让 u32 的活跃态时长计算下溢，产生约 4 秒的假 delta 冲进累加器，造成 PSI_POLL 的虚假唤醒或 PSI_AVGS 的 nonsense 值（如 full>some、psi>10
 - [sched-20260927-009](../../2026/09/sched-20260927-009-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 于 09-27 16:04（北京时间）向 Linus 发出 `tip/sched/urgent` 拉取请求（分支 `sched-urgent-2026-09-27`，顶端 a0bb6fac53fa7cf1cadb487b43d4c9276a6b82e3），共 7 条修复、6 位作者、10 个文件 +388/-134，全部集中在 **sched/cache（cache-awa
 - [sched-20260925-016](../../2026/09/sched-20260925-016-psi-charge-pressure-to-the-task-s-active-cgroup.md) `feature/rfc` — Shakeel Butt 的 RFC 系列（「把内核为某 cgroup 做的活计费到该 cgroup」）中的 3/7：让 `task_psi_group()` 改用 active cgroup，使内核线程在 `set_active_cgroup()` 下的 stall（如内存回收）计入该 cgroup 的 PSI 压力。纯 RFC、无人回帖。

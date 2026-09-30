@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 62 篇
+共 63 篇
 
+- [sched-20260930-009](../../2026/09/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.md) `fix/medium/under_review` — Christian Loehle 的 EEVDF 调度粒度修复：EEVDF 会在更短 request 竞争时提前结束任务的 slice protection，`update_curr()` 在 protection 到期时请求重选，但 `hrtick_start_fair()` 仍按虚拟 deadline 定时——无中间调度事件时，下次重选机会远晚于 protection 边界。例如两个等权 SC
 - [sched-20260929-005](../../2026/09/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.md) `fix/low/under_review` — 一枚关于 `sched_entry_tp`/`__trace_set_need_resched()` 与 `TIF_NEED_RESCHED` 设置顺序的 tracepoint 修复（v3，作者 Sechang）在本日重获讨论：Andrea Righi 复现出该顺序竞态会导致 runtime verification 的 nrp monitor 状态机违规，并给出把 `trace_sched_en
 - [sched-20260928-012](../../2026/09/sched-20260928-012-documentation-sched-preemption-add-a-spdx-license-identifier.md) `fix/under_review` — Quchaosheng 给 `Documentation/scheduler/sched-preemption.rst` 补上缺失的 SPDX 许可证标识（`GPL-2.0`），与 `Documentation/scheduler/` 下其它文件保持一致。这是 Jonathan Corbet（文档维护者）建议的 2 行 trivial 补丁，v1 刚发出。
 - [sched-20260928-007](../../2026/09/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `discussion/superseded` — 本文为增量更新，完整脉络见 sched-20260922-013。作者 Quchaosheng 此前发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译，被 Peter Zijlstra 与 Sebastian 指出该组合「effectively broken」后已撤回。28 日作者发帖做最终澄清：系列正式撤回，v2 只让组合能 build + boot、并未让

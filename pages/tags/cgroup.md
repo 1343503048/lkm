@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 86
+article_count: 87
 ---
 
+- [sched-20260930-005](/lkm/2026/09/30/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
 - [sched-20260929-011](/lkm/2026/09/29/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260928-003](/lkm/2026/09/28/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/under_review` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only

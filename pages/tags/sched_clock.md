@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_clock"
 title: "标签: sched_clock"
-article_count: 12
+article_count: 13
 ---
 
+- [sched-20260930-010](/lkm/2026/09/30/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260929-002](/lkm/2026/09/29/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260924-015](/lkm/2026/09/24/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates
 - [sched-20260921-009](/lkm/2026/09/21/sched-20260921-009-sched-core-defer-preempted-remote-vcpu-task-clock-updates.html) `discussion/low/rfc` — sched/core: Defer preempted remote vCPU task clock updates

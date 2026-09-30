@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 163
+article_count: 165
 ---
 
+- [sched-20260930-006](/lkm/2026/09/30/sched-20260930-006-sched-core-fix-context-analysis-errors-in-non-preferred-cpu.html) `fix/low/under_review` — sched/core: Fix context analysis errors in non-preferred CPU push
+- [sched-20260930-011](/lkm/2026/09/30/sched-20260930-011-sched-fair-rework-fix-task-h-load.html) `fix/high/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20260929-012](/lkm/2026/09/29/sched-20260929-012-sched-fair-rework-fix-task-h-load.html) `fix/high/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20260928-004](/lkm/2026/09/28/sched-20260928-004-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `feature/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state
 - [sched-20260928-005](/lkm/2026/09/28/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/under_review` — sched/fair: Avoid overflow in place_entity()

@@ -13277,6 +13277,253 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。Fuyu Zhao 为 sched_ext 工具链新增 `SCX_OPS_OPEN_OPTS()`/`SCX_OPS_CID_OPEN_OPTS()` 宏，让调度器在打开 BPF skeleton 时能传自定义 `bpf_object_open_opts`，同时保留内核版本兼容检查。  - sched-20260922-006：初版加 `SCX_OPS_OPEN_OPTS()`，Tejun 建议 `SCX_OPS_OPEN()` 以 0 为 opts 调用减少重复。 - sched-20260924-016：Tejun 复审要求对称"
   },
   {
+    "title": "sched_ext: Fix missing ops.dequeue() on remote local DSQ moves",
+    "id": "sched-20260930-001",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-001-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.html",
+    "tldr": "Kuba Piecuch 的 sched_ext 修复：自 ebf1ccff79c4（\"sched_ext: Fix ops.dequeue() semantics\"）后，任务被迁到**另一 CPU 的 local DSQ**（SCX_DSQ_LOCAL_ON 派发、scx_bpf_dsq_move_to_local() 等）时，`ops.dequeue()` 不会在插入目标 DSQ 时被调用，而是推迟到任务被 pick 时以 `SCX_DEQ_CORE_SCHED_EXEC` 报告——语义被破坏，BPF 调度器可能拿到错误的 dequeue 回调。根因是 b75aaea24c9f 之后 `e"
+  },
+  {
+    "title": "sched_ext: Hold DSQ refs for deferred reenqueues",
+    "id": "sched-20260930-002",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-002-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html",
+    "tldr": "Hui Su 的 sched_ext use-after-free 修复：`scx_bpf_dsq_reenq()` 的 deferred reenqueue 路径上，被 deferral 的用户 DSQ 节点可能在 RCU 回调 `exit_dsq()` 到达前就被 detach，之后 deferred 路径仍在释放 `deferred_reenq_lock` 后继续用裸 DSQ 指针，回调可能先释放 DSQ，导致 KASAN 报 slab-use-after-free（`run_deferred` 中）。补丁在 `deferred_reenq_lock` 下 detach 节点**前**先"
+  },
+  {
+    "title": "sched_ext: Work around pahole 1.32 dropping scx_bpf_task_set_lazy_resched() from BTF",
+    "id": "sched-20260930-003",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-003-sched-ext-work-around-pahole-1-32-dropping-scx-bpf-task-set.html",
+    "tldr": "Tejun Heo 的 sched_ext 修复：clang + pahole 1.32 下 x86-64 vmlinux BTF 缺失 `scx_bpf_task_set_lazy_resched()`，导致 sched_ext 初始化失败（`Failed to register kfunc sets (-22)`）。原因是 clang 只在 prologue 把 `lazy` 参数挪进 callee-saved 寄存器后才描述它，pahole 1.32 因「不是参数寄存器」而拒绝。补丁用 `barrier_data()` 把参数钉在栈上，使位置描述不点名任何寄存器（`OPTIMIZER_H"
+  },
+  {
+    "title": "sched_ext: Sync tools headers from the scx repo",
+    "id": "sched-20260930-004",
+    "date": "2026-09-30",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-004-sched-ext-sync-tools-headers-from-the-scx-repo.html",
+    "tldr": "Tejun Heo 为 sched_ext/for-7.4 发的工具头文件同步补丁集（2 补丁）：内核侧 `tools/sched_ext/include` 与 scx 仓库 `scheds/include` 的共享 BPF 头自上次同步后分叉（内核给 `scx_bpf_cid_topo()` 等加了 size 参数、加了 lazy preemption/proxy-exec 标志与 `SCX_OPS_OPEN_OPTS()`，scx 侧则累积了 cid-form 调度器用的 cmask helpers 与 kfunc compat 包装），本系列把合并结果拷回内核。1/2 同步四个共享头 +"
+  },
+  {
+    "title": "sched_ext: Add scx_bpf_cgroup_nr_cpus()",
+    "id": "sched-20260930-005",
+    "date": "2026-09-30",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-011：Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列，新增 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpuset 的 CPU 数），让层级式 BPF 调度器按 cgroup 真实 CPU 数分配 group 权重；附 compat 包装与 selftest。 - sched-20260930-005（今天）：作"
+  },
+  {
+    "title": "sched/core: Fix context analysis errors in non-preferred CPU push",
+    "id": "sched-20260930-006",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-006-sched-core-fix-context-analysis-errors-in-non-preferred-cpu.html",
+    "tldr": "Shrikanth Hegde 的 sched/core 构建修复：`CONFIG_PREFERRED_CPU=y` 下 clang23 的线程安全分析报错——`context_unsafe_alias(rq)` 被放在 `rq_lock()` 之后，此时已把锁与原始 `rq` 别名关联，后续改 `rq` 别名与 `rq_unlock()` 触发「释放未持有/并非所有路径都持有」的静态告警。补丁把 alias barrier 移到 `rq_lock()` 之前。带 `Fixes: 74699f56ebcf`（\"sched/core: Push current task from non pre"
+  },
+  {
+    "title": "sched/proxy: Correct the SCHED_PROXY_EXEC dependency comment",
+    "id": "sched-20260930-007",
+    "date": "2026-09-30",
+    "type": "discussion",
+    "status": "superseded",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Quchaosheng"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-007-sched-proxy-correct-the-sched-proxy-exec-dependency-comment.html",
+    "tldr": "Quchaosheng 的一枚仅注释类补丁：想修正 `SCHED_PROXY_EXEC` 对 `!PREEMPT_RT` 依赖的注释——指出现有注释「Avoid some build failures w/ PREEMPT_RT until it can be fixed」只描述了依赖移除后的结果而非其存在原因，且「fixed」从未定义；作者给出真正根因（PREEMPT_RT 下 mutex 是 rt_mutex，PI 路径取 `pi_lock`/`rq->lock` 与 `find_proxy_task()` 取 `wait_lock` 形成环）。但在 reviewer 指出原注释对目标读者"
+  },
+  {
+    "title": "sched/eevdf: Fix slice protection across state changes",
+    "id": "sched-20260930-008",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-008-sched-eevdf-fix-slice-protection-across-state-changes.html",
+    "tldr": "Christian Loehle 的两枚 EEVDF slice-protection 边界修复（测试 Vincent Guittot 系列边界用例时发现）：1/2 让每次新授予的 protection 都无条件下限到最小 slice（当前任务自己持有最短 slice 时，既有 `slice != se->slice` 条件会漏掉 cap，让保护延续到旧 deadline）；2/2 保持「已过期的 protection」在 reweight 移动 vruntime 后仍是过期态（否则旧的绝对 vprot 重新复活，让 current 越过有更早 deadline 的 eligible 实体被选"
+  },
+  {
+    "title": "sched/fair: Take slice protection into account when arming HRTICK",
+    "id": "sched-20260930-009",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "preempt"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.html",
+    "tldr": "Christian Loehle 的 EEVDF 调度粒度修复：EEVDF 会在更短 request 竞争时提前结束任务的 slice protection，`update_curr()` 在 protection 到期时请求重选，但 `hrtick_start_fair()` 仍按虚拟 deadline 定时——无中间调度事件时，下次重选机会远晚于 protection 边界。例如两个等权 SCHED_OTHER 任务（100 us 与 1 ms）在单 CPU 上，未修补的 HZ=250 内核两任务均呈现约 1 ms 的切换粒度（短 request 被反复 repick、不受单次 reque"
+  },
+  {
+    "title": "sched/psi: clamp negative cpu_clock() skew",
+    "id": "sched-20260930-010",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "psi",
+      "sched_clock"
+    ],
+    "authors": [
+      "David Stevens"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-002：David Stevens 的 PSI 修复——stable clock 系统上 `cpu_clock(cpu)` 忽略 cpu 参数，负 skew 令 u32 活跃态时长计算下溢、产生约 4 秒假 delta 冲进累加器，造成 PSI_POLL 虚假唤醒或 PSI_AVGS nonsense 值；补丁把 elapsed 钳到 >=0。Peter Zijlstra 质疑「sched_clock_stable 下为何还能非单调」并追问机器型号。 - sched-20260930-010（今"
+  },
+  {
+    "title": "sched/fair: Rework/fix task_h_load()",
+    "id": "sched-20260930-011",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-011-sched-fair-rework-fix-task-h-load.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260902-007：Peter Zijlstra 的 4 补丁系列中 `4/4` 重做 `task_h_load()`，v1 的 `for_each_sched_entity_bl()` 在 `set_next_task_fair()` 里 clobber `se`/`cfs_rq`，致 192 核机器启动 panic（Chen Yu、Vincent 双独立复现）。 - sched-20260929-012：Peter 重发 v2（完整 4 补丁）——修复 `FAIR_GROUP_SCHED=n`/`=y`"
+  },
+  {
+    "title": "sched/cpufreq: fix schedutil's boost frequency handling",
+    "id": "sched-20260930-012",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Ananthu C V"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260921-007：Ananthu C V 的 schedutil boost 频率处理修复（v2）回应 Oleg 关于 `cpuinfo->max_freq` 只升不降设计的疑问，接受 Zhongqiu 建议补 `Fixes:`。 - sched-20260922-019：Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，二分定位问题由 `db80ad776cd2` 引入。 - sched-20260929-004：作者发 v3——drop `max_table_freq` 字段、新增从"
+  },
+  {
+    "title": "sched/cache: Honor asym packing over cache aware scheduling on hybrid system",
+    "id": "sched-20260930-013",
+    "date": "2026-09-30",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "load_balance",
+      "topology",
+      "regression"
+    ],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-003：Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台性能回退」的修复补丁——让 asym packing 在「要把任务迁到更高优先级空核」时优先于 cache-aware（迁到更高性能空核比 cache 共置更划算），带 `Fixes:`、双 `Tested-by`、`Cc: stable # 7.2.x`；Kayra 指出注释与实现的语义不一致（未检查 idle 就放行）。 - sched-20260930-013（今天）：Kayra 与 Ti"
+  },
+  {
+    "title": "sched: Enable preferred SMT siblings on NVIDIA Olympus",
+    "id": "sched-20260930-014",
+    "date": "2026-09-30",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260921-004：Andrea Righi 的「在 NVIDIA Olympus 上启用优先 SMT 兄弟」系列（v6）获 Breno Leitao 完整 Tested-by 与 Dietmar Eggemann 对 Spatial SMT 收益机制的追问。 - sched-20260929-019：Andrea 逐条回复 Dietmar（POWER7 自设 `SD_ASYM_PACKING` 无需 boot 选项；boot 选项只服务固件不描述偏好的 Olympus），并补充 88 线程 benchma"
+  },
+  {
+    "title": "sched/numa: stop VMA scan filters from gating promotion",
+    "id": "sched-20260930-015",
+    "date": "2026-09-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/09/30/sched-20260930-015-sched-numa-stop-vma-scan-filters-from-gating-promotion.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-008：Gregory Price 的 NUMA 内存 tiering 修复系列 v3（7 补丁）——VMA 扫描过滤器（placement_scan 等）此前误门控了页提升（promotion）。 - sched-20260925-014：David Hildenbrand 逐枚 review v3 的 3/7~5/7，核心意见是 `placement_scan` 的 `&=` 布尔组合难读、建议改成显式 `if/else if`，4/7、5/7「LGTM」；作者准备 v4。 - sched-"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 163 篇
+共 165 篇
 
+- [sched-20260930-011](../../2026/09/sched-20260930-011-sched-fair-rework-fix-task-h-load.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20260930-006](../../2026/09/sched-20260930-006-sched-core-fix-context-analysis-errors-in-non-preferred-cpu.md) `fix/low/under_review` — Shrikanth Hegde 的 sched/core 构建修复：`CONFIG_PREFERRED_CPU=y` 下 clang23 的线程安全分析报错——`context_unsafe_alias(rq)` 被放在 `rq_lock()` 之后，此时已把锁与原始 `rq` 别名关联，后续改 `rq` 别名与 `rq_unlock()` 触发「释放未持有/并非所有路径都持有」的静态告警。补丁把
 - [sched-20260929-012](../../2026/09/sched-20260929-012-sched-fair-rework-fix-task-h-load.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-008](../../2026/09/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。这是对「sched/eevdf: Move to a single runqueue」引入的 schbench p99 延迟回归的持续定位讨论。
 - [sched-20260928-005](../../2026/09/sched-20260928-005-sched-fair-avoid-overflow-in-place-entity.md) `fix/medium/under_review` — Hui Su 修复 `place_entity()` 里的 s64 溢出：`lag * (load + weight) / load` 在除法前就可能因 `lag * (load + weight)` 的中间乘积溢出 s64，即使最终商可表示，也会破坏 EEVDF 实体的虚拟 lag 放置。修复把表达式重写为等价的 `lag + lag * weight / load`，避免用虚拟 lag 乘以总

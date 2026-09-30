@@ -1,7 +1,8 @@
 # tag: regression
 
-共 22 篇
+共 23 篇
 
+- [sched-20260930-013](../../2026/09/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-003](../../2026/09/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台上的性能回退」发出的修复补丁：asym packing 想把任务放到最高优先级 CPU，cache-aware 调度想把同一进程的任务都聚到一个 LLC（不管 LLC 内 CPU 优先级）。补丁让 asym packing 在「要把任务迁到一个优先级更高的空核」时**优先于** cache-aware 策
 - [sched-20260928-008](../../2026/09/sched-20260928-008-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。这是对「sched/eevdf: Move to a single runqueue」引入的 schbench p99 延迟回归的持续定位讨论。
 - [sched-20260927-005](../../2026/09/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

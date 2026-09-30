@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 58 篇
+共 59 篇
 
+- [sched-20260930-012](../../2026/09/sched-20260930-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-020](../../2026/09/sched-20260929-020-cpufreq-use-hardware-feedback-for-cpuinfo-avg-freq.md) `feature/under_review` — Chuyi Zhou（ByteDance）发起的 3 补丁系列中的 2/3 在本日迎来 Beata Michalska 的 review：补丁让 `cpuinfo_avg_freq` 采用硬件反馈（hardware feedback），Beata 追问 changelog 里「temporary sampling gaps」的具体含义，并质疑「是否需要为读取该属性而唤醒 target CPU」。本
 - [sched-20260929-010](../../2026/09/sched-20260929-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.md) `feature/under_review` — Christian Loehle 的 3 补丁系列：无频率表的 cppc-cpufreq 缺少「频率→性能级」的解析，内核会原样返回请求的 kHz，即使固件只暴露少数几个 CPPC performance level，不同 kHz 请求会miss schedutil 的缓存却写同一个 Desired Performance 值。系列新增 `->resolve_freq()` 回调让 table-l
 - [sched-20260929-009](../../2026/09/sched-20260929-009-cpufreq-amd-pstate-update-zen6-client-epp-tuning-values.md) `feature/merged_tip` — Vishal Badole 的 amd-pstate Zen6 客户端 EPP（Energy Performance Preference）调参补丁：在平台特性刻画基础上进一步调整 per-CPU-type EPP 值（performance 核的 `power` 档 64→115、low-power 核的 `balance_performance` 51→64、`power` 115→64），使

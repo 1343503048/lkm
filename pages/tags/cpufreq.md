@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 58
+article_count: 59
 ---
 
+- [sched-20260930-012](/lkm/2026/09/30/sched-20260930-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260929-001](/lkm/2026/09/29/sched-20260929-001-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/under_review` — cpufreq: schedutil: Serialize start against rate limit updates
 - [sched-20260929-004](/lkm/2026/09/29/sched-20260929-004-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260929-006](/lkm/2026/09/29/sched-20260929-006-rust-cpufreq-reject-null-from-cpufreq-cpu-get.html) `fix/medium/under_review` — rust: cpufreq: reject NULL from cpufreq_cpu_get()
