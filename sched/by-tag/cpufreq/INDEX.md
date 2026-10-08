@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 59 篇
+共 61 篇
 
+- [sched-20261008-008](../../2026/10/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/under_review` — Akram Boulahia 修掉 amd-pstate 在一个特定固件形态下的初始化失败：commit `9dfd13f80c85` 起，active 模式里 `shmem_init_perf()` 不再提前返回、总会调用 `cppc_set_auto_sel()`（为共享内存系统所需）；但在 `_CPC` 的 Autonomous Selection Enable 项是「常量整数而非寄存器」的
+- [sched-20261008-007](../../2026/10/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.md) `discussion/superseded` — 这是一条以「补丁被放弃」收尾的 cpufreq 讨论：Giovanni Gherdovich 早前为 MSI TRX40 主板（Ryzen Threadripper 3960X）提的 quirk——在该类主板 ACPI `_CPC` 包缺失 nominal/lowest 频率、导致 amd-pstate 无法加载时硬补频率——在多名同平台用户升级最新 BIOS 后确认问题已由固件修复，作者与其他测
 - [sched-20260930-012](../../2026/09/sched-20260930-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-020](../../2026/09/sched-20260929-020-cpufreq-use-hardware-feedback-for-cpuinfo-avg-freq.md) `feature/under_review` — Chuyi Zhou（ByteDance）发起的 3 补丁系列中的 2/3 在本日迎来 Beata Michalska 的 review：补丁让 `cpuinfo_avg_freq` 采用硬件反馈（hardware feedback），Beata 追问 changelog 里「temporary sampling gaps」的具体含义，并质疑「是否需要为读取该属性而唤醒 target CPU」。本
 - [sched-20260929-010](../../2026/09/sched-20260929-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.md) `feature/under_review` — Christian Loehle 的 3 补丁系列：无频率表的 cppc-cpufreq 缺少「频率→性能级」的解析，内核会原样返回请求的 kHz，即使固件只暴露少数几个 CPPC performance level，不同 kHz 请求会miss schedutil 的缓存却写同一个 Desired Performance 值。系列新增 `->resolve_freq()` 回调让 table-l

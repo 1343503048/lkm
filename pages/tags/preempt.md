@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 63
+article_count: 64
 ---
 
+- [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
 - [sched-20260930-009](/lkm/2026/09/30/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.html) `fix/medium/under_review` — sched/fair: Take slice protection into account when arming HRTICK
 - [sched-20260929-005](/lkm/2026/09/29/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.html) `fix/low/under_review` — sched: set TIF_NEED_RESCHED before calling __trace_set_need_resched()
 - [sched-20260928-007](/lkm/2026/09/28/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.html) `discussion/none/superseded` — sched/proxy: allow SCHED_PROXY_EXEC with PREEMPT_RT

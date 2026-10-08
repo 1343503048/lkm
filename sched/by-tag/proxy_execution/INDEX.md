@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 58 篇
+共 59 篇
 
+- [sched-20261008-002](../../2026/10/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/under_review` — Jemmy Wong 发 3 枚修复，收掉 proxy execution（拆分调度上下文 `rq->donor` 与执行上下文 `rq->curr`）下的三处记账不一致：NUMA/cache tick 钩子、`task_sched_runtime()` 的运行时 flush、`sched_can_stop_tick()` 的 CFS 带宽检查在拆分后仍错误地以 donor 为「在 CPU 上的任
 - [sched-20260930-007](../../2026/09/sched-20260930-007-sched-proxy-correct-the-sched-proxy-exec-dependency-comment.md) `discussion/superseded` — Quchaosheng 的一枚仅注释类补丁：想修正 `SCHED_PROXY_EXEC` 对 `!PREEMPT_RT` 依赖的注释——指出现有注释「Avoid some build failures w/ PREEMPT_RT until it can be fixed」只描述了依赖移除后的结果而非其存在原因，且「fixed」从未定义；作者给出真正根因（PREEMPT_RT 下 mutex 是 
 - [sched-20260929-015](../../2026/09/sched-20260929-015-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。本系列的目标是让 proxy execution 与 sched_ext 可扩展调度类兼容——proxy execution 把阻塞在互斥量上的任务（donor）的调度上下文借给锁持有者运行，sched_ext 需要一组 hook 才能在这一机制下正确记账。
 - [sched-20260928-007](../../2026/09/sched-20260928-007-sched-proxy-allow-sched-proxy-exec-with-preempt-rt.md) `discussion/superseded` — 本文为增量更新，完整脉络见 sched-20260922-013。作者 Quchaosheng 此前发补丁让 `SCHED_PROXY_EXEC` 可与 `PREEMPT_RT` 同时编译，被 Peter Zijlstra 与 Sebastian 指出该组合「effectively broken」后已撤回。28 日作者发帖做最终澄清：系列正式撤回，v2 只让组合能 build + boot、并未让

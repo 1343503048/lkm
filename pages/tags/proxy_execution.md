@@ -2,9 +2,10 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 58
+article_count: 59
 ---
 
+- [sched-20261008-002](/lkm/2026/10/08/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/under_review` — sched: Fix proxy-exec use of curr and donor
 - [sched-20260930-007](/lkm/2026/09/30/sched-20260930-007-sched-proxy-correct-the-sched-proxy-exec-dependency-comment.html) `discussion/none/superseded` — sched/proxy: Correct the SCHED_PROXY_EXEC dependency comment
 - [sched-20260929-015](/lkm/2026/09/29/sched-20260929-015-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260928-002](/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext

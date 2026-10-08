@@ -1,7 +1,10 @@
 # tag: x86
 
-共 19 篇
+共 22 篇
 
+- [sched-20261008-011](../../2026/10/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261008-008](../../2026/10/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/under_review` — Akram Boulahia 修掉 amd-pstate 在一个特定固件形态下的初始化失败：commit `9dfd13f80c85` 起，active 模式里 `shmem_init_perf()` 不再提前返回、总会调用 `cppc_set_auto_sel()`（为共享内存系统所需）；但在 `_CPC` 的 Autonomous Selection Enable 项是「常量整数而非寄存器」的
+- [sched-20261008-007](../../2026/10/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.md) `discussion/superseded` — 这是一条以「补丁被放弃」收尾的 cpufreq 讨论：Giovanni Gherdovich 早前为 MSI TRX40 主板（Ryzen Threadripper 3960X）提的 quirk——在该类主板 ACPI `_CPC` 包缺失 nominal/lowest 频率、导致 amd-pstate 无法加载时硬补频率——在多名同平台用户升级最新 BIOS 后确认问题已由固件修复，作者与其他测
 - [sched-20260927-005](../../2026/09/sched-20260927-005-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-005](../../2026/09/sched-20260926-005-sched-ext-cid-represent-clusters-explicitly.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 新发的单枚补丁：让 sched_ext 的 CID 拓扑把「cluster」（同一 LLC 内共享 L2 等更紧资源的核组）显式表示为一段连续 CID 区间，并在 `struct scx_cid_topo` 里给出 cluster 归属。目前刚发出、尚无回帖。
 - [sched-20260926-004](../../2026/09/sched-20260926-004-cache-aware-scheduling-does-not-work-well-with-amd-big-littl.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

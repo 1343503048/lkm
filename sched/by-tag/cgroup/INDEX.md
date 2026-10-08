@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 87 篇
+共 89 篇
 
+- [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重
+- [sched-20261008-003](../../2026/10/sched-20261008-003-sched-autogroup-serialize-nice-rate-limit-updates.md) `fix/low/under_review` — Hui Su 修掉 `proc_sched_autogroup_set_nice()` 里一个经典的 check-then-act 竞态：用函数级静态时间戳做 100ms 限流的检查和更新不是原子的，两个并发非特权写者可同时看到过期时间戳、都进入 `sched_group_set_shares()`，击穿限流。补丁用一个专用 spinlock 串行化时间戳的查/改，能力检查移出临界区、重活保持锁外
 - [sched-20260930-005](../../2026/09/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-011](../../2026/09/sched-20260929-011-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列：层级式 BPF 调度器在分配 group-wide 权重时需要知道某个 cgroup 能在多少 CPU 上运行，新 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair 的 `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpu
 - [sched-20260929-007](../../2026/09/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

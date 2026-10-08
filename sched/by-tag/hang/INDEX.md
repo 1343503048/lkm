@@ -1,7 +1,8 @@
 # tag: hang
 
-共 11 篇
+共 12 篇
 
+- [sched-20261008-005](../../2026/10/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — Tejun Heo 修掉 sched_ext 的一个 CPU idle stall：`SCX_OPS_ENQ_LAST` 下，本应作为「最后一个可运行任务」交给 `ops.enqueue()` 的任务，在三条 skip 路径（exiting 任务没设 `ENQ_EXITING`、migration-disabled 任务没设 `ENQ_MIGRATION_DISABLED`、offline rq 
 - [sched-20260924-003](../../2026/09/sched-20260924-003-sched-ext-fix-cpu-hotplug-hang-when-a-dying-cpu-s-tasks-sit.md) `fix/critical/under_review` — Tejun Heo（sched_ext 维护者）的 CPU 热插拔挂起修复（`sched_ext/for-7.3-fixes`）：正关机的 CPU 若还有任务停在 user DSQ 或被 BPF 调度器持有，`cpu_down()` 会永久挂起或直到 watchdog 弹掉调度器。补丁在 rq 下线时把非本地 DSQ 上的任务全部重新入队到本地 DSQ，并让 `ops.dispatch()` 一直
 - [sched-20260918-016](../../2026/09/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.md) `bug/critical/stalled` — 华为鲲鹏（Great Wall RK5260 V5，128 核 arm64）上报告一起 hard lockup：`rq[3].__lock` qspinlock 一直处于 locked 状态、却找不到持有者，124 个 CPU 挂在该锁的 MCS 队列里，CPU3 经 futex_wait → schedule() 阻塞在拿 rq 锁。内核为自研 5.15.131。Will Deacon 回应"得
 - [sched-20260916-006](../../2026/09/sched-20260916-006-sched-ext-dont-run-ops-dequeue-with-a-dsq-lock-held.md) `fix/medium/under_review` — Qiurong Fang 的 v3：`ops.dequeue()` 在 consume/move 路径上仍带着源 user DSQ 锁被调用，任何从 `ops.dequeue()` 回锁同一 DSQ 的 BPF 调度器会自死锁。v3 按 Tejun Heo 的全套评审意见重写：收紧死锁描述到两条 user DSQ 路径、open-code 掉 `call_task_dequeue()`、放弃拆分直
