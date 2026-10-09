@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 25 篇
+共 26 篇
 
+- [sched-20261002-003](../../2026/10/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-002](../../2026/10/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-007](../../2026/09/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-003](../../2026/09/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/under_review` — Waiman Long 修复 cpuset 里 SCHED_DEADLINE 带宽收缩检查的误触发——当 CS_CPU_EXCLUSIVE 标志被错误地设在并非有效 partition root 的 cpuset 上时，`validate_change()` 的 shrink 测试会在存在 deadline 任务的系统里被误触发，导致改 cpuset 控制文件时意外返回 `-EBUSY`。v1 发

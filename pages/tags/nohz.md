@@ -2,9 +2,12 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 26
+article_count: 29
 ---
 
+- [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
+- [sched-20261002-007](/lkm/2026/10/02/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
+- [sched-20261002-013](/lkm/2026/10/02/sched-20261002-013-sched-isolation-enforce-nohz-full-as-a-subset-of-isolcpus-do.html) `feature/low/under_review` — sched/isolation: Enforce nohz_full as a subset of isolcpus=domain at boot
 - [sched-20261001-002](/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260925-013](/lkm/2026/09/25/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260923-002](/lkm/2026/09/23/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/under_review` — sched: Make proxy execution compatible with sched_ext

@@ -91,7 +91,7 @@ v2 五片（`kernel/sched/fair.c` +44/−28，base-commit 01d1f30564aa）：
 
 ## 合入评估
 
-*likelihood=medium*。机制缺陷真实、复现与数据完备、作者此前两轮快速迭代记录良好；但 Peter 对 1/5 有明确反对意见，3/5 的动机未在 changelog 说明，5/5 是否受同一理由影响待确认，系列需按意见再改。*blocking_issues*：1/5 与 Peter 的稳态取舍未解决；3/5 动机待补；5/5 命运待确认。*next_action*：作者回应 1/5 意见（重做或放弃 wakeup 侧重算）、补 3/5 changelog 动机后发 v3。
+*likelihood=medium*。机制缺陷真实、复现与数据完备、作者此前两轮快速迭代记录良好；但 Peter 对 1/5 有明确反对意见，3/5 的动机未在 changelog 说明，5/5 是否受同一理由影响待确认，系列需按意见再改。*blocking_issues*：1/5 与 Peter 的稳态取舍未解决；3/5 动机说明缺失；5/5 命运待确认。*next_action*：作者回应 1/5 意见（重做或放弃 wakeup 侧重算）、补 3/5 changelog 动机后发 v3。
 
 ## 效果评估
 

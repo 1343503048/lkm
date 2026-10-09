@@ -1,7 +1,10 @@
 # tag: nohz
 
-共 26 篇
+共 29 篇
 
+- [sched-20261002-013](../../2026/10/sched-20261002-013-sched-isolation-enforce-nohz-full-as-a-subset-of-isolcpus-do.md) `feature/low/under_review` — Qiliang Yuan 的 12 补丁 v5（v1-v4 未在既往分析窗口覆盖；当日缓存收到的补丁为 01-03/12）：`kernel/sched/isolation.c` 的隔离语义修复与运行时可变 housekeeping 掩码。01/12 修 boot 配置矛盾——`nohz_full=`（或 `isolcpus=nohz`）与 `isolcpus=domain` 独立解析时，没有任何机
+- [sched-20261002-007](../../2026/10/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — K Prateek Nayak（AMD）的 13 补丁 RFC v3（10 K Prateek + 3 Peter Zijlstra）：大型多节点系统上频繁更新的全局 cpumask（如 nohz idle 掩码）存在严重 C2C ping-pong——方案是引入「sparsebitmap（sbm）」：按 LLC/节点实例分片的位图，每实例只表示少量 CPU，写操作保持在本地 cacheline，
+- [sched-20261002-003](../../2026/10/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-002](../../2026/10/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；
 - [sched-20260923-002](../../2026/09/sched-20260923-002-sched-make-proxy-execution-compatible-with-sched-ext.md) `feature/under_review` — - sched-20260910-002：Peter Zijlstra 对 Andrea Righi 的 proxy-execution 兼容 sched_ext 系列（v13，18 枚）的正式评审落地——在 03/04/05/07/08/09/14/15 共 8 个补丁上留下 10 条意见，其中 08/18（WF_ON_RQ）与 09/18（跨调度类转换阻塞 donor）的设计被直接质疑，03/

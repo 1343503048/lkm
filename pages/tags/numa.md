@@ -2,9 +2,11 @@
 layout: default
 tag: "numa"
 title: "标签: numa"
-article_count: 9
+article_count: 11
 ---
 
+- [sched-20261002-009](/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/under_review` — sched/topology: Introduce a NUMA distance matrix with unique distance values
+- [sched-20261002-014](/lkm/2026/10/02/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.html) `feature/medium/rfc` — sched_ext: Drive the NUMA balancing scan for SCX tasks
 - [sched-20260822-007](/lkm/2026/08/22/sched-20260822-007-sched-debug-reject-invalid-writes-to-numa-balancing-scan-size-mb.html) `fix/low/under_review` — sched/debug: Reject invalid writes to numa_balancing scan_size_mb
 - [sched-20260817-005](/lkm/2026/08/17/sched-20260817-005-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.html) `feature/medium/under_review` — sched, steal_governor: Introduce preferred CPUs and steal-driven vCPU backoff
 - [sched-20260806-014](/lkm/2026/08/06/sched-20260806-014-sched-numa-hygon-remote-socket-distance-v2.html) `fix/medium/under_review` — sched/numa: Apply remote socket distance averaging for Hygon CPUs

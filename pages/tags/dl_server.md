@@ -2,9 +2,10 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 7
+article_count: 8
 ---
 
+- [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261001-002](/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260925-013](/lkm/2026/09/25/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260919-001](/lkm/2026/09/19/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.html) `fix/high/under_review` — sched/deadline: Fix zero-CPU DL bandwidth handling

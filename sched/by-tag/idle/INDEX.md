@@ -1,7 +1,8 @@
 # tag: idle
 
-共 58 篇
+共 59 篇
 
+- [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260926-010](../../2026/09/sched-20260926-010-documentation-power-cpuidle-fix-repeating-phrase.md) `fix/merged_tip` — Norsyazwina Fazrul 提交的 cpuidle 文档修订（去掉一处重复措辞）获 Rafael Wysocki 应用为 7.4 material。属纯文档打磨，无技术风险。

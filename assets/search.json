@@ -13755,6 +13755,335 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-011：Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列，新增 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpuset 的 CPU 数），让层级式 BPF 调度器按 cgroup 真实 CPU 数分配 group 权重。 - sched-20260930-005：作者发 v2——drop 掉保护 `is_in_v2_"
   },
   {
+    "title": "sched/eevdf: Add min slice check when selecting CPU",
+    "id": "sched-20261002-001",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "load_balance",
+      "eas"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-018：Vincent Guittot 8 补丁系列「Improving latency of short slice tasks」的 patch 8/8——`select_task_rq_fair()` 找不到空闲 CPU 时新增 `select_slice_cpu()` 比较候选 CPU 的 slice，避免短 slice 任务被放到已运行同长或更短 slice 任务的 CPU 上；Peter 建议复用初次扫描、Kayra 质疑 `nr_idle_scan` 语义，Vincent 确认注释需"
+  },
+  {
+    "title": "sched/eevdf: Keep expired protection expired across reweighting",
+    "id": "sched-20261002-002",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "eevdf"
+    ],
+    "authors": [
+      "Christian Loehle",
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-008：Christian Loehle 两枚 EEVDF slice-protection 边界修复——1/2 让每次新授予的 protection 无条件下限到最小 slice，2/2 保持「已过期的 protection」在 reweight 移动 vruntime 后仍是过期态；当日 Kayra 追问 2/2 的 reweight 路径反例。 - sched-20260930-009：Christian 单片 HRTICK 修复——fair hrtick 取「虚拟 deadline 与存"
+  },
+  {
+    "title": "sched/deadline: Make dl-server nohz full aware",
+    "id": "sched-20261002-003",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "nohz"
+    ],
+    "authors": [
+      "Juri Lelli"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260925-013：Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月未被收取）重新活跃——Ionut Nechita 发现 v2 恢复了 CFS 带宽保证但把隔离核变成满 CONFIG_HZ tick，给出「只在 server 实际 enqueue 期间保持 tick」的变体，Juri 欢迎其发 v3。 - sched-20261001-002：Frederic Weisbecker 提出根本性概念问题（nohz_full 上为什么会有 dl-server "
+  },
+  {
+    "title": "sched: Add task enqueue/dequeue trace points",
+    "id": "sched-20261002-004",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_debug",
+      "rv"
+    ],
+    "authors": [
+      "Gabriele Monaco"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-004-sched-add-task-enqueue-dequeue-trace-points.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260831-010：Gabriele Monaco（Red Hat）在 20 补丁 RFC 中首发该 tracepoint 补丁——在通用 `enqueue_task()`/`dequeue_task()`/`__block_task()` 路径加一对 `sched_enqueue`/`sched_dequeue` tracepoint 并 GPL 导出，方向由 Peter Zijlstra 建议、K Prateek Nayak 已 `Reviewed-by`。 - sched-20260929-013：该"
+  },
+  {
+    "title": "cpufreq: Resolve CPPC frequencies to performance levels",
+    "id": "sched-20261002-005",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq",
+      "cppc"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-005-cpufreq-resolve-cppc-frequencies-to-performance-levels.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-010：Christian Loehle 的 3 补丁系列——table-less 的 cppc-cpufreq 缺少「频率→性能级」解析，不同 kHz 请求 miss schedutil 频率缓存却写同一个 Desired Performance 值；新增 `->resolve_freq()` 回调、CPPC 预计算仿射转换、schedutil limits 未变时跳过冗余回调。实测 schbench mean p99 降 10%、`cppc_set_perf()` 调用降 23.8%。 - "
+  },
+  {
+    "title": "cpufreq: amd-pstate: Restore previous mode when changing driver mode fails",
+    "id": "sched-20261002-006",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "amd_pstate"
+    ],
+    "authors": [
+      "Mario Limonciello",
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-006-cpufreq-amd-pstate-restore-previous-mode-when-changing-drive.html",
+    "tldr": "Mario Limonciello（AMD，amd-pstate 维护者）的 3 补丁 v2（前身 09-21 的 4 补丁 v1，v1 未在既往分析窗口覆盖）：修复 amd-pstate 模式切换的两个健壮性缺口与 Zen6 上两个单元测试失败。1/3：`amd_pstate_change_driver_mode()` 注册新模式失败后什么也不恢复、系统失去 scaling driver，改为记住旧模式并在失败时重注册（两处均由 Sashiko bot 报告、`Fixes: 3ca7bc818d8c`）；2/3：`cppc_set_auto_sel()` 返回值被丢弃、固件拒绝时软件模式与硬"
+  },
+  {
+    "title": "lib, sched: Introduce sparsebitmap (sbm)",
+    "id": "sched-20261002-007",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "nohz",
+      "topology"
+    ],
+    "authors": [
+      "K Prateek Nayak",
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.html",
+    "tldr": "K Prateek Nayak（AMD）的 13 补丁 RFC v3（10 K Prateek + 3 Peter Zijlstra）：大型多节点系统上频繁更新的全局 cpumask（如 nohz idle 掩码）存在严重 C2C ping-pong——方案是引入「sparsebitmap（sbm）」：按 LLC/节点实例分片的位图，每实例只表示少量 CPU，写操作保持在本地 cacheline，代价是遍历更贵。架构通过 `num_instances`（叶子数）+ `max_threads_per_instance` 声明拓扑，sbm 在 CPU 激活时动态分配索引（索引 = 数组下标 + 位"
+  },
+  {
+    "title": "sched_ext: Keep proxy donors with slice left on the local DSQ",
+    "id": "sched-20261002-008",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "proxy_exec"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-008-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html",
+    "tldr": "Andrea Righi（NVIDIA，sched_ext 维护者）直接发往 `sched_ext/for-7.4` 分支的单补丁修复：commit ee172227d0dc（\"Delegate proxy donor admission to BPF schedulers\"）让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 传回 `ops.enqueue()`，但其中一些 put 只是 proxy 记账（`proxy_resched_idle()` 找到远端 mutex owner、`proxy_migrate_task"
+  },
+  {
+    "title": "sched/topology: Introduce a NUMA distance matrix with unique distance values",
+    "id": "sched-20261002-009",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "numa",
+      "topology",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。  - sched-20260923-006：Tim Chen 提 `llc_next` 数组替代人造 LLC 距离矩阵，路线未收敛。 - sched-20260924-008：分歧收敛到「去重矩阵必要性」——Tim 主张 raw distance + 平局决胜即可，Jianyong 坚持去重是为强制对称性。 - sched-20260928-009：Jianyong 让步——提出 `(distance, abs(node_id"
+  },
+  {
+    "title": "sched/fair: Update decision matrix and rename pinned-task group state",
+    "id": "sched-20261002-010",
+    "date": "2026-10-02",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-010-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260928-004：Jemmy Wong 的 3 补丁 v1（纯澄清/清理、No functional change）——patch 1 补齐 `sched_balance_find_src_group()` 上方决策矩阵注释表（`smt_balance`/`llc_balance` 两列此前无人更新），patch 2-3 把「cpus_ptr 固定任务导致的均衡失败」状态从 `group_imbalanced`/`sgc->imbalance` 改名。v1 无 review。 - sched-202610"
+  },
+  {
+    "title": "sched/fair: Rework/fix task_h_load()",
+    "id": "sched-20261002-011",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "fair",
+      "cgroup"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-011-sched-fair-rework-fix-task-h-load.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260902-007：Peter Zijlstra 的 4 补丁系列中 `4/4` 重做 `task_h_load()`，v1 的 `for_each_sched_entity_bl()` 在 `set_next_task_fair()` 里 clobber `se`/`cfs_rq`，致 192 核机器启动 panic（Chen Yu、Vincent 双独立复现）。 - sched-20260929-012：Peter 重发 v2（完整 4 补丁）——修复编译/运行期失败，back-link 机制移入 `f"
+  },
+  {
+    "title": "sched/fair: Remove tunable scaling",
+    "id": "sched-20261002-012",
+    "date": "2026-10-02",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "fair",
+      "sysctl"
+    ],
+    "authors": [
+      "Tor Vic"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-012-sched-fair-remove-tunable-scaling.html",
+    "tldr": "Tor Vic（社区贡献者，自述「not a developer」）的 2 补丁 RFC：删除 2.6.33 时代引入的调度器可调参数缩放机制。1/2 先删基本无人用的 `none`/`linear` 缩放（保留默认的 logarithmic），debugfs 直设 `sched_base_slice` 仍可用；2/2 更进一步删掉整个缩放机制、把 `sched_base_slice` 固定为 2ms——当前 log2 缩放下实际取值 0.7/1.4/2.1/2.8ms（按 1/2-3/4-7/8+ CPU 分档），2ms 居中。基线 7.3-rc5、2C/4T Skylake 上 build"
+  },
+  {
+    "title": "sched/isolation: Enforce nohz_full as a subset of isolcpus=domain at boot",
+    "id": "sched-20261002-013",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "isolation",
+      "nohz"
+    ],
+    "authors": [
+      "Qiliang Yuan"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-013-sched-isolation-enforce-nohz-full-as-a-subset-of-isolcpus-do.html",
+    "tldr": "Qiliang Yuan 的 12 补丁 v5（v1-v4 未在既往分析窗口覆盖；当日缓存收到的补丁为 01-03/12）：`kernel/sched/isolation.c` 的隔离语义修复与运行时可变 housekeeping 掩码。01/12 修 boot 配置矛盾——`nohz_full=`（或 `isolcpus=nohz`）与 `isolcpus=domain` 独立解析时，没有任何机制阻止一个 CPU 既被 tick 抑制又留在普通调度域里（隔离意图自败）；改为在 `housekeeping_init()`（所有 `__setup()` 解析完后）一次性校验「KERNEL_NOI"
+  },
+  {
+    "title": "sched_ext: Drive the NUMA balancing scan for SCX tasks",
+    "id": "sched-20261002-014",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "numa"
+    ],
+    "authors": [
+      "Vladimir Vdovin"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.html",
+    "tldr": "Vladimir Vdovin 的单片 RFC：自动 NUMA balancing 对 sched_ext 任务**事实性关闭**——周期性扫描只从 fair tick（`task_tick_fair()` → `task_tick_numa()`）排队，`task_tick_scx()` 没有对应调用，SCX 任务永不产生 PROT_NONE PTE、fault 侧无活可干。2 节点 160-CPU KVM 宿主机实测：SCX 下 `numa_pte_updates/s = 0`（fair 为 2.4M-3.9M）、任务跑在 preferred nid 的比例 37%（fair 跑 5 分钟"
+  },
+  {
+    "title": "smpboot: Don't park the thread if work is pending",
+    "id": "sched-20261002-015",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "hotplug",
+      "rt"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-015-smpboot-don-t-park-the-thread-if-work-is-pending.html",
+    "tldr": "Sebastian Andrzej Siewior（linutronix，PREEMPT_RT 维护者）4 补丁系列（09-11 发出，`<20260911143815.997254-...>`，系列 1/4 未随本轮合入）中的 2/4-4/4 三片于 10-02 由 Peter Zijlstra 合入 tip: sched/core（CommitterDate 10-01）：4/4 `smpboot: Don't park the thread if work is pending`（4a3b51aab6e2）——CPU 热插拔 park 请求到达时 smpboot 线程可能已接到 work"
+  },
+  {
+    "title": "sched/fair: Honor asymmetric SMT priority in idle selection",
+    "id": "sched-20261002-016",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "idle",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260912-008：Andrea Righi 确认 Dietmar Eggemann 的实现意见已就地落实——`select_idle_smt_cpu()` 改为直接取最低调度域（`rcu_dereference_all(cpu_rq(cpu)->sd)`），将随下一版发出。 - sched-20260918-008：系列（重构为 2 补丁）获 Vincent Guittot 与 Kayra Cizmeci 对 1/2 的 Reviewed-by（Kayra 另附 Tested-by）；Shrikanth "
+  },
+  {
+    "title": "sched/topology: Add asymmetric SMT packing override",
+    "id": "sched-20261002-017",
+    "date": "2026-10-02",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260919-007：2/2（新增内核参数覆盖 asymmetric SMT packing）收到 Vincent Guittot 的质疑——`auto` 取值冗余、仅 `on` 强制项有意义；Andrea 两度回应，说明该参数是 ACPI 固件属性标准化前的过渡方案，并同意砍掉 `auto`/`off`、只保留显式强制项。 - sched-20260930-014：作者发 v7——boot 选项收紧为只接受 `sched_smt_asym_packing=on`；补上吞吐量化（OpenBLAS +3.20%"
+  },
+  {
+    "title": "sched: Set TIF_NEED_RESCHED before calling __trace_set_need_resched()",
+    "id": "sched-20261002-018",
+    "date": "2026-10-02",
+    "type": "bug",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "tracepoints",
+      "bpf",
+      "rv"
+    ],
+    "authors": [
+      "Sechang Lim"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-018-sched-set-tif-need-resched-before-calling-trace-set-need-res.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260912-007：Andrea Righi 发现 `sched_set_need_resched_tp` 在 `TIF_NEED_RESCHED` 置位前触发、可被 BPF 程序递归重入直至内核栈溢出；Gabriele Monaco 指出这与 Sechang 六月的系列是同一修复，Andrea 确认逐行相同并主动撤回。 - sched-20260913-004：kernel-patches CI 的 AI 审查 bot 提出新顺序在远程 CPU 分支可能破坏 RV nrp monitor 状态机，作者未回"
+  },
+  {
+    "title": "sched/core: Fix context analysis errors in non-preferred CPU push",
+    "id": "sched-20261002-019",
+    "date": "2026-10-02",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "build",
+      "core"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/10/02/sched-20261002-019-sched-core-fix-context-analysis-errors-in-non-preferred-cpu.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-006：Shrikanth Hegde 发出构建修复——`CONFIG_PREFERRED_CPU=y` 下 clang23 线程安全分析报错，根因是 commit 74699f56ebcf 把 `context_unsafe_alias(rq)` 放在 `rq_lock()` 之后，静态分析此时已把锁与原始 `rq` 别名关联，后续换别名再 `rq_unlock()` 触发「释放未持有锁」告警。补丁把 alias barrier 移到 `rq_lock()` 之前；Nathan Chancel"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",

@@ -1,7 +1,9 @@
 # tag: hyperthreading
 
-共 27 篇
+共 29 篇
 
+- [sched-20261002-017](../../2026/10/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260921-004](../../2026/09/sched-20260921-004-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 增量更新：Andrea Righi 的"在 NVIDIA Olympus 上启用优先 SMT 兄弟"系列（v6，其中 1/2 为 `sched/fair: Honor asymmetric SMT priority in idle selection`）昨日又获两则实质反馈——Breno Leitao 给出完整 Tested-by（实测唤醒重定向 800/800 生效、无 KASAN/lockde

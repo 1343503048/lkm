@@ -1,9 +1,12 @@
 # tag: load_balance
 
-共 134 篇
+共 137 篇
 
 - [sched-20261008-011](../../2026/10/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20261002-010](../../2026/10/sched-20261002-010-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261002-009](../../2026/10/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
+- [sched-20261002-001](../../2026/10/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-010](../../2026/10/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-013](../../2026/09/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-018](../../2026/09/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。

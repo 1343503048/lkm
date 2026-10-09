@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 45 篇
+共 47 篇
 
+- [sched-20261002-002](../../2026/10/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261002-001](../../2026/10/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-010](../../2026/10/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-001](../../2026/10/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.md) `fix/medium/under_review` — Christian Loehle 把 9-30 的两枚独立修复（「Fix slice protection across state changes」v1 两补丁与「Take slice protection into account when arming HRTICK」单片）合并扩展为 5 补丁系列 v2「Keep slice protection boundaries consistent」
 - [sched-20260930-009](../../2026/09/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.md) `fix/medium/under_review` — Christian Loehle 的 EEVDF 调度粒度修复：EEVDF 会在更短 request 竞争时提前结束任务的 slice protection，`update_curr()` 在 protection 到期时请求重选，但 `hrtick_start_fair()` 仍按虚拟 deadline 定时——无中间调度事件时，下次重选机会远晚于 protection 边界。例如两个等权 SC

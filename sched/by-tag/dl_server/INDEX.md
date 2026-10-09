@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 7 篇
+共 8 篇
 
+- [sched-20261002-003](../../2026/10/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-002](../../2026/10/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；
 - [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_

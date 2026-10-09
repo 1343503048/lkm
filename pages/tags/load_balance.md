@@ -2,11 +2,14 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 134
+article_count: 137
 ---
 
 - [sched-20261008-010](/lkm/2026/10/08/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261008-011](/lkm/2026/10/08/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
+- [sched-20261002-001](/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
+- [sched-20261002-009](/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/under_review` — sched/topology: Introduce a NUMA distance matrix with unique distance values
+- [sched-20261002-010](/lkm/2026/10/02/sched-20261002-010-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `discussion/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state
 - [sched-20261001-010](/lkm/2026/10/01/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260930-013](/lkm/2026/09/30/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
 - [sched-20260929-003](/lkm/2026/09/29/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system

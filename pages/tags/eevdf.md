@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 45
+article_count: 47
 ---
 
+- [sched-20261002-001](/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
+- [sched-20261002-002](/lkm/2026/10/02/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.html) `fix/low/under_review` — sched/eevdf: Keep expired protection expired across reweighting
 - [sched-20261001-001](/lkm/2026/10/01/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.html) `fix/medium/under_review` — sched/eevdf: Keep slice protection boundaries consistent
 - [sched-20261001-010](/lkm/2026/10/01/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20260930-008](/lkm/2026/09/30/sched-20260930-008-sched-eevdf-fix-slice-protection-across-state-changes.html) `fix/medium/under_review` — sched/eevdf: Fix slice protection across state changes

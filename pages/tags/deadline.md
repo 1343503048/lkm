@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 25
+article_count: 26
 ---
 
+- [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261001-002](/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
 - [sched-20260928-003](/lkm/2026/09/28/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/under_review` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only
