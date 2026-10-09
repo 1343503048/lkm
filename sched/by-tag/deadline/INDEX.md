@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 24 篇
+共 25 篇
 
+- [sched-20261001-002](../../2026/10/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-007](../../2026/09/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-003](../../2026/09/sched-20260928-003-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.md) `fix/medium/under_review` — Waiman Long 修复 cpuset 里 SCHED_DEADLINE 带宽收缩检查的误触发——当 CS_CPU_EXCLUSIVE 标志被错误地设在并非有效 partition root 的 cpuset 上时，`validate_change()` 的 shrink 测试会在存在 deadline 任务的系统里被误触发，导致改 cpuset 控制文件时意外返回 `-EBUSY`。v1 发
 - [sched-20260925-013](../../2026/09/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）今天重新活跃：Ionut Nechita（Wind River，RT 产品）在隔离的 nohz_full 核上追 timer 噪声时找到该补丁，发现它确实恢复了 CFS 带宽保证，但代价是让隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；

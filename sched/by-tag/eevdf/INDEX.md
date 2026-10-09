@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 43 篇
+共 45 篇
 
+- [sched-20261001-010](../../2026/10/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261001-001](../../2026/10/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.md) `fix/medium/under_review` — Christian Loehle 把 9-30 的两枚独立修复（「Fix slice protection across state changes」v1 两补丁与「Take slice protection into account when arming HRTICK」单片）合并扩展为 5 补丁系列 v2「Keep slice protection boundaries consistent」
 - [sched-20260930-009](../../2026/09/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.md) `fix/medium/under_review` — Christian Loehle 的 EEVDF 调度粒度修复：EEVDF 会在更短 request 竞争时提前结束任务的 slice protection，`update_curr()` 在 protection 到期时请求重选，但 `hrtick_start_fair()` 仍按虚拟 deadline 定时——无中间调度事件时，下次重选机会远晚于 protection 边界。例如两个等权 SC
 - [sched-20260930-008](../../2026/09/sched-20260930-008-sched-eevdf-fix-slice-protection-across-state-changes.md) `fix/medium/under_review` — Christian Loehle 的两枚 EEVDF slice-protection 边界修复（测试 Vincent Guittot 系列边界用例时发现）：1/2 让每次新授予的 protection 都无条件下限到最小 slice（当前任务自己持有最短 slice 时，既有 `slice != se->slice` 条件会漏掉 cap，让保护延续到旧 deadline）；2/2 保持「已过期的
 - [sched-20260929-018](../../2026/09/sched-20260929-018-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Vincent Guittot 的 8 补丁「Improving latency of short slice tasks」系列中的 patch 8/8）。

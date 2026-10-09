@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 43
+article_count: 44
 ---
 
+- [sched-20261001-005](/lkm/2026/10/01/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/merged_tip` — perf sched stats: Reject mismatched or incomplete snapshots
 - [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare
 - [sched-20260922-005](/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html) `feature/none/merged_tip` — sched_ext: Specialize TID and scheduler hashtable compares
 - [sched-20260922-011](/lkm/2026/09/22/sched-20260922-011-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

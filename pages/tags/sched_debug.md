@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 65
+article_count: 67
 ---
 
+- [sched-20261001-005](/lkm/2026/10/01/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/merged_tip` — perf sched stats: Reject mismatched or incomplete snapshots
+- [sched-20261001-011](/lkm/2026/10/01/sched-20261001-011-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/under_review` — sched: Add task enqueue/dequeue trace points
 - [sched-20260929-005](/lkm/2026/09/29/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.html) `fix/low/under_review` — sched: set TIF_NEED_RESCHED before calling __trace_set_need_resched()
 - [sched-20260929-013](/lkm/2026/09/29/sched-20260929-013-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/under_review` — sched: Add task enqueue/dequeue trace points
 - [sched-20260929-016](/lkm/2026/09/29/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.html) `feature/none/under_review` — sched/debug: Add migration stats due to non preferred CPUs

@@ -13524,6 +13524,237 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-008：Gregory Price 的 NUMA 内存 tiering 修复系列 v3（7 补丁）——VMA 扫描过滤器（placement_scan 等）此前误门控了页提升（promotion）。 - sched-20260925-014：David Hildenbrand 逐枚 review v3 的 3/7~5/7，核心意见是 `placement_scan` 的 `&=` 布尔组合难读、建议改成显式 `if/else if`，4/7、5/7「LGTM」；作者准备 v4。 - sched-"
   },
   {
+    "title": "sched/eevdf: Keep slice protection boundaries consistent",
+    "id": "sched-20261001-001",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "preempt"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.html",
+    "tldr": "Christian Loehle 把 9-30 的两枚独立修复（「Fix slice protection across state changes」v1 两补丁与「Take slice protection into account when arming HRTICK」单片）合并扩展为 5 补丁系列 v2「Keep slice protection boundaries consistent」：EEVDF slice protection 是绝对 vruntime 边界，但多条路径对该边界的处理与任务当前 slice、或与让调度器重新考虑 current 的定时器不一致。cover 附全套"
+  },
+  {
+    "title": "sched/deadline: Make dl-server nohz full aware",
+    "id": "sched-20261001-002",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "nohz"
+    ],
+    "authors": [
+      "Juri Lelli",
+      "Ionut Nechita"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260925-013：Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月一直未被收取）重新活跃——Ionut Nechita（Wind River，RT 产品）发现 v2 确实恢复了 CFS 带宽保证，但把隔离核从「几乎停 tick」变成满 CONFIG_HZ 的 1001.6 tick/s，反而更贵；他给出「只在 server 实际 enqueue 期间才保持 tick」的变体（实测 tick 降到 54.1/s 而带宽不变），Juri 欢迎其发 v3 并解释"
+  },
+  {
+    "title": "sched_ext: Hold DSQ refs for deferred reenqueues",
+    "id": "sched-20261001-003",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-003-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-002：Hui Su 的 sched_ext use-after-free 修复——`scx_bpf_dsq_reenq()` 的 deferred reenqueue 路径上，被 deferral 的用户 DSQ 节点可能在 RCU 回调 `exit_dsq()` 到达前被 detach，deferred 路径随后继续用裸 DSQ 指针，回调可能先释放 DSQ，导致 KASAN 报 slab-use-after-free（`run_deferred` 中）。补丁在 `deferred_reen"
+  },
+  {
+    "title": "sched_ext: Fix missing ops.dequeue() on remote local DSQ moves",
+    "id": "sched-20261001-004",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-004-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-001：Kuba Piecuch 的 sched_ext 修复——任务被迁到**另一 CPU 的 local DSQ** 时 `ops.dequeue()` 不在插入目标 DSQ 时被调用，而是推迟到被 pick 时以 `SCX_DEQ_CORE_SCHED_EXEC` 报告；根因是 `enqueue_task_scx()` 在插入之后才清 `p->scx.sticky_cpu`。v3（fix 优先 + 加固测试）已获 Andrea Righi `Reviewed-by`、Tejun Heo「f"
+  },
+  {
+    "title": "perf sched stats: Reject mismatched or incomplete snapshots",
+    "id": "sched-20261001-005",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "perf",
+      "sched_debug"
+    ],
+    "authors": [
+      "Tianyi Chen"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260917-001：Tianyi Chen 的 tools/perf 修复——`perf sched stats` report 子命令的 before/after 快照按列表位置配对，测量期间 CPU/domain 消失（热插拔、拓扑变化）会导致计数错位或游标越界；补丁改为按时间戳/CPU 顺序识别第二份快照并校验 ID/版本一致，附合成快照 shell 测试，带 `Fixes: 5a357ae6ad63`。 - sched-20261001-005（今天）：perf 维护者 Arnaldo Carval"
+  },
+  {
+    "title": "cpufreq: Resolve CPPC frequencies to performance levels",
+    "id": "sched-20261001-006",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-006-cpufreq-resolve-cppc-frequencies-to-performance-levels.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-010：Christian Loehle 的 3 补丁系列——table-less 的 cppc-cpufreq 缺少「频率→性能级」解析，不同 kHz 请求会 miss schedutil 的频率缓存却写同一个 Desired Performance 值；系列新增 `->resolve_freq()` 回调让 table-less `->target()` 驱动规范化请求，CPPC 预计算仿射转换做解析，schedutil 在 limits 未变时跳过冗余回调。实测 schbench mean"
+  },
+  {
+    "title": "rust: cpufreq: reject NULL from cpufreq_cpu_get()",
+    "id": "sched-20261001-007",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Mehmet Koseoglu"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-007-rust-cpufreq-reject-null-from-cpufreq-cpu-get.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260830-006 / sched-20260929-006：Mehmet Koseoglu 的 Rust cpufreq 绑定修复走到 v3（由 spidermana 重发、标签归属引发 Miguel Ojeda 疑问、Elowen Xu 给 SAFETY 注释 nit 与 `Reviewed-by`）——`PolicyCpu::from_cpu()` 的 `from_err_ptr()` 只拒 `ERR_PTR` 不拒 NULL，查表失败时用 NULL 构造可变引用，drop 时把非法指针传给 `cpu"
+  },
+  {
+    "title": "cpufreq/amd-pstate: Get Highest Freq for a CPU",
+    "id": "sched-20261001-008",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Mario Limonciello"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-008-cpufreq-amd-pstate-get-highest-freq-for-a-cpu.html",
+    "tldr": "Mario Limonciello（amd-pstate 驱动维护者）的 3 补丁系列 v4：最高频率已知时直接取用（BIOS/quirk 查询 `amd_get_max_frequency()`），替代按 `(nominal_freq * highest_perf) / nominal_perf` 线性插值的 `max_freq` 计算——机器 BIOS 提供的值更准确（此前 TRX40 平台问题即源于此）。1/3 新增 `amd_get_boost_ratio()`/`amd_get_max_frequency()` helper；2/3 acpi-cpufreq 改用 `amd_get_"
+  },
+  {
+    "title": "cpufreq: CPPC: Add ospm_nominal_freq attribute",
+    "id": "sched-20261001-009",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-009-cpufreq-cppc-add-ospm-nominal-freq-attribute.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260928-010：Sumit Gupta 的 v7 三片 CPPC 系列（新增 OSPM nominal perf 支持，把 OS 电源管理设定的标称性能如实反映到 cpufreq 的 boost 与频率上限）在 Rafael Wysocki 催稿后获得首批实质评审——Christian Loehle 质疑 patch 2/3 的 `ospm_nominal_freq` write-only 接口形态（建议能返回 `-EOPNOTSUPP`/requested_val/未设置值），Pierre Gondo"
+  },
+  {
+    "title": "sched/eevdf: Add min slice check when selecting CPU",
+    "id": "sched-20261001-010",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-018：Vincent Guittot 8 补丁系列「Improving latency of short slice tasks」的 patch 8/8——`select_task_rq_fair()` 找不到空闲 CPU 时新增 `select_slice_cpu()` 比较候选 CPU 的 slice，避免短 slice 任务被放到已运行同长或更短 slice 任务的 CPU 上；Peter 建议复用初次扫描、Kayra 质疑 `nr_idle_scan` 语义，Vincent 确认注释需"
+  },
+  {
+    "title": "sched: Add task enqueue/dequeue trace points",
+    "id": "sched-20261001-011",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Nam Cao",
+      "Gabriele Monaco"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-011-sched-add-task-enqueue-dequeue-trace-points.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260831-010：Gabriele Monaco（Red Hat）在 20 补丁 RFC 中首发该 tracepoint 补丁——在通用 `enqueue_task()`/`dequeue_task()`/`__block_task()` 路径加一对 `sched_enqueue`/`sched_dequeue` tracepoint 并 GPL 导出，方向由 Peter Zijlstra 建议、K Prateek Nayak 已 `Reviewed-by`。 - sched-20260929-013：该"
+  },
+  {
+    "title": "sched/numa: separate VMA placement from scan continuation",
+    "id": "sched-20261001-012",
+    "date": "2026-10-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-012-sched-numa-separate-vma-placement-from-scan-continuation.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-008：Gregory Price 的 NUMA 内存 tiering 修复系列 v3（7 补丁）——VMA 扫描过滤器（placement_scan 等）此前误门控了页提升（promotion）。 - sched-20260925-014：David Hildenbrand 逐枚 review v3 的 3/7~5/7，核心意见是 `placement_scan` 的 `&=` 布尔组合难读、建议显式 `if/else if`。 - sched-20260930-015：作者发 v4（7 补丁"
+  },
+  {
+    "title": "sched_ext: Sync tools headers from the scx repo",
+    "id": "sched-20261001-013",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-013-sched-ext-sync-tools-headers-from-the-scx-repo.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-004：Tejun Heo 为 sched_ext/for-7.4 发的工具头文件同步补丁集（2 补丁）——把内核 `tools/sched_ext/include` 与 scx 仓库 `scheds/include` 分叉的共享 BPF 头合并结果拷回内核（内核侧 size 参数/新标志 vs scx 侧 cmask helpers/compat 包装），恢复 `tools/sched_ext` 对 scx 头的构建能力；已通过构建与逐文件 diff 验证。 - sched-20261001-"
+  },
+  {
+    "title": "sched_ext: Add scx_bpf_cgroup_nr_cpus()",
+    "id": "sched-20261001-014",
+    "date": "2026-10-01",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/01/sched-20261001-014-sched-ext-add-scx-bpf-cgroup-nr-cpus.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-011：Andrea Righi（sched_ext 维护者）为 sched_ext/for-7.4 发的 3 补丁系列，新增 kfunc `scx_bpf_cgroup_nr_cpus()` 直接返回与 fair `cpuset_num_cpus()` 相同的计数（cgroup 有效 cpuset 的 CPU 数），让层级式 BPF 调度器按 cgroup 真实 CPU 数分配 group 权重。 - sched-20260930-005：作者发 v2——drop 掉保护 `is_in_v2_"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",

@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 65 篇
+共 67 篇
 
+- [sched-20261001-011](../../2026/10/sched-20261001-011-sched-add-task-enqueue-dequeue-trace-points.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261001-005](../../2026/10/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-021](../../2026/09/sched-20260929-021-kernel-sched-ext-sub-c-288-16-sparse-sparse-incorrect-type-i.md) `bug/low/under_review` — kernel test robot（0day）报出 `sched_ext: Eject the top rescue consumer on overload`（commit `bb70e4fb626b`）上的一批 sparse 地址空间（`__rcu`）告警：`rq->donor`/`->curr` 作为 `__rcu` 指针被当作非 `__rcu` 使用，告警横跨 `kernel/sched/
 - [sched-20260929-016](../../2026/09/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor 系列）。
 - [sched-20260929-013](../../2026/09/sched-20260929-013-sched-add-task-enqueue-dequeue-trace-points.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

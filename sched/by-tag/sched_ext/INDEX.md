@@ -1,11 +1,15 @@
 # tag: sched_ext
 
-共 193 篇
+共 197 篇
 
 - [sched-20261008-012](../../2026/10/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-006](../../2026/10/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — Tao Cui 报告一个疑似 dispatch 饥饿：在 `sched_ext/for-7.4` + caps-clear 补丁上，父子 cid 调度的最小复现里，若 busy-loop 任务在子调度器 attach **之前**就进了 cgroup，子调度器每轮都能 claim 到该任务（handover 触发、`p->scx.sched == child`），但其运行 duty cycle 只
 - [sched-20261008-005](../../2026/10/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — Tejun Heo 修掉 sched_ext 的一个 CPU idle stall：`SCX_OPS_ENQ_LAST` 下，本应作为「最后一个可运行任务」交给 `ops.enqueue()` 的任务，在三条 skip 路径（exiting 任务没设 `ENQ_EXITING`、migration-disabled 任务没设 `ENQ_MIGRATION_DISABLED`、offline rq 
 - [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重
+- [sched-20261001-014](../../2026/10/sched-20261001-014-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261001-013](../../2026/10/sched-20261001-013-sched-ext-sync-tools-headers-from-the-scx-repo.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261001-004](../../2026/10/sched-20261001-004-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261001-003](../../2026/10/sched-20261001-003-sched-ext-hold-dsq-refs-for-deferred-reenqueues.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-005](../../2026/09/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-004](../../2026/09/sched-20260930-004-sched-ext-sync-tools-headers-from-the-scx-repo.md) `feature/under_review` — Tejun Heo 为 sched_ext/for-7.4 发的工具头文件同步补丁集（2 补丁）：内核侧 `tools/sched_ext/include` 与 scx 仓库 `scheds/include` 的共享 BPF 头自上次同步后分叉（内核给 `scx_bpf_cid_topo()` 等加了 size 参数、加了 lazy preemption/proxy-exec 标志与 `SCX_O
 - [sched-20260930-003](../../2026/09/sched-20260930-003-sched-ext-work-around-pahole-1-32-dropping-scx-bpf-task-set.md) `fix/medium/merged_tip` — Tejun Heo 的 sched_ext 修复：clang + pahole 1.32 下 x86-64 vmlinux BTF 缺失 `scx_bpf_task_set_lazy_resched()`，导致 sched_ext 初始化失败（`Failed to register kfunc sets (-22)`）。原因是 clang 只在 prologue 把 `lazy` 参数挪进 cal

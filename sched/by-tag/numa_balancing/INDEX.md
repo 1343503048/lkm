@@ -1,8 +1,9 @@
 # tag: numa_balancing
 
-共 37 篇
+共 38 篇
 
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20261001-012](../../2026/10/sched-20261001-012-sched-numa-separate-vma-placement-from-scan-continuation.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-015](../../2026/09/sched-20260930-015-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260928-009](../../2026/09/sched-20260928-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20260925-014](../../2026/09/sched-20260925-014-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260923-008（v3 封面）。David Hildenbrand 今天逐枚 review 了 v3 的 3/7、4/7、5/7 三枚，核心意见是 `placement_scan` 的 `&=` 布尔组合难读、建议改成显式 `if/else if` 赋值并尽量少用 `&=`；4/7、5/7 除同类可读性意见外「

@@ -2,13 +2,17 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 193
+article_count: 197
 ---
 
 - [sched-20261008-004](/lkm/2026/10/08/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-005](/lkm/2026/10/08/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ
 - [sched-20261008-006](/lkm/2026/10/08/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/medium/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
 - [sched-20261008-012](/lkm/2026/10/08/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html) `fix/high/under_review` — sched_ext: Serialize user DSQ destruction against deferred reenqueues
+- [sched-20261001-003](/lkm/2026/10/01/sched-20261001-003-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html) `fix/high/under_review` — sched_ext: Hold DSQ refs for deferred reenqueues
+- [sched-20261001-004](/lkm/2026/10/01/sched-20261001-004-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.html) `fix/medium/merged_tip` — sched_ext: Fix missing ops.dequeue() on remote local DSQ moves
+- [sched-20261001-013](/lkm/2026/10/01/sched-20261001-013-sched-ext-sync-tools-headers-from-the-scx-repo.html) `feature/none/merged_tip` — sched_ext: Sync tools headers from the scx repo
+- [sched-20261001-014](/lkm/2026/10/01/sched-20261001-014-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/merged_tip` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260930-001](/lkm/2026/09/30/sched-20260930-001-sched-ext-fix-missing-ops-dequeue-on-remote-local-dsq-moves.html) `fix/medium/under_review` — sched_ext: Fix missing ops.dequeue() on remote local DSQ moves
 - [sched-20260930-002](/lkm/2026/09/30/sched-20260930-002-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html) `fix/high/under_review` — sched_ext: Hold DSQ refs for deferred reenqueues
 - [sched-20260930-003](/lkm/2026/09/30/sched-20260930-003-sched-ext-work-around-pahole-1-32-dropping-scx-bpf-task-set.html) `fix/medium/merged_tip` — sched_ext: Work around pahole 1.32 dropping scx_bpf_task_set_lazy_resched() from BTF

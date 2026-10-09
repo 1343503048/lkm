@@ -2,11 +2,15 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 61
+article_count: 65
 ---
 
 - [sched-20261008-007](/lkm/2026/10/08/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.html) `discussion/none/superseded` — cpufreq/amd-pstate: Supply nominal/lowest freq for TRX40-based motherboards
 - [sched-20261008-008](/lkm/2026/10/08/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/under_review` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
+- [sched-20261001-006](/lkm/2026/10/01/sched-20261001-006-cpufreq-resolve-cppc-frequencies-to-performance-levels.html) `feature/none/under_review` — cpufreq: Resolve CPPC frequencies to performance levels
+- [sched-20261001-007](/lkm/2026/10/01/sched-20261001-007-rust-cpufreq-reject-null-from-cpufreq-cpu-get.html) `fix/medium/merged_tip` — rust: cpufreq: reject NULL from cpufreq_cpu_get()
+- [sched-20261001-008](/lkm/2026/10/01/sched-20261001-008-cpufreq-amd-pstate-get-highest-freq-for-a-cpu.html) `feature/none/under_review` — cpufreq/amd-pstate: Get Highest Freq for a CPU
+- [sched-20261001-009](/lkm/2026/10/01/sched-20261001-009-cpufreq-cppc-add-ospm-nominal-freq-attribute.html) `feature/none/under_review` — cpufreq: CPPC: Add ospm_nominal_freq attribute
 - [sched-20260930-012](/lkm/2026/09/30/sched-20260930-012-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20260929-001](/lkm/2026/09/29/sched-20260929-001-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/under_review` — cpufreq: schedutil: Serialize start against rate limit updates
 - [sched-20260929-004](/lkm/2026/09/29/sched-20260929-004-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
