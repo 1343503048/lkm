@@ -14,7 +14,7 @@ TRX40 平台（AMD Ryzen Threadripper 3960X 等）早期 BIOS 的 ACPI `_CPC` �
 
 ## 版本演进与当前进展
 
-原补丁（v1）不在当日缓存，本日全部为 `Re:` 讨论（11 封）。进展收敛到「drop」：Giovanni 明确「The patch can be dropped, as the latest BIOS release fixes the problem」，Mario 回复「Great news, thanks!」。
+原补丁（v1）见 [[sched-20261007-011]]（10-07 发出并获 Mario 初审），本日全部为 `Re:` 讨论（11 封）。进展收敛到「drop」：Giovanni 明确「The patch can be dropped, as the latest BIOS release fixes the problem」，Mario 回复「Great news, thanks!」。
 
 ## Maintainer 意见与讨论焦点
 
@@ -73,7 +73,8 @@ merge_assessment:
 contribution_opportunities: []
 generated_at: '2026-10-09T01:00:00'
 source_email_count: 11
-related_articles: []
+related_articles:
+  - sched-20261007-011
 tags:
   - cpufreq
   - x86

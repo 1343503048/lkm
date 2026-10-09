@@ -2,11 +2,14 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 90
+article_count: 93
 ---
 
 - [sched-20261008-003](/lkm/2026/10/08/sched-20261008-003-sched-autogroup-serialize-nice-rate-limit-updates.html) `fix/low/under_review` — sched/autogroup: Serialize nice rate-limit updates
 - [sched-20261008-004](/lkm/2026/10/08/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
+- [sched-20261007-004](/lkm/2026/10/07/sched-20261007-004-sched-ext-clear-a-sub-scheduler-s-caps-before-ops-sub-detach.html) `fix/medium/merged_tip` — sched_ext: Clear a sub-scheduler's caps before ops.sub_detach()
+- [sched-20261007-007](/lkm/2026/10/07/sched-20261007-007-sched-ext-add-ops-sub-cid-sched-updated.html) `feature/none/merged_tip` — sched_ext: Add ops.sub_cid_sched_updated()
+- [sched-20261006-001](/lkm/2026/10/06/sched-20261006-001-sched-ext-add-ops-sub-cid-sched-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_cid_sched_updated()
 - [sched-20261002-011](/lkm/2026/10/02/sched-20261002-011-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20260930-005](/lkm/2026/09/30/sched-20260930-005-sched-ext-add-scx-bpf-cgroup-nr-cpus.html) `feature/none/under_review` — sched_ext: Add scx_bpf_cgroup_nr_cpus()
 - [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only

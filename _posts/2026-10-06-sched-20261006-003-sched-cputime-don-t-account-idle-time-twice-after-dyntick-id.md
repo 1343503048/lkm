@@ -35,6 +35,9 @@ merge_assessment:
   blocking_issues: Frederic 正式收取动作未发生
   next_action: Frederic 复核 v2 后收进 tick/sched 修复通道并回合 stable
 generated_at: '2026-10-07T01:00:00'
+tags:
+- nohz
+- tick
 title: 'sched/cputime: Don''t account idle time twice after dyntick-idle'
 layout: article
 ---

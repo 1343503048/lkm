@@ -1,11 +1,20 @@
 # tag: sched_ext
 
-共 204 篇
+共 213 篇
 
 - [sched-20261008-012](../../2026/10/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-006](../../2026/10/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — Tao Cui 报告一个疑似 dispatch 饥饿：在 `sched_ext/for-7.4` + caps-clear 补丁上，父子 cid 调度的最小复现里，若 busy-loop 任务在子调度器 attach **之前**就进了 cgroup，子调度器每轮都能 claim 到该任务（handover 触发、`p->scx.sched == child`），但其运行 duty cycle 只
 - [sched-20261008-005](../../2026/10/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — Tejun Heo 修掉 sched_ext 的一个 CPU idle stall：`SCX_OPS_ENQ_LAST` 下，本应作为「最后一个可运行任务」交给 `ops.enqueue()` 的任务，在三条 skip 路径（exiting 任务没设 `ENQ_EXITING`、migration-disabled 任务没设 `ENQ_MIGRATION_DISABLED`、offline rq 
 - [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重
+- [sched-20261007-007](../../2026/10/sched-20261007-007-sched-ext-add-ops-sub-cid-sched-updated.md) `feature/merged_tip` — - sched-20261006-001：Tejun Heo 为 sub-scheduler 委派模型补上**用量可观测性**——新增 `ops.sub_cid_sched_updated()`：某调度器视角下「跑在一个 cid 上的调度器」变化时通知它（NONE/SELF/直接子 cgroup id，子树内部变化不上报）；开销控制在调度器不变时每次上下文切换一次指针比较、整体挂 static k
+- [sched-20261007-005](../../2026/10/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/low/under_review` — - sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发往 `sched_ext/for-7.4` 的单补丁修复——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 pro
+- [sched-20261007-004](../../2026/10/sched-20261007-004-sched-ext-clear-a-sub-scheduler-s-caps-before-ops-sub-detach.md) `fix/medium/merged_tip` — Tejun Heo 落实其三小时前对 Tao Cui 系列的裁决（[[sched-20261007-003]]）：cpuperf target 是 last-writer-wins 状态、恢复是父调度器在 `ops.sub_detach()` 里的责任，但当前父级无法依赖这一点——垂死的子调度器要到 `ops.exit()` 之后才被标记 dead，此前一直持有全部 caps，其 `ops.exi
+- [sched-20261007-003](../../2026/10/sched-20261007-003-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.md) `fix/medium/superseded` — - sched-20261004-004：Tao Cui 报告并修复 sched_ext 子调度器生命周期漏洞——持有 `SCX_CAP_PERF` 的子调度器把 cpuperf target 写低后消失（cap 回收/kill/detach/cgroup 移除），target 残留：`scx_bpf_sub_revoke()` 只清 caps 位图、`scx_sub_disable()` 重定任
+- [sched-20261007-001](../../2026/10/sched-20261007-001-git-pull-sched-ext-fixes-for-v7-3-rc6.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。三条此前分别走完 review 的 sched_ext 修复线在 rc6 阶段汇成一批 pull request 并被 Linus 收进主线。
+- [sched-20261006-006](../../2026/10/sched-20261006-006-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261006-005](../../2026/10/sched-20261006-005-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261006-001](../../2026/10/sched-20261006-001-sched-ext-add-ops-sub-cid-sched-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）委派模型补上**用量可观测性**：把 CPU（cid）委派给子调度器的父调度器，此前无法知道各被委派方实际用了多少——按需调整委派规模的父调度器无法度量，想把一个 cid 从一个子转交给另一个子的父调度器也看不到该从谁手里拿。本系列（3 补丁，`[PATCHSET sched_ext/for-7.4]`，基线 
+- [sched-20261005-008](../../2026/10/sched-20261005-008-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-004](../../2026/10/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.md) `bug/medium/under_review` — Tao Cui（KylinOS）的单补丁修复 sched_ext 子调度器 DVFS 残留问题：持有 `SCX_CAP_PERF` 的子调度器设了一个低 cpuperf target 后退场——cap 被回收（revoke）、被 kill、detach 或 cgroup 摘除——`rq->scx.cpuperf_target` 却留在原地。`scx_bpf_sub_revoke()` 只清 psh
 - [sched-20261004-003](../../2026/10/sched-20261004-003-sched-ext-generate-qseq-from-a-per-task-counter.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-001](../../2026/10/sched-20261004-001-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

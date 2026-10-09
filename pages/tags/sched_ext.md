@@ -2,13 +2,22 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 204
+article_count: 213
 ---
 
 - [sched-20261008-004](/lkm/2026/10/08/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-005](/lkm/2026/10/08/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ
 - [sched-20261008-006](/lkm/2026/10/08/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/medium/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
 - [sched-20261008-012](/lkm/2026/10/08/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html) `fix/high/under_review` — sched_ext: Serialize user DSQ destruction against deferred reenqueues
+- [sched-20261007-001](/lkm/2026/10/07/sched-20261007-001-git-pull-sched-ext-fixes-for-v7-3-rc6.html) `fix/high/merged_tip` — [GIT PULL] sched_ext: Fixes for v7.3-rc6
+- [sched-20261007-003](/lkm/2026/10/07/sched-20261007-003-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.html) `fix/medium/superseded` — sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies
+- [sched-20261007-004](/lkm/2026/10/07/sched-20261007-004-sched-ext-clear-a-sub-scheduler-s-caps-before-ops-sub-detach.html) `fix/medium/merged_tip` — sched_ext: Clear a sub-scheduler's caps before ops.sub_detach()
+- [sched-20261007-005](/lkm/2026/10/07/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261007-007](/lkm/2026/10/07/sched-20261007-007-sched-ext-add-ops-sub-cid-sched-updated.html) `feature/none/merged_tip` — sched_ext: Add ops.sub_cid_sched_updated()
+- [sched-20261006-001](/lkm/2026/10/06/sched-20261006-001-sched-ext-add-ops-sub-cid-sched-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_cid_sched_updated()
+- [sched-20261006-005](/lkm/2026/10/06/sched-20261006-005-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
+- [sched-20261006-006](/lkm/2026/10/06/sched-20261006-006-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.html) `fix/medium/under_review` — sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies
+- [sched-20261005-008](/lkm/2026/10/05/sched-20261005-008-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261004-001](/lkm/2026/10/04/sched-20261004-001-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261004-003](/lkm/2026/10/04/sched-20261004-003-sched-ext-generate-qseq-from-a-per-task-counter.html) `fix/medium/merged_tip` — sched_ext: Generate qseq from a per-task counter
 - [sched-20261004-004](/lkm/2026/10/04/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.html) `bug/medium/under_review` — sched_ext: Reset cpuperf_target when a sub-scheduler loses SCX_CAP_PERF or dies

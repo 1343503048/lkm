@@ -98,4 +98,8 @@ merge_assessment:
   blocking_issues: 'Tejun 与 NUMA 侧维护者 review 未开始；donor→curr 切换依赖 Hui Su 系列时序'
   next_action: 'Tejun review；Vladimir 交 4 节点测试'
 generated_at: '2026-10-07T01:00:00'
+tags:
+  - sched_ext
+  - numa
+  - bpf
 ---

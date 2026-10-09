@@ -2,9 +2,10 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 27
+article_count: 28
 ---
 
+- [sched-20261006-007](/lkm/2026/10/06/sched-20261006-007-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `bug/medium/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet
 - [sched-20260925-004](/lkm/2026/09/25/sched-20260925-004-sched-core-remove-redundant-core-sched-seq.html) `fix/none/merged_tip` — sched/core: Remove redundant core_sched_seq
 - [sched-20260925-012](/lkm/2026/09/25/sched-20260925-012-sched-core-fix-pick-next-task-self-recursion.html) `fix/medium/under_review` — sched/core: Fix pick_next_task() self recursion
 - [sched-20260922-002](/lkm/2026/09/22/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v32)

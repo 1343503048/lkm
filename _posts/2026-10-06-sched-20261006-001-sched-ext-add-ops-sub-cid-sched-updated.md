@@ -28,6 +28,9 @@ merge_assessment:
   blocking_issues: op 尚无第二人 review/测试
   next_action: Tejun 收编进 sched_ext/for-7.4
 generated_at: '2026-10-07T01:00:00'
+tags:
+- sched_ext
+- cgroup
 title: 'sched_ext: Add ops.sub_cid_sched_updated()'
 layout: article
 ---

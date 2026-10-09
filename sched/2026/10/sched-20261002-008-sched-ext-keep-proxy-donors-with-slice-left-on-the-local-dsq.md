@@ -89,5 +89,5 @@ source_email_count: 1
 related_articles: []
 tags:
   - sched_ext
-  - proxy_exec
+  - proxy_execution
 ---

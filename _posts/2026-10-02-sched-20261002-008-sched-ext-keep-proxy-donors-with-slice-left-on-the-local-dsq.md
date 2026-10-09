@@ -36,7 +36,7 @@ source_email_count: 1
 related_articles: []
 tags:
 - sched_ext
-- proxy_exec
+- proxy_execution
 title: 'sched_ext: Keep proxy donors with slice left on the local DSQ'
 layout: article
 ---

@@ -29,6 +29,10 @@ merge_assessment:
   blocking_issues: donor/curr 扫描驱动点待澄清；Tejun 与 NUMA 侧维护者 review 未开始
   next_action: Andrea 回应 donor 问题；Vladimir 交多节点测试数据
 generated_at: '2026-10-06T01:00:00'
+tags:
+- sched_ext
+- numa
+- bpf
 title: 'sched_ext: Add NUMA balancing support'
 layout: article
 ---

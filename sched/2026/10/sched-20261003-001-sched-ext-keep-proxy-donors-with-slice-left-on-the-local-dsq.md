@@ -94,5 +94,5 @@ related_articles:
   - sched-20261002-008
 tags:
   - sched_ext
-  - proxy_exec
+  - proxy_execution
 ---

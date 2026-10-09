@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 48 篇
+共 51 篇
 
+- [sched-20261007-009](../../2026/10/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：Aishwarya Rambhadran（ARM）在 AWS Graviton3 上报告个别 schbench 线程配置 p99 回退（~30%），bisect 指向单运行队列 commit（[PATCH v3 7/7] sched/eevdf: Move to a single runqueue）。 - sched-20260924-009：怀疑点收敛到
+- [sched-20261007-008](../../2026/10/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — - sched-20261002-001：Vincent Guittot 把 8 补丁 v1 扩张成 **18 补丁 v2** 重发——`select_slice_cpu()` 并入 `select_idle_capacity()` 与 `select_idle_cpu()`；系列同时吸收 lag 管理（睡眠实体正 lag 衰减、idle CPU 唤醒重置 lag）、per-cpu min_sli
+- [sched-20261005-001](../../2026/10/sched-20261005-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261003-007](../../2026/10/sched-20261003-007-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-002](../../2026/10/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-001](../../2026/10/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

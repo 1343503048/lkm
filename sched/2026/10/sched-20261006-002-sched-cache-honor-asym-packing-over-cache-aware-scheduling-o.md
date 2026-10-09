@@ -103,4 +103,8 @@ merge_assessment:
   blocking_issues: '冗余检查待 v3 清理；Peter 收取动作未发生'
   next_action: 'v3 删冗余检查后进 sched/urgent'
 generated_at: '2026-10-07T01:00:00'
+tags:
+  - load_balance
+  - topology
+  - regression
 ---

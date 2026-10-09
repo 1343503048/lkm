@@ -32,6 +32,10 @@ merge_assessment:
   blocking_issues: v3 未发出；stop 路径需收敛；ext_server 语义未澄清
   next_action: Juri 发 v3 或 Ionut RFC 演进为 v3 基底
 generated_at: '2026-10-06T01:00:00'
+tags:
+- deadline
+- dl_server
+- nohz
 title: 'sched/deadline: Make dl-server nohz full aware'
 layout: article
 ---

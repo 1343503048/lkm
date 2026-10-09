@@ -2,9 +2,11 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 23
+article_count: 25
 ---
 
+- [sched-20261006-004](/lkm/2026/10/06/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.html) `fix/low/under_review` — kcov: Keep timer and scheduler noise out of task coverage
+- [sched-20261005-007](/lkm/2026/10/05/sched-20261005-007-sched-rt-c-kernel-doc-warning.html) `discussion/low/under_review` — sched: rt.c: kernel-doc warning
 - [sched-20261002-015](/lkm/2026/10/02/sched-20261002-015-smpboot-don-t-park-the-thread-if-work-is-pending.html) `fix/medium/merged_tip` — smpboot: Don't park the thread if work is pending
 - [sched-20260924-001](/lkm/2026/09/24/sched-20260924-001-sched-rt-rebuild-domains-only-after-successful-rt-sysctl-wri.html) `fix/medium/under_review` — sched/rt: Rebuild domains only after successful RT sysctl writes
 - [sched-20260918-017](/lkm/2026/09/18/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.html) `fix/low/under_review` — sched: Fix incorrect sched_stat_wait statistics for rt and dl

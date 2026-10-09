@@ -2,9 +2,11 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 8
+article_count: 10
 ---
 
+- [sched-20261005-003](/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
+- [sched-20261005-004](/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/medium/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261001-002](/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260925-013](/lkm/2026/09/25/sched-20260925-013-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware

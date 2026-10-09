@@ -102,4 +102,7 @@ merge_assessment:
   blocking_issues: 'Peter 对 sched/core 内联 guard 的认可未获取'
   next_action: 'Peter 表态后经 -mm 汇合进主线'
 generated_at: '2026-10-07T01:00:00'
+tags:
+  - preempt
+  - rt
 ---

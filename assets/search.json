@@ -13886,7 +13886,7 @@
     "severity": "low",
     "tags": [
       "sched_ext",
-      "proxy_exec"
+      "proxy_execution"
     ],
     "authors": [
       "Andrea Righi"
@@ -14092,7 +14092,7 @@
     "severity": "medium",
     "tags": [
       "sched_ext",
-      "proxy_exec"
+      "proxy_execution"
     ],
     "authors": [
       "Andrea Righi"
@@ -14369,7 +14369,10 @@
     "type": "feature",
     "status": "under_review",
     "severity": "none",
-    "tags": [],
+    "tags": [
+      "eevdf",
+      "load_balance"
+    ],
     "authors": [
       "Vincent Guittot"
     ],
@@ -14383,7 +14386,10 @@
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "nohz",
+      "tick"
+    ],
     "authors": [
       "Stian Halseth"
     ],
@@ -14397,7 +14403,11 @@
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "deadline",
+      "dl_server",
+      "nohz"
+    ],
     "authors": [
       "Juri Lelli"
     ],
@@ -14411,7 +14421,11 @@
     "type": "fix",
     "status": "rfc",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "deadline",
+      "dl_server",
+      "nohz"
+    ],
     "authors": [
       "Ionut Nechita"
     ],
@@ -14425,7 +14439,10 @@
     "type": "fix",
     "status": "under_review",
     "severity": "low",
-    "tags": [],
+    "tags": [
+      "deadline",
+      "proxy_execution"
+    ],
     "authors": [
       "Zhan Xusheng"
     ],
@@ -14439,7 +14456,10 @@
     "type": "discussion",
     "status": "under_review",
     "severity": "none",
-    "tags": [],
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
     "authors": [
       "Qais Yousef"
     ],
@@ -14453,7 +14473,9 @@
     "type": "discussion",
     "status": "under_review",
     "severity": "low",
-    "tags": [],
+    "tags": [
+      "rt"
+    ],
     "authors": [
       "Manuel Ebner"
     ],
@@ -14467,7 +14489,11 @@
     "type": "feature",
     "status": "under_review",
     "severity": "none",
-    "tags": [],
+    "tags": [
+      "sched_ext",
+      "numa",
+      "bpf"
+    ],
     "authors": [
       "Andrea Righi"
     ],
@@ -14481,7 +14507,10 @@
     "type": "feature",
     "status": "under_review",
     "severity": "none",
-    "tags": [],
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
     "authors": [
       "Tejun Heo"
     ],
@@ -14495,7 +14524,11 @@
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "load_balance",
+      "topology",
+      "regression"
+    ],
     "authors": [
       "Tim Chen"
     ],
@@ -14509,7 +14542,10 @@
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "nohz",
+      "tick"
+    ],
     "authors": [
       "Stian Halseth"
     ],
@@ -14523,7 +14559,10 @@
     "type": "fix",
     "status": "under_review",
     "severity": "low",
-    "tags": [],
+    "tags": [
+      "preempt",
+      "rt"
+    ],
     "authors": [
       "Karl Mehltretter"
     ],
@@ -14537,7 +14576,11 @@
     "type": "feature",
     "status": "under_review",
     "severity": "none",
-    "tags": [],
+    "tags": [
+      "sched_ext",
+      "numa",
+      "bpf"
+    ],
     "authors": [
       "Andrea Righi"
     ],
@@ -14551,7 +14594,11 @@
     "type": "fix",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "sched_ext",
+      "cpufreq",
+      "dvfs"
+    ],
     "authors": [
       "Tao Cui"
     ],
@@ -14565,7 +14612,10 @@
     "type": "bug",
     "status": "under_review",
     "severity": "medium",
-    "tags": [],
+    "tags": [
+      "core_sched",
+      "syzbot"
+    ],
     "authors": [
       "Seiji Nishikawa"
     ],
@@ -14604,6 +14654,210 @@
     ],
     "url": "/lkm/2026/10/06/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.html",
     "tldr": "- sched-20260903-007：Hongyan Xia 收掉调度器里最后一批已废弃的 static key 用法：`kernel/sched/fair.c` 的 CFS bandwidth `__cfs_bandwidth_used` 从 `struct static_key` + `static_key_false()` / `static_key_slow_inc_cpuslocked()` 迁到 `DEFINE_STATIC_KEY_FALSE()` + `static_branch_unlikely()` / `static_branch_inc_cpuslocked()`；"
+  },
+  {
+    "title": "[GIT PULL] sched_ext: Fixes for v7.3-rc6",
+    "id": "sched-20261007-001",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo",
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-001-git-pull-sched-ext-fixes-for-v7-3-rc6.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。三条此前分别走完 review 的 sched_ext 修复线在 rc6 阶段汇成一批 pull request 并被 Linus 收进主线。  - sched-20260929-008（CPU 热插拔挂起）：Tejun Heo 的修复——正关机的 CPU 若还有任务停在 user DSQ 或被 BPF 调度器持有，`cpu_down()` 会永久挂起或直到 watchdog 弹掉调度器；补丁在 rq 下线时把非本地 DSQ 任务重入队到本地 DSQ，09-29 已进 `sched_ext/for-7.3-fixes`。 - sch"
+  },
+  {
+    "title": "sched/cputime: Don't account idle time twice after dyntick-idle",
+    "id": "sched-20261007-002",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "nohz",
+      "tick"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html",
+    "tldr": "- sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间超过墙钟时间（SPARC T7-1 最差 1.44x、KVM guest 1.53x），根因为 cf6444c3e1bb 统一记账后 dyntick-idle 与重启 tick 首个整周期双计。`#regzbot introduced: cf6444c3e1bb`。 - sched-20261005-002：修复 v1 发出（`kernel_cpustat` 记录 overlap、首"
+  },
+  {
+    "title": "sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies",
+    "id": "sched-20261007-003",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cpufreq",
+      "dvfs"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-003-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.html",
+    "tldr": "- sched-20261004-004：Tao Cui 报告并修复 sched_ext 子调度器生命周期漏洞——持有 `SCX_CAP_PERF` 的子调度器把 cpuperf target 写低后消失（cap 回收/kill/detach/cgroup 移除），target 残留：`scx_bpf_sub_revoke()` 只清 caps 位图、`scx_sub_disable()` 重定任务但都不碰 `rq->scx.cpuperf_target`；读侧门 `scx_cpuperf_target()` 只测全局 `scx_enabled()`，root 调度器运行期间 scheduti"
+  },
+  {
+    "title": "sched_ext: Clear a sub-scheduler's caps before ops.sub_detach()",
+    "id": "sched-20261007-004",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-004-sched-ext-clear-a-sub-scheduler-s-caps-before-ops-sub-detach.html",
+    "tldr": "Tejun Heo 落实其三小时前对 Tao Cui 系列的裁决（[[sched-20261007-003]]）：cpuperf target 是 last-writer-wins 状态、恢复是父调度器在 `ops.sub_detach()` 里的责任，但当前父级无法依赖这一点——垂死的子调度器要到 `ops.exit()` 之后才被标记 dead，此前一直持有全部 caps，其 `ops.exit()` 或迟到 timer 可以在父级清理**之后**继续写入。本补丁在 `ops.sub_detach()` 之前清掉子级全部 caps：先清 pshard caps（pending sync 会"
+  },
+  {
+    "title": "sched_ext: Keep proxy donors with slice left on the local DSQ",
+    "id": "sched-20261007-005",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html",
+    "tldr": "- sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发往 `sched_ext/for-7.4` 的单补丁修复——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 proxy 记账，BPF 被迫反复做无意义 dispatch；补丁改为有 slice 剩余的 donor 放本地 DSQ 头部，并用新 `SCX_RQ_PROXY_PICK_PENDING` rq 标志区分"
+  },
+  {
+    "title": "cpufreq: schedutil: Serialize start against rate limit updates",
+    "id": "sched-20261007-006",
+    "date": "2026-10-07",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-006-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html",
+    "tldr": "- sched-20260929-001：Hui Su 发的一枚 schedutil 并发竞态修复：`rate_limit_us_store()`（sysfs 写 `rate_limit_us`）持 governor 属性集的 `update_lock`，而 `sugov_start()` 读写同一 tunable 时**不加锁**，两条路径交错会让 sysfs 里显示新值、内存里 `freq_update_delay_ns` 还是旧值，且这个陈旧延迟会一直滞留到下一次限速更新或 governor 重启。补丁在 `sugov_start()` 里给 `sugov_update_rate_lim"
+  },
+  {
+    "title": "sched_ext: Add ops.sub_cid_sched_updated()",
+    "id": "sched-20261007-007",
+    "date": "2026-10-07",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-007-sched-ext-add-ops-sub-cid-sched-updated.html",
+    "tldr": "- sched-20261006-001：Tejun Heo 为 sub-scheduler 委派模型补上**用量可观测性**——新增 `ops.sub_cid_sched_updated()`：某调度器视角下「跑在一个 cid 上的调度器」变化时通知它（NONE/SELF/直接子 cgroup id，子树内部变化不上报）；开销控制在调度器不变时每次上下文切换一次指针比较、整体挂 static key。3 补丁（+352/−11），2/3、3/3 为 scx_qmap 配套（cid 区间 buffer 修正 + 参与者 cid 时间/分配额对照展示）。当日刚发出、无回帖。 - sched-20"
+  },
+  {
+    "title": "sched/eevdf: Add min slice check when selecting CPU",
+    "id": "sched-20261007-008",
+    "date": "2026-10-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.html",
+    "tldr": "- sched-20261002-001：Vincent Guittot 把 8 补丁 v1 扩张成 **18 补丁 v2** 重发——`select_slice_cpu()` 并入 `select_idle_capacity()` 与 `select_idle_cpu()`；系列同时吸收 lag 管理（睡眠实体正 lag 衰减、idle CPU 唤醒重置 lag）、per-cpu min_slice 缓存、wake_affine min slice 比较，并新增 fair 的 push task 机制与 feec() 重构（用 OPP cost 而非 spare capacity 选 CPU"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20261007-009",
+    "date": "2026-10-07",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "regression"
+    ],
+    "authors": [
+      "Aishwarya Rambhadran"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "- sched-20260923-001：Aishwarya Rambhadran（ARM）在 AWS Graviton3 上报告个别 schbench 线程配置 p99 回退（~30%），bisect 指向单运行队列 commit（[PATCH v3 7/7] sched/eevdf: Move to a single runqueue）。 - sched-20260924-009：怀疑点收敛到 WA_WEIGHT/task_h_load，社区提议试 `NO_WA_WEIGHT` 与 `cgroup_mode` 两种规避。 - sched-20260928-008：Chen Yu 纠正自己此"
+  },
+  {
+    "title": "cpufreq: Resolve CPPC frequencies to performance levels",
+    "id": "sched-20261007-010",
+    "date": "2026-10-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "cppc"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.html",
+    "tldr": "- sched-20260929-010：Christian Loehle 的 3 补丁系列——table-less 的 cppc-cpufreq 缺少「频率→性能级」解析，不同 kHz 请求 miss schedutil 频率缓存却写同一个 Desired Performance 值；新增 `->resolve_freq()` 回调、CPPC 预计算仿射转换、schedutil limits 未变时跳过冗余回调。实测 schbench mean p99 降 10%、`cppc_set_perf()` 调用降 23.8%。 - sched-20261001-006：Mario Limoncie"
+  },
+  {
+    "title": "cpufreq/amd-pstate: Supply nominal/lowest freq for TRX40-based motherboards",
+    "id": "sched-20261007-011",
+    "date": "2026-10-07",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "x86"
+    ],
+    "authors": [
+      "Giovanni Gherdovich"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-011-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.html",
+    "tldr": "Giovanni Gherdovich（SUSE）为 TRX40 芯片组主板（AMD Ryzen Threadripper 3000 系）补 amd-pstate 加载失败的固件缺口：部分该类主板的 ACPI `_CPC` 包**缺失 lowest 与 nominal frequency 字段**（支持 CPPC V2 而非 V3），且无固件更新可用；amd-pstate 必须知道 nominal frequency 才能加载，于是这些机器上驱动直接不可用。补丁走 amd-pstate 既有的 quirks 机制——按 CPU family（0x17）、model（0x30-0x3F）、**每"
+  },
+  {
+    "title": "cpufreq: qcom-nvmem: Add IPQ9650 support",
+    "id": "sched-20261007-012",
+    "date": "2026-10-07",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Kathiravan Thirumoorthy"
+    ],
+    "url": "/lkm/2026/10/07/sched-20261007-012-cpufreq-qcom-nvmem-add-ipq9650-support.html",
+    "tldr": "Kathiravan Thirumoorthy（Qualcomm）的 +10 行 SoC 使能补丁：给 Qualcomm NVMEM cpufreq 驱动加 IPQ9650 支持——用 eFuse speedbin 值在运行时选出受支持的 OPP（`opp-supported-hw` 属性），并把 IPQ9650 加进 cpufreq-dt 平台设备的 blocklist，确保走 NVMEM 驱动而非通用 dt 驱动。Qualcomm 的 Dmitry Baryshkov 当日给 `Reviewed-by`，cpufreq 维护者 Viresh Kumar **6 分钟后即 Applied**"
   },
   {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",

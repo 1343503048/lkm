@@ -1,9 +1,11 @@
 # tag: regression
 
-共 26 篇
+共 28 篇
 
 - [sched-20261008-011](../../2026/10/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-008](../../2026/10/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/under_review` — Akram Boulahia 修掉 amd-pstate 在一个特定固件形态下的初始化失败：commit `9dfd13f80c85` 起，active 模式里 `shmem_init_perf()` 不再提前返回、总会调用 `cppc_set_auto_sel()`（为共享内存系统所需）；但在 `_CPC` 的 Autonomous Selection Enable 项是「常量整数而非寄存器」的
+- [sched-20261007-009](../../2026/10/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：Aishwarya Rambhadran（ARM）在 AWS Graviton3 上报告个别 schbench 线程配置 p99 回退（~30%），bisect 指向单运行队列 commit（[PATCH v3 7/7] sched/eevdf: Move to a single runqueue）。 - sched-20260924-009：怀疑点收敛到
+- [sched-20261006-002](../../2026/10/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-002](../../2026/10/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.md) `regression/medium/under_review` — Stian Halseth 报告一个 v7.2-rc1 起的回归：NO_HZ_IDLE + TICK_CPU_ACCOUNTING 内核上 `/proc/stat` 统计的 idle 时间**超过墙钟时间**——按「1 − idle 率」算 CPU 使用率的监控在空闲机器上直接显示负数。两台机器实测（60s 窗口、/proc/stat + /proc/timer_list 的 idle_sleep
 - [sched-20260930-013](../../2026/09/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-003](../../2026/09/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `regression/high/under_review` — Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台上的性能回退」发出的修复补丁：asym packing 想把任务放到最高优先级 CPU，cache-aware 调度想把同一进程的任务都聚到一个 LLC（不管 LLC 内 CPU 优先级）。补丁让 asym packing 在「要把任务迁到一个优先级更高的空核」时**优先于** cache-aware 策

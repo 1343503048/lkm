@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 27 篇
+共 28 篇
 
+- [sched-20261006-007](../../2026/10/sched-20261006-007-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `bug/medium/under_review` — Seiji Nishikawa（Red Hat）修复 core scheduling 与 CPU 上线的竞态窗口：新 CPU 上线时，`ap_starting()` 先 `set_cpu_sibling_map()`（把它加进兄弟的 `cpu_smt_mask()`）后 `notify_cpu_starting()`（触发 `sched_core_cpu_starting()` 把 `rq->co
 - [sched-20260925-012](../../2026/09/sched-20260925-012-sched-core-fix-pick-next-task-self-recursion.md) `fix/medium/under_review` — Peter Zijlstra 的 core scheduling 加固系列 1/7（修复 `pick_next_task()` 在 core-wide 锁被 drop 后可能被另一 sibling 重入、踩坏 core-wide 任务选择状态甚至 NULL deref 的问题），今天因 Aaron Lu（bytedance）09-03 的一条补充意见被 Peter 接受并表态「Let me add
 - [sched-20260925-004](../../2026/09/sched-20260925-004-sched-core-remove-redundant-core-sched-seq.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles 中的 sched-20260916-020。Hui Su 的「删除冗余 core_sched_seq、用 core_pick 直接作 pending 标记」清理已被 Peter Zijlstra 合入 tip/sched/core（commit fbbc63fed0b09c8c5cf3972db8922ae98406ceec，09-25
 - [sched-20260922-002](../../2026/09/sched-20260922-002-sleeping-owner-handling-for-proxy-execution-v32.md) `feature/rfc` — John Stultz 发出 proxy execution 旅程第 5 阶段「Sleeping Owner Handling」的第 32 版迭代（2 补丁）：当任务阻塞在一个 owner 正在睡眠的 mutex 上时，把 waiter 停用（deactivate）并挂到 owner 的等待表上，待 owner 唤醒时在同一 runqueue 上重新激活，使其得以提升 owner。v32 新增 K

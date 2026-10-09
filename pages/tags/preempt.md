@@ -2,10 +2,11 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 66
+article_count: 67
 ---
 
 - [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
+- [sched-20261006-004](/lkm/2026/10/06/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.html) `fix/low/under_review` — kcov: Keep timer and scheduler noise out of task coverage
 - [sched-20261006-009](/lkm/2026/10/06/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
 - [sched-20261001-001](/lkm/2026/10/01/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.html) `fix/medium/under_review` — sched/eevdf: Keep slice protection boundaries consistent
 - [sched-20260930-009](/lkm/2026/09/30/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.html) `fix/medium/under_review` — sched/fair: Take slice protection into account when arming HRTICK

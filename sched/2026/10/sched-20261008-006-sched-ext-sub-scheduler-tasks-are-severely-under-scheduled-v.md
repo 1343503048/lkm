@@ -72,6 +72,7 @@ generated_at: '2026-10-09T01:00:00'
 source_email_count: 2
 related_articles:
   - sched-20261004-004
+  - sched-20261007-004
 tags:
   - sched_ext
 ---

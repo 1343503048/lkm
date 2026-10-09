@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 48
+article_count: 51
 ---
 
+- [sched-20261007-008](/lkm/2026/10/07/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
+- [sched-20261007-009](/lkm/2026/10/07/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261005-001](/lkm/2026/10/05/sched-20261005-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20261003-007](/lkm/2026/10/03/sched-20261003-007-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261002-001](/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20261002-002](/lkm/2026/10/02/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.html) `fix/low/under_review` — sched/eevdf: Keep expired protection expired across reweighting

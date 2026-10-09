@@ -41,7 +41,7 @@ related_articles:
 - sched-20261002-008
 tags:
 - sched_ext
-- proxy_exec
+- proxy_execution
 title: 'sched_ext: Keep proxy donors with slice left on the local DSQ'
 layout: article
 ---

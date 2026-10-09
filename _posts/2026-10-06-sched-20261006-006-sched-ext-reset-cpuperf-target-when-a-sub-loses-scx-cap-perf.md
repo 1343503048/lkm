@@ -33,6 +33,10 @@ merge_assessment:
   blocking_issues: Tejun 未表态；与「谁 grant 谁恢复」契约的方向竞争
   next_action: 等 Tejun 对 v2 的方向裁决
 generated_at: '2026-10-07T01:00:00'
+tags:
+- sched_ext
+- cpufreq
+- dvfs
 title: 'sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies'
 layout: article
 ---

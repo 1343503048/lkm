@@ -2,9 +2,14 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 32
+article_count: 37
 ---
 
+- [sched-20261007-002](/lkm/2026/10/07/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
+- [sched-20261006-003](/lkm/2026/10/06/sched-20261006-003-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
+- [sched-20261005-002](/lkm/2026/10/05/sched-20261005-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
+- [sched-20261005-003](/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
+- [sched-20261005-004](/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/medium/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261004-002](/lkm/2026/10/04/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.html) `regression/medium/under_review` — tick/sched: /proc/stat idle time exceeds wall time since v7.2
 - [sched-20261004-006](/lkm/2026/10/04/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261003-005](/lkm/2026/10/03/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)

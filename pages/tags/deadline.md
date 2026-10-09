@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 26
+article_count: 29
 ---
 
+- [sched-20261005-003](/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
+- [sched-20261005-004](/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/medium/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
+- [sched-20261005-005](/lkm/2026/10/05/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()
 - [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261001-002](/lkm/2026/10/01/sched-20261001-002-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20260929-007](/lkm/2026/09/29/sched-20260929-007-cgroup-cpuset-run-sched-deadline-shrink-test-on-valid-partit.html) `fix/medium/merged_tip` — cgroup/cpuset: Run SCHED_DEADLINE shrink test on valid partition root only

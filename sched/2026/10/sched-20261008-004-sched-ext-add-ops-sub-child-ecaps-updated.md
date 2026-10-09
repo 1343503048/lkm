@@ -91,6 +91,8 @@ source_email_count: 8
 related_articles:
   - sched-20261004-004
   - sched-20261006-006
+  - sched-20261007-003
+  - sched-20261007-004
 tags:
   - sched_ext
   - cgroup

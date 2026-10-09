@@ -1,9 +1,13 @@
 # tag: load_balance
 
-共 138 篇
+共 142 篇
 
 - [sched-20261008-011](../../2026/10/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20261007-008](../../2026/10/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — - sched-20261002-001：Vincent Guittot 把 8 补丁 v1 扩张成 **18 补丁 v2** 重发——`select_slice_cpu()` 并入 `select_idle_capacity()` 与 `select_idle_cpu()`；系列同时吸收 lag 管理（睡眠实体正 lag 衰减、idle CPU 唤醒重置 lag）、per-cpu min_sli
+- [sched-20261006-002](../../2026/10/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-006](../../2026/10/sched-20261005-006-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-001](../../2026/10/sched-20261005-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261003-006](../../2026/10/sched-20261003-006-sched-fair-add-smt-balance-and-llc-balance-to-the-decision-m.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-010](../../2026/10/sched-20261002-010-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-009](../../2026/10/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。

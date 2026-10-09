@@ -21,6 +21,8 @@ merge_assessment:
   blocking_issues: 无补丁、无回帖
   next_action: 回帖解释 config 门控成因；可选发清理补丁
 generated_at: '2026-10-06T01:00:00'
+tags:
+- rt
 title: 'sched: rt.c: kernel-doc warning'
 layout: article
 ---

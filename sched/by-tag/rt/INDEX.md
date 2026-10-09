@@ -1,7 +1,9 @@
 # tag: rt
 
-共 23 篇
+共 25 篇
 
+- [sched-20261006-004](../../2026/10/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-007](../../2026/10/sched-20261005-007-sched-rt-c-kernel-doc-warning.md) `discussion/low/under_review` — Manuel Ebner 在 `make W=1` 构建时遇到告警并公开求解：`kernel/sched/rt.c:12:18: warning: 'max_rt_runtime' defined but not used [-Wunused-const-variable=]`——他困惑于该变量「明明在文件后面被用了两处」（`tg_set_rt_bandwidth()` 的 quota 上限检查、
 - [sched-20261002-015](../../2026/10/sched-20261002-015-smpboot-don-t-park-the-thread-if-work-is-pending.md) `fix/medium/merged_tip` — Sebastian Andrzej Siewior（linutronix，PREEMPT_RT 维护者）4 补丁系列（09-11 发出，`<20260911143815.997254-...>`，系列 1/4 未随本轮合入）中的 2/4-4/4 三片于 10-02 由 Peter Zijlstra 合入 tip: sched/core（CommitterDate 10-01）：4/4 `smpbo
 - [sched-20260924-001](../../2026/09/sched-20260924-001-sched-rt-rebuild-domains-only-after-successful-rt-sysctl-wri.md) `fix/medium/under_review` — Joseph Salisbury 的修复补丁：把 `rebuild_sched_domains()` 从「每次 RT sysctl 写入前无条件执行」改为「仅当写入成功且值真实变化时」才执行，消除 RT 周期/运行时间参数每次读取都触发全量调度域重建的开销。本日 Chengfeng Lin 给出独立实测：在 v7.2 上该补丁把 RT sysctl 读延迟从约 8.57us 降到 0.264us（
 - [sched-20260918-017](../../2026/09/sched-20260918-017-sched-fix-incorrect-sched-stat-wait-statistics-for-rt-and-dl.md) `fix/low/under_review` — Liang Luo 提交修复：rt/dl 调度类的 `sched_stat_wait` 统计在 schedstats 运行时才开启的场景下会输出"自开机以来"的虚假等待时间（wait_max/wait_sum 被永久污染）。修复是把 fair 类既有的"零 wait_start 跳过"检查下沉到公共的 `__update_stats_wait_end()`，让所有调度类共享。值得注意的是：该补丁明

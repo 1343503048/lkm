@@ -81,4 +81,7 @@ merge_assessment:
   blocking_issues: '无维护者 review'
   next_action: 'Peter/core scheduling 侧 review 后进修复通道'
 generated_at: '2026-10-07T01:00:00'
+tags:
+  - core_sched
+  - syzbot
 ---

@@ -107,4 +107,7 @@ merge_assessment:
   blocking_issues: '嵌套 overlap 场景需 v2 修正；IS_ENABLED 风格项'
   next_action: 'v2 处理 Frederic 意见后进 tick/sched 修复通道'
 generated_at: '2026-10-06T01:00:00'
+tags:
+  - nohz
+  - tick
 ---

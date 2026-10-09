@@ -1,7 +1,12 @@
 # tag: nohz
 
-共 32 篇
+共 37 篇
 
+- [sched-20261007-002](../../2026/10/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — - sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间超过墙钟时间（SPARC T7-1 最差 1.44x、KVM guest 1.53x），根因为 cf6444c3e1bb 统一记账后 dyntick-idle 与重启 tick 首个整周
+- [sched-20261006-003](../../2026/10/sched-20261006-003-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-004](../../2026/10/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/medium/rfc` — Ionut Nechita（Wind River）把此前讨论中的「tickless 变体」落成正式 RFC：在 nohz_full 核上，把「武装 fair server 保 CFS 带宽」与「为 server 保持 tick」两个关注点拆开——`sched_can_stop_tick()` 只负责武装 server（RT+CFS 共存且有 runtime 配置时 `dl_server_start
+- [sched-20261005-003](../../2026/10/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-002](../../2026/10/sched-20261005-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-006](../../2026/10/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-002](../../2026/10/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.md) `regression/medium/under_review` — Stian Halseth 报告一个 v7.2-rc1 起的回归：NO_HZ_IDLE + TICK_CPU_ACCOUNTING 内核上 `/proc/stat` 统计的 idle 时间**超过墙钟时间**——按「1 − idle 率」算 CPU 使用率的监控在空闲机器上直接显示负数。两台机器实测（60s 窗口、/proc/stat + /proc/timer_list 的 idle_sleep
 - [sched-20261003-005](../../2026/10/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

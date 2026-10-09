@@ -89,4 +89,7 @@ merge_assessment:
   blocking_issues: 'Qais 系列 5 月至今久置、作者缺席；Zhan 补丁等 04/13 排队'
   next_action: 'Qais 回归系列后 Zhan 发 fits_llc_nr() 独立补丁'
 generated_at: '2026-10-06T01:00:00'
+tags:
+  - cfs
+  - load_balance
 ---

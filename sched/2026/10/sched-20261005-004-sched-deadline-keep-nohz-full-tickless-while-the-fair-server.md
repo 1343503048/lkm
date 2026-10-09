@@ -89,4 +89,8 @@ merge_assessment:
   blocking_issues: '无维护者 review；ext_server 适配未做；sched_can_stop_tick() 锁上下文待确认'
   next_action: 'Juri v3 整合本 RFC 分层思路'
 generated_at: '2026-10-06T01:00:00'
+tags:
+  - deadline
+  - dl_server
+  - nohz
 ---

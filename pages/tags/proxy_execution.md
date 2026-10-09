@@ -2,10 +2,14 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 59
+article_count: 63
 ---
 
 - [sched-20261008-002](/lkm/2026/10/08/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/under_review` — sched: Fix proxy-exec use of curr and donor
+- [sched-20261007-005](/lkm/2026/10/07/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261005-005](/lkm/2026/10/05/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()
+- [sched-20261003-001](/lkm/2026/10/03/sched-20261003-001-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/medium/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261002-008](/lkm/2026/10/02/sched-20261002-008-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
 - [sched-20260930-007](/lkm/2026/09/30/sched-20260930-007-sched-proxy-correct-the-sched-proxy-exec-dependency-comment.html) `discussion/none/superseded` — sched/proxy: Correct the SCHED_PROXY_EXEC dependency comment
 - [sched-20260929-015](/lkm/2026/09/29/sched-20260929-015-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext
 - [sched-20260928-002](/lkm/2026/09/28/sched-20260928-002-sched-make-proxy-execution-compatible-with-sched-ext.html) `feature/none/merged_tip` — sched: Make proxy execution compatible with sched_ext

@@ -2,11 +2,13 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 26
+article_count: 28
 ---
 
 - [sched-20261008-008](/lkm/2026/10/08/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/under_review` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
 - [sched-20261008-011](/lkm/2026/10/08/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
+- [sched-20261007-009](/lkm/2026/10/07/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261006-002](/lkm/2026/10/06/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/medium/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
 - [sched-20261004-002](/lkm/2026/10/04/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.html) `regression/medium/under_review` — tick/sched: /proc/stat idle time exceeds wall time since v7.2
 - [sched-20260930-013](/lkm/2026/09/30/sched-20260930-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system
 - [sched-20260929-003](/lkm/2026/09/29/sched-20260929-003-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `regression/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid system

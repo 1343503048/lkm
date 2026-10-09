@@ -33,6 +33,9 @@ merge_assessment:
   blocking_issues: v2 无维护者 review；Kayra 三点技术意见待作者回应
   next_action: Vincent 回应 review 后决定 v3
 generated_at: '2026-10-06T01:00:00'
+tags:
+- eevdf
+- load_balance
 title: 'sched/eevdf: Add min slice check when selecting CPU'
 layout: article
 ---

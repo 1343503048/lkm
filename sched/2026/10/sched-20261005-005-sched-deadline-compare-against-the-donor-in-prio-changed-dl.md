@@ -88,4 +88,7 @@ merge_assessment:
   blocking_issues: '无维护者 review；proxy execution 栈 churn 中 donor/curr 语义未定'
   next_action: '等 Juri/Peter review；Andriaccio 系列合入后发 dl_server follow-up'
 generated_at: '2026-10-06T01:00:00'
+tags:
+  - deadline
+  - proxy_execution
 ---

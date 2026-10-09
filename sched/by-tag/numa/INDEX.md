@@ -1,7 +1,9 @@
 # tag: numa
 
-共 13 篇
+共 15 篇
 
+- [sched-20261006-005](../../2026/10/sched-20261006-005-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261005-008](../../2026/10/sched-20261005-008-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261004-001](../../2026/10/sched-20261004-001-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261003-003](../../2026/10/sched-20261003-003-sched-numa-ngid-is-reported-as-a-global-pid-inside-a-pid-namesp.md) `bug/medium/under_review` — Maoyi Xie 报告一个 pid namespace 隔离缺口：`/proc/<pid>/status` 的 `Ngid` 字段（NUMA group id）没有像同函数打印的其他 pid 一样做 namespace 转换——`task_state()` 里 ppid/tgid 都走 `task_*_nr_ns(p, ns)`，唯独 `ngid = task_numa_group_id(p)`
 - [sched-20261002-014](../../2026/10/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.md) `feature/medium/rfc` — Vladimir Vdovin 的单片 RFC：自动 NUMA balancing 对 sched_ext 任务**事实性关闭**——周期性扫描只从 fair tick（`task_tick_fair()` → `task_tick_numa()`）排队，`task_tick_scx()` 没有对应调用，SCX 任务永不产生 PROT_NONE PTE、fault 侧无活可干。2 节点 160-C

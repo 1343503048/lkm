@@ -1,9 +1,10 @@
 # tag: preempt
 
-共 66 篇
+共 67 篇
 
 - [sched-20261008-009](../../2026/10/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261006-009](../../2026/10/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — - sched-20260903-007：Hongyan Xia 收掉调度器里最后一批已废弃的 static key 用法：`kernel/sched/fair.c` 的 CFS bandwidth `__cfs_bandwidth_used` 从 `struct static_key` + `static_key_false()` / `static_key_slow_inc_cpuslocke
+- [sched-20261006-004](../../2026/10/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-001](../../2026/10/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.md) `fix/medium/under_review` — Christian Loehle 把 9-30 的两枚独立修复（「Fix slice protection across state changes」v1 两补丁与「Take slice protection into account when arming HRTICK」单片）合并扩展为 5 补丁系列 v2「Keep slice protection boundaries consistent」
 - [sched-20260930-009](../../2026/09/sched-20260930-009-sched-fair-take-slice-protection-into-account-when-arming-hr.md) `fix/medium/under_review` — Christian Loehle 的 EEVDF 调度粒度修复：EEVDF 会在更短 request 竞争时提前结束任务的 slice protection，`update_curr()` 在 protection 到期时请求重选，但 `hrtick_start_fair()` 仍按虚拟 deadline 定时——无中间调度事件时，下次重选机会远晚于 protection 边界。例如两个等权 SC
 - [sched-20260929-005](../../2026/09/sched-20260929-005-sched-set-tif-need-resched-before-calling-trace-set-need-res.md) `fix/low/under_review` — 一枚关于 `sched_entry_tp`/`__trace_set_need_resched()` 与 `TIF_NEED_RESCHED` 设置顺序的 tracepoint 修复（v3，作者 Sechang）在本日重获讨论：Andrea Righi 复现出该顺序竞态会导致 runtime verification 的 nrp monitor 状态机违规，并给出把 `trace_sched_en
