@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 30 篇
+共 32 篇
 
+- [sched-20261004-006](../../2026/10/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261004-002](../../2026/10/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.md) `regression/medium/under_review` — Stian Halseth 报告一个 v7.2-rc1 起的回归：NO_HZ_IDLE + TICK_CPU_ACCOUNTING 内核上 `/proc/stat` 统计的 idle 时间**超过墙钟时间**——按「1 − idle 率」算 CPU 使用率的监控在空闲机器上直接显示负数。两台机器实测（60s 窗口、/proc/stat + /proc/timer_list 的 idle_sleep
 - [sched-20261003-005](../../2026/10/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-013](../../2026/10/sched-20261002-013-sched-isolation-enforce-nohz-full-as-a-subset-of-isolcpus-do.md) `feature/low/under_review` — Qiliang Yuan 的 12 补丁 v5（v1-v4 未在既往分析窗口覆盖；当日缓存收到的补丁为 01-03/12）：`kernel/sched/isolation.c` 的隔离语义修复与运行时可变 housekeeping 掩码。01/12 修 boot 配置矛盾——`nohz_full=`（或 `isolcpus=nohz`）与 `isolcpus=domain` 独立解析时，没有任何机
 - [sched-20261002-007](../../2026/10/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — K Prateek Nayak（AMD）的 13 补丁 RFC v3（10 K Prateek + 3 Peter Zijlstra）：大型多节点系统上频繁更新的全局 cpumask（如 nohz idle 掩码）存在严重 C2C ping-pong——方案是引入「sparsebitmap（sbm）」：按 LLC/节点实例分片的位图，每实例只表示少量 CPU，写操作保持在本地 cacheline，

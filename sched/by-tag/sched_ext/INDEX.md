@@ -1,11 +1,14 @@
 # tag: sched_ext
 
-共 201 篇
+共 204 篇
 
 - [sched-20261008-012](../../2026/10/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-006](../../2026/10/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — Tao Cui 报告一个疑似 dispatch 饥饿：在 `sched_ext/for-7.4` + caps-clear 补丁上，父子 cid 调度的最小复现里，若 busy-loop 任务在子调度器 attach **之前**就进了 cgroup，子调度器每轮都能 claim 到该任务（handover 触发、`p->scx.sched == child`），但其运行 duty cycle 只
 - [sched-20261008-005](../../2026/10/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — Tejun Heo 修掉 sched_ext 的一个 CPU idle stall：`SCX_OPS_ENQ_LAST` 下，本应作为「最后一个可运行任务」交给 `ops.enqueue()` 的任务，在三条 skip 路径（exiting 任务没设 `ENQ_EXITING`、migration-disabled 任务没设 `ENQ_MIGRATION_DISABLED`、offline rq 
 - [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重
+- [sched-20261004-004](../../2026/10/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.md) `bug/medium/under_review` — Tao Cui（KylinOS）的单补丁修复 sched_ext 子调度器 DVFS 残留问题：持有 `SCX_CAP_PERF` 的子调度器设了一个低 cpuperf target 后退场——cap 被回收（revoke）、被 kill、detach 或 cgroup 摘除——`rq->scx.cpuperf_target` 却留在原地。`scx_bpf_sub_revoke()` 只清 psh
+- [sched-20261004-003](../../2026/10/sched-20261004-003-sched-ext-generate-qseq-from-a-per-task-counter.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261004-001](../../2026/10/sched-20261004-001-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261003-004](../../2026/10/sched-20261003-004-sched-ext-generate-qseq-from-a-per-task-counter.md) `fix/medium/under_review` — Kuba Piecuch（Google）发往 `sched_ext/for-7.3-fixes` 的单补丁正确性修复：`finish_dispatch()` 用 `ops_state` 里的 qseq 判断要 claim 的 QUEUED 实例是否就是 `scx_bpf_dsq_insert()` 当时看到的那个，但 qseq 取自 **rq 级**计数器 `rq->scx.ops_qseq`——
 - [sched-20261003-001](../../2026/10/sched-20261003-001-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-014](../../2026/10/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.md) `feature/medium/rfc` — Vladimir Vdovin 的单片 RFC：自动 NUMA balancing 对 sched_ext 任务**事实性关闭**——周期性扫描只从 fair tick（`task_tick_fair()` → `task_tick_numa()`）排队，`task_tick_scx()` 没有对应调用，SCX 任务永不产生 PROT_NONE PTE、fault 侧无活可干。2 节点 160-C

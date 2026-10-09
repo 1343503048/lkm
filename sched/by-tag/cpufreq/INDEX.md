@@ -1,9 +1,11 @@
 # tag: cpufreq
 
-共 67 篇
+共 69 篇
 
 - [sched-20261008-008](../../2026/10/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/under_review` — Akram Boulahia 修掉 amd-pstate 在一个特定固件形态下的初始化失败：commit `9dfd13f80c85` 起，active 模式里 `shmem_init_perf()` 不再提前返回、总会调用 `cppc_set_auto_sel()`（为共享内存系统所需）；但在 `_CPC` 的 Autonomous Selection Enable 项是「常量整数而非寄存器」的
 - [sched-20261008-007](../../2026/10/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.md) `discussion/superseded` — 这是一条以「补丁被放弃」收尾的 cpufreq 讨论：Giovanni Gherdovich 早前为 MSI TRX40 主板（Ryzen Threadripper 3960X）提的 quirk——在该类主板 ACPI `_CPC` 包缺失 nominal/lowest 频率、导致 amd-pstate 无法加载时硬补频率——在多名同平台用户升级最新 BIOS 后确认问题已由固件修复，作者与其他测
+- [sched-20261004-007](../../2026/10/sched-20261004-007-cpufreq-cppc-resolve-frequencies-to-performance-levels.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261004-004](../../2026/10/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.md) `bug/medium/under_review` — Tao Cui（KylinOS）的单补丁修复 sched_ext 子调度器 DVFS 残留问题：持有 `SCX_CAP_PERF` 的子调度器设了一个低 cpuperf target 后退场——cap 被回收（revoke）、被 kill、detach 或 cgroup 摘除——`rq->scx.cpuperf_target` 却留在原地。`scx_bpf_sub_revoke()` 只清 psh
 - [sched-20261002-006](../../2026/10/sched-20261002-006-cpufreq-amd-pstate-restore-previous-mode-when-changing-drive.md) `fix/low/under_review` — Mario Limonciello（AMD，amd-pstate 维护者）的 3 补丁 v2（前身 09-21 的 4 补丁 v1，v1 未在既往分析窗口覆盖）：修复 amd-pstate 模式切换的两个健壮性缺口与 Zen6 上两个单元测试失败。1/3：`amd_pstate_change_driver_mode()` 注册新模式失败后什么也不恢复、系统失去 scaling driver，改为记
 - [sched-20261002-005](../../2026/10/sched-20261002-005-cpufreq-resolve-cppc-frequencies-to-performance-levels.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-009](../../2026/10/sched-20261001-009-cpufreq-cppc-add-ospm-nominal-freq-attribute.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

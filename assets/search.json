@@ -14363,6 +14363,118 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260726-006：Huacai Chen（LoongArch）修正 `THREAD_INFO_IN_TASK` Kconfig help——原文写于 4.9（仅 x86、thread_info 只剩 flags），要求 arch「移除除 flags 外所有字段」；实际 arm64/x86/riscv/powerpc 都保留多字段且工作正常，真实要求只是移除 task_struct 指针字段。V2 于 06-09 发出。 - sched-20260907-015：作者第二次 ping——直接点名 Ingo/"
   },
   {
+    "title": "sched/eevdf: Add min slice check when selecting CPU",
+    "id": "sched-20261005-001",
+    "date": "2026-10-05",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-001：Vincent Guittot 把 8 补丁 v1 扩张成 **18 补丁 v2** 重发——`select_slice_cpu()` 并入 `select_idle_capacity()` 与 `select_idle_cpu()`；系列同时吸收 lag 管理（睡眠实体正 lag 衰减、idle CPU 唤醒重置 lag）、per-cpu min_slice 缓存、wake_affine min slice 比较，并新增 fair 的 push task 机制与 feec() 重构（用"
+  },
+  {
+    "title": "sched/cputime: Don't account idle time twice after dyntick-idle",
+    "id": "sched-20261005-002",
+    "date": "2026-10-05",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间**超过墙钟时间**（SPARC T7-1 最差 CPU 1.44x、Opteron 3.7ms 唤醒负载 +13.1%），根因指向 cf6444c3e1bb（统一 idle cputime 记账）后 dyntick-idle 记账与重启 tick 首个整周期记账重叠双计；修复思路已有但未发。`#regzbot int"
+  },
+  {
+    "title": "sched/deadline: Make dl-server nohz full aware",
+    "id": "sched-20261005-003",
+    "date": "2026-10-05",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Juri Lelli"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260925-013：Juri Lelli 的「让 dl-server 感知 nohz_full」修复（v2，自 5 月未被收取）重新活跃——Ionut Nechita 发现 v2 恢复了 CFS 带宽保证但把隔离核变成满 CONFIG_HZ tick，给出「只在 server 实际 enqueue 期间保持 tick」的变体，Juri 欢迎其发 v3。 - sched-20261001-002：Frederic Weisbecker 提出根本性概念问题（nohz_full 上为什么会有 dl-server "
+  },
+  {
+    "title": "sched/deadline: keep nohz_full tickless while the fair server is deferred",
+    "id": "sched-20261005-004",
+    "date": "2026-10-05",
+    "type": "fix",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Ionut Nechita"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html",
+    "tldr": "Ionut Nechita（Wind River）把此前讨论中的「tickless 变体」落成正式 RFC：在 nohz_full 核上，把「武装 fair server 保 CFS 带宽」与「为 server 保持 tick」两个关注点拆开——`sched_can_stop_tick()` 只负责武装 server（RT+CFS 共存且有 runtime 配置时 `dl_server_start()`），**deferred（节流等待 dl_timer）状态下不强制 tick**；`inc_dl_tasks()/dec_dl_tasks()` 为 dl_server 实体补调 `sched_"
+  },
+  {
+    "title": "sched/deadline: Compare against the donor in prio_changed_dl()",
+    "id": "sched-20261005-005",
+    "date": "2026-10-05",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260924-002：Zhan Xusheng 的一致性修复 v1——`prio_changed_dl()` 的 else 分支询问「p 是否应抢占当前调度上下文」，proxy execution 下该上下文是 `rq->donor`，但代码仍与 `rq->curr` 比较；补丁改为与 `rq->donor` 比较，与同 commit 已修好的 `prio_changed_rt()` 对齐；`CONFIG_SCHED_PROXY_EXEC=n` 下 `build_policy.o` 字节级一致。 - sche"
+  },
+  {
+    "title": "sched/fair: Remove magic hardcoded margin in fits_capacity()",
+    "id": "sched-20261005-006",
+    "date": "2026-10-05",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-006-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-003：Qais Yousef capacity-aware 系列 v2 04/13（把 `fits_capacity()` 的 1280/1024 魔数 margin 换成 per-rq 阈值）被 Zhan Xusheng 指出与主线交互的隐患：新签名下 `invalid_llc_nr()` 把「LLC 内 CPU 数」当容量传参、静默绑定到错误的 `@cpu`；Zhan 提出拆 `fits_llc_nr()` 独立 helper（`nr_threads * 100 < (u64)nr_cpu"
+  },
+  {
+    "title": "sched: rt.c: kernel-doc warning",
+    "id": "sched-20261005-007",
+    "date": "2026-10-05",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [],
+    "authors": [
+      "Manuel Ebner"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-007-sched-rt-c-kernel-doc-warning.html",
+    "tldr": "Manuel Ebner 在 `make W=1` 构建时遇到告警并公开求解：`kernel/sched/rt.c:12:18: warning: 'max_rt_runtime' defined but not used [-Wunused-const-variable=]`——他困惑于该变量「明明在文件后面被用了两处」（`tg_set_rt_bandwidth()` 的 quota 上限检查、`sched_rt_global_validate()` 的全局校验），为何编译器仍报未使用。结合主线代码可解：这两处使用**全部被 config 门控**——`tg_set_rt_bandwidth"
+  },
+  {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261005-008",
+    "date": "2026-10-05",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/05/sched-20261005-008-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务**事实性关闭**：扫描只从 fair tick 排队，SCX 任务 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 比例 37%（fair 83%）。Andrea Righi（sched_ext 维护者）回复 backlog 里正有一套 sched_ext NUMA balancing 支持，将发到列表；V"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",
