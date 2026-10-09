@@ -2,12 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 169
+article_count: 170
 ---
 
 - [sched-20261008-001](/lkm/2026/10/08/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261008-002](/lkm/2026/10/08/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/under_review` — sched: Fix proxy-exec use of curr and donor
 - [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
+- [sched-20261004-006](/lkm/2026/10/04/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261003-005](/lkm/2026/10/03/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20260930-006](/lkm/2026/09/30/sched-20260930-006-sched-core-fix-context-analysis-errors-in-non-preferred-cpu.html) `fix/low/under_review` — sched/core: Fix context analysis errors in non-preferred CPU push
 - [sched-20260930-011](/lkm/2026/09/30/sched-20260930-011-sched-fair-rework-fix-task-h-load.html) `fix/high/under_review` — sched/fair: Rework/fix task_h_load()

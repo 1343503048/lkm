@@ -70,7 +70,8 @@ contribution_opportunities:
     description: '分析 handover 与 migration 两条 claim 路径差异'
 generated_at: '2026-10-09T01:00:00'
 source_email_count: 2
-related_articles: []
+related_articles:
+  - sched-20261004-004
 tags:
   - sched_ext
 ---

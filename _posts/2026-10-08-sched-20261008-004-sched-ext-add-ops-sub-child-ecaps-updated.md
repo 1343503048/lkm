@@ -39,7 +39,8 @@ contribution_opportunities:
   description: 审 v2 的 sub_detach 恢复是否覆盖所有 revoke/bypass 路径
 generated_at: '2026-10-09T01:00:00'
 source_email_count: 8
-related_articles: []
+related_articles:
+- sched-20261004-004
 tags:
 - sched_ext
 - cgroup

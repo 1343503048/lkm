@@ -2,9 +2,10 @@
 layout: default
 tag: "documentation"
 title: "标签: documentation"
-article_count: 8
+article_count: 9
 ---
 
+- [sched-20261004-008](/lkm/2026/10/04/sched-20261004-008-sched-update-the-thread-info-in-task-description.html) `discussion/none/stalled` — sched: Update the THREAD_INFO_IN_TASK description
 - [sched-20260902-005](/lkm/2026/09/02/sched-20260902-005-sched-ext-document-and-enforce-vtime-ordering-constraints.html) `fix/low/merged_tip` — sched_ext: document and enforce vtime ordering constraints
 - [sched-20260902-016](/lkm/2026/09/02/sched-20260902-016-kcov-suppress-timer-and-scheduler-coverage-leaks.html) `fix/low/under_review` — kcov: Suppress timer and scheduler coverage leaks
 - [sched-20260823-006](/lkm/2026/08/23/sched-20260823-006.html) `fix/low/under_review` — docs/sched_ext: document that cgroup CPU knobs are scheduler-dependent

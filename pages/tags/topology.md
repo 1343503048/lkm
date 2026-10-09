@@ -2,11 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 113
+article_count: 114
 ---
 
 - [sched-20261008-001](/lkm/2026/10/08/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261008-010](/lkm/2026/10/08/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
+- [sched-20261004-006](/lkm/2026/10/04/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261003-005](/lkm/2026/10/03/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261002-007](/lkm/2026/10/02/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261002-009](/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/under_review` — sched/topology: Introduce a NUMA distance matrix with unique distance values

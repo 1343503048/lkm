@@ -2,9 +2,11 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 30
+article_count: 32
 ---
 
+- [sched-20261004-002](/lkm/2026/10/04/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.html) `regression/medium/under_review` — tick/sched: /proc/stat idle time exceeds wall time since v7.2
+- [sched-20261004-006](/lkm/2026/10/04/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261003-005](/lkm/2026/10/03/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)
 - [sched-20261002-003](/lkm/2026/10/02/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261002-007](/lkm/2026/10/02/sched-20261002-007-lib-sched-introduce-sparsebitmap-sbm.html) `feature/none/rfc` — lib, sched: Introduce sparsebitmap (sbm)

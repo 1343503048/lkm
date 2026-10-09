@@ -2,9 +2,10 @@
 layout: default
 tag: "numa"
 title: "标签: numa"
-article_count: 12
+article_count: 13
 ---
 
+- [sched-20261004-001](/lkm/2026/10/04/sched-20261004-001-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261003-003](/lkm/2026/10/03/sched-20261003-003-sched-numa-ngid-is-reported-as-a-global-pid-inside-a-pid-namesp.html) `bug/medium/under_review` — sched/numa: Ngid is reported as a global pid inside a pid namespace
 - [sched-20261002-009](/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/under_review` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261002-014](/lkm/2026/10/02/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.html) `feature/medium/rfc` — sched_ext: Drive the NUMA balancing scan for SCX tasks

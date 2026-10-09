@@ -14223,6 +14223,146 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260907-002：Sebastian Andrzej Siewior（linutronix）09-07 发出 RFC——syzbot 报出的 CPU 热插拔与 `set_cpus_allowed_ptr()` 竞态：IRQ 线程请求迁移到「当时在线但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_cpu_allowed()` 拒掉后返回当前 rq，任务所在 CPU 与 `cpus_mask` 不再匹配，后续 `migrate_enable()` 改亲和性而 `affine_mo"
   },
   {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261004-001",
+    "date": "2026-10-04",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "numa",
+      "bpf"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-001-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务**事实性关闭**：扫描只从 fair tick 排队，SCX 任务 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 比例 37%（fair 83%）。Andrea Righi（sched_ext 维护者）回复 backlog 里正有一套 sched_ext NUMA balancing 支持（opt-in "
+  },
+  {
+    "title": "tick/sched: /proc/stat idle time exceeds wall time since v7.2",
+    "id": "sched-20261004-002",
+    "date": "2026-10-04",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "nohz",
+      "tick",
+      "regression"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-002-tick-sched-proc-stat-idle-time-exceeds-wall-time-since-v7-2.html",
+    "tldr": "Stian Halseth 报告一个 v7.2-rc1 起的回归：NO_HZ_IDLE + TICK_CPU_ACCOUNTING 内核上 `/proc/stat` 统计的 idle 时间**超过墙钟时间**——按「1 − idle 率」算 CPU 使用率的监控在空闲机器上直接显示负数。两台机器实测（60s 窗口、/proc/stat + /proc/timer_list 的 idle_sleeps）：SPARC T7-1（7.3-rc5、HZ=100、256 CPU）平均每秒 1.0057 倍、最差 CPU 1.44 倍（92 次 tick 停/秒、每次停多计 4.8ms）；amd64 Op"
+  },
+  {
+    "title": "sched_ext: Generate qseq from a per-task counter",
+    "id": "sched-20261004-003",
+    "date": "2026-10-04",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "concurrency"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-003-sched-ext-generate-qseq-from-a-per-task-counter.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261003-004：Kuba Piecuch（Google）发往 `sched_ext/for-7.3-fixes` 的单补丁——qseq 从 rq 级计数器改为任务级 `p->scx.ops_qseq`（跨 rq 迁移不再撞号）、永不生成 0；Tejun Heo 当天提出 32 位回绕 wrap 细节，Kuba 同日发 v2 落实。 - sched-20261004-003（今天）：**Tejun 回帖「Applied to sched_ext/for-7.3-fixes」**——合入时补写了 `scx_"
+  },
+  {
+    "title": "sched_ext: Reset cpuperf_target when a sub-scheduler loses SCX_CAP_PERF or dies",
+    "id": "sched-20261004-004",
+    "date": "2026-10-04",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cpufreq",
+      "dvfs"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.html",
+    "tldr": "Tao Cui（KylinOS）的单补丁修复 sched_ext 子调度器 DVFS 残留问题：持有 `SCX_CAP_PERF` 的子调度器设了一个低 cpuperf target 后退场——cap 被回收（revoke）、被 kill、detach 或 cgroup 摘除——`rq->scx.cpuperf_target` 却留在原地。`scx_bpf_sub_revoke()` 只清 pshard caps 位图（`scx_cpuperf_set()` 的写门槛挡住新写入但不复位旧值），`scx_sub_disable()` 摘走任务、解除链表也不碰 target；而读者门槛 `scx_"
+  },
+  {
+    "title": "sched: Add task enqueue/dequeue trace points",
+    "id": "sched-20261004-005",
+    "date": "2026-10-04",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "tracepoints",
+      "rv"
+    ],
+    "authors": [
+      "Gabriele Monaco"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-005-sched-add-task-enqueue-dequeue-trace-points.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260831-010：Gabriele Monaco（Red Hat）在 20 补丁 RFC 中首发该 tracepoint 补丁——通用 `enqueue_task()`/`dequeue_task()`/`__block_task()` 路径加 `sched_enqueue`/`sched_dequeue` tracepoint 并 GPL 导出。 - sched-20260929-013：作为 RV「remaining deadline monitors」系列 05/10 重发。 - sched-202"
+  },
+  {
+    "title": "lib, sched: Introduce sparsebitmap (sbm)",
+    "id": "sched-20261004-006",
+    "date": "2026-10-04",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "topology",
+      "nohz"
+    ],
+    "authors": [
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-007：K Prateek Nayak（AMD）13 补丁 RFC v3——大机器全局 cpumask C2C ping-pong 引入 sparsebitmap（sbm）：按 LLC/节点分片、写保持本地 cacheline；7 架构 enablement；`nohz.idle_cpus_mask` 首个用户；平均 ~1-2% 持平略好、最坏场景更新代价 1/100。 - sched-20261003-005：Chen Yu（Intel）首个实质 review——追问 benchmark 归属"
+  },
+  {
+    "title": "cpufreq: CPPC: Resolve frequencies to performance levels",
+    "id": "sched-20261004-007",
+    "date": "2026-10-04",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "cppc"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-007-cpufreq-cppc-resolve-frequencies-to-performance-levels.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-010：Christian Loehle（ARM）3 补丁系列——table-less 的 cppc-cpufreq 缺「频率→性能级」解析，不同 kHz 请求 miss schedutil 频率缓存却写同一个 Desired Performance 值；新增 `->resolve_freq()` 回调、CPPC 预计算仿射转换、schedutil limits 未变时跳过冗余回调。实测 schbench mean p99 降 10%、`cppc_set_perf()` 调用降 23.8%。 -"
+  },
+  {
+    "title": "sched: Update the THREAD_INFO_IN_TASK description",
+    "id": "sched-20261004-008",
+    "date": "2026-10-04",
+    "type": "discussion",
+    "status": "stalled",
+    "severity": "none",
+    "tags": [
+      "sched/debug",
+      "documentation"
+    ],
+    "authors": [
+      "Huacai Chen"
+    ],
+    "url": "/lkm/2026/10/04/sched-20261004-008-sched-update-the-thread-info-in-task-description.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260726-006：Huacai Chen（LoongArch）修正 `THREAD_INFO_IN_TASK` Kconfig help——原文写于 4.9（仅 x86、thread_info 只剩 flags），要求 arch「移除除 flags 外所有字段」；实际 arm64/x86/riscv/powerpc 都保留多字段且工作正常，真实要求只是移除 task_struct 指针字段。V2 于 06-09 发出。 - sched-20260907-015：作者第二次 ping——直接点名 Ingo/"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",

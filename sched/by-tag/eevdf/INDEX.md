@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 47 篇
+共 48 篇
 
+- [sched-20261003-007](../../2026/10/sched-20261003-007-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-002](../../2026/10/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-001](../../2026/10/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-010](../../2026/10/sched-20261001-010-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
