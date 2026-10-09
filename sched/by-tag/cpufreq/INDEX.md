@@ -1,7 +1,10 @@
 # tag: cpufreq
 
-共 76 篇
+共 79 篇
 
+- [sched-20261009-017](../../2026/10/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-003](../../2026/10/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.md) `fix/medium/superseded` — Giovanni Gherdovich（SUSE）发补丁，解决 acpi-cpufreq 上 `cpufreq_pressure` 在标称条件下虚高、导致任务迁移加剧/局部性丢失的性能回退。但 Christian Loehle 指出该问题已被 `f341dc4d934a`（"cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update
+- [sched-20261009-002](../../2026/10/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.md) `fix/low/merged_tip` — Haotian Zhang（ISCAS）修复 qcom-cpufreq-hw 里 `of_parse_phandle_with_args()` 返回的 provider 节点引用从未被 `of_node_put()` 释放、每次成功调用都泄漏一个引用（`qcom_get_related_cpus()` 每个 present CPU 泄漏一次）的 bug。维护者 Viresh Kumar 当日即回复
 - [sched-20261008-008](../../2026/10/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/under_review` — Akram Boulahia 修掉 amd-pstate 在一个特定固件形态下的初始化失败：commit `9dfd13f80c85` 起，active 模式里 `shmem_init_perf()` 不再提前返回、总会调用 `cppc_set_auto_sel()`（为共享内存系统所需）；但在 `_CPC` 的 Autonomous Selection Enable 项是「常量整数而非寄存器」的
 - [sched-20261008-007](../../2026/10/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.md) `discussion/superseded` — 这是一条以「补丁被放弃」收尾的 cpufreq 讨论：Giovanni Gherdovich 早前为 MSI TRX40 主板（Ryzen Threadripper 3960X）提的 quirk——在该类主板 ACPI `_CPC` 包缺失 nominal/lowest 频率、导致 amd-pstate 无法加载时硬补频率——在多名同平台用户升级最新 BIOS 后确认问题已由固件修复，作者与其他测
 - [sched-20261007-012](../../2026/10/sched-20261007-012-cpufreq-qcom-nvmem-add-ipq9650-support.md) `feature/merged_tip` — Kathiravan Thirumoorthy（Qualcomm）的 +10 行 SoC 使能补丁：给 Qualcomm NVMEM cpufreq 驱动加 IPQ9650 支持——用 eFuse speedbin 值在运行时选出受支持的 OPP（`opp-supported-hw` 属性），并把 IPQ9650 加进 cpufreq-dt 平台设备的 blocklist，确保走 NVMEM 驱动

@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 67
+article_count: 68
 ---
 
+- [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage
 - [sched-20261006-004](/lkm/2026/10/06/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.html) `fix/low/under_review` — kcov: Keep timer and scheduler noise out of task coverage
 - [sched-20261006-009](/lkm/2026/10/06/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage

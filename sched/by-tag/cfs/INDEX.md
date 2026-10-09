@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 173 篇
+共 178 篇
 
+- [sched-20261009-015](../../2026/10/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-008](../../2026/10/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — Chengfeng Lin 发 RFC，优化 `sched_setparam()` 在参数未变时仍走参数更新路径的开销：当 SCHED_OTHER 任务用默认 slice 且 slice 未变时，直接走 no-change 捷径。作者原型把每次 `sched_setparam()` 调用成本从 618.18ns 降到 163.23ns（省 455ns、约 73.6%）。属合成 syscall 微基
+- [sched-20261009-005](../../2026/10/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）发 v5，让 narrow reciprocal 的 `WF_SYNC` 唤醒（pipe 式 ping-pong：A 唤醒 B、B 唤醒 A 循环）在非 SMT 系统上保住在 wake-affine 选中/保持的 waker CPU，而不是被后续 `select_idle_sibling()` 的空闲 CPU 搜索搬走。v5 基于最新 mainlin
+- [sched-20261009-004](../../2026/10/sched-20261009-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 
 - [sched-20261008-009](../../2026/10/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-002](../../2026/10/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/under_review` — Jemmy Wong 发 3 枚修复，收掉 proxy execution（拆分调度上下文 `rq->donor` 与执行上下文 `rq->curr`）下的三处记账不一致：NUMA/cache tick 钩子、`task_sched_runtime()` 的运行时 flush、`sched_can_stop_tick()` 的 CFS 带宽检查在拆分后仍错误地以 donor 为「在 CPU 上的任
 - [sched-20261008-001](../../2026/10/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — Mete Durlu（IBM/s390）发 RFC：在非对称容量 + SMT 的系统上，调度器目前「宁可整核空闲，也不去占忙碌高容量核的空闲 SMT 兄弟线程」，导致任务被摆到低容量空闲核上。系列引入 `SCHED_IDLE_SMT_PRIO` 配置与 `sched_idle_smt_prio` 静态分支，允许架构（先在 s390 落地）覆盖这一偏好、优先把负载打包到高容量核。当日 Andrea 

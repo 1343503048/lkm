@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 67 篇
+共 68 篇
 
+- [sched-20261009-004](../../2026/10/sched-20261009-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 
 - [sched-20261008-009](../../2026/10/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261006-009](../../2026/10/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — - sched-20260903-007：Hongyan Xia 收掉调度器里最后一批已废弃的 static key 用法：`kernel/sched/fair.c` 的 CFS bandwidth `__cfs_bandwidth_used` 从 `struct static_key` + `static_key_false()` / `static_key_slow_inc_cpuslocke
 - [sched-20261006-004](../../2026/10/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

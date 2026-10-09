@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 213 篇
+共 218 篇
 
+- [sched-20261009-016](../../2026/10/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-014](../../2026/10/sched-20261009-014-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-012](../../2026/10/sched-20261009-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-011](../../2026/10/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261009-009](../../2026/10/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.md) `fix/low/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的 2 补丁系列，修正 sub-scheduler 的一个归属时序缺口：子调度器通过 `ops.sub_ecaps_updated()` 了解自己持有哪些 cid，但父级在它 attach 时做的 grant 要到其 enable bypass 被解除（任务交接给它）之后才报告——于是子调度器在接到任何 cid 通知前就先收到首批 
 - [sched-20261008-012](../../2026/10/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-006](../../2026/10/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — Tao Cui 报告一个疑似 dispatch 饥饿：在 `sched_ext/for-7.4` + caps-clear 补丁上，父子 cid 调度的最小复现里，若 busy-loop 任务在子调度器 attach **之前**就进了 cgroup，子调度器每轮都能 claim 到该任务（handover 触发、`p->scx.sched == child`），但其运行 duty cycle 只
 - [sched-20261008-005](../../2026/10/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — Tejun Heo 修掉 sched_ext 的一个 CPU idle stall：`SCX_OPS_ENQ_LAST` 下，本应作为「最后一个可运行任务」交给 `ops.enqueue()` 的任务，在三条 skip 路径（exiting 任务没设 `ENQ_EXITING`、migration-disabled 任务没设 `ENQ_MIGRATION_DISABLED`、offline rq 

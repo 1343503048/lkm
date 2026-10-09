@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 59
+article_count: 60
 ---
 
+- [sched-20261009-001](/lkm/2026/10/09/sched-20261009-001-cpuidle-add-the-shallow-governors.html) `feature/none/rfc` — cpuidle: Add the shallow governors
 - [sched-20261002-016](/lkm/2026/10/02/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/merged_tip` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20260930-014](/lkm/2026/09/30/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus
 - [sched-20260929-019](/lkm/2026/09/29/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

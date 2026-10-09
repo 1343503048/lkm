@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 29 篇
+共 30 篇
 
+- [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-017](../../2026/10/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

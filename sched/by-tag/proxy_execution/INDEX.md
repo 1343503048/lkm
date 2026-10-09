@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 63 篇
+共 65 篇
 
+- [sched-20261009-015](../../2026/10/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-011](../../2026/10/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261008-002](../../2026/10/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/under_review` — Jemmy Wong 发 3 枚修复，收掉 proxy execution（拆分调度上下文 `rq->donor` 与执行上下文 `rq->curr`）下的三处记账不一致：NUMA/cache tick 钩子、`task_sched_runtime()` 的运行时 flush、`sched_can_stop_tick()` 的 CFS 带宽检查在拆分后仍错误地以 donor 为「在 CPU 上的任
 - [sched-20261007-005](../../2026/10/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/low/under_review` — - sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发往 `sched_ext/for-7.4` 的单补丁修复——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 pro
 - [sched-20261005-005](../../2026/10/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

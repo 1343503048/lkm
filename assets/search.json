@@ -15065,6 +15065,315 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-002：Hui Su 修 sched_ext deferred reenqueue 的 use-after-free——被 deferral 的用户 DSQ 节点可在 RCU 回调 `exit_dsq()` 到达前就被 detach，deferred 路径其后仍裸用 DSQ 指针、回调可能先释放 DSQ；v1 用「detach 前先取引用」的办法，Andrea Righi 认可 race 但建议避免反复排队 RCU 回调地持引用。 - sched-20261008-012（今天）：按 Tejun"
   },
   {
+    "title": "cpuidle: Add the shallow governors",
+    "id": "sched-20261009-001",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Roman Kagan"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-001-cpuidle-add-the-shallow-governors.html",
+    "tldr": "Roman Kagan（Amazon）发补丁新增两个窄用途 cpuidle governor（`shallow` 与 `shallow_nopoll`），让 CPU 停驻最浅 idle 状态并保持 scheduler tick 运行，可在运行时与命令行（`cpuidle.governor=`）双向切换，用于时延敏感负载与 kexec 在线升级场景。当日 Christian Loehle（ARM）质疑「两个 governor 是重复代码」，建议改用 cmdline 参数（如 `cpuidle.max_exit_latency_us=<N>`）表达策略，作者反问 governor 正是策略的载体。"
+  },
+  {
+    "title": "cpufreq: qcom-cpufreq-hw: fix device node refcount leak in phandle parsing",
+    "id": "sched-20261009-002",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "arm64"
+    ],
+    "authors": [
+      "Haotian Zhang"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.html",
+    "tldr": "Haotian Zhang（ISCAS）修复 qcom-cpufreq-hw 里 `of_parse_phandle_with_args()` 返回的 provider 节点引用从未被 `of_node_put()` 释放、每次成功调用都泄漏一个引用（`qcom_get_related_cpus()` 每个 present CPU 泄漏一次）的 bug。维护者 Viresh Kumar 当日即回复「Applied. Thanks.」，补丁已进入 cpufreq 维护树。"
+  },
+  {
+    "title": "cpufreq: Don't track pressure if policy->max equals top of freq_table",
+    "id": "sched-20261009-003",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "psi",
+      "x86"
+    ],
+    "authors": [
+      "Giovanni Gherdovich"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.html",
+    "tldr": "Giovanni Gherdovich（SUSE）发补丁，解决 acpi-cpufreq 上 `cpufreq_pressure` 在标称条件下虚高、导致任务迁移加剧/局部性丢失的性能回退。但 Christian Loehle 指出该问题已被 `f341dc4d934a`（\"cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update_pressure()\"）修复，作者当日确认「Yes that fixes it」，补丁被放弃。"
+  },
+  {
+    "title": "Improving latency of short slice tasks",
+    "id": "sched-20261009-004",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf",
+      "preempt",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html",
+    "tldr": "Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 min slice），加一个新引入的「fair push 任务机制」（把不该在本 CPU 跑、或在本 CPU 排不上队的任务推到更合适的 CPU，含 force-push 变体），并让 EAS 的能耗"
+  },
+  {
+    "title": "sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups",
+    "id": "sched-20261009-005",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "affinity"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html",
+    "tldr": "Shubhang Kaushik（Ampere）发 v5，让 narrow reciprocal 的 `WF_SYNC` 唤醒（pipe 式 ping-pong：A 唤醒 B、B 唤醒 A 循环）在非 SMT 系统上保住在 wake-affine 选中/保持的 waker CPU，而不是被后续 `select_idle_sibling()` 的空闲 CPU 搜索搬走。v5 基于最新 mainline 重基线并刷新 `perf bench sched pipe` 数据：80 核非 SMT Ampere Altra 上 mean 从 3.651 → 2.204 usec/op（约 39.6% 提升"
+  },
+  {
+    "title": "Cache aware scheduling: Reduce the overhead of task_cache_work",
+    "id": "sched-20261009-006",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Luo Gengkun"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html",
+    "tldr": "Luo Gengkun（华为）发 v10，通过只扫描「被访问过的 CPU」（`visited_cpus`、超时驱逐）来降低 `task_cache_work()` 的扫描开销，并顺势移除 `get_scan_cpumasks()`。valkey-benchmark 实测：Redis 多实例场景 p99 时延从（未合本系列时更差的）-25.68% 收窄到 -1.14%，`task_cache_work` 的 perf 开销从 0.81% 降到 0.02%，扫描 CPU 数从 384 降到 16。当日无回帖；另附 0day 对已合入 sched/cache UAF 修复提交的独立实测（+5.2%）"
+  },
+  {
+    "title": "sched/cache: Remove the old cache group footprint on exec",
+    "id": "sched-20261009-007",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "numa_balancing",
+      "load_balance"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-007-sched-cache-remove-the-old-cache-group-footprint-on-exec.html",
+    "tldr": "Jemmy Wong 修 `sched_cache_exec_mmap()` 的一个记账遗漏：exec 换掉任务的 cache group 后，旧 group 的 footprint 只在 exit 路径被减掉，导致「CLONE_VM 无 CLONE_THREAD」共享 mm 的任务在 exec 后旧贡献残留、抑制 cache-aware 聚合的 LLC capacity 检查。补丁把 footprint 减法抽成 helper，在 exec 与 exit 两处都用。当日无回帖。"
+  },
+  {
+    "title": "sched/fair: avoid redundant updates for unchanged default slices",
+    "id": "sched-20261009-008",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Chengfeng Lin"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html",
+    "tldr": "Chengfeng Lin 发 RFC，优化 `sched_setparam()` 在参数未变时仍走参数更新路径的开销：当 SCHED_OTHER 任务用默认 slice 且 slice 未变时，直接走 no-change 捷径。作者原型把每次 `sched_setparam()` 调用成本从 618.18ns 降到 163.23ns（省 455ns、约 73.6%）。属合成 syscall 微基准，作者明确「不是应用加速」。当日无回帖。"
+  },
+  {
+    "title": "sched_ext: Report a sub-scheduler's attach-time ecaps before lifting its enable bypass",
+    "id": "sched-20261009-009",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.html",
+    "tldr": "Tejun Heo 发往 `sched_ext/for-7.4` 的 2 补丁系列，修正 sub-scheduler 的一个归属时序缺口：子调度器通过 `ops.sub_ecaps_updated()` 了解自己持有哪些 cid，但父级在它 attach 时做的 grant 要到其 enable bypass 被解除（任务交接给它）之后才报告——于是子调度器在接到任何 cid 通知前就先收到首批 `ops.enqueue()`，不得不在拿到 grant 前把任务先「囤」在别处。补丁让 enable 路径在子调度器仍被 bypass 时就把 attach 时 grant 报到每个 CPU，使其首"
+  },
+  {
+    "title": "sched/topology: Introduce a NUMA distance matrix with unique distance values",
+    "id": "sched-20261009-010",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "numa_balancing",
+      "load_balance"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。  - sched-20260923-006：Tim Chen 提 `llc_next` 数组替代人造 LLC 距离矩阵，路线未收敛。 - sched-20260924-008：分歧收敛到「去重矩阵必要性」——Tim 主张 raw distance + 平局决胜即可，Jianyong 坚持去重是为强制对称性。 - sched-20260928-009：Jianyong 在对称性上让步，提出三元组 `(distance, ab"
+  },
+  {
+    "title": "sched_ext: Keep proxy donors with slice left on the local DSQ",
+    "id": "sched-20261009-011",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发往 `sched_ext/for-7.4` 的单补丁修复——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 proxy 记账，BPF 被迫反复做无意义 dispatch；补丁改为有 slice 剩余的 donor 放本地 DSQ 头部，并用新 `SCX_RQ_PROXY_PICK"
+  },
+  {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261009-012",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-012-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务事实性关闭：SCX 下 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 37%（fair 83%）。Andrea Righi 回复 backlog 里有完整方案。 - sched-20261004-001：Andrea 发 5 补丁系列（`SCX_OPS_NUMA_BALANCING` opt-in 扫描 +"
+  },
+  {
+    "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
+    "id": "sched-20261009-013",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "topology",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Mete Durlu"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-001：Mete Durlu（IBM/s390）发 RFC：非对称容量 + SMT 系统上调度器「宁可整核空闲，也不占忙碌高容量核的空闲 SMT 兄弟线程」，引入 `SCHED_IDLE_SMT_PRIO` 静态分支 + `arch_needs_idle_smt_prio()` 钩子。Andrea Righi 与 Shrikanth Hegde 建议改走「扩展 `cpu_preferred_mask` 做 soft preference」，路线未收敛。 - sched-20261009-013（"
+  },
+  {
+    "title": "sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks",
+    "id": "sched-20261009-014",
+    "date": "2026-10-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-014-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-006：Tao Cui 报告疑似 dispatch 饥饿：父子 cid 调度里，busy-loop 任务在子调度器 attach **之前**进 cgroup 时，子调度器每轮都 claim 到该任务但运行 duty 只有 ~0.3%（10s 窗口 0 或 ~20-27 tick），同属 root 的等价任务 ~100%；attach 之后移入则正常，饥饿比约 300x。Tejun 回复要求补全调度器源码与完整复现步骤。 - sched-20261009-014（今天）：**Tao Cui 交出"
+  },
+  {
+    "title": "sched: Fix proxy-exec use of curr and donor",
+    "id": "sched-20261009-015",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution",
+      "cfs"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-002：Jemmy Wong 发 3 枚修复，收掉 proxy execution 下三处记账不一致（NUMA/cache tick 钩子、`task_sched_runtime()` flush、`sched_can_stop_tick()` CFS 带宽检查）。Kayra Cizmeci 提醒与 Hui Su 早前补丁疑似重复。 - sched-20261009-015（今天）：**三枚全部被作者撤回**。经 Hui Su 逐一指认，三处修复分别已被 Hui Su 自己的 v5 系列（pat"
+  },
+  {
+    "title": "sched_ext: Add ops.sub_child_ecaps_updated()",
+    "id": "sched-20261009-016",
+    "date": "2026-10-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-004：Tejun Heo 为 sched_ext sub-scheduler 补上「父级何时得知 grant/revoke 生效」的缺口——新增 `ops.sub_child_ecaps_updated()` 回调，v1→v2 快速迭代（v2 砍掉 disable 报告与 sleep lock），并吸收 Tao Cui 实测与 Tejun 的 last-writer-wins 裁决。 - sched-20261009-016（今天）：**Andrea Righi（sched_ext 联合维护者"
+  },
+  {
+    "title": "cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel",
+    "id": "sched-20261009-017",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "x86"
+    ],
+    "authors": [
+      "Akram Boulahia"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-008：Akram Boulahia 发补丁修 amd-pstate 在一个特定固件形态（`_CPC` 的 Autonomous Selection Enable 项是常量而非寄存器）下的初始化失败——`shmem_init_perf()` 无条件 `cppc_set_auto_sel()` 返回 `-EOPNOTSUPP`、导致回退 acpi-cpufreq。带 `Fixes:`，在华硕 GA403UV 实测修复。 - sched-20261009-017（今天）：**补丁被放弃**。AMD "
+  },
+  {
+    "title": "sched/topology: Free NUMA masks on topology allocation failure",
+    "id": "sched-20261009-018",
+    "date": "2026-10-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "topology",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Fengyu Wang"
+    ],
+    "url": "/lkm/2026/10/09/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260731-003：Fengyu Wang（海光）修 `sched_init_numa()` 中 topology 数组分配失败时的内存泄漏——masks 已 RCU 发布但失败路径未释放。带 `Fixes: cb83b629bae0`，v1 无 review。 - sched-20261009-018（今天）：作者对 v2 发 gentle ping，并转引 Valentin Schneider（8 月 14 日）的 **Reviewed-by** 与 Tim Chen 的 review，询问是否还有进一"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

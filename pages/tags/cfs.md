@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 173
+article_count: 178
 ---
 
+- [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261009-005](/lkm/2026/10/09/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `fix/low/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
+- [sched-20261009-008](/lkm/2026/10/09/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
+- [sched-20261009-013](/lkm/2026/10/09/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
+- [sched-20261009-015](/lkm/2026/10/09/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/superseded` — sched: Fix proxy-exec use of curr and donor
 - [sched-20261008-001](/lkm/2026/10/08/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261008-002](/lkm/2026/10/08/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/under_review` — sched: Fix proxy-exec use of curr and donor
 - [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage

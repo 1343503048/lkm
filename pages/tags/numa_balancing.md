@@ -2,9 +2,14 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 38
+article_count: 43
 ---
 
+- [sched-20261009-006](/lkm/2026/10/09/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work
+- [sched-20261009-007](/lkm/2026/10/09/sched-20261009-007-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261009-010](/lkm/2026/10/09/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
+- [sched-20261009-012](/lkm/2026/10/09/sched-20261009-012-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
+- [sched-20261009-018](/lkm/2026/10/09/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.html) `fix/low/under_review` — sched/topology: Free NUMA masks on topology allocation failure
 - [sched-20261008-010](/lkm/2026/10/08/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261001-012](/lkm/2026/10/01/sched-20261001-012-sched-numa-separate-vma-placement-from-scan-continuation.html) `fix/medium/under_review` — sched/numa: separate VMA placement from scan continuation
 - [sched-20260930-015](/lkm/2026/09/30/sched-20260930-015-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/medium/under_review` — sched/numa: stop VMA scan filters from gating promotion

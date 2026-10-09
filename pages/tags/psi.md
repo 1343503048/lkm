@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 15
+article_count: 16
 ---
 
+- [sched-20261009-003](/lkm/2026/10/09/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.html) `fix/medium/superseded` — cpufreq: Don't track pressure if policy->max equals top of freq_table
 - [sched-20260930-010](/lkm/2026/09/30/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260929-002](/lkm/2026/09/29/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew
 - [sched-20260927-009](/lkm/2026/09/27/sched-20260927-009-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes

@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 29
+article_count: 30
 ---
 
+- [sched-20261009-013](/lkm/2026/10/09/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261002-016](/lkm/2026/10/02/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/merged_tip` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20261002-017](/lkm/2026/10/02/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.html) `feature/none/merged_tip` — sched/topology: Add asymmetric SMT packing override
 - [sched-20260930-014](/lkm/2026/09/30/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.html) `feature/none/under_review` — sched: Enable preferred SMT siblings on NVIDIA Olympus

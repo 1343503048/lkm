@@ -1,7 +1,8 @@
 # tag: idle
 
-共 59 篇
+共 60 篇
 
+- [sched-20261009-001](../../2026/10/sched-20261009-001-cpuidle-add-the-shallow-governors.md) `feature/rfc` — Roman Kagan（Amazon）发补丁新增两个窄用途 cpuidle governor（`shallow` 与 `shallow_nopoll`），让 CPU 停驻最浅 idle 状态并保持 scheduler tick 运行，可在运行时与命令行（`cpuidle.governor=`）双向切换，用于时延敏感负载与 kexec 在线升级场景。当日 Christian Loehle（ARM）质
 - [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-019](../../2026/09/sched-20260929-019-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

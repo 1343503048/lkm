@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 213
+article_count: 218
 ---
 
+- [sched-20261009-009](/lkm/2026/10/09/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.html) `fix/low/under_review` — sched_ext: Report a sub-scheduler's attach-time ecaps before lifting its enable bypass
+- [sched-20261009-011](/lkm/2026/10/09/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261009-012](/lkm/2026/10/09/sched-20261009-012-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
+- [sched-20261009-014](/lkm/2026/10/09/sched-20261009-014-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/medium/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
+- [sched-20261009-016](/lkm/2026/10/09/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-004](/lkm/2026/10/08/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-005](/lkm/2026/10/08/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ
 - [sched-20261008-006](/lkm/2026/10/08/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/medium/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks

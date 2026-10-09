@@ -1,7 +1,10 @@
 # tag: topology
 
-共 115 篇
+共 118 篇
 
+- [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20261008-001](../../2026/10/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — Mete Durlu（IBM/s390）发 RFC：在非对称容量 + SMT 的系统上，调度器目前「宁可整核空闲，也不去占忙碌高容量核的空闲 SMT 兄弟线程」，导致任务被摆到低容量空闲核上。系列引入 `SCHED_IDLE_SMT_PRIO` 配置与 `sched_idle_smt_prio` 静态分支，允许架构（先在 s390 落地）覆盖这一偏好、优先把负载打包到高容量核。当日 Andrea 
 - [sched-20261006-002](../../2026/10/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

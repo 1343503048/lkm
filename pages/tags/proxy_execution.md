@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 63
+article_count: 65
 ---
 
+- [sched-20261009-011](/lkm/2026/10/09/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261009-015](/lkm/2026/10/09/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/superseded` — sched: Fix proxy-exec use of curr and donor
 - [sched-20261008-002](/lkm/2026/10/08/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.html) `fix/medium/under_review` — sched: Fix proxy-exec use of curr and donor
 - [sched-20261007-005](/lkm/2026/10/07/sched-20261007-005-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
 - [sched-20261005-005](/lkm/2026/10/05/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()

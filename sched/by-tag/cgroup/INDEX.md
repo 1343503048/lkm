@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 93 篇
+共 95 篇
 
+- [sched-20261009-016](../../2026/10/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-009](../../2026/10/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.md) `fix/low/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的 2 补丁系列，修正 sub-scheduler 的一个归属时序缺口：子调度器通过 `ops.sub_ecaps_updated()` 了解自己持有哪些 cid，但父级在它 attach 时做的 grant 要到其 enable bypass 被解除（任务交接给它）之后才报告——于是子调度器在接到任何 cid 通知前就先收到首批 
 - [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重
 - [sched-20261008-003](../../2026/10/sched-20261008-003-sched-autogroup-serialize-nice-rate-limit-updates.md) `fix/low/under_review` — Hui Su 修掉 `proc_sched_autogroup_set_nice()` 里一个经典的 check-then-act 竞态：用函数级静态时间戳做 100ms 限流的检查和更新不是原子的，两个并发非特权写者可同时看到过期时间戳、都进入 `sched_group_set_shares()`，击穿限流。补丁用一个专用 spinlock 串行化时间戳的查/改，能力检查移出临界区、重活保持锁外
 - [sched-20261007-007](../../2026/10/sched-20261007-007-sched-ext-add-ops-sub-cid-sched-updated.md) `feature/merged_tip` — - sched-20261006-001：Tejun Heo 为 sub-scheduler 委派模型补上**用量可观测性**——新增 `ops.sub_cid_sched_updated()`：某调度器视角下「跑在一个 cid 上的调度器」变化时通知它（NONE/SELF/直接子 cgroup id，子树内部变化不上报）；开销控制在调度器不变时每次上下文切换一次指针比较、整体挂 static k

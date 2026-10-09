@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 76
+article_count: 79
 ---
 
+- [sched-20261009-002](/lkm/2026/10/09/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.html) `fix/low/merged_tip` — cpufreq: qcom-cpufreq-hw: fix device node refcount leak in phandle parsing
+- [sched-20261009-003](/lkm/2026/10/09/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.html) `fix/medium/superseded` — cpufreq: Don't track pressure if policy->max equals top of freq_table
+- [sched-20261009-017](/lkm/2026/10/09/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/superseded` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
 - [sched-20261008-007](/lkm/2026/10/08/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.html) `discussion/none/superseded` — cpufreq/amd-pstate: Supply nominal/lowest freq for TRX40-based motherboards
 - [sched-20261008-008](/lkm/2026/10/08/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/under_review` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
 - [sched-20261007-003](/lkm/2026/10/07/sched-20261007-003-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.html) `fix/medium/superseded` — sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies

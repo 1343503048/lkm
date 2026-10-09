@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 142 篇
+共 146 篇
 
+- [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20261009-007](../../2026/10/sched-20261009-007-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — Jemmy Wong 修 `sched_cache_exec_mmap()` 的一个记账遗漏：exec 换掉任务的 cache group 后，旧 group 的 footprint 只在 exit 路径被减掉，导致「CLONE_VM 无 CLONE_THREAD」共享 mm 的任务在 exec 后旧贡献残留、抑制 cache-aware 聚合的 LLC capacity 检查。补丁把 footp
+- [sched-20261009-006](../../2026/10/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — Luo Gengkun（华为）发 v10，通过只扫描「被访问过的 CPU」（`visited_cpus`、超时驱逐）来降低 `task_cache_work()` 的扫描开销，并顺势移除 `get_scan_cpumasks()`。valkey-benchmark 实测：Redis 多实例场景 p99 时延从（未合本系列时更差的）-25.68% 收窄到 -1.14%，`task_cache_wor
+- [sched-20261009-004](../../2026/10/sched-20261009-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 
 - [sched-20261008-011](../../2026/10/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20261007-008](../../2026/10/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.md) `feature/under_review` — - sched-20261002-001：Vincent Guittot 把 8 补丁 v1 扩张成 **18 补丁 v2** 重发——`select_slice_cpu()` 并入 `select_idle_capacity()` 与 `select_idle_cpu()`；系列同时吸收 lag 管理（睡眠实体正 lag 衰减、idle CPU 唤醒重置 lag）、per-cpu min_sli

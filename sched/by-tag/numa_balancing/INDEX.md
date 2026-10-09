@@ -1,7 +1,12 @@
 # tag: numa_balancing
 
-共 38 篇
+共 43 篇
 
+- [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-012](../../2026/10/sched-20261009-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
+- [sched-20261009-007](../../2026/10/sched-20261009-007-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — Jemmy Wong 修 `sched_cache_exec_mmap()` 的一个记账遗漏：exec 换掉任务的 cache group 后，旧 group 的 footprint 只在 exit 路径被减掉，导致「CLONE_VM 无 CLONE_THREAD」共享 mm 的任务在 exec 后旧贡献残留、抑制 cache-aware 聚合的 LLC capacity 检查。补丁把 footp
+- [sched-20261009-006](../../2026/10/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — Luo Gengkun（华为）发 v10，通过只扫描「被访问过的 CPU」（`visited_cpus`、超时驱逐）来降低 `task_cache_work()` 的扫描开销，并顺势移除 `get_scan_cpumasks()`。valkey-benchmark 实测：Redis 多实例场景 p99 时延从（未合本系列时更差的）-25.68% 收窄到 -1.14%，`task_cache_wor
 - [sched-20261008-010](../../2026/10/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
 - [sched-20261001-012](../../2026/10/sched-20261001-012-sched-numa-separate-vma-placement-from-scan-continuation.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-015](../../2026/09/sched-20260930-015-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
