@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 47
+article_count: 48
 ---
 
+- [sched-20261003-007](/lkm/2026/10/03/sched-20261003-007-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261002-001](/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20261002-002](/lkm/2026/10/02/sched-20261002-002-sched-eevdf-keep-expired-protection-expired-across-reweighti.html) `fix/low/under_review` — sched/eevdf: Keep expired protection expired across reweighting
 - [sched-20261001-001](/lkm/2026/10/01/sched-20261001-001-sched-eevdf-keep-slice-protection-boundaries-consistent.html) `fix/medium/under_review` — sched/eevdf: Keep slice protection boundaries consistent

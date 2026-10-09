@@ -14084,6 +14084,145 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-006：Shrikanth Hegde 发出构建修复——`CONFIG_PREFERRED_CPU=y` 下 clang23 线程安全分析报错，根因是 commit 74699f56ebcf 把 `context_unsafe_alias(rq)` 放在 `rq_lock()` 之后，静态分析此时已把锁与原始 `rq` 别名关联，后续换别名再 `rq_unlock()` 触发「释放未持有锁」告警。补丁把 alias barrier 移到 `rq_lock()` 之前；Nathan Chancel"
   },
   {
+    "title": "sched_ext: Keep proxy donors with slice left on the local DSQ",
+    "id": "sched-20261003-001",
+    "date": "2026-10-03",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "proxy_exec"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-001-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发往 `sched_ext/for-7.4` 的单补丁修复——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留的 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 proxy 记账，BPF 被迫反复做无意义 dispatch；补丁改为有 slice 剩余的 donor 放本地 DSQ 头部，并用新 `S"
+  },
+  {
+    "title": "sched: Add task enqueue/dequeue trace points",
+    "id": "sched-20261003-002",
+    "date": "2026-10-03",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "tracepoints",
+      "rv"
+    ],
+    "authors": [
+      "Gabriele Monaco"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-002-sched-add-task-enqueue-dequeue-trace-points.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260831-010：Gabriele Monaco（Red Hat）在 20 补丁 RFC 中首发该 tracepoint 补丁——在通用 `enqueue_task()`/`dequeue_task()`/`__block_task()` 路径加一对 `sched_enqueue`/`sched_dequeue` tracepoint 并 GPL 导出，方向由 Peter Zijlstra 建议、K Prateek Nayak 已 `Reviewed-by`。 - sched-20260929-013：该"
+  },
+  {
+    "title": "sched/numa: Ngid is reported as a global pid inside a pid namespace",
+    "id": "sched-20261003-003",
+    "date": "2026-10-03",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa",
+      "procfs",
+      "namespaces"
+    ],
+    "authors": [
+      "Maoyi Xie"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-003-sched-numa-ngid-is-reported-as-a-global-pid-inside-a-pid-namesp.html",
+    "tldr": "Maoyi Xie 报告一个 pid namespace 隔离缺口：`/proc/<pid>/status` 的 `Ngid` 字段（NUMA group id）没有像同函数打印的其他 pid 一样做 namespace 转换——`task_state()` 里 ppid/tgid 都走 `task_*_nr_ns(p, ns)`，唯独 `ngid = task_numa_group_id(p)` 返回的是 **init pid namespace** 视角的创建者 pid。作者在 qemu（双 NUMA 节点、numa_balancing 开启）中于主线 5e0f8396d480 复现：`u"
+  },
+  {
+    "title": "sched_ext: Generate qseq from a per-task counter",
+    "id": "sched-20261003-004",
+    "date": "2026-10-03",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "concurrency"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-004-sched-ext-generate-qseq-from-a-per-task-counter.html",
+    "tldr": "Kuba Piecuch（Google）发往 `sched_ext/for-7.3-fixes` 的单补丁正确性修复：`finish_dispatch()` 用 `ops_state` 里的 qseq 判断要 claim 的 QUEUED 实例是否就是 `scx_bpf_dsq_insert()` 当时看到的那个，但 qseq 取自 **rq 级**计数器 `rq->scx.ops_qseq`——不同 rq 计数器独立，任务在 insert 与 finish_dispatch 之间被 `sched_setaffinity()` 迁到另一个 rq 时，新 QUEUED 实例可能拿到与旧实例相同的"
+  },
+  {
+    "title": "lib, sched: Introduce sparsebitmap (sbm)",
+    "id": "sched-20261003-005",
+    "date": "2026-10-03",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "topology",
+      "nohz"
+    ],
+    "authors": [
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-007：K Prateek Nayak（AMD）的 13 补丁 RFC v3（10 K Prateek + 3 Peter Zijlstra）——大机器全局 cpumask 的 C2C ping-pong 问题引入 sparsebitmap（sbm）：按 LLC/节点实例分片的位图，写保持本地 cacheline；v3 补 7 架构 enablement 并把 `nohz.idle_cpus_mask` 转为首个用户；实测平均 ~1-2% 持平略好、最坏场景更新代价降到 1/100；作者将在 L"
+  },
+  {
+    "title": "sched/fair: Add smt_balance and llc_balance to the decision matrix",
+    "id": "sched-20261003-006",
+    "date": "2026-10-03",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "fair"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-006-sched-fair-add-smt-balance-and-llc-balance-to-the-decision-m.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260928-004：Jemmy Wong 的 3 补丁 v1（纯澄清/清理、No functional change）——patch 1 补齐 `sched_balance_find_src_group()` 上方决策矩阵注释表（`smt_balance`/`llc_balance` 两列此前无人更新），patch 2-3 把「cpus_ptr 固定任务导致的均衡失败」状态改名。 - sched-20261002-010：Tim Chen（Intel）完成实质 review 并促成 v2——发现 v1 新表"
+  },
+  {
+    "title": "sched/eevdf: Fix vprot across reweighting",
+    "id": "sched-20261003-007",
+    "date": "2026-10-03",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "fair"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-007-sched-eevdf-fix-vprot-across-reweighting.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-008：Christian Loehle 两枚 EEVDF slice-protection 边界修复——1/2 让每次新授予的 protection 无条件下限到最小 slice，2/2 保持「已过期的 protection」在 reweight 移动 vruntime 后仍是过期态；当日 Kayra 追问 2/2 的 reweight 路径反例。 - sched-20260930-009：Christian 单片 HRTICK 修复——fair hrtick 取「虚拟 deadline 与存"
+  },
+  {
+    "title": "sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()",
+    "id": "sched-20261003-008",
+    "date": "2026-10-03",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [
+      "hotplug",
+      "migration",
+      "irq"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/10/03/sched-20261003-008-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260907-002：Sebastian Andrzej Siewior（linutronix）09-07 发出 RFC——syzbot 报出的 CPU 热插拔与 `set_cpus_allowed_ptr()` 竞态：IRQ 线程请求迁移到「当时在线但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_cpu_allowed()` 拒掉后返回当前 rq，任务所在 CPU 与 `cpus_mask` 不再匹配，后续 `migrate_enable()` 改亲和性而 `affine_mo"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",

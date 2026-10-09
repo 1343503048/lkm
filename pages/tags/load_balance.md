@@ -2,11 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 137
+article_count: 138
 ---
 
 - [sched-20261008-010](/lkm/2026/10/08/sched-20261008-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261008-011](/lkm/2026/10/08/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
+- [sched-20261003-006](/lkm/2026/10/03/sched-20261003-006-sched-fair-add-smt-balance-and-llc-balance-to-the-decision-m.html) `discussion/none/under_review` — sched/fair: Add smt_balance and llc_balance to the decision matrix
 - [sched-20261002-001](/lkm/2026/10/02/sched-20261002-001-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU
 - [sched-20261002-009](/lkm/2026/10/02/sched-20261002-009-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/under_review` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261002-010](/lkm/2026/10/02/sched-20261002-010-sched-fair-update-decision-matrix-and-rename-pinned-task-gro.html) `discussion/none/under_review` — sched/fair: Update decision matrix and rename pinned-task group state

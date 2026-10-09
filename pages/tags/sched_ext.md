@@ -2,13 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 199
+article_count: 201
 ---
 
 - [sched-20261008-004](/lkm/2026/10/08/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-005](/lkm/2026/10/08/sched-20261008-005-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ
 - [sched-20261008-006](/lkm/2026/10/08/sched-20261008-006-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/medium/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
 - [sched-20261008-012](/lkm/2026/10/08/sched-20261008-012-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html) `fix/high/under_review` — sched_ext: Serialize user DSQ destruction against deferred reenqueues
+- [sched-20261003-001](/lkm/2026/10/03/sched-20261003-001-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/medium/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
+- [sched-20261003-004](/lkm/2026/10/03/sched-20261003-004-sched-ext-generate-qseq-from-a-per-task-counter.html) `fix/medium/under_review` — sched_ext: Generate qseq from a per-task counter
 - [sched-20261002-008](/lkm/2026/10/02/sched-20261002-008-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/low/under_review` — sched_ext: Keep proxy donors with slice left on the local DSQ
 - [sched-20261002-014](/lkm/2026/10/02/sched-20261002-014-sched-ext-drive-the-numa-balancing-scan-for-scx-tasks.html) `feature/medium/rfc` — sched_ext: Drive the NUMA balancing scan for SCX tasks
 - [sched-20261001-003](/lkm/2026/10/01/sched-20261001-003-sched-ext-hold-dsq-refs-for-deferred-reenqueues.html) `fix/high/under_review` — sched_ext: Hold DSQ refs for deferred reenqueues
