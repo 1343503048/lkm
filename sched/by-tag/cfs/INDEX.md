@@ -1,10 +1,11 @@
 # tag: cfs
 
-共 170 篇
+共 171 篇
 
 - [sched-20261008-009](../../2026/10/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261008-002](../../2026/10/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/under_review` — Jemmy Wong 发 3 枚修复，收掉 proxy execution（拆分调度上下文 `rq->donor` 与执行上下文 `rq->curr`）下的三处记账不一致：NUMA/cache tick 钩子、`task_sched_runtime()` 的运行时 flush、`sched_can_stop_tick()` 的 CFS 带宽检查在拆分后仍错误地以 donor 为「在 CPU 上的任
 - [sched-20261008-001](../../2026/10/sched-20261008-001-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — Mete Durlu（IBM/s390）发 RFC：在非对称容量 + SMT 的系统上，调度器目前「宁可整核空闲，也不去占忙碌高容量核的空闲 SMT 兄弟线程」，导致任务被摆到低容量空闲核上。系列引入 `SCHED_IDLE_SMT_PRIO` 配置与 `sched_idle_smt_prio` 静态分支，允许架构（先在 s390 落地）覆盖这一偏好、优先把负载打包到高容量核。当日 Andrea 
+- [sched-20261006-009](../../2026/10/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — - sched-20260903-007：Hongyan Xia 收掉调度器里最后一批已废弃的 static key 用法：`kernel/sched/fair.c` 的 CFS bandwidth `__cfs_bandwidth_used` 从 `struct static_key` + `static_key_false()` / `static_key_slow_inc_cpuslocke
 - [sched-20261004-006](../../2026/10/sched-20261004-006-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261003-005](../../2026/10/sched-20261003-005-lib-sched-introduce-sparsebitmap-sbm.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-011](../../2026/09/sched-20260930-011-sched-fair-rework-fix-task-h-load.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

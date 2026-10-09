@@ -2,11 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 69
+article_count: 70
 ---
 
 - [sched-20261008-007](/lkm/2026/10/08/sched-20261008-007-cpufreq-amd-pstate-supply-nominal-lowest-freq-for-trx40-base.html) `discussion/none/superseded` — cpufreq/amd-pstate: Supply nominal/lowest freq for TRX40-based motherboards
 - [sched-20261008-008](/lkm/2026/10/08/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/under_review` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
+- [sched-20261006-008](/lkm/2026/10/06/sched-20261006-008-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/under_review` — cpufreq: schedutil: Serialize start against rate limit updates
 - [sched-20261004-004](/lkm/2026/10/04/sched-20261004-004-sched-ext-reset-cpuperf-target-when-a-sub-scheduler-loses-sc.html) `bug/medium/under_review` — sched_ext: Reset cpuperf_target when a sub-scheduler loses SCX_CAP_PERF or dies
 - [sched-20261004-007](/lkm/2026/10/04/sched-20261004-007-cpufreq-cppc-resolve-frequencies-to-performance-levels.html) `fix/medium/under_review` — cpufreq: CPPC: Resolve frequencies to performance levels
 - [sched-20261002-005](/lkm/2026/10/02/sched-20261002-005-cpufreq-resolve-cppc-frequencies-to-performance-levels.html) `feature/none/under_review` — cpufreq: Resolve CPPC frequencies to performance levels

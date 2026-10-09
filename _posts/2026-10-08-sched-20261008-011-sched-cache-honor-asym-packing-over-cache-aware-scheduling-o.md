@@ -19,10 +19,10 @@ patch_series:
   summary: can_migrate_llc_task()/llc_balance() 让 asym packing 优先于 cache-aware
   review_outcome: Kayra 指出注释/实现语义不一致并给边界反例
 - version: v2
-  msgid: null
-  date: null
-  summary: 空窗期（无日报）内发出，msgid 见 v3 的 Link v2
-  review_outcome: null
+  msgid: <77ceef1e51b895760dc5f6c9cde985a1679545b5.1791224900.git.tim.c.chen@linux.intel.com>
+  date: '2026-10-06'
+  summary: env->idle 前置落地；llc_balance 加 asym 检查；need_active_balance 重排
+  review_outcome: Kayra Reviewed-by（冗余检查备注）；Chen Yu 仿真实测 + Tested-by
 - version: v3
   msgid: <b29badede27bb6bfb4a759e06754cb19657f0778.1791308631.git.tim.c.chen@linux.intel.com>
   date: '2026-10-08'
@@ -45,6 +45,8 @@ generated_at: '2026-10-09T01:00:00'
 source_email_count: 1
 related_articles:
 - sched-20260929-003
+- sched-20260930-013
+- sched-20261006-002
 tags:
 - load_balance
 - x86
@@ -72,12 +74,12 @@ layout: article
 - `llc_balance()`：asym packing 域上若目的 CPU 优先级高于源组所有 CPU（`sgs->group_asym_packing`），直接 `return false` 优先走 asym packing。v3 按 Kayra 意见移除了 v1/v2 里冗余的 `SD_ASYM_PACKING` 检查，改用 `group_asym_packing`。
 - `need_active_balance()`：把 `asym_active_balance()` 的判断提到 `alb_break_llc()` 之前。
 
-v3 相对 v2（v2 在补跑空窗期内、无独立文章）的改动：移除冗余 `SD_ASYM_PACKING` 检查（Kayra Cizmeci 指出），并新增 `Tested-by: Chen Yu`、`Reviewed-by: Kayra Cizmeci`。仍带 `Fixes: 23b2b5ccc45c`、`Reported-by: Klaus Kusche`、`Cc: stable # 7.2.x`。
+v3 相对 v2（<a class="article-ref" href="/lkm/2026/10/06/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html">sched-20261006-002</a>）的改动：移除冗余 `SD_ASYM_PACKING` 检查（Kayra Cizmeci 指出），并新增 `Tested-by: Chen Yu`、`Reviewed-by: Kayra Cizmeci`。仍带 `Fixes: 23b2b5ccc45c`、`Reported-by: Klaus Kusche`、`Cc: stable # 7.2.x`。
 
 ## 版本演进与当前进展
 
 - v1（09-29，见 related 文章）：Kayra 指出注释与实现语义不一致并给边界反例，Tim 表示将发 cleaned-up 版进 sched/urgent。
-- v2（10-05 前后，空窗期无文章，msgid 见 v3 的 Link v2）。
+- v2（10-06，见 <a class="article-ref" href="/lkm/2026/10/06/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html">sched-20261006-002</a>）：env->idle 前置落地；llc_balance 加 asym 检查；need_active_balance 重排。Kayra 给 R-b 并指出冗余检查，Chen Yu 仿真实测 + Tested-by。
 - v3（今日，`<b29badede27bb6bfb4a759e06754cb19657f0778.1791308631.git.tim.c.chen@linux.intel.com>`）：移除冗余检查 + 收齐三个 `Tested-by`（Klaus Kusche、Ricardo Neri、Chen Yu）与 Kayra 的 `Reviewed-by`。
 
 ## Maintainer 意见与讨论焦点

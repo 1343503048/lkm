@@ -14475,6 +14475,137 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务**事实性关闭**：扫描只从 fair tick 排队，SCX 任务 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 比例 37%（fair 83%）。Andrea Righi（sched_ext 维护者）回复 backlog 里正有一套 sched_ext NUMA balancing 支持，将发到列表；V"
   },
   {
+    "title": "sched_ext: Add ops.sub_cid_sched_updated()",
+    "id": "sched-20261006-001",
+    "date": "2026-10-06",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-001-sched-ext-add-ops-sub-cid-sched-updated.html",
+    "tldr": "Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）委派模型补上**用量可观测性**：把 CPU（cid）委派给子调度器的父调度器，此前无法知道各被委派方实际用了多少——按需调整委派规模的父调度器无法度量，想把一个 cid 从一个子转交给另一个子的父调度器也看不到该从谁手里拿。本系列（3 补丁，`[PATCHSET sched_ext/for-7.4]`，基线 3521f92ddd5f）新增 `ops.sub_cid_sched_updated()`：当某调度器视角下「跑在一个 cid 上的调度器」发生变化时通知它——NONE（其子树无任务在该 cid）/ "
+  },
+  {
+    "title": "sched/cache: Honor asym packing over cache aware scheduling on hybrid systems",
+    "id": "sched-20261006-002",
+    "date": "2026-10-06",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-002-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260929-003：Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台性能回退」的修复补丁——让 asym packing 在「要把任务迁到更高优先级空核」时优先于 cache-aware（迁到更高性能空核比 cache 共置更划算），带 `Fixes: 23b2b5ccc45c`、双 `Tested-by`、`Cc: stable # 7.2.x`；Kayra 指出注释与实现的语义不一致（未检查 idle 就放行）。 - sched-20260930-013：K"
+  },
+  {
+    "title": "sched/cputime: Don't account idle time twice after dyntick-idle",
+    "id": "sched-20261006-003",
+    "date": "2026-10-06",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-003-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间超过墙钟时间（SPARC T7-1 最差 1.44x、KVM guest 1.53x），根因为 cf6444c3e1bb 统一记账后 dyntick-idle 与重启 tick 首个整周期双计。 - sched-20261005-002：修复 v1 发出（`kernel_cpustat` 记录 overlap、首个 t"
+  },
+  {
+    "title": "kcov: Keep timer and scheduler noise out of task coverage",
+    "id": "sched-20261006-004",
+    "date": "2026-10-06",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [],
+    "authors": [
+      "Karl Mehltretter"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260902-016 / sched-20260914-003：Karl Mehltretter 的 KCOV 覆盖泄漏抑制系列（v1/v2/v3）——`kernel/sched/` 自身不插桩但其调用的插桩函数（`sched_clock()`、CPU capacity helper、deferred hrtimer rearm 等）在任务上下文运行时把 PC 记进当前任务，污染 syscall 覆盖、破坏「覆盖 = 输入的函数」契约；修法为 nestable `KCOV_PAUSED` bit + `kco"
+  },
+  {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261006-005",
+    "date": "2026-10-06",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-005-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务事实性关闭：SCX 下 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 37%（fair 83%）。Andrea Righi 回复 backlog 里有完整方案，Vladimir 撤 sketch 转做测试员。 - sched-20261004-001：Andrea 兑现承诺发 5 补丁系列（`SCX_OPS"
+  },
+  {
+    "title": "sched_ext: Reset cpuperf_target when a sub loses SCX_CAP_PERF or dies",
+    "id": "sched-20261006-006",
+    "date": "2026-10-06",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-006-sched-ext-reset-cpuperf-target-when-a-sub-loses-scx-cap-perf.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261004-004：Tao Cui 报告并修复 sched_ext 子调度器生命周期漏洞——持有 `SCX_CAP_PERF` 的子调度器把 cpuperf target 写低后消失（cap 回收/kill/detach/cgroup 移除），target 残留：`scx_bpf_sub_revoke()` 只清 caps 位图、`scx_sub_disable()` 重定任务但都不碰 `rq->scx.cpuperf_target`；读侧门 `scx_cpuperf_target()` 只测全局 `scx"
+  },
+  {
+    "title": "sched/core: Do not touch SMT siblings that have not joined the core yet",
+    "id": "sched-20261006-007",
+    "date": "2026-10-06",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [],
+    "authors": [
+      "Seiji Nishikawa"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-007-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html",
+    "tldr": "Seiji Nishikawa（Red Hat）修复 core scheduling 与 CPU 上线的竞态窗口：新 CPU 上线时，`ap_starting()` 先 `set_cpu_sibling_map()`（把它加进兄弟的 `cpu_smt_mask()`）后 `notify_cpu_starting()`（触发 `sched_core_cpu_starting()` 把 `rq->core` 指向 core leader）——这个顺序是有意的，但两步之间，新 CPU 的 `rq->core` 仍指向自己，而其 `rq->core_enabled` 却早已被 `__sched_cor"
+  },
+  {
+    "title": "cpufreq: schedutil: Serialize start against rate limit updates",
+    "id": "sched-20261006-008",
+    "date": "2026-10-06",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-008-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html",
+    "tldr": "- sched-20260929-001：Hui Su 发的一枚 schedutil 并发竞态修复：`rate_limit_us_store()`（sysfs 写 `rate_limit_us`）持 governor 属性集的 `update_lock`，而 `sugov_start()` 读写同一 tunable 时**不加锁**，两条路径交错会让 sysfs 里显示新值、内存里 `freq_update_delay_ns` 还是旧值，且这个陈旧延迟会一直滞留到下一次限速更新或 governor 重启。补丁在 `sugov_start()` 里给 `sugov_update_rate_lim"
+  },
+  {
+    "title": "sched: Convert last bits of deprecated static key usage",
+    "id": "sched-20261006-009",
+    "date": "2026-10-06",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "preempt"
+    ],
+    "authors": [
+      "Hongyan Xia"
+    ],
+    "url": "/lkm/2026/10/06/sched-20261006-009-sched-convert-last-bits-of-deprecated-static-key-usage.html",
+    "tldr": "- sched-20260903-007：Hongyan Xia 收掉调度器里最后一批已废弃的 static key 用法：`kernel/sched/fair.c` 的 CFS bandwidth `__cfs_bandwidth_used` 从 `struct static_key` + `static_key_false()` / `static_key_slow_inc_cpuslocked()` 迁到 `DEFINE_STATIC_KEY_FALSE()` + `static_branch_unlikely()` / `static_branch_inc_cpuslocked()`；"
+  },
+  {
     "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
     "id": "sched-20261008-001",
     "date": "2026-10-08",

@@ -90,6 +90,7 @@ generated_at: '2026-10-09T01:00:00'
 source_email_count: 8
 related_articles:
   - sched-20261004-004
+  - sched-20261006-006
 tags:
   - sched_ext
   - cgroup

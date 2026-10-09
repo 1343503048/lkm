@@ -42,6 +42,7 @@ generated_at: '2026-10-09T01:00:00'
 source_email_count: 1
 related_articles:
 - sched-20260903-007
+- sched-20261006-009
 tags:
 - cfs
 - preempt
