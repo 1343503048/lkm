@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 65 篇
+共 67 篇
 
+- [sched-20261010-010](../../2026/10/sched-20261010-010-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-005](../../2026/10/sched-20261010-005-sched-proxy-defer-donor-commit-until-after-proxy-resolution.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-015](../../2026/10/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-011](../../2026/10/sched-20261009-011-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261008-002](../../2026/10/sched-20261008-002-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/under_review` — Jemmy Wong 发 3 枚修复，收掉 proxy execution（拆分调度上下文 `rq->donor` 与执行上下文 `rq->curr`）下的三处记账不一致：NUMA/cache tick 钩子、`task_sched_runtime()` 的运行时 flush、`sched_can_stop_tick()` 的 CFS 带宽检查在拆分后仍错误地以 donor 为「在 CPU 上的任

@@ -15374,6 +15374,222 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260731-003：Fengyu Wang（海光）修 `sched_init_numa()` 中 topology 数组分配失败时的内存泄漏——masks 已 RCU 发布但失败路径未释放。带 `Fixes: cb83b629bae0`，v1 无 review。 - sched-20261009-018（今天）：作者对 v2 发 gentle ping，并转引 Valentin Schneider（8 月 14 日）的 **Reviewed-by** 与 Tim Chen 的 review，询问是否还有进一"
   },
   {
+    "title": "sched/fair: Add push task mechanism for fair",
+    "id": "sched-20261010-001",
+    "date": "2026-10-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-004：Vincent Guittot 的 18 补丁 v2「Improving latency of short slice tasks」系列，通过 EEVDF lag/slice 改进 + 新引入的 fair push 任务机制（把排不上本 CPU 或不该在本 CPU 的任务推到更合适的 CPU）+ EAS slice 整合来降低短 slice 任务时延；当日 Tim Chen/Kayra/Chen Yu 密集 review，抓出 force-push 早退、static key 泄漏、sl"
+  },
+  {
+    "title": "sched/fair: avoid redundant updates for unchanged default slices",
+    "id": "sched-20261010-002",
+    "date": "2026-10-10",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Chengfeng Lin"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-008：Chengfeng Lin 发 RFC，优化 `sched_setparam()` 在参数未变时仍走参数更新路径的开销——SCHED_OTHER 任务用默认 slice 且 slice 未变时直接走 no-change 捷径；原型把每次 `sched_setparam()` 调用成本从 618.18ns 降到 163.23ns（省 455ns、约 73.6%）。属合成 syscall 微基准，作者明确「不是应用加速」。当日无回帖。 - sched-20261010-002（今天）：作者重"
+  },
+  {
+    "title": "sched/cache: Remove the old cache group footprint on exec",
+    "id": "sched-20261010-003",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-007：Jemmy Wong 修 `sched_cache_exec_mmap()` 记账遗漏——exec 换掉 cache group 后旧 group 的 footprint 只在 exit 路径被减，导致「CLONE_VM 无 CLONE_THREAD」共享 mm 的任务在 exec 后旧贡献残留、抑制 cache-aware 聚合的 LLC capacity 检查；把 footprint 减法抽成 helper，exec 与 exit 两处都用。当日无回帖。 - sched-202610"
+  },
+  {
+    "title": "sched/cache: Avoid publishing partial LLC utilization",
+    "id": "sched-20261010-004",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.html",
+    "tldr": "Jemmy Wong 修 cache-aware 调度的一个新问题（`[PATCH]`，当日新发）：`update_sg_lb_stats()` 对 `sched_group_span(group)` 与 `env->cpus` 两个可能不一致的 CPU 集合求和利用率、却用整组 `sgc->capacity` 求容量，`record_sg_llc_stats()` 把两者都发出去——亲和性重试或 CPU 热插拔会在两者不一致的窗口里发布「部分利用率 + 完整容量」，让 `can_migrate_llc()` 把忙碌的 preferred LLC 误判为有富余容量。补丁在 `env->cpus"
+  },
+  {
+    "title": "sched/proxy: Defer donor commit until after proxy resolution",
+    "id": "sched-20261010-005",
+    "date": "2026-10-10",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Xukai Wang"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-005-sched-proxy-defer-donor-commit-until-after-proxy-resolution.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260810-007：Xukai Wang 提交 RFC v2「sched/proxy: Defer donor commit until after proxy resolution」，把 donor 的 commit（成为 rq->curr）推迟到 proxy 解析完成后，避免中途状态被负载均衡/统计看到。RFC 阶段，合入可能性低（依赖 proxy 主线）。 - sched-20260827-004：发出 v3——把 `pick_next_task()` 的「选择」与「提交」（`put_prev_set"
+  },
+  {
+    "title": "sched_ext: Fix use-after-free of a destroyed user DSQ by a deferred reenqueue",
+    "id": "sched-20261010-006",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext",
+      "crash"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.html",
+    "tldr": "同日，**Tejun Heo 直接发出修复 Hui Su 报告的 DSQ use-after-free 的 for-7.3-fixes 补丁**——deferred reenqueue 可能在 RCU 宽限期之后仍读取已释放的用户 DSQ（`run_deferred()` 在宽限期内开始、晚于 RCU 回调 detach 请求再读已释放 DSQ 的 id）。修复改为在宽限期**之前**取消 pending 请求：释放 DSQ 的 irq work 逐 CPU unlink 请求、`schedule_dsq_reenq()` 在 id 失效后不再排队。带 `Fixes: 84b1a0ea0b7c"
+  },
+  {
+    "title": "sched_ext: Serialize user DSQ destruction against deferred reenqueues",
+    "id": "sched-20261010-007",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "high",
+    "tags": [
+      "sched_ext",
+      "crash"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260930-002：Hui Su 修 sched_ext deferred reenqueue 的 use-after-free；v1 用「detach 前先取引用」，Andrea Righi 认可 race 但建议避免反复排队 RCU 回调地持引用。 - sched-20261008-012：按 Tejun 建议放弃引用计数、改在罕见的 DSQ 销毁路径加同步（扫每 CPU deferred 列表 + 检查游标，必要时再推迟一轮 RCU 回收），重命名发 v3，KASAN + LOCKDEP 干净；无显式"
+  },
+  {
+    "title": "sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ",
+    "id": "sched-20261010-008",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext",
+      "hang"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-008-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-005：Tejun Heo 修掉 sched_ext 的 CPU idle stall——`SCX_OPS_ENQ_LAST` 下本应交给 `ops.enqueue()` 的「最后一个可运行任务」在三条 skip 路径（exiting 未设 `ENQ_EXITING`、migration-disabled 未设 `ENQ_MIGRATION_DISABLED`、offline rq）会直达本地 DSQ，而 pick 已结算到 idle、没有任何东西再重新调度。修复是在切进任务上置 `need_r"
+  },
+  {
+    "title": "sched_ext: Don't leave balance callbacks queued across a pick retry",
+    "id": "sched-20261010-009",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-009-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.html",
+    "tldr": "Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的新修复：dispatch 路径可能在 `pick_task_scx()` 尚未结束时（`RETRY_TASK` 或 dl_server 返回 NULL 后继续挑低优先级类）就排好 `rq->scx.deferred_bal_cb`，而 balance callback 本必须在下一次释放 rq 锁前被消费——期间 rq 锁可被再次释放（`prev_balance()` 的 `balance_rt()`/`pull_rt_task()`），任何在本窗口拿锁的 CPU 都会撞上 pending balance c"
+  },
+  {
+    "title": "sched_ext: Keep proxy donors with slice left on the local DSQ",
+    "id": "sched-20261010-010",
+    "date": "2026-10-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-010-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-008：Andrea Righi（NVIDIA，sched_ext 维护者）发 `sched_ext/for-7.4` 单补丁——commit ee172227d0dc 让 `put_prev_task_scx()` 把保留 proxy donor 以 `SCX_ENQ_BLOCKED` 交还 `ops.enqueue()`，但三类 put 只是 proxy 记账，BPF 被迫反复做无意义 dispatch；补丁改为有 slice 的 donor 放本地 DSQ 头部，并用 `SCX_RQ_PR"
+  },
+  {
+    "title": "sched_ext: Add ops.sub_child_ecaps_updated()",
+    "id": "sched-20261010-011",
+    "date": "2026-10-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-011-sched-ext-add-ops-sub-child-ecaps-updated.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-004：Tejun Heo 为 sched_ext sub-scheduler 补上「父级何时得知 grant/revoke 生效」的缺口——新增 `ops.sub_child_ecaps_updated()` 回调，v1→v2 快速迭代（v2 砍掉 disable 报告与 sleep lock），吸收 Tao Cui 实测与 Tejun 的 last-writer-wins 裁决。 - sched-20261009-016：Andrea Righi 首次 review，抛两个边界问题——① 子"
+  },
+  {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261010-012",
+    "date": "2026-10-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-012-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 单片 RFC——自动 NUMA balancing 对 sched_ext 任务事实性关闭：扫描只从 fair tick 排队，SCX 任务 `numa_pte_updates/s = 0`（fair 2.4M-3.9M）、跑在 preferred nid 37%（fair 83%）；Andrea Righi 回复 backlog 有完整方案，Vladimir 撤 sketch 转测试。 - sched-20261004-001：Andrea 发 5 补丁"
+  },
+  {
+    "title": "sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks",
+    "id": "sched-20261010-013",
+    "date": "2026-10-10",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/10/sched-20261010-013-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-006：Tao Cui 报告疑似 dispatch 饥饿：父子 cid 调度里，busy-loop 任务在子调度器 attach **之前**进 cgroup 时，子调度器每轮都 claim 到该任务但运行 duty 只有 ~0.3%（10s 窗口 0 或 ~20-27 tick），同属 root 的等价任务 ~100%；attach 之后移入则正常，饥饿比约 300x。Tejun 要求补调度器源码与完整复现步骤。 - sched-20261009-014：Tao Cui 交出完整材料——`sc"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

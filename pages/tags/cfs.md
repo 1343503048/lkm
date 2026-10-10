@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 178
+article_count: 182
 ---
 
+- [sched-20261010-001](/lkm/2026/10/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261010-002](/lkm/2026/10/10/sched-20261010-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
+- [sched-20261010-003](/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261010-004](/lkm/2026/10/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/medium/under_review` — sched/cache: Avoid publishing partial LLC utilization
 - [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261009-005](/lkm/2026/10/09/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `fix/low/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
 - [sched-20261009-008](/lkm/2026/10/09/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices

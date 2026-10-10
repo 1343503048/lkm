@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20261010-003](/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261010-012](/lkm/2026/10/10/sched-20261010-012-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261009-006](/lkm/2026/10/09/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work
 - [sched-20261009-007](/lkm/2026/10/09/sched-20261009-007-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261009-010](/lkm/2026/10/09/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

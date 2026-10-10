@@ -1,7 +1,15 @@
 # tag: sched_ext
 
-共 218 篇
+共 226 篇
 
+- [sched-20261010-013](../../2026/10/sched-20261010-013-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-011](../../2026/10/sched-20261010-011-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-010](../../2026/10/sched-20261010-010-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-009](../../2026/10/sched-20261010-009-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.md) `fix/medium/under_review` — Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的新修复：dispatch 路径可能在 `pick_task_scx()` 尚未结束时（`RETRY_TASK` 或 dl_server 返回 NULL 后继续挑低优先级类）就排好 `rq->scx.deferred_bal_cb`，而 balance callback 本必须在下一次释放 rq 锁前被消费——期间
+- [sched-20261010-008](../../2026/10/sched-20261010-008-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-007](../../2026/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-006](../../2026/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.md) `fix/high/under_review` — 同日，**Tejun Heo 直接发出修复 Hui Su 报告的 DSQ use-after-free 的 for-7.3-fixes 补丁**——deferred reenqueue 可能在 RCU 宽限期之后仍读取已释放的用户 DSQ（`run_deferred()` 在宽限期内开始、晚于 RCU 回调 detach 请求再读已释放 DSQ 的 id）。修复改为在宽限期**之前**取消 pen
 - [sched-20261009-016](../../2026/10/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-014](../../2026/10/sched-20261009-014-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-012](../../2026/10/sched-20261009-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

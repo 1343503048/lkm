@@ -1,7 +1,9 @@
 # tag: crash
 
-共 34 篇
+共 36 篇
 
+- [sched-20261010-007](../../2026/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-006](../../2026/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.md) `fix/high/under_review` — 同日，**Tejun Heo 直接发出修复 Hui Su 报告的 DSQ use-after-free 的 for-7.3-fixes 补丁**——deferred reenqueue 可能在 RCU 宽限期之后仍读取已释放的用户 DSQ（`run_deferred()` 在宽限期内开始、晚于 RCU 回调 detach 请求再读已释放 DSQ 的 id）。修复改为在宽限期**之前**取消 pen
 - [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_
 - [sched-20260918-016](../../2026/09/sched-20260918-016-bug-arm64-sched-hard-lockup-with-rq-lock-stuck-locked-and-no.md) `bug/critical/stalled` — 华为鲲鹏（Great Wall RK5260 V5，128 核 arm64）上报告一起 hard lockup：`rq[3].__lock` qspinlock 一直处于 locked 状态、却找不到持有者，124 个 CPU 挂在该锁的 MCS 队列里，CPU3 经 futex_wait → schedule() 阻塞在拿 rq 锁。内核为自研 5.15.131。Will Deacon 回应"得
 - [sched-20260916-004](../../2026/09/sched-20260916-004-sched-ext-unlink-pending-local-reenqueues-before-freeing-sch.md) `fix/critical/under_review` — Andrea Righi 的 sched_ext 修复：调度器 teardown 时若仍有一个已链接但未消费的 deferred local reenqueue 请求挂在 rq 列表上，`scx_sched_free_rcu_work()` 只告警一声就释放 `sch->pcpu`，后续 `run_deferred()` 会顺着悬空节点解引用已释放内存，造成 use-after-free 与系统级

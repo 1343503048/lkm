@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 178 篇
+共 182 篇
 
+- [sched-20261010-004](../../2026/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/medium/under_review` — Jemmy Wong 修 cache-aware 调度的一个新问题（`[PATCH]`，当日新发）：`update_sg_lb_stats()` 对 `sched_group_span(group)` 与 `env->cpus` 两个可能不一致的 CPU 集合求和利用率、却用整组 `sgc->capacity` 求容量，`record_sg_llc_stats()` 把两者都发出去——亲和性重试或
+- [sched-20261010-003](../../2026/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-002](../../2026/10/sched-20261010-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-001](../../2026/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-015](../../2026/10/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-008](../../2026/10/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — Chengfeng Lin 发 RFC，优化 `sched_setparam()` 在参数未变时仍走参数更新路径的开销：当 SCHED_OTHER 任务用默认 slice 且 slice 未变时，直接走 no-change 捷径。作者原型把每次 `sched_setparam()` 调用成本从 618.18ns 降到 163.23ns（省 455ns、约 73.6%）。属合成 syscall 微基

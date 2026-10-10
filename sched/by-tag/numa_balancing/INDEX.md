@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 43 篇
+共 45 篇
 
+- [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261010-003](../../2026/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-012](../../2026/10/sched-20261009-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
