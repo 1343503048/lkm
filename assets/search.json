@@ -15590,6 +15590,89 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-006：Tao Cui 报告疑似 dispatch 饥饿：父子 cid 调度里，busy-loop 任务在子调度器 attach **之前**进 cgroup 时，子调度器每轮都 claim 到该任务但运行 duty 只有 ~0.3%（10s 窗口 0 或 ~20-27 tick），同属 root 的等价任务 ~100%；attach 之后移入则正常，饥饿比约 300x。Tejun 要求补调度器源码与完整复现步骤。 - sched-20261009-014：Tao Cui 交出完整材料——`sc"
   },
   {
+    "title": "sched/psi: Remove the RCU wait from trigger destruction",
+    "id": "sched-20261011-001",
+    "date": "2026-10-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "psi",
+      "cgroup"
+    ],
+    "authors": [
+      "Shakeel Butt"
+    ],
+    "url": "/lkm/2026/10/11/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html",
+    "tldr": "Shakeel Butt 移除 PSI trigger 销毁路径上的 `synchronize_rcu()`——Meta 生产环境发现该 RCU 等待在持有 kernfs `node_mutex` 时阻塞其他用户（文件关闭、cgroup 移除、禁用 cgroup.pressure 等）。补丁逐 commit 论证该等待已因历次重构失去必要性，改用 `rcu_access_pointer()` 做 `rtpoll_task` 的 NULL 检查，并把 `kthread_stop()` 保持在 trigger 互斥锁之外。刚发出，暂无 review。"
+  },
+  {
+    "title": "sched/wait: avoid modifying entry on failed priority registration",
+    "id": "sched-20261011-002",
+    "date": "2026-10-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "wait"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/11/sched-20261011-002-sched-wait-avoid-modifying-entry-on-failed-priority-registra.html",
+    "tldr": "Hui Su 修复 `add_wait_queue_priority_exclusive()` 的一个小正确性问题：该函数在检查是否已存在其他 priority waiter 之前就设置了 `WQ_FLAG_EXCLUSIVE` 与 `WQ_FLAG_PRIORITY`，导致注册因 `-EBUSY` 失败时，entry 未被入队却已被修改了 flags。补丁把 flags 更新移到失败检查之后。刚发出，暂无 review。"
+  },
+  {
+    "title": "sched_ext: idle: Respect task affinity in restricted CPU selection",
+    "id": "sched-20261011-003",
+    "date": "2026-10-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "idle",
+      "affinity"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/11/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html",
+    "tldr": "Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CPU（单 CPU 任务用 `cpumask_first(p->cpus_ptr)`、migration-disabled 任务用 `task_cpu(p)`），并在 `scx_idle_test_and"
+  },
+  {
+    "title": "sched/eevdf: Fix vprot across reweighting",
+    "id": "sched-20261011-004",
+    "date": "2026-10-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/10/11/sched-20261011-004-sched-eevdf-fix-vprot-across-reweighting.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261003-007：Kayra 发出重组后的独立补丁「Fix vprot across reweighting」——以她为作者、Christian 为 Co-developed-by。实现 `rel_vprot` 标志（类比 `rel_deadline`）：reweight dequeue 时把 `vprot` 减 `avruntime` 转为相对值并置 `se->rel_vprot`，re-enqueue 时再加回；区别是 `rel_vprot` 不依赖 `PLACE_REL_DEADLINE`（vpro"
+  },
+  {
+    "title": "sched/cpufreq: fix schedutil's boost frequency handling",
+    "id": "sched-20261011-005",
+    "date": "2026-10-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Ananthu C V"
+    ],
+    "url": "/lkm/2026/10/11/sched-20261011-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260921-007：Ananthu C V 的 schedutil boost 频率处理修复（v2）回应 Oleg 关于 `cpuinfo->max_freq` 只升不降设计的疑问，接受 Zhongqiu 建议补 `Fixes:`。 - sched-20260922-019：Zhongqiu Han 在 SM8850（SCMI 驱动）上复测，二分定位问题由 `db80ad776cd2` 引入。 - sched-20260929-004：作者发 v3——drop `max_table_freq` 字段、新增从"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

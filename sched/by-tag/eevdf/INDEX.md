@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 53 篇
+共 54 篇
 
+- [sched-20261011-004](../../2026/10/sched-20261011-004-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-008](../../2026/10/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — Chengfeng Lin 发 RFC，优化 `sched_setparam()` 在参数未变时仍走参数更新路径的开销：当 SCHED_OTHER 任务用默认 slice 且 slice 未变时，直接走 no-change 捷径。作者原型把每次 `sched_setparam()` 调用成本从 618.18ns 降到 163.23ns（省 455ns、约 73.6%）。属合成 syscall 微基
 - [sched-20261009-004](../../2026/10/sched-20261009-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 
 - [sched-20261007-009](../../2026/10/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — - sched-20260923-001：Aishwarya Rambhadran（ARM）在 AWS Graviton3 上报告个别 schbench 线程配置 p99 回退（~30%），bisect 指向单运行队列 commit（[PATCH v3 7/7] sched/eevdf: Move to a single runqueue）。 - sched-20260924-009：怀疑点收敛到

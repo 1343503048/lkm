@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 226 篇
+共 227 篇
 
+- [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP
 - [sched-20261010-013](../../2026/10/sched-20261010-013-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-011](../../2026/10/sched-20261010-011-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

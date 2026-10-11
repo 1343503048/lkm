@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 53
+article_count: 54
 ---
 
+- [sched-20261011-004](/lkm/2026/10/11/sched-20261011-004-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261009-008](/lkm/2026/10/09/sched-20261009-008-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
 - [sched-20261007-008](/lkm/2026/10/07/sched-20261007-008-sched-eevdf-add-min-slice-check-when-selecting-cpu.html) `feature/none/under_review` — sched/eevdf: Add min slice check when selecting CPU

@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 49 篇
+共 50 篇
 
+- [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP
 - [sched-20261009-005](../../2026/10/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `fix/low/under_review` — Shubhang Kaushik（Ampere）发 v5，让 narrow reciprocal 的 `WF_SYNC` 唤醒（pipe 式 ping-pong：A 唤醒 B、B 唤醒 A 循环）在非 SMT 系统上保住在 wake-affine 选中/保持的 waker CPU，而不是被后续 `select_idle_sibling()` 的空闲 CPU 搜索搬走。v5 基于最新 mainlin
 - [sched-20260929-016](../../2026/09/sched-20260929-016-sched-debug-add-migration-stats-due-to-non-preferred-cpus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles（steal_governor 系列）。
 - [sched-20260928-001](../../2026/09/sched-20260928-001-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。这是一个经历了 v1→v14 多轮迭代、从架构特定 RFC 演进而来的调度器机制 + 虚拟化驱动系列，用 guest 侧观察到的 steal time 量化 vCPU 超配争抢程度，据此动态折叠/展开 preferred CPU 集合，降低 lock-holder preemption、TLB/cache miss 等 vCPU 抢占代

@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 95 篇
+共 96 篇
 
+- [sched-20261011-001](../../2026/10/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/medium/under_review` — Shakeel Butt 移除 PSI trigger 销毁路径上的 `synchronize_rcu()`——Meta 生产环境发现该 RCU 等待在持有 kernfs `node_mutex` 时阻塞其他用户（文件关闭、cgroup 移除、禁用 cgroup.pressure 等）。补丁逐 commit 论证该等待已因历次重构失去必要性，改用 `rcu_access_pointer()` 做 
 - [sched-20261009-016](../../2026/10/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-009](../../2026/10/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.md) `fix/low/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的 2 补丁系列，修正 sub-scheduler 的一个归属时序缺口：子调度器通过 `ops.sub_ecaps_updated()` 了解自己持有哪些 cid，但父级在它 attach 时做的 grant 要到其 enable bypass 被解除（任务交接给它）之后才报告——于是子调度器在接到任何 cid 通知前就先收到首批 
 - [sched-20261008-004](../../2026/10/sched-20261008-004-sched-ext-add-ops-sub-child-ecaps-updated.md) `feature/under_review` — Tejun Heo 为 sched_ext 的 sub-scheduler（父子调度器）capabilities 机制补上关键一环：grant/revoke 只记录「目标 caps」，真正生效要等 cid 下一次 dispatch，而父调度器此前无从得知生效时刻——导致子调度器在一个 cid 上留下的低 `cpuperf` 目标在 PERF 被回收后仍然残留（内核只在 root enable 时重

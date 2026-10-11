@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 79
+article_count: 80
 ---
 
+- [sched-20261011-005](/lkm/2026/10/11/sched-20261011-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20261009-002](/lkm/2026/10/09/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.html) `fix/low/merged_tip` — cpufreq: qcom-cpufreq-hw: fix device node refcount leak in phandle parsing
 - [sched-20261009-003](/lkm/2026/10/09/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.html) `fix/medium/superseded` — cpufreq: Don't track pressure if policy->max equals top of freq_table
 - [sched-20261009-017](/lkm/2026/10/09/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/superseded` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel

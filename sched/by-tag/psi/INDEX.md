@@ -1,7 +1,8 @@
 # tag: psi
 
-共 16 篇
+共 17 篇
 
+- [sched-20261011-001](../../2026/10/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/medium/under_review` — Shakeel Butt 移除 PSI trigger 销毁路径上的 `synchronize_rcu()`——Meta 生产环境发现该 RCU 等待在持有 kernfs `node_mutex` 时阻塞其他用户（文件关闭、cgroup 移除、禁用 cgroup.pressure 等）。补丁逐 commit 论证该等待已因历次重构失去必要性，改用 `rcu_access_pointer()` 做 
 - [sched-20261009-003](../../2026/10/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.md) `fix/medium/superseded` — Giovanni Gherdovich（SUSE）发补丁，解决 acpi-cpufreq 上 `cpufreq_pressure` 在标称条件下虚高、导致任务迁移加剧/局部性丢失的性能回退。但 Christian Loehle 指出该问题已被 `f341dc4d934a`（"cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update
 - [sched-20260930-010](../../2026/09/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-002](../../2026/09/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — David Stevens 的 PSI 修复：在 stable clock 系统上 `cpu_clock(cpu)` 会忽略 cpu 参数，导致 PSI 内部出现跨 CPU 的时间戳比较，负 skew 会让 u32 的活跃态时长计算下溢，产生约 4 秒的假 delta 冲进累加器，造成 PSI_POLL 的虚假唤醒或 PSI_AVGS 的 nonsense 值（如 full>some、psi>10

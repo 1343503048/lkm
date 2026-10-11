@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 79 篇
+共 80 篇
 
+- [sched-20261011-005](../../2026/10/sched-20261011-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-017](../../2026/10/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-003](../../2026/10/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.md) `fix/medium/superseded` — Giovanni Gherdovich（SUSE）发补丁，解决 acpi-cpufreq 上 `cpufreq_pressure` 在标称条件下虚高、导致任务迁移加剧/局部性丢失的性能回退。但 Christian Loehle 指出该问题已被 `f341dc4d934a`（"cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update
 - [sched-20261009-002](../../2026/10/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.md) `fix/low/merged_tip` — Haotian Zhang（ISCAS）修复 qcom-cpufreq-hw 里 `of_parse_phandle_with_args()` 返回的 provider 节点引用从未被 `of_node_put()` 释放、每次成功调用都泄漏一个引用（`qcom_get_related_cpus()` 每个 present CPU 泄漏一次）的 bug。维护者 Viresh Kumar 当日即回复

@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 226
+article_count: 227
 ---
 
+- [sched-20261011-003](/lkm/2026/10/11/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/under_review` — sched_ext: idle: Respect task affinity in restricted CPU selection
 - [sched-20261010-006](/lkm/2026/10/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.html) `fix/high/under_review` — sched_ext: Fix use-after-free of a destroyed user DSQ by a deferred reenqueue
 - [sched-20261010-007](/lkm/2026/10/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html) `fix/high/superseded` — sched_ext: Serialize user DSQ destruction against deferred reenqueues
 - [sched-20261010-008](/lkm/2026/10/10/sched-20261010-008-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ

@@ -1,7 +1,8 @@
 # tag: idle
 
-共 60 篇
+共 61 篇
 
+- [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP
 - [sched-20261009-001](../../2026/10/sched-20261009-001-cpuidle-add-the-shallow-governors.md) `feature/rfc` — Roman Kagan（Amazon）发补丁新增两个窄用途 cpuidle governor（`shallow` 与 `shallow_nopoll`），让 CPU 停驻最浅 idle 状态并保持 scheduler tick 运行，可在运行时与命令行（`cpuidle.governor=`）双向切换，用于时延敏感负载与 kexec 在线升级场景。当日 Christian Loehle（ARM）质
 - [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260930-014](../../2026/09/sched-20260930-014-sched-enable-preferred-smt-siblings-on-nvidia-olympus.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

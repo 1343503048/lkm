@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 95
+article_count: 96
 ---
 
+- [sched-20261011-001](/lkm/2026/10/11/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/medium/under_review` — sched/psi: Remove the RCU wait from trigger destruction
 - [sched-20261009-009](/lkm/2026/10/09/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.html) `fix/low/under_review` — sched_ext: Report a sub-scheduler's attach-time ecaps before lifting its enable bypass
 - [sched-20261009-016](/lkm/2026/10/09/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()
 - [sched-20261008-003](/lkm/2026/10/08/sched-20261008-003-sched-autogroup-serialize-nice-rate-limit-updates.html) `fix/low/under_review` — sched/autogroup: Serialize nice rate-limit updates
