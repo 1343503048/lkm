@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 29
+article_count: 30
 ---
 
+- [sched-20261012-019](/lkm/2026/10/12/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/low/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261005-003](/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261005-004](/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/medium/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261005-005](/lkm/2026/10/05/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.html) `fix/low/under_review` — sched/deadline: Compare against the donor in prio_changed_dl()

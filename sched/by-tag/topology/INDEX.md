@@ -1,7 +1,8 @@
 # tag: topology
 
-共 118 篇
+共 119 篇
 
+- [sched-20261012-011](../../2026/10/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。

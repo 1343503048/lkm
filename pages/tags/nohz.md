@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 37
+article_count: 38
 ---
 
+- [sched-20261012-019](/lkm/2026/10/12/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/low/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261007-002](/lkm/2026/10/07/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261006-003](/lkm/2026/10/06/sched-20261006-003-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261005-002](/lkm/2026/10/05/sched-20261005-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle

@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 148
+article_count: 152
 ---
 
+- [sched-20261012-007](/lkm/2026/10/12/sched-20261012-007-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/medium/under_review` — sched/cache: Avoid publishing partial LLC utilization
+- [sched-20261012-008](/lkm/2026/10/12/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/medium/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261012-014](/lkm/2026/10/12/sched-20261012-014-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261012-015](/lkm/2026/10/12/sched-20261012-015-sched-fair-add-force-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add force push task mechanism for fair
 - [sched-20261010-001](/lkm/2026/10/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261010-004](/lkm/2026/10/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/medium/under_review` — sched/cache: Avoid publishing partial LLC utilization
 - [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

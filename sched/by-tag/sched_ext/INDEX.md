@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 227 篇
+共 231 篇
 
+- [sched-20261012-004](../../2026/10/sched-20261012-004-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-003](../../2026/10/sched-20261012-003-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.md) `fix/medium/under_review` — sched_ext 维护者 Tejun Heo 发 2 补丁修复补丁（挂 `sched_ext/for-7.3-fixes`）：`scx_bypass()` 只在自身 depth 跨零时才 propagate 给后代并 claim bypass dispatch，导致「子调度器自身的 bypass 与祖先的 bypass 重叠」时后代提前退逼、claim 泄漏或从未取得；PM suspend 覆盖
+- [sched-20261012-002](../../2026/10/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.md) `fix/medium/under_review` — Hui Su 修 sched_ext 在 SMT 系统上一个 strict-core 选择被绕过的 bug：`SCX_PICK_IDLE_CORE`（要求选核的 SMT 兄弟都 idle）在 restricted `select_cpu` kfunc 路径和两条 `WAKE_SYNC` 捷径上都没被校验，会把任务摆到只有单线程 idle 的核上；补丁跳过这些捷径并在 restricted 路径校验
+- [sched-20261012-001](../../2026/10/sched-20261012-001-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.md) `fix/low/under_review` — sched_ext 自测用例 `dequeue_remote` 在较新编译器（如 gcc 16）下因 `sum` 变量「set but not used」触发构建错误，作者用一个空 `asm()` 消费该变量，与既有 `dequeue` 自测的修法一致；当日 Kuba Piecuch 已 `Reviewed-by`，改动很小、合入阻力低。
 - [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP
 - [sched-20261010-013](../../2026/10/sched-20261010-013-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

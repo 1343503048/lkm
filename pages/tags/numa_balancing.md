@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 45
+article_count: 47
 ---
 
+- [sched-20261012-006](/lkm/2026/10/12/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.html) `feature/none/rfc` — sched: add per-cgroup NUMA balancing mode selection via BPF
+- [sched-20261012-008](/lkm/2026/10/12/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/medium/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261010-003](/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261010-012](/lkm/2026/10/10/sched-20261010-012-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261009-006](/lkm/2026/10/09/sched-20261009-006-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work

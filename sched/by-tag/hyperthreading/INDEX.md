@@ -1,7 +1,9 @@
 # tag: hyperthreading
 
-共 30 篇
+共 32 篇
 
+- [sched-20261012-011](../../2026/10/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-002](../../2026/10/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.md) `fix/medium/under_review` — Hui Su 修 sched_ext 在 SMT 系统上一个 strict-core 选择被绕过的 bug：`SCX_PICK_IDLE_CORE`（要求选核的 SMT 兄弟都 idle）在 restricted `select_cpu` kfunc 路径和两条 `WAKE_SYNC` 捷径上都没被校验，会把任务摆到只有单线程 idle 的核上；补丁跳过这些捷径并在 restricted 路径校验
 - [sched-20261009-013](../../2026/10/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-017](../../2026/10/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

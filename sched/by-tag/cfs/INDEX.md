@@ -1,7 +1,16 @@
 # tag: cfs
 
-共 182 篇
+共 191 篇
 
+- [sched-20261012-027](../../2026/10/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-026](../../2026/10/sched-20261012-026-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-023](../../2026/10/sched-20261012-023-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-022](../../2026/10/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-021](../../2026/10/sched-20261012-021-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-018](../../2026/10/sched-20261012-018-sched-fair-remove-tunable-scaling.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-015](../../2026/10/sched-20261012-015-sched-fair-add-force-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-014](../../2026/10/sched-20261012-014-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-010](../../2026/10/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-004](../../2026/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/medium/under_review` — Jemmy Wong 修 cache-aware 调度的一个新问题（`[PATCH]`，当日新发）：`update_sg_lb_stats()` 对 `sched_group_span(group)` 与 `env->cpus` 两个可能不一致的 CPU 集合求和利用率、却用整组 `sgc->capacity` 求容量，`record_sg_llc_stats()` 把两者都发出去——亲和性重试或
 - [sched-20261010-003](../../2026/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-002](../../2026/10/sched-20261010-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

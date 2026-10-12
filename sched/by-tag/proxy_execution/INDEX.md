@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 67 篇
+共 68 篇
 
+- [sched-20261012-012](../../2026/10/sched-20261012-012-sched-proxy-defer-donor-commit-until-after-proxy-resolution.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-010](../../2026/10/sched-20261010-010-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-005](../../2026/10/sched-20261010-005-sched-proxy-defer-donor-commit-until-after-proxy-resolution.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-015](../../2026/10/sched-20261009-015-sched-fix-proxy-exec-use-of-curr-and-donor.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。

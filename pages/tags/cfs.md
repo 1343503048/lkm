@@ -2,9 +2,18 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 182
+article_count: 191
 ---
 
+- [sched-20261012-010](/lkm/2026/10/12/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261012-014](/lkm/2026/10/12/sched-20261012-014-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261012-015](/lkm/2026/10/12/sched-20261012-015-sched-fair-add-force-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add force push task mechanism for fair
+- [sched-20261012-018](/lkm/2026/10/12/sched-20261012-018-sched-fair-remove-tunable-scaling.html) `discussion/none/rfc` — sched/fair: Remove tunable scaling
+- [sched-20261012-021](/lkm/2026/10/12/sched-20261012-021-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `feature/none/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
+- [sched-20261012-022](/lkm/2026/10/12/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261012-023](/lkm/2026/10/12/sched-20261012-023-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `discussion/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
+- [sched-20261012-026](/lkm/2026/10/12/sched-20261012-026-sched-introduce-for-each-process-rculock-and-for-each-thread.html) `feature/none/under_review` — sched: introduce for_each_process_rculock and for_each_thread_rculock
+- [sched-20261012-027](/lkm/2026/10/12/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20261010-001](/lkm/2026/10/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261010-002](/lkm/2026/10/10/sched-20261010-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
 - [sched-20261010-003](/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec

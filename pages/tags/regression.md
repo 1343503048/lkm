@@ -2,9 +2,12 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 28
+article_count: 31
 ---
 
+- [sched-20261012-009](/lkm/2026/10/12/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
+- [sched-20261012-010](/lkm/2026/10/12/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261012-022](/lkm/2026/10/12/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261008-008](/lkm/2026/10/08/sched-20261008-008-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.html) `fix/medium/under_review` — cpufreq/amd-pstate: Don't fail active mode init on read-only auto_sel
 - [sched-20261008-011](/lkm/2026/10/08/sched-20261008-011-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
 - [sched-20261007-009](/lkm/2026/10/07/sched-20261007-009-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue

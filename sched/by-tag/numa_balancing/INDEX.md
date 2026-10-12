@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 45 篇
+共 47 篇
 
+- [sched-20261012-008](../../2026/10/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-006](../../2026/10/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.md) `feature/rfc` — Yafang Shao 发 RFC v2：全局 `kernel.numa_balancing[_mode]` 是 all-or-nothing，无法同时满足「延迟敏感服务只要调度统计不要 tiering 提升」与「批处理要 PMEM 内存被热提升」；引入 `bpf_numab_ops` struct_ops，把 NUMA balancing 模式选择下放到 per-cgroup BPF 策略。当日
 - [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-003](../../2026/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

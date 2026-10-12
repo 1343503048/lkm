@@ -2,9 +2,11 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 30
+article_count: 32
 ---
 
+- [sched-20261012-002](/lkm/2026/10/12/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.html) `fix/medium/under_review` — sched_ext: Honor SCX_PICK_IDLE_CORE in CPU selection shortcuts
+- [sched-20261012-011](/lkm/2026/10/12/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261009-013](/lkm/2026/10/09/sched-20261009-013-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261002-016](/lkm/2026/10/02/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/merged_tip` — sched/fair: Honor asymmetric SMT priority in idle selection
 - [sched-20261002-017](/lkm/2026/10/02/sched-20261002-017-sched-topology-add-asymmetric-smt-packing-override.html) `feature/none/merged_tip` — sched/topology: Add asymmetric SMT packing override

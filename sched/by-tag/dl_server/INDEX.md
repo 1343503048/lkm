@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 10 篇
+共 11 篇
 
+- [sched-20261012-019](../../2026/10/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/low/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261005-004](../../2026/10/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/medium/rfc` — Ionut Nechita（Wind River）把此前讨论中的「tickless 变体」落成正式 RFC：在 nohz_full 核上，把「武装 fair server 保 CFS 带宽」与「为 server 保持 tick」两个关注点拆开——`sched_can_stop_tick()` 只负责武装 server（RT+CFS 共存且有 runtime 配置时 `dl_server_start
 - [sched-20261005-003](../../2026/10/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-003](../../2026/10/sched-20261002-003-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

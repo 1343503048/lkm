@@ -1,7 +1,10 @@
 # tag: rt
 
-共 25 篇
+共 28 篇
 
+- [sched-20261012-025](../../2026/10/sched-20261012-025-sched-rt-c-kernel-doc-warning.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-024](../../2026/10/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-013](../../2026/10/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261006-004](../../2026/10/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261005-007](../../2026/10/sched-20261005-007-sched-rt-c-kernel-doc-warning.md) `discussion/low/under_review` — Manuel Ebner 在 `make W=1` 构建时遇到告警并公开求解：`kernel/sched/rt.c:12:18: warning: 'max_rt_runtime' defined but not used [-Wunused-const-variable=]`——他困惑于该变量「明明在文件后面被用了两处」（`tg_set_rt_bandwidth()` 的 quota 上限检查、
 - [sched-20261002-015](../../2026/10/sched-20261002-015-smpboot-don-t-park-the-thread-if-work-is-pending.md) `fix/medium/merged_tip` — Sebastian Andrzej Siewior（linutronix，PREEMPT_RT 维护者）4 补丁系列（09-11 发出，`<20260911143815.997254-...>`，系列 1/4 未随本轮合入）中的 2/4-4/4 三片于 10-02 由 Peter Zijlstra 合入 tip: sched/core（CommitterDate 10-01）：4/4 `smpbo

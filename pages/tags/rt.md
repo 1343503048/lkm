@@ -2,9 +2,12 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 25
+article_count: 28
 ---
 
+- [sched-20261012-013](/lkm/2026/10/12/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
+- [sched-20261012-024](/lkm/2026/10/12/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/medium/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.
+- [sched-20261012-025](/lkm/2026/10/12/sched-20261012-025-sched-rt-c-kernel-doc-warning.html) `discussion/none/under_review` — sched: rt.c: kernel-doc warning
 - [sched-20261006-004](/lkm/2026/10/06/sched-20261006-004-kcov-keep-timer-and-scheduler-noise-out-of-task-coverage.html) `fix/low/under_review` — kcov: Keep timer and scheduler noise out of task coverage
 - [sched-20261005-007](/lkm/2026/10/05/sched-20261005-007-sched-rt-c-kernel-doc-warning.html) `discussion/low/under_review` — sched: rt.c: kernel-doc warning
 - [sched-20261002-015](/lkm/2026/10/02/sched-20261002-015-smpboot-don-t-park-the-thread-if-work-is-pending.html) `fix/medium/merged_tip` — smpboot: Don't park the thread if work is pending

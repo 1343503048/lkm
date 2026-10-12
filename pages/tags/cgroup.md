@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 96
+article_count: 97
 ---
 
+- [sched-20261012-006](/lkm/2026/10/12/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.html) `feature/none/rfc` — sched: add per-cgroup NUMA balancing mode selection via BPF
 - [sched-20261011-001](/lkm/2026/10/11/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/medium/under_review` — sched/psi: Remove the RCU wait from trigger destruction
 - [sched-20261009-009](/lkm/2026/10/09/sched-20261009-009-sched-ext-report-a-sub-scheduler-s-attach-time-ecaps-before.html) `fix/low/under_review` — sched_ext: Report a sub-scheduler's attach-time ecaps before lifting its enable bypass
 - [sched-20261009-016](/lkm/2026/10/09/sched-20261009-016-sched-ext-add-ops-sub-child-ecaps-updated.html) `feature/none/under_review` — sched_ext: Add ops.sub_child_ecaps_updated()

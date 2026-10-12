@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 148 篇
+共 152 篇
 
+- [sched-20261012-015](../../2026/10/sched-20261012-015-sched-fair-add-force-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-014](../../2026/10/sched-20261012-014-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-008](../../2026/10/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261012-007](../../2026/10/sched-20261012-007-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-004](../../2026/10/sched-20261010-004-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/medium/under_review` — Jemmy Wong 修 cache-aware 调度的一个新问题（`[PATCH]`，当日新发）：`update_sg_lb_stats()` 对 `sched_group_span(group)` 与 `env->cpus` 两个可能不一致的 CPU 集合求和利用率、却用整组 `sgc->capacity` 求容量，`record_sg_llc_stats()` 把两者都发出去——亲和性重试或
 - [sched-20261010-001](../../2026/10/sched-20261010-001-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-010](../../2026/10/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。这是 Jianyong Wu（海光）23 补丁 RFC（NUMA/LLC 两级亲和性打分负载均衡）的持续评审。
