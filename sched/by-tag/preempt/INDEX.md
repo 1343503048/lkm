@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 69 篇
+共 70 篇
 
+- [sched-20261013-001](../../2026/10/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.md) `fix/high/under_review` — Paul E. McKenney 报告 rcutorture TREE01 场景下（x86 与 arm64）调度器「明显丢失唤醒」，CPU 带着可运行任务却陷入 idle、触发 RCU CPU stall。K Prateek Nayak 定位到 `sched_change_end()` 里对「已入队但非 current」任务改类（如 OTHER→RT）时既不升级 `rq->next_class` 
 - [sched-20261012-024](../../2026/10/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-004](../../2026/10/sched-20261009-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（Linaro，sched 维护者兼本文作者）的 18 补丁 v2 系列，目标系统性地降低短 slice 任务（低时延敏感的小任务）的调度时延：一组 EEVDF 的 lag/slice 处理改进（decay lag、idle 唤醒时 reset lag、per-CPU cache min_slice、按 min_slice 选 CPU、wake_affine 时比较 
 - [sched-20261008-009](../../2026/10/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

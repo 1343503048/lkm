@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 57
+article_count: 58
 ---
 
+- [sched-20261013-017](/lkm/2026/10/13/sched-20261013-017-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261012-005](/lkm/2026/10/12/sched-20261012-005-sched-eevdf-remove-redundant-run-to-parity-check.html) `fix/low/under_review` — sched/eevdf: Remove redundant RUN_TO_PARITY check
 - [sched-20261012-009](/lkm/2026/10/12/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261012-022](/lkm/2026/10/12/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue

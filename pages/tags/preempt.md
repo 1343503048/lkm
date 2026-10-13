@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 69
+article_count: 70
 ---
 
+- [sched-20261013-001](/lkm/2026/10/13/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/under_review` — sched/core: Call wakeup_preempt() for queued tasks during class change
 - [sched-20261012-024](/lkm/2026/10/12/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/medium/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.
 - [sched-20261009-004](/lkm/2026/10/09/sched-20261009-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261008-009](/lkm/2026/10/08/sched-20261008-009-sched-convert-last-bits-of-deprecated-static-key-usage.html) `feature/low/under_review` — sched: Convert last bits of deprecated static key usage

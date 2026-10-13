@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 231 篇
+共 235 篇
 
+- [sched-20261013-019](../../2026/10/sched-20261013-019-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-018](../../2026/10/sched-20261013-018-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-016](../../2026/10/sched-20261013-016-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-006](../../2026/10/sched-20261013-006-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.md) `fix/medium/under_review` — Kuba Piecuch 发 2 补丁修复（挂 `sched_ext/for-7.3-fixes`）：任务可在「调度它的 CPU 仍在跑 `ops.dequeue()`、尚未清 `SCX_OPSS_DISPATCHING`」时就被发现在非本机 DSQ 上，而 DSQ 的 consume 与 move 路径不等 dispatch 完成、会与 dispatcher 并发操作同一任务。系列在 consu
 - [sched-20261012-004](../../2026/10/sched-20261012-004-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-003](../../2026/10/sched-20261012-003-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.md) `fix/medium/under_review` — sched_ext 维护者 Tejun Heo 发 2 补丁修复补丁（挂 `sched_ext/for-7.3-fixes`）：`scx_bypass()` 只在自身 depth 跨零时才 propagate 给后代并 claim bypass dispatch，导致「子调度器自身的 bypass 与祖先的 bypass 重叠」时后代提前退逼、claim 泄漏或从未取得；PM suspend 覆盖
 - [sched-20261012-002](../../2026/10/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.md) `fix/medium/under_review` — Hui Su 修 sched_ext 在 SMT 系统上一个 strict-core 选择被绕过的 bug：`SCX_PICK_IDLE_CORE`（要求选核的 SMT 兄弟都 idle）在 restricted `select_cpu` kfunc 路径和两条 `WAKE_SYNC` 捷径上都没被校验，会把任务摆到只有单线程 idle 的核上；补丁跳过这些捷径并在 restricted 路径校验

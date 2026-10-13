@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 47 篇
+共 49 篇
 
+- [sched-20261013-005](../../2026/10/sched-20261013-005-sched-add-helpers-for-numa-balancing.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-004](../../2026/10/sched-20261013-004-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — Li Zhe（字节跳动）9 月 8 日发出的「per-process 自动 NUMA balancing 控制」系列（0/4，prctl 式逐进程开关）在昨日迎来新一轮讨论：Chen Yu（Intel）建议把全局开关扩展成三元（类比 THP 的 always/advise/never），避免逐进程关闭 NUMA balancing 的负担；Yafang Shao 则基于 THP 与 LLC-awa
 - [sched-20261012-008](../../2026/10/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-006](../../2026/10/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.md) `feature/rfc` — Yafang Shao 发 RFC v2：全局 `kernel.numa_balancing[_mode]` 是 all-or-nothing，无法同时满足「延迟敏感服务只要调度统计不要 tiering 提升」与「批处理要 PMEM 内存被热提升」；引入 `bpf_numab_ops` struct_ops，把 NUMA balancing 模式选择下放到 per-cgroup BPF 策略。当日
 - [sched-20261010-012](../../2026/10/sched-20261010-012-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

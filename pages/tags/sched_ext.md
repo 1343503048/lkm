@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 231
+article_count: 235
 ---
 
+- [sched-20261013-006](/lkm/2026/10/13/sched-20261013-006-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.html) `fix/medium/under_review` — sched_ext: Wait for SCX_OPSS_DISPATCHING on DSQ consume and move paths
+- [sched-20261013-016](/lkm/2026/10/13/sched-20261013-016-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.html) `fix/medium/merged_tip` — sched_ext: Fix bypass propagation and the bypass dispatch claim for overlapping bypasses
+- [sched-20261013-018](/lkm/2026/10/13/sched-20261013-018-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/merged_tip` — sched_ext: idle: Respect task affinity in restricted CPU selection
+- [sched-20261013-019](/lkm/2026/10/13/sched-20261013-019-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.html) `fix/low/merged_tip` — selftests/sched_ext: Fix build error in dequeue_remote selftest
 - [sched-20261012-001](/lkm/2026/10/12/sched-20261012-001-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.html) `fix/low/under_review` — selftests/sched_ext: Fix build error in dequeue_remote selftest
 - [sched-20261012-002](/lkm/2026/10/12/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.html) `fix/medium/under_review` — sched_ext: Honor SCX_PICK_IDLE_CORE in CPU selection shortcuts
 - [sched-20261012-003](/lkm/2026/10/12/sched-20261012-003-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.html) `fix/medium/under_review` — sched_ext: Fix bypass propagation and the bypass dispatch claim for overlapping bypasses

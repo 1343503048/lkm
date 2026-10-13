@@ -1,7 +1,8 @@
 # tag: rt
 
-共 28 篇
+共 29 篇
 
+- [sched-20261013-003](../../2026/10/sched-20261013-003-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `bug/medium/rfc` — wangqk1（小鹏）发 RFC：SMP PREEMPT_RT arm64 系统关机时 `machine_power_off()` 触发 `smp_send_stop()`，被 stop 的 CPU 不跑正常 hotplug teardown，其 RT overload 状态残留 stale 的 `rto_mask` 位；仍在跑的 CPU 的 `rto_push_irq_work_func()` 
 - [sched-20261012-025](../../2026/10/sched-20261012-025-sched-rt-c-kernel-doc-warning.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-024](../../2026/10/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-013](../../2026/10/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

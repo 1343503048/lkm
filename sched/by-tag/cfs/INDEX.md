@@ -1,7 +1,14 @@
 # tag: cfs
 
-共 191 篇
+共 198 篇
 
+- [sched-20261013-015](../../2026/10/sched-20261013-015-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-013](../../2026/10/sched-20261013-013-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-010](../../2026/10/sched-20261013-010-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-008](../../2026/10/sched-20261013-008-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-007](../../2026/10/sched-20261013-007-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261013-002](../../2026/10/sched-20261013-002-sched-loadavg-use-read-once-write-once-for-calc-load-idx.md) `fix/low/under_review` — Hui Su 发一枚 KCSAN 数据竞争修复：`calc_load_idx` 在 NO_HZ fold 路径被 `calc_load_write_idx()` 无锁读、在全局负载路径被 `calc_global_nohz()` 更新，但读写仍是普通 C 访问，KCSAN 报 `calc_global_load / calc_load_nohz_fold` 竞争。补丁给这两处补 `READ_ONC
+- [sched-20261013-001](../../2026/10/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.md) `fix/high/under_review` — Paul E. McKenney 报告 rcutorture TREE01 场景下（x86 与 arm64）调度器「明显丢失唤醒」，CPU 带着可运行任务却陷入 idle、触发 RCU CPU stall。K Prateek Nayak 定位到 `sched_change_end()` 里对「已入队但非 current」任务改类（如 OTHER→RT）时既不升级 `rq->next_class` 
 - [sched-20261012-027](../../2026/10/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-026](../../2026/10/sched-20261012-026-sched-introduce-for-each-process-rculock-and-for-each-thread.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-023](../../2026/10/sched-20261012-023-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。

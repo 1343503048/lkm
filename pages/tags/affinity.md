@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 51
+article_count: 52
 ---
 
+- [sched-20261013-012](/lkm/2026/10/13/sched-20261013-012-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261012-013](/lkm/2026/10/12/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261011-003](/lkm/2026/10/11/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/under_review` — sched_ext: idle: Respect task affinity in restricted CPU selection
 - [sched-20261009-005](/lkm/2026/10/09/sched-20261009-005-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `fix/low/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups

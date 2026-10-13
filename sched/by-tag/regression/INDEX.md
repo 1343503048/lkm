@@ -1,7 +1,8 @@
 # tag: regression
 
-共 31 篇
+共 32 篇
 
+- [sched-20261013-008](../../2026/10/sched-20261013-008-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-022](../../2026/10/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-010](../../2026/10/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-009](../../2026/10/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

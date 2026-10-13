@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 47
+article_count: 49
 ---
 
+- [sched-20261013-004](/lkm/2026/10/13/sched-20261013-004-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
+- [sched-20261013-005](/lkm/2026/10/13/sched-20261013-005-sched-add-helpers-for-numa-balancing.html) `feature/none/rfc` — sched: add helpers for numa balancing
 - [sched-20261012-006](/lkm/2026/10/12/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.html) `feature/none/rfc` — sched: add per-cgroup NUMA balancing mode selection via BPF
 - [sched-20261012-008](/lkm/2026/10/12/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/medium/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261010-003](/lkm/2026/10/10/sched-20261010-003-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec

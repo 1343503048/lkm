@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 57 篇
+共 58 篇
 
+- [sched-20261013-017](../../2026/10/sched-20261013-017-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-022](../../2026/10/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-009](../../2026/10/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-005](../../2026/10/sched-20261012-005-sched-eevdf-remove-redundant-run-to-parity-check.md) `fix/low/under_review` — Elif Topuz 提交一个 EEVDF 小清理：`update_protect_slice()` 只在 `RUN_TO_PARITY` 特性开启时被调用，函数内部的 `sched_feat(RUN_TO_PARITY)` 判断是冗余的；直接改用 `cfs_rq_min_slice()`。当日 Vincent Guittot 已 `Reviewed-by`，是低风险的确定性清理。

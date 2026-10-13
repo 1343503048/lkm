@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 28
+article_count: 29
 ---
 
+- [sched-20261013-003](/lkm/2026/10/13/sched-20261013-003-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.html) `bug/medium/rfc` — sched/rt: Avoid RTO push to stopped CPUs during shutdown
 - [sched-20261012-013](/lkm/2026/10/12/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261012-024](/lkm/2026/10/12/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/medium/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.
 - [sched-20261012-025](/lkm/2026/10/12/sched-20261012-025-sched-rt-c-kernel-doc-warning.html) `discussion/none/under_review` — sched: rt.c: kernel-doc warning

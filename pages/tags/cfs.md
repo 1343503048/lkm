@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 191
+article_count: 198
 ---
 
+- [sched-20261013-001](/lkm/2026/10/13/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/under_review` — sched/core: Call wakeup_preempt() for queued tasks during class change
+- [sched-20261013-002](/lkm/2026/10/13/sched-20261013-002-sched-loadavg-use-read-once-write-once-for-calc-load-idx.html) `fix/low/under_review` — sched/loadavg: Use READ_ONCE/WRITE_ONCE for calc_load_idx
+- [sched-20261013-007](/lkm/2026/10/13/sched-20261013-007-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices
+- [sched-20261013-008](/lkm/2026/10/13/sched-20261013-008-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261013-010](/lkm/2026/10/13/sched-20261013-010-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
+- [sched-20261013-013](/lkm/2026/10/13/sched-20261013-013-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261013-015](/lkm/2026/10/13/sched-20261013-015-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `feature/none/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
 - [sched-20261012-010](/lkm/2026/10/12/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
 - [sched-20261012-014](/lkm/2026/10/12/sched-20261012-014-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261012-015](/lkm/2026/10/12/sched-20261012-015-sched-fair-add-force-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add force push task mechanism for fair
