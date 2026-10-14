@@ -16430,6 +16430,256 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261012-001：sched_ext 自测 `dequeue_remote` 在较新编译器（gcc 16）下因 `sum`「set but not used」构建报错，作者用一行 `asm volatile(\"\" : : \"r\"(sum))` 消费该变量，与既有 `dequeue` 自测修法一致；Kuba Piecuch 已 Reviewed-by。 - sched-20261013-019（今天）：Tejun Heo 将其 **Applied 到 sched_ext/for-7.4**，去掉原 `Fix"
   },
   {
+    "title": "sched/core: Call wakeup_preempt() for queued tasks during class change",
+    "id": "sched-20261014-001",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "preempt"
+    ],
+    "authors": [
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261013-001：Paul E. McKenney 报告 rcutorture TREE01 下调度器「lost wakeup」（CPU 带着可运行 RT 任务却 idle、触发 RCU stall）；K Prateek Nayak 定位到 `sched_change_end()` 对「已入队但非 current」任务改类时不升级 `rq->next_class` 也不 `resched_curr()`，当日发出修复补丁。 - sched-20261014-001（今天）：**该补丁已合入 tip/sch"
+  },
+  {
+    "title": "sched/numa: fix several NUMA balancing issues",
+    "id": "sched-20261014-002",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "numa_balancing",
+      "cfs"
+    ],
+    "authors": [
+      "Li Zhe"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.html",
+    "tldr": "Li Zhe（字节跳动）今日发出 0/6 系列，修复 NUMA balancing 在 scan-period 调整、memory-tiering promotion 反馈、陈旧 task-placement 状态三个方向的多个问题（含一个 memory hotplug 下可复现的除零）。当日 Gregory Price 对 6 个补丁逐一回帖，普遍要求补「用户可见的性能影响」数据，并对 4/6 的全局 sysctl 开关方向明确表示「不是正确方向」。v1 刚发、无维护者表态，合入前需先补齐性能论证。"
+  },
+  {
+    "title": "sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle",
+    "id": "sched-20261014-003",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "nohz",
+      "idle"
+    ],
+    "authors": [
+      "Wei Gao"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.html",
+    "tldr": "Wei Gao（SUSE）修复 liburing `test/iowait.t` 在 tickless + 无 IRQ time accounting 配置下间歇性失败的问题：任务在中断处理函数里被唤醒时，`rq->nr_iowait` 在 CPU 退出 idle 前已减到 0，导致整段 iowait 被记成 CPUTIME_IDLE。作者方案是在 `kcpustat_irq_enter()` 里检查 `nr_iowait_cpu()` 提前结算 iowait。Peter Zijlstra 当日否决——「用 `nr_iowait_cpu()` 本质上永远不是修复，是掷骰子」，该方案合入可能性低"
+  },
+  {
+    "title": "sched: Replace nr_iowait_cpu() with a bool accessor",
+    "id": "sched-20261014-004",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "idle",
+      "nohz"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html",
+    "tldr": "Christian Loehle 跟进同日 `sched/cputime: Preserve iowait accounting...` 线程里 Peter 对 `nr_iowait_cpu()` 误用的批评，发清理补丁：menu governor 已不再消费 per-CPU iowait 计数的大小，剩余调用方只关心「零/非零」，故把返回 `unsigned int` 的 `nr_iowait_cpu()` 改为返回 `bool` 的 `cpu_has_iowait()`，让「是否在 iowait」的语义显式化并避免误用。纯重构、无行为变更，当日无 review。"
+  },
+  {
+    "title": "sched/deadline: Restore dequeue schedstats on the task dequeue path",
+    "id": "sched-20261014-005",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "deadline"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-005-sched-deadline-restore-dequeue-schedstats-on-the-task-dequeu.html",
+    "tldr": "Zhan Xusheng（小米）修复 SCHED_DEADLINE 任务的 schedstats 回归：`update_stats_dequeue_dl()` 本应记录 `sleep_start`/`block_start`，但它唯一的调用点走了 throttle 路径且 `flags=0`，`DEQUEUE_SLEEP` 分支永不执行，导致 deadline 任务在 `/proc/PID/sched` 里 sleep/block 统计全为 0、不产生任何 `sched_stat_*` 事件。修复把该调用搬回 `dequeue_task_dl()`（带 `on_dl_rq()` 守卫），并顺带"
+  },
+  {
+    "title": "sched/eevdf: Fix vprot across reweighting",
+    "id": "sched-20261014-006",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-006-sched-eevdf-fix-vprot-across-reweighting.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261003-007：Kayra Cizmeci 发独立补丁「Fix vprot across reweighting」，用 `rel_vprot` 标志把 protection 在 reweight 时转/恢复相对量，修「已过期 protection 复活」。 - sched-20261011-004：Christian Loehle 给 `Tested-by` 但要求移除其 SOB。 - sched-20261012-009：Vincent Guittot 提出无需 `rel_vprot`、curr 时直"
+  },
+  {
+    "title": "sched/fair: remove dead code on enqueue_task_fair()",
+    "id": "sched-20261014-007",
+    "date": "2026-10-14",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "regression"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261012-010：Kayra 的「remove dead code on enqueue_task_fair()」已合入 tip/sched/core（819224e506bc），但引入 CFS_BANDWIDTH 回归（throttle→dequeue→unthrottle→enqueue 命中被删分支触发 WARNING）；Peter 给出 `if (cfs_rq->curr != se) __enqueue_entity()` 修复 diff。 - sched-20261013-008：Peter "
+  },
+  {
+    "title": "sched/fair: Rework/fix task_h_load()",
+    "id": "sched-20261014-008",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "cgroup"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-008-sched-fair-rework-fix-task-h-load.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260902-007：Peter Zijlstra 4 补丁系列中 `4/4` 重做 `task_h_load()`，v1 在 `set_next_task_fair()` 里 clobber `se`/`cfs_rq`，致 192 核启动 panic（Chen Yu、Vincent 双复现）。 - sched-20260929-012：Peter 重发 v2（完整 4 补丁），修复编译/运行期失败，back-link 机制移入 `for_each_sched_entity()`。 - sched-20260"
+  },
+  {
+    "title": "sched/cache: Avoid publishing partial LLC utilization",
+    "id": "sched-20261014-009",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-009-sched-cache-avoid-publishing-partial-llc-utilization.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261010-004：Jemmy Wong 修 cache-aware 调度「部分 LLC 利用率」问题——`record_sg_llc_stats()` 把「部分利用率 + 完整容量」一起发布，`can_migrate_llc()` 误判忙碌 preferred LLC 有空余。 - sched-20261012-007：Prateek 建议用更便宜的 `LBF_ALL_PINNED` 替代 `cpumask_subset()`；Jemmy 反驳其语义不匹配。 - sched-20261013-011：Je"
+  },
+  {
+    "title": "sched/cache: Remove the old cache group footprint on exec",
+    "id": "sched-20261014-010",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-007 / 20261010-003：Jemmy Wong 修 `sched_cache_exec_mmap()` 记账遗漏——exec 换掉 cache group 后旧 group 的 footprint 只在 exit 路径被减，共享 mm 任务 exec 后旧贡献残留；v2 抽 helper 让 exec 与 exit 都 drop。 - sched-20261012-008：Chen Yu 指出 footprint 无锁读写的竞态；Jemmy 折入 `try_cmpxchg_relax"
+  },
+  {
+    "title": "sched/fair: Add push task mechanism for fair",
+    "id": "sched-20261014-011",
+    "date": "2026-10-14",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-011-sched-fair-add-push-task-mechanism-for-fair.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-004 / 20261010-001：Vincent Guittot 的 18 补丁 v2「Improving latency of short slice tasks」系列引入 fair push 任务机制（把排不上本 CPU 或不该在本 CPU 的任务推到更合适 CPU），短 slice 任务是首个使用者。 - sched-20261012-014：Shrikanth Hegde 对 07/18 提 review；Vincent 澄清「wakeup 与 push 共用同一 select 函数"
+  },
+  {
+    "title": "sched/numa: Add per-process automatic NUMA balancing control",
+    "id": "sched-20261014-012",
+    "date": "2026-10-14",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Li Zhe"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-012-sched-numa-add-per-process-automatic-numa-balancing-control.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261013-004：Li Zhe（字节跳动）9/8 的「per-process 自动 NUMA balancing 控制」系列（0/4，prctl 式逐进程开关）在昨日迎来方向讨论——Chen Yu 建议把全局开关做成三元（类比 THP always/advise/never），Yafang Shao 主张从开始就做成 BPF-cgroup 式可扩展语义；方向（prctl vs cgroup/BPF vs 三元全局键）未收敛。 - sched-20261014-012（今天）：作者 Li Zhe 回应——「"
+  },
+  {
+    "title": "sched/cputime: Don't account idle time twice after dyntick-idle",
+    "id": "sched-20261014-013",
+    "date": "2026-10-14",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "nohz",
+      "idle"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间超墙钟（SPARC T7-1 最差 1.44x、KVM guest 1.53x），根因 `cf6444c3e1bb` 统一记账后 dyntick-idle 与重启 tick 首周期双计。 - sched-20261005-002：v1 修复发出，Frederic 认可思路但指出嵌套边界。 - sched-2026100"
+  },
+  {
+    "title": "sched: Introduce idle SMT priority for asymmetric capacity systems",
+    "id": "sched-20261014-014",
+    "date": "2026-10-14",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Mete Durlu"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-001 / 20261009-013：Mete Durlu（IBM/s390）发 RFC——非对称容量 + SMT 系统上调度器「宁可整核空闲也不占忙碌高容量核的空闲 SMT 兄弟线程」，引入 `SCHED_IDLE_SMT_PRIO` 静态分支 + 架构钩子；Andrea/Shrikanth 建议改走扩展 `cpu_preferred_mask` 做 soft preference。 - sched-20261012-011：Vincent Guittot 反对「运行期容量可变」假设，指向 S"
+  },
+  {
+    "title": "sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks",
+    "id": "sched-20261014-015",
+    "date": "2026-10-14",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/14/sched-20261014-015-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261008-006：Tao Cui 报告疑似 dispatch 饥饿：父子 cid 调度里，busy-loop 任务在子调度器 attach 前进 cgroup 时，子调度器每轮 claim 到该任务但 duty 仅 ~0.3%，同属 root 的等价任务 ~100%；Tejun 要求补调度器源码与完整复现步骤。 - sched-20261009-014：Tao Cui 交出完整材料（`scx_k2` 源码、KVM 环境、11 步复现流程）。 - sched-20261010-013：Tejun 定位完毕—"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

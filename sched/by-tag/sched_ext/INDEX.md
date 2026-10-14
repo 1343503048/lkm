@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 235 篇
+共 236 篇
 
+- [sched-20261014-015](../../2026/10/sched-20261014-015-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-019](../../2026/10/sched-20261013-019-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-018](../../2026/10/sched-20261013-018-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-016](../../2026/10/sched-20261013-016-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

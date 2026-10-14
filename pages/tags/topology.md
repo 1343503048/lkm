@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 120
+article_count: 121
 ---
 
+- [sched-20261014-014](/lkm/2026/10/14/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261013-010](/lkm/2026/10/13/sched-20261013-010-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261012-011](/lkm/2026/10/12/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261009-010](/lkm/2026/10/09/sched-20261009-010-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

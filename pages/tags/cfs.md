@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 198
+article_count: 204
 ---
 
+- [sched-20261014-001](/lkm/2026/10/14/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/merged_tip` — sched/core: Call wakeup_preempt() for queued tasks during class change
+- [sched-20261014-002](/lkm/2026/10/14/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.html) `fix/medium/under_review` — sched/numa: fix several NUMA balancing issues
+- [sched-20261014-007](/lkm/2026/10/14/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261014-008](/lkm/2026/10/14/sched-20261014-008-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
+- [sched-20261014-011](/lkm/2026/10/14/sched-20261014-011-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261014-014](/lkm/2026/10/14/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261013-001](/lkm/2026/10/13/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/under_review` — sched/core: Call wakeup_preempt() for queued tasks during class change
 - [sched-20261013-002](/lkm/2026/10/13/sched-20261013-002-sched-loadavg-use-read-once-write-once-for-calc-load-idx.html) `fix/low/under_review` — sched/loadavg: Use READ_ONCE/WRITE_ONCE for calc_load_idx
 - [sched-20261013-007](/lkm/2026/10/13/sched-20261013-007-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/rfc` — sched/fair: avoid redundant updates for unchanged default slices

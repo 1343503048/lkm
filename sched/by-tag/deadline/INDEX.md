@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 31 篇
+共 32 篇
 
+- [sched-20261014-005](../../2026/10/sched-20261014-005-sched-deadline-restore-dequeue-schedstats-on-the-task-dequeu.md) `fix/low/under_review` — Zhan Xusheng（小米）修复 SCHED_DEADLINE 任务的 schedstats 回归：`update_stats_dequeue_dl()` 本应记录 `sleep_start`/`block_start`，但它唯一的调用点走了 throttle 路径且 `flags=0`，`DEQUEUE_SLEEP` 分支永不执行，导致 deadline 任务在 `/proc/PID/sch
 - [sched-20261013-009](../../2026/10/sched-20261013-009-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-019](../../2026/10/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/low/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261005-005](../../2026/10/sched-20261005-005-sched-deadline-compare-against-the-donor-in-prio-changed-dl.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

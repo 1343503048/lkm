@@ -1,7 +1,13 @@
 # tag: cfs
 
-共 198 篇
+共 204 篇
 
+- [sched-20261014-014](../../2026/10/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-011](../../2026/10/sched-20261014-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-008](../../2026/10/sched-20261014-008-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-007](../../2026/10/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-002](../../2026/10/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — Li Zhe（字节跳动）今日发出 0/6 系列，修复 NUMA balancing 在 scan-period 调整、memory-tiering promotion 反馈、陈旧 task-placement 状态三个方向的多个问题（含一个 memory hotplug 下可复现的除零）。当日 Gregory Price 对 6 个补丁逐一回帖，普遍要求补「用户可见的性能影响」数据，并对 4/6 
+- [sched-20261014-001](../../2026/10/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-015](../../2026/10/sched-20261013-015-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-013](../../2026/10/sched-20261013-013-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-010](../../2026/10/sched-20261013-010-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

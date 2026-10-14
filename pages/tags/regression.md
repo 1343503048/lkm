@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 32
+article_count: 33
 ---
 
+- [sched-20261014-007](/lkm/2026/10/14/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
 - [sched-20261013-008](/lkm/2026/10/13/sched-20261013-008-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()
 - [sched-20261012-009](/lkm/2026/10/12/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261012-010](/lkm/2026/10/12/sched-20261012-010-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()

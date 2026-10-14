@@ -1,7 +1,8 @@
 # tag: topology
 
-共 120 篇
+共 121 篇
 
+- [sched-20261014-014](../../2026/10/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-010](../../2026/10/sched-20261013-010-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-011](../../2026/10/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-018](../../2026/10/sched-20261009-018-sched-topology-free-numa-masks-on-topology-allocation-failur.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

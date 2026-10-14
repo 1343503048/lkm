@@ -1,7 +1,10 @@
 # tag: numa_balancing
 
-共 49 篇
+共 52 篇
 
+- [sched-20261014-012](../../2026/10/sched-20261014-012-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-010](../../2026/10/sched-20261014-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-002](../../2026/10/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — Li Zhe（字节跳动）今日发出 0/6 系列，修复 NUMA balancing 在 scan-period 调整、memory-tiering promotion 反馈、陈旧 task-placement 状态三个方向的多个问题（含一个 memory hotplug 下可复现的除零）。当日 Gregory Price 对 6 个补丁逐一回帖，普遍要求补「用户可见的性能影响」数据，并对 4/6 
 - [sched-20261013-005](../../2026/10/sched-20261013-005-sched-add-helpers-for-numa-balancing.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-004](../../2026/10/sched-20261013-004-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — Li Zhe（字节跳动）9 月 8 日发出的「per-process 自动 NUMA balancing 控制」系列（0/4，prctl 式逐进程开关）在昨日迎来新一轮讨论：Chen Yu（Intel）建议把全局开关扩展成三元（类比 THP 的 always/advise/never），避免逐进程关闭 NUMA balancing 的负担；Yafang Shao 则基于 THP 与 LLC-awa
 - [sched-20261012-008](../../2026/10/sched-20261012-008-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

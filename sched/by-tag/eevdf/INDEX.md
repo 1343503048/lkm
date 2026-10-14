@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 58 篇
+共 59 篇
 
+- [sched-20261014-006](../../2026/10/sched-20261014-006-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-017](../../2026/10/sched-20261013-017-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-022](../../2026/10/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-009](../../2026/10/sched-20261012-009-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 235
+article_count: 236
 ---
 
+- [sched-20261014-015](/lkm/2026/10/14/sched-20261014-015-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/none/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
 - [sched-20261013-006](/lkm/2026/10/13/sched-20261013-006-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.html) `fix/medium/under_review` — sched_ext: Wait for SCX_OPSS_DISPATCHING on DSQ consume and move paths
 - [sched-20261013-016](/lkm/2026/10/13/sched-20261013-016-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.html) `fix/medium/merged_tip` — sched_ext: Fix bypass propagation and the bypass dispatch claim for overlapping bypasses
 - [sched-20261013-018](/lkm/2026/10/13/sched-20261013-018-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/merged_tip` — sched_ext: idle: Respect task affinity in restricted CPU selection

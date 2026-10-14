@@ -1,7 +1,10 @@
 # tag: nohz
 
-共 39 篇
+共 42 篇
 
+- [sched-20261014-013](../../2026/10/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-004](../../2026/10/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — Christian Loehle 跟进同日 `sched/cputime: Preserve iowait accounting...` 线程里 Peter 对 `nr_iowait_cpu()` 误用的批评，发清理补丁：menu governor 已不再消费 per-CPU iowait 计数的大小，剩余调用方只关心「零/非零」，故把返回 `unsigned int` 的 `nr_iowait_
+- [sched-20261014-003](../../2026/10/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/medium/under_review` — Wei Gao（SUSE）修复 liburing `test/iowait.t` 在 tickless + 无 IRQ time accounting 配置下间歇性失败的问题：任务在中断处理函数里被唤醒时，`rq->nr_iowait` 在 CPU 退出 idle 前已减到 0，导致整段 iowait 被记成 CPUTIME_IDLE。作者方案是在 `kcpustat_irq_enter()` 里
 - [sched-20261013-009](../../2026/10/sched-20261013-009-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-019](../../2026/10/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/low/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261007-002](../../2026/10/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — - sched-20261004-002：Stian Halseth 报告 v7.2-rc1 起回归——NO_HZ_IDLE + TICK_CPU_ACCOUNTING 下 `/proc/stat` idle 时间超过墙钟时间（SPARC T7-1 最差 1.44x、KVM guest 1.53x），根因为 cf6444c3e1bb 统一记账后 dyntick-idle 与重启 tick 首个整周

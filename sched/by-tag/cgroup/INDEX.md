@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 98 篇
+共 99 篇
 
+- [sched-20261014-008](../../2026/10/sched-20261014-008-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-005](../../2026/10/sched-20261013-005-sched-add-helpers-for-numa-balancing.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-006](../../2026/10/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.md) `feature/rfc` — Yafang Shao 发 RFC v2：全局 `kernel.numa_balancing[_mode]` 是 all-or-nothing，无法同时满足「延迟敏感服务只要调度统计不要 tiering 提升」与「批处理要 PMEM 内存被热提升」；引入 `bpf_numab_ops` struct_ops，把 NUMA balancing 模式选择下放到 per-cgroup BPF 策略。当日
 - [sched-20261011-001](../../2026/10/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/medium/under_review` — Shakeel Butt 移除 PSI trigger 销毁路径上的 `synchronize_rcu()`——Meta 生产环境发现该 RCU 等待在持有 kernfs `node_mutex` 时阻塞其他用户（文件关闭、cgroup 移除、禁用 cgroup.pressure 等）。补丁逐 commit 论证该等待已因历次重构失去必要性，改用 `rcu_access_pointer()` 做 

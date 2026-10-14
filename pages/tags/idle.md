@@ -2,9 +2,12 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 61
+article_count: 64
 ---
 
+- [sched-20261014-003](/lkm/2026/10/14/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/medium/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
+- [sched-20261014-004](/lkm/2026/10/14/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261014-013](/lkm/2026/10/14/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261011-003](/lkm/2026/10/11/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/under_review` — sched_ext: idle: Respect task affinity in restricted CPU selection
 - [sched-20261009-001](/lkm/2026/10/09/sched-20261009-001-cpuidle-add-the-shallow-governors.html) `feature/none/rfc` — cpuidle: Add the shallow governors
 - [sched-20261002-016](/lkm/2026/10/02/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.html) `feature/none/merged_tip` — sched/fair: Honor asymmetric SMT priority in idle selection

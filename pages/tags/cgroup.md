@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 98
+article_count: 99
 ---
 
+- [sched-20261014-008](/lkm/2026/10/14/sched-20261014-008-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20261013-005](/lkm/2026/10/13/sched-20261013-005-sched-add-helpers-for-numa-balancing.html) `feature/none/rfc` — sched: add helpers for numa balancing
 - [sched-20261012-006](/lkm/2026/10/12/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.html) `feature/none/rfc` — sched: add per-cgroup NUMA balancing mode selection via BPF
 - [sched-20261011-001](/lkm/2026/10/11/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/medium/under_review` — sched/psi: Remove the RCU wait from trigger destruction

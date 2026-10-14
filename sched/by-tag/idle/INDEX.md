@@ -1,7 +1,10 @@
 # tag: idle
 
-共 61 篇
+共 64 篇
 
+- [sched-20261014-013](../../2026/10/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261014-004](../../2026/10/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — Christian Loehle 跟进同日 `sched/cputime: Preserve iowait accounting...` 线程里 Peter 对 `nr_iowait_cpu()` 误用的批评，发清理补丁：menu governor 已不再消费 per-CPU iowait 计数的大小，剩余调用方只关心「零/非零」，故把返回 `unsigned int` 的 `nr_iowait_
+- [sched-20261014-003](../../2026/10/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/medium/under_review` — Wei Gao（SUSE）修复 liburing `test/iowait.t` 在 tickless + 无 IRQ time accounting 配置下间歇性失败的问题：任务在中断处理函数里被唤醒时，`rq->nr_iowait` 在 CPU 退出 idle 前已减到 0，导致整段 iowait 被记成 CPUTIME_IDLE。作者方案是在 `kcpustat_irq_enter()` 里
 - [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP
 - [sched-20261009-001](../../2026/10/sched-20261009-001-cpuidle-add-the-shallow-governors.md) `feature/rfc` — Roman Kagan（Amazon）发补丁新增两个窄用途 cpuidle governor（`shallow` 与 `shallow_nopoll`），让 CPU 停驻最浅 idle 状态并保持 scheduler tick 运行，可在运行时与命令行（`cpuidle.governor=`）双向切换，用于时延敏感负载与 kexec 在线升级场景。当日 Christian Loehle（ARM）质
 - [sched-20261002-016](../../2026/10/sched-20261002-016-sched-fair-honor-asymmetric-smt-priority-in-idle-selection.md) `feature/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

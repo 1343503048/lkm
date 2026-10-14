@@ -2,9 +2,12 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 39
+article_count: 42
 ---
 
+- [sched-20261014-003](/lkm/2026/10/14/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/medium/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
+- [sched-20261014-004](/lkm/2026/10/14/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261014-013](/lkm/2026/10/14/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261013-009](/lkm/2026/10/13/sched-20261013-009-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261012-019](/lkm/2026/10/12/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/low/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261007-002](/lkm/2026/10/07/sched-20261007-002-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle
