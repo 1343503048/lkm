@@ -208,52 +208,18 @@ footer a { color: var(--muted); }
     <p>rcutorture TREE01 场景下调度器「丢失唤醒」：CPU 带着一个完全可运行的 RT 任务却陷入 idle，触发 RCU CPU stall。dump 出的 rq 状态自相矛盾——等待任务是 RT，但 <code>rq-&gt;next_class</code> 还停在 fair：</p>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>stall 时刻的 rq 状态（tip commit message）</span><span>kernel/sched/core.c</span></div>
-<pre><span class="cl ctx">  rq-&gt;next_class      = &amp;fair_sched_class</span>
-<span class="cl ctx">  rq-&gt;nr_running      = 1</span>
-<span class="cl ctx">  rq-&gt;cfs.h_nr_queued = 0</span>
-<span class="cl ctx">  rq-&gt;rt.rt_nr_running = 1</span></pre></div>
+<pre><span class="cl ctx">  rq-&gt;next_class      = &amp;fair_sched_class</span><span class="cl ctx">  rq-&gt;nr_running      = 1</span><span class="cl ctx">  rq-&gt;cfs.h_nr_queued = 0</span><span class="cl ctx">  rq-&gt;rt.rt_nr_running = 1</span></pre></div>
 
     <p>根因是 <code>sched_change_end()</code> 与 <code>__sched_setscheduler()</code> 的竞态：<code>sched_balance_newidle()</code> 临时 drop rq_lock 的窗口内，任务被 enqueue 后又从 fair 升到 RT；此时 <code>ctx-&gt;queued</code> 为真、<code>ctx-&gt;running</code> 为假，<code>next_class</code> 升级与 <code>resched_curr()</code> 全被跳过，newidle 平衡只能选 idle：</p>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>竞态时序（节选自 commit 118a2cf4ced6）</span><span>race</span></div>
-<pre><span class="cl ctx">    CPU0                                   CPU1</span>
-<span class="cl ctx">  __schedule()</span>
-<span class="cl ctx">    pick_task_fair()</span>
-<span class="cl ctx">      sched_balance_newidle()</span>
-<span class="cl ctx">        raw_spin_rq_unlock(rq0)</span>
-<span class="cl ctx">                                    rq_lock(rq0)</span>
-<span class="cl ctx">                                    activate_task(rq0, p)   /* p is a fair task */</span>
-<span class="cl ctx">                                    __sched_setscheduler(p)</span>
-<span class="cl ctx">                                      /* p is moved to SCHED_RR */</span>
-<span class="cl ctx">                                      sched_change_end()</span>
-<span class="cl cmt">                                        /* p->on_rq = 1 (ctx->queued)</span>
-<span class="cl cmt">                                         * but p is not rq->donor (!ctx->running) hence</span>
-<span class="cl cmt">                                         * resched_curr() and rq->next_class upgrade</span>
-<span class="cl cmt">                                         * is skipped. */</span>
-<span class="cl ctx">          raw_spin_rq_lock(rq0)</span>
-<span class="cl ctx">           if (rq-&gt;cfs.h_nr_queued &amp;&amp; ...)      /* false */</span>
-<span class="cl ctx">           if (rq_modified_above(...))           /* false: next_class 仍为 fair */</span>
-<span class="cl ctx">      return NULL;  /* pick_task_fair() */</span>
-<span class="cl ctx">    pick_task_idle()</span>
-<span class="cl hi">  !!! rq-&gt;idle 带着 rq-&gt;nr_running == 1 切入，但 !need_resched() !!!</span></pre></div>
+<pre><span class="cl ctx">    CPU0                                   CPU1</span><span class="cl ctx">  __schedule()</span><span class="cl ctx">    pick_task_fair()</span><span class="cl ctx">      sched_balance_newidle()</span><span class="cl ctx">        raw_spin_rq_unlock(rq0)</span><span class="cl ctx">                                    rq_lock(rq0)</span><span class="cl ctx">                                    activate_task(rq0, p)   /* p is a fair task */</span><span class="cl ctx">                                    __sched_setscheduler(p)</span><span class="cl ctx">                                      /* p is moved to SCHED_RR */</span><span class="cl ctx">                                      sched_change_end()</span><span class="cl cmt">                                        /* p->on_rq = 1 (ctx->queued)</span><span class="cl cmt">                                         * but p is not rq->donor (!ctx->running) hence</span><span class="cl cmt">                                         * resched_curr() and rq->next_class upgrade</span><span class="cl cmt">                                         * is skipped. */</span><span class="cl ctx">          raw_spin_rq_lock(rq0)</span><span class="cl ctx">           if (rq-&gt;cfs.h_nr_queued &amp;&amp; ...)      /* false */</span><span class="cl ctx">           if (rq_modified_above(...))           /* false: next_class 仍为 fair */</span><span class="cl ctx">      return NULL;  /* pick_task_fair() */</span><span class="cl ctx">    pick_task_idle()</span><span class="cl hi">  !!! rq-&gt;idle 带着 rq-&gt;nr_running == 1 切入，但 !need_resched() !!!</span></pre></div>
 
     <h3 class="sub">方案思路</h3>
     <p>把「升级检测 + 唤醒抢占」从 <code>ctx-&gt;running</code> 分支拆出：对已入队（未运行）任务在改类后也调用 <code>wakeup_preempt()</code> 重新评估 <code>rq-&gt;next_class</code> 并置 NEED_RESCHED。改动仅 <code>kernel/sched/core.c</code> +9/−10：</p>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>修复 diff（最终合入版）</span><span>kernel/sched/core.c</span></div>
-<pre><span class="cl ctx">		if (p-&gt;sched_class-&gt;switched_to)</span>
-<span class="cl ctx">			p-&gt;sched_class-&gt;switched_to(rq, p);</span>
-<span class="cl ctx"></span>
-<span class="cl add">+		/*</span>
-<span class="cl add">+		 * Check if the task can preempt the current in case the class</span>
-<span class="cl add">+		 * was upgraded. Note that none of the switch*_from() methods</span>
-<span class="cl add">+		 * know the new class and none of the switch*_to() methods know</span>
-<span class="cl add">+		 * the old class so we must resched here.</span>
-<span class="cl add">+		 */</span>
-<span class="cl add hi">+		if (ctx-&gt;queued)</span>
-<span class="cl add hi">+			wakeup_preempt(rq, p, 0);</span>
-<span class="cl add">+</span>
-<span class="cl ctx">		if (ctx-&gt;running) {</span></pre></div>
+<pre><span class="cl ctx">		if (p-&gt;sched_class-&gt;switched_to)</span><span class="cl ctx">			p-&gt;sched_class-&gt;switched_to(rq, p);</span><span class="cl ctx"></span><span class="cl add">+		/*</span><span class="cl add">+		 * Check if the task can preempt the current in case the class</span><span class="cl add">+		 * was upgraded. Note that none of the switch*_from() methods</span><span class="cl add">+		 * know the new class and none of the switch*_to() methods know</span><span class="cl add">+		 * the old class so we must resched here.</span><span class="cl add">+		 */</span><span class="cl add hi">+		if (ctx-&gt;queued)</span><span class="cl add hi">+			wakeup_preempt(rq, p, 0);</span><span class="cl add">+</span><span class="cl ctx">		if (ctx-&gt;running) {</span></pre></div>
 
     <p>Fixes 标签经作者纠偏为 <code>704069649b5b</code>（"Rework sched_class::wakeup_preempt() and rq_modified_*()"）——该 commit 之前 enqueue 时改的是 <code>queue_mask</code>、能捕获类变更，改走 <code>next_class</code> 路径后才引入此洞。</p>
 
@@ -293,9 +259,7 @@ footer a { color: var(--muted); }
     <p>评审抓出的代表性问题——Tim Chen 指出 push 复用 <code>select_idle_sibling()</code> 会<b>污染 <code>recent_used_cpu</code> 唤醒提示</b>（push 的 prev 是「当前排队 CPU」而非「上次运行 CPU」，失败后 hint 退化、后续唤醒丢失第二候选），修复是给该函数加 <code>select_flags</code> 参数、仅 <code>WF_TTWU</code> 时更新：</p>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>Tim Chen 对 06/18 的修复（+7/−4，方向已被作者接受）</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl add">+	if (!(select_flags &amp; WF_TTWU))</span>
-<span class="cl add">+		return recent_used_cpu;	/* push 语义下不更新唤醒提示 */</span>
-<span class="cl ctx">	p-&gt;recent_used_cpu = prev;</span></pre></div>
+<pre><span class="cl add">+	if (!(select_flags &amp; WF_TTWU))</span><span class="cl add">+		return recent_used_cpu;	/* push 语义下不更新唤醒提示 */</span><span class="cl ctx">	p-&gt;recent_used_cpu = prev;</span></pre></div>
 
     <h3 class="sub">效果</h3>
     <table class="data">
@@ -328,36 +292,10 @@ footer a { color: var(--muted); }
     <p>v1 用 <code>rel_vprot</code> 标志把 protection 在 reweight 时转/恢复相对量；Vincent/Prateek 质疑后，v2（10-14）改为两处协同：</p>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>reweight_eevdf()：curr 时直接以 vruntime 重建 vprot</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl ctx">	if (on_rq) {</span>
-<span class="cl del">-		if (rel_vprot)</span>
-<span class="cl del">-			se-&gt;vprot += avruntime;</span>
-<span class="cl ctx">		se-&gt;deadline += avruntime;</span>
-<span class="cl ctx">		se-&gt;rel_deadline = 0;</span>
-<span class="cl ctx">		se-&gt;vruntime = avruntime - se-&gt;vlag;</span>
-<span class="cl ctx"></span>
-<span class="cl add">+		if (rel_vprot)</span>
-<span class="cl add">+			se-&gt;vprot += avruntime;</span>
-<span class="cl add hi">+		else if (curr)</span>
-<span class="cl add hi">+			se-&gt;vprot = se-&gt;vruntime;</span>
-<span class="cl add">+</span>
-<span class="cl ctx">		if (!curr)</span>
-<span class="cl ctx">			__enqueue_entity(cfs_rq, se);</span></pre></div>
+<pre><span class="cl ctx">	if (on_rq) {</span><span class="cl del">-		if (rel_vprot)</span><span class="cl del">-			se-&gt;vprot += avruntime;</span><span class="cl ctx">		se-&gt;deadline += avruntime;</span><span class="cl ctx">		se-&gt;rel_deadline = 0;</span><span class="cl ctx">		se-&gt;vruntime = avruntime - se-&gt;vlag;</span><span class="cl ctx"></span><span class="cl add">+		if (rel_vprot)</span><span class="cl add">+			se-&gt;vprot += avruntime;</span><span class="cl add hi">+		else if (curr)</span><span class="cl add hi">+			se-&gt;vprot = se-&gt;vruntime;</span><span class="cl add">+</span><span class="cl ctx">		if (!curr)</span><span class="cl ctx">			__enqueue_entity(cfs_rq, se);</span></pre></div>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>enqueue_task_fair()：按权重变化就地缩放重建（enqueue 路径）</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl add">+	if (live) {</span>
-<span class="cl add">+		old_weight = se-&gt;h_load.weight;</span>
-<span class="cl add">+		dist = se-&gt;vprot - se-&gt;vruntime;</span>
-<span class="cl add">+	}</span>
-<span class="cl ctx">	reweight_eevdf(cfs_rq, se, weight, false);</span>
-<span class="cl ctx">	place_entity(cfs_rq, se, flags | ENQUEUE_QUEUED);</span>
-<span class="cl add">+</span>
-<span class="cl add hi">+	if (live) {</span>
-<span class="cl add hi">+		if (weight != old_weight)</span>
-<span class="cl add hi">+			dist = div64_long(dist * old_weight, weight);</span>
-<span class="cl add">+		se-&gt;vprot = se-&gt;vruntime + dist;</span>
-<span class="cl add">+	} else if (running) {</span>
-<span class="cl add">+		cancel_protect_slice(se);</span>
-<span class="cl add">+	}</span></pre></div>
+<pre><span class="cl add">+	if (live) {</span><span class="cl add">+		old_weight = se-&gt;h_load.weight;</span><span class="cl add">+		dist = se-&gt;vprot - se-&gt;vruntime;</span><span class="cl add">+	}</span><span class="cl ctx">	reweight_eevdf(cfs_rq, se, weight, false);</span><span class="cl ctx">	place_entity(cfs_rq, se, flags | ENQUEUE_QUEUED);</span><span class="cl add">+</span><span class="cl add hi">+	if (live) {</span><span class="cl add hi">+		if (weight != old_weight)</span><span class="cl add hi">+			dist = div64_long(dist * old_weight, weight);</span><span class="cl add">+		se-&gt;vprot = se-&gt;vruntime + dist;</span><span class="cl add">+	} else if (running) {</span><span class="cl add">+		cancel_protect_slice(se);</span><span class="cl add">+	}</span></pre></div>
 
     <h3 class="sub">效果</h3>
     <div class="metrics">
@@ -395,10 +333,7 @@ footer a { color: var(--muted); }
     <p><b>背景</b>：SCHED_OTHER 任务用默认 slice 时，遗留包装 <code>_sched_setscheduler()</code> 把 <code>attr.sched_runtime</code> 留 0（「用默认」），而 <code>p-&gt;se.slice</code> 存实际时长——两者比较必不等，<b>参数完全没变的 <code>sched_setparam()</code> 也走完整更新路径</b>。作者是在追查 v6.12.95↔v7.2 间 no-change 负载 6.5–7.1% 耗时上升时发现的。</p>
     <p><b>方案</b>：把 no-change 捷径扩展到「默认 slice 且未变」。Peter 嫌初版条件太绕，给出更简的 mode-first 比较：</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>Peter 建议的 mode-first 条件（v4 采纳）</span><span>kernel/sched/core.c</span></div>
-<pre><span class="cl ctx">	if (!!attr-&gt;sched_runtime != !!se-&gt;custom_slice)</span>
-<span class="cl ctx">		return true;	/* 模式切换 */</span>
-<span class="cl ctx">	if (attr-&gt;sched_runtime &amp;&amp; attr-&gt;sched_runtime != se-&gt;slice)</span>
-<span class="cl ctx">		return true;	/* slice 变化 */</span></pre></div>
+<pre><span class="cl ctx">	if (!!attr-&gt;sched_runtime != !!se-&gt;custom_slice)</span><span class="cl ctx">		return true;	/* 模式切换 */</span><span class="cl ctx">	if (attr-&gt;sched_runtime &amp;&amp; attr-&gt;sched_runtime != se-&gt;slice)</span><span class="cl ctx">		return true;	/* slice 变化 */</span></pre></div>
     <p><b>效果</b>（i7-12700KF，A/B/A，15 样本 × 50 万次调用，CV &lt; 0.30%）：</p>
     <table class="data">
       <tr><th>场景</th><th class="num">Original A</th><th class="num">Revision</th><th class="num">Original B</th></tr>
@@ -419,8 +354,7 @@ footer a { color: var(--muted); }
     <p><b>背景</b>：AMD Ryzen AI HX 370 上 cache 密集的 Clang full-LTO 链接受阻——小核频率低（3.3 vs 5.1 GHz）、L3 减半（8 vs 16 MB），cache-aware 把任务钉到小核 LLC 双重受损。冲突根源：asym packing 要最高优先级 CPU，cache-aware 要共置同一 LLC、不论优先级。</p>
     <p><b>方案</b>：<code>can_migrate_llc_task()</code> 在进入「too many threads / exceed LLC capacity」检查前先判 asym packing 放行条件（v2 相对 v1 的实质改动是补上 <code>env-&gt;idle</code> 前置，Kayra 指出后采纳）：</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>关键放行条件（kernel/sched/fair.c +18/−3）</span><span>guard</span></div>
-<pre><span class="cl add">+	if (env-&gt;idle &amp;&amp; sched_asym(env-&gt;sd, dst_cpu, src_cpu))</span>
-<span class="cl add">+		return 0;	/* asym packing 优先，跳过 LLC 聚合迁移 */</span></pre></div>
+<pre><span class="cl add">+	if (env-&gt;idle &amp;&amp; sched_asym(env-&gt;sd, dst_cpu, src_cpu))</span><span class="cl add">+		return 0;	/* asym packing 优先，跳过 LLC 聚合迁移 */</span></pre></div>
     <p><b>效果</b>：Chen Yu 用 QOS 限 L3 ways + pstate 限频在 AMD 8945HX 上仿真 hybrid 实测（8 线程 pointer-chase ring、24 MB 工作集）：</p>
     <table class="data">
       <tr><th>配置</th><th class="num">cache-aware ON</th><th class="num">cache-aware OFF</th></tr>
@@ -432,25 +366,13 @@ footer a { color: var(--muted); }
     <h3 class="sub">5.2 Avoid publishing partial LLC utilization（Jemmy Wong v2）</h3>
     <p><b>背景</b>：负载均衡因 all-pinned redo、或 CPU hotplug 使 <code>env-&gt;cpus</code> 与 <code>sched_group_span(group)</code> 不一致时，把只覆盖部分 CPU 的利用率当整组发布——「部分利用率 + 完整容量」让 <code>can_migrate_llc()</code> 误判忙碌 preferred LLC 有空余。</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>v2 折中：便宜的 redo 标志先行，子集检查兜底（+8）</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl add">+	if ((env-&gt;flags &amp; LBF_ALL_PINNED) ||</span>
-<span class="cl add">+	    !cpumask_subset(sched_group_span(group), env-&gt;cpus))</span>
-<span class="cl add">+		return;</span></pre></div>
+<pre><span class="cl add">+	if ((env-&gt;flags &amp; LBF_ALL_PINNED) ||</span><span class="cl add">+	    !cpumask_subset(sched_group_span(group), env-&gt;cpus))</span><span class="cl add">+		return;</span></pre></div>
     <p><b>效果</b>：无性能数字（逻辑正确性、Found by inspection）；Tim Chen 与 Chen Yu 10-14 双 RB，Tim 认定 7.2.x stable 候选。</p>
 
     <h3 class="sub">5.3 Remove old cache group footprint on exec（Jemmy Wong）</h3>
     <p><b>背景</b>：<code>exec</code> 在重置 NUMA fault 统计之前就换掉 cache group，而只有 exit 路径会减去任务的 footprint 贡献——CLONE_VM 无 CLONE_THREAD 的任务 exec 后旧贡献残留，抑制 LLC capacity 检查。<b>方案</b>（10-14 更新）：<code>grp-&gt;footprint</code> 改 <code>atomic_long_t</code>、去 clamp，placement 前 快照 <code>total_numa_faults</code>、循环后结净差：</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>每 pass 一次更新，复用既有 NUMA 计数</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl add">+static inline void sched_cache_footprint_update(struct task_struct *p, long delta)</span>
-<span class="cl add">+{</span>
-<span class="cl add">+	struct sched_cache_group *grp = rcu_deref_sched_cache_grp(p);</span>
-<span class="cl add">+</span>
-<span class="cl add">+	if (grp &amp;&amp; delta)</span>
-<span class="cl add">+		atomic_long_add(delta, &amp;grp-&gt;footprint);</span>
-<span class="cl add">+}</span>
-<span class="cl ctx">	/* task_numa_placement() 内 */</span>
-<span class="cl add">+	unsigned long old_faults = p-&gt;total_numa_faults;</span>
-<span class="cl ctx">	... /* 遍历各节点做 placement */</span>
-<span class="cl add">+	sched_cache_footprint_update(p, p-&gt;total_numa_faults - old_faults);</span></pre></div>
+<pre><span class="cl add">+static inline void sched_cache_footprint_update(struct task_struct *p, long delta)</span><span class="cl add">+{</span><span class="cl add">+	struct sched_cache_group *grp = rcu_deref_sched_cache_grp(p);</span><span class="cl add">+</span><span class="cl add">+	if (grp &amp;&amp; delta)</span><span class="cl add">+		atomic_long_add(delta, &amp;grp-&gt;footprint);</span><span class="cl add">+}</span><span class="cl ctx">	/* task_numa_placement() 内 */</span><span class="cl add">+	unsigned long old_faults = p-&gt;total_numa_faults;</span><span class="cl ctx">	... /* 遍历各节点做 placement */</span><span class="cl add">+	sched_cache_footprint_update(p, p-&gt;total_numa_faults - old_faults);</span></pre></div>
     <p>去 clamp 的论证：footprint 聚合的正是 <code>total_numa_faults</code> 追踪的同一批贡献，NUMA placement 本就做带符号增量不 clamp；clamp 反而会掩盖记账 mismatch。failed-exec 的负值例外已论证（该组只属即将 exit 的任务）。</p>
 
     <h3 class="sub">5.4 Reduce task_cache_work overhead（Luo Gengkun v10，华为）</h3>
@@ -481,38 +403,13 @@ footer a { color: var(--muted); }
 
     <h3 class="sub">方案思路（关键代码）</h3>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>2/6：校验实际分母，修除零</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl del">-	if (local + shared == 0 || p-&gt;numa_faults_locality[2]) {</span>
-<span class="cl add">+	if (!locality_faults || !type_faults ||</span>
-<span class="cl add">+	    p-&gt;numa_faults_locality[NUMA_FAULT_MIGRATE_FAIL]) {</span>
-<span class="cl ctx">		p-&gt;numa_scan_period = min(p-&gt;numa_scan_period_max,</span>
-<span class="cl ctx">			p-&gt;numa_scan_period &lt;&lt; 1);</span></pre></div>
+<pre><span class="cl del">-	if (local + shared == 0 || p-&gt;numa_faults_locality[2]) {</span><span class="cl add">+	if (!locality_faults || !type_faults ||</span><span class="cl add">+	    p-&gt;numa_faults_locality[NUMA_FAULT_MIGRATE_FAIL]) {</span><span class="cl ctx">		p-&gt;numa_scan_period = min(p-&gt;numa_scan_period_max,</span><span class="cl ctx">			p-&gt;numa_scan_period &lt;&lt; 1);</span></pre></div>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>3/6：新增「既 remote 又 private」计数器，只有它足够大才加速扫描</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl del">-	lr_ratio = (local * NUMA_PERIOD_SLOTS) / (local + remote);</span>
-<span class="cl del">-	ps_ratio = (private * NUMA_PERIOD_SLOTS) / (private + shared);</span>
-<span class="cl add">+	lr_ratio = (local * NUMA_PERIOD_SLOTS) / locality_faults;</span>
-<span class="cl add">+	sr_ratio = (shared * NUMA_PERIOD_SLOTS) / type_faults;</span>
-<span class="cl add">+	rp_ratio = (remote_private * NUMA_PERIOD_SLOTS) / locality_faults;</span>
-<span class="cl add">+	ratio = max(lr_ratio, sr_ratio);</span>
-<span class="cl ctx">	} else {</span>
-<span class="cl add">+		if (rp_ratio &gt;= NUMA_PERIOD_SLOTS - NUMA_PERIOD_THRESHOLD)</span>
-<span class="cl add">+			diff = -(NUMA_PERIOD_THRESHOLD - ratio) * period_slot;</span>
-<span class="cl add">+		else</span>
-<span class="cl add">+			diff = 0;</span>
-<span class="cl ctx">	}</span>
-<span class="cl ctx">	/* task_numa_fault() 侧记账 */</span>
-<span class="cl add">+	if (!local &amp;&amp; priv)</span>
-<span class="cl add">+		p-&gt;numa_faults_locality[NUMA_FAULT_REMOTE_PRIVATE] += pages;</span></pre></div>
+<pre><span class="cl del">-	lr_ratio = (local * NUMA_PERIOD_SLOTS) / (local + remote);</span><span class="cl del">-	ps_ratio = (private * NUMA_PERIOD_SLOTS) / (private + shared);</span><span class="cl add">+	lr_ratio = (local * NUMA_PERIOD_SLOTS) / locality_faults;</span><span class="cl add">+	sr_ratio = (shared * NUMA_PERIOD_SLOTS) / type_faults;</span><span class="cl add">+	rp_ratio = (remote_private * NUMA_PERIOD_SLOTS) / locality_faults;</span><span class="cl add">+	ratio = max(lr_ratio, sr_ratio);</span><span class="cl ctx">	} else {</span><span class="cl add">+		if (rp_ratio &gt;= NUMA_PERIOD_SLOTS - NUMA_PERIOD_THRESHOLD)</span><span class="cl add">+			diff = -(NUMA_PERIOD_THRESHOLD - ratio) * period_slot;</span><span class="cl add">+		else</span><span class="cl add">+			diff = 0;</span><span class="cl ctx">	}</span><span class="cl ctx">	/* task_numa_fault() 侧记账 */</span><span class="cl add">+	if (!local &amp;&amp; priv)</span><span class="cl add">+		p-&gt;numa_faults_locality[NUMA_FAULT_REMOTE_PRIVATE] += pages;</span></pre></div>
 
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>5/6：区分 slow-tier 元数据与真 cpupid，tiering fault 不喂 placement</span><span>kernel/sched/fair.c</span></div>
-<pre><span class="cl add">+	if (last_cpupid == LAST_CPUPID_ACCESS_TIME) {</span>
-<span class="cl add">+		if (!(sysctl_numa_balancing_mode &amp; NUMA_BALANCING_NORMAL)) {</span>
-<span class="cl add">+			if (migrated)</span>
-<span class="cl add">+				p-&gt;numa_pages_migrated += pages;</span>
-<span class="cl add">+			return;	/* 只记迁移，不喂 AutoNUMA 统计 */</span>
-<span class="cl add">+		}</span>
-<span class="cl add">+		last_cpupid = LAST_CPUPID_UNSET;</span>
-<span class="cl add">+	}</span></pre></div>
+<pre><span class="cl add">+	if (last_cpupid == LAST_CPUPID_ACCESS_TIME) {</span><span class="cl add">+		if (!(sysctl_numa_balancing_mode &amp; NUMA_BALANCING_NORMAL)) {</span><span class="cl add">+			if (migrated)</span><span class="cl add">+				p-&gt;numa_pages_migrated += pages;</span><span class="cl add">+			return;	/* 只记迁移，不喂 AutoNUMA 统计 */</span><span class="cl add">+		}</span><span class="cl add">+		last_cpupid = LAST_CPUPID_UNSET;</span><span class="cl add">+	}</span></pre></div>
 
     <h3 class="sub">效果与社区态度</h3>
     <p>除 2/6 的 QEMU hotplug 复现外<b>无性能数据</b>。Gregory Price 当日对 6 个补丁逐封回帖，普遍要求补「用户可见的性能影响」；对 4/6（全局 sysctl 控 free-space bypass）明确表态：</p>
@@ -559,8 +456,7 @@ footer a { color: var(--muted); }
     </div>
     <p><b>方案</b>：<code>SCX_OPS_NUMA_BALANCING</code> opt-in，扫描从 sched_ext tick 驱动（与 <code>task_tick_fair()</code> 同构）、fault 记账照常，但<b>任务放置留给 BPF 调度器</b>；preferred node 经 kfunc 暴露。10-10 接受 Tejun 建议，接口从「flag + kfunc 轮询」改为<b>事件式回调</b>：</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>v2 接口方向：sched_setnuma() 里、rq 锁下通知</span><span>sched_ext ops</span></div>
-<pre><span class="cl add">+	void (*set_numa_node)(struct task_struct *p, s32 nid);</span>
-<span class="cl cmt">/* 实现该回调即启用 hinting-fault 扫描；初始 preferred node 在 enable 时上报 */</span></pre></div>
+<pre><span class="cl add">+	void (*set_numa_node)(struct task_struct *p, s32 nid);</span><span class="cl cmt">/* 实现该回调即启用 hinting-fault 扫描；初始 preferred node 在 enable 时上报 */</span></pre></div>
     <p><b>效果</b>：Vladimir 回植 6.18.54 + 自家调度器实测：4G 内存 <b>20 秒</b>完成迁移，为系列有效性背书。</p>
     <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261004072901.3579967-1-arighi@nvidia.com/">系列 cover</a></p>
   </div>
@@ -599,10 +495,7 @@ footer a { color: var(--muted); }
     <p><b>背景</b>：大容量多插槽机器上调度器/定时器的全局 cpumask（如 <code>nohz.idle_cpus_mask</code>）是所有核争写的共享 cacheline——每次置位/清位都跨 socket 抢 cacheline（C2C ping-pong）。</p>
     <p><b>方案</b>：按 LLC/节点实例<b>分片</b>的位图（每实例只表示少量 CPU，写操作留在本地 cacheline，代价是遍历更贵）。CPU 激活时动态分配索引，编码为两段 <code>[数组下标 | 位偏移]</code>，按拓扑推导 shift/mask；v3 补齐 x86 之外 7 个架构 enablement（LoongArch/MIPS/PowerPC/s390/sparc64 + 通用 arch_topology），首个用户是 nohz idle 掩码。定位：「sbm 之于 sbitmap，如同 cpumask 之于普通 bitmap」。</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>掩码更新代价（%cycles，AMD 内部微基准，相对全局掩码）</span><span>benchmark</span></div>
-<pre><span class="cl ctx">global mask                                : 100.0000%  (var: 3.28%)</span>
-<span class="cl add">per-NUMA mask                              :  32.9209%  (var: 7.77%)</span>
-<span class="cl add hi">per-LLC mask                               :   1.2977%  (var: 4.85%)</span>
-<span class="cl add">per-LLC mask (u8 operation; no LOCK prefix):   0.4930%  (var: 0.83%)</span></pre></div>
+<pre><span class="cl ctx">global mask                                : 100.0000%  (var: 3.28%)</span><span class="cl add">per-NUMA mask                              :  32.9209%  (var: 7.77%)</span><span class="cl add hi">per-LLC mask                               :   1.2977%  (var: 4.85%)</span><span class="cl add">per-LLC mask (u8 operation; no LOCK prefix):   0.4930%  (var: 0.83%)</span></pre></div>
     <p><b>效果</b>：nohz 掩码转换后整机性能持平、平均略好 ~1–2%；最坏场景（每次上下文切换一个事件）分布式更新代价为全局掩码的 <b>1/100</b>。未提供 nohz-heavy RT 场景的端到端延迟数据。</p>
     <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261001192849.74788-1-kprateek.nayak@amd.com/">RFC v3 cover</a></p>
   </div>
@@ -612,14 +505,7 @@ footer a { color: var(--muted); }
     <div class="meta-line"><span class="meta-chip">15 补丁系列的 01/15</span><span class="badge b-review">under review · 卡在动机说明</span></div>
     <p><b>背景</b>：现有 tracepoint 覆盖事件语义（wakeup/switch/migrate），缺「任务进出 runqueue」的<b>调度类无关</b>观察点（含 <code>__block_task()</code> 这类不走 <code>dequeue_task()</code> 的路径），只能靠 kprobe。为 RV（runtime verification）monitor 服务。</p>
     <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>方案（3 文件 +21/−1）</span><span>include/trace/events/sched.h</span></div>
-<pre><span class="cl add">+DECLARE_TRACE(sched_enqueue,</span>
-<span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span>
-<span class="cl add">+	TP_ARGS(tsk, cpu));</span>
-<span class="cl add">+DECLARE_TRACE(sched_dequeue,</span>
-<span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span>
-<span class="cl add">+	TP_ARGS(tsk, cpu));</span>
-<span class="cl cmt">/* enqueue_task(): !(flags & ENQUEUE_DELAYED) 时打点；</span>
-<span class="cl cmt">   dequeue_task(): !(flags & DEQUEUE_SLEEP) 时打点；先 trace_*_enabled() 控开销 */</span></pre></div>
+<pre><span class="cl add">+DECLARE_TRACE(sched_enqueue,</span><span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span><span class="cl add">+	TP_ARGS(tsk, cpu));</span><span class="cl add">+DECLARE_TRACE(sched_dequeue,</span><span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span><span class="cl add">+	TP_ARGS(tsk, cpu));</span><span class="cl cmt">/* enqueue_task(): !(flags & ENQUEUE_DELAYED) 时打点；</span><span class="cl cmt">   dequeue_task(): !(flags & DEQUEUE_SLEEP) 时打点；先 trace_*_enabled() 控开销 */</span></pre></div>
     <p><b>进展</b>：补丁本体早获 K Prateek RB，但已辗转三个宿主系列（20 补丁 RFC → RV 10 补丁 → 15 补丁），Peter 10-01 明确表示「忘了把其余补丁发给我、changelog 没说动机，<i>As is I'm clueless as to why we want this</i>」——合入卡在系列叙事而非代码。</p>
   </div>
 
@@ -651,8 +537,7 @@ footer a { color: var(--muted); }
     <div class="bug">
       <h4>enqueue_task_fair 死代码回归 <span class="badge b-high">high</span></h4>
       <p>已合入的 <code>819224e506bc</code> 在 CFS_BANDWIDTH 下 throttle→dequeue→unthrottle→enqueue 命中被删分支触发 WARNING。Peter 修复方向：</p>
-      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (cfs_rq-&gt;curr != se)</span>
-<span class="cl ctx">		__enqueue_entity(cfs_rq, se);</span></pre></div>
+      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (cfs_rq-&gt;curr != se)</span><span class="cl ctx">		__enqueue_entity(cfs_rq, se);</span></pre></div>
     </div>
 
     <div class="bug">
@@ -686,9 +571,7 @@ footer a { color: var(--muted); }
     <div class="bug">
       <h4>deadline schedstats 恒零 <span class="badge b-review">new</span></h4>
       <p><code>update_stats_dequeue_dl()</code> 唯一调用点走 throttle 路径且 flags=0，SCHED_DEADLINE 任务 sleep/block 统计全为 0：</p>
-      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (on_dl_rq(&amp;p-&gt;dl))</span>
-<span class="cl add">+		update_stats_dequeue_dl(&amp;rq-&gt;dl, &amp;p-&gt;dl, flags);</span>
-<span class="cl ctx">	dequeue_dl_entity(&amp;p-&gt;dl, flags);</span></pre></div>
+      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (on_dl_rq(&amp;p-&gt;dl))</span><span class="cl add">+		update_stats_dequeue_dl(&amp;rq-&gt;dl, &amp;p-&gt;dl, flags);</span><span class="cl ctx">	dequeue_dl_entity(&amp;p-&gt;dl, flags);</span></pre></div>
     </div>
 
     <div class="bug">
