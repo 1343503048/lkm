@@ -576,27 +576,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 .conf-sosp { background: #cffafe !important; color: #155e75 !important; }
 .conf-ckc { background: #fee2e2 !important; color: #b91c1c !important; }
 
-/* ── 深度分析（/analysis/ hub + 首页条带）── */
-.analysis-strip {
-  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
-  padding: 0.85rem 1.1rem; margin-bottom: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.analysis-strip-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; }
-.analysis-strip-head .strip-title { font-weight: 800; font-size: 1.05rem; color: #111827; }
-.analysis-strip-head .strip-more { font-size: 0.85rem; color: #2563eb; font-weight: 600; }
-.analysis-strip-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
-.strip-cat {
-  display: flex; flex-direction: column; gap: 0.2rem; padding: 0.6rem 0.8rem;
-  border: 1px solid #e5e7eb; border-left-width: 3px; border-radius: 8px;
-  background: #fafbfc; transition: border-color .15s, box-shadow .15s;
-}
-.strip-cat:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-decoration: none; }
-.strip-cat-name { font-weight: 700; font-size: 0.9rem; color: #111827; }
-.strip-cat-latest { font-size: 0.78rem; color: #6b7280; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.strip-patches { border-left-color: #2563eb; }
-.strip-forums  { border-left-color: #7c3aed; }
-.strip-papers  { border-left-color: #059669; }
+/* ── 深度分析（/analysis/ hub）── */
 
 .ana-page { max-width: 900px; margin: 0 auto; }
 .ana-section { margin-bottom: 2.2rem; }

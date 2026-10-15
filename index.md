@@ -15,22 +15,6 @@ title: 首页
       </div>
     </div>
 
-    <div class="analysis-strip">
-      <div class="analysis-strip-head">
-        <span class="strip-title">深度分析</span>
-        <a class="strip-more" href="{{ '/analysis/' | relative_url }}">全部 →</a>
-      </div>
-      <div class="analysis-strip-cats">
-        {% for c in site.data.analyses.categories %}
-        {% assign latest = site.data.analyses.entries | where: "category", c.id | sort: "date" | reverse | first %}
-        <a class="strip-cat strip-{{ c.id }}" href="{{ '/analysis/#' | append: c.id | relative_url }}">
-          <span class="strip-cat-name">{{ c.name }}</span>
-          <span class="strip-cat-latest">{% if latest %}{{ latest.title }}{% else %}暂无 · 整场分析待收录{% endif %}</span>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-
     <div class="filter-bar">
       <div class="filter-group">
         <label>类型:</label>
