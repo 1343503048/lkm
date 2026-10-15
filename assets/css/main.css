@@ -575,3 +575,67 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 .conf-page { max-width: 900px; margin: 0 auto; }
 .conf-sosp { background: #cffafe !important; color: #155e75 !important; }
 .conf-ckc { background: #fee2e2 !important; color: #b91c1c !important; }
+
+/* ── 深度分析（/analysis/ hub + 首页条带）── */
+.analysis-strip {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 0.85rem 1.1rem; margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.analysis-strip-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; }
+.analysis-strip-head .strip-title { font-weight: 800; font-size: 1.05rem; color: #111827; }
+.analysis-strip-head .strip-more { font-size: 0.85rem; color: #2563eb; font-weight: 600; }
+.analysis-strip-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem; }
+.strip-cat {
+  display: flex; flex-direction: column; gap: 0.2rem; padding: 0.6rem 0.8rem;
+  border: 1px solid #e5e7eb; border-left-width: 3px; border-radius: 8px;
+  background: #fafbfc; transition: border-color .15s, box-shadow .15s;
+}
+.strip-cat:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); text-decoration: none; }
+.strip-cat-name { font-weight: 700; font-size: 0.9rem; color: #111827; }
+.strip-cat-latest { font-size: 0.78rem; color: #6b7280; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.strip-patches { border-left-color: #2563eb; }
+.strip-forums  { border-left-color: #7c3aed; }
+.strip-papers  { border-left-color: #059669; }
+
+.ana-page { max-width: 900px; margin: 0 auto; }
+.ana-section { margin-bottom: 2.2rem; }
+.ana-section-head {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+  padding: 0.8rem 1rem; border-radius: 10px; margin-bottom: 1rem;
+  background: #fff; border: 1px solid #e5e7eb; border-left-width: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.ana-section-head h2 { font-size: 1.15rem; font-weight: 800; color: #111827; margin-bottom: 0.15rem; }
+.ana-section-head p { font-size: 0.85rem; color: #6b7280; }
+.ana-more { font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+.ana-section-head.ana-patches { border-left-color: #2563eb; } .ana-section-head.ana-patches .ana-more { color: #2563eb; }
+.ana-section-head.ana-forums  { border-left-color: #7c3aed; } .ana-section-head.ana-forums  .ana-more { color: #7c3aed; }
+.ana-section-head.ana-papers  { border-left-color: #059669; } .ana-section-head.ana-papers  .ana-more { color: #059669; }
+.ana-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.9rem; }
+.ana-card {
+  display: flex; flex-direction: column; gap: 0.35rem; padding: 1rem 1.1rem;
+  background: #fff; border: 1px solid #e5e7eb; border-top-width: 3px; border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.ana-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.09); transform: translateY(-1px); text-decoration: none; }
+.ana-card.ana-patches { border-top-color: #2563eb; }
+.ana-card.ana-forums  { border-top-color: #7c3aed; }
+.ana-card.ana-papers  { border-top-color: #059669; }
+.ana-card-top { display: flex; justify-content: space-between; align-items: center; }
+.ana-date { font-size: 0.75rem; color: #9ca3af; font-weight: 600; }
+.ana-cat-badge { font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 999px; }
+.ana-card.ana-patches .ana-cat-badge { background: #dbeafe; color: #1e40af; }
+.ana-card.ana-forums  .ana-cat-badge { background: #ede9fe; color: #6d28d9; }
+.ana-card.ana-papers  .ana-cat-badge { background: #d1fae5; color: #065f46; }
+.ana-card h3 { font-size: 0.98rem; font-weight: 700; color: #111827; line-height: 1.4; }
+.ana-note { font-size: 0.8rem; color: #6b7280; }
+.ana-go { font-size: 0.8rem; font-weight: 600; margin-top: auto; }
+.ana-card.ana-patches .ana-go { color: #2563eb; }
+.ana-card.ana-forums  .ana-go { color: #7c3aed; }
+.ana-card.ana-papers  .ana-go { color: #059669; }
+.ana-empty {
+  padding: 1.2rem 1.4rem; background: #fff; border: 1px dashed #d1d5db; border-radius: 10px;
+  font-size: 0.9rem; color: #6b7280; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+}
+.ana-empty a { color: #059669; font-weight: 600; }

@@ -1,0 +1,32 @@
+# 深度分析条目 —— 全站唯一数据源
+# 新增分析：HTML 放 analysis/，在 entries 追加一条即可（首页条带与 /analysis/ 自动更新）
+# category 必须落在 categories[].id 内
+
+categories:
+  - id: patches
+    name: 补丁分析
+    desc: LKML 调度子系统周期性补丁与特性梳理
+  - id: forums
+    name: 技术论坛分析
+    desc: LPC / OSPM 等社区技术会议整场深析
+    more:
+      label: 历年 LPC 议题笔记
+      url: /conferences/
+  - id: papers
+    name: 顶会论文分析
+    desc: OSDI 等学术顶会论文与整场分析
+    more:
+      label: OSDI 论文笔记
+      url: /conferences/
+
+entries:
+  - category: patches
+    title: 2026-10 上旬 · 重点补丁与特性
+    url: /analysis/2026-10-sched-features-perf-analysis.html
+    date: 2026-10-15
+    note: 187 篇日报 · 104 系列 · 补丁代码与实测数据
+  - category: forums
+    title: LPC 2026 · 调度与实时议题
+    url: /analysis/2026-lpc-sched-topics.html
+    date: 2026-10-15
+    note: 24 场议题 · 25 张幻灯片原图
