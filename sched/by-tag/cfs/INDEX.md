@@ -1,7 +1,17 @@
 # tag: cfs
 
-共 204 篇
+共 214 篇
 
+- [sched-20261015-026](../../2026/10/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-018](../../2026/10/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-017](../../2026/10/sched-20261015-017-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-015](../../2026/10/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-014](../../2026/10/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-013](../../2026/10/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-006](../../2026/10/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-004](../../2026/10/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.md) `fix/low/under_review` — Christian Loehle（Arm）修 blkio delay / iowait 记账与 EEVDF delayed dequeue 的耦合问题：`__block_task()` 里才启动 blkio 记账，导致「delay dequeue 期间就醒来」的任务漏记整段或首段 I/O 睡眠，且最终 dequeue 可能在别的任务上下文里给错任务打时间戳。v2 把两类记账（`delayacct_
 - [sched-20261014-014](../../2026/10/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-011](../../2026/10/sched-20261014-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-008](../../2026/10/sched-20261014-008-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

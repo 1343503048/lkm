@@ -1,7 +1,14 @@
 # tag: sched_ext
 
-共 236 篇
+共 243 篇
 
+- [sched-20261015-025](../../2026/10/sched-20261015-025-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-022](../../2026/10/sched-20261015-022-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-020](../../2026/10/sched-20261015-020-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-011](../../2026/10/sched-20261015-011-git-pull-sched-ext-fixes-for-v7-3-rc7.md) `fix/merged_tip` — Tejun Heo 向 Linus 发 sched_ext v7.3-rc7 修复的 GIT PULL（tag `sched_ext-for-7.3-rc7-fixes`），包含 7 个 commit、覆盖 5 类问题（任务回本 CPU 本地队列后 stall、destroyed user DSQ 的 use-after-free、dispatch 中移动任务、bypass 重叠、idle CPU
+- [sched-20261015-010](../../2026/10/sched-20261015-010-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — Andrea Righi（sched_ext 维护者）为 `sched_ext/for-7.4` 发修复：`v4 "Keep proxy donors with slice left"` 落地后，Tejun Heo 的 review 指出两条 core-sched 边界路径会让 `SCX_RQ_PROXY_PENDING` 残留、或把本就该留在本地 DSQ 的 IMMED donor 错误送回 B
+- [sched-20261015-009](../../2026/10/sched-20261015-009-sched-ext-finish-scheduler-init-before-publishing-ops-priv.md) `fix/medium/under_review` — Binbin Deng 修复 sched_ext 注册路径的 publish-before-init 竞态：`scx_alloc_and_add_sched()` 在初始化 scheduler 的 kobject、链表、子调度器 kset、以及消费 BPF arena 引用**之前**就 `rcu_assign_pointer(ops->priv, sch)` 发布了指针；BPF kfuncs 经
+- [sched-20261015-003](../../2026/10/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — Tengfei Fan（高通）重发（上一版含 HTML 被列表拒收）一份 RFC，探讨如何让 RT 任务（SCHED_FIFO/SCHED_RR）与 sched_ext 在 CPU 放置、CPU 平衡、以及向 schedutil 上报负载三方面协同——延续 LPC 上的讨论。核心诉求是允许 sched_ext 调度「显式选定」的部分 RT 任务，以避免 RT 任务抢占重要 SCX 任务造成帧率抖动
 - [sched-20261014-015](../../2026/10/sched-20261014-015-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.md) `bug/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-019](../../2026/10/sched-20261013-019-selftests-sched-ext-fix-build-error-in-dequeue-remote-selfte.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-018](../../2026/10/sched-20261013-018-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,19 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 204
+article_count: 214
 ---
 
+- [sched-20261015-004](/lkm/2026/10/15/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.html) `fix/low/under_review` — sched: Account I/O waits independently of delayed dequeue
+- [sched-20261015-006](/lkm/2026/10/15/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.html) `fix/low/under_review` — sched/fair: Avoid overflow in place_entity()
+- [sched-20261015-013](/lkm/2026/10/15/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261015-014](/lkm/2026/10/15/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261015-015](/lkm/2026/10/15/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/low/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
+- [sched-20261015-016](/lkm/2026/10/15/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261015-017](/lkm/2026/10/15/sched-20261015-017-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261015-018](/lkm/2026/10/15/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/low/under_review` — sched/cache: Avoid publishing partial LLC utilization
+- [sched-20261015-023](/lkm/2026/10/15/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
+- [sched-20261015-026](/lkm/2026/10/15/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.html) `fix/medium/under_review` — sched/numa: fix several NUMA balancing issues
 - [sched-20261014-001](/lkm/2026/10/14/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/merged_tip` — sched/core: Call wakeup_preempt() for queued tasks during class change
 - [sched-20261014-002](/lkm/2026/10/14/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.html) `fix/medium/under_review` — sched/numa: fix several NUMA balancing issues
 - [sched-20261014-007](/lkm/2026/10/14/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `regression/high/under_review` — sched/fair: remove dead code on enqueue_task_fair()

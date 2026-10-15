@@ -2,9 +2,11 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 11
+article_count: 13
 ---
 
+- [sched-20261015-002](/lkm/2026/10/15/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
+- [sched-20261015-012](/lkm/2026/10/15/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261012-019](/lkm/2026/10/12/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/low/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred
 - [sched-20261005-003](/lkm/2026/10/05/sched-20261005-003-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261005-004](/lkm/2026/10/05/sched-20261005-004-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/medium/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred

@@ -1,7 +1,12 @@
 # tag: eevdf
 
-共 59 篇
+共 64 篇
 
+- [sched-20261015-028](../../2026/10/sched-20261015-028-sched-eevdf-remove-redundant-run-to-parity-check.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-013](../../2026/10/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-006](../../2026/10/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-004](../../2026/10/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.md) `fix/low/under_review` — Christian Loehle（Arm）修 blkio delay / iowait 记账与 EEVDF delayed dequeue 的耦合问题：`__block_task()` 里才启动 blkio 记账，导致「delay dequeue 期间就醒来」的任务漏记整段或首段 I/O 睡眠，且最终 dequeue 可能在别的任务上下文里给错任务打时间戳。v2 把两类记账（`delayacct_
 - [sched-20261014-006](../../2026/10/sched-20261014-006-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-017](../../2026/10/sched-20261013-017-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-022](../../2026/10/sched-20261012-022-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

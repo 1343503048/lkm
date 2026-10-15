@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 81
+article_count: 84
 ---
 
+- [sched-20261015-014](/lkm/2026/10/15/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261015-015](/lkm/2026/10/15/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/low/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
+- [sched-20261015-024](/lkm/2026/10/15/sched-20261015-024-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/merged_tip` — cpufreq: schedutil: Serialize start against rate limit updates
 - [sched-20261013-014](/lkm/2026/10/13/sched-20261013-014-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/under_review` — cpufreq: schedutil: Serialize start against rate limit updates
 - [sched-20261011-005](/lkm/2026/10/11/sched-20261011-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.html) `fix/medium/under_review` — sched/cpufreq: fix schedutil's boost frequency handling
 - [sched-20261009-002](/lkm/2026/10/09/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.html) `fix/low/merged_tip` — cpufreq: qcom-cpufreq-hw: fix device node refcount leak in phandle parsing

@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 44
+article_count: 45
 ---
 
+- [sched-20261015-016](/lkm/2026/10/15/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261001-005](/lkm/2026/10/01/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.html) `fix/low/merged_tip` — perf sched stats: Reject mismatched or incomplete snapshots
 - [sched-20260922-004](/lkm/2026/09/22/sched-20260922-004-sched-ext-specialize-the-dsq-hashtable-compare.html) `feature/none/merged_tip` — sched_ext: Specialize the DSQ hashtable compare
 - [sched-20260922-005](/lkm/2026/09/22/sched-20260922-005-sched-ext-specialize-tid-and-scheduler-hashtable-compares.html) `feature/none/merged_tip` — sched_ext: Specialize TID and scheduler hashtable compares

@@ -1,7 +1,11 @@
 # tag: rt
 
-共 29 篇
+共 33 篇
 
+- [sched-20261015-021](../../2026/10/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-008](../../2026/10/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — Shubhang Kaushik（Ampere）清理 `push_rt_task()`/`push_dl_task()` 里不可达的 migration-disabled 分支：候选任务由 `pick_next_pushable_task()`/`pick_next_pushable_dl_task()` 选出，两者本身就跳过 migration-disabled 任务；`find_lock_lo
+- [sched-20261015-003](../../2026/10/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — Tengfei Fan（高通）重发（上一版含 HTML 被列表拒收）一份 RFC，探讨如何让 RT 任务（SCHED_FIFO/SCHED_RR）与 sched_ext 在 CPU 放置、CPU 平衡、以及向 schedutil 上报负载三方面协同——延续 LPC 上的讨论。核心诉求是允许 sched_ext 调度「显式选定」的部分 RT 任务，以避免 RT 任务抢占重要 SCX 任务造成帧率抖动
+- [sched-20261015-001](../../2026/10/sched-20261015-001-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost-starvat.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-003](../../2026/10/sched-20261013-003-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `bug/medium/rfc` — wangqk1（小鹏）发 RFC：SMP PREEMPT_RT arm64 系统关机时 `machine_power_off()` 触发 `smp_send_stop()`，被 stop 的 CPU 不跑正常 hotplug teardown，其 RT overload 状态残留 stale 的 `rto_mask` 位；仍在跑的 CPU 的 `rto_push_irq_work_func()` 
 - [sched-20261012-025](../../2026/10/sched-20261012-025-sched-rt-c-kernel-doc-warning.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-024](../../2026/10/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,14 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 59
+article_count: 64
 ---
 
+- [sched-20261015-004](/lkm/2026/10/15/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.html) `fix/low/under_review` — sched: Account I/O waits independently of delayed dequeue
+- [sched-20261015-006](/lkm/2026/10/15/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.html) `fix/low/under_review` — sched/fair: Avoid overflow in place_entity()
+- [sched-20261015-013](/lkm/2026/10/15/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/under_review` — sched/fair: remove dead code on enqueue_task_fair()
+- [sched-20261015-016](/lkm/2026/10/15/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261015-028](/lkm/2026/10/15/sched-20261015-028-sched-eevdf-remove-redundant-run-to-parity-check.html) `fix/none/merged_tip` — sched/eevdf: Remove redundant RUN_TO_PARITY check
 - [sched-20261014-006](/lkm/2026/10/14/sched-20261014-006-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261013-017](/lkm/2026/10/13/sched-20261013-017-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261012-005](/lkm/2026/10/12/sched-20261012-005-sched-eevdf-remove-redundant-run-to-parity-check.html) `fix/low/under_review` — sched/eevdf: Remove redundant RUN_TO_PARITY check

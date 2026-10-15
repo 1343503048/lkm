@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 64
+article_count: 66
 ---
 
+- [sched-20261015-005](/lkm/2026/10/15/sched-20261015-005-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe
+- [sched-20261015-007](/lkm/2026/10/15/sched-20261015-007-sched-idle-destroy-on-stack-hrtimer-in-play-idle-precise.html) `fix/low/under_review` — sched/idle: Destroy on-stack hrtimer in play_idle_precise()
 - [sched-20261014-003](/lkm/2026/10/14/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/medium/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
 - [sched-20261014-004](/lkm/2026/10/14/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
 - [sched-20261014-013](/lkm/2026/10/14/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle

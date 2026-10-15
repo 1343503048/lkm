@@ -1,7 +1,10 @@
 # tag: deadline
 
-共 32 篇
+共 35 篇
 
+- [sched-20261015-012](../../2026/10/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-008](../../2026/10/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — Shubhang Kaushik（Ampere）清理 `push_rt_task()`/`push_dl_task()` 里不可达的 migration-disabled 分支：候选任务由 `pick_next_pushable_task()`/`pick_next_pushable_dl_task()` 选出，两者本身就跳过 migration-disabled 任务；`find_lock_lo
+- [sched-20261015-002](../../2026/10/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — Pasha Tatashin 发 v1 八补丁系列（x86 + sched + mm），针对 live update 场景需要快速 CPU online/offline 的需求，系统性地消除大规模 x86 服务器上顺序热插拔的软硬件瓶颈。其中调度侧两处改动：缓存 `sched_group_capacity` 的 group_weight/cores/asym_prefer_cpu、按需惰性分配 d
 - [sched-20261014-005](../../2026/10/sched-20261014-005-sched-deadline-restore-dequeue-schedstats-on-the-task-dequeu.md) `fix/low/under_review` — Zhan Xusheng（小米）修复 SCHED_DEADLINE 任务的 schedstats 回归：`update_stats_dequeue_dl()` 本应记录 `sleep_start`/`block_start`，但它唯一的调用点走了 throttle 路径且 `flags=0`，`DEQUEUE_SLEEP` 分支永不执行，导致 deadline 任务在 `/proc/PID/sch
 - [sched-20261013-009](../../2026/10/sched-20261013-009-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-019](../../2026/10/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.md) `fix/low/rfc` — 本文为增量更新，完整脉络见 related_articles。

@@ -1,7 +1,9 @@
 # tag: idle
 
-共 64 篇
+共 66 篇
 
+- [sched-20261015-007](../../2026/10/sched-20261015-007-sched-idle-destroy-on-stack-hrtimer-in-play-idle-precise.md) `fix/low/under_review` — Hui Su 修 `play_idle_precise()` 的 on-stack hrtimer 生命周期：`it.timer` 用 `hrtimer_setup_on_stack()` 初始化，但函数返回前未调 `destroy_hrtimer_on_stack()`，在 `CONFIG_DEBUG_OBJECTS_TIMERS` 下会残留已注册的 on-stack debug 对象。补丁在 
+- [sched-20261015-005](../../2026/10/sched-20261015-005-sched-idle-make-forced-polling-state-race-safe.md) `fix/low/under_review` — Hui Su 修复 `cpu_idle_poll_ctrl()` 的强制 idle polling 嵌套计数竞态：该全局计数用普通自增/自减维护，而各 idle CPU 无同步地读它，KCSAN 报出 data race。补丁改用 `atomic_t` 计数，并把弱 `arch_cpu_idle()` fallback 永久切换 polling 的状态与「临时请求计数」分开保存，避免并发请求覆盖或
 - [sched-20261014-013](../../2026/10/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-004](../../2026/10/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — Christian Loehle 跟进同日 `sched/cputime: Preserve iowait accounting...` 线程里 Peter 对 `nr_iowait_cpu()` 误用的批评，发清理补丁：menu governor 已不再消费 per-CPU iowait 计数的大小，剩余调用方只关心「零/非零」，故把返回 `unsigned int` 的 `nr_iowait_
 - [sched-20261014-003](../../2026/10/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/medium/under_review` — Wei Gao（SUSE）修复 liburing `test/iowait.t` 在 tickless + 无 IRQ time accounting 配置下间歇性失败的问题：任务在中断处理函数里被唤醒时，`rq->nr_iowait` 在 CPU 退出 idle 前已减到 0，导致整段 iowait 被记成 CPUTIME_IDLE。作者方案是在 `kcpustat_irq_enter()` 里

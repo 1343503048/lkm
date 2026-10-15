@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 52 篇
+共 54 篇
 
+- [sched-20261015-026](../../2026/10/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-017](../../2026/10/sched-20261015-017-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-012](../../2026/10/sched-20261014-012-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-010](../../2026/10/sched-20261014-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-002](../../2026/10/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — Li Zhe（字节跳动）今日发出 0/6 系列，修复 NUMA balancing 在 scan-period 调整、memory-tiering promotion 反馈、陈旧 task-placement 状态三个方向的多个问题（含一个 memory hotplug 下可复现的除零）。当日 Gregory Price 对 6 个补丁逐一回帖，普遍要求补「用户可见的性能影响」数据，并对 4/6 

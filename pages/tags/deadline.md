@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 32
+article_count: 35
 ---
 
+- [sched-20261015-002](/lkm/2026/10/15/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
+- [sched-20261015-008](/lkm/2026/10/15/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
+- [sched-20261015-012](/lkm/2026/10/15/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261014-005](/lkm/2026/10/14/sched-20261014-005-sched-deadline-restore-dequeue-schedstats-on-the-task-dequeu.html) `fix/low/under_review` — sched/deadline: Restore dequeue schedstats on the task dequeue path
 - [sched-20261013-009](/lkm/2026/10/13/sched-20261013-009-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261012-019](/lkm/2026/10/12/sched-20261012-019-sched-deadline-keep-nohz-full-tickless-while-the-fair-server.html) `fix/low/rfc` — sched/deadline: keep nohz_full tickless while the fair server is deferred

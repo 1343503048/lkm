@@ -2,9 +2,13 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 29
+article_count: 33
 ---
 
+- [sched-20261015-001](/lkm/2026/10/15/sched-20261015-001-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost-starvat.html) `regression/high/under_review` — sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)
+- [sched-20261015-003](/lkm/2026/10/15/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
+- [sched-20261015-008](/lkm/2026/10/15/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
+- [sched-20261015-021](/lkm/2026/10/15/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.html) `fix/low/superseded` — sched/rt: Avoid RTO push to stopped CPUs during shutdown
 - [sched-20261013-003](/lkm/2026/10/13/sched-20261013-003-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.html) `bug/medium/rfc` — sched/rt: Avoid RTO push to stopped CPUs during shutdown
 - [sched-20261012-013](/lkm/2026/10/12/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261012-024](/lkm/2026/10/12/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/medium/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.

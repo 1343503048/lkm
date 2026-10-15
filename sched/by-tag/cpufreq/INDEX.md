@@ -1,7 +1,10 @@
 # tag: cpufreq
 
-共 81 篇
+共 84 篇
 
+- [sched-20261015-024](../../2026/10/sched-20261015-024-cpufreq-schedutil-serialize-start-against-rate-limit-updates.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-015](../../2026/10/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-014](../../2026/10/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-014](../../2026/10/sched-20261013-014-cpufreq-schedutil-serialize-start-against-rate-limit-updates.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261011-005](../../2026/10/sched-20261011-005-sched-cpufreq-fix-schedutil-s-boost-frequency-handling.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-017](../../2026/10/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。

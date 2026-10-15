@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 42
+article_count: 43
 ---
 
+- [sched-20261015-012](/lkm/2026/10/15/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware
 - [sched-20261014-003](/lkm/2026/10/14/sched-20261014-003-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/medium/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
 - [sched-20261014-004](/lkm/2026/10/14/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
 - [sched-20261014-013](/lkm/2026/10/14/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/under_review` — sched/cputime: Don't account idle time twice after dyntick-idle

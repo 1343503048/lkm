@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 68 篇
+共 70 篇
 
+- [sched-20261015-025](../../2026/10/sched-20261015-025-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261015-010](../../2026/10/sched-20261015-010-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — Andrea Righi（sched_ext 维护者）为 `sched_ext/for-7.4` 发修复：`v4 "Keep proxy donors with slice left"` 落地后，Tejun Heo 的 review 指出两条 core-sched 边界路径会让 `SCX_RQ_PROXY_PENDING` 残留、或把本就该留在本地 DSQ 的 IMMED donor 错误送回 B
 - [sched-20261012-012](../../2026/10/sched-20261012-012-sched-proxy-defer-donor-commit-until-after-proxy-resolution.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-010](../../2026/10/sched-20261010-010-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-005](../../2026/10/sched-20261010-005-sched-proxy-defer-donor-commit-until-after-proxy-resolution.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

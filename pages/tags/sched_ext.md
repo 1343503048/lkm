@@ -2,9 +2,16 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 236
+article_count: 243
 ---
 
+- [sched-20261015-003](/lkm/2026/10/15/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
+- [sched-20261015-009](/lkm/2026/10/15/sched-20261015-009-sched-ext-finish-scheduler-init-before-publishing-ops-priv.html) `fix/medium/under_review` — sched_ext: finish scheduler init before publishing ops priv
+- [sched-20261015-010](/lkm/2026/10/15/sched-20261015-010-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries
+- [sched-20261015-011](/lkm/2026/10/15/sched-20261015-011-git-pull-sched-ext-fixes-for-v7-3-rc7.html) `fix/none/merged_tip` — [GIT PULL] sched_ext: Fixes for v7.3-rc7
+- [sched-20261015-020](/lkm/2026/10/15/sched-20261015-020-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.html) `fix/low/under_review` — sched_ext: Don't leave balance callbacks queued across a pick retry
+- [sched-20261015-022](/lkm/2026/10/15/sched-20261015-022-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.html) `fix/low/merged_tip` — sched_ext: Wait for SCX_OPSS_DISPATCHING on DSQ consume and move paths
+- [sched-20261015-025](/lkm/2026/10/15/sched-20261015-025-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/medium/merged_tip` — sched_ext: Keep proxy donors with slice left on the local DSQ
 - [sched-20261014-015](/lkm/2026/10/14/sched-20261014-015-sched-ext-sub-scheduler-tasks-are-severely-under-scheduled-v.html) `bug/none/under_review` — sched_ext: sub-scheduler tasks are severely under-scheduled vs root-owned tasks
 - [sched-20261013-006](/lkm/2026/10/13/sched-20261013-006-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.html) `fix/medium/under_review` — sched_ext: Wait for SCX_OPSS_DISPATCHING on DSQ consume and move paths
 - [sched-20261013-016](/lkm/2026/10/13/sched-20261013-016-sched-ext-fix-bypass-propagation-and-the-bypass-dispatch-cla.html) `fix/medium/merged_tip` — sched_ext: Fix bypass propagation and the bypass dispatch claim for overlapping bypasses
