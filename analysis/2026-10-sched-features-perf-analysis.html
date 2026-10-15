@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026-10 LKML 调度子系统：重点补丁与特性分析</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F2F5; --card: #FFFFFF; --fg: #1A1A2E; --muted: #6B7280;
+  --border: #E5E7EB; --accent: #2563EB; --accent-light: #DBEAFE;
+  --green: #059669; --green-light: #D1FAE5;
+  --red: #DC2626; --red-light: #FEE2E2;
+  --orange: #D97706; --orange-light: #FEF3C7;
+  --purple: #7C3AED; --purple-light: #EDE9FE;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'IBM Plex Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Nav ── */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 2rem; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.nav-brand { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+.nav-brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.nav-links { display: flex; gap: 1.25rem; }
+.nav-links a { color: var(--muted); font-size: 0.85rem; font-weight: 500; }
+
+/* ── Layout ── */
+.wrap { display: flex; gap: 2rem; max-width: 1240px; margin: 0 auto; padding: 2rem 2rem 4rem; align-items: flex-start; }
+.toc { width: 250px; flex-shrink: 0; position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow-y: auto; }
+.toc-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.6rem; padding-left: 0.75rem; }
+.toc a { display: block; padding: 0.3rem 0.75rem; font-size: 0.83rem; color: var(--muted); border-left: 2px solid transparent; border-radius: 0 6px 6px 0; }
+.toc a:hover { color: var(--accent); text-decoration: none; background: var(--card); }
+.toc a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 600; }
+.toc .toc-sep { margin: 0.5rem 0.75rem; border-top: 1px dashed var(--border); }
+main { flex: 1; min-width: 0; }
+
+/* ── Hero ── */
+.hero { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2.2rem 2.4rem; box-shadow: var(--shadow); margin-bottom: 1.6rem; }
+.hero .kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+.hero h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.6rem; }
+.hero .sub { color: var(--muted); font-size: 0.92rem; max-width: 760px; }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.8rem; margin-top: 1.4rem; }
+.stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 1rem; text-align: center; }
+.stat-box .n { font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 700; color: var(--accent); }
+.stat-box .l { font-size: 0.75rem; color: var(--muted); }
+
+/* ── Pillars ── */
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.9rem; margin-bottom: 2rem; }
+.pillar { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: var(--shadow); border-top: 3px solid var(--accent); }
+.pillar.p2 { border-top-color: var(--green); }
+.pillar.p3 { border-top-color: var(--purple); }
+.pillar h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.pillar p { font-size: 0.83rem; color: var(--muted); }
+
+/* ── Sections ── */
+section { margin-bottom: 2.2rem; scroll-margin-top: 76px; }
+.sec-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.4rem; }
+.sec-no { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: #fff; background: var(--accent); border-radius: 6px; padding: 0.1rem 0.5rem; }
+h2 { font-size: 1.28rem; font-weight: 700; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.7rem; box-shadow: var(--shadow); }
+.meta-line { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.2rem 0 1rem; }
+.meta-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); color: var(--muted); }
+.meta-chip b { color: var(--fg); font-weight: 600; }
+h3.sub { font-size: 1.02rem; font-weight: 700; margin: 1.4rem 0 0.5rem; padding-left: 0.6rem; border-left: 3px solid var(--accent); }
+h4 { font-size: 0.92rem; font-weight: 700; margin: 1.1rem 0 0.4rem; color: #374151; }
+p { margin-bottom: 0.75rem; font-size: 0.92rem; }
+ul.dash { margin: 0 0 0.75rem 1.1rem; }
+ul.dash li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+
+/* badges */
+.badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.12rem 0.55rem; border-radius: 999px; vertical-align: middle; }
+.b-merged { background: var(--green-light); color: var(--green); }
+.b-review { background: var(--accent-light); color: var(--accent); }
+.b-rfc { background: var(--purple-light); color: var(--purple); }
+.b-high { background: var(--orange-light); color: var(--orange); }
+.b-na { background: var(--red-light); color: var(--red); }
+
+/* quotes */
+.quote { border-left: 3px solid var(--orange); background: var(--orange-light); border-radius: 0 10px 10px 0; padding: 0.7rem 1rem; margin: 0.8rem 0; font-size: 0.88rem; }
+.quote .who { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; font-style: normal; }
+.quote em { font-style: italic; }
+
+/* code */
+.code { background: #0F172A; border-radius: 12px; margin: 0.9rem 0; overflow: hidden; box-shadow: var(--shadow); }
+.code-title { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; background: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #94A3B8; border-bottom: 1px solid #334155; }
+.code-title .dots { display: inline-flex; gap: 5px; margin-right: 8px; }
+.code-title .d { width: 9px; height: 9px; border-radius: 50%; }
+.code-title .d:nth-child(1){background:#F87171}.code-title .d:nth-child(2){background:#FBBF24}.code-title .d:nth-child(3){background:#34D399}
+.code pre { padding: 0.9rem 1.1rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.62; color: #E2E8F0; }
+.cl { display: block; white-space: pre; }
+.cl.add { color: #4ADE80; }
+.cl.del { color: #F87171; }
+.cl.ctx { color: #94A3B8; }
+.cl.cmt { color: #64748B; font-style: italic; }
+.cl.hi  { color: #FDE047; }
+
+/* data table */
+table.data { width: 100%; border-collapse: collapse; margin: 0.9rem 0; font-size: 0.85rem; background: var(--card); }
+table.data th { background: var(--bg); text-align: left; font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+table.data th, table.data td { padding: 0.5rem 0.8rem; border: 1px solid var(--border); }
+table.data td.num { font-family: 'JetBrains Mono', monospace; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+
+/* metric chips */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.7rem; margin: 0.9rem 0; }
+.metric { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.metric .mv { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; }
+.metric .ml { font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+.mv.g { color: var(--green); } .mv.r { color: var(--red); } .mv.b { color: var(--accent); } .mv.o { color: var(--orange); }
+
+/* bugfix cards */
+.bug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 0.9rem; }
+.bug { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; box-shadow: var(--shadow); }
+.bug h4 { margin: 0 0 0.4rem; font-size: 0.88rem; }
+.bug p { font-size: 0.82rem; color: #4B5563; margin-bottom: 0.4rem; }
+.bug .nums { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); background: var(--accent-light); border-radius: 6px; padding: 0.25rem 0.5rem; display: inline-block; }
+
+.foot-note { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--muted); }
+.verdict { background: var(--accent-light); border-radius: 10px; padding: 0.7rem 1rem; font-size: 0.88rem; margin-top: 0.9rem; }
+.verdict b { color: var(--accent); }
+
+footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+footer a { color: var(--muted); }
+
+@media (max-width: 1000px) {
+  .toc { display: none; }
+  .wrap { padding: 1.2rem 1rem 3rem; }
+  .hero { padding: 1.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span class="dot"></span> sched-lkml :: 2026-10 review</div>
+  <div class="nav-links">
+    <a href="../">日报首页</a>
+    <a href="https://github.com/1343503048/lkm">GitHub</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<aside class="toc">
+  <div class="toc-title">目录</div>
+  <a href="#s01">1. 焦点：lost wakeup 修复</a>
+  <a href="#s02">2. fair push 短任务时延</a>
+  <a href="#s03">3. EEVDF slice 保护链</a>
+  <a href="#s04">4. task_h_load / setparam</a>
+  <a href="#s05">5. Cache-aware 打磨潮</a>
+  <a href="#s06">6. NUMA balancing 修复</a>
+  <a href="#s07">7. NUMA 方向讨论</a>
+  <a href="#s08">8. sched_ext 三线</a>
+  <a href="#s09">9. 基础设施与观测</a>
+  <div class="toc-sep"></div>
+  <a href="#s10">附录：正确性修复简报</a>
+  <a href="#s11">收尾观察</a>
+</aside>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero" id="top">
+  <div class="kicker">KERNEL SCHED · LKML PERIODIC REVIEW</div>
+  <h1>2026-10 上旬调度子系统：重点补丁与特性分析</h1>
+  <p class="sub">数据来源：本仓库 <code>sched/2026/10/</code> 下 10-01 ~ 10-14 共 <b>187 篇</b>日报邮件（去重后 104 个逻辑系列）。深析条目均引用补丁关键代码与邮件原始数据；纯正确性小修复在附录简报。文中 lore 链接均为邮件真实 Message-ID 直链。</p>
+  <div class="stat-row">
+    <div class="stat-box"><div class="n">104</div><div class="l">逻辑系列</div></div>
+    <div class="stat-box"><div class="n">20</div><div class="l">已进 tip / 主线</div></div>
+    <div class="stat-box"><div class="n">~50</div><div class="l">评审中</div></div>
+    <div class="stat-box"><div class="n">15</div><div class="l">本文深析条目</div></div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillar">
+    <h3>① EEVDF 语义收尾</h3>
+    <p>slice 保护（vprot）不变量修复链收口、min-slice 选核、层级负载重做——EEVDF 从"能跑"走向"边界正确"。</p>
+  </div>
+  <div class="pillar p2">
+    <h3>② 放置策略体系化</h3>
+    <p>fair class 首次获得 push 迁移机制；cache-aware 调度进入正确性 + 开销打磨期，多条修复具备 stable 候选资格。</p>
+  </div>
+  <div class="pillar p3">
+    <h3>③ sched_ext 生态成型</h3>
+    <p>v7.3-rc6 修复批合入主线；sub-scheduler（父子调度器）委派契约、caps 通知、NUMA 支持相继落地。</p>
+  </div>
+</div>
+
+<!-- ═══════════ 01 lost wakeup ═══════════ -->
+<section id="s01">
+  <div class="sec-head"><span class="sec-no">01</span><h2>焦点：lost wakeup 修复合入 tip/sched/urgent</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">作者 <b>K Prateek Nayak</b>（AMD）</span>
+      <span class="meta-chip">报告 <b>Paul E. McKenney</b></span>
+      <span class="meta-chip">合入 <b>tip/sched/urgent</b></span>
+      <span class="badge b-merged">merged · 118a2cf4ced6</span>
+      <span class="meta-chip">日报 sched-20261013-001 / 20261014-001</span>
+    </div>
+
+    <h3 class="sub">背景与问题</h3>
+    <p>rcutorture TREE01 场景下调度器「丢失唤醒」：CPU 带着一个完全可运行的 RT 任务却陷入 idle，触发 RCU CPU stall。dump 出的 rq 状态自相矛盾——等待任务是 RT，但 <code>rq-&gt;next_class</code> 还停在 fair：</p>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>stall 时刻的 rq 状态（tip commit message）</span><span>kernel/sched/core.c</span></div>
+<pre><span class="cl ctx">  rq-&gt;next_class      = &amp;fair_sched_class</span>
+<span class="cl ctx">  rq-&gt;nr_running      = 1</span>
+<span class="cl ctx">  rq-&gt;cfs.h_nr_queued = 0</span>
+<span class="cl ctx">  rq-&gt;rt.rt_nr_running = 1</span></pre></div>
+
+    <p>根因是 <code>sched_change_end()</code> 与 <code>__sched_setscheduler()</code> 的竞态：<code>sched_balance_newidle()</code> 临时 drop rq_lock 的窗口内，任务被 enqueue 后又从 fair 升到 RT；此时 <code>ctx-&gt;queued</code> 为真、<code>ctx-&gt;running</code> 为假，<code>next_class</code> 升级与 <code>resched_curr()</code> 全被跳过，newidle 平衡只能选 idle：</p>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>竞态时序（节选自 commit 118a2cf4ced6）</span><span>race</span></div>
+<pre><span class="cl ctx">    CPU0                                   CPU1</span>
+<span class="cl ctx">  __schedule()</span>
+<span class="cl ctx">    pick_task_fair()</span>
+<span class="cl ctx">      sched_balance_newidle()</span>
+<span class="cl ctx">        raw_spin_rq_unlock(rq0)</span>
+<span class="cl ctx">                                    rq_lock(rq0)</span>
+<span class="cl ctx">                                    activate_task(rq0, p)   /* p is a fair task */</span>
+<span class="cl ctx">                                    __sched_setscheduler(p)</span>
+<span class="cl ctx">                                      /* p is moved to SCHED_RR */</span>
+<span class="cl ctx">                                      sched_change_end()</span>
+<span class="cl cmt">                                        /* p->on_rq = 1 (ctx->queued)</span>
+<span class="cl cmt">                                         * but p is not rq->donor (!ctx->running) hence</span>
+<span class="cl cmt">                                         * resched_curr() and rq->next_class upgrade</span>
+<span class="cl cmt">                                         * is skipped. */</span>
+<span class="cl ctx">          raw_spin_rq_lock(rq0)</span>
+<span class="cl ctx">           if (rq-&gt;cfs.h_nr_queued &amp;&amp; ...)      /* false */</span>
+<span class="cl ctx">           if (rq_modified_above(...))           /* false: next_class 仍为 fair */</span>
+<span class="cl ctx">      return NULL;  /* pick_task_fair() */</span>
+<span class="cl ctx">    pick_task_idle()</span>
+<span class="cl hi">  !!! rq-&gt;idle 带着 rq-&gt;nr_running == 1 切入，但 !need_resched() !!!</span></pre></div>
+
+    <h3 class="sub">方案思路</h3>
+    <p>把「升级检测 + 唤醒抢占」从 <code>ctx-&gt;running</code> 分支拆出：对已入队（未运行）任务在改类后也调用 <code>wakeup_preempt()</code> 重新评估 <code>rq-&gt;next_class</code> 并置 NEED_RESCHED。改动仅 <code>kernel/sched/core.c</code> +9/−10：</p>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>修复 diff（最终合入版）</span><span>kernel/sched/core.c</span></div>
+<pre><span class="cl ctx">		if (p-&gt;sched_class-&gt;switched_to)</span>
+<span class="cl ctx">			p-&gt;sched_class-&gt;switched_to(rq, p);</span>
+<span class="cl ctx"></span>
+<span class="cl add">+		/*</span>
+<span class="cl add">+		 * Check if the task can preempt the current in case the class</span>
+<span class="cl add">+		 * was upgraded. Note that none of the switch*_from() methods</span>
+<span class="cl add">+		 * know the new class and none of the switch*_to() methods know</span>
+<span class="cl add">+		 * the old class so we must resched here.</span>
+<span class="cl add">+		 */</span>
+<span class="cl add hi">+		if (ctx-&gt;queued)</span>
+<span class="cl add hi">+			wakeup_preempt(rq, p, 0);</span>
+<span class="cl add">+</span>
+<span class="cl ctx">		if (ctx-&gt;running) {</span></pre></div>
+
+    <p>Fixes 标签经作者纠偏为 <code>704069649b5b</code>（"Rework sched_class::wakeup_preempt() and rq_modified_*()"）——该 commit 之前 enqueue 时改的是 <code>queue_mask</code>、能捕获类变更，改走 <code>next_class</code> 路径后才引入此洞。</p>
+
+    <h3 class="sub">效果</h3>
+    <div class="metrics">
+      <div class="metric"><div class="mv g">&gt; 2 个数量级</div><div class="ml">bug 率下降（Paul，99.9% 置信）</div></div>
+      <div class="metric"><div class="mv b">27.5–30.2 GP/s</div><div class="ml">512 CPU · 64×TREE01 各实例</div></div>
+      <div class="metric"><div class="mv g">exitcode 0</div><div class="ml">加 diff 后无 complaint</div></div>
+    </div>
+    <p>10-13 发出 → Peter「W00t, ok, let me go queue this stuff!」→ 10-14 合入 tip/sched/urgent，Review/Tested 标签（Vincent、Phil Auld、Paul）当日闭环。社区下一步关注是否需要 <code>Cc: stable</code> 回合。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261013152455.9039-1-kprateek.nayak@amd.com/">补丁</a> · <a href="https://lore.kernel.org/all/8fa7f795-518c-4507-b684-60b0c1cac2c5@paulmck-laptop/">bug 报告根</a> · <a href="https://git.kernel.org/tip/118a2cf4ced60777a2408001e2b4838fed1cea55">tip commit</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 02 fair push ═══════════ -->
+<section id="s02">
+  <div class="sec-head"><span class="sec-no">02</span><h2>fair push 机制：短 slice 任务时延的体系化解决</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">作者 <b>Vincent Guittot</b>（Linaro）</span>
+      <span class="meta-chip"><b>18 补丁 v2</b>（10-02 发，10-09~14 密集 review）</span>
+      <span class="badge b-review">under review · v3 在望</span>
+      <span class="meta-chip">日报 sched-20261009-004 / 20261010-001 / 20261013-013</span>
+    </div>
+
+    <h3 class="sub">背景与问题</h3>
+    <p>短 slice 任务（小忙小睡、频繁唤醒的时延敏感任务）在 EEVDF 下有两类系统性时延：<b>放置阶段</b>——选核不看候选 CPU 的 min_slice、<code>wake_affine</code> 不比较 slice、唤醒后 lag 未清，任务落在「最快能跑」的 CPU 之外；<b>排队阶段</b>——CFS 没有 RT 式 push 机制，任务在某 CPU 排不上队首时只能干等本地调度事件。EAS 的 <code>feec()</code> 选核同样不看 slice。</p>
+
+    <h3 class="sub">方案思路：18 补丁三块</h3>
+    <ul class="dash">
+      <li><b>EEVDF 基础（01–05）</b>：休眠实体正 lag 衰减、idle CPU 唤醒 reset lag、per-CPU 缓存 min_slice、wake_affine 比较 min slice、选核加 min slice check；</li>
+      <li><b>fair push 机制（06–14）</b>：默认关闭的 <code>sched_push_task</code> 静态分支；关键设计是职责分离——<code>fair_check_pushable_task()</code> 做轻量、不持 pi_lock 的 best-effort 检查，真正的「迁到哪个 CPU」交给 <code>select_task_rq_fair()</code>；force-push 变体；PREEMPT_SHORT 短任务是第一个用户；</li>
+      <li><b>EAS 整合（15–18）</b>：<code>feec()</code> 从 spare capacity 改用 OPP cost，选核把任务 slice 与目标核 min_slice 比较。</li>
+    </ul>
+    <p>最重要的取舍：push 做成<b>通用基础设施</b>而非短任务专用。Chen Yu 已按 Qais 建议做了 cache-aware 复用 push 的评估补丁（+82/−7）——cache-aware 敏感任务经 push 迁到偏好 LLC；论点是 push 触发门槛（需抢占 runnable task）比 wakeup 高、频次低，可减少与 cache-aware 负载均衡器的竞争、避免 wakeup 路径观察到的 task bouncing。</p>
+
+    <p>评审抓出的代表性问题——Tim Chen 指出 push 复用 <code>select_idle_sibling()</code> 会<b>污染 <code>recent_used_cpu</code> 唤醒提示</b>（push 的 prev 是「当前排队 CPU」而非「上次运行 CPU」，失败后 hint 退化、后续唤醒丢失第二候选），修复是给该函数加 <code>select_flags</code> 参数、仅 <code>WF_TTWU</code> 时更新：</p>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>Tim Chen 对 06/18 的修复（+7/−4，方向已被作者接受）</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl add">+	if (!(select_flags &amp; WF_TTWU))</span>
+<span class="cl add">+		return recent_used_cpu;	/* push 语义下不更新唤醒提示 */</span>
+<span class="cl ctx">	p-&gt;recent_used_cpu = prev;</span></pre></div>
+
+    <h3 class="sub">效果</h3>
+    <table class="data">
+      <tr><th>实测（Chen Yu，192 核 Xeon，默认参数 hackbench）</th><th class="num">DIFF%</th></tr>
+      <tr><td>process G1（最好）</td><td class="num pos">+2.50%</td></tr>
+      <tr><td>threads G8（最差）</td><td class="num neg">−7.42%</td></tr>
+      <tr><td>8 组结论</td><td class="num">多数在噪声带内，"no obvious difference"</td></tr>
+    </table>
+    <p>混合 slice 长度负载数据待补；cache-aware × push 评估补丁的迁移测试在途。v1 时代 min-slice 补丁在 dragonboard 上有 cyclictest/hackbench 改善（9 月数据）。</p>
+    <div class="verdict"><b>评估</b>：默认负载中性，价值在机制铺垫——push 将成为 misfit / EAS / cache-aware 的统一迁移入口。review 意见逐条被认领（Chen Yu 认领 pushable 检查瘦身），v3 在望，合入概率 medium。</div>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261002154415.2270586-1-vincent.guittot@linaro.org/">系列 cover</a> · <a href="https://lore.kernel.org/all/20261002154415.2270586-8-vincent.guittot@linaro.org/">07/18 push 机制</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 03 vprot ═══════════ -->
+<section id="s03">
+  <div class="sec-head"><span class="sec-no">03</span><h2>EEVDF slice 保护（vprot）不变量链</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">作者 <b>Kayra Cizmeci</b> / Christian Loehle</span>
+      <span class="meta-chip">10-01 ~ 10-14 持续 <b>5 轮</b></span>
+      <span class="badge b-review">under review · v2</span>
+      <span class="meta-chip">日报 sched-20261001-001 → 20261014-006</span>
+    </div>
+
+    <h3 class="sub">背景与问题</h3>
+    <p>slice protection（vprot）是<b>绝对 vruntime 边界</b>，但多条路径对其处理不一致：改任务 slice 不丢剩余 request（100us 请求却拿到 13–28ms 新鲜保护）；reweight 移动 vruntime 后「已过期」的保护会<b>复活</b>，current 越过 deadline 更早的 eligible 实体被选中；<code>sched_setattr()</code> 恢复 current 时不更新保护。Christian 的 5 补丁 v2 经 Peter 评审后解体重组——1/5 与 3+5/5 被否（破坏稳态行为），4/5 折叠进 Kayra 的独立修复由她署名重发。</p>
+
+    <h3 class="sub">方案思路：v2 彻底去掉 rel_vprot 标志</h3>
+    <p>v1 用 <code>rel_vprot</code> 标志把 protection 在 reweight 时转/恢复相对量；Vincent/Prateek 质疑后，v2（10-14）改为两处协同：</p>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>reweight_eevdf()：curr 时直接以 vruntime 重建 vprot</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl ctx">	if (on_rq) {</span>
+<span class="cl del">-		if (rel_vprot)</span>
+<span class="cl del">-			se-&gt;vprot += avruntime;</span>
+<span class="cl ctx">		se-&gt;deadline += avruntime;</span>
+<span class="cl ctx">		se-&gt;rel_deadline = 0;</span>
+<span class="cl ctx">		se-&gt;vruntime = avruntime - se-&gt;vlag;</span>
+<span class="cl ctx"></span>
+<span class="cl add">+		if (rel_vprot)</span>
+<span class="cl add">+			se-&gt;vprot += avruntime;</span>
+<span class="cl add hi">+		else if (curr)</span>
+<span class="cl add hi">+			se-&gt;vprot = se-&gt;vruntime;</span>
+<span class="cl add">+</span>
+<span class="cl ctx">		if (!curr)</span>
+<span class="cl ctx">			__enqueue_entity(cfs_rq, se);</span></pre></div>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>enqueue_task_fair()：按权重变化就地缩放重建（enqueue 路径）</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl add">+	if (live) {</span>
+<span class="cl add">+		old_weight = se-&gt;h_load.weight;</span>
+<span class="cl add">+		dist = se-&gt;vprot - se-&gt;vruntime;</span>
+<span class="cl add">+	}</span>
+<span class="cl ctx">	reweight_eevdf(cfs_rq, se, weight, false);</span>
+<span class="cl ctx">	place_entity(cfs_rq, se, flags | ENQUEUE_QUEUED);</span>
+<span class="cl add">+</span>
+<span class="cl add hi">+	if (live) {</span>
+<span class="cl add hi">+		if (weight != old_weight)</span>
+<span class="cl add hi">+			dist = div64_long(dist * old_weight, weight);</span>
+<span class="cl add">+		se-&gt;vprot = se-&gt;vruntime + dist;</span>
+<span class="cl add">+	} else if (running) {</span>
+<span class="cl add">+		cancel_protect_slice(se);</span>
+<span class="cl add">+	}</span></pre></div>
+
+    <h3 class="sub">效果</h3>
+    <div class="metrics">
+      <div class="metric"><div class="mv g">441,920 次权重变更</div><div class="ml">零复活、零错误选择（对照 32 次复活/7 次错选）</div></div>
+      <div class="metric"><div class="mv b">base 问题全消失</div><div class="ml">v2 作者自测</div></div>
+      <div class="metric"><div class="mv o">3/1500</div><div class="ml">残留 vprot 滑动 &gt;5%，复测归零、原因未明</div></div>
+      <div class="metric"><div class="mv">1005→101us</div><div class="ml">HRTICK 粒度修复数据（该补丁后被放弃）</div></div>
+    </div>
+    <p>关联回归：已合入的 <code>819224e506bc</code>（remove dead code on enqueue_task_fair）让 <code>reweight_eevdf()</code> 会被 curr 调用，与本系列在 <code>cfs_rq-&gt;curr</code> 语义上相互牵连（见附录）。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261014150251.30099-1-kayracizmeci@gmail.com/">v2</a> · <a href="https://lore.kernel.org/all/20261003114656.105721-1-kayracizmeci@gmail.com/">v1</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 04 misc CFS ═══════════ -->
+<section id="s04">
+  <div class="sec-head"><span class="sec-no">04</span><h2>CFS 杂项：task_h_load 重做 与 sched_setparam 快路径</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">task_h_load() 重做（Peter Zijlstra）<span class="badge b-high" style="margin-left:.5rem;">high · Vincent 全量 RB</span></h3>
+    <div class="meta-line">
+      <span class="meta-chip">v2（9-29 发）· 10-14 Vincent 四补丁全量 Reviewed-by</span>
+      <span class="meta-chip">日报 sched-20261002-011 / 20261014-008</span>
+    </div>
+    <p><b>背景</b>：<code>task_h_load()</code> 沿 cgroup 层级算层级负载，旧实现经 <code>update_cfs_rq_h_load()</code> 懒更新（调用方不持 rq 锁）；Peter 重做时 v1 的 back-link 遍历在 <code>set_next_task_fair()</code> 里 clobber <code>se</code>/<code>cfs_rq</code>，<b>192 核机器启动 panic</b>（Chen Yu、Vincent 双独立复现）。</p>
+    <p><b>方案</b>：v2 把 back-link 跟踪移入 <code>for_each_sched_entity()</code> 本身（2/4 顺带把 <code>cfs_rq_of(se)</code> 折进去），在持锁位点重算 h_load、删除不持锁的 <code>update_cfs_rq_h_load()</code>；4/4 重做 <code>task_h_load()</code>。语义取舍经多轮澄清：root 更新频率变化有意、h_load 懒传播。</p>
+    <p><b>效果</b>：正确性修复为主、无 benchmark；10-14 Vincent 全量 RB（3/4 附「back-link 或可独立成补丁」边界意见）。合入概率 high。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20260929084923.092062266@infradead.org/">v2 cover</a></p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">sched_setparam() no-change 快路径（Chengfeng Lin）<span class="badge b-review" style="margin-left:.5rem;">RFC · Peter 认可重写</span></h3>
+    <div class="meta-line">
+      <span class="meta-chip">日报 sched-20261009-008 / 20261013-007</span>
+    </div>
+    <p><b>背景</b>：SCHED_OTHER 任务用默认 slice 时，遗留包装 <code>_sched_setscheduler()</code> 把 <code>attr.sched_runtime</code> 留 0（「用默认」），而 <code>p-&gt;se.slice</code> 存实际时长——两者比较必不等，<b>参数完全没变的 <code>sched_setparam()</code> 也走完整更新路径</b>。作者是在追查 v6.12.95↔v7.2 间 no-change 负载 6.5–7.1% 耗时上升时发现的。</p>
+    <p><b>方案</b>：把 no-change 捷径扩展到「默认 slice 且未变」。Peter 嫌初版条件太绕，给出更简的 mode-first 比较：</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>Peter 建议的 mode-first 条件（v4 采纳）</span><span>kernel/sched/core.c</span></div>
+<pre><span class="cl ctx">	if (!!attr-&gt;sched_runtime != !!se-&gt;custom_slice)</span>
+<span class="cl ctx">		return true;	/* 模式切换 */</span>
+<span class="cl ctx">	if (attr-&gt;sched_runtime &amp;&amp; attr-&gt;sched_runtime != se-&gt;slice)</span>
+<span class="cl ctx">		return true;	/* slice 变化 */</span></pre></div>
+    <p><b>效果</b>（i7-12700KF，A/B/A，15 样本 × 50 万次调用，CV &lt; 0.30%）：</p>
+    <table class="data">
+      <tr><th>场景</th><th class="num">Original A</th><th class="num">Revision</th><th class="num">Original B</th></tr>
+      <tr><td>Unchanged default slice</td><td class="num">615.98 ns</td><td class="num pos">162.39 ns</td><td class="num">617.03 ns</td></tr>
+      <tr><td>Unchanged custom slice（对照）</td><td class="num">162.69 ns</td><td class="num">163.22 ns</td><td class="num">162.45 ns</td></tr>
+    </table>
+    <p>默认 slice 场景省 73.66%；作者诚实标注为合成 syscall 微基准、非应用加速。Peter 回「Yes, this looks reasonable」。</p>
+  </div>
+</section>
+
+<!-- ═══════════ 05 cache-aware ═══════════ -->
+<section id="s05">
+  <div class="sec-head"><span class="sec-no">05</span><h2>Cache-aware 调度打磨潮（四条线并行）</h2></div>
+  <div class="card">
+    <p>cache-aware 调度（按 LLC 聚合任务）进入落地期，10-06~14 暴露出一组正确性与开销问题，四条修复/优化线并行推进——这是 10 月与负载均衡放置策略最相关的主题。</p>
+
+    <h3 class="sub">5.1 Honor asym packing over cache-aware（Tim Chen v2）</h3>
+    <p><b>背景</b>：AMD Ryzen AI HX 370 上 cache 密集的 Clang full-LTO 链接受阻——小核频率低（3.3 vs 5.1 GHz）、L3 减半（8 vs 16 MB），cache-aware 把任务钉到小核 LLC 双重受损。冲突根源：asym packing 要最高优先级 CPU，cache-aware 要共置同一 LLC、不论优先级。</p>
+    <p><b>方案</b>：<code>can_migrate_llc_task()</code> 在进入「too many threads / exceed LLC capacity」检查前先判 asym packing 放行条件（v2 相对 v1 的实质改动是补上 <code>env-&gt;idle</code> 前置，Kayra 指出后采纳）：</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>关键放行条件（kernel/sched/fair.c +18/−3）</span><span>guard</span></div>
+<pre><span class="cl add">+	if (env-&gt;idle &amp;&amp; sched_asym(env-&gt;sd, dst_cpu, src_cpu))</span>
+<span class="cl add">+		return 0;	/* asym packing 优先，跳过 LLC 聚合迁移 */</span></pre></div>
+    <p><b>效果</b>：Chen Yu 用 QOS 限 L3 ways + pstate 限频在 AMD 8945HX 上仿真 hybrid 实测（8 线程 pointer-chase ring、24 MB 工作集）：</p>
+    <table class="data">
+      <tr><th>配置</th><th class="num">cache-aware ON</th><th class="num">cache-aware OFF</th></tr>
+      <tr><td>补丁前</td><td class="num neg">~230 M/s（6/8 线程困在小核 LLC）</td><td class="num">~530 M/s（差距 −56.6%）</td></tr>
+      <tr><td>补丁后</td><td class="num pos">520.7 ± 18.3 M/s（8 线程全在大核 LLC）</td><td class="num">512.9 ± 16.6 M/s（+1.5%，噪声）</td></tr>
+    </table>
+    <p>回归完全消除；Kayra RB，已 <code>Cc: stable # 7.2.x</code>。</p>
+
+    <h3 class="sub">5.2 Avoid publishing partial LLC utilization（Jemmy Wong v2）</h3>
+    <p><b>背景</b>：负载均衡因 all-pinned redo、或 CPU hotplug 使 <code>env-&gt;cpus</code> 与 <code>sched_group_span(group)</code> 不一致时，把只覆盖部分 CPU 的利用率当整组发布——「部分利用率 + 完整容量」让 <code>can_migrate_llc()</code> 误判忙碌 preferred LLC 有空余。</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>v2 折中：便宜的 redo 标志先行，子集检查兜底（+8）</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl add">+	if ((env-&gt;flags &amp; LBF_ALL_PINNED) ||</span>
+<span class="cl add">+	    !cpumask_subset(sched_group_span(group), env-&gt;cpus))</span>
+<span class="cl add">+		return;</span></pre></div>
+    <p><b>效果</b>：无性能数字（逻辑正确性、Found by inspection）；Tim Chen 与 Chen Yu 10-14 双 RB，Tim 认定 7.2.x stable 候选。</p>
+
+    <h3 class="sub">5.3 Remove old cache group footprint on exec（Jemmy Wong）</h3>
+    <p><b>背景</b>：<code>exec</code> 在重置 NUMA fault 统计之前就换掉 cache group，而只有 exit 路径会减去任务的 footprint 贡献——CLONE_VM 无 CLONE_THREAD 的任务 exec 后旧贡献残留，抑制 LLC capacity 检查。<b>方案</b>（10-14 更新）：<code>grp-&gt;footprint</code> 改 <code>atomic_long_t</code>、去 clamp，placement 前 快照 <code>total_numa_faults</code>、循环后结净差：</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>每 pass 一次更新，复用既有 NUMA 计数</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl add">+static inline void sched_cache_footprint_update(struct task_struct *p, long delta)</span>
+<span class="cl add">+{</span>
+<span class="cl add">+	struct sched_cache_group *grp = rcu_deref_sched_cache_grp(p);</span>
+<span class="cl add">+</span>
+<span class="cl add">+	if (grp &amp;&amp; delta)</span>
+<span class="cl add">+		atomic_long_add(delta, &amp;grp-&gt;footprint);</span>
+<span class="cl add">+}</span>
+<span class="cl ctx">	/* task_numa_placement() 内 */</span>
+<span class="cl add">+	unsigned long old_faults = p-&gt;total_numa_faults;</span>
+<span class="cl ctx">	... /* 遍历各节点做 placement */</span>
+<span class="cl add">+	sched_cache_footprint_update(p, p-&gt;total_numa_faults - old_faults);</span></pre></div>
+    <p>去 clamp 的论证：footprint 聚合的正是 <code>total_numa_faults</code> 追踪的同一批贡献，NUMA placement 本就做带符号增量不 clamp；clamp 反而会掩盖记账 mismatch。failed-exec 的负值例外已论证（该组只属即将 exit 的任务）。</p>
+
+    <h3 class="sub">5.4 Reduce task_cache_work overhead（Luo Gengkun v10，华为）</h3>
+    <p><b>背景</b>：<code>task_cache_work()</code> 扫遍系统所有 CPU 找 pref_llc，多实例（Redis）场景开销放大。<b>方案</b>：<code>visited_cpus</code> 只扫被访问过、未超时的 CPU（超时驱逐），顺势移除 <code>get_scan_cpumasks()</code>。<b>效果</b>（AMD 服务器，valkey-benchmark 400k rps，NUMA balancing 关闭）：</p>
+    <div class="metrics">
+      <div class="metric"><div class="mv r">−25.68%</div><div class="ml">cache-aware 无此补丁的 p99 回退</div></div>
+      <div class="metric"><div class="mv g">−1.14%</div><div class="ml">加上 visited_cpus 后的 p99 回退（0.436→0.441ms）</div></div>
+      <div class="metric"><div class="mv g">0.81% → 0.02%</div><div class="ml">task_cache_work 的内核态 cycles 占比</div></div>
+      <div class="metric"><div class="mv b">384 → 16</div><div class="ml">单次扫描的 CPU 数</div></div>
+    </div>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/77ceef1e51b895760dc5f6c9cde985a1679545b5.1791224900.git.tim.c.chen@linux.intel.com/">asym packing v2</a> · <a href="https://lore.kernel.org/all/20261013084338.55100-1-jemmywong512@gmail.com/">partial LLC v2</a> · <a href="https://lore.kernel.org/all/32BC7D58-C1C9-4B24-857B-7433F19606A8@gmail.com/">exec footprint 更新</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 06 numa fixes ═══════════ -->
+<section id="s06">
+  <div class="sec-head"><span class="sec-no">06</span><h2>sched/numa：fix several NUMA balancing issues（0/6）</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">作者 <b>Li Zhe</b>（字节跳动）</span>
+      <span class="meta-chip">10-14 v1 首发当日即收 6 封 review</span>
+      <span class="badge b-na">4/6 方向被 reviewer 否定</span>
+      <span class="meta-chip">日报 sched-20261014-002</span>
+    </div>
+
+    <h3 class="sub">背景与问题</h3>
+    <p>三类缺陷：① scan-period ratio 的分母校验与实际除数是两套 sum，memory hotplug 后 <code>for_each_online_node()</code> 跳过已下线节点，留下「local&gt;0 但 private/shared 均为 0」的窗口——<b>除零</b>（v7.3-rc1 QEMU hot-remove NUMA 节点复现）；② 「共享 fault 应减速扫描」的实现用了 private ratio 当减速信号，共享主导窗口反而落进加速路径（2017 年以来行为）；③ memory-tiering 的 promotion fault 污染正常 task-placement 统计、free-space bypass 破坏 CXL+DRAM 刻意铺开的带宽分布。</p>
+
+    <h3 class="sub">方案思路（关键代码）</h3>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>2/6：校验实际分母，修除零</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl del">-	if (local + shared == 0 || p-&gt;numa_faults_locality[2]) {</span>
+<span class="cl add">+	if (!locality_faults || !type_faults ||</span>
+<span class="cl add">+	    p-&gt;numa_faults_locality[NUMA_FAULT_MIGRATE_FAIL]) {</span>
+<span class="cl ctx">		p-&gt;numa_scan_period = min(p-&gt;numa_scan_period_max,</span>
+<span class="cl ctx">			p-&gt;numa_scan_period &lt;&lt; 1);</span></pre></div>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>3/6：新增「既 remote 又 private」计数器，只有它足够大才加速扫描</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl del">-	lr_ratio = (local * NUMA_PERIOD_SLOTS) / (local + remote);</span>
+<span class="cl del">-	ps_ratio = (private * NUMA_PERIOD_SLOTS) / (private + shared);</span>
+<span class="cl add">+	lr_ratio = (local * NUMA_PERIOD_SLOTS) / locality_faults;</span>
+<span class="cl add">+	sr_ratio = (shared * NUMA_PERIOD_SLOTS) / type_faults;</span>
+<span class="cl add">+	rp_ratio = (remote_private * NUMA_PERIOD_SLOTS) / locality_faults;</span>
+<span class="cl add">+	ratio = max(lr_ratio, sr_ratio);</span>
+<span class="cl ctx">	} else {</span>
+<span class="cl add">+		if (rp_ratio &gt;= NUMA_PERIOD_SLOTS - NUMA_PERIOD_THRESHOLD)</span>
+<span class="cl add">+			diff = -(NUMA_PERIOD_THRESHOLD - ratio) * period_slot;</span>
+<span class="cl add">+		else</span>
+<span class="cl add">+			diff = 0;</span>
+<span class="cl ctx">	}</span>
+<span class="cl ctx">	/* task_numa_fault() 侧记账 */</span>
+<span class="cl add">+	if (!local &amp;&amp; priv)</span>
+<span class="cl add">+		p-&gt;numa_faults_locality[NUMA_FAULT_REMOTE_PRIVATE] += pages;</span></pre></div>
+
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>5/6：区分 slow-tier 元数据与真 cpupid，tiering fault 不喂 placement</span><span>kernel/sched/fair.c</span></div>
+<pre><span class="cl add">+	if (last_cpupid == LAST_CPUPID_ACCESS_TIME) {</span>
+<span class="cl add">+		if (!(sysctl_numa_balancing_mode &amp; NUMA_BALANCING_NORMAL)) {</span>
+<span class="cl add">+			if (migrated)</span>
+<span class="cl add">+				p-&gt;numa_pages_migrated += pages;</span>
+<span class="cl add">+			return;	/* 只记迁移，不喂 AutoNUMA 统计 */</span>
+<span class="cl add">+		}</span>
+<span class="cl add">+		last_cpupid = LAST_CPUPID_UNSET;</span>
+<span class="cl add">+	}</span></pre></div>
+
+    <h3 class="sub">效果与社区态度</h3>
+    <p>除 2/6 的 QEMU hotplug 复现外<b>无性能数据</b>。Gregory Price 当日对 6 个补丁逐封回帖，普遍要求补「用户可见的性能影响」；对 4/6（全局 sysctl 控 free-space bypass）明确表态：</p>
+    <div class="quote">A global switch for this is a poor solution for this problem. ... if the user did not set MPOL_F_NUMA_BALANCING - that spread is already protected because the mempolicy overrides the numa balancing fault and no migration occurs. I don't think this is the right direction.<span class="who">— Gregory Price，Re: [PATCH 4/6]</span></div>
+    <p>对 3/6 的担忧：「改变 2017 年以来的行为，担心意外回归，要性能数字」。合入需先补 benchmark 并重做 4/6 的接口形态。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261014094347.99157-1-lizhe.67@bytedance.com/">系列 cover</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 07 numa direction ═══════════ -->
+<section id="s07">
+  <div class="sec-head"><span class="sec-no">07</span><h2>NUMA 方向讨论：距离矩阵 与 粒度控制之争</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">两级亲和性打分（Jianyong Wu，海光，23 补丁 RFC）</h3>
+    <div class="meta-line"><span class="meta-chip">9 月起评审，10 月三轮收敛</span><span class="badge b-rfc">rfc · 设计论证</span><span class="meta-chip">日报 sched-20261002-009 / 20261009-010</span></div>
+    <p><b>背景</b>：cache-aware 负载均衡只在 LLC 粒度决策、跨节点放置交给独立的 NUMA balancing，二者互不知情；海光等非对称互连平台节点间距离非单值，需要区分度。</p>
+    <p><b>收敛过程</b>：原方案造「去重距离矩阵」→ Tim Chen 多轮做减法 → 改用 <b>raw distance + 三元组全序 <code>(distance, |node_id_i − node_id_j|, min(i,j))</code> 平局决胜</b>，打分式去掉 <code>affinity_bias</code>（「bias 扭曲 affinity 得分」）→ 10-09 Chen Yu 再提分层简化：LLC 是对称的，直接把 preferred LLC 的 range 个兄弟加进 preferred_mask，<b>LLC 层可整体去掉距离比较</b>。</p>
+    <p><b>效果</b>：无实测数据，纯设计论证。</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">NUMA balancing 粒度控制（Li Zhe vs Yafang Shao）</h3>
+    <div class="meta-line"><span class="badge b-rfc">方向未收敛</span><span class="meta-chip">日报 sched-20261012-006 / 20261013-004 / 20261014-012</span></div>
+    <p><b>背景</b>：全局 <code>numa_balancing[_mode]</code> 是 all-or-nothing——延迟敏感服务只要调度统计不要 tiering 提升，批处理要 PMEM 热提升，单一开关无法两全。</p>
+    <p><b>两条路线</b>：Li Zhe 的 per-process prctl（K8s/容器运行时设置、子进程继承，0/4）；Yafang Shao 的 <code>bpf_numab_ops</code> struct_ops per-cgroup 策略（RFC v2）——内核跑「该 cgroup 及其所有祖先」的策略并 OR 合并，task 面传 <code>task_struct*</code>、内存面传 <code>folio*</code>，语义 <b>DISABLED beats NORMAL beats TIERING</b>（策略总能 opt-out），无策略挂载时 no-op 退化到全局 sysctl。</p>
+    <p><b>进展</b>：无 benchmark；Li Zhe 10-14 表态「三元全局键可行；若维护者倾向 per-cgroup，愿意帮 review Yafang 系列」——作者立场松动，最终形态取决于维护者定调。<b>与 cpuset/cgroup 方向高度相关，值得跟踪参与。</b></p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20260908122446.56708-1-lizhe.67@bytedance.com/">Li Zhe 0/4</a> · <a href="https://lore.kernel.org/all/20261012120438.52849-1-laoar.shao@gmail.com/">Yafang BPF RFC</a></p>
+  </div>
+</section>
+
+<!-- ═══════════ 08 sched_ext ═══════════ -->
+<section id="s08">
+  <div class="sec-head"><span class="sec-no">08</span><h2>sched_ext：NUMA 支持、修复潮与 sub-scheduler 生态</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">8.1 Add NUMA balancing support（Andrea Righi，NVIDIA）</h3>
+    <div class="meta-line"><span class="meta-chip">5 补丁 · sched_ext/for-7.4</span><span class="badge b-review">under review</span><span class="meta-chip">日报 sched-20261004-001 → 20261010-012</span></div>
+    <p><b>背景</b>：自动 NUMA balancing 对 sched_ext 任务<b>事实性关闭</b>——扫描只从 fair tick 排队。Vladimir Vdovin 的 KVM 宿主机实测（2 节点 160 CPU）：</p>
+    <div class="metrics">
+      <div class="metric"><div class="mv r">0 / 2.4M–3.9M</div><div class="ml">numa_pte_updates/s：SCX vs fair</div></div>
+      <div class="metric"><div class="mv r">37% / 83%</div><div class="ml">跑在 preferred nid 的任务比例</div></div>
+      <div class="metric"><div class="mv b">58%</div><div class="ml">SCX 任务无 preferred_nid</div></div>
+    </div>
+    <p><b>方案</b>：<code>SCX_OPS_NUMA_BALANCING</code> opt-in，扫描从 sched_ext tick 驱动（与 <code>task_tick_fair()</code> 同构）、fault 记账照常，但<b>任务放置留给 BPF 调度器</b>；preferred node 经 kfunc 暴露。10-10 接受 Tejun 建议，接口从「flag + kfunc 轮询」改为<b>事件式回调</b>：</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>v2 接口方向：sched_setnuma() 里、rq 锁下通知</span><span>sched_ext ops</span></div>
+<pre><span class="cl add">+	void (*set_numa_node)(struct task_struct *p, s32 nid);</span>
+<span class="cl cmt">/* 实现该回调即启用 hinting-fault 扫描；初始 preferred node 在 enable 时上报 */</span></pre></div>
+    <p><b>效果</b>：Vladimir 回植 6.18.54 + 自家调度器实测：4G 内存 <b>20 秒</b>完成迁移，为系列有效性背书。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261004072901.3579967-1-arighi@nvidia.com/">系列 cover</a></p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">8.2 v7.3-rc6 修复批 + 后续修复潮（Tejun Heo 等）</h3>
+    <div class="meta-line"><span class="badge b-merged">merged · 762122d75e5</span><span class="meta-chip">日报 sched-20261007-001 等</span></div>
+    <ul class="dash">
+      <li><b>GIT PULL（10-07，已进 torvalds/master）</b>：dying CPU 任务停在 user DSQ / BPF custody 时 <code>cpu_down()</code> 永久挂起（修复：rq 下线时重入队到本地 DSQ）；remote local DSQ 迟到的 <code>ops.dequeue()</code>；防陈旧 dispatch 的 qseq 从 rq 级改 per-task 计数器（跨 rq 迁移撞号，<code>Cc: stable v6.12+</code>）。4 commit，+528/−17 含自测。</li>
+      <li><b>ENQ_LAST idle stall</b>：本应交给 <code>ops.enqueue()</code> 的任务在三条 skip 路径直达 local DSQ，而 pick 已结算到 idle——CPU 挂着排队任务空转；scx_mitosis 在 mass cgroup teardown 时 exiting 任务卡 <code>exit_mmap()</code> <b>40+ 秒</b>。修复：切进任务时置 need_resched。</li>
+      <li><b>user DSQ UAF</b>：deferred reenqueue 可在 RCU 宽限期内对已销毁的 user DSQ 解引用。</li>
+      <li><b>proxy donors</b>：有 slice 剩余的 donor 留本地 DSQ 头部——经 v1→v2→Tejun 自我纠偏（"Sorry, I steered this the wrong way"）回到 PICK_PENDING 语义的三轮往返。</li>
+      <li><b>受限 CPU 集下 idle 选择不尊重任务亲和性</b>（Hui Su，已合入 tip）。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">8.3 sub-scheduler（父子调度器）生态成型（Tejun Heo 等）</h3>
+    <div class="meta-line"><span class="meta-chip">部分已合入 tip</span><span class="meta-chip">日报 sched-20261006-001 / 20261008-004 / 20261014-015</span></div>
+    <p><b>背景</b>：父调度器把 cid（CPU）与 caps 委派给子调度器后存在两类盲区——<b>用量黑盒</b>（按需定尺寸的父级无法度量各子级实际用了多少 cid 时间）与<b>生效时机黑盒</b>（grant/revoke 只记录目标值，真正生效要等下一次 dispatch；子级留下的低 cpuperf 目标在 PERF 回收后残留）。</p>
+    <ul class="dash">
+      <li><code>ops.sub_cid_sched_updated()</code>：cid 上的调度器变化时通知（NONE/SELF/直接子 cgroup id；子树内部变化不上报）。开销控制在代码层：调度器不变时每次上下文切换仅一次指针比较，机制整体挂 static key。</li>
+      <li><code>ops.sub_child_ecaps_updated()</code>：子级 caps 变化后同上下文通知直接父级；v2 砍掉 disable 报告与嵌套 dispatch 门控，改由 <code>sub_detach()</code> 恢复。配套裁决：cpuperf target 属 last-writer-wins，恢复责任归 grant 方。</li>
+      <li>契约易误用的实证：Tao Cui 报告「子调度器任务严重欠调度」（duty ~0.3% vs root 任务 ~100%），Tejun 定位为<b>使用问题</b>——父级从不调 <code>scx_bpf_sub_dispatch()</code>、grant 缺 <code>SCX_CAP_ENQ</code>；报告者 10-14 确认并将修正调度器复测。值得后续提议补文档/示例注释。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ 09 infra ═══════════ -->
+<section id="s09">
+  <div class="sec-head"><span class="sec-no">09</span><h2>基础设施与观测性</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">SparseBitmap / SBM（K Prateek Nayak + Peter Zijlstra，13 补丁 RFC v3）</h3>
+    <div class="meta-line"><span class="badge b-rfc">rfc v3</span><span class="meta-chip">将在 LPC'26 Scheduling MC 报告</span><span class="meta-chip">日报 sched-20261002-007</span></div>
+    <p><b>背景</b>：大容量多插槽机器上调度器/定时器的全局 cpumask（如 <code>nohz.idle_cpus_mask</code>）是所有核争写的共享 cacheline——每次置位/清位都跨 socket 抢 cacheline（C2C ping-pong）。</p>
+    <p><b>方案</b>：按 LLC/节点实例<b>分片</b>的位图（每实例只表示少量 CPU，写操作留在本地 cacheline，代价是遍历更贵）。CPU 激活时动态分配索引，编码为两段 <code>[数组下标 | 位偏移]</code>，按拓扑推导 shift/mask；v3 补齐 x86 之外 7 个架构 enablement（LoongArch/MIPS/PowerPC/s390/sparc64 + 通用 arch_topology），首个用户是 nohz idle 掩码。定位：「sbm 之于 sbitmap，如同 cpumask 之于普通 bitmap」。</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>掩码更新代价（%cycles，AMD 内部微基准，相对全局掩码）</span><span>benchmark</span></div>
+<pre><span class="cl ctx">global mask                                : 100.0000%  (var: 3.28%)</span>
+<span class="cl add">per-NUMA mask                              :  32.9209%  (var: 7.77%)</span>
+<span class="cl add hi">per-LLC mask                               :   1.2977%  (var: 4.85%)</span>
+<span class="cl add">per-LLC mask (u8 operation; no LOCK prefix):   0.4930%  (var: 0.83%)</span></pre></div>
+    <p><b>效果</b>：nohz 掩码转换后整机性能持平、平均略好 ~1–2%；最坏场景（每次上下文切换一个事件）分布式更新代价为全局掩码的 <b>1/100</b>。未提供 nohz-heavy RT 场景的端到端延迟数据。</p>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/all/20261001192849.74788-1-kprateek.nayak@amd.com/">RFC v3 cover</a></p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">task enqueue/dequeue tracepoints（Nam Cao / Gabriele Monaco，Red Hat）</h3>
+    <div class="meta-line"><span class="meta-chip">15 补丁系列的 01/15</span><span class="badge b-review">under review · 卡在动机说明</span></div>
+    <p><b>背景</b>：现有 tracepoint 覆盖事件语义（wakeup/switch/migrate），缺「任务进出 runqueue」的<b>调度类无关</b>观察点（含 <code>__block_task()</code> 这类不走 <code>dequeue_task()</code> 的路径），只能靠 kprobe。为 RV（runtime verification）monitor 服务。</p>
+    <div class="code"><div class="code-title"><span><span class="dots"><i class="d"></i><i class="d"></i><i class="d"></i></span>方案（3 文件 +21/−1）</span><span>include/trace/events/sched.h</span></div>
+<pre><span class="cl add">+DECLARE_TRACE(sched_enqueue,</span>
+<span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span>
+<span class="cl add">+	TP_ARGS(tsk, cpu));</span>
+<span class="cl add">+DECLARE_TRACE(sched_dequeue,</span>
+<span class="cl add">+	TP_PROTO(struct task_struct *tsk, int cpu),</span>
+<span class="cl add">+	TP_ARGS(tsk, cpu));</span>
+<span class="cl cmt">/* enqueue_task(): !(flags & ENQUEUE_DELAYED) 时打点；</span>
+<span class="cl cmt">   dequeue_task(): !(flags & DEQUEUE_SLEEP) 时打点；先 trace_*_enabled() 控开销 */</span></pre></div>
+    <p><b>进展</b>：补丁本体早获 K Prateek RB，但已辗转三个宿主系列（20 补丁 RFC → RV 10 补丁 → 15 补丁），Peter 10-01 明确表示「忘了把其余补丁发给我、changelog 没说动机，<i>As is I'm clueless as to why we want this</i>」——合入卡在系列叙事而非代码。</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">idle SMT priority for asymmetric capacity（Mete Durlu，IBM/s390，RFC）</h3>
+    <div class="meta-line"><span class="badge b-rfc">rfc · 前提被质疑</span><span class="meta-chip">日报 sched-20261008-001 → 20261014-014</span></div>
+    <p><b>背景</b>：commit <code>25a32e400a14</code>（prefer fully-idle SMT cores）打破了 s390 依赖的行为——s390 的 capacity 是 hypervisor 分配的 entitlement（垂直极化），整机接近满载时<b>忙碌高容量核的空闲 SMT 兄弟应胜过完全空闲的低容量核</b>（聚合到高容量核让低容量核更久空闲、减少对邻分区噪声）。</p>
+    <p><b>方案演进</b>：v1 为 <code>SCHED_IDLE_SMT_PRIO</code> 配置 + <code>arch_needs_idle_smt_prio()</code> 架构钩子 → 评审中转向扩展 <code>cpu_preferred_mask</code> 做 <b>soft preference 三档</b>（steal time==0 维持现状 / 低于阈值先填满 entitled 核 SMT 兄弟再外溢 / 超阈值收缩 preferred mask）。</p>
+    <p><b>效果</b>：<b>无任何 benchmark 数据</b>；Shrikanth 的质疑未闭环——配好 steal governor 阈值后 preferred mask 里的低容量核本应很少，要求先用合理阈值实测「问题现实里是否成立」。RFC 阶段，观察即可。</p>
+  </div>
+</section>
+
+<!-- ═══════════ 10 bugfix appendix ═══════════ -->
+<section id="s10">
+  <div class="sec-head"><span class="sec-no">附</span><h2>正确性修复简报</h2></div>
+  <div class="bug-grid">
+
+    <div class="bug">
+      <h4>TIF_NEED_RESCHED 置位顺序 <span class="badge b-merged">merged · 53bc5c556b82</span></h4>
+      <p>trace 点在 <code>TIF_NEED_RESCHED</code> 置位前触发，可被 BPF 程序递归重入直至内核栈溢出；新顺序在远程 CPU 分支还会破坏 RV nrp monitor 状态机（300 次 sched messaging 即违规）。</p>
+    </div>
+
+    <div class="bug">
+      <h4>cputime idle 双计 <span class="badge b-high">high · Frederic RB</span></h4>
+      <p><code>cf6444c3e1bb</code> 统一记账后 dyntick-idle 与重启 tick 首周期重叠双计。</p>
+      <span class="nums">SPARC idle/墙钟 1.44× → 1.0000 · KVM 1.53× → 0.998</span>
+    </div>
+
+    <div class="bug">
+      <h4>enqueue_task_fair 死代码回归 <span class="badge b-high">high</span></h4>
+      <p>已合入的 <code>819224e506bc</code> 在 CFS_BANDWIDTH 下 throttle→dequeue→unthrottle→enqueue 命中被删分支触发 WARNING。Peter 修复方向：</p>
+      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (cfs_rq-&gt;curr != se)</span>
+<span class="cl ctx">		__enqueue_entity(cfs_rq, se);</span></pre></div>
+    </div>
+
+    <div class="bug">
+      <h4>dl-server nohz_full 感知 <span class="badge b-review">v3</span></h4>
+      <p>tick 启停改由 <code>inc/dec_dl_tasks()</code> 驱动；v2 曾把隔离核变成满 CONFIG_HZ tick，v3 附复现器与 running_bw 下溢 splats。</p>
+    </div>
+
+    <div class="bug">
+      <h4>irq 线程热插拔竞态 <span class="badge b-review">v2</span></h4>
+      <p>syzbot 报出：IRQ 线程迁到「当时在线但马上掉线」的 CPU，<code>__migrate_task()</code> 被拒后任务与 cpus_mask 失配；Juri 投票 <code>cpus_read_lock</code> 方案，Peter 要求完整故障图。</p>
+    </div>
+
+    <div class="bug">
+      <h4>PSI trigger 销毁去 RCU 等待 <span class="badge b-review">new</span></h4>
+      <p>Meta 生产环境：<code>synchronize_rcu()</code> 在持有 kernfs <code>node_mutex</code> 时阻塞文件关闭/cgroup 移除等用户；逐 commit 论证该等待已因历次重构失去必要性。</p>
+    </div>
+
+    <div class="bug">
+      <h4>wake-affine 保持（非 SMT） <span class="badge b-review">v6</span></h4>
+      <p>非 SMT 系统 narrow reciprocal <code>WF_SYNC</code> 唤醒保住 wake-affine 选中的 waker CPU。</p>
+      <span class="nums">80 核 Altra pipe：3.704 → 2.267 usec/op（+38.8%）</span>
+    </div>
+
+    <div class="bug">
+      <h4>iowait 记账 + nr_iowait_cpu 重构 <span class="badge b-na">方案被否</span></h4>
+      <p>Wei Gao 修 liburing iowait.t 失败：<code>kcpustat_irq_enter()</code> 检查 <code>nr_iowait_cpu()</code> 提前结算——Peter 否决：</p>
+      <div class="quote" style="margin:.4rem 0;">"Using nr_iowait_cpu() is fundamentally never a fix. It is rolling a dice and liking random numbers."<span class="who">— Peter Zijlstra</span></div>
+      <p>衍生：Christian Loehle 的 <code>nr_iowait_cpu() → bool cpu_has_iowait()</code> 重构（附 Coccinelle recipe）。</p>
+    </div>
+
+    <div class="bug">
+      <h4>deadline schedstats 恒零 <span class="badge b-review">new</span></h4>
+      <p><code>update_stats_dequeue_dl()</code> 唯一调用点走 throttle 路径且 flags=0，SCHED_DEADLINE 任务 sleep/block 统计全为 0：</p>
+      <div class="code" style="margin:.5rem 0 .3rem;"><pre><span class="cl add">+	if (on_dl_rq(&amp;p-&gt;dl))</span>
+<span class="cl add">+		update_stats_dequeue_dl(&amp;rq-&gt;dl, &amp;p-&gt;dl, flags);</span>
+<span class="cl ctx">	dequeue_dl_entity(&amp;p-&gt;dl, flags);</span></pre></div>
+    </div>
+
+    <div class="bug">
+      <h4>其他小修复</h4>
+      <p>loadavg <code>calc_load_idx</code> 加 READ_ONCE/WRITE_ONCE；autogroup nice rate-limit 串行化（v2 改原子）；topology 分配失败释放 NUMA masks；sched stats 修正迁移 <code>sched_delayed</code> 任务的 run_delay 双计；wait 路径失败注册不改 entry。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ 11 closing ═══════════ -->
+<section id="s11">
+  <div class="sec-head"><span class="sec-no">结</span><h2>收尾观察</h2></div>
+  <div class="card">
+    <ul class="dash">
+      <li><b>节奏</b>：10 月是 7.3 发版周期 + 7.4 合入窗口开启的节点——约 20 个系列已进 tip / 主线（sched_ext 修复批、lost wakeup、TIF_NEED_RESCHED 顺序等），大量正确性修复集中收取。</li>
+      <li><b>高概率跟进合入</b>：task_h_load（全量 RB）、partial LLC utilization（双 RB + stable 候选）、cputime idle 双计（RB 待收取）、asym packing honor（RB + stable）。</li>
+      <li><b>值得持续跟踪</b>（cpuset/cgroup 视角）：cache-aware 打磨潮（放置策略与 LLC 容量判断）、NUMA balancing 粒度控制的接口之争（prctl vs BPF-cgroup）、SBM（nohz/cpumask 基础设施，LPC'26 有专场）。</li>
+      <li><b>普遍短板</b>：多数特性系列仍只有单一平台数据、无第三方复现——Gregory Price 在 NUMA 0/6 上的「要用户可见影响数据」是本月 review 的代表性姿态。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>数据来源：<code>sched/2026/10/</code> 日报归档（2026-10-01 ~ 2026-10-14，187 篇）· 生成于 2026-10-15 · <a href="../">返回日报首页</a> · <a href="https://github.com/1343503048/lkm">GitHub 仓库</a></p>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  Array.prototype.forEach.call(document.querySelectorAll('main section[id]'), function (s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>
