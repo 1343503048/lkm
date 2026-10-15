@@ -85,19 +85,18 @@ ul.dash li { margin-bottom: 0.35rem; font-size: 0.92rem; }
 .quote .who { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; font-style: normal; }
 .quote em { font-style: italic; }
 
-/* code */
-.code { background: #0F172A; border-radius: 12px; margin: 0.9rem 0; overflow: hidden; box-shadow: var(--shadow); }
-.code-title { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; background: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #94A3B8; border-bottom: 1px solid #334155; }
-.code-title .dots { display: inline-flex; gap: 5px; margin-right: 8px; }
-.code-title .d { width: 9px; height: 9px; border-radius: 50%; }
-.code-title .d:nth-child(1){background:#F87171}.code-title .d:nth-child(2){background:#FBBF24}.code-title .d:nth-child(3){background:#34D399}
-.code pre { padding: 0.9rem 1.1rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.62; color: #E2E8F0; }
-.cl { display: block; white-space: pre; }
-.cl.add { color: #4ADE80; }
-.cl.del { color: #F87171; }
-.cl.ctx { color: #94A3B8; }
-.cl.cmt { color: #64748B; font-style: italic; }
-.cl.hi  { color: #FDE047; }
+/* code — GitHub 风格 */
+.code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; margin: 0.9rem 0; overflow: hidden; }
+.code-title { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 6px 14px; background: #f6f8fa; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 12px; color: #57606a; border-bottom: 1px solid #d0d7de; }
+.code-title .dots { display: none; }
+.code-title .d { display: none; }
+.code pre { margin: 0; padding: 10px 0; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 12px; line-height: 1.55; color: #24292f; }
+.cl { display: block; white-space: pre; padding: 0 14px; }
+.cl.add { background: #e6ffec; color: #116329; }
+.cl.del { background: #ffebe9; color: #82071e; }
+.cl.ctx { color: #24292f; }
+.cl.cmt { color: #6e7781; font-style: italic; }
+.cl.hi  { background: #fff8c5; color: #4d2d00; }
 
 /* data table */
 table.data { width: 100%; border-collapse: collapse; margin: 0.9rem 0; font-size: 0.85rem; background: var(--card); }
