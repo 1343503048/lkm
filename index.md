@@ -13,8 +13,9 @@ title: 首页
         <div class="stat"><span class="stat-num">{{ site.posts | size }}</span><span class="stat-label">篇文章</span></div>
         <div class="stat"><span class="stat-num">{{ site.tags | size }}</span><span class="stat-label">个标签</span></div>
       </div>
-      <div style="margin-top:0.9rem;">
+      <div style="margin-top:0.9rem; display:flex; flex-wrap:wrap; gap:0.6rem;">
         <a href="{{ '/analysis/2026-10-sched-features-perf-analysis.html' | relative_url }}" style="display:inline-block;padding:0.45rem 1rem;border-radius:10px;background:var(--accent-light,#DBEAFE);color:var(--accent,#2563EB);font-size:0.85rem;font-weight:600;border:1px solid rgba(37,99,235,0.25);">周期分析：2026-10 上旬重点补丁与特性（含补丁代码与实测数据）→</a>
+        <a href="{{ '/analysis/2026-lpc-sched-topics.html' | relative_url }}" style="display:inline-block;padding:0.45rem 1rem;border-radius:10px;background:#EDE9FE;color:#7C3AED;font-size:0.85rem;font-weight:600;border:1px solid rgba(124,58,237,0.25);">会议分析：LPC 2026 调度与实时议题（24 场 · 含幻灯片图与数据）→</a>
       </div>
     </div>
 

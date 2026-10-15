@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LPC 2026 调度与实时议题分析</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F2F5; --card: #FFFFFF; --fg: #1A1A2E; --muted: #6B7280;
+  --border: #E5E7EB; --accent: #2563EB; --accent-light: #DBEAFE;
+  --green: #059669; --green-light: #D1FAE5;
+  --red: #DC2626; --red-light: #FEE2E2;
+  --orange: #D97706; --orange-light: #FEF3C7;
+  --purple: #7C3AED; --purple-light: #EDE9FE;
+  --radius: 14px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 17.5px; }
+body { font-family: 'IBM Plex Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 2rem; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+.nav-brand { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+.nav-brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.nav-links { display: flex; gap: 1.25rem; }
+.nav-links a { color: var(--muted); font-size: 0.85rem; font-weight: 500; }
+
+.wrap { display: flex; gap: 2rem; max-width: 1240px; margin: 0 auto; padding: 2rem 2rem 4rem; align-items: flex-start; }
+.toc { width: 250px; flex-shrink: 0; position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow-y: auto; }
+.toc-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.6rem; padding-left: 0.75rem; }
+.toc a { display: block; padding: 0.3rem 0.75rem; font-size: 0.83rem; color: var(--muted); border-left: 2px solid transparent; border-radius: 0 6px 6px 0; }
+.toc a:hover { color: var(--accent); text-decoration: none; background: var(--card); }
+.toc a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 600; }
+.toc .toc-sep { margin: 0.5rem 0.75rem; border-top: 1px dashed var(--border); }
+main { flex: 1; min-width: 0; }
+
+.hero { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 2.2rem 2.4rem; box-shadow: var(--shadow); margin-bottom: 1.6rem; }
+.hero .kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+.hero h1 { font-size: 1.7rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.6rem; }
+.hero .sub { color: var(--muted); font-size: 0.92rem; max-width: 780px; }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.8rem; margin-top: 1.4rem; }
+.stat-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 1rem; text-align: center; }
+.stat-box .n { font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 700; color: var(--accent); }
+.stat-box .l { font-size: 0.75rem; color: var(--muted); }
+
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.9rem; margin-bottom: 2rem; }
+.pillar { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; box-shadow: var(--shadow); border-top: 3px solid var(--accent); }
+.pillar.p2 { border-top-color: var(--green); }
+.pillar.p3 { border-top-color: var(--purple); }
+.pillar h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.pillar p { font-size: 0.83rem; color: var(--muted); }
+
+section { margin-bottom: 2.2rem; scroll-margin-top: 76px; }
+.sec-head { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.4rem; }
+.sec-no { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: #fff; background: var(--accent); border-radius: 6px; padding: 0.1rem 0.5rem; }
+h2 { font-size: 1.28rem; font-weight: 700; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.7rem; box-shadow: var(--shadow); }
+.meta-line { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.2rem 0 1rem; }
+.meta-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); color: var(--muted); }
+.meta-chip b { color: var(--fg); font-weight: 600; }
+h3.sub { font-size: 1.02rem; font-weight: 700; margin: 1.4rem 0 0.5rem; padding-left: 0.6rem; border-left: 3px solid var(--accent); }
+h4 { font-size: 0.92rem; font-weight: 700; margin: 1.1rem 0 0.4rem; color: #374151; }
+p { margin-bottom: 0.75rem; font-size: 0.92rem; }
+ul.dash { margin: 0 0 0.75rem 1.1rem; }
+ul.dash li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+
+.badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.12rem 0.55rem; border-radius: 999px; vertical-align: middle; }
+.b-merged { background: var(--green-light); color: var(--green); }
+.b-review { background: var(--accent-light); color: var(--accent); }
+.b-rfc { background: var(--purple-light); color: var(--purple); }
+.b-high { background: var(--orange-light); color: var(--orange); }
+.b-na { background: var(--red-light); color: var(--red); }
+
+.quote { border-left: 3px solid var(--orange); background: var(--orange-light); border-radius: 0 10px 10px 0; padding: 0.7rem 1rem; margin: 0.8rem 0; font-size: 0.88rem; }
+.quote .who { display: block; font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; font-style: normal; }
+.quote em { font-style: italic; }
+
+/* code — GitHub 风格 */
+.code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; margin: 0.9rem 0; overflow: hidden; }
+.code-title { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 5px 12px; background: #f6f8fa; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 13px; color: #57606a; border-bottom: 1px solid #d0d7de; }
+.code pre { margin: 0; padding: 8px 0; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; font-size: 14px; line-height: 1.45; color: #24292f; }
+.cl { display: block; white-space: pre; padding: 0 12px; }
+.cl.add { background: #e6ffec; color: #116329; }
+.cl.del { background: #ffebe9; color: #82071e; }
+.cl.ctx { color: #24292f; }
+.cl.cmt { color: #6e7781; font-style: italic; }
+.cl.hi  { background: #fff8c5; color: #4d2d00; }
+
+/* figure */
+.figure { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.8rem; margin: 0.9rem 0; box-shadow: var(--shadow); }
+.figure img { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--border); }
+.figcap { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.55rem 0.35rem 0.15rem; }
+.figcap .t { font-size: 0.82rem; color: var(--fg); font-weight: 600; }
+.figcap .src { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+
+table.data { width: 100%; border-collapse: collapse; margin: 0.9rem 0; font-size: 0.85rem; background: var(--card); }
+table.data th { background: var(--bg); text-align: left; font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+table.data th, table.data td { padding: 0.5rem 0.8rem; border: 1px solid var(--border); }
+table.data td.num { font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.7rem; margin: 0.9rem 0; }
+.metric { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.metric .mv { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; }
+.metric .ml { font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+.mv.g { color: var(--green); } .mv.r { color: var(--red); } .mv.b { color: var(--accent); } .mv.o { color: var(--orange); }
+
+.bug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 0.9rem; }
+.bug { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; box-shadow: var(--shadow); }
+.bug h4 { margin: 0 0 0.4rem; font-size: 0.88rem; }
+.bug p { font-size: 0.82rem; color: #4B5563; margin-bottom: 0.4rem; }
+.bug .nums { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); background: var(--accent-light); border-radius: 6px; padding: 0.25rem 0.5rem; display: inline-block; }
+
+.foot-note { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--muted); }
+.verdict { background: var(--accent-light); border-radius: 10px; padding: 0.7rem 1rem; font-size: 0.88rem; margin-top: 0.9rem; }
+.verdict b { color: var(--accent); }
+
+footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+footer a { color: var(--muted); }
+
+@media (max-width: 1000px) {
+  .toc { display: none; }
+  .wrap { padding: 1.2rem 1rem 3rem; }
+  .hero { padding: 1.5rem 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span class="dot"></span> lpc 2026 :: sched &amp; rt review</div>
+  <div class="nav-links">
+    <a href="../">日报首页</a>
+    <a href="2026-10-sched-features-perf-analysis.html">10 月上旬分析</a>
+    <a href="https://github.com/1343503048/lkm">GitHub</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<aside class="toc">
+  <div class="toc-title">目录</div>
+  <a href="#s00">0. 总览与议程</a>
+  <a href="#s01">1. EEVDF 剩余问题</a>
+  <a href="#s02">2. 调度接口与控制</a>
+  <a href="#s03">3. Proxy Execution 双场</a>
+  <a href="#s04">4. sched_ext 中的 RT</a>
+  <a href="#s05">5. pvsched 跨 VM 边界</a>
+  <a href="#s06">6. LAVD：锁抢占与粘性</a>
+  <a href="#s07">7. scx-cosmos GPU 局部性</a>
+  <a href="#s08">8. x86 能效：EAS 与硬件压力</a>
+  <a href="#s09">9. idle 退出延迟与唤醒成本</a>
+  <a href="#s10">10. cpufreq：自主调速</a>
+  <a href="#s11">11. Meta 机群隔离观测</a>
+  <a href="#s12">12. sparsemask 基础设施</a>
+  <div class="toc-sep"></div>
+  <a href="#s13">附录：RT 工具简报</a>
+  <a href="#s14">收尾观察</a>
+</aside>
+
+<main>
+
+<div class="hero" id="top">
+  <div class="kicker">LPC 2026 · PRAGUE · OCT 5-7 · SCHEDULER &amp; REAL-TIME MC</div>
+  <h1>LPC 2026 调度与实时议题分析</h1>
+  <p class="sub">数据来源：<code>/home/zq/code/lpc/2026/</code> 下 24 个有 PDF 的调度相关议题（Scheduler &amp; Real-Time MC 9 场 + sched_ext MC 5 场 + 散落各专场 10 场）。每场按「背景 &amp; 问题 &amp; 场景 / 方案思路 / 效果」组织，引用幻灯片中的关键代码与原始数据；方案图直接由讲者幻灯片渲染嵌入（150 DPI）。<b>选图为启发式（文本/图像密度）+ OCR 校验，图注来自幻灯片标题——如需增删某张图，指明场次与 slide 编号即可替换。</b></p>
+  <div class="stat-row">
+    <div class="stat-box"><div class="n">24</div><div class="l">议题（有 PDF）</div></div>
+    <div class="stat-box"><div class="n">25</div><div class="l">嵌入原始 slide 图</div></div>
+    <div class="stat-box"><div class="n">17</div><div class="l">深析场次</div></div>
+    <div class="stat-box"><div class="n">6</div><div class="l">工具/观测简报</div></div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillar">
+    <h3>① 锁驱动的时延是贯穿主线</h3>
+    <p>Proxy Futexes（内核锁→用户锁）、LAVD LHP/LWP（游戏与 VR）、Meta 机群锁监控——三场独立讲题都在解决「锁持有者/等待者没被及时调度」。</p>
+  </div>
+  <div class="pillar p2">
+    <h3>② sched_ext 走向生产化</h3>
+    <p>Qualcomm 把 Android 帧路径 RT 任务搬进 sched_ext、pvsched 打通 VM 边界、scx-cosmos 做 GPU 放置、PE 以 opt-in 方式兼容——从实验特性走向 Android/云生产环境。</p>
+  </div>
+  <div class="pillar p3">
+    <h3>③ 平台厂商带着数据进场</h3>
+    <p>Qualcomm 游戏实测表、Meta 28 天 4160 万份锁报告、Google Pixel 9 拉丁方实验、NVIDIA +67% 带宽、Steam Deck 帧尾数据——几乎每场都有一手测量。</p>
+  </div>
+</div>
+
+<!-- ═══════ 00 总览 ═══════ -->
+<section id="s00">
+  <div class="sec-head"><span class="sec-no">00</span><h2>总览与议程</h2></div>
+  <div class="card">
+    <p><b>Scheduler &amp; Real-Time MC</b>（单日议程，来自 kickoff 幻灯片）：10:00 Introduction → 10:02 nohz_full/managed_irq 运行时化（Waiman Long）→ 10:24 Proxy Enabled Futexes（Google）→ 10:46 PREEMPT_RT 接口事件（Siemens）→ 11:08 timerlat vs cyclictest（Red Hat）→ 12:00 <b>Remaining EEVDF latency and lag</b>（Vincent Guittot）→ 12:22 <b>Kernel Sched QoS Interface</b>（Qais Yousef）→ 12:44 <b>EAS on x86 Hybrid: Latency &amp; Idle CPU Selection</b>（Ricardo Neri）→ 13:06 <b>sparsemask</b>（K Prateek Nayak）→ 13:28 Wrap-up。</p>
+    <p><b>sched_ext MC</b>：pvsched 跨 VM 透传（Google）→ BPF 可组合 idle cpumask（无 PDF）→ LAVD LHP/LWP（Igalia）→ Making proxy execution compatible with sched_ext（NVIDIA/Google）→ LAVD stickiness（Igalia）→ HFI plug-in（无 PDF）→ scx-cosmos 加速器放置（NVIDIA）。</p>
+    <p><b>散落各专场</b>：RT in sched-ext（Qualcomm）、GPU Job Scheduling（Collabora/Red Hat）、Amortizing CPU Wakeup Costs（Google）、HW Pressure on x86（Ricardo Neri）、Idle-State Exit Latency 预测（Qualcomm）、CPPC hw_autonomous governor（NVIDIA）、长期延迟监测（OSADL）、机群隔离观测（Meta）、轻量 RT tracepoints（Red Hat）、EPP-boost 游戏调速（Anthropic）。</p>
+    <p>与 LKML 的衔接：多场讲题对应正在评审的系列——EEVDF 场即 <a href="2026-10-sched-features-perf-analysis.html">10 月分析</a>里 Vincent 的 18 补丁「Improving latency of short slice tasks」的后续；sparsemask 即 SBM RFC v3；PE×sched_ext 即 Andrea Righi 的 for-7.4 系列（10 月日报持续跟踪）。</p>
+  </div>
+</section>
+
+<!-- ═══════ 01 EEVDF ═══════ -->
+<section id="s01">
+  <div class="sec-head"><span class="sec-no">01</span><h2>EEVDF 短任务时延的剩余问题</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>Vincent Guittot</b>（Arm/Linaro，sched 维护者）</span>
+      <span class="meta-chip">Sched &amp; RT MC · 10 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2570/">lpc.events/2570</a></span>
+      <span class="badge b-review">承接 18 补丁系列（评审中）</span>
+    </div>
+    <h3 class="sub">背景与问题</h3>
+    <p>这是 10 月分析的「Improving latency of short slice tasks」18 补丁 v2（lag 衰减、min_slice 选核、fair push、EAS 整合）之后的「还剩什么」专场。Vincent 把剩余问题分成三类：</p>
+    <ul class="dash">
+      <li><b>单任务·唤醒与 pick 的竞态</b>：短任务唤醒会取消 protection；在 <code>pick_next_task()</code> 之前若有更多带正 lag 的任务入队，短任务变得 <b>ineligible</b>。idle CPU 上唤醒时正 vlag 直接消失（没有可施加的对象）、buddy 也不设置（CPU 空闲）。</li>
+      <li><b>单任务·永恒正 lag</b>：负 lag 可以靠延迟 dequeue 消失，正 lag 不会——长睡眠任务可以永远保有大的正 vlag，而它早已不再相关。</li>
+      <li><b>多任务</b>：唤醒取消 protect 后 <code>set_next_buddy</code>，但更多短任务入队会覆盖 next buddy；同 CPU 多个短任务时「slice 并不更短、preempt short 不工作」。</li>
+    </ul>
+    <h3 class="sub">方案思路（候选方向清单）</h3>
+    <ul class="dash">
+      <li>竞态类：「某种程度的不公平——只是排序问题，<code>pick_next_task()</code> 还没被调用」；在 enqueue 时检查 wakeup（对短 slice 任务值得）；idle CPU 上清 vlag 有反例——负载均衡迁移任务时不公平（prev CPU 上竞争挣来的正 vlag）。</li>
+      <li>正 lag：像 negative lag 一样保持任务「enqueued」；用 raw clock 做线性衰减；dequeue 时 vruntime 与 enqueue 时 avg vruntime 比较；idle CPU 触发正 lag reset（negative 侧已是如此）。</li>
+      <li>多任务：<b>把任务加进 pushable list</b>（配合 set_next_buddy——没被 pick 就找别的 CPU，正是 10 月 push 机制的延伸）；选核需要 lockless 访问 min/max slice，<code>select_task_rq_fair()</code> 与 <code>find_energy_efficient_cpu()</code> 都纳入 min slice——不只看能量。</li>
+    </ul>
+    <h3 class="sub">开放问题</h3>
+    <p><b>Opportunistic lag credit</b>：任务 A 积累大正 lag → 任务 B 入队 → A 只跑几微秒就退出 → B 分到了 A 的这份正 lag——B 从未与 A 竞争，lag 却涨了。全场最锋利的一个开放问题。</p>
+    <div class="verdict"><b>评估</b>：无新补丁、无新数据，是维护者对方向的一次系统盘点；与 10 月系列的 review 进展（v3 在望、pushable 检查瘦身已被认领）完全咬合。持续跟踪 LKML 线程即可。</div>
+  </div>
+</section>
+
+<!-- ═══════ 02 接口 ═══════ -->
+<section id="s02">
+  <div class="sec-head"><span class="sec-no">02</span><h2>调度接口与控制：Sched QoS / nohz_full 运行时化 / GPU JobQueue</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">Kernel Sched QoS Interface（Qais Yousef，Google）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">Sched &amp; RT MC · 10 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2571/">lpc.events/2571</a></span>
+      <span class="meta-chip"><a href="https://lore.kernel.org/lkml/20260504020003.71306-9-qyousef@layalina.io/">LKML 系列</a></span>
+      <span class="badge b-rfc">接口讨论</span>
+    </div>
+    <p><b>背景</b>：去年的 schedqos 服务能解决部分问题但非全部。目标是给调度器一个<b>不透明、可扩展、可废弃</b>的接口——「Change is the only constant」，避免每次需求变化都动 syscall ABI。首批目标场景：Data Dependency Tagging（为 cache-aware 调度标记数据依赖任务组）、DVFS &amp; Upmigration Rampup Control（用 rampup_multiplier 缓解 HMP 上 DVFS 引发的上调延迟）、pipeline 级性能管理。</p>
+    <div class="code"><div class="code-title"><span>接口三要素</span><span>sched_qos</span></div>
+<pre><span class="cl ctx">sched_qos_type    /* 枚举：要施加哪种 QoS hint */</span><span class="cl ctx">sched_qos_value   /* hint 的值 */</span><span class="cl ctx">sched_qos_cookie  /* 魔数 cookie：标记一组任务。</span><span class="cl ctx">                   0 = 全系统生效；非 0 = 只对同 cookie 任务生效 */</span></pre></div>
+    <p><b>关键设计取舍</b>：fork <b>不继承</b>（防止无意的超额申请，每条 QoS 策略都必须是主动的）；不做内核 cgroup 支持（用户态组管理 + 新 NETLINK 事件通知任务换组，「从 uclamp 支持学到的教训」）；sched_attr 完全管控——接口锁定到<b>单一运行中的 binary</b>（root 也拒绝，"psst, block affinity too"）。ABI 保护走两个极端：单一 QoS Manager（经 capabilities 授权一个系统级代理）+ 严格错误处理（「避免重蹈 TCMalloc 覆辙——所有错误用法显式报错」）。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/qos-p08.png" alt="Local vs Global Cookie" loading="lazy">
+      <div class="figcap"><span class="t">Local vs Global Cookie：语义可嵌进 QoS type，或用未占用的 value 字段选模式</span><span class="src">slide 8</span></div>
+    </div>
+    <p><b>待决问题</b>：每次 set/get 一次 syscall 的开销与批量化；跨进程的全局 cookie 由内核生成还是用户态管理；特性发现（内核支持哪些 QoS——靠错误返回还是专门接口）。</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">nohz_full / managed_irq 运行时化（Waiman Long，Red Hat）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">Sched &amp; RT MC · 8 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2568/">lpc.events/2568</a></span>
+      <span class="badge b-high">与 cpuset isolated partition 直接相关</span>
+    </div>
+    <p><b>背景</b>：内核当前的 CPU 隔离只能静态配置（<code>isolcpus={domain,managed_irq}</code> + <code>nohz_full</code> 引导参数，对应 HK_TYPE_DOMAIN / MANAGED_IRQ / KERNEL_NOISE 三类 housekeeping），而运行时动态隔离（cpuset isolated partition）<b>只支持 HK_TYPE_DOMAIN</b>。目标：用同一套 cpuset isolated partition 机制扩展到另外两类。顺带的结构性事实：HK_TYPE_KERNEL_NOISE 旧由 TICK/TIMER/RCU/KTHREAD/WQ/MISC 组成，其中 WQ 与 KTHREAD 已并入可运行时变更的 HK_TYPE_DOMAIN。</p>
+    <p><b>方案思路</b>：复用 CPU 热插拔代码——把要改隔离属性的 CPU 逐个下线 → 修改 HK cpumask → 重新上线。关键抉择在<b>下线深度</b>：若系统里没有已隔离的在线 CPU，可以全下（CPUHP_OFFLINE）；但 CPU 走到 CPUHP_TEARDOWN_CPU 时 <code>stop_machine</code> 会冻结所有其他在线 CPU 直到下线完成——对已有预隔离 CPU 的系统这是延迟尖峰。因此有预隔离 CPU 时只能下到 <b>CPUHP_AP_ONLINE_IDLE</b>：TICK/TIMER/MANAGED_IRQ 的工作都相对容易在该状态完成；<b>HK_TYPE_RCU 例外</b>——它必须全下才能生效。提案因此把 RCU 从 KERNEL_NOISE 拆出独立管理，并提供「无视延迟尖峰强制全下」的选项；另一条路是用户直接用 <code>rcu_nocbs</code> 引导参数预先划出 no-callback CPU。</p>
+    <p><b>效果与后续</b>：无实测数据（设计提案）。未来工作：HK_TYPE_MISC 及各子系统引导期的 ad hoc HK mask 使用需要 notifier 化才能响应运行时变更；让 RCU 不下线 CPU 也能改 <code>rcu_nocbs</code> mask。</p>
+    <div class="verdict"><b>评估</b>：这是 cpuset isolated partition 特性的自然延伸，与 isolcpus/nohz_full 消亡路线（都收敛到 cpuset）一致；RCU 拆分是本提案里最有分量的一步。</div>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">GPU Job Scheduling（Daniel Almeida/Collabora，Philipp Stanner/Red Hat）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落（GPU/图形方向）· 6 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2400/">lpc.events/2400</a></span>
+    </div>
+    <p><b>背景</b>：drm_sched 的本质是「每个 ring 一个 entity 调度器 + 依赖管理 + 超时处理」，不能像 CPU 调度器那样打断任务。代码库现状被总结为 "My God, it's full of race conditions!"（2024: A Kernel Odyssey）——竞态、锁不一致、dma_fence 信号、引用计数、未定义生命周期。更根本的变化：现代 GPU 没有硬件 ring 了，只有任意数量的<b>固件 ring</b>——「调度器不再是调度器」，内核几乎失去了对任务优先级的控制。</p>
+    <p><b>方案</b>：<code>drm::JobQueue</code>——所有 job 放进一个 XArray，阶段迁移（Waiting ForDeps → Waiting ForExec → Done）是 O(1) 的游标推进；明确定位「不是调度器：只跟踪依赖与生命周期，固件决定运行什么」。开放方向：可抢占固件 ring、每 ring 固件优先级、新组件 drm_dep。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/gpujobq-p04.png" alt="Non-Scheduling GPU Scheduler" loading="lazy">
+      <div class="figcap"><span class="t">固件 ring 时代：「调度器不再是调度器」，内核失去优先级控制</span><span class="src">slide 4</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 03 PE ═══════ -->
+<section id="s03">
+  <div class="sec-head"><span class="sec-no">03</span><h2>Proxy Execution 双场：用户态 futex 与 sched_ext 兼容</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">Proxy Enabled Futexes：FUTEX_LOCK_PING（Suleiman Souhlan &amp; John Stultz，Google）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">Sched &amp; RT MC · 32 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2569/">lpc.events/2569</a></span>
+      <span class="meta-chip"><a href="https://lore.kernel.org/lkml/20260917043339.2093426-13-suleiman@google.com/">ping_bench</a></span>
+      <span class="badge b-rfc">RFC 讨论中</span>
+    </div>
+    <p><b>背景与场景</b>：Android 的 FOREGROUND/BACKGROUND 任务模型下，任何对 BACKGROUND 的限制（cpu/cpuset cgroup、SCHED_IDLE）都会打开优先级反转——BACKGROUND 拿了内核锁被抢占，FOREGROUND 只能等它再跑起来放锁，这是 UI jank 的常见来源。ProxyExec 是广义 PI，让「限制 BACKGROUND」与「不伤 FOREGROUND」兼容。<b>Android 落地状态</b>：Android16-6.12 含完整 mutex 基础系列但默认关闭（引导参数可开，用 sched_ext 必须关）；<b>Android17-6.18 已默认启用</b>（含 rwsem 支持），vendor 实验中已有正面结果。上游时间线：6.13 prep v12 → 6.17 single-RQ v18 → 7.2 donor migration v29（PROXY_WAKING、proxy-migration、sleeping owner、proxy rwsem）→ sched_ext 支持（Andrea）→ chain migration &amp; core sched → 本场的主角 <b>Proxy Futexes</b>。</p>
+    <p><b>问题</b>：PE 只覆盖内核 mutex/rwsem；用户态锁的 FUTEX_WAIT 天生不公平（无 PI、可饿死）；FUTEX_LOCK_PI 只对 SCHED_FIFO/RR 做 boost，且严格 RT FIFO handoff + 禁止 lock stealing 带来性能问题——在非 RT 偏置（nice/cgroup）下，严格 FIFO 会把锁交给<b>不重要的</b> SCHED_NORMAL 任务，比不用还差。</p>
+    <p><b>方案：FUTEX_LOCK_PING</b>（"PI-NG，这名字赖 Rostedt"）——与 LOCK_PI 相似（写 TID、waiter 位、owner-died 位、内核乐观自旋），本质差异：内核与用户态<b>都允许 lock stealing</b>；允许空 owner 的 waiter 进入；用 Proxy Execution（而非 rt_mutex）做优先级提升 → <b>SCHED_NORMAL 也有 PI</b>；动态 handoff 规则防饿死。用户 API：</p>
+    <div class="code"><div class="code-title"><span>用户态用法：CAS 抢锁 + PING 慢路径</span><span>user API</span></div>
+<pre><span class="cl ctx">void futex_lock(uint32_t *mtx) {</span><span class="cl ctx">  static __thread pid_t tid = gettid();</span><span class="cl ctx">  uint32_t oldval = 0;  /* 无锁无等待者：直接拿 */</span><span class="cl add">  if (atomic_compare_exchange_strong(mtx, &amp;oldval, tid))</span><span class="cl add">    return;</span><span class="cl ctx">  oldval = FUTEX_WAITERS;  /* 有等待者但无 owner：偷锁 */</span><span class="cl add">  if (atomic_compare_exchange_strong(mtx, &amp;oldval,</span><span class="cl add">      tid | FUTEX_WAITERS))</span><span class="cl add">    return;</span><span class="cl add">  if (futex(mtx, FUTEX_LOCK_PING, 0, NULL) != 0)</span><span class="cl add">    err(1, "FUTEX_LOCK_PING");</span><span class="cl ctx">}</span></pre></div>
+    <h3 class="sub">效果（ping_bench，讲者自制工具）</h3>
+    <table class="data">
+      <tr><th>反转场景</th><th class="num">FUTEX_WAIT</th><th class="num">LOCK_PI</th><th class="num">LOCK_PING</th></tr>
+      <tr><td>RT 任务反转（平均等待）</td><td class="num neg">2.70 ms</td><td class="num pos">0.00 ms</td><td class="num pos">0.00 ms</td></tr>
+      <tr><td>NORMAL 任务反转（平均等待）</td><td class="num">0.32 ms</td><td class="num neg">1.69 ms（更差）</td><td class="num pos">0.00 ms</td></tr>
+    </table>
+    <p>PI futex 在 NORMAL 场景反而放大反转（严格 FIFO 把锁交给低重要度任务），PING 两个场景都归零。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/pe-futex-p20.png" alt="LOCK_PING: PI for RT tasks" loading="lazy">
+      <div class="figcap"><span class="t">RT 任务反转直方图：wait 2.70ms → PI/PING 0.00ms</span><span class="src">slide 20</span></div>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/pe-futex-p22.png" alt="LOCK_PING: PI for NORMAL tasks" loading="lazy">
+      <div class="figcap"><span class="t">NORMAL 任务反转：LOCK_PI 1.69ms 比 WAIT 还差，PING 0.00ms</span><span class="src">slide 22</span></div>
+    </div>
+    <p><b>TODO 与讨论</b>：调优 handoff/乐观自旋（平衡均值与最差时延）；与 proxy-rwsem 共用 proxy-lock 抽象一起上游；Android LTS-next 集成 + 回合。现场讨论点名：命名（"Better name? Please!"）、与 Waiman Long 的 TP futex 工作关系、PI futex 代码重构 vs 全新 PING 实现（rt_mutex 需要 proxy 大改）。</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">Making proxy execution compatible with sched_ext（Andrea Righi/NVIDIA，John Stultz/Google）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">sched_ext MC · 12 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2481/">lpc.events/2481</a></span>
+      <span class="meta-chip"><a href="https://lore.kernel.org/all/20260831134338.1531664-1-arighi@nvidia.com/">LKML 系列</a></span>
+      <span class="badge b-review">for-7.4 评审中</span>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/pe-scx-p02.png" alt="What is Proxy Execution" loading="lazy">
+      <div class="figcap"><span class="t">经典 PI（改优先级，「骗」调度器选中锁主）vs Proxy Execution（阻塞等待者留在运行队列，选中时以其调度上下文运行锁主）</span><span class="src">slide 2</span></div>
+    </div>
+    <p><b>问题</b>：<code>CONFIG_SCHED_PROXY_EXEC depends on !CONFIG_SCHED_CLASS_EXT</code>——发行版无法在同一个内核里同时提供两个特性。技术根源：sched_ext 的回调、kfunc、slice 与记账传统上跟随 <code>rq-&gt;curr</code>，而 proxy execution 需要它们跟随 <code>rq-&gt;donor</code>；且 PE 的代理迁移会与 BPF 的 remote-DSQ 转移及放置决策竞态。LPC 2025 已有原型证明可行，开放问题是「PE 由调度器核心还是 BPF 调度器控制」。</p>
+    <p><b>方案</b>：把 PE 做成 <b>per-BPF-scheduler 的显式 opt-in</b>——设置 <code>SCX_OPS_ENQ_BLOCKED</code> 后开始接收 blocked donor：</p>
+    <div class="code"><div class="code-title"><span>API 用法：blocked donor 进专用 DSQ</span><span>sched_ext</span></div>
+<pre><span class="cl ctx">void BPF_STRUCT_OPS(enqueue, struct task_struct *p, u64 flags)</span><span class="cl ctx">{</span><span class="cl ctx">  /* @p 是 blocked donor 吗？ */</span><span class="cl add">  if (flags &amp; SCX_ENQ_BLOCKED)</span><span class="cl add">    scx_bpf_dsq_insert(p, blocked_dsq, slice, SCX_ENQ_PREEMPT);</span><span class="cl ctx">  else</span><span class="cl ctx">    enqueue_normal(p, flags);</span><span class="cl ctx">}</span><span class="cl ctx">SCX_OPS_DEFINE(scheduler_ops,</span><span class="cl ctx">  .enqueue = (void *)enqueue,</span><span class="cl add">  .flags   = SCX_OPS_ENQ_BLOCKED);</span></pre></div>
+    <p>BPF 调度器自行决定 donor 的 DSQ/CPU/顺序/slice/抢占策略；donor 被选中时，proxy-exec core 透明地沿 owner 链执行；<b>BPF 只观察和记账 donor，owner 对其调度策略隐藏</b>。工作流：W 在 O 持有的 mutex 上阻塞 → core 先切 idle → <code>ops.stopping(W)</code> → <code>ops.enqueue(W, SCX_ENQ_BLOCKED)</code> → BPF 派发 W → core 选中 W、解析出 O、迁移 W（<code>rq-&gt;donor = W | rq-&gt;curr = O</code>）→ O 用 W 的调度上下文执行。效果演示为 scx_cosmos 关/开 PE 的对比视频。</p>
+    <p><b>开放问题</b>：API 对 BPF 调度器是否完备；<b>sub-scheduler 场景</b>（donor 属调度器 A/cgroup A、owner 属调度器 B/cgroup B——现契约：donor 调度器控制调度上下文，owner 可在 owner 调度器策略与同意之外执行）；NOHZ_FULL 上保守重启周期 tick（remote NOHZ tick 假设执行与调度上下文相同，donor-aware 化留作后续）。</p>
+  </div>
+</section>
+
+<!-- ═══════ 04 RT in sched_ext ═══════ -->
+<section id="s04">
+  <div class="sec-head"><span class="sec-no">04</span><h2>sched_ext 中的 RT 任务（Qualcomm）</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>Tengfei Fan &amp; Aiqun Yu</b>（Qualcomm）</span>
+      <span class="meta-chip">散落 · 8 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2561/">lpc.events/2561</a></span>
+    </div>
+    <h3 class="sub">背景与问题：Android 帧路径的 RT 占比实测</h3>
+    <table class="data">
+      <tr><th>场景</th><th class="num">FPS</th><th class="num">RT/总任务</th><th class="num">cluster 内 RT 负载</th></tr>
+      <tr><td>王者荣耀</td><td class="num">120</td><td class="num">53/443（11.96%）</td><td class="num">24–57%（均值 45.5%）</td></tr>
+      <tr><td>和平精英</td><td class="num">165</td><td class="num">29/202（14.36%）</td><td class="num">41–56%（49.2%）</td></tr>
+      <tr><td>崩坏：星穹铁道</td><td class="num">60</td><td class="num">26/158（16.46%）</td><td class="num">16–51%（42%）</td></tr>
+      <tr><td>腾讯视频</td><td class="num">60</td><td class="num">41/771（5.29%）</td><td class="num">13–42%（28.2%）</td></tr>
+      <tr><td>BiliBili / TikTok 直播</td><td class="num">30</td><td class="num">9% / 11.4%</td><td class="num">27.1% / 13.9%</td></tr>
+    </table>
+    <p>RT 任务是帧渲染管线的一等公民（SurfaceFlinger 97/98、Display HAL 97、GPU/Adreno 49），FPS 越高 RT 负载越重。三个具体问题：<b>① 干扰</b>——关键游戏任务（UnityMain/UnityGfxDeviceW）被 SurfaceFlinger/binder RT 抢占、cache miss、唤醒延迟，多帧连续掉帧；<b>② 联合均衡缺失</b>——TikTok 场景 2 个 RT + 6 个 FAIR 任务同帧周期、负载相近，三个 CPU 却利用不佳；<b>③ schedutil 输入不稳</b>——RT util 波动 15–45%、cpufreq 在场景快结束时才抬升，按帧窗口对齐的 util 模型才能给 governor 稳定输入。</p>
+    <h3 class="sub">方案思路：控制边界</h3>
+    <p>两条路线：<b>选项一</b>扩展 sched_ext 感知 RT 任务（sched_ext 管理 RT）；<b>选项二</b>扩展 RT 调度器感知非关键 CPU（把 RT 分裂到跑非关键任务的 CPU 上，关键 CPU 保持无 RT——抢占消失、其余任务放置自由，RT 优先级与 PI 语义不变）。提案的边界划分：把<b>帧路径 RT</b>（SurfaceFlinger/Display HAL/GPU）移入 sched_ext，内核安全域（watchdog、migration、IRQ 线程）留在原生 RT class 之外。开放问题：prio &gt; 50 的 RT 是否都准入？优先级 49 的 IRQ 线程收不收？sched_ext 启用期间临时把 RT 转 fair 再恢复是否安全？以及「如何走向上游、避免 Android vendor hook」。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/rt-scx-p05.png" alt="RT+FAIR joint load balancing" loading="lazy">
+      <div class="figcap"><span class="t">RT+FAIR 联合负载均衡：同一 sched_ext 调度器跨 RT 与 FAIR 更好地用满三个 CPU</span><span class="src">slide 5</span></div>
+    </div>
+    <div class="verdict"><b>评估</b>：这是 Android 厂商把 sched_ext 推向生产的关键一步——RT 边界问题不解决，sched_ext 在手机上永远只能管「半个调度器」。三个开放问题每一个都是上游化的拦路虎。</div>
+  </div>
+</section>
+
+<!-- ═══════ 05 pvsched ═══════ -->
+<section id="s05">
+  <div class="sec-head"><span class="sec-no">05</span><h2>pvsched v3：跨 VM 边界的调度透传</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>Vineeth Pillai &amp; Josh Don</b>（Google，ChromeOS）</span>
+      <span class="meta-chip">sched_ext MC · 19 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2482/">lpc.events/2482</a></span>
+    </div>
+    <h3 class="sub">背景与问题</h3>
+    <p>ChromeOS 的共享租户 VM（在 Android VM 里跑 Android 应用）：一个 VM 里混合优先级的任务，交互负载（音视频）需要无卡顿的高优先级调度，而 host 不知道 guest 内部谁重要。相关工作有 IBM 的「guest 避开被重抢占的 vCPU」提案与 Phantom Tracker（经 IVSHMEM 调 OpenMP）。</p>
+    <h3 class="sub">方案：三代演进后的 v3 架构</h3>
+    <p>V1（2023/12 LKML）KVM 包办握手/策略/决策——上游反对这些逻辑进 KVM；V2（LWN 968242）KVM 只做握手、策略放内核模块或 BPF——KVM 维护者连握手都不想放内核；<b>V3（准备上游）：握手放 VMM，策略放 BPF 程序</b>。五个组件：</p>
+    <ul class="dash">
+      <li><b>pvsched_guest 驱动</b>（guest 内核模块）：挂 <code>sched_switch</code>/<code>irq</code> tracepoint，直接把调度优先级与执行上下文写进共享内存；</li>
+      <li><b>共享内存页</b>：每 vCPU 一个 4KB 页（Header + Guest 写状态区 + Host 读状态区）；</li>
+      <li><b>虚拟 PCI 设备</b>（VMM 模拟）：BAR0 为控制 MMIO doorbell、BAR1 为 GPA 表；</li>
+      <li><b>host 侧 pvsched 模块</b>：pin 住 guest 页、提供安全的 boosting 辅助、严格强制反饿死定时器；</li>
+      <li><b>eBPF 策略引擎</b>：经 BPF struct_ops 或 tracepoint 接入，按共享状态动态调整 vCPU 优先级。</li>
+    </ul>
+    <div class="figure">
+      <img src="assets/lpc2026/pvsched-p07.png" alt="pvsched v3 architecture" loading="lazy">
+      <div class="figcap"><span class="t">v3 架构：VMM 握手、共享内存通信、BPF 策略引擎、KVM 只做执行</span><span class="src">slide 7</span></div>
+    </div>
+    <p><b>与 sched_ext 的双向集成</b>——host 侧策略：不抢占敏感 vCPU（guest IRQ、高优 guest 线程）、gang schedule vCPU、预 staging 目标 guest 线程、为 boost/deboost 临时打破 cgroup 抽象、按 VM 内部动态负载权重调整 VM 吞吐；guest 侧策略：CPU funneling（负载均衡推向物理在 CPU 上的 vCPU）、高载下最小化 vCPU spread、跟随 host hints 选择调度哪些线程。</p>
+    <h3 class="sub">效果（backup 数据：2-vCPU VM cyclictest，vCPU 绑核 + 每核 stress-ng）</h3>
+    <table class="data">
+      <tr><th>平台</th><th class="num">p99 无 pvsched</th><th class="num">p99 有 pvsched</th><th class="num">≥1ms 样本数</th></tr>
+      <tr><td>Intel N150 裸机</td><td class="num neg">1.15 ms</td><td class="num pos">37–41 µs</td><td class="num pos">672–828 → 0–8</td></tr>
+      <tr><td>Ryzen 6900HX 裸机</td><td class="num neg">1.3–1.8 ms</td><td class="num pos">30–37 µs</td><td class="num pos">954–1083 → 2–4</td></tr>
+      <tr><td>Intel 嵌套虚拟化</td><td class="num neg">1.3–1.8 ms</td><td class="num pos">41–76 µs</td><td class="num pos">≈850–1000 → 0–6</td></tr>
+    </table>
+    <p>展望 <b>pvshmem</b>：复用这套内核↔guest 传输层做更广的策略通信，第一个目标是 OOM kill——host 做全局 victim 选择、只杀 VM 内单个 job 而不是整个 VM（guest 暴露 memcg 信息，eBPF 策略接入中）。</p>
+  </div>
+</section>
+
+<!-- ═══════ 06 LAVD ═══════ -->
+<section id="s06">
+  <div class="sec-head"><span class="sec-no">06</span><h2>LAVD：锁抢占时延（LHP/LWP）与粘性调度</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">Taming latency spikes: LHP &amp; LWP（Changwoo Min，Igalia）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">sched_ext MC · 16 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2484/">lpc.events/2484</a></span>
+      <span class="meta-chip">scx_lavd（github.com/sched-ext/scx）</span>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-lhp-p02.png" alt="LHP and LWP definitions" loading="lazy">
+      <div class="figcap"><span class="t">两种把锁「拉长」的方式：LHP=持有者被抢占（整段关键区被拉长）；LWP=锁已交接但被唤醒的等待者未被调度（每个后续等待者再付一次）</span><span class="src">slide 2</span></div>
+    </div>
+    <p><b>背景与场景</b>：Steam Frame VR——头显用自身相机做头部追踪，每相机帧一个 deadline：30Hz 相机、33ms 预算、7–8ms CPU 工作，错过则掉帧出现 judder；实测有一帧跑了 64ms。管线拆解：camera poll → preprocess → dispatch → tracker → keyframe，每级在 futex 上睡等前一级唤醒（condvar、mutex、SysV 信号量）——tracker 一帧内三次成为「被唤醒的等待者」，每次 runnable 后等 2–16ms 才跑（LWP），叠加中间被抢占 ~5.1ms（LHP），三次 LWP 直接打爆 33ms 预算。「两者都不体现在平均 CPU 使用率上，都体现在尾部」——游戏/VR 掉帧 stutter，服务端 lock convoy、P99 尖峰、请求管线尾延迟。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-lhp-p04.png" alt="Where the frame goes" loading="lazy">
+      <div class="figcap"><span class="t">一帧去哪了：管线每级 futex 等待，tracker 一帧三次 LWP（2–16ms × 3）+ LHP</span><span class="src">slide 4</span></div>
+    </div>
+    <p><b>现状地图（slide 10）</b>：内核锁 LHP——只有 lazy preemption，不感知锁；proxy execution 覆盖 mutex、sched_ext 侧需要 donor 策略。用户锁 LHP——TSE（7.0 opt-in，rseq 申请 5–50us、syscall 即止、glibc 未支持）与 LAVD 的 futex LHP（<code>futex_wait()</code> 返回 0 推断持有者、一次性 latency-criticality boost，误报：condvar 与空闲池）。<b>LWP 两侧全空</b>——这是本场的核心缺口。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-lhp-p10.png" alt="Solution space map" loading="lazy">
+      <div class="figcap"><span class="t">解空间地图与缺口：LWP（内核锁/用户锁）完全缺失</span><span class="src">slide 10</span></div>
+    </div>
+    <p><b>三个提案</b>：</p>
+    <div class="code"><div class="code-title"><span>提案 1A：内核锁的机会式 LHP——精选锁在 init 时登记</span><span>kernel / lavd</span></div>
+<pre><span class="cl ctx">/* kernel: 锁在 init 时登记（RFC） */</span><span class="cl ctx">mutex_init(&amp;cgroup_mutex);</span><span class="cl add">mutex_track_holder(&amp;cgroup_mutex);</span><span class="cl cmt">/* 持有时 current->nr_tracked_locks++，释放时 --，BPF 可读 */</span><span class="cl ctx">/* scheduler: 每轮多给一次机会 */</span><span class="cl add">if (!prev-&gt;granted &amp;&amp; prev-&gt;nr_tracked_locks &gt; 0) {</span><span class="cl add">  prev-&gt;granted = true;</span><span class="cl add">  extend(prev);  /* 上限 1 tick */</span><span class="cl add">}</span></pre></div>
+    <div class="code"><div class="code-title"><span>提案 1B：反应式 LHP——donor 直落 owner 的 CPU，跳过迁移往返</span><span>sched_ext / lavd</span></div>
+<pre><span class="cl ctx">void enqueue(p, enq_flags)</span><span class="cl add">  if (enq_flags &amp; SCX_ENQ_BLOCKED) {</span><span class="cl add">    o = owner(p-&gt;blocked_on);</span><span class="cl add">    cpu = runnable(o) &amp;&amp; allowed(p, cpu_of(o))</span><span class="cl add">          ? cpu_of(o) : prev_cpu(p);</span><span class="cl add">    boost_lat_cri(p);</span><span class="cl add">    insert(p, LOCAL_ON | cpu, PREEMPT);</span><span class="cl add">  }</span></pre></div>
+    <div class="code"><div class="code-title"><span>提案 2：LWP——给锁等待者打标，唤醒时提前 deadline</span><span>sched_ext / lavd</span></div>
+<pre><span class="cl add">SEC("fentry/__futex_wait")</span><span class="cl add">  set_flag(current, LOCK_WAITER);</span><span class="cl add">SEC("tp_btf/contention_begin")</span><span class="cl add">  if (!(flags &amp; LCB_F_SPIN))  /* 将睡眠 */</span><span class="cl add">    set_flag(current, LOCK_WAITER);</span><span class="cl ctx">void enqueue(p, enq_flags)</span><span class="cl add">  if (has_flag(p, LOCK_WAITER))</span><span class="cl add">    boost_lat_cri(p);   /* 更早的 deadline */</span><span class="cl add">  clear_flag(p, LOCK_WAITER);  /* one-shot */</span></pre></div>
+    <h3 class="sub">效果：Steam Frame 实测（60 秒游戏内 &gt;2ms 的调度延迟计数）</h3>
+    <table class="data">
+      <tr><th>游戏</th><th class="num">LAVD 修复前</th><th class="num">LAVD + LWP</th></tr>
+      <tr><td>Ghost Town</td><td class="num neg">2,780</td><td class="num pos">140</td></tr>
+      <tr><td>A Hat in Time</td><td class="num neg">880</td><td class="num pos">120</td></tr>
+      <tr><td>Sekiro</td><td class="num neg">6,740</td><td class="num pos">2,360</td></tr>
+      <tr><td>Eleven Table Tennis</td><td class="num neg">1,050</td><td class="num pos">140</td></tr>
+    </table>
+    <p>修复后一小时游戏内无大 tracker 尖峰；幻灯片并给出 EEVDF 对照（比修复前的 LAVD 更差）。开放问题：调度器需要知道什么（持有/等待/被延期状态放 task_struct 还是 rseq）、怎么采集（全锁改内核 vs 精选锁、既有 contention tracepoints 的不精确记账、libc 经 rseq 共享、跟踪锁相关 syscall 会漏快路径）。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-lhp-p14.png" alt="Steam Frame results" loading="lazy">
+      <div class="figcap"><span class="t">修复前后对比：四个游戏的 &gt;2ms 延迟计数，worst tracker frame 从 64ms 起降到一小时无大尖峰</span><span class="src">slide 14</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">Stickiness：让任务保持 cache 温热（Gavin Guo，Igalia）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">sched_ext MC · 15 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2485/">lpc.events/2485</a></span>
+    </div>
+    <p><b>背景与问题</b>：work-conserving 调度器（含 lavd 的 <code>select_cpu()</code>）醒来总挑 idle core——把「空闲」排在「cache 温热」之上，于是更多迁移、任务变 cache-cold、L1/L2/TLB 反复重填。cache 敏感负载（如用路由表当内存 KV 的边缘路由器）为每次迁移付全局代价：重填逐出其他 cache 行、争用加剧、尾延迟被推高。核心决策是 <b>wait(A) 还是 migrate(B)</b>——两者都不可观测、都是预测，且等待期间 X 还在继续逐出 T 的行。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-sticky-p05.png" alt="wait vs migrate decision" loading="lazy">
+      <div class="figcap"><span class="t">决策图：T 的工作集在忙的 cpu A 上，B 空闲但与 T 无关——wait(A)（X 的剩余 + 排队工作）vs refill(B)（T 在 A 上的残留重取 + per-CPU 状态）</span><span class="src">slide 5</span></div>
+    </div>
+    <p><b>方案谱系（三种既有方案 + 一个增强）</b>：</p>
+    <ul class="dash">
+      <li><b>SIS_CACHE</b>（Chen Yu，Intel，2023，未合入）：短睡眠者离开后让 CPU 为其保温「平均睡眠时长」，其他唤醒者的 idle 搜索跳过它；「是定时器不是锁——不存 owner」。</li>
+      <li><b>Task warmth</b>（David Dai，Meta，scx#3714，2026-07）：prev CPU 空闲、或预测等待（停机时间 + nr_queued × avg slice）落在任务「热度」可拉伸至 2× 的预算内则等待，否则迁移重填。memcached 实测：收益在 warm-cpu-us 10–20µs 处进入平台期，50µs 开始衰减。</li>
+      <li><b>Look-ahead</b>（Gavin Guo，未上游）：CPU 消费共享 domain 队列时越过队头向后看几个任务，按 deadline 递增序找仍在本 CPU 温热的任务拉进 per-CPU 队列。</li>
+      <li><b>Completion-time 定价</b>（Changwoo Min，PR #3806）：「数排队不是计时」——把 wait 从「计数 × 平均」改为按每个排队任务自身服务时间计价。</li>
+    </ul>
+    <div class="code"><div class="code-title"><span>wait 的两种计价方式</span><span>scx_lavd</span></div>
+<pre><span class="cl ctx">/* 今天 (5699c7f08582)：per-CPU DSQ、计数 × 平均 */</span><span class="cl del">wait = (est_stopping - now) + nr_queued * slice_wall</span><span class="cl add">/* Changwoo 增强 (80eabdc60198)：按时间定价 */</span><span class="cl add">wait = residual(running) + queued_service / capacity</span></pre></div>
+    <div class="figure">
+      <img src="assets/lpc2026/lavd-sticky-p11.png" alt="warmth + look-ahead results" loading="lazy">
+      <div class="figcap"><span class="t">warmth + look-ahead：p99/p99.9/p50 延迟 vs 负载（轻 ~25% / 中 ~55% / 重 ~96% / 4× 超卖），p50 展示代价</span><span class="src">slide 11</span></div>
+    </div>
+    <p><b>开放问题</b>（问全场）：L1/L2/TLB 状态在忙 CPU 上到底存活多久？内核能否暴露 residency 信号（PMU 计数器、cache occupancy——Intel RDT / Arm MPAM 能否 per-task？调度决策频率下读得起吗？）；一次迁移对特定任务值多少时间；调度器 ↔ 用户态（分配器 per-CPU cache 才是迁移的真正受害者——该它们向调度器提示局部性，还是调度器向它们暴露 warmth？）。</p>
+  </div>
+</section>
+
+<!-- ═══════ 07 scx-cosmos ═══════ -->
+<section id="s07">
+  <div class="sec-head"><span class="sec-no">07</span><h2>scx-cosmos：闭合 GPU 局部性反馈环</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>Balbir Singh &amp; Lee Trager</b>（NVIDIA）</span>
+      <span class="meta-chip">sched_ext MC · 9 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2487/">lpc.events/2487</a></span>
+      <span class="meta-chip"><a href="https://lwn.net/Articles/1077759/">OSPM 2026 前情</a></span>
+    </div>
+    <p><b>背景</b>：CPU 与加速器的局部性越好性能越好。现有 scx_cosmos 用 NVML 观测把 GPU 负载放到靠近其 GPU 的 CPU 上，但依赖 NVIDIA/NVML 特定的用户态轮询、且看不到负载的 host 内存放置。</p>
+    <p><b>方案：六阶段反馈环，一个有界动作</b>——加速器调用 → BPF hint（设备 0 → node 0）→ SCX 放置（或 NUMA balancing）→ telemetry（remote access 计数，可选）→ workload <code>move_pages()</code>（可选）→ feedback（带宽 + 事件）。「BPF 只建议；用户态或内核态执行；地址生命周期所有权留在 workload。」需要的内核改进：sched_ext 任务的 NUMA access tracking 与 preferred memory node 表达（即 Andrea 的 sched_ext NUMA 系列）、设备-进程关联。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/scx-cosmos-p04.png" alt="The feedback loop" loading="lazy">
+      <div class="figcap"><span class="t">反馈环六阶段：BPF 推荐、用户态/内核态执行、地址所有权归 workload</span><span class="src">slide 4</span></div>
+    </div>
+    <table class="data">
+      <tr><th>组件</th><th>实现</th><th>职责</th></tr>
+      <tr><td>GPU 程序</td><td>C++ LD_PRELOAD</td><td>发布每线程一个 NUMA 节点提示</td></tr>
+      <tr><td>调度器</td><td>SCX BPF + Rust</td><td>task-storage hint，偏好 GPU 节点上的允许 idle CPU</td></tr>
+      <tr><td>Telemetry</td><td>BPF + Rust，6 个 pinned core PMU 事件</td><td>per-task/TGID 总量与增量</td></tr>
+      <tr><td>决策</td><td>CUDA C++ workload</td><td>REMOTE_ACCESS / 指令数，完整区间 + 标定阈值</td></tr>
+      <tr><td>动作</td><td><code>move_pages(MPOL_MF_MOVE)</code></td><td>仅普通未注册页</td></tr>
+    </table>
+    <h3 class="sub">效果</h3>
+    <div class="metrics">
+      <div class="metric"><div class="mv g">+67.0%</div><div class="ml">GPU host-memory 带宽</div></div>
+      <div class="metric"><div class="mv g">−99.96%</div><div class="ml">REMOTE_ACCESS 事件</div></div>
+      <div class="metric"><div class="mv b">3 次有界试验</div><div class="ml">2 节点 4 GPU，页迁移后逐一验证</div></div>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/scx-cosmos-p07.png" alt="Result in one slide" loading="lazy">
+      <div class="figcap"><span class="t">一页结果：GPU 拓扑成为可度量的放置决策（+67.0% 带宽 / −99.96% 远端访问）</span><span class="src">slide 7</span></div>
+    </div>
+    <p>分工哲学：调度器读 per-task GPU hint 选 GPU-local CPU 节点而<b>不知道虚拟地址</b>；应用知道分配类型、页范围、复用与迁移合法性，拥有地址感知的动作；带宽证据验证收益——覆盖不全或信号归一化值低则不迁移。</p>
+  </div>
+</section>
+
+<!-- ═══════ 08 x86 能效 ═══════ -->
+<section id="s08">
+  <div class="sec-head"><span class="sec-no">08</span><h2>x86 能效：EAS 延迟分析与硬件压力</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">EAS on x86 Hybrid：延迟分析与 idle CPU 选择（Ricardo Neri）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">Sched &amp; RT MC · 20 页（图表为主）</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2574/">lpc.events/2574</a></span>
+    </div>
+    <p><b>背景</b>：OSPM 2026 放开了 EAS 对 schedutil 的依赖（x86 可用），EAS 即将默认开启。EAS 把轻任务打包到更少的高能效核——省电但有延迟代价。问题：<b>能否通过更激进地使用 idle CPU 来降低延迟代价？</b></p>
+    <p><b>方法</b>：把唤醒延迟分解为三段——waking→wakeup（IPI + C-state 退出，&lt;1µs 近常数）、wakeup→stat_wait（<b>queue_wait：CPU 选择</b>，主导项）、stat_wait→switch（PSI + trace 开销 + 抢占等待）；用 schbench 在 Intel hybrid（P 核 + E 核模块 + LP E 模块，共享 L3）上测量。</p>
+    <p><b>提案：cluster-local idle preference</b>——<code>find_energy_efficient_cpu()</code> 做 per-PD（性能域）候选扫描后，若<b>同一 cluster</b> 内有 idle CPU 且它落在 best-energy 候选的 slack 容差内，就选它：用 <code>per_cpu(sd_share_id)</code> 得 cluster id、<code>idle_cpus</code> 位图做 O(1) 判断。效果是「拿一点点能量预算换显著延迟」。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/eas-p08.png" alt="cluster-local idle preference" loading="lazy">
+      <div class="figcap"><span class="t">决策流：per-PD 扫描 → best-energy 候选 → slack 内有无同 cluster idle CPU → 有则选同 cluster</span><span class="src">slide 8</span></div>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/eas-p09.png" alt="tweak results" loading="lazy">
+      <div class="figcap"><span class="t">结果：no-EAS vs slack=0/25/50/100 的 schbench 唤醒延迟分位（log 尺度）</span><span class="src">slide 9</span></div>
+    </div>
+    <div class="figure">
+      <img src="assets/lpc2026/eas-p14.png" alt="cost in energy" loading="lazy">
+      <div class="figcap"><span class="t">能量的代价：53.3 J 实测 vs 估计 54.0 J——几乎无损</span><span class="src">slide 14</span></div>
+    </div>
+    <p>backup 数据点：queue_wait 主导（不是选择算法本身的成本）；ECDF 显示 p99 从 5622.5µs 降到 2825.5µs（该页图表）。另给出 idle slack 与 EEVDF slice 时长的关系、真实世界 idle slack 分布。</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">Hardware Pressure on x86：调度器需要知道降频吗？（Ricardo Neri）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落 · 13 页（图表为主）</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2580/">lpc.events/2580</a></span>
+    </div>
+    <p><b>背景与问题</b>：热限频、功率墙等「静默硬件压力」让 CPU 的真实容量偏离标称——而调度器（EAS / 负载均衡 / 唤醒路径）拿到的 capacity 不知道。已有的抽象：<code>arch_scale_cpu_capacity()</code>、<code>hw_load</code>、<code>cpufreq_pressure</code> 汇入 <code>get_actual_cpu_capacity()</code>。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/hwpressure-p03.png" alt="silent hardware pressure" loading="lazy">
+      <div class="figcap"><span class="t">静默硬件压力：频率与所选任务 residency 的关系（图表）</span><span class="src">slide 3</span></div>
+    </div>
+    <p><b>x86 的信号接线提案</b>：调度器 tick → <code>scale_freq_tick()</code> → APERF/MPERF Δ → <code>arch_scale_freq_capacity()</code>；热中断 → <code>therm_throt_hw_pressure()</code> → 实时 hw_pressure；Power Limit Notification（PELT 衰减）→ <code>cpufreq_pressure</code>；三者经 <code>hw_load</code> 汇入 <code>get_actual_cpu_capacity()</code> 供调度器消费。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/hwpressure-p05.png" alt="hw pressure wiring" loading="lazy">
+      <div class="figcap"><span class="t">x86 硬件压力接线：tick（频率）、热中断（实时）、Power Limit（PELT 衰减）三路信号</span><span class="src">slide 5</span></div>
+    </div>
+    <p><b>讨论（问全场）</b>：这个问题值得解吗？信号源合理吗？接入点合理吗？backup：<code>cpufreq_pressure</code> 现已在 x86 非对称容量上工作；对 <code>misfit_load</code> 信号的影响有专门一页。</p>
+  </div>
+</section>
+
+<!-- ═══════ 09 idle 与唤醒 ═══════ -->
+<section id="s09">
+  <div class="sec-head"><span class="sec-no">09</span><h2>idle 退出延迟预测与唤醒成本摊销</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">Dynamic Runtime Prediction of CPU Idle-State Exit Latency（Qualcomm，Aiqun Yu &amp; Cong Zhang）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落 · 9 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2595/">lpc.events/2595</a></span>
+    </div>
+    <p><b>背景与问题</b>：硬件唤醒、固件恢复、内核执行共同构成 hrtimer 处理延迟——CPU 深睡后定时器「准点触发」实际晚了一个 exit latency。测量方法：在内核 resume 点记录，<b>CPU 与 cluster 分开维护历史</b>；有效样本要求定时器到期且唯一挂起（其他 CPU 无非定时器 IRQ）；预测用滑动窗口均值（CPU C4 / Cluster CL4 / CL5 三档分别拟合）。</p>
+    <p><b>方案：Rooster timer 补偿</b>——每 cluster 一个 rooster 定时器 IRQ，<b>提前</b>一个预测的 exit latency 触发，让内核在原 deadline 附近 resume；idle 的最后入眠 CPU 负责为最早唤醒者编程全局 frame；跨 cluster 场景用全局 rooster + IPI（advance = 首跳唤醒路径 + 目标 exit latency）。架构定时器在 idle 中停止，补偿量 = cluster exit latency + 目标 CPU exit latency（或跨 cluster 时的两个 cluster 之和）。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/idleexit-p05.png" alt="hrtimer compensation" loading="lazy">
+      <div class="figcap"><span class="t">Rooster 定时器补偿：IRQ 提前，硬件/固件恢复与 deadline 对齐</span><span class="src">slide 5</span></div>
+    </div>
+    <h3 class="sub">效果（t1−t0 绝对均值）</h3>
+    <table class="data">
+      <tr><th>idle 级别</th><th class="num">补偿前</th><th class="num">补偿后</th></tr>
+      <tr><td>CPU C4</td><td class="num neg">19.824 µs</td><td class="num pos">0.073 µs</td></tr>
+      <tr><td>Cluster CL4</td><td class="num neg">61.991 µs</td><td class="num pos">0.191 µs</td></tr>
+      <tr><td>Cluster CL5</td><td class="num neg">1929.767 µs</td><td class="num pos">10.738 µs</td></tr>
+    </table>
+    <p>开放讨论：性能/实时收益、rooster IPI 的开销与功耗、QoS 含义、能否用预测的 exit latency 反过来指导 idle state 选择。</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">Amortizing CPU Wakeup Costs（Samuel Wu，Google）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落 · 19 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2579/">lpc.events/2579</a></span>
+    </div>
+    <p><b>背景</b>：设备功耗在睡眠态是楼梯、在活动期随利用率多项式上升；目标是压低<b>静默态</b>（低 CPU 利用但未挂起：息屏音频播放、非高峰服务器流量、一切空闲设备）的功耗地板。ftrace 时间线显示每次 idle exit/entry 都有开销——「子系统都学会批处理了（RCU_LAZY、timer slack、脏页回写），<b>除了决定 CPU 何时醒来的那个子系统</b>」。sched/fair.c 里的老注释佐证了缺失：打包小任务让其他 CPU 进深睡在能量上可能更好，「但当前 Energy Model 无从告知——CPU idle 功耗、cluster idle 功耗、转换成本都没建模」。</p>
+    <p><b>提案</b>：<b>free ride</b>——把任务搭在已活动的 CPU 上，批处理最小化 idle 退出次数、摊销开销。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/wakeup-p06.png" alt="free ride proposal" loading="lazy">
+      <div class="figcap"><span class="t">free ride 提案：每个任务都付 idle 退出/进入开销 → 批处理摊销</span><span class="src">slide 6</span></div>
+    </div>
+    <h3 class="sub">效果（Pixel 9，kernel 7.1，频率钉 FMin，n=90 拉丁方，相对 EEVDF 基线 87.00mW）</h3>
+    <table class="data">
+      <tr><th>配置</th><th class="num">功耗 Δ</th><th class="num">p95 延迟 Δ</th><th class="num">idle 退出比</th></tr>
+      <tr><td>m0 SCX 直通基线</td><td class="num">−0.14 mW</td><td class="num pos">−160 µs</td><td class="num">109%</td></tr>
+      <tr><td><b>m1 懒批处理 + 紧急过滤</b></td><td class="num pos">−6.63 mW</td><td class="num">+780 µs</td><td class="num pos">56%</td></tr>
+      <tr><td>m2 立即打包 Little cpu0</td><td class="num">−4.57 mW</td><td class="num neg">+2530 µs</td><td class="num">64%</td></tr>
+      <tr><td>m3 cluster 内 + 懒批处理</td><td class="num">−6.44 mW</td><td class="num">+800 µs</td><td class="num">57%</td></tr>
+      <tr><td>m4 Little 轮转</td><td class="num">−1.00 mW</td><td class="num neg">+1560 µs</td><td class="num">112%</td></tr>
+      <tr><td>m7 找醒着的 Little</td><td class="num">−5.99 mW</td><td class="num neg">+5260 µs</td><td class="num">42%</td></tr>
+      <tr><td>m8 找醒/浅睡 Little</td><td class="num">−6.61 mW</td><td class="num neg">+5120 µs</td><td class="num">42%</td></tr>
+      <tr><td>m9 无过滤全懒批</td><td class="num pos">−6.70 mW</td><td class="num">+1260 µs</td><td class="num">55%</td></tr>
+    </table>
+    <p>m1（普通唤醒进 LAZY_DSQ 不发 IPI、只由醒着的 Little 核排空；nice&lt;0 紧急任务旁路立即 kick）拿到接近最优的功耗且延迟代价最小。<b>核心洞察：「延迟不是批处理的代价，是唤醒时刻就提交 CPU 的代价」</b>——唤醒时提交 +5120µs，switch-in 时提交 +780µs。idle 退出数与省电确实相关（散点图），存在一个功耗最小且延迟可接受的启发式。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/wakeup-p09.png" alt="idle exits vs power" loading="lazy">
+      <div class="figcap"><span class="t">各调度策略的 idle 退出数 vs 功耗增量：退出越少越省电</span><span class="src">slide 9</span></div>
+    </div>
+    <p><b>开放问题</b>：EM 是否应暴露 idle-exit cost 项（现只知活动 OPP，不知 idle OPP/C-state 退出能量）；cluster 打包 vs CPU 打包何时该作为启发式（util 低、已在 FMin 时）；per-cluster runqueue、RT 式 push-pull；如何分类 latency-tolerant 任务与场景（设备整体空闲即天然延迟宽容——QoS hint 的又一个用例）。</p>
+  </div>
+</section>
+
+<!-- ═══════ 10 cpufreq ═══════ -->
+<section id="s10">
+  <div class="sec-head"><span class="sec-no">10</span><h2>cpufreq：自主调速的两条路线</h2></div>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <h3 class="sub" style="margin-top:0;">Autonomous CPU performance selection：hw_autonomous governor（Sumit Gupta，NVIDIA）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落 · 11 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2537/">lpc.events/2537</a></span>
+      <span class="badge b-rfc">提案讨论</span>
+    </div>
+    <p><b>背景</b>：即便平台启用了 CPPC Autonomous Selection，schedutil/ondemand/conservative 仍在持续计算需求并写 Desired hint；performance governor 也不保证 fmax（请求只是 hint，实际频率可低于策略最大）。<b>提案</b>：新增 <code>hw_autonomous</code> governor——硬件直接选性能档、不发 Desired 请求，每个 cpufreq policy 独立选择；省掉 governor 计算与 Desired 写入，PCC 平台还能省固件邮箱命令（未实测）。驱动模型：保持 target() 模型，cppc_cpufreq 为首个驱动，intel_cpufreq/amd-pstate 为潜在后续；intel_pstate/amd_pstate_epp 的 active setpolicy() 模式不在本提案内。新增 <code>struct cpufreq_driver</code> 回调 <code>prepare_perf_control()</code>（前一 governor 停止后、新 governor 启动前：无 Desired 的选择启用 + MIN/MAX + EPP/Activity Window）与 <code>set_policy_limits()</code>（启动后与限值变化时更新 MIN/MAX）。兼容性：<code>auto_select</code> 为 0 时 hw_autonomous 拒绝；EPP 接口沿用 <code>energy_performance_preference</code> 四个命名预设（对齐 amd-pstate）。<b>讨论</b>：新 governor 是否是正确接口？回调切分是否合理？与可写 auto_select 如何共存？</p>
+  </div>
+
+  <div class="card">
+    <h3 class="sub" style="margin-top:0;">EPP-boost：游戏负载的频率Scaling（David Vernet，Anthropic，Gaming MC）</h3>
+    <div class="meta-line">
+      <span class="meta-chip">散落 · 18 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2403/">lpc.events/2403</a></span>
+      <span class="badge b-rfc">RFC 重构中</span>
+    </div>
+    <p><b>背景与问题</b>：Steam Deck（Van Gogh）跑 Civ VI，忙核中位频率只有 2.43GHz（fmax 3.5GHz），58% 样本低于 90% fmax——<b>短 futex 睡眠（约 63 次/秒）会重置固件的需求估计</b>，唤醒时从 1.70GHz 重新爬升（2.80GHz at wake、1.25ms 后才到 3.50GHz）。代价出现在帧时间尾部与加载时间，不在平均 fps。sysfs 直接设 EPP=performance 能提 1%-low 16%，但常开不合算。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/eppboost-p03.png" alt="median effective clock by time since wake" loading="lazy">
+      <div class="figcap"><span class="t">唤醒后时间 vs 中位有效频率：stock 平衡档 2.43GHz 持续至少 8ms 忙时；1.25ms 后可达 fmax</span><span class="src">slide 3</span></div>
+    </div>
+    <p><b>RFC 现状与重审要求</b>：原 RFC 每 10ms 采样 C0 residency、50% 忙则设 EPP=performance（300ms 衰减）——Civ VI 1%-low +29~38%（p≤0.014）、忙时整机 +1.0W；AMD 维护者要求重构成：无模块参数、不覆盖用户设定的 EPP、governor 级机制而非驱动 heuristic。对比数据：</p>
+    <table class="data">
+      <tr><th>模式</th><th class="num">最差 1% 帧时间</th><th class="num">p999 帧时间</th></tr>
+      <tr><td>balance_performance（stock，active）</td><td class="num">70–73 ms</td><td class="num">75–77 ms</td></tr>
+      <tr><td>epp_boost RFC（active）</td><td class="num">63 ms</td><td class="num">76 ms</td></tr>
+      <tr><td>dynamic min_perf floor</td><td class="num">59 ms</td><td class="num neg">86 ms</td></tr>
+      <tr><td><b>schedutil（guided）</b></td><td class="num pos">47 ms</td><td class="num pos">51 ms</td></tr>
+      <tr><td>schedutil（passive）</td><td class="num">69 ms</td><td class="num">79 ms</td></tr>
+      <tr><td>UCLAMP_MIN（render 线程）</td><td class="num">67 ms</td><td class="num">76 ms</td></tr>
+    </table>
+    <p>guided 尾部最好但常开多耗 0.6–0.9W（轻载也如此），RFC 至多多 0.2W。<b>提案</b>：让动态 governor 驱动 EPP——「schedutil 设的是频率（min_perf 地板），EPP 要的是 QoS（偏好而非频率）；调度器看不见 GPU 功耗，固件看得见整机预算」。掌机上 CPU/GPU 共享一个功耗预算，guided 全程越权，提案结合 guided 的 governor 与 active 的 hint：策略留在 cpufreq、功率仲裁留在固件。<b>附带讨论</b>：Wine 线程提示——游戏标记重要线程、Wine 映射成 nice、cpufreq 看不见；改为 UCLAMP_MIN（原型在 7950X 上砍 41% 工作时间）并传导到 EPP，OpenXR 在 VR 头显已有先例。</p>
+  </div>
+</section>
+
+<!-- ═══════ 11 isolation ═══════ -->
+<section id="s11">
+  <div class="sec-head"><span class="sec-no">11</span><h2>Meta 机群隔离观测：锁跨越一切隔离边界</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>David Dai &amp; Shakeel Butt</b>（Meta）</span>
+      <span class="meta-chip">Observability MC · 30 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2548/">lpc.events/2548</a></span>
+      <span class="badge b-high">与调度隔离直接相关</span>
+    </div>
+    <h3 class="sub">背景与问题</h3>
+    <div class="quote">「邻居开始 OOM，然后我们的容器也开始 OOM」「邻居到内存上限时我们超时——我们自己的 CPU 和内存都很闲」「我们什么都没做错。memory limits 和 cgroups 本该阻止这一切——本 talk 讲的是它们没能阻止的一个大原因。」<span class="who">— 客户投诉集锦（共享宿主上的隔离失效）</span></div>
+    <p>排查共享资源竞争（CPU/内存/IO——排除：专用 CPU、低 IO）之后锁定真凶：<b>内核锁跨越一切隔离边界</b>——cgroups、cpusets、nice、cpu.max 都拦不住；锁持有者卡在 reclaim、嵌套锁睡眠、<b>runnable 态等待 CPU</b>、RCU 等待。</p>
+    <h3 class="sub">工具：runnable_lock_monitor.bt</h3>
+    <p>bpftrace 脚本，挂在 mutex/rwsem/percpu-rwsem（写）锁与解锁上；<b>解锁时</b>若已有等待者排队且出现一次 ≥5ms 的 off-CPU 区间则上报；报告含锁类型、持有时长、睡眠时长、<b>ready-but-not-running 时长</b>、取锁与离开 CPU 两个栈、CPU 集合。Strobelight 在轮换采样的主机上运行（全量跟踪太贵）。限制：计数是下界（比较占比而非绝对值）；只覆盖睡眠锁（不含 spinlock/rt_mutex/trylock）。</p>
+    <div class="figure">
+      <img src="assets/lpc2026/isolation-p04.png" alt="runnable_lock_monitor.bt" loading="lazy">
+      <div class="figcap"><span class="t">一次持锁区间：running → 睡眠（IO/RCU/另一把锁/被抢占/cpu.max 限流）→ running → ready, not running（cond_resched 后等待 CPU）→ 解锁时上报？</span><span class="src">slide 4</span></div>
+    </div>
+    <h3 class="sub">效果：28 天机群数据（2026-08-28 ~ 09-25）</h3>
+    <div class="metrics">
+      <div class="metric"><div class="mv b">41.6M</div><div class="ml">锁报告（~139K 主机，全部有等待者排队）</div></div>
+      <div class="metric"><div class="mv o">9%</div><div class="ml">持有者 ready-but-not-running（3.72M 份 / ~92K 主机）</div></div>
+      <div class="metric"><div class="mv">~20 把</div><div class="ml">跨负载共享锁（占 3.72M 的 47.5%；mmap_lock 单独占 41.5%）</div></div>
+    </div>
+    <p>那 9% 的 ready-but-not-running「大多是 <code>cond_resched()</code> 与唤醒后等 CPU，而非限流」——<b>这一段正是调度器的隔离问题</b>，与 LAVD LWP、nohz_full 动态化两个讲题指向同一缺口。</p>
+    <table class="data">
+      <tr><th>共享锁</th><th>共享范围</th><th class="num">报告数</th><th>持有者在干什么</th></tr>
+      <tr><td>btrfs b-tree node</td><td>文件系统</td><td class="num neg">608K</td><td>69% 在树根：容器工具的树搜索</td></tr>
+      <tr><td>rtnl_mutex</td><td>整机</td><td class="num neg">483K</td><td>ethtool ioctl（92%）：<b>348 个程序在轮询 NIC 统计</b></td></tr>
+      <tr><td>rdtgroup_mutex</td><td>整机</td><td class="num neg">320K</td><td>读 resctrl 计数器（100%）：两个监控 agent</td></tr>
+      <tr><td>invalidate_lock</td><td>块设备</td><td class="num">105K</td><td>某存储服务的 discard ioctl，小 cpuset</td></tr>
+      <tr><td>uprobes_mmap_mutex</td><td>整机</td><td class="num">84K</td><td>带 uprobe 二进制的 exec/munmap：健康检查</td></tr>
+      <tr><td>cgroup_mutex</td><td>整机</td><td class="num">57K</td><td>rmdir 32% / cgroup.procs 写 32% / mkdir 28%</td></tr>
+      <tr><td>XFS realtime bitmap</td><td>文件系统</td><td class="num">45K</td><td>钉在一个 CPU 的 inode-GC worker 释放文件</td></tr>
+    </table>
+    <div class="verdict"><b>评估</b>：把「隔离失效」从抽象投诉落到具体锁名与栈，且 9% 的 ready-not-running 分支把问题接回调度器。对做 cpuset/cgroup 的人这份排行表是现成的工作清单——rtnl_mutex 上 348 个轮询者、两个 resctrl agent 占满 320K 份报告，都是「观测工具自己制造隔离问题」的经典案例。</div>
+  </div>
+</section>
+
+<!-- ═══════ 12 sparsemask ═══════ -->
+<section id="s12">
+  <div class="sec-head"><span class="sec-no">12</span><h2>sparsemask：缺失的通用管道</h2></div>
+  <div class="card">
+    <div class="meta-line">
+      <span class="meta-chip">讲者 <b>K Prateek Nayak</b>（AMD）</span>
+      <span class="meta-chip">Sched &amp; RT MC · 16 页</span>
+      <span class="meta-chip"><a href="https://lpc.events/event/20/contributions/2573/">lpc.events/2573</a></span>
+      <span class="badge b-review">承接 SBM RFC v3</span>
+    </div>
+    <p><b>背景</b>：全局 cpumask（如 <code>nohz.idle_cpus_mask</code>）是大机器上所有核争写的共享 cacheline 集合。谱系致谢：Steve Sistare 的原始 sparsemask（Oracle）→ Peter Zijlstra 的 x86 版 → 本系列的全架构扩展（另见 <a href="2026-10-sched-features-perf-analysis.html">10 月分析</a>的 SBM RFC v3 章节，13 补丁、7 个架构 enablement、首个用户 nohz idle 掩码）。「sbm 之于 sbitmap，如同 cpumask 之于普通 bitmap」：</p>
+    <div class="code"><div class="code-title"><span>sbm 与 sbitmap 的结构对比</span><span>lib/sbm</span></div>
+<pre><span class="cl ctx">struct sbitmap_word {            struct sbm_leaf {</span><span class="cl ctx">  unsigned long word;              unsigned long bitmap;</span><span class="cl del">  unsigned long cleared ____cacheline_aligned;</span><span class="cl del">  raw_spinlock_t swap_lock;</span><span class="cl ctx">} ____cacheline_aligned_in_smp;  } ____cacheline_aligned;</span><span class="cl add">struct sbm {</span><span class="cl add">  struct sbm_leaf leaf[SBM_SIZE];</span><span class="cl add">};  /* 缩减到每叶一个 cacheline */</span></pre></div>
+    <p><b>本场的增量：拓扑细节</b>。SBM_SIZE 启动期由 <code>CONFIG_NUMA</code> / <code>ARCH_SUPPORTS_SCHED_MC</code> / <code>CONFIG_HOTPLUG_CPU</code> 三个维度决定（覆盖 arm64/loongarch/mips/powerpc/riscv/s390/sparc/x86 等的矩阵）。三个代表性坑：① PowerPC pSeries 热插拔可<b>跨节点复用 CPU id</b>（<code>find_cpu_id_range()</code> 回退到 NUMA_NO_NODE）——同一内核里 SBM_SIZE=1（每叶 4 CPU）或 SBM_SIZE=4（每叶 1 CPU）两种形态都得正确；② 通用 arch_topology 的 <code>cpu_coregroup_mask()</code> 要取 NUMA/core/LLC/cluster 兄弟的最小者；③ SRAT 中禁用的 APIC（loongarch/x86）回退方案：假定禁用 CPU 自成单例节点（SBM_SIZE/max_cpus_per_instance 各加 disabled_cpus）。x86 guest + 热插拔：QEMU/KVM 的 MADT 对未上电 CPU 也给出正确 APICID、拓扑一致——现场向其他 VMM 与架构征集反例。</p>
+    <p><b>wakeup 用法的数据格式</b>：用 sbm 叶的前 8 字节——原子置位/清位、单次 u64 读可遍历 64 CPU；或把 CPU 散布到字节边界——非原子单字节 store（同 cacheline 的硬件优化）、但需要 gather 步骤拼全掩码。</p>
+    <h3 class="sub">效果（位操作最坏延迟，%cycles 相对全局掩码）</h3>
+    <table class="data">
+      <tr><th>掩码形态</th><th class="num">%cycles</th><th class="num">加速比</th></tr>
+      <tr><td>global mask</td><td class="num">100%</td><td class="num">1×</td></tr>
+      <tr><td>per-NUMA mask</td><td class="num">32.92%</td><td class="num">3×</td></tr>
+      <tr><td>per-LLC mask</td><td class="num pos">1.298%</td><td class="num pos">77×</td></tr>
+      <tr><td>per-LLC（u8 操作，无 LOCK 前缀）</td><td class="num pos">0.493%</td><td class="num pos">202×</td></tr>
+    </table>
+    <p class="foot-note">lore：<a href="https://lore.kernel.org/lkml/e093d930-79df-4285-a492-cc6d40b3cd51@amd.com/">最坏延迟分析数据来源</a>；开放问题：Big Endian 上掩码拼接的字节序。</p>
+  </div>
+</section>
+
+<!-- ═══════ 13 附录简报 ═══════ -->
+<section id="s13">
+  <div class="sec-head"><span class="sec-no">附</span><h2>RT 工具与观测简报</h2></div>
+  <div class="bug-grid">
+
+    <div class="bug">
+      <h4>timerlat vs cyclictest（Red Hat：Glozar/Kacur/Goncalves）<span class="badge b-review" style="margin-left:.4rem;">16 页</span></h4>
+      <p>两工具都测周期定时器延迟，差异在测量点：cyclictest 用户态侧，timerlat 内核侧（可带 kthread）。timerlat（用户模式）读数普遍偏大——「是 trace 开销、测量点不同，还是别的？都有点」。10 点分解（Intel PT 实测，µs）：</p>
+      <table class="data" style="font-size:0.78rem;">
+        <tr><th>同步点</th><th class="num">cyclictest</th><th class="num">timerlat</th></tr>
+        <tr><td>IRQ handler in</td><td class="num">1.274</td><td class="num">1.423</td></tr>
+        <tr><td>线程唤醒</td><td class="num">1.291</td><td class="num">1.576</td></tr>
+        <tr><td>调度切换（thread latency）</td><td class="num">3.630</td><td class="num">4.017</td></tr>
+        <tr><td>wait syscall exit（cyclictest latency）</td><td class="num">4.788</td><td class="num">5.920</td></tr>
+        <tr><td>wait syscall entry（timerlat user latency）</td><td class="num">4.907</td><td class="num">5.999</td></tr>
+        <tr><td>timer start</td><td class="num">5.325</td><td class="num">6.627</td></tr>
+      </table>
+      <p>两工具间差值的三大来源：osnoise/trace 开销（每点 +0.1~0.4µs）、timerlat 各测量点之间的一段（+1.1µs）、clock_gettime 效应（+1.1µs）。</p>
+    </div>
+
+    <div class="bug">
+      <h4>长期延迟监测（Jan Altenberg，OSADL）<span class="badge b-review" style="margin-left:.4rem;">64 页</span></h4>
+      <p>OSADL 的 RT Linux 长期延迟监测服务：从 1979 年 MC68000 的历史讲到现行方法——每 CPU 一线程、优先级 98、锁内存、200µs 间隔（<code>cyclictest -m -S -i200 -p98</code>），例：Min 2 / Act 5 / Avg 4 / Max 27µs；延迟直方图按内核版本/硬件归档。未来：延迟图附上下文信息、stress-ng 负载生成、接入 RTLA。</p>
+    </div>
+
+    <div class="bug">
+      <h4>PREEMPT_RT：接口 up 事件如何破坏实时（Florian Bezdeka，Siemens）<span class="badge b-na" style="margin-left:.4rem;">现场问题</span></h4>
+      <p>动态 RT 工作负载部署：容器运行时承载 RT 负载，装应用时才做 CPU 隔离/IRQ 亲和/设备直通的重配置。痛点案例：网卡引导时未用（管理性 down），应用启用时 stmmac 驱动在 bring-up 中设置 IRQ 亲和 hint，<b>覆盖了用户预设的亲和</b>——而设备未 request_irq() 前根本无法预设。现有 API 缺陷：亲和只在 request_irq() 后可见（「未用」设备引导后隐藏）、新 IRQ 检测靠扫描（有竞态）、IRQCHIP_MOVE_DEFERRED 需要额外一次迁移。</p>
+    </div>
+
+    <div class="bug">
+      <h4>生产 RT 内核的轻量 preempt/IRQ tracepoints（Wander Lairson Costa，Red Hat）<span class="badge b-review" style="margin-left:.4rem;">10 页</span></h4>
+      <p>客户环境不可预测延迟尖峰、实验室无法复现、生产禁自定义内核——需要安全低开销的生产环境 tracing 定位「长时间关中断/禁抢占」。方案：tracepoint 静态键内联检查（nop 跳转）+ <code>__no_caller_saved_registers</code> 与内联 asm 避免分支检查前的寄存器溢出（gcc 的 x86 实现）。静态开销：1,125 个函数分析，每调用点中位数 <b>3 条指令</b>。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ 14 收尾 ═══════ -->
+<section id="s14">
+  <div class="sec-head"><span class="sec-no">结</span><h2>收尾观察</h2></div>
+  <div class="card">
+    <ul class="dash">
+      <li><b>锁驱动的时延是 2026 年的贯穿主题</b>：Proxy Futexes 把 PE 从内核 mutex 推进到用户态锁（FUTEX_LOCK_PING，NORMAL 任务 PI 从「更差」到归零）；LAVD 用 LWP 补上锁交接的最后一段（Steam Frame &gt;2ms 延迟 2,780→140）；Meta 的机群数据证明锁持有者 ready-not-running 是隔离失效的 9%。三个独立团队在同一个缺口上会师。</li>
+      <li><b>sched_ext 生产化的最后几公里</b>：Qualcomm 要求收编帧路径 RT 任务（5–16% 任务数、14–50% 负载）、pvsched 打通 VM 边界（cyclictest p99 1.15ms→37µs）、scx-cosmos 闭环 GPU 局部性（+67% 带宽）、PE 以 SCX_OPS_ENQ_BLOCKED opt-in 兼容——每一项都在回答「发行版/厂商为什么敢开这个开关」。</li>
+      <li><b>能效侧的信号化缺口</b>：EAS 的延迟代价（cluster-local idle preference 用 slack 换延迟、能量几乎无损）、静默硬件压力（thermal/power limit 进 capacity）、idle exit 预测（CL5 补偿后 1929.8µs→10.7µs）、free ride（−6.6mW）——共同指向 Energy Model 缺 idle 功耗与转换成本项。</li>
+      <li><b>与 LKML 评审线的咬合</b>：EEVDF 场即 Vincent 18 补丁系列的路线图；sparsemask 即 SBM RFC v3 的拓扑细节补充；PE×sched_ext 即 Andrea for-7.4 系列；scx-cosmos 依赖的正是 sched_ext NUMA 支持系列。跟踪这些 LKML 线程即可看到这些 talk 的下半场。</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>数据来源：LPC 2026（Prague，10/05-07）讲者幻灯片 · 文本经 pdftotext/OCR 提取 · 图示页 150 DPI 直接渲染 · 生成于 2026-10-15 · <a href="../">返回日报首页</a> · <a href="2026-10-sched-features-perf-analysis.html">10 月上旬分析</a> · <a href="https://github.com/1343503048/lkm">GitHub</a></p>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+  Array.prototype.forEach.call(document.querySelectorAll('main section[id]'), function (s) { obs.observe(s); });
+})();
+</script>
+</body>
+</html>
