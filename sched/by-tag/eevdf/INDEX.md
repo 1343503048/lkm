@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 64 篇
+共 67 篇
 
+- [sched-20261016-007](../../2026/10/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-002](../../2026/10/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-001](../../2026/10/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — Kayra Cizmeci 修复 EEVDF 中「vprot（slice protection）在 reweighting 时可能出错」的 bug：任务 vruntime 改变时，已死掉的 protection 可能复活、或活着的 protection 增减甚至死掉，破坏保护切片的正确性。当天 v3→v4→v5 快速迭代，Vincent Guittot 全程 review 并最终给出 Review
 - [sched-20261015-028](../../2026/10/sched-20261015-028-sched-eevdf-remove-redundant-run-to-parity-check.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-013](../../2026/10/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

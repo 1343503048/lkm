@@ -1,7 +1,8 @@
 # tag: psi
 
-共 19 篇
+共 20 篇
 
+- [sched-20261016-006](../../2026/10/sched-20261016-006-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-019](../../2026/10/sched-20261015-019-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-015](../../2026/10/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261011-001](../../2026/10/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/medium/under_review` — Shakeel Butt 移除 PSI trigger 销毁路径上的 `synchronize_rcu()`——Meta 生产环境发现该 RCU 等待在持有 kernfs `node_mutex` 时阻塞其他用户（文件关闭、cgroup 移除、禁用 cgroup.pressure 等）。补丁逐 commit 论证该等待已因历次重构失去必要性，改用 `rcu_access_pointer()` 做 

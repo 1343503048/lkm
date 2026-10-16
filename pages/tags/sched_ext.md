@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 243
+article_count: 246
 ---
 
+- [sched-20261016-003](/lkm/2026/10/16/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.html) `bug/high/merged_tip` — sched_ext: Fix use-after-free of a local reenq node left on an inactive cpu
+- [sched-20261016-019](/lkm/2026/10/16/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
+- [sched-20261016-020](/lkm/2026/10/16/sched-20261016-020-sched-ext-finish-scheduler-init-before-publishing-ops-priv.html) `fix/medium/under_review` — sched_ext: finish scheduler init before publishing ops priv
 - [sched-20261015-003](/lkm/2026/10/15/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
 - [sched-20261015-009](/lkm/2026/10/15/sched-20261015-009-sched-ext-finish-scheduler-init-before-publishing-ops-priv.html) `fix/medium/under_review` — sched_ext: finish scheduler init before publishing ops priv
 - [sched-20261015-010](/lkm/2026/10/15/sched-20261015-010-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries

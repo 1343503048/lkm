@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 35
+article_count: 36
 ---
 
+- [sched-20261016-014](/lkm/2026/10/16/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261015-002](/lkm/2026/10/15/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261015-008](/lkm/2026/10/15/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261015-012](/lkm/2026/10/15/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware

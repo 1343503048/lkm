@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 159 篇
+共 160 篇
 
+- [sched-20261016-005](../../2026/10/sched-20261016-005-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-018](../../2026/10/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-011](../../2026/10/sched-20261014-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

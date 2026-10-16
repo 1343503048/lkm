@@ -1,7 +1,18 @@
 # tag: cfs
 
-共 214 篇
+共 225 篇
 
+- [sched-20261016-016](../../2026/10/sched-20261016-016-sched-numa-fix-scan-period-adjustment-for-shared-faults.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles（这是「sched/numa: fix several NUMA balancing issues」系列的 3/6 补丁）。
+- [sched-20261016-015](../../2026/10/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-011](../../2026/10/sched-20261016-011-sched-hotplug-remove-unused-idle-task-exit.md) `fix/under_review` — Srikar Dronamraju 清理 CPU hotplug 路径的遗留：commit `21641bd9a7a7` 已把 `idle_task_exit()` 原来做的事情移到调度器 hotplug 路径（`sched_force_init_mm()`），该函数变成空 stub，20 个架构的调用点已无实际作用。补丁删除这些调用点与空 stub，跨 21 个文件纯删 33 行，无功能变化。
+- [sched-20261016-010](../../2026/10/sched-20261016-010-sched-uclamp-validate-min-max-pair-under-task-rq-lock.md) `fix/medium/under_review` — Hui Su 修复 `sched_setattr()` 中 UCLAMP_MIN/MAX 的校验竞态：两次不同的 `sched_setattr()` 调用可以在拿锁前各自基于同一份旧值通过校验，最终留下 `min > max` 的非法 `uclamp_req`。补丁把「任务相关」的 min/max 配对校验移到 `task_rq_lock()` 之后（更新已串行化），并拒绝一起提交的反向对。作者用
+- [sched-20261016-009](../../2026/10/sched-20261016-009-revert-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/merged_tip` — 先前合入的「sched/fair: Remove dead code on enqueue_task_fair()」（commit 819224e506bc）把 `enqueue_task_fair()` 里 `cfs_rq->curr == se` 分支当死代码删掉了，但该情形在 CFS_BANDWIDTH 下真实存在——任务被 throttle/dequeue 后可在另一 CPU 上 unth
+- [sched-20261016-008](../../2026/10/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/merged_tip` — Stian Halseth 修复 dyntick-idle 退出后 idle 时间被重复记账的问题：idle 退出时 dyntick-idle 已把当前时刻之前的时间记成 idle（或 IRQ time），但重启 tick 后第一个 tick 又把整段 TICK_NSEC 记给当前运行者，导致 `/proc/stat` 报告的 idle 时间超过 wall time。补丁记录 dyntick-id
+- [sched-20261016-007](../../2026/10/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-005](../../2026/10/sched-20261016-005-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-004](../../2026/10/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-002](../../2026/10/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-001](../../2026/10/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — Kayra Cizmeci 修复 EEVDF 中「vprot（slice protection）在 reweighting 时可能出错」的 bug：任务 vruntime 改变时，已死掉的 protection 可能复活、或活着的 protection 增减甚至死掉，破坏保护切片的正确性。当天 v3→v4→v5 快速迭代，Vincent Guittot 全程 review 并最终给出 Review
 - [sched-20261015-026](../../2026/10/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-018](../../2026/10/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -1,7 +1,8 @@
 # tag: topology
 
-共 123 篇
+共 124 篇
 
+- [sched-20261016-014](../../2026/10/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-002](../../2026/10/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — Pasha Tatashin 发 v1 八补丁系列（x86 + sched + mm），针对 live update 场景需要快速 CPU online/offline 的需求，系统性地消除大规模 x86 服务器上顺序热插拔的软硬件瓶颈。其中调度侧两处改动：缓存 `sched_group_capacity` 的 group_weight/cores/asym_prefer_cpu、按需惰性分配 d
 - [sched-20261014-014](../../2026/10/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

@@ -1,7 +1,11 @@
 # tag: idle
 
-共 66 篇
+共 70 篇
 
+- [sched-20261016-018](../../2026/10/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — Cong Zhang（高通）发 RFC，提出在内核运行时测量并预测 CPU idle exit latency，并用该预测来「补偿」hrtimer 到期与回调真正执行之间的延迟（hrtimer rooster 方案），取代当前来自设备树的静态 worst-case 延迟。想法源自 2026 LPC 议题。Christian Loehle 回帖抛出一串关键问题（与硬件 C-state pre-wak
+- [sched-20261016-017](../../2026/10/sched-20261016-017-sched-add-need-resched-timed-wait-interface.md) `feature/under_review` — Ankur Arora 的 v16 16 补丁系列（need-resched timed wait）继续推进：本次缓存到其中两封——11/16 在 `linux/sched/idle.h` 新增 `tif_bitset_relaxed_wait()` / `tif_need_resched_relaxed_wait()` 接口（基于 `smp_cond_load_relaxed_timeout()
+- [sched-20261016-013](../../2026/10/sched-20261016-013-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-012](../../2026/10/sched-20261016-012-sched-idle-make-forced-polling-state-race-safe.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-007](../../2026/10/sched-20261015-007-sched-idle-destroy-on-stack-hrtimer-in-play-idle-precise.md) `fix/low/under_review` — Hui Su 修 `play_idle_precise()` 的 on-stack hrtimer 生命周期：`it.timer` 用 `hrtimer_setup_on_stack()` 初始化，但函数返回前未调 `destroy_hrtimer_on_stack()`，在 `CONFIG_DEBUG_OBJECTS_TIMERS` 下会残留已注册的 on-stack debug 对象。补丁在 
 - [sched-20261015-005](../../2026/10/sched-20261015-005-sched-idle-make-forced-polling-state-race-safe.md) `fix/low/under_review` — Hui Su 修复 `cpu_idle_poll_ctrl()` 的强制 idle polling 嵌套计数竞态：该全局计数用普通自增/自减维护，而各 idle CPU 无同步地读它，KCSAN 报出 data race。补丁改用 `atomic_t` 计数，并把弱 `arch_cpu_idle()` fallback 永久切换 polling 的状态与「临时请求计数」分开保存，避免并发请求覆盖或
 - [sched-20261014-013](../../2026/10/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

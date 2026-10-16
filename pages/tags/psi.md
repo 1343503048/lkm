@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 19
+article_count: 20
 ---
 
+- [sched-20261016-006](/lkm/2026/10/16/sched-20261016-006-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/low/merged_tip` — sched/psi: Remove the RCU wait from trigger destruction
 - [sched-20261015-015](/lkm/2026/10/15/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/low/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
 - [sched-20261015-019](/lkm/2026/10/15/sched-20261015-019-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/low/under_review` — sched/psi: Remove the RCU wait from trigger destruction
 - [sched-20261011-001](/lkm/2026/10/11/sched-20261011-001-sched-psi-remove-the-rcu-wait-from-trigger-destruction.html) `fix/medium/under_review` — sched/psi: Remove the RCU wait from trigger destruction

@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 84 篇
+共 86 篇
 
+- [sched-20261016-018](../../2026/10/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — Cong Zhang（高通）发 RFC，提出在内核运行时测量并预测 CPU idle exit latency，并用该预测来「补偿」hrtimer 到期与回调真正执行之间的延迟（hrtimer rooster 方案），取代当前来自设备树的静态 worst-case 延迟。想法源自 2026 LPC 议题。Christian Loehle 回帖抛出一串关键问题（与硬件 C-state pre-wak
+- [sched-20261016-004](../../2026/10/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-024](../../2026/10/sched-20261015-024-cpufreq-schedutil-serialize-start-against-rate-limit-updates.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-015](../../2026/10/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-014](../../2026/10/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。

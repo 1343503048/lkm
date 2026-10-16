@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 123
+article_count: 124
 ---
 
+- [sched-20261016-014](/lkm/2026/10/16/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261015-002](/lkm/2026/10/15/sched-20261015-002-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261015-023](/lkm/2026/10/15/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261014-014](/lkm/2026/10/14/sched-20261014-014-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `feature/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems

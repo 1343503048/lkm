@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 43 篇
+共 45 篇
 
+- [sched-20261016-017](../../2026/10/sched-20261016-017-sched-add-need-resched-timed-wait-interface.md) `feature/under_review` — Ankur Arora 的 v16 16 补丁系列（need-resched timed wait）继续推进：本次缓存到其中两封——11/16 在 `linux/sched/idle.h` 新增 `tif_bitset_relaxed_wait()` / `tif_need_resched_relaxed_wait()` 接口（基于 `smp_cond_load_relaxed_timeout()
+- [sched-20261016-008](../../2026/10/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/merged_tip` — Stian Halseth 修复 dyntick-idle 退出后 idle 时间被重复记账的问题：idle 退出时 dyntick-idle 已把当前时刻之前的时间记成 idle（或 IRQ time），但重启 tick 后第一个 tick 又把整段 TICK_NSEC 记给当前运行者，导致 `/proc/stat` 报告的 idle 时间超过 wall time。补丁记录 dyntick-id
 - [sched-20261015-012](../../2026/10/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-013](../../2026/10/sched-20261014-013-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-004](../../2026/10/sched-20261014-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/under_review` — Christian Loehle 跟进同日 `sched/cputime: Preserve iowait accounting...` 线程里 Peter 对 `nr_iowait_cpu()` 误用的批评，发清理补丁：menu governor 已不再消费 per-CPU iowait 计数的大小，剩余调用方只关心「零/非零」，故把返回 `unsigned int` 的 `nr_iowait_

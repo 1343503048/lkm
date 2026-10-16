@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 54
+article_count: 56
 ---
 
+- [sched-20261016-015](/lkm/2026/10/16/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
+- [sched-20261016-016](/lkm/2026/10/16/sched-20261016-016-sched-numa-fix-scan-period-adjustment-for-shared-faults.html) `fix/medium/under_review` — sched/numa: fix scan-period adjustment for shared faults
 - [sched-20261015-017](/lkm/2026/10/15/sched-20261015-017-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261015-026](/lkm/2026/10/15/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.html) `fix/medium/under_review` — sched/numa: fix several NUMA balancing issues
 - [sched-20261014-002](/lkm/2026/10/14/sched-20261014-002-sched-numa-fix-several-numa-balancing-issues.html) `fix/medium/under_review` — sched/numa: fix several NUMA balancing issues

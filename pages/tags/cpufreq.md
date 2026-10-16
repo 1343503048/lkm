@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 84
+article_count: 86
 ---
 
+- [sched-20261016-004](/lkm/2026/10/16/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/merged_tip` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261016-018](/lkm/2026/10/16/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation
 - [sched-20261015-014](/lkm/2026/10/15/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor
 - [sched-20261015-015](/lkm/2026/10/15/sched-20261015-015-sched-cputime-preserve-iowait-accounting-across-waking-inter.html) `fix/low/under_review` — sched/cputime: Preserve iowait accounting across waking interrupts in dyntick-idle
 - [sched-20261015-024](/lkm/2026/10/15/sched-20261015-024-cpufreq-schedutil-serialize-start-against-rate-limit-updates.html) `fix/low/merged_tip` — cpufreq: schedutil: Serialize start against rate limit updates

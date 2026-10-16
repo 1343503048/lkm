@@ -1,7 +1,9 @@
 # tag: regression
 
-共 35 篇
+共 37 篇
 
+- [sched-20261016-009](../../2026/10/sched-20261016-009-revert-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/merged_tip` — 先前合入的「sched/fair: Remove dead code on enqueue_task_fair()」（commit 819224e506bc）把 `enqueue_task_fair()` 里 `cfs_rq->curr == se` 分支当死代码删掉了，但该情形在 CFS_BANDWIDTH 下真实存在——任务被 throttle/dequeue 后可在另一 CPU 上 unth
+- [sched-20261016-002](../../2026/10/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-013](../../2026/10/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-001](../../2026/10/sched-20261015-001-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost-starvat.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-007](../../2026/10/sched-20261014-007-sched-fair-remove-dead-code-on-enqueue-task-fair.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

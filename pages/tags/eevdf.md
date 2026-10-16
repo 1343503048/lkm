@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 64
+article_count: 67
 ---
 
+- [sched-20261016-001](/lkm/2026/10/16/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
+- [sched-20261016-002](/lkm/2026/10/16/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261016-007](/lkm/2026/10/16/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/merged_tip` — sched/fair: Avoid overflow in place_entity()
 - [sched-20261015-004](/lkm/2026/10/15/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.html) `fix/low/under_review` — sched: Account I/O waits independently of delayed dequeue
 - [sched-20261015-006](/lkm/2026/10/15/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.html) `fix/low/under_review` — sched/fair: Avoid overflow in place_entity()
 - [sched-20261015-013](/lkm/2026/10/15/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/under_review` — sched/fair: remove dead code on enqueue_task_fair()

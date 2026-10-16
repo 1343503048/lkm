@@ -2,9 +2,20 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 214
+article_count: 225
 ---
 
+- [sched-20261016-001](/lkm/2026/10/16/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
+- [sched-20261016-002](/lkm/2026/10/16/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261016-004](/lkm/2026/10/16/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/merged_tip` — sched: Replace nr_iowait_cpu() with a bool accessor
+- [sched-20261016-005](/lkm/2026/10/16/sched-20261016-005-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/low/merged_tip` — sched/cache: Avoid publishing partial LLC utilization
+- [sched-20261016-007](/lkm/2026/10/16/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/merged_tip` — sched/fair: Avoid overflow in place_entity()
+- [sched-20261016-008](/lkm/2026/10/16/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/merged_tip` — sched/cputime: Don't account idle time twice after dyntick-idle
+- [sched-20261016-009](/lkm/2026/10/16/sched-20261016-009-revert-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/merged_tip` — Revert "sched/fair: Remove dead code on enqueue_task_fair()"
+- [sched-20261016-010](/lkm/2026/10/16/sched-20261016-010-sched-uclamp-validate-min-max-pair-under-task-rq-lock.html) `fix/medium/under_review` — sched/uclamp: Validate min/max pair under task_rq_lock()
+- [sched-20261016-011](/lkm/2026/10/16/sched-20261016-011-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit
+- [sched-20261016-015](/lkm/2026/10/16/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
+- [sched-20261016-016](/lkm/2026/10/16/sched-20261016-016-sched-numa-fix-scan-period-adjustment-for-shared-faults.html) `fix/medium/under_review` — sched/numa: fix scan-period adjustment for shared faults
 - [sched-20261015-004](/lkm/2026/10/15/sched-20261015-004-sched-account-i-o-waits-independently-of-delayed-dequeue.html) `fix/low/under_review` — sched: Account I/O waits independently of delayed dequeue
 - [sched-20261015-006](/lkm/2026/10/15/sched-20261015-006-sched-fair-avoid-overflow-in-place-entity.html) `fix/low/under_review` — sched/fair: Avoid overflow in place_entity()
 - [sched-20261015-013](/lkm/2026/10/15/sched-20261015-013-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/under_review` — sched/fair: remove dead code on enqueue_task_fair()

@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 243 篇
+共 246 篇
 
+- [sched-20261016-020](../../2026/10/sched-20261016-020-sched-ext-finish-scheduler-init-before-publishing-ops-priv.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-019](../../2026/10/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261016-003](../../2026/10/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.md) `bug/high/merged_tip` — Tejun Heo 修复 sched_ext 的 use-after-free：一个 local DSQ 的 reenq 节点若被请求时目标 CPU 已经（或即将）下线，节点会一直挂在 rq 链表上，scheduler 释放时带着仍在链表里的节点走 RCU free 路径并告警，CPU 回来后又会被重新遍历。补丁直接忽略对 inactive CPU local DSQ 的 reenq。Andrea
 - [sched-20261015-025](../../2026/10/sched-20261015-025-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-022](../../2026/10/sched-20261015-022-sched-ext-wait-for-scx-opss-dispatching-on-dsq-consume-and-m.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-020](../../2026/10/sched-20261015-020-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

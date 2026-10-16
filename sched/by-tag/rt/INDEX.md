@@ -1,7 +1,8 @@
 # tag: rt
 
-共 33 篇
+共 34 篇
 
+- [sched-20261016-019](../../2026/10/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-021](../../2026/10/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-008](../../2026/10/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — Shubhang Kaushik（Ampere）清理 `push_rt_task()`/`push_dl_task()` 里不可达的 migration-disabled 分支：候选任务由 `pick_next_pushable_task()`/`pick_next_pushable_dl_task()` 选出，两者本身就跳过 migration-disabled 任务；`find_lock_lo
 - [sched-20261015-003](../../2026/10/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — Tengfei Fan（高通）重发（上一版含 HTML 被列表拒收）一份 RFC，探讨如何让 RT 任务（SCHED_FIFO/SCHED_RR）与 sched_ext 在 CPU 放置、CPU 平衡、以及向 schedutil 上报负载三方面协同——延续 LPC 上的讨论。核心诉求是允许 sched_ext 调度「显式选定」的部分 RT 任务，以避免 RT 任务抢占重要 SCX 任务造成帧率抖动

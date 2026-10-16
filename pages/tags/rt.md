@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 33
+article_count: 34
 ---
 
+- [sched-20261016-019](/lkm/2026/10/16/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
 - [sched-20261015-001](/lkm/2026/10/15/sched-20261015-001-sched-rt-no-rt-push-ipi-causes-multi-second-pi-boost-starvat.html) `regression/high/under_review` — sched/rt: NO_RT_PUSH_IPI causes multi-second PI-boost starvation in pro-audio workloads (dd29c017aed6)
 - [sched-20261015-003](/lkm/2026/10/15/sched-20261015-003-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
 - [sched-20261015-008](/lkm/2026/10/15/sched-20261015-008-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks

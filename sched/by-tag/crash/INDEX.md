@@ -1,7 +1,8 @@
 # tag: crash
 
-共 36 篇
+共 37 篇
 
+- [sched-20261016-003](../../2026/10/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.md) `bug/high/merged_tip` — Tejun Heo 修复 sched_ext 的 use-after-free：一个 local DSQ 的 reenq 节点若被请求时目标 CPU 已经（或即将）下线，节点会一直挂在 rq 链表上，scheduler 释放时带着仍在链表里的节点走 RCU free 路径并告警，CPU 回来后又会被重新遍历。补丁直接忽略对 inactive CPU local DSQ 的 reenq。Andrea
 - [sched-20261010-007](../../2026/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261010-006](../../2026/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.md) `fix/high/under_review` — 同日，**Tejun Heo 直接发出修复 Hui Su 报告的 DSQ use-after-free 的 for-7.3-fixes 补丁**——deferred reenqueue 可能在 RCU 宽限期之后仍读取已释放的用户 DSQ（`run_deferred()` 在宽限期内开始、晚于 RCU 回调 detach 请求再读已释放 DSQ 的 id）。修复改为在宽限期**之前**取消 pen
 - [sched-20260919-001](../../2026/09/sched-20260919-001-sched-deadline-fix-zero-cpu-dl-bandwidth-handling.md) `fix/high/under_review` — 增量更新：Hui Su 的 SCHED_DEADLINE 除零修复推出 v2——把 v1 只修 debugfs DL server 路径的做法，推广为在公共 helper `__dl_sub()`/`__dl_add()` 里统一处理 `cpus == 0`，覆盖 sched_setscheduler() 等更多调用点；并把 debugfs 的 `cpu_online()` 检查收紧为 `cpu_
