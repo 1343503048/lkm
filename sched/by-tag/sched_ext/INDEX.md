@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 246 篇
+共 250 篇
 
+- [sched-20261017-008](../../2026/10/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261017-003](../../2026/10/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.md) `fix/medium/under_review` — Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的单补丁修复：core scheduling 可在更高优先级类任务 runnable 时强制某 CPU idle（未打 tag 的 core-wide max 下，不兼容 pick 直接换成 idle 而不去找兼容任务），此时 `rq->next_class` 为 idle，`rq_is_open()` 误报该 C
+- [sched-20261017-002](../../2026/10/sched-20261017-002-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261017-001](../../2026/10/sched-20261017-001-sched-ext-fix-bypass-leaving-the-running-task-protected-and.md) `fix/medium/merged_tip` — Tejun Heo 发往 `sched_ext/for-7.3-fixes` 的 2 补丁修复系列：`scx_bypass()` 在遍历 runnable 列表时处理运行中任务，但运行中任务根本不在该列表上，导致 bypass 进入时的保护剥离永不执行、受保护运行任务的 slice 在 bypass 里切不动；另一方面，被 bypass 的子调度器任务由最近非 bypass 祖先运行，但其能否停留
 - [sched-20261016-020](../../2026/10/sched-20261016-020-sched-ext-finish-scheduler-init-before-publishing-ops-priv.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-019](../../2026/10/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-003](../../2026/10/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.md) `bug/high/merged_tip` — Tejun Heo 修复 sched_ext 的 use-after-free：一个 local DSQ 的 reenq 节点若被请求时目标 CPU 已经（或即将）下线，节点会一直挂在 rq 链表上，scheduler 释放时带着仍在链表里的节点走 RCU free 路径并告警，CPU 回来后又会被重新遍历。补丁直接忽略对 inactive CPU local DSQ 的 reenq。Andrea

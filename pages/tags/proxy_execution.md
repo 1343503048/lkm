@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 70
+article_count: 72
 ---
 
+- [sched-20261017-005](/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
+- [sched-20261017-008](/lkm/2026/10/17/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries
 - [sched-20261015-010](/lkm/2026/10/15/sched-20261015-010-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries
 - [sched-20261015-025](/lkm/2026/10/15/sched-20261015-025-sched-ext-keep-proxy-donors-with-slice-left-on-the-local-dsq.html) `fix/medium/merged_tip` — sched_ext: Keep proxy donors with slice left on the local DSQ
 - [sched-20261012-012](/lkm/2026/10/12/sched-20261012-012-sched-proxy-defer-donor-commit-until-after-proxy-resolution.html) `feature/none/rfc` — sched/proxy: Defer donor commit until after proxy resolution

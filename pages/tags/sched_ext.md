@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 246
+article_count: 250
 ---
 
+- [sched-20261017-001](/lkm/2026/10/17/sched-20261017-001-sched-ext-fix-bypass-leaving-the-running-task-protected-and.html) `fix/medium/merged_tip` — sched_ext: Fix bypass leaving the running task protected and bypassed tasks stranded
+- [sched-20261017-002](/lkm/2026/10/17/sched-20261017-002-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.html) `fix/medium/under_review` — sched_ext: Don't leave balance callbacks queued across a pick retry
+- [sched-20261017-003](/lkm/2026/10/17/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.html) `fix/medium/under_review` — sched_ext: Don't report a forced-idle CPU as open for IMMED tasks
+- [sched-20261017-008](/lkm/2026/10/17/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries
 - [sched-20261016-003](/lkm/2026/10/16/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.html) `bug/high/merged_tip` — sched_ext: Fix use-after-free of a local reenq node left on an inactive cpu
 - [sched-20261016-019](/lkm/2026/10/16/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.html) `feature/none/rfc` — sched_ext: Support RT task within sched_ext
 - [sched-20261016-020](/lkm/2026/10/16/sched-20261016-020-sched-ext-finish-scheduler-init-before-publishing-ops-priv.html) `fix/medium/under_review` — sched_ext: finish scheduler init before publishing ops priv

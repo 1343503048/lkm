@@ -1,7 +1,8 @@
 # tag: cfs
 
-共 225 篇
+共 226 篇
 
+- [sched-20261017-006](../../2026/10/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-016](../../2026/10/sched-20261016-016-sched-numa-fix-scan-period-adjustment-for-shared-faults.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles（这是「sched/numa: fix several NUMA balancing issues」系列的 3/6 补丁）。
 - [sched-20261016-015](../../2026/10/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-011](../../2026/10/sched-20261016-011-sched-hotplug-remove-unused-idle-task-exit.md) `fix/under_review` — Srikar Dronamraju 清理 CPU hotplug 路径的遗留：commit `21641bd9a7a7` 已把 `idle_task_exit()` 原来做的事情移到调度器 hotplug 路径（`sched_force_init_mm()`），该函数变成空 stub，20 个架构的调用点已无实际作用。补丁删除这些调用点与空 stub，跨 21 个文件纯删 33 行，无功能变化。

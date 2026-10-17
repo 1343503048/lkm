@@ -1,7 +1,8 @@
 # tag: idle
 
-共 70 篇
+共 71 篇
 
+- [sched-20261017-007](../../2026/10/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-018](../../2026/10/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — Cong Zhang（高通）发 RFC，提出在内核运行时测量并预测 CPU idle exit latency，并用该预测来「补偿」hrtimer 到期与回调真正执行之间的延迟（hrtimer rooster 方案），取代当前来自设备树的静态 worst-case 延迟。想法源自 2026 LPC 议题。Christian Loehle 回帖抛出一串关键问题（与硬件 C-state pre-wak
 - [sched-20261016-017](../../2026/10/sched-20261016-017-sched-add-need-resched-timed-wait-interface.md) `feature/under_review` — Ankur Arora 的 v16 16 补丁系列（need-resched timed wait）继续推进：本次缓存到其中两封——11/16 在 `linux/sched/idle.h` 新增 `tif_bitset_relaxed_wait()` / `tif_need_resched_relaxed_wait()` 接口（基于 `smp_cond_load_relaxed_timeout()
 - [sched-20261016-013](../../2026/10/sched-20261016-013-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

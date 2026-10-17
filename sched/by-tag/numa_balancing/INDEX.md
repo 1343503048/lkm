@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 56 篇
+共 57 篇
 
+- [sched-20261017-006](../../2026/10/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-016](../../2026/10/sched-20261016-016-sched-numa-fix-scan-period-adjustment-for-shared-faults.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles（这是「sched/numa: fix several NUMA balancing issues」系列的 3/6 补丁）。
 - [sched-20261016-015](../../2026/10/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-026](../../2026/10/sched-20261015-026-sched-numa-fix-several-numa-balancing-issues.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

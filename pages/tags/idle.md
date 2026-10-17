@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 70
+article_count: 71
 ---
 
+- [sched-20261017-007](/lkm/2026/10/17/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe
 - [sched-20261016-012](/lkm/2026/10/16/sched-20261016-012-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe
 - [sched-20261016-013](/lkm/2026/10/16/sched-20261016-013-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.html) `fix/low/under_review` — sched/idle: Use hrtimer cleanup class in play_idle_precise()
 - [sched-20261016-017](/lkm/2026/10/16/sched-20261016-017-sched-add-need-resched-timed-wait-interface.html) `feature/none/under_review` — sched: add need-resched timed wait interface

@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 45
+article_count: 46
 ---
 
+- [sched-20261017-005](/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261016-008](/lkm/2026/10/16/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/merged_tip` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261016-017](/lkm/2026/10/16/sched-20261016-017-sched-add-need-resched-timed-wait-interface.html) `feature/none/under_review` — sched: add need-resched timed wait interface
 - [sched-20261015-012](/lkm/2026/10/15/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.html) `fix/medium/under_review` — sched/deadline: Make dl-server nohz full aware

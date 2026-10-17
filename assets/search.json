@@ -17491,6 +17491,141 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261015-009：Binbin Deng 修复 sched_ext 注册路径的 publish-before-init 竞态——`scx_alloc_and_add_sched()` 在 scheduler 初始化完成**之前**就 `rcu_assign_pointer(ops->priv, sch)` 发布指针，BPF kfuncs 可在 RCU 下读到未初始化字段；补丁把发布推迟到初始化完成之后（仅静态分析发现）。 - sched-20261016-020（今天）：Andrea Righi 回帖质疑"
   },
   {
+    "title": "sched_ext: Fix bypass leaving the running task protected and bypassed tasks stranded",
+    "id": "sched-20261017-001",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-001-sched-ext-fix-bypass-leaving-the-running-task-protected-and.html",
+    "tldr": "Tejun Heo 发往 `sched_ext/for-7.3-fixes` 的 2 补丁修复系列：`scx_bypass()` 在遍历 runnable 列表时处理运行中任务，但运行中任务根本不在该列表上，导致 bypass 进入时的保护剥离永不执行、受保护运行任务的 slice 在 bypass 里切不动；另一方面，被 bypass 的子调度器任务由最近非 bypass 祖先运行，但其能否停留仍按任务自身调度器的 caps 检查，被 bypass 负载均衡搬到「自身调度器无 caps 的 CPU」的任务 slice 耗尽后无法停留、CPU 可能带着排队任务 idle。当日已被 Tejun "
+  },
+  {
+    "title": "sched_ext: Don't leave balance callbacks queued across a pick retry",
+    "id": "sched-20261017-002",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-002-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261010-009：Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的修复——dispatch 路径在 `pick_task_scx()` 尚未结束时（`RETRY_TASK` 或 dl_server 返回 NULL 后挑更低优先级类）就排好 `rq->scx.deferred_bal_cb`，期间 rq 锁可被再次释放，任何此窗口拿锁的 CPU 都撞 pending callback 触发 `rq_pin_lock()` WARNING；改为只在 pick 确定时才排队"
+  },
+  {
+    "title": "sched_ext: Don't report a forced-idle CPU as open for IMMED tasks",
+    "id": "sched-20261017-003",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "core_sched"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.html",
+    "tldr": "Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的单补丁修复：core scheduling 可在更高优先级类任务 runnable 时强制某 CPU idle（未打 tag 的 core-wide max 下，不兼容 pick 直接换成 idle 而不去找兼容任务），此时 `rq->next_class` 为 idle，`rq_is_open()` 误报该 CPU「开放」，导致插进其本地 DSQ 的 `SCX_ENQ_IMMED` 任务被 parked 在更高类任务后面，而不是返回 BPF 调度器。当日新发，暂无回帖。"
+  },
+  {
+    "title": "sched/rt: queue a push when a queued RT task is boosted",
+    "id": "sched-20261017-004",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "rt",
+      "rt_bandwidth",
+      "regression"
+    ],
+    "authors": [
+      "Chaosheng Qu"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260903-006：Thorsten Leemhuis 催办——`dd29c017aed6` 引入的「非 PREEMPT_RT 下默认关 RT push IPI」导致 pro-audio 负载多秒级 PI-boost 饥饿，被列入回归清单但无修复补丁。 - sched-20261015-001：Chaosheng Qu 给出合成复现器；Steven Rostedt 确认是合法 bug，并指明修法——让 `prio_changed_rt()` 感知 rto mask、在 PI boost 时触发一次额外 RT"
+  },
+  {
+    "title": "sched/core: Use the scheduling context for remote ticks",
+    "id": "sched-20261017-005",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution",
+      "nohz",
+      "tick"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html",
+    "tldr": "Shubhang Kaushik（Ampere）发往 sched/core 的单补丁修复：full-nohz 远程 tick 路径 `sched_tick_remote()` 对 `rq->curr` 调用 `task_tick()`，但在 proxy execution 下 `rq->curr` 是 mutex-owner 执行上下文、`rq->donor` 才是提供调度上下文的阻塞任务——作者用 Ampere Altra + `CONFIG_SCHED_PROXY_EXEC=y` + `nohz_full=78` + RT boosting 触发了 `WARN_ON_ONCE(rq->cu"
+  },
+  {
+    "title": "sched/numa: Add per-process automatic NUMA balancing control",
+    "id": "sched-20261017-006",
+    "date": "2026-10-17",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "numa_balancing",
+      "cfs"
+    ],
+    "authors": [
+      "Li Zhe"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260908-007：Li Zhe（ByteDance）发 4 补丁（v1），给自动 NUMA 平衡加 prctl 级 per-process 开关（`PR_SET/GET_NUMA_BALANCING`），让个别进程整体退出 NUMA 扫描与 locality 统计，`kernel.numa_balancing` 保留为管理员硬总闸；当日零 review。 - sched-20261013-004：Chen Yu 建议把全局开关做成三元（always/advise/never），Yafang Shao 主张"
+  },
+  {
+    "title": "sched/idle: Make forced polling state race-safe",
+    "id": "sched-20261017-007",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261015-005：Hui Su 修复 `cpu_idle_poll_ctrl()` 全局强制 polling 计数用普通自增/自减、各 idle CPU 无同步读它导致的 KCSAN data race，改 `atomic_t` 计数并拆分「fallback 永久状态」与「临时请求计数」。 - sched-20261016-012：Peter Zijlstra 回帖追问「这是 `cpu_idle_poll_ctr()` 吧？那东西上真有并发吗？我只看到 init 时的 twiddling」——质疑补丁修复"
+  },
+  {
+    "title": "sched_ext: Keep proxy donors local through core-sched retries",
+    "id": "sched-20261017-008",
+    "date": "2026-10-17",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/17/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261015-010：Andrea Righi 为 `sched_ext/for-7.4` 发修复——要求 donor 的 cookie 匹配才算 proxy put、引入 `SCX_TASK_DSQ_PROXY_IDLE` 标记、并让 `rq_is_open()` 识别该标记，避免 `SCX_RQ_PROXY_PENDING` 残留或 IMMED donor 被误送回 BPF。 - sched-20261017-008（今天）：Tejun Heo 给出 review（Claude 生成式审阅，未复现、纯读码"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

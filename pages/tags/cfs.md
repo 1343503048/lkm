@@ -2,9 +2,10 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 225
+article_count: 226
 ---
 
+- [sched-20261017-006](/lkm/2026/10/17/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
 - [sched-20261016-001](/lkm/2026/10/16/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261016-002](/lkm/2026/10/16/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261016-004](/lkm/2026/10/16/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/merged_tip` — sched: Replace nr_iowait_cpu() with a bool accessor
