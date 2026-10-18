@@ -2,9 +2,11 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 38
+article_count: 40
 ---
 
+- [sched-20261018-007](/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted
+- [sched-20261018-009](/lkm/2026/10/18/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.html) `discussion/none/merged_stable` — sched/eevdf: Move to a single runqueue
 - [sched-20261017-004](/lkm/2026/10/17/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted
 - [sched-20261016-002](/lkm/2026/10/16/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261016-009](/lkm/2026/10/16/sched-20261016-009-revert-sched-fair-remove-dead-code-on-enqueue-task-fair.html) `fix/medium/merged_tip` — Revert "sched/fair: Remove dead code on enqueue_task_fair()"

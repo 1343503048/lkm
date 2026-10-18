@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 71 篇
+共 72 篇
 
+- [sched-20261018-007](../../2026/10/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261014-001](../../2026/10/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-001](../../2026/10/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.md) `fix/high/under_review` — Paul E. McKenney 报告 rcutorture TREE01 场景下（x86 与 arm64）调度器「明显丢失唤醒」，CPU 带着可运行任务却陷入 idle、触发 RCU CPU stall。K Prateek Nayak 定位到 `sched_change_end()` 里对「已入队但非 current」任务改类（如 OTHER→RT）时既不升级 `rq->next_class` 
 - [sched-20261012-024](../../2026/10/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

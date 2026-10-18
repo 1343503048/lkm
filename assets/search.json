@@ -17626,6 +17626,214 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261015-010：Andrea Righi 为 `sched_ext/for-7.4` 发修复——要求 donor 的 cookie 匹配才算 proxy put、引入 `SCX_TASK_DSQ_PROXY_IDLE` 标记、并让 `rq_is_open()` 识别该标记，避免 `SCX_RQ_PROXY_PENDING` 残留或 IMMED donor 被误送回 BPF。 - sched-20261017-008（今天）：Tejun Heo 给出 review（Claude 生成式审阅，未复现、纯读码"
   },
   {
+    "title": "sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug",
+    "id": "sched-20261018-001",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html",
+    "tldr": "Tejun Heo 发往 `sched_ext/for-7.4` 的六补丁系列 v3：补全 sub-scheduler 的 ecaps（effective caps）上报协议——attach 时的授权在 bypass 解除前上报、detach 时的丢失在任务还给父调度器前上报、CPU 离线/回归围绕 root 的 `ops.cpu_offline()/ops.cpu_online()` 上报，suspend/hibernation 排除在外。Andrea Righi 已对整系列给出 `Reviewed-by`，仅剩几处结构布局/nit 级意见待折入。合入前景高。"
+  },
+  {
+    "title": "sched_ext: Add scx_bpf_dsq_reenq_task()",
+    "id": "sched-20261018-002",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-002-sched-ext-add-scx-bpf-dsq-reenq-task.html",
+    "tldr": "Tejun Heo 发往 `sched_ext/for-7.4` 的三补丁系列：新增 `scx_bpf_dsq_reenq_task()` kfunc，让 BPF 调度器能只把 DSQ 迭代中「被标记」的单个任务重入队（此前 `scx_bpf_dsq_reenq()` 只能整队重入队、`scx_bpf_dsq_move()` 是选位而非重入队），解决 caps 撤销后只需重新放置被卡任务（而非全队）的场景。Andrea Righi 三枚均 `Reviewed-by`，Tejun 已应用 1–3 到 `sched_ext/for-7.4`。"
+  },
+  {
+    "title": "sched_ext: Drop the locks periodically while walking a user DSQ for re-enqueue",
+    "id": "sched-20261018-003",
+    "date": "2026-10-18",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-003-sched-ext-drop-the-locks-periodically-while-walking-a-user-d.html",
+    "tldr": "Tejun Heo 发往 `sched_ext/for-7.4` 的单补丁：`reenq_user()` 此前每个 re-enqueue 掉一次 dsq->lock、每 `SCX_TASK_ITER_BATCH` 个 re-enqueue 掉一次 rq 锁，但被 `SCX_REENQ_MARKED` 过滤的 walk 会跳过未标记任务而不掉锁——一整段未标记任务可在一次持锁（双锁 + IRQs off）内被遍历完。补丁改为按「访问数」而非「重入队数」计数掉锁。Andrea Righi `Reviewed-by`，Tejun 已应用。"
+  },
+  {
+    "title": "sched_ext: Make ops.cpu_acquire/release() reliable",
+    "id": "sched-20261018-004",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-004-sched-ext-make-ops-cpu-acquire-release-reliable.html",
+    "tldr": "Kuba Piecuch 发往 `sched_ext/for-7.4` 的 RFC 五补丁系列：修复并「反弃用」`ops.cpu_acquire()/ops.cpu_release()`——这两个回调本应告诉 BPF 调度器某 CPU 何时可用/被收回，但现状存在 RT 唤醒不触发 release、无上下文切换的 sched_setscheduler/PI 提升不触发、acquire 投机发出被高优先级类任务抢走、`cpu_released` 跨调度器残留、热插拔未处理等缺口。方案把可用性判定归约到 `rq->donor` 的类，不动 `kernel/sched/core.c`。RFC 首日发"
+  },
+  {
+    "title": "sched_ext: Reenqueue IMMED tasks when their CPU picks idle",
+    "id": "sched-20261018-005",
+    "date": "2026-10-18",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "core_sched"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261017-003：Andrea Righi 发 `sched_ext: Don't report a forced-idle CPU as open for IMMED tasks`——core scheduling 强制某 CPU idle 时 `rq_is_open()` 误报开放，`SCX_ENQ_IMMED` 任务被插进本地 DSQ、parked 在更高类任务之后而不回 BPF 调度器；方案是加 `higher_class_runnable()` 预测 pick、让 `rq_is_open()` "
+  },
+  {
+    "title": "sched_ext: Fix scx balance callbacks queued across a core-sched pick",
+    "id": "sched-20261018-006",
+    "date": "2026-10-18",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "core_sched"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261010-009：Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的修复——dispatch 路径在 `pick_task_scx()` 尚未结束时（`RETRY_TASK` 或 dl_server 返回 NULL 后挑更低优先级类）就排好 `rq->scx.deferred_bal_cb`，期间 rq 锁可被再次释放，任何此窗口拿锁的 CPU 都撞 pending balance callback 触发 `rq_pin_lock()` WARNING；改为只在 pic"
+  },
+  {
+    "title": "sched/rt: queue a push when a queued RT task is boosted",
+    "id": "sched-20261018-007",
+    "date": "2026-10-18",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "rt",
+      "preempt",
+      "regression"
+    ],
+    "authors": [
+      "Chaosheng Qu"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260903-006：Thorsten Leemhuis 催办——`dd29c017aed6` 引入的「非 PREEMPT_RT 下默认关 RT push IPI」导致 pro-audio 负载多秒级 PI-boost 饥饿，被列入回归清单但无修复补丁。 - sched-20261015-001：Chaosheng Qu 给出合成复现器；Steven Rostedt 确认是合法 bug，并指明修法——让 `prio_changed_rt()` 感知 rto mask、在 PI boost 时触发一次额外 RT"
+  },
+  {
+    "title": "sched/fair: Add push task mechanism for fair",
+    "id": "sched-20261018-008",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf",
+      "load_balance"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261009-004 / 20261010-001：Vincent Guittot 的 18 补丁 v2「Improving latency of short slice tasks」系列引入 fair push 任务机制（把排不上本 CPU 或不该在本 CPU 的任务推到更合适 CPU），短 slice 任务是首个使用者，cache-aware 调度是后续扩展方向。 - sched-20261012-014：Shrikanth Hegde 对 07/18 提 review；Vincent 澄清「wakeup"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20261018-009",
+    "date": "2026-10-18",
+    "type": "discussion",
+    "status": "merged_stable",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "regression"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-001 / 20261007-009：Aishwarya Rambhadran（ARM）报告 v7.2→v7.3 在 AWS Graviton3 上个别 schbench 线程配置 p99 回退 ~30%，bisect 指向「sched/eevdf: Move to a single runqueue」commit；后续怀疑点收敛到 WA_WEIGHT/task_h_load，社区提议试 NO_WA_WEIGHT 与 cgroup_mode 规避。 - sched-20261012-022：Mi"
+  },
+  {
+    "title": "x86, sched, mm: Speed up CPU hotplug on large systems",
+    "id": "sched-20261018-010",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "deadline",
+      "dl_server",
+      "x86"
+    ],
+    "authors": [
+      "Pasha Tatashin"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261015-002：Pasha Tatashin 发 v1 八补丁系列（x86+sched+mm）加速大规模 x86 服务器顺序热插拔，调度侧为 5/8（sgc 缓存 + 惰性分配）与 6/8（dl_server O(N^2)→O(N) 记账）；480 核 Intel 热插拔总耗时 106.23s→5.07s（21x）。 - sched-20261016-014：首批 review 到来——Tony Luck 实测离线 4.833s→3.17s、在线 6.157s→3.796s（36 核 Icelake），"
+  },
+  {
+    "title": "[GIT PULL] Scheduler updates for v7.4",
+    "id": "sched-20261018-011",
+    "date": "2026-10-18",
+    "type": "feature",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf",
+      "load_balance",
+      "numa_balancing",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html",
+    "tldr": "Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时延）、DL/RT、EAS steal_governor、负载均衡、cache-aware、NUMA、proxy execution（sleeping owner + sched_ext 兼容铺垫）、基"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261018-012",
+    "date": "2026-10-18",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/10/18/sched-20261018-012-git-pull-scheduler-fixes.html",
+    "tldr": "Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-18`，截至 `2f93bcb3f9aaf6ceee1aec0a97d4fe386d48e781`），含两枚修复：`__sched_setscheduler()` 类变更竞态导致丢 resched（K Prateek Nayak，近期 RCU 改动暴露）、`place_entity()` vlag 缩放的 s64 乘法溢出可破坏实体位置（Hui Su）。kernel test robot 已确认 tip/sched/urgent `BUI"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

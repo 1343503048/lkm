@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 160
+article_count: 162
 ---
 
+- [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
 - [sched-20261016-005](/lkm/2026/10/16/sched-20261016-005-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/low/merged_tip` — sched/cache: Avoid publishing partial LLC utilization
 - [sched-20261015-016](/lkm/2026/10/15/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261015-018](/lkm/2026/10/15/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.html) `fix/low/under_review` — sched/cache: Avoid publishing partial LLC utilization

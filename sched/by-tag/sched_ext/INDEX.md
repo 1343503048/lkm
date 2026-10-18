@@ -1,7 +1,13 @@
 # tag: sched_ext
 
-共 250 篇
+共 256 篇
 
+- [sched-20261018-006](../../2026/10/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261018-005](../../2026/10/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261018-004](../../2026/10/sched-20261018-004-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — Kuba Piecuch 发往 `sched_ext/for-7.4` 的 RFC 五补丁系列：修复并「反弃用」`ops.cpu_acquire()/ops.cpu_release()`——这两个回调本应告诉 BPF 调度器某 CPU 何时可用/被收回，但现状存在 RT 唤醒不触发 release、无上下文切换的 sched_setscheduler/PI 提升不触发、acquire 投机发出被高
+- [sched-20261018-003](../../2026/10/sched-20261018-003-sched-ext-drop-the-locks-periodically-while-walking-a-user-d.md) `fix/low/merged_tip` — Tejun Heo 发往 `sched_ext/for-7.4` 的单补丁：`reenq_user()` 此前每个 re-enqueue 掉一次 dsq->lock、每 `SCX_TASK_ITER_BATCH` 个 re-enqueue 掉一次 rq 锁，但被 `SCX_REENQ_MARKED` 过滤的 walk 会跳过未标记任务而不掉锁——一整段未标记任务可在一次持锁（双锁 + IRQs o
+- [sched-20261018-002](../../2026/10/sched-20261018-002-sched-ext-add-scx-bpf-dsq-reenq-task.md) `feature/merged_tip` — Tejun Heo 发往 `sched_ext/for-7.4` 的三补丁系列：新增 `scx_bpf_dsq_reenq_task()` kfunc，让 BPF 调度器能只把 DSQ 迭代中「被标记」的单个任务重入队（此前 `scx_bpf_dsq_reenq()` 只能整队重入队、`scx_bpf_dsq_move()` 是选位而非重入队），解决 caps 撤销后只需重新放置被卡任务（而非全队
+- [sched-20261018-001](../../2026/10/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.md) `feature/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的六补丁系列 v3：补全 sub-scheduler 的 ecaps（effective caps）上报协议——attach 时的授权在 bypass 解除前上报、detach 时的丢失在任务还给父调度器前上报、CPU 离线/回归围绕 root 的 `ops.cpu_offline()/ops.cpu_online()` 上报，su
 - [sched-20261017-008](../../2026/10/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-003](../../2026/10/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.md) `fix/medium/under_review` — Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的单补丁修复：core scheduling 可在更高优先级类任务 runnable 时强制某 CPU idle（未打 tag 的 core-wide max 下，不兼容 pick 直接换成 idle 而不去找兼容任务），此时 `rq->next_class` 为 idle，`rq_is_open()` 误报该 C
 - [sched-20261017-002](../../2026/10/sched-20261017-002-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

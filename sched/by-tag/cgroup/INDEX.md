@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 99 篇
+共 100 篇
 
+- [sched-20261018-001](../../2026/10/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.md) `feature/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的六补丁系列 v3：补全 sub-scheduler 的 ecaps（effective caps）上报协议——attach 时的授权在 bypass 解除前上报、detach 时的丢失在任务还给父调度器前上报、CPU 离线/回归围绕 root 的 `ops.cpu_offline()/ops.cpu_online()` 上报，su
 - [sched-20261014-008](../../2026/10/sched-20261014-008-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-005](../../2026/10/sched-20261013-005-sched-add-helpers-for-numa-balancing.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-006](../../2026/10/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.md) `feature/rfc` — Yafang Shao 发 RFC v2：全局 `kernel.numa_balancing[_mode]` 是 all-or-nothing，无法同时满足「延迟敏感服务只要调度统计不要 tiering 提升」与「批处理要 PMEM 内存被热提升」；引入 `bpf_numab_ops` struct_ops，把 NUMA balancing 模式选择下放到 per-cgroup BPF 策略。当日

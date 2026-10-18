@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 71
+article_count: 72
 ---
 
+- [sched-20261018-007](/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted
 - [sched-20261014-001](/lkm/2026/10/14/sched-20261014-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/merged_tip` — sched/core: Call wakeup_preempt() for queued tasks during class change
 - [sched-20261013-001](/lkm/2026/10/13/sched-20261013-001-sched-core-call-wakeup-preempt-for-queued-tasks-during-class.html) `fix/high/under_review` — sched/core: Call wakeup_preempt() for queued tasks during class change
 - [sched-20261012-024](/lkm/2026/10/12/sched-20261012-024-sched-allow-sleeping-spinlocks-on-preempt-rt-within-non-bloc.html) `fix/medium/under_review` — sched: Allow sleeping spinlocks on PREEMPT_RT within non_block_start()/end block.

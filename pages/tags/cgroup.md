@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 99
+article_count: 100
 ---
 
+- [sched-20261018-001](/lkm/2026/10/18/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html) `feature/none/under_review` — sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug
 - [sched-20261014-008](/lkm/2026/10/14/sched-20261014-008-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()
 - [sched-20261013-005](/lkm/2026/10/13/sched-20261013-005-sched-add-helpers-for-numa-balancing.html) `feature/none/rfc` — sched: add helpers for numa balancing
 - [sched-20261012-006](/lkm/2026/10/12/sched-20261012-006-sched-add-per-cgroup-numa-balancing-mode-selection-via-bpf.html) `feature/none/rfc` — sched: add per-cgroup NUMA balancing mode selection via BPF

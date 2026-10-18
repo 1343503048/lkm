@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 29
+article_count: 31
 ---
 
+- [sched-20261018-005](/lkm/2026/10/18/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html) `fix/medium/under_review` — sched_ext: Reenqueue IMMED tasks when their CPU picks idle
+- [sched-20261018-006](/lkm/2026/10/18/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.html) `fix/medium/under_review` — sched_ext: Fix scx balance callbacks queued across a core-sched pick
 - [sched-20261017-003](/lkm/2026/10/17/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.html) `fix/medium/under_review` — sched_ext: Don't report a forced-idle CPU as open for IMMED tasks
 - [sched-20261006-007](/lkm/2026/10/06/sched-20261006-007-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `bug/medium/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet
 - [sched-20260925-004](/lkm/2026/09/25/sched-20260925-004-sched-core-remove-redundant-core-sched-seq.html) `fix/none/merged_tip` — sched/core: Remove redundant core_sched_seq

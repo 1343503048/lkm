@@ -1,7 +1,8 @@
 # tag: rt
 
-共 35 篇
+共 36 篇
 
+- [sched-20261018-007](../../2026/10/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-004](../../2026/10/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-019](../../2026/10/sched-20261016-019-sched-ext-support-rt-task-within-sched-ext.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-021](../../2026/10/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。

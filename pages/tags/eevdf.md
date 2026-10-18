@@ -2,9 +2,13 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 67
+article_count: 71
 ---
 
+- [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261018-009](/lkm/2026/10/18/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.html) `discussion/none/merged_stable` — sched/eevdf: Move to a single runqueue
+- [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
+- [sched-20261018-012](/lkm/2026/10/18/sched-20261018-012-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261016-001](/lkm/2026/10/16/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
 - [sched-20261016-002](/lkm/2026/10/16/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.html) `regression/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261016-007](/lkm/2026/10/16/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.html) `fix/medium/merged_tip` — sched/fair: Avoid overflow in place_entity()

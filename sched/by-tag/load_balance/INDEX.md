@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 160 篇
+共 162 篇
 
+- [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时
+- [sched-20261018-008](../../2026/10/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-005](../../2026/10/sched-20261016-005-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-018](../../2026/10/sched-20261015-018-sched-cache-avoid-publishing-partial-llc-utilization.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

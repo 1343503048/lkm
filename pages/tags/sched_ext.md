@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 250
+article_count: 256
 ---
 
+- [sched-20261018-001](/lkm/2026/10/18/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html) `feature/none/under_review` — sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug
+- [sched-20261018-002](/lkm/2026/10/18/sched-20261018-002-sched-ext-add-scx-bpf-dsq-reenq-task.html) `feature/none/merged_tip` — sched_ext: Add scx_bpf_dsq_reenq_task()
+- [sched-20261018-003](/lkm/2026/10/18/sched-20261018-003-sched-ext-drop-the-locks-periodically-while-walking-a-user-d.html) `fix/low/merged_tip` — sched_ext: Drop the locks periodically while walking a user DSQ for re-enqueue
+- [sched-20261018-004](/lkm/2026/10/18/sched-20261018-004-sched-ext-make-ops-cpu-acquire-release-reliable.html) `feature/none/rfc` — sched_ext: Make ops.cpu_acquire/release() reliable
+- [sched-20261018-005](/lkm/2026/10/18/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html) `fix/medium/under_review` — sched_ext: Reenqueue IMMED tasks when their CPU picks idle
+- [sched-20261018-006](/lkm/2026/10/18/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.html) `fix/medium/under_review` — sched_ext: Fix scx balance callbacks queued across a core-sched pick
 - [sched-20261017-001](/lkm/2026/10/17/sched-20261017-001-sched-ext-fix-bypass-leaving-the-running-task-protected-and.html) `fix/medium/merged_tip` — sched_ext: Fix bypass leaving the running task protected and bypassed tasks stranded
 - [sched-20261017-002](/lkm/2026/10/17/sched-20261017-002-sched-ext-don-t-leave-balance-callbacks-queued-across-a-pick.html) `fix/medium/under_review` — sched_ext: Don't leave balance callbacks queued across a pick retry
 - [sched-20261017-003](/lkm/2026/10/17/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.html) `fix/medium/under_review` — sched_ext: Don't report a forced-idle CPU as open for IMMED tasks

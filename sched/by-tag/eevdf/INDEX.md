@@ -1,7 +1,11 @@
 # tag: eevdf
 
-共 67 篇
+共 71 篇
 
+- [sched-20261018-012](../../2026/10/sched-20261018-012-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-18`，截至 `2f93bcb3f9aaf6ceee1aec0a97d4fe386d48e781`），含两枚修复：`__sched_setscheduler()` 类变更竞态导致丢 resched（K Prateek Nayak，近期 RCU
+- [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时
+- [sched-20261018-009](../../2026/10/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.md) `discussion/merged_stable` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261018-008](../../2026/10/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-007](../../2026/10/sched-20261016-007-sched-fair-avoid-overflow-in-place-entity.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-002](../../2026/10/sched-20261016-002-sched-eevdf-move-to-a-single-runqueue.md) `regression/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-001](../../2026/10/sched-20261016-001-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — Kayra Cizmeci 修复 EEVDF 中「vprot（slice protection）在 reweighting 时可能出错」的 bug：任务 vruntime 改变时，已死掉的 protection 可能复活、或活着的 protection 增减甚至死掉，破坏保护切片的正确性。当天 v3→v4→v5 快速迭代，Vincent Guittot 全程 review 并最终给出 Review
