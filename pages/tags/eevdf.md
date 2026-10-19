@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 71
+article_count: 72
 ---
 
+- [sched-20261019-002](/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/under_review` — sched/fair: avoid redundant updates for unchanged default slices
 - [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261018-009](/lkm/2026/10/18/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.html) `discussion/none/merged_stable` — sched/eevdf: Move to a single runqueue
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4

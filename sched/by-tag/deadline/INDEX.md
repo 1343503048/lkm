@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 37 篇
+共 39 篇
 
+- [sched-20261019-009](../../2026/10/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261019-004](../../2026/10/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-010](../../2026/10/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-014](../../2026/10/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-012](../../2026/10/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

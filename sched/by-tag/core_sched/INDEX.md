@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 31 篇
+共 32 篇
 
+- [sched-20261019-001](../../2026/10/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-006](../../2026/10/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261018-005](../../2026/10/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-003](../../2026/10/sched-20261017-003-sched-ext-don-t-report-a-forced-idle-cpu-as-open-for-immed-t.md) `fix/medium/under_review` — Andrea Righi 发往 `sched_ext/for-7.3-fixes` 的单补丁修复：core scheduling 可在更高优先级类任务 runnable 时强制某 CPU idle（未打 tag 的 core-wide max 下，不兼容 pick 直接换成 idle 而不去找兼容任务），此时 `rq->next_class` 为 idle，`rq_is_open()` 误报该 C

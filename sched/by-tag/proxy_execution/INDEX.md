@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 73 篇
+共 74 篇
 
+- [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时
 - [sched-20261017-008](../../2026/10/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-005](../../2026/10/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — Shubhang Kaushik（Ampere）发往 sched/core 的单补丁修复：full-nohz 远程 tick 路径 `sched_tick_remote()` 对 `rq->curr` 调用 `task_tick()`，但在 proxy execution 下 `rq->curr` 是 mutex-owner 执行上下文、`rq->donor` 才是提供调度上下文的阻塞任务——作者

@@ -2,9 +2,12 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 46
+article_count: 49
 ---
 
+- [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm
+- [sched-20261019-010](/lkm/2026/10/19/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
+- [sched-20261019-013](/lkm/2026/10/19/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.html) `feature/none/rfc` — cpu/hotplug: Remove cpu_down() global stop_machine() except for CPUHP_TEARDOWN_CPU itself
 - [sched-20261017-005](/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261016-008](/lkm/2026/10/16/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.html) `fix/medium/merged_tip` — sched/cputime: Don't account idle time twice after dyntick-idle
 - [sched-20261016-017](/lkm/2026/10/16/sched-20261016-017-sched-add-need-resched-timed-wait-interface.html) `feature/none/under_review` — sched: add need-resched timed wait interface

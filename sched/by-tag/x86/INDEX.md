@@ -1,7 +1,8 @@
 # tag: x86
 
-共 26 篇
+共 27 篇
 
+- [sched-20261019-006](../../2026/10/sched-20261019-006-tip-sched-core-35-37-ld-lld-error-relocation-refers-to-a-sym.md) `discussion/under_review` — kernel test robot 此前对 `tip:sched/core` 分支 35/37（`sched/cache: Avoid publishing partial LLC utilization` 一带）报 lld 链接错误「relocation refers to a symbol in a discarded section」。今日 Jemmy Wong 复现并定位为 **ELF32
 - [sched-20261018-010](../../2026/10/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-017](../../2026/10/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-003](../../2026/10/sched-20261009-003-cpufreq-don-t-track-pressure-if-policy-max-equals-top-of-fre.md) `fix/medium/superseded` — Giovanni Gherdovich（SUSE）发补丁，解决 acpi-cpufreq 上 `cpufreq_pressure` 在标称条件下虚高、导致任务迁移加剧/局部性丢失的性能回退。但 Christian Loehle 指出该问题已被 `f341dc4d934a`（"cpufreq: intel_pstate: Fix max_freq fallback in cpufreq_update

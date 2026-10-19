@@ -1,7 +1,8 @@
 # tag: topology
 
-共 125 篇
+共 126 篇
 
+- [sched-20261019-004](../../2026/10/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-010](../../2026/10/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-014](../../2026/10/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

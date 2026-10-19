@@ -2,9 +2,10 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 73
+article_count: 74
 ---
 
+- [sched-20261019-010](/lkm/2026/10/19/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
 - [sched-20261017-005](/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261017-008](/lkm/2026/10/17/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.html) `fix/medium/under_review` — sched_ext: Keep proxy donors local through core-sched retries

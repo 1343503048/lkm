@@ -17834,6 +17834,260 @@
     "tldr": "Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-18`，截至 `2f93bcb3f9aaf6ceee1aec0a97d4fe386d48e781`），含两枚修复：`__sched_setscheduler()` 类变更竞态导致丢 resched（K Prateek Nayak，近期 RCU 改动暴露）、`place_entity()` vlag 缩放的 s64 乘法溢出可破坏实体位置（Hui Su）。kernel test robot 已确认 tip/sched/urgent `BUI"
   },
   {
+    "title": "sched_ext: Queue the kick_sync wait from set_next_task_scx()",
+    "id": "sched-20261019-001",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "core_sched"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261018-006：Andrea Righi 发 `Fix scx balance callbacks queued across a core-sched pick`（2 补丁）修复 ff0545e0c263 遗留的 core-sched 缺口；1/2 已被 Tejun 应用到 `sched_ext/for-7.3-fixes`；2/2（kick_sync wait）Tejun 建议改到 for-7.4 按「从 set_next_task_scx() 排队」的新思路做。 - sched-20261019-001（今天）：Andrea 发"
+  },
+  {
+    "title": "sched/fair: avoid redundant updates for unchanged default slices",
+    "id": "sched-20261019-002",
+    "date": "2026-10-19",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "eevdf",
+      "perf"
+    ],
+    "authors": [
+      "Chengfeng Lin"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html",
+    "tldr": "Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实测 syscall 微基准 616.51ns → 162.39ns（省 73.66%）。当日新发，暂无回帖。"
+  },
+  {
+    "title": "sched/fair: Switch nohz.idle_cpus to use sbm",
+    "id": "sched-20261019-003",
+    "date": "2026-10-19",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "high",
+    "tags": [
+      "nohz",
+      "cfs",
+      "crash"
+    ],
+    "authors": [
+      "K Prateek Nayak"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261002-007 / 003-005 / 004-006：K Prateek Nayak（AMD）13 补丁 RFC v3「lib, sched: Introduce sparsebitmap (sbm)」（用 sparsebitmap 替代大机器全局 cpumask，`nohz.idle_cpus_mask` 是首个用户），有过 benchmark 归属、wakeup 形态开销等讨论，仍是 RFC 状态。 - sched-20261019-003（今天）：kernel test robot 在 i386 + clang-22 的 ra"
+  },
+  {
+    "title": "x86, sched, mm: Speed up CPU hotplug on large systems",
+    "id": "sched-20261019-004",
+    "date": "2026-10-19",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology",
+      "deadline",
+      "load_balance"
+    ],
+    "authors": [
+      "Pasha Tatashin"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261015-002：Pasha Tatashin 发 v1 八补丁系列（x86+sched+mm）加速大规模 x86 服务器顺序热插拔，调度侧为 5/8（sgc 缓存 + 惰性分配）与 6/8（dl_server O(N^2)→O(N) 记账）；480 核 Intel 总耗时 106.23s→5.07s（21x）。 - sched-20261016-014：Tony Luck 实测离线 4.833s→3.17s、在线 6.157s→3.796s，提示反向离线可再省；Prateek 对 5/8 提 `find_group_balance_c"
+  },
+  {
+    "title": "cpufreq: longrun: fix typo in kernel-doc",
+    "id": "sched-20261019-005",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Manuel Ebner"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.html",
+    "tldr": "Manuel Ebner 的 cpufreq longrun 驱动 kernel-doc 拼写修复（`longrun_verify_poliy` → `longrun_verify_policy`），今日获 cpufreq 维护者 Viresh Kumar「Applied. Thanks.」直接收取；Qualcomm 的 Zhongqiu Han 复核后提示 checkpatch 有一个可接受的换行警告、并建议把 `/**` 误用为 `/*` 的注释问题另起补丁。"
+  },
+  {
+    "title": "[tip:sched/core 35/37] ld.lld: error: relocation refers to a symbol in a discarded section: __UNIQUE_ID_addressable_overflowuid_553",
+    "id": "sched-20261019-006",
+    "date": "2026-10-19",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "x86"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-006-tip-sched-core-35-37-ld-lld-error-relocation-refers-to-a-sym.html",
+    "tldr": "kernel test robot 此前对 `tip:sched/core` 分支 35/37（`sched/cache: Avoid publishing partial LLC utilization` 一带）报 lld 链接错误「relocation refers to a symbol in a discarded section」。今日 Jemmy Wong 复现并定位为 **ELF32 符号索引 24 位溢出** 的 toolchain 问题——在不含该 sched 补丁的祖先 commit 上同样失败，与调度补丁无关。"
+  },
+  {
+    "title": "sched/psi: Keep average work scheduled for pending notifications",
+    "id": "sched-20261019-007",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "psi"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-007-sched-psi-keep-average-work-scheduled-for-pending-notificati.html",
+    "tldr": "Hui Su 发往 sched/psi 的单补丁修复：非特权 PSI trigger 用平均聚合 worker，若在 rate-limit 窗口内触发阈值、通知被 `pending_event` 推迟，而窗口未到压力就停了，`psi_avgs_work()` 因 `PSI_STATE_RESCHEDULE` 不再置位而停止续排，pending 事件可能一直不投递直到新活动重启 worker。补丁复用 trigger walk 结果、提前检查 pending 事件。当日新发，暂无回帖。"
+  },
+  {
+    "title": "BPF-based per-cgroup NUMA balancing mode selection",
+    "id": "sched-20261019-008",
+    "date": "2026-10-19",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "numa_balancing",
+      "bpf"
+    ],
+    "authors": [
+      "Yafang Shao"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html",
+    "tldr": "Yafang Shao 发往 bpf-next 的 RFC v3 五补丁系列：给 NUMA balancing 加**每 cgroup 的模式选择**——latency-sensitive 服务想关掉 NUMA balancing、batch 服务想让 PMEM-resident 内存热晋升，全局 `kernel.numa_balancing` 单一 sysctl 无法同时满足。方案新增 `cgroup::numab_mode` + 两个 BPF kfunc，热路径组合 cgroup 链上请求。bpf-ci bot 只给了几处 nit（多余括号、注释方向存疑）。当日新发，暂无维护者表态。"
+  },
+  {
+    "title": "sched/rt,dl: Remove unreachable migration-disabled push checks",
+    "id": "sched-20261019-009",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "rt",
+      "deadline"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261015-008：Shubhang Kaushik（Ampere）v2 清理 `push_rt_task()`/`push_dl_task()` 里不可达的 migration-disabled 分支（候选由 `pick_next_pushable_task()` 选出、本就跳过 migration-disabled 任务），并移除只服务该分支的 `@pull` 参数；无行为变化，v2 刚发暂无 review。 - sched-20261019-009（今天）：Christian Loehle（Arm）回帖「FWIW I also ca"
+  },
+  {
+    "title": "sched/core: Use the scheduling context for remote ticks",
+    "id": "sched-20261019-010",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution",
+      "nohz",
+      "tick"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261017-005：Shubhang Kaushik（Ampere）单补丁——full-nohz 远程 tick `sched_tick_remote()` 对 `rq->curr` 调 `task_tick()`，但 proxy execution 下 `rq->curr` 是 mutex-owner 执行上下文、`rq->donor` 才是调度上下文；改为对 `rq->donor` 调 `task_tick()` 并移除 `WARN_ON_ONCE(curr!=donor)`。带 `Fixes: 7de9d4f94638`，当日新发。"
+  },
+  {
+    "title": "sched/psi: Preserve RT poll notifications",
+    "id": "sched-20261019-011",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "psi"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-011-sched-psi-preserve-rt-poll-notifications.html",
+    "tldr": "Hui Su 发往 sched/psi 的两补丁修复：特权 RT trigger 注册会先吞掉 pressure 记账、独立 worker 关闭路径会让 rate-limit 内的 pending 事件悬空。补丁 1 保留注册时的 pressure 变化并在到期评估后推进 consumed total；补丁 2 从 trigger 列表推导 pending deadline，投递后回到 idle。当日新发（与同日 007 `sched/psi: Keep average work scheduled for pending notifications` 同作者、方向相关但针对不同聚合器），暂无"
+  },
+  {
+    "title": "sched_ext: Reset runnable_at when a task leaves its scheduler",
+    "id": "sched-20261019-012",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Michal Blaszczyk"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-012-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.html",
+    "tldr": "Michal Blaszczyk（Google）发往 sched_ext 的两补丁修复：任务在等待中离开 SCHED_EXT 时 `runnable_at` 未重置，watchdog 会把任务在 SCHED_EXT 之外的时间计入「等待时长」，误报 stall 并中止调度器。补丁 1 修复、补丁 2 加 `class_switch_stall` selftest。维护者 Andrea Righi 已复现并给 1/2 `Reviewed-by`，2/2 仅有一条 selftest 超时余量的稳健性建议。"
+  },
+  {
+    "title": "cpu/hotplug: Remove cpu_down() global stop_machine() except for CPUHP_TEARDOWN_CPU itself",
+    "id": "sched-20261019-013",
+    "date": "2026-10-19",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "nohz",
+      "tick",
+      "idle"
+    ],
+    "authors": [
+      "Frederic Weisbecker"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.html",
+    "tldr": "Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼容。调度相关为 03/49（sched CPUHP_AP_SCHED_STARTING）、05/49（cpuidle）、46/49（tick-sched 简化）。当日新发，暂无回帖。"
+  },
+  {
+    "title": "sched_ext/scx_flatcg: expire cached hweights on weight changes",
+    "id": "sched-20261019-014",
+    "date": "2026-10-19",
+    "type": "fix",
+    "status": "merged_stable",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.html",
+    "tldr": "Sasha Levin 的 AUTOSEL（stable 自动选收）把上游 commit `94c20e1fb334`（`sched_ext/scx_flatcg` 的 hweight 缓存失效修复）提为 6.18–6.12 各 stable 分支的候选回补。修复内容：`fcg_cgroup_set_weight()` 更新 `cgc->weight` 却未 bump `hweight_gen`，导致忙碌 cgroup 的 `cpu.weight` 修改不生效。"
+  },
+  {
+    "title": "sched_ext: Make ops.cpu_acquire/release() reliable",
+    "id": "sched-20261019-015",
+    "date": "2026-10-19",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/19/sched-20261019-015-sched-ext-make-ops-cpu-acquire-release-reliable.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261018-004：Kuba Piecuch 发往 `sched_ext/for-7.4` 的 RFC 五补丁——修复并「反弃用」`ops.cpu_acquire/release()`，把 CPU 可用性判定归约到 `rq->donor` 的类；RFC 首日无回帖。 - sched-20261019-015（今天）：作者本人主动回帖**重新考虑方案**——指出 v1 改了 `ops.cpu_acquire()` 语义（`ops.dispatch()` 运行时不再保证 CPU 已 acquired）、且漏掉「RT→RT 切换永不释放 CPU"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

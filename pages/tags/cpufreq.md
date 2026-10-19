@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 86
+article_count: 87
 ---
 
+- [sched-20261019-005](/lkm/2026/10/19/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.html) `fix/none/merged_tip` — cpufreq: longrun: fix typo in kernel-doc
 - [sched-20261016-004](/lkm/2026/10/16/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/merged_tip` — sched: Replace nr_iowait_cpu() with a bool accessor
 - [sched-20261016-018](/lkm/2026/10/16/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation
 - [sched-20261015-014](/lkm/2026/10/15/sched-20261015-014-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/under_review` — sched: Replace nr_iowait_cpu() with a bool accessor

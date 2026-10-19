@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 58
+article_count: 59
 ---
 
+- [sched-20261019-008](/lkm/2026/10/19/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html) `feature/none/rfc` — BPF-based per-cgroup NUMA balancing mode selection
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
 - [sched-20261017-006](/lkm/2026/10/17/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control
 - [sched-20261016-015](/lkm/2026/10/16/sched-20261016-015-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control

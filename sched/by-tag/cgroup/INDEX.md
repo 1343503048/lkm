@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 100 篇
+共 101 篇
 
+- [sched-20261019-014](../../2026/10/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.md) `fix/medium/merged_stable` — Sasha Levin 的 AUTOSEL（stable 自动选收）把上游 commit `94c20e1fb334`（`sched_ext/scx_flatcg` 的 hweight 缓存失效修复）提为 6.18–6.12 各 stable 分支的候选回补。修复内容：`fcg_cgroup_set_weight()` 更新 `cgc->weight` 却未 bump `hweight_gen`，
 - [sched-20261018-001](../../2026/10/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.md) `feature/under_review` — Tejun Heo 发往 `sched_ext/for-7.4` 的六补丁系列 v3：补全 sub-scheduler 的 ecaps（effective caps）上报协议——attach 时的授权在 bypass 解除前上报、detach 时的丢失在任务还给父调度器前上报、CPU 离线/回归围绕 root 的 `ops.cpu_offline()/ops.cpu_online()` 上报，su
 - [sched-20261014-008](../../2026/10/sched-20261014-008-sched-fair-rework-fix-task-h-load.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261013-005](../../2026/10/sched-20261013-005-sched-add-helpers-for-numa-balancing.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

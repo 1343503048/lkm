@@ -1,7 +1,10 @@
 # tag: nohz
 
-共 46 篇
+共 49 篇
 
+- [sched-20261019-013](../../2026/10/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.md) `feature/rfc` — Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼
+- [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261019-003](../../2026/10/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261017-005](../../2026/10/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — Shubhang Kaushik（Ampere）发往 sched/core 的单补丁修复：full-nohz 远程 tick 路径 `sched_tick_remote()` 对 `rq->curr` 调用 `task_tick()`，但在 proxy execution 下 `rq->curr` 是 mutex-owner 执行上下文、`rq->donor` 才是提供调度上下文的阻塞任务——作者
 - [sched-20261016-017](../../2026/10/sched-20261016-017-sched-add-need-resched-timed-wait-interface.md) `feature/under_review` — Ankur Arora 的 v16 16 补丁系列（need-resched timed wait）继续推进：本次缓存到其中两封——11/16 在 `linux/sched/idle.h` 新增 `tif_bitset_relaxed_wait()` / `tif_need_resched_relaxed_wait()` 接口（基于 `smp_cond_load_relaxed_timeout()
 - [sched-20261016-008](../../2026/10/sched-20261016-008-sched-cputime-don-t-account-idle-time-twice-after-dyntick-id.md) `fix/medium/merged_tip` — Stian Halseth 修复 dyntick-idle 退出后 idle 时间被重复记账的问题：idle 退出时 dyntick-idle 已把当前时刻之前的时间记成 idle（或 IRQ time），但重启 tick 后第一个 tick 又把整段 TICK_NSEC 记给当前运行者，导致 `/proc/stat` 报告的 idle 时间超过 wall time。补丁记录 dyntick-id

@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 256 篇
+共 260 篇
 
+- [sched-20261019-015](../../2026/10/sched-20261019-015-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261019-014](../../2026/10/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.md) `fix/medium/merged_stable` — Sasha Levin 的 AUTOSEL（stable 自动选收）把上游 commit `94c20e1fb334`（`sched_ext/scx_flatcg` 的 hweight 缓存失效修复）提为 6.18–6.12 各 stable 分支的候选回补。修复内容：`fcg_cgroup_set_weight()` 更新 `cgc->weight` 却未 bump `hweight_gen`，
+- [sched-20261019-012](../../2026/10/sched-20261019-012-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.md) `fix/medium/under_review` — Michal Blaszczyk（Google）发往 sched_ext 的两补丁修复：任务在等待中离开 SCHED_EXT 时 `runnable_at` 未重置，watchdog 会把任务在 SCHED_EXT 之外的时间计入「等待时长」，误报 stall 并中止调度器。补丁 1 修复、补丁 2 加 `class_switch_stall` selftest。维护者 Andrea Righi 
+- [sched-20261019-001](../../2026/10/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-006](../../2026/10/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261018-005](../../2026/10/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261018-004](../../2026/10/sched-20261018-004-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — Kuba Piecuch 发往 `sched_ext/for-7.4` 的 RFC 五补丁系列：修复并「反弃用」`ops.cpu_acquire()/ops.cpu_release()`——这两个回调本应告诉 BPF 调度器某 CPU 何时可用/被收回，但现状存在 RT 唤醒不触发 release、无上下文切换的 sched_setscheduler/PI 提升不触发、acquire 投机发出被高

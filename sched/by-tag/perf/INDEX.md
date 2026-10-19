@@ -1,7 +1,8 @@
 # tag: perf
 
-共 45 篇
+共 46 篇
 
+- [sched-20261019-002](../../2026/10/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/under_review` — Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-005](../../2026/10/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260922-011](../../2026/09/sched-20260922-011-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整背景见 sched-20260921-001。Vincent Guittot 的 8 补丁 EEVDF 短切片延迟改进系列当天收到 Peter Zijlstra 的多条深入 review：对 patch 4/8（衰减睡眠实体的正 lag）质疑其「全量睡眠时间参与衰减」会让衰减过快、建议至少用 `W+w` 甚至完整衰减权重和，并提出「第二棵树 + 零 lag 点前进」的激进替代方

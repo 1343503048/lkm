@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 37
+article_count: 38
 ---
 
+- [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm
 - [sched-20261016-003](/lkm/2026/10/16/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.html) `bug/high/merged_tip` — sched_ext: Fix use-after-free of a local reenq node left on an inactive cpu
 - [sched-20261010-006](/lkm/2026/10/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.html) `fix/high/under_review` — sched_ext: Fix use-after-free of a destroyed user DSQ by a deferred reenqueue
 - [sched-20261010-007](/lkm/2026/10/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.html) `fix/high/superseded` — sched_ext: Serialize user DSQ destruction against deferred reenqueues

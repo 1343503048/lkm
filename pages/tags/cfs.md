@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 229
+article_count: 231
 ---
 
+- [sched-20261019-002](/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/under_review` — sched/fair: avoid redundant updates for unchanged default slices
+- [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm
 - [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
 - [sched-20261018-012](/lkm/2026/10/18/sched-20261018-012-git-pull-scheduler-fixes.html) `fix/medium/merged_tip` — [GIT PULL] scheduler fixes
