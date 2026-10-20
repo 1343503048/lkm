@@ -1,7 +1,15 @@
 # tag: sched_ext
 
-共 260 篇
+共 268 篇
 
+- [sched-20261020-012](../../2026/10/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — Tejun Heo 向 Linus 发 sched_ext 树的 v7.4 合入窗口 pull request（tag `sched_ext-for-7.4`，截至 `1f5dde349ac2`）。本次依赖 `sched/core`（携带 proxy execution 的 sched_ext hooks），需在其之后合入。亮点：proxy execution 可与 sched_ext 同时启用、
+- [sched-20261020-011](../../2026/10/sched-20261020-011-linux-next-manual-merge-of-the-sched-ext-tree-with-the-origi.md) `discussion/merged_tip` — linux-next 集成者 Mark Brown 报告当日 sched-ext 树与 origin 树（mainline）的两处手工合并冲突（`kernel/sched/ext/sub.c` 与 `kernel/sched/ext/ext.c`），并附上临时修复；维护者 Tejun Heo 回复两处均已在 `sched_ext/for-next` 由 commit `a5ba5c61951d`（
+- [sched-20261020-008](../../2026/10/sched-20261020-008-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.md) `feature/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-007](../../2026/10/sched-20261020-007-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-006](../../2026/10/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-005](../../2026/10/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261020-004](../../2026/10/sched-20261020-004-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-002](../../2026/10/sched-20261020-002-sched-ext-scx-qmap-drop-the-compat-code-and-fix-a-lowpri-sta.md) `fix/low/under_review` — Tejun Heo 发往 `sched_ext/for-7.5` 的两补丁系列：scx_qmap 参考调度器删除只为兼容旧内核而保留的 `__COMPAT_*` 回退代码（1/2），并修复 lowpri 任务的饥饿 bug（2/2）——nice 19 任务被 `lowpri_timerfn()` 每 10ms 重入队到 SHARED_DSQ，而 `qmap_dispatch()` 先消费 SHAR
 - [sched-20261019-015](../../2026/10/sched-20261019-015-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-014](../../2026/10/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.md) `fix/medium/merged_stable` — Sasha Levin 的 AUTOSEL（stable 自动选收）把上游 commit `94c20e1fb334`（`sched_ext/scx_flatcg` 的 hweight 缓存失效修复）提为 6.18–6.12 各 stable 分支的候选回补。修复内容：`fcg_cgroup_set_weight()` 更新 `cgc->weight` 却未 bump `hweight_gen`，
 - [sched-20261019-012](../../2026/10/sched-20261019-012-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.md) `fix/medium/under_review` — Michal Blaszczyk（Google）发往 sched_ext 的两补丁修复：任务在等待中离开 SCHED_EXT 时 `runnable_at` 未重置，watchdog 会把任务在 SCHED_EXT 之外的时间计入「等待时长」，误报 stall 并中止调度器。补丁 1 修复、补丁 2 加 `class_switch_stall` selftest。维护者 Andrea Righi 

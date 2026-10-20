@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 126
+article_count: 127
 ---
 
+- [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-004](/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261018-010](/lkm/2026/10/18/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261016-014](/lkm/2026/10/16/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

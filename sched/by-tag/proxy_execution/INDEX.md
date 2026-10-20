@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 74 篇
+共 75 篇
 
+- [sched-20261020-012](../../2026/10/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — Tejun Heo 向 Linus 发 sched_ext 树的 v7.4 合入窗口 pull request（tag `sched_ext-for-7.4`，截至 `1f5dde349ac2`）。本次依赖 `sched/core`（携带 proxy execution 的 sched_ext hooks），需在其之后合入。亮点：proxy execution 可与 sched_ext 同时启用、
 - [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时
 - [sched-20261017-008](../../2026/10/sched-20261017-008-sched-ext-keep-proxy-donors-local-through-core-sched-retries.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

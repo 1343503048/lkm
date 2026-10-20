@@ -2,9 +2,10 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 101
+article_count: 102
 ---
 
+- [sched-20261020-008](/lkm/2026/10/20/sched-20261020-008-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html) `feature/none/merged_tip` — sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug
 - [sched-20261019-014](/lkm/2026/10/19/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.html) `fix/medium/merged_stable` — sched_ext/scx_flatcg: expire cached hweights on weight changes
 - [sched-20261018-001](/lkm/2026/10/18/sched-20261018-001-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html) `feature/none/under_review` — sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug
 - [sched-20261014-008](/lkm/2026/10/14/sched-20261014-008-sched-fair-rework-fix-task-h-load.html) `fix/medium/under_review` — sched/fair: Rework/fix task_h_load()

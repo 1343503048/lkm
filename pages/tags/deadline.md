@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 39
+article_count: 41
 ---
 
+- [sched-20261020-009](/lkm/2026/10/20/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
+- [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-004](/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-009](/lkm/2026/10/19/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261018-010](/lkm/2026/10/18/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

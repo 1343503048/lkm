@@ -1,7 +1,9 @@
 # tag: regression
 
-共 40 篇
+共 42 篇
 
+- [sched-20261020-003](../../2026/10/sched-20261020-003-sched-eevdf-move-to-a-single-runqueue.md) `discussion/merged_stable` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-001](../../2026/10/sched-20261020-001-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — Vincent Guittot 发往 sched 的单补丁修复：EEVDF「单运行队列」改动（`85570f10a4c6`）后，即使扁平层级把全部 runnable 任务放进同一个 cfs_rq，wakeup 抢占时仍需向上遍历 task group 层级才能判断是否存在 sched_idle 任务组，否则 idle 组任务不会被正确抢占。当日 v1→v2 连发（v2 仅修原型返回类型 + 清理未
 - [sched-20261018-009](../../2026/10/sched-20261018-009-sched-eevdf-move-to-a-single-runqueue.md) `discussion/merged_stable` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261018-007](../../2026/10/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-004](../../2026/10/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

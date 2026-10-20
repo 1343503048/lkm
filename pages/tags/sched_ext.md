@@ -2,9 +2,17 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 260
+article_count: 268
 ---
 
+- [sched-20261020-002](/lkm/2026/10/20/sched-20261020-002-sched-ext-scx-qmap-drop-the-compat-code-and-fix-a-lowpri-sta.html) `fix/low/under_review` — sched_ext: scx_qmap: Drop the compat code and fix a lowpri starvation
+- [sched-20261020-004](/lkm/2026/10/20/sched-20261020-004-sched-ext-make-ops-cpu-acquire-release-reliable.html) `feature/none/rfc` — sched_ext: Make ops.cpu_acquire/release() reliable
+- [sched-20261020-005](/lkm/2026/10/20/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html) `fix/medium/under_review` — sched_ext: Reenqueue IMMED tasks when their CPU picks idle
+- [sched-20261020-006](/lkm/2026/10/20/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.html) `fix/medium/merged_tip` — sched_ext: Queue the kick_sync wait from set_next_task_scx()
+- [sched-20261020-007](/lkm/2026/10/20/sched-20261020-007-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.html) `fix/medium/merged_tip` — sched_ext: Reset runnable_at when a task leaves its scheduler
+- [sched-20261020-008](/lkm/2026/10/20/sched-20261020-008-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.html) `feature/none/merged_tip` — sched_ext: Report a sub-scheduler's ecaps on attach, detach and cpu hotplug
+- [sched-20261020-011](/lkm/2026/10/20/sched-20261020-011-linux-next-manual-merge-of-the-sched-ext-tree-with-the-origi.html) `discussion/none/merged_tip` — linux-next: manual merge of the sched-ext tree with the origin tree
+- [sched-20261020-012](/lkm/2026/10/20/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] sched_ext: Changes for v7.4
 - [sched-20261019-001](/lkm/2026/10/19/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.html) `fix/medium/under_review` — sched_ext: Queue the kick_sync wait from set_next_task_scx()
 - [sched-20261019-012](/lkm/2026/10/19/sched-20261019-012-sched-ext-reset-runnable-at-when-a-task-leaves-its-scheduler.html) `fix/medium/under_review` — sched_ext: Reset runnable_at when a task leaves its scheduler
 - [sched-20261019-014](/lkm/2026/10/19/sched-20261019-014-sched-ext-scx-flatcg-expire-cached-hweights-on-weight-change.html) `fix/medium/merged_stable` — sched_ext/scx_flatcg: expire cached hweights on weight changes

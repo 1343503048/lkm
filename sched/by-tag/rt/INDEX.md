@@ -1,7 +1,8 @@
 # tag: rt
 
-共 37 篇
+共 38 篇
 
+- [sched-20261020-009](../../2026/10/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-009](../../2026/10/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-007](../../2026/10/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261017-004](../../2026/10/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 163
+article_count: 164
 ---
 
+- [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-004](/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4

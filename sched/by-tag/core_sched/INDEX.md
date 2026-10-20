@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 32 篇
+共 34 篇
 
+- [sched-20261020-006](../../2026/10/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261020-005](../../2026/10/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261019-001](../../2026/10/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-006](../../2026/10/sched-20261018-006-sched-ext-fix-scx-balance-callbacks-queued-across-a-core-sch.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261018-005](../../2026/10/sched-20261018-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
