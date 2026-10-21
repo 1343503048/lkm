@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 231
+article_count: 238
 ---
 
+- [sched-20261021-001](/lkm/2026/10/21/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/under_review` — sched/cache: Ignore non-fair current in alb_break_llc()
+- [sched-20261021-003](/lkm/2026/10/21/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
+- [sched-20261021-010](/lkm/2026/10/21/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261021-011](/lkm/2026/10/21/sched-20261021-011-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261021-017](/lkm/2026/10/21/sched-20261021-017-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.html) `fix/low/under_review` — sched: fix stale get_pref_llc() stub for !CONFIG_SCHED_CACHE
+- [sched-20261021-018](/lkm/2026/10/21/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/under_review` — sched: use static_branch_likely() for the NUMA balancing tick check
+- [sched-20261021-020](/lkm/2026/10/21/sched-20261021-020-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait
 - [sched-20261019-002](/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/under_review` — sched/fair: avoid redundant updates for unchanged default slices
 - [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm
 - [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair

@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 164
+article_count: 167
 ---
 
+- [sched-20261021-001](/lkm/2026/10/21/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/under_review` — sched/cache: Ignore non-fair current in alb_break_llc()
+- [sched-20261021-003](/lkm/2026/10/21/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
+- [sched-20261021-005](/lkm/2026/10/21/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates
 - [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-004](/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261018-008](/lkm/2026/10/18/sched-20261018-008-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair

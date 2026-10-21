@@ -2,9 +2,11 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 42
+article_count: 44
 ---
 
+- [sched-20261021-009](/lkm/2026/10/21/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261021-014](/lkm/2026/10/21/sched-20261021-014-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261020-001](/lkm/2026/10/20/sched-20261020-001-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261020-003](/lkm/2026/10/20/sched-20261020-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/none/merged_stable` — sched/eevdf: Move to a single runqueue
 - [sched-20261018-007](/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted

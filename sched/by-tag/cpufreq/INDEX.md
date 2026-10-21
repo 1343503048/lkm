@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 87 篇
+共 89 篇
 
+- [sched-20261021-019](../../2026/10/sched-20261021-019-cpufreq-longrun-fix-kernel-doc-warning.md) `fix/merged_tip` — Manuel Ebner 发往 cpufreq 的 v2 补丁：修复 longrun 驱动的 kernel-doc 告警。当日 cpufreq 维护者 Viresh Kumar 直接「Applied. Thanks.」收取。属 x86 老驱动（Transmeta LongRun）的文档级修复。
+- [sched-20261021-015](../../2026/10/sched-20261021-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-005](../../2026/10/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.md) `fix/merged_tip` — Manuel Ebner 的 cpufreq longrun 驱动 kernel-doc 拼写修复（`longrun_verify_poliy` → `longrun_verify_policy`），今日获 cpufreq 维护者 Viresh Kumar「Applied. Thanks.」直接收取；Qualcomm 的 Zhongqiu Han 复核后提示 checkpatch 有一个可接受的换
 - [sched-20261016-018](../../2026/10/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — Cong Zhang（高通）发 RFC，提出在内核运行时测量并预测 CPU idle exit latency，并用该预测来「补偿」hrtimer 到期与回调真正执行之间的延迟（hrtimer rooster 方案），取代当前来自设备树的静态 worst-case 延迟。想法源自 2026 LPC 议题。Christian Loehle 回帖抛出一串关键问题（与硬件 C-state pre-wak
 - [sched-20261016-004](../../2026/10/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

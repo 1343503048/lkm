@@ -2,9 +2,12 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 59
+article_count: 62
 ---
 
+- [sched-20261021-010](/lkm/2026/10/21/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261021-011](/lkm/2026/10/21/sched-20261021-011-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261021-018](/lkm/2026/10/21/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/under_review` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261019-008](/lkm/2026/10/19/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html) `feature/none/rfc` — BPF-based per-cgroup NUMA balancing mode selection
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4
 - [sched-20261017-006](/lkm/2026/10/17/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.html) `feature/none/under_review` — sched/numa: Add per-process automatic NUMA balancing control

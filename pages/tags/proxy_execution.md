@@ -2,9 +2,13 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 75
+article_count: 79
 ---
 
+- [sched-20261021-002](/lkm/2026/10/21/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/under_review` — sched/core: Avoid requeueing a singleton balance callback
+- [sched-20261021-006](/lkm/2026/10/21/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.html) `fix/medium/merged_tip` — sched_ext: Use irq_work for deferred actions with proxy execution
+- [sched-20261021-007](/lkm/2026/10/21/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.html) `fix/low/merged_tip` — sched_ext: Remove the foreign CPU check from the kick_sync wait
+- [sched-20261021-012](/lkm/2026/10/21/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261020-012](/lkm/2026/10/20/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] sched_ext: Changes for v7.4
 - [sched-20261019-010](/lkm/2026/10/19/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261018-011](/lkm/2026/10/18/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] Scheduler updates for v7.4

@@ -1,7 +1,11 @@
 # tag: proxy_execution
 
-共 75 篇
+共 79 篇
 
+- [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261021-007](../../2026/10/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.md) `fix/low/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 3/3）：在 kick_sync wait 中移除 foreign CPU 检查。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。
+- [sched-20261021-006](../../2026/10/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.md) `fix/medium/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 2/3）：proxy execution 下 deferred actions 改用 `irq_work` 而非直接依赖 balance callback 机制。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.4-fixes`，并备注「未来或可进一步优化，但更应改进 balance_callb
+- [sched-20261021-002](../../2026/10/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/under_review` — Andrea Righi 的修复：proxy execution 下 `__schedule()` 会对同一 donor 先 `SNT_REPICK` 再 `SNT_PICK`，两次都把 kick_sync balance callback 入队，而 `kick_sync_pending` 仍置位；当该 callback 是链表的唯一条目时，其 `next` 为 NULL，原有重复检查漏判，再次入
 - [sched-20261020-012](../../2026/10/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — Tejun Heo 向 Linus 发 sched_ext 树的 v7.4 合入窗口 pull request（tag `sched_ext-for-7.4`，截至 `1f5dde349ac2`）。本次依赖 `sched/core`（携带 proxy execution 的 sched_ext hooks），需在其之后合入。亮点：proxy execution 可与 sched_ext 同时启用、
 - [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时

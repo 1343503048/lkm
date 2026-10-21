@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 127
+article_count: 128
 ---
 
+- [sched-20261021-005](/lkm/2026/10/21/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates
 - [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261019-004](/lkm/2026/10/19/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems
 - [sched-20261018-010](/lkm/2026/10/18/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

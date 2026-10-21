@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 33 篇
+共 34 篇
 
+- [sched-20261021-003](../../2026/10/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — Li kunyu 发往 sched 的 RFC 六补丁系列「SMT Buddy Assist」：利用 SMT 兄弟核互相「assist」，在周期性负载均衡里向 SMT sibling push、push 成功后排除该 sibling、newidle 均衡限制到 LLC 域，并加入 burst 阈值，目标是降低突发唤醒下的任务分布不均。当日 Peter Zijlstra 逐一给出了相当严厉的 rev
 - [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-011](../../2026/10/sched-20261012-011-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-002](../../2026/10/sched-20261012-002-sched-ext-honor-scx-pick-idle-core-in-cpu-selection-shortcut.md) `fix/medium/under_review` — Hui Su 修 sched_ext 在 SMT 系统上一个 strict-core 选择被绕过的 bug：`SCX_PICK_IDLE_CORE`（要求选核的 SMT 兄弟都 idle）在 restricted `select_cpu` kfunc 路径和两条 `WAKE_SYNC` 捷径上都没被校验，会把任务摆到只有单线程 idle 的核上；补丁跳过这些捷径并在 restricted 路径校验

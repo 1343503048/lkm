@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 268
+article_count: 274
 ---
 
+- [sched-20261021-002](/lkm/2026/10/21/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/under_review` — sched/core: Avoid requeueing a singleton balance callback
+- [sched-20261021-004](/lkm/2026/10/21/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/under_review` — sched_ext: Reject oversized automatic CID shards
+- [sched-20261021-006](/lkm/2026/10/21/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.html) `fix/medium/merged_tip` — sched_ext: Use irq_work for deferred actions with proxy execution
+- [sched-20261021-007](/lkm/2026/10/21/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.html) `fix/low/merged_tip` — sched_ext: Remove the foreign CPU check from the kick_sync wait
+- [sched-20261021-008](/lkm/2026/10/21/sched-20261021-008-selftests-sched-ext-add-class-switch-stall-test.html) `fix/none/merged_tip` — selftests/sched_ext: Add class_switch_stall test
+- [sched-20261021-013](/lkm/2026/10/21/sched-20261021-013-sched-ext-make-ops-cpu-acquire-release-reliable.html) `feature/none/rfc` — sched_ext: Make ops.cpu_acquire/release() reliable
 - [sched-20261020-002](/lkm/2026/10/20/sched-20261020-002-sched-ext-scx-qmap-drop-the-compat-code-and-fix-a-lowpri-sta.html) `fix/low/under_review` — sched_ext: scx_qmap: Drop the compat code and fix a lowpri starvation
 - [sched-20261020-004](/lkm/2026/10/20/sched-20261020-004-sched-ext-make-ops-cpu-acquire-release-reliable.html) `feature/none/rfc` — sched_ext: Make ops.cpu_acquire/release() reliable
 - [sched-20261020-005](/lkm/2026/10/20/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html) `fix/medium/under_review` — sched_ext: Reenqueue IMMED tasks when their CPU picks idle

@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 164 篇
+共 167 篇
 
+- [sched-20261021-005](../../2026/10/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — Hui Su 发往 sched 的单补丁修复：`sched_cluster_active` static key 的增/减计数不对称——`build_sched_domains()` 每新建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domains()` 删分区时只看全局 static key 是否使能就减，导致销毁一个「不含 cluster 域」的分区会误
+- [sched-20261021-003](../../2026/10/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — Li kunyu 发往 sched 的 RFC 六补丁系列「SMT Buddy Assist」：利用 SMT 兄弟核互相「assist」，在周期性负载均衡里向 SMT sibling push、push 成功后排除该 sibling、newidle 均衡限制到 LLC 域，并加入 burst 阈值，目标是降低突发唤醒下的任务分布不均。当日 Peter Zijlstra 逐一给出了相当严厉的 rev
+- [sched-20261021-001](../../2026/10/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.md) `fix/medium/under_review` — Kayra Cizmeci 发往 sched 的单补丁修复：`alb_break_llc()` 里 commit `f0d243a96f26` 把 `rq->curr` 直接喂给 `task_misfits_asym_cpu()` 而不先判断其调度类，导致非 fair 任务（如 RT）的 curr 被当作 cache-aware 主动均衡判定依据——但主动均衡只会从 `cfs_tasks` 里 d
 - [sched-20261020-010](../../2026/10/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-004](../../2026/10/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时

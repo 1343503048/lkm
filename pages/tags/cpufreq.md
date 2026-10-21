@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 87
+article_count: 89
 ---
 
+- [sched-20261021-015](/lkm/2026/10/21/sched-20261021-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
+- [sched-20261021-019](/lkm/2026/10/21/sched-20261021-019-cpufreq-longrun-fix-kernel-doc-warning.html) `fix/none/merged_tip` — cpufreq: longrun: fix kernel-doc warning
 - [sched-20261019-005](/lkm/2026/10/19/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.html) `fix/none/merged_tip` — cpufreq: longrun: fix typo in kernel-doc
 - [sched-20261016-004](/lkm/2026/10/16/sched-20261016-004-sched-replace-nr-iowait-cpu-with-a-bool-accessor.html) `fix/none/merged_tip` — sched: Replace nr_iowait_cpu() with a bool accessor
 - [sched-20261016-018](/lkm/2026/10/16/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation

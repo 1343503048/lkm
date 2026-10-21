@@ -1,7 +1,8 @@
 # tag: idle
 
-共 72 篇
+共 73 篇
 
+- [sched-20261021-016](../../2026/10/sched-20261021-016-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-013](../../2026/10/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.md) `feature/rfc` — Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼
 - [sched-20261017-007](../../2026/10/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-018](../../2026/10/sched-20261016-018-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — Cong Zhang（高通）发 RFC，提出在内核运行时测量并预测 CPU idle exit latency，并用该预测来「补偿」hrtimer 到期与回调真正执行之间的延迟（hrtimer rooster 方案），取代当前来自设备树的静态 worst-case 延迟。想法源自 2026 LPC 议题。Christian Loehle 回帖抛出一串关键问题（与硬件 C-state pre-wak

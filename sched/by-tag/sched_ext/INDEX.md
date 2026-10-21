@@ -1,7 +1,13 @@
 # tag: sched_ext
 
-共 268 篇
+共 274 篇
 
+- [sched-20261021-013](../../2026/10/sched-20261021-013-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261021-008](../../2026/10/sched-20261021-008-selftests-sched-ext-add-class-switch-stall-test.md) `fix/merged_tip` — Michal Blaszczyk（Google）发往 sched_ext 的 v2 独立补丁：新增 `class_switch_stall` selftest，验证任务在等待中离开 SCHED_EXT 后 `runnable_at` 不会被 watchdog 误判为 stall。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。
+- [sched-20261021-007](../../2026/10/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.md) `fix/low/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 3/3）：在 kick_sync wait 中移除 foreign CPU 检查。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。
+- [sched-20261021-006](../../2026/10/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.md) `fix/medium/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 2/3）：proxy execution 下 deferred actions 改用 `irq_work` 而非直接依赖 balance callback 机制。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.4-fixes`，并备注「未来或可进一步优化，但更应改进 balance_callb
+- [sched-20261021-004](../../2026/10/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.md) `fix/low/under_review` — Hui Su 发往 sched_ext 的单补丁修复：自动拓扑打包在「当前 shard 会超目标大小时」才另起新 shard，但「第一个 core 永远被接受」以保证 core 不可分割——当某个不可分割 core 的 CPU 数超过 `SCX_CID_SHARD_MAX_CPUS`（512）时无法表示，且 `alloc_pshard()` 的固定大小内联 cmask 会被越界初始化，覆盖后续字段
+- [sched-20261021-002](../../2026/10/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/under_review` — Andrea Righi 的修复：proxy execution 下 `__schedule()` 会对同一 donor 先 `SNT_REPICK` 再 `SNT_PICK`，两次都把 kick_sync balance callback 入队，而 `kick_sync_pending` 仍置位；当该 callback 是链表的唯一条目时，其 `next` 为 NULL，原有重复检查漏判，再次入
 - [sched-20261020-012](../../2026/10/sched-20261020-012-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — Tejun Heo 向 Linus 发 sched_ext 树的 v7.4 合入窗口 pull request（tag `sched_ext-for-7.4`，截至 `1f5dde349ac2`）。本次依赖 `sched/core`（携带 proxy execution 的 sched_ext hooks），需在其之后合入。亮点：proxy execution 可与 sched_ext 同时启用、
 - [sched-20261020-011](../../2026/10/sched-20261020-011-linux-next-manual-merge-of-the-sched-ext-tree-with-the-origi.md) `discussion/merged_tip` — linux-next 集成者 Mark Brown 报告当日 sched-ext 树与 origin 树（mainline）的两处手工合并冲突（`kernel/sched/ext/sub.c` 与 `kernel/sched/ext/ext.c`），并附上临时修复；维护者 Tejun Heo 回复两处均已在 `sched_ext/for-next` 由 commit `a5ba5c61951d`（
 - [sched-20261020-008](../../2026/10/sched-20261020-008-sched-ext-report-a-sub-scheduler-s-ecaps-on-attach-detach-an.md) `feature/merged_tip` — 本文为增量更新，完整脉络见下。

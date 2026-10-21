@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 72
+article_count: 73
 ---
 
+- [sched-20261021-016](/lkm/2026/10/21/sched-20261021-016-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation
 - [sched-20261019-013](/lkm/2026/10/19/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.html) `feature/none/rfc` — cpu/hotplug: Remove cpu_down() global stop_machine() except for CPUHP_TEARDOWN_CPU itself
 - [sched-20261017-007](/lkm/2026/10/17/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe
 - [sched-20261016-012](/lkm/2026/10/16/sched-20261016-012-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe

@@ -1,7 +1,14 @@
 # tag: cfs
 
-共 231 篇
+共 238 篇
 
+- [sched-20261021-020](../../2026/10/sched-20261021-020-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261021-018](../../2026/10/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁：把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化。当日 Gregory Price 给出 *Acked-by*，并同样要求「这对你的系列有用，请单独提交」。
+- [sched-20261021-017](../../2026/10/sched-20261021-017-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列（per-cgroup NUMA balancing 模式选择）中的 1/5 补丁：修正 `!CONFIG_SCHED_CACHE` 构建下 `get_pref_llc()` 桩函数已过期（与实际签名不符）的问题。当日获 Gregory Price 与 Chen Yu 双 Reviewed-by，两人均建议这类修复应**从系列中拆出单
+- [sched-20261021-011](../../2026/10/sched-20261021-011-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见相关文章，要点如下。
+- [sched-20261021-010](../../2026/10/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261021-003](../../2026/10/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — Li kunyu 发往 sched 的 RFC 六补丁系列「SMT Buddy Assist」：利用 SMT 兄弟核互相「assist」，在周期性负载均衡里向 SMT sibling push、push 成功后排除该 sibling、newidle 均衡限制到 LLC 域，并加入 burst 阈值，目标是降低突发唤醒下的任务分布不均。当日 Peter Zijlstra 逐一给出了相当严厉的 rev
+- [sched-20261021-001](../../2026/10/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.md) `fix/medium/under_review` — Kayra Cizmeci 发往 sched 的单补丁修复：`alb_break_llc()` 里 commit `f0d243a96f26` 把 `rq->curr` 直接喂给 `task_misfits_asym_cpu()` 而不先判断其调度类，导致非 fair 任务（如 RT）的 curr 被当作 cache-aware 主动均衡判定依据——但主动均衡只会从 `cfs_tasks` 里 d
 - [sched-20261019-003](../../2026/10/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-002](../../2026/10/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/under_review` — Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实
 - [sched-20261018-012](../../2026/10/sched-20261018-012-git-pull-scheduler-fixes.md) `fix/medium/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-18`，截至 `2f93bcb3f9aaf6ceee1aec0a97d4fe386d48e781`），含两枚修复：`__sched_setscheduler()` 类变更竞态导致丢 resched（K Prateek Nayak，近期 RCU

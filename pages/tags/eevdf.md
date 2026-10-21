@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 74
+article_count: 76
 ---
 
+- [sched-20261021-009](/lkm/2026/10/21/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261021-014](/lkm/2026/10/21/sched-20261021-014-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261020-001](/lkm/2026/10/20/sched-20261020-001-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261020-003](/lkm/2026/10/20/sched-20261020-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/none/merged_stable` — sched/eevdf: Move to a single runqueue
 - [sched-20261019-002](/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/under_review` — sched/fair: avoid redundant updates for unchanged default slices

@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 49 篇
+共 50 篇
 
+- [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-013](../../2026/10/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.md) `feature/rfc` — Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼
 - [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-003](../../2026/10/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。

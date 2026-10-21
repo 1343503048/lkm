@@ -1,7 +1,10 @@
 # tag: numa_balancing
 
-共 59 篇
+共 62 篇
 
+- [sched-20261021-018](../../2026/10/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁：把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化。当日 Gregory Price 给出 *Acked-by*，并同样要求「这对你的系列有用，请单独提交」。
+- [sched-20261021-011](../../2026/10/sched-20261021-011-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见相关文章，要点如下。
+- [sched-20261021-010](../../2026/10/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-008](../../2026/10/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发往 bpf-next 的 RFC v3 五补丁系列：给 NUMA balancing 加**每 cgroup 的模式选择**——latency-sensitive 服务想关掉 NUMA balancing、batch 服务想让 PMEM-resident 内存热晋升，全局 `kernel.numa_balancing` 单一 sysctl 无法同时满足。方案新增 `cgr
 - [sched-20261018-011](../../2026/10/sched-20261018-011-git-pull-scheduler-updates-for-v7-4.md) `feature/merged_tip` — Ingo Molnar 向 Linus 发 v7.4 合入窗口的主调度器 pull request（tip 树 `sched-core-2026-10-18`，截至 `b99b7f60c5b473d374c68b53753153b4aa9e0702`），涵盖 Kconfig、fair（RUN_TO_PARITY 清理、augmented callback、hrtick 重播、短 slice 任务时
 - [sched-20261017-006](../../2026/10/sched-20261017-006-sched-numa-add-per-process-automatic-numa-balancing-control.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
