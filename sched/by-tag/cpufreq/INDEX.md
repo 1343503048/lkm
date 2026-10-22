@@ -1,7 +1,9 @@
 # tag: cpufreq
 
-共 89 篇
+共 91 篇
 
+- [sched-20261022-006](../../2026/10/sched-20261022-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-004](../../2026/10/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.md) `bug/medium/under_review` — Jackie Liu（liu.yun@linux.dev）10-19 发出的 cpufreq 补丁，当日被 0-day 内核测试机器人（kernel test robot）报出 LTP 功能测试回退：`ltp.runpwtests03.fail`。该补丁的意图是「cpuinfo_avg_freq 不再使用 fallback 值」，但 0-day 在 Haswell i7-4790T 上跑 LTP 
 - [sched-20261021-019](../../2026/10/sched-20261021-019-cpufreq-longrun-fix-kernel-doc-warning.md) `fix/merged_tip` — Manuel Ebner 发往 cpufreq 的 v2 补丁：修复 longrun 驱动的 kernel-doc 告警。当日 cpufreq 维护者 Viresh Kumar 直接「Applied. Thanks.」收取。属 x86 老驱动（Transmeta LongRun）的文档级修复。
 - [sched-20261021-015](../../2026/10/sched-20261021-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-005](../../2026/10/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.md) `fix/merged_tip` — Manuel Ebner 的 cpufreq longrun 驱动 kernel-doc 拼写修复（`longrun_verify_poliy` → `longrun_verify_policy`），今日获 cpufreq 维护者 Viresh Kumar「Applied. Thanks.」直接收取；Qualcomm 的 Zhongqiu Han 复核后提示 checkpatch 有一个可接受的换

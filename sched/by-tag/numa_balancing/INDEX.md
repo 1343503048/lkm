@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 62 篇
+共 64 篇
 
+- [sched-20261022-012](../../2026/10/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-010](../../2026/10/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-018](../../2026/10/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁：把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化。当日 Gregory Price 给出 *Acked-by*，并同样要求「这对你的系列有用，请单独提交」。
 - [sched-20261021-011](../../2026/10/sched-20261021-011-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见相关文章，要点如下。
 - [sched-20261021-010](../../2026/10/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。

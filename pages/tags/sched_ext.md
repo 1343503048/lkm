@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 274
+article_count: 276
 ---
 
+- [sched-20261022-013](/lkm/2026/10/22/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/merged_tip` — sched_ext: Reject oversized automatic CID shards
+- [sched-20261022-015](/lkm/2026/10/22/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/merged_tip` — sched/core: Avoid requeueing a singleton balance callback
 - [sched-20261021-002](/lkm/2026/10/21/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/under_review` — sched/core: Avoid requeueing a singleton balance callback
 - [sched-20261021-004](/lkm/2026/10/21/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/under_review` — sched_ext: Reject oversized automatic CID shards
 - [sched-20261021-006](/lkm/2026/10/21/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.html) `fix/medium/merged_tip` — sched_ext: Use irq_work for deferred actions with proxy execution

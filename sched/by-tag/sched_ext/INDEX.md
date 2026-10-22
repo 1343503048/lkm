@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 274 篇
+共 276 篇
 
+- [sched-20261022-015](../../2026/10/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-013](../../2026/10/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-013](../../2026/10/sched-20261021-013-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-008](../../2026/10/sched-20261021-008-selftests-sched-ext-add-class-switch-stall-test.md) `fix/merged_tip` — Michal Blaszczyk（Google）发往 sched_ext 的 v2 独立补丁：新增 `class_switch_stall` selftest，验证任务在等待中离开 SCHED_EXT 后 `runnable_at` 不会被 watchdog 误判为 stall。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。
 - [sched-20261021-007](../../2026/10/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.md) `fix/low/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 3/3）：在 kick_sync wait 中移除 foreign CPU 检查。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。

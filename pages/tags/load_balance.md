@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 167
+article_count: 169
 ---
 
+- [sched-20261022-008](/lkm/2026/10/22/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
+- [sched-20261022-009](/lkm/2026/10/22/sched-20261022-009-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates
 - [sched-20261021-001](/lkm/2026/10/21/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/under_review` — sched/cache: Ignore non-fair current in alb_break_llc()
 - [sched-20261021-003](/lkm/2026/10/21/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261021-005](/lkm/2026/10/21/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates

@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 73
+article_count: 74
 ---
 
+- [sched-20261022-002](/lkm/2026/10/22/sched-20261022-002-cpuidle-psci-allow-skipping-the-suspend-mode-switch.html) `feature/none/under_review` — cpuidle: psci: Allow skipping the suspend mode switch
 - [sched-20261021-016](/lkm/2026/10/21/sched-20261021-016-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation
 - [sched-20261019-013](/lkm/2026/10/19/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.html) `feature/none/rfc` — cpu/hotplug: Remove cpu_down() global stop_machine() except for CPUHP_TEARDOWN_CPU itself
 - [sched-20261017-007](/lkm/2026/10/17/sched-20261017-007-sched-idle-make-forced-polling-state-race-safe.html) `fix/low/under_review` — sched/idle: Make forced polling state race-safe

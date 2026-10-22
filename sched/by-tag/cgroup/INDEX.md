@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 105 篇
+共 107 篇
 
+- [sched-20261022-013](../../2026/10/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-005](../../2026/10/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-020](../../2026/10/sched-20261021-020-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-009](../../2026/10/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-004](../../2026/10/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.md) `fix/low/under_review` — Hui Su 发往 sched_ext 的单补丁修复：自动拓扑打包在「当前 shard 会超目标大小时」才另起新 shard，但「第一个 core 永远被接受」以保证 core 不可分割——当某个不可分割 core 的 CPU 数超过 `SCX_CID_SHARD_MAX_CPUS`（512）时无法表示，且 `alloc_pshard()` 的固定大小内联 cmask 会被越界初始化，覆盖后续字段

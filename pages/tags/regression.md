@@ -2,9 +2,12 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 44
+article_count: 47
 ---
 
+- [sched-20261022-004](/lkm/2026/10/22/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.html) `bug/medium/under_review` — cpufreq: Avoid fallback values in cpuinfo_avg_freq
+- [sched-20261022-005](/lkm/2026/10/22/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261022-007](/lkm/2026/10/22/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261021-009](/lkm/2026/10/21/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261021-014](/lkm/2026/10/21/sched-20261021-014-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261020-001](/lkm/2026/10/20/sched-20261020-001-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption

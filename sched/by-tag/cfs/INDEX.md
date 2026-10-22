@@ -1,7 +1,13 @@
 # tag: cfs
 
-共 238 篇
+共 244 篇
 
+- [sched-20261022-016](../../2026/10/sched-20261022-016-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-014](../../2026/10/sched-20261022-014-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-012](../../2026/10/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-010](../../2026/10/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-008](../../2026/10/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-001](../../2026/10/sched-20261022-001-sched-pelt-fix-truncation-of-the-pelt-period-count.md) `fix/low/under_review` — Hui Su 发往 sched 的单补丁修复：`accumulate_sum()` 用 u64 计算已流逝的 PELT 周期数、却以 u32 返回；当周期数是 2^32 的整数倍（约 50 天不更新）时被截断为 0，调用方误判「无周期边界」跳过平均值重算，导致 `*_avg` 相对 `*_sum` 陈旧。v1 返回 `!!periods` 只告诉调用方「是否有周期流逝」。Vincent Guitt
 - [sched-20261021-020](../../2026/10/sched-20261021-020-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-018](../../2026/10/sched-20261021-018-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁：把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化。当日 Gregory Price 给出 *Acked-by*，并同样要求「这对你的系列有用，请单独提交」。
 - [sched-20261021-017](../../2026/10/sched-20261021-017-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.md) `fix/low/under_review` — Yafang Shao 的 bpf-next RFC v3 系列（per-cgroup NUMA balancing 模式选择）中的 1/5 补丁：修正 `!CONFIG_SCHED_CACHE` 构建下 `get_pref_llc()` 桩函数已过期（与实际签名不符）的问题。当日获 Gregory Price 与 Chen Yu 双 Reviewed-by，两人均建议这类修复应**从系列中拆出单

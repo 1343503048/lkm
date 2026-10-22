@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 238
+article_count: 244
 ---
 
+- [sched-20261022-001](/lkm/2026/10/22/sched-20261022-001-sched-pelt-fix-truncation-of-the-pelt-period-count.html) `fix/low/under_review` — sched/pelt: Fix truncation of the PELT period count
+- [sched-20261022-008](/lkm/2026/10/22/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
+- [sched-20261022-010](/lkm/2026/10/22/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
+- [sched-20261022-012](/lkm/2026/10/22/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261022-014](/lkm/2026/10/22/sched-20261022-014-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.html) `fix/low/under_review` — sched: fix stale get_pref_llc() stub for !CONFIG_SCHED_CACHE
+- [sched-20261022-016](/lkm/2026/10/22/sched-20261022-016-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.html) `feature/none/under_review` — sched/fair: Preserve wake-affine CPU for non-SMT reciprocal sync wakeups
 - [sched-20261021-001](/lkm/2026/10/21/sched-20261021-001-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/under_review` — sched/cache: Ignore non-fair current in alb_break_llc()
 - [sched-20261021-003](/lkm/2026/10/21/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261021-010](/lkm/2026/10/21/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus

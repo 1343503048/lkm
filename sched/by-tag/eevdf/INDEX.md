@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 76 篇
+共 78 篇
 
+- [sched-20261022-007](../../2026/10/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-005](../../2026/10/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-014](../../2026/10/sched-20261021-014-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-009](../../2026/10/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261020-003](../../2026/10/sched-20261020-003-sched-eevdf-move-to-a-single-runqueue.md) `discussion/merged_stable` — 本文为增量更新，完整脉络见下。

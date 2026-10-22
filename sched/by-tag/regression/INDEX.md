@@ -1,7 +1,10 @@
 # tag: regression
 
-共 44 篇
+共 47 篇
 
+- [sched-20261022-007](../../2026/10/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-005](../../2026/10/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-004](../../2026/10/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.md) `bug/medium/under_review` — Jackie Liu（liu.yun@linux.dev）10-19 发出的 cpufreq 补丁，当日被 0-day 内核测试机器人（kernel test robot）报出 LTP 功能测试回退：`ltp.runpwtests03.fail`。该补丁的意图是「cpuinfo_avg_freq 不再使用 fallback 值」，但 0-day 在 Haswell i7-4790T 上跑 LTP 
 - [sched-20261021-014](../../2026/10/sched-20261021-014-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-009](../../2026/10/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261020-003](../../2026/10/sched-20261020-003-sched-eevdf-move-to-a-single-runqueue.md) `discussion/merged_stable` — 本文为增量更新，完整脉络见下。

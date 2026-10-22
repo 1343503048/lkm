@@ -2,9 +2,11 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 89
+article_count: 91
 ---
 
+- [sched-20261022-004](/lkm/2026/10/22/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.html) `bug/medium/under_review` — cpufreq: Avoid fallback values in cpuinfo_avg_freq
+- [sched-20261022-006](/lkm/2026/10/22/sched-20261022-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20261021-015](/lkm/2026/10/21/sched-20261021-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20261021-019](/lkm/2026/10/21/sched-20261021-019-cpufreq-longrun-fix-kernel-doc-warning.html) `fix/none/merged_tip` — cpufreq: longrun: fix kernel-doc warning
 - [sched-20261019-005](/lkm/2026/10/19/sched-20261019-005-cpufreq-longrun-fix-typo-in-kernel-doc.html) `fix/none/merged_tip` — cpufreq: longrun: fix typo in kernel-doc

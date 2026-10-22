@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 105
+article_count: 107
 ---
 
+- [sched-20261022-005](/lkm/2026/10/22/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261022-013](/lkm/2026/10/22/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/merged_tip` — sched_ext: Reject oversized automatic CID shards
 - [sched-20261021-004](/lkm/2026/10/21/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/under_review` — sched_ext: Reject oversized automatic CID shards
 - [sched-20261021-009](/lkm/2026/10/21/sched-20261021-009-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261021-020](/lkm/2026/10/21/sched-20261021-020-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait

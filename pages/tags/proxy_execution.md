@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 79
+article_count: 81
 ---
 
+- [sched-20261022-011](/lkm/2026/10/22/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
+- [sched-20261022-015](/lkm/2026/10/22/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/merged_tip` — sched/core: Avoid requeueing a singleton balance callback
 - [sched-20261021-002](/lkm/2026/10/21/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/under_review` — sched/core: Avoid requeueing a singleton balance callback
 - [sched-20261021-006](/lkm/2026/10/21/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.html) `fix/medium/merged_tip` — sched_ext: Use irq_work for deferred actions with proxy execution
 - [sched-20261021-007](/lkm/2026/10/21/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.html) `fix/low/merged_tip` — sched_ext: Remove the foreign CPU check from the kick_sync wait

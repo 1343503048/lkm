@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 79 篇
+共 81 篇
 
+- [sched-20261022-015](../../2026/10/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261022-011](../../2026/10/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-007](../../2026/10/sched-20261021-007-sched-ext-remove-the-foreign-cpu-check-from-the-kick-sync-wa.md) `fix/low/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 3/3）：在 kick_sync wait 中移除 foreign CPU 检查。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.5`。
 - [sched-20261021-006](../../2026/10/sched-20261021-006-sched-ext-use-irq-work-for-deferred-actions-with-proxy-execu.md) `fix/medium/merged_tip` — Andrea Righi 发往 sched_ext 的补丁（其 3 补丁系列之 2/3）：proxy execution 下 deferred actions 改用 `irq_work` 而非直接依赖 balance callback 机制。当日 Tejun Heo 已将其收取到 `sched_ext/for-7.4-fixes`，并备注「未来或可进一步优化，但更应改进 balance_callb

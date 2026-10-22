@@ -1,7 +1,8 @@
 # tag: topology
 
-共 128 篇
+共 129 篇
 
+- [sched-20261022-009](../../2026/10/sched-20261022-009-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-005](../../2026/10/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — Hui Su 发往 sched 的单补丁修复：`sched_cluster_active` static key 的增/减计数不对称——`build_sched_domains()` 每新建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domains()` 删分区时只看全局 static key 是否使能就减，导致销毁一个「不含 cluster 域」的分区会误
 - [sched-20261020-010](../../2026/10/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-004](../../2026/10/sched-20261019-004-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
