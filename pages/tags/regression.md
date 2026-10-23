@@ -2,9 +2,11 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 47
+article_count: 49
 ---
 
+- [sched-20261023-009](/lkm/2026/10/23/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
+- [sched-20261023-013](/lkm/2026/10/23/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
 - [sched-20261022-004](/lkm/2026/10/22/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.html) `bug/medium/under_review` — cpufreq: Avoid fallback values in cpuinfo_avg_freq
 - [sched-20261022-005](/lkm/2026/10/22/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261022-007](/lkm/2026/10/22/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue

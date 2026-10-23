@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 276 篇
+共 281 篇
 
+- [sched-20261023-016](../../2026/10/sched-20261023-016-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-012](../../2026/10/sched-20261023-012-sched-ext-support-rt-task-within-sched-ext.md) `discussion/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-008](../../2026/10/sched-20261023-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.md) `fix/medium/under_review` — Tejun Heo 发往 sched_ext/for-7.4 的大型修复系列，当日连发 v1（14 patches）与 v2（15 patches）：一个 bypassing 子调度器的任务经其 host（最近的非 bypassing 祖先）的 per-cpu bypass DSQ 运行，而 caps 是 per-cpu 的、某 CPU 的 dispatch 只在 host 持有 `SCX_CAP
+- [sched-20261023-007](../../2026/10/sched-20261023-007-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.md) `fix/under_review` — Tejun Heo 发往 sched_ext/for-7.5 的两补丁小系列（承接 scx_qmap compat 移除 [1]）：`788b494fab1c`（"sched_ext: scx_qmap: Drop the compat code"）遗留了一处 `__COMPAT_ENUM_OR_ZERO("scx_consts","SCX_RESCUE_DISABLE")` 兼容查表——用户态只
+- [sched-20261023-002](../../2026/10/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — Kuba Piecuch（Google）发往 sched 的两补丁修复：`SCX_ENQ_CPU_SELECTED` 本应告诉 `ops.enqueue()` 本次唤醒是否执行过 `ops.select_cpu()`，但经 ttwu wakelist 投递的 queued wakeup 会丢掉 `WF_RQ_SELECTED`，导致开启了 `SCX_OPS_ALLOW_QUEUED_WAKEUP`
 - [sched-20261022-015](../../2026/10/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-013](../../2026/10/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-013](../../2026/10/sched-20261021-013-sched-ext-make-ops-cpu-acquire-release-reliable.md) `feature/rfc` — 本文为增量更新，完整脉络见下。

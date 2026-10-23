@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 38
+article_count: 39
 ---
 
+- [sched-20261023-012](/lkm/2026/10/23/sched-20261023-012-sched-ext-support-rt-task-within-sched-ext.html) `discussion/none/rfc` — sched_ext: Support RT task within sched_ext
 - [sched-20261020-009](/lkm/2026/10/20/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261019-009](/lkm/2026/10/19/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261018-007](/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted

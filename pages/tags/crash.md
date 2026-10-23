@@ -2,9 +2,11 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 38
+article_count: 40
 ---
 
+- [sched-20261023-003](/lkm/2026/10/23/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/under_review` — sched/fair: Clear throttle state when leaving the fair class
+- [sched-20261023-004](/lkm/2026/10/23/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm
 - [sched-20261016-003](/lkm/2026/10/16/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.html) `bug/high/merged_tip` — sched_ext: Fix use-after-free of a local reenq node left on an inactive cpu
 - [sched-20261010-006](/lkm/2026/10/10/sched-20261010-006-sched-ext-fix-use-after-free-of-a-destroyed-user-dsq-by-a-de.html) `fix/high/under_review` — sched_ext: Fix use-after-free of a destroyed user DSQ by a deferred reenqueue

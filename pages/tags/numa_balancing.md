@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 64
+article_count: 65
 ---
 
+- [sched-20261023-001](/lkm/2026/10/23/sched-20261023-001-sched-small-changes.html) `fix/low/under_review` — sched: small changes
 - [sched-20261022-010](/lkm/2026/10/22/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261022-012](/lkm/2026/10/22/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 - [sched-20261021-010](/lkm/2026/10/21/sched-20261021-010-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus

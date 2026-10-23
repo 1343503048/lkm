@@ -1,7 +1,8 @@
 # tag: hyperthreading
 
-共 35 篇
+共 36 篇
 
+- [sched-20261023-014](../../2026/10/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-008](../../2026/10/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-003](../../2026/10/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — Li kunyu 发往 sched 的 RFC 六补丁系列「SMT Buddy Assist」：利用 SMT 兄弟核互相「assist」，在周期性负载均衡里向 SMT sibling push、push 成功后排除该 sibling、newidle 均衡限制到 LLC 域，并加入 burst 阈值，目标是降低突发唤醒下的任务分布不均。当日 Peter Zijlstra 逐一给出了相当严厉的 rev
 - [sched-20261015-023](../../2026/10/sched-20261015-023-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

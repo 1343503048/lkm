@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 169 篇
+共 172 篇
 
+- [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
+- [sched-20261023-014](../../2026/10/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-009](../../2026/10/sched-20261022-009-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-008](../../2026/10/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-005](../../2026/10/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — Hui Su 发往 sched 的单补丁修复：`sched_cluster_active` static key 的增/减计数不对称——`build_sched_domains()` 每新建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domains()` 删分区时只看全局 static key 是否使能就减，导致销毁一个「不含 cluster 域」的分区会误

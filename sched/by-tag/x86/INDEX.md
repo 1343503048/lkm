@@ -1,7 +1,9 @@
 # tag: x86
 
-共 27 篇
+共 29 篇
 
+- [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
 - [sched-20261019-006](../../2026/10/sched-20261019-006-tip-sched-core-35-37-ld-lld-error-relocation-refers-to-a-sym.md) `discussion/under_review` — kernel test robot 此前对 `tip:sched/core` 分支 35/37（`sched/cache: Avoid publishing partial LLC utilization` 一带）报 lld 链接错误「relocation refers to a symbol in a discarded section」。今日 Jemmy Wong 复现并定位为 **ELF32
 - [sched-20261018-010](../../2026/10/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-017](../../2026/10/sched-20261009-017-cpufreq-amd-pstate-don-t-fail-active-mode-init-on-read-only.md) `fix/medium/superseded` — 本文为增量更新，完整脉络见 related_articles。

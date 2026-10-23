@@ -1,7 +1,8 @@
 # tag: perf
 
-共 46 篇
+共 47 篇
 
+- [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
 - [sched-20261019-002](../../2026/10/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/under_review` — Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261001-005](../../2026/10/sched-20261001-005-perf-sched-stats-reject-mismatched-or-incomplete-snapshots.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

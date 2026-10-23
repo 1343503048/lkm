@@ -1,7 +1,10 @@
 # tag: topology
 
-共 129 篇
+共 132 篇
 
+- [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
+- [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-005](../../2026/10/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.md) `feature/rfc` — Fengyu Wang（海光）发往 sched 的 RFC 单补丁：修正 `build_overlap_sched_groups()` 在部分 NUMA 拓扑（环形四节点即一例）下生成的 sched group 会互相重叠，导致同一 CPU 的负载/容量被重复计入、域平均值产生偏差。方案是「保留本地 child span、把重叠的 remote 候选下沉到更小的 NUMA 子域，直到其 child
 - [sched-20261022-009](../../2026/10/sched-20261022-009-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-005](../../2026/10/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/under_review` — Hui Su 发往 sched 的单补丁修复：`sched_cluster_active` static key 的增/减计数不对称——`build_sched_domains()` 每新建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domains()` 删分区时只看全局 static key 是否使能就减，导致销毁一个「不含 cluster 域」的分区会误
 - [sched-20261020-010](../../2026/10/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

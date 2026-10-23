@@ -2,9 +2,11 @@
 layout: default
 tag: "numa"
 title: "标签: numa"
-article_count: 15
+article_count: 17
 ---
 
+- [sched-20261023-005](/lkm/2026/10/23/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.html) `feature/none/rfc` — sched/topology: Avoid overlapping NUMA groups when possible
+- [sched-20261023-015](/lkm/2026/10/23/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261006-005](/lkm/2026/10/06/sched-20261006-005-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261005-008](/lkm/2026/10/05/sched-20261005-008-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261004-001](/lkm/2026/10/04/sched-20261004-001-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support

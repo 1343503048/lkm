@@ -1,7 +1,8 @@
 # tag: bpf
 
-共 9 篇
+共 10 篇
 
+- [sched-20261023-002](../../2026/10/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — Kuba Piecuch（Google）发往 sched 的两补丁修复：`SCX_ENQ_CPU_SELECTED` 本应告诉 `ops.enqueue()` 本次唤醒是否执行过 `ops.select_cpu()`，但经 ttwu wakelist 投递的 queued wakeup 会丢掉 `WF_RQ_SELECTED`，导致开启了 `SCX_OPS_ALLOW_QUEUED_WAKEUP`
 - [sched-20261019-008](../../2026/10/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发往 bpf-next 的 RFC v3 五补丁系列：给 NUMA balancing 加**每 cgroup 的模式选择**——latency-sensitive 服务想关掉 NUMA balancing、batch 服务想让 PMEM-resident 内存热晋升，全局 `kernel.numa_balancing` 单一 sysctl 无法同时满足。方案新增 `cgr
 - [sched-20261006-005](../../2026/10/sched-20261006-005-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261005-008](../../2026/10/sched-20261005-008-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 276
+article_count: 281
 ---
 
+- [sched-20261023-002](/lkm/2026/10/23/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
+- [sched-20261023-007](/lkm/2026/10/23/sched-20261023-007-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.html) `fix/none/under_review` — sched_ext: Regenerate the enum tables and drop scx_qmap's last compat lookup
+- [sched-20261023-008](/lkm/2026/10/23/sched-20261023-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
+- [sched-20261023-012](/lkm/2026/10/23/sched-20261023-012-sched-ext-support-rt-task-within-sched-ext.html) `discussion/none/rfc` — sched_ext: Support RT task within sched_ext
+- [sched-20261023-016](/lkm/2026/10/23/sched-20261023-016-git-pull-sched-ext-changes-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] sched_ext: Changes for v7.4
 - [sched-20261022-013](/lkm/2026/10/22/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/merged_tip` — sched_ext: Reject oversized automatic CID shards
 - [sched-20261022-015](/lkm/2026/10/22/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/merged_tip` — sched/core: Avoid requeueing a singleton balance callback
 - [sched-20261021-002](/lkm/2026/10/21/sched-20261021-002-sched-core-avoid-requeueing-a-singleton-balance-callback.html) `fix/medium/under_review` — sched/core: Avoid requeueing a singleton balance callback

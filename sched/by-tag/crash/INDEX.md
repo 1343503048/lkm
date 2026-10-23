@@ -1,7 +1,9 @@
 # tag: crash
 
-共 38 篇
+共 40 篇
 
+- [sched-20261023-004](../../2026/10/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — Daehyeon Ko 发往 sched 的单补丁修复一个 autogroup 的 use-after-free：`sched_cgroup_fork()` 在 CLONE_THREAD 子进程尚未挂上线程链表前就把它指到 `p->signal->autogroup->tg`，而 autogroup 归属是 per-`signal_struct`、CLONE_THREAD 复用旧 `signal_
+- [sched-20261023-003](../../2026/10/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/high/under_review` — Daehyeon Ko 发往 sched 的单补丁修复：CFS 带宽节流在任务从 fair 类迁出（`DEQUEUE_CLASS`）时只把 `p->throttled` 从 `throttled_limbo_list` 里移除却**不清位**；若期间最后一份有限配额被禁用、之后再回到 fair 类，陈旧的 `p->throttled` 会让类切换 dequeue 跳过 `__dequeue_tas
 - [sched-20261019-003](../../2026/10/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261016-003](../../2026/10/sched-20261016-003-sched-ext-fix-use-after-free-of-a-local-reenq-node-left-on-a.md) `bug/high/merged_tip` — Tejun Heo 修复 sched_ext 的 use-after-free：一个 local DSQ 的 reenq 节点若被请求时目标 CPU 已经（或即将）下线，节点会一直挂在 rq 链表上，scheduler 释放时带着仍在链表里的节点走 RCU free 路径并告警，CPU 回来后又会被重新遍历。补丁直接忽略对 inactive CPU local DSQ 的 reenq。Andrea
 - [sched-20261010-007](../../2026/10/sched-20261010-007-sched-ext-serialize-user-dsq-destruction-against-deferred-re.md) `fix/high/superseded` — 本文为增量更新，完整脉络见 related_articles。

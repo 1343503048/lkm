@@ -1,7 +1,9 @@
 # tag: regression
 
-共 47 篇
+共 49 篇
 
+- [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
 - [sched-20261022-007](../../2026/10/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-005](../../2026/10/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-004](../../2026/10/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.md) `bug/medium/under_review` — Jackie Liu（liu.yun@linux.dev）10-19 发出的 cpufreq 补丁，当日被 0-day 内核测试机器人（kernel test robot）报出 LTP 功能测试回退：`ltp.runpwtests03.fail`。该补丁的意图是「cpuinfo_avg_freq 不再使用 fallback 值」，但 0-day 在 Haswell i7-4790T 上跑 LTP 

@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 129
+article_count: 132
 ---
 
+- [sched-20261023-005](/lkm/2026/10/23/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.html) `feature/none/rfc` — sched/topology: Avoid overlapping NUMA groups when possible
+- [sched-20261023-013](/lkm/2026/10/23/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
+- [sched-20261023-015](/lkm/2026/10/23/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values
 - [sched-20261022-009](/lkm/2026/10/22/sched-20261022-009-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates
 - [sched-20261021-005](/lkm/2026/10/21/sched-20261021-005-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/under_review` — sched/topology: Balance cluster static-key updates
 - [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

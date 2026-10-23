@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 244
+article_count: 249
 ---
 
+- [sched-20261023-001](/lkm/2026/10/23/sched-20261023-001-sched-small-changes.html) `fix/low/under_review` — sched: small changes
+- [sched-20261023-003](/lkm/2026/10/23/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/under_review` — sched/fair: Clear throttle state when leaving the fair class
+- [sched-20261023-006](/lkm/2026/10/23/sched-20261023-006-sched-pelt-fix-truncation-of-the-pelt-period-count.html) `fix/low/under_review` — sched/pelt: Fix truncation of the PELT period count
+- [sched-20261023-009](/lkm/2026/10/23/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
+- [sched-20261023-014](/lkm/2026/10/23/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261022-001](/lkm/2026/10/22/sched-20261022-001-sched-pelt-fix-truncation-of-the-pelt-period-count.html) `fix/low/under_review` — sched/pelt: Fix truncation of the PELT period count
 - [sched-20261022-008](/lkm/2026/10/22/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261022-010](/lkm/2026/10/22/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec

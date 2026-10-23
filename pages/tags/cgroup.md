@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 107
+article_count: 109
 ---
 
+- [sched-20261023-004](/lkm/2026/10/23/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
+- [sched-20261023-010](/lkm/2026/10/23/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261022-005](/lkm/2026/10/22/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261022-013](/lkm/2026/10/22/sched-20261022-013-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/merged_tip` — sched_ext: Reject oversized automatic CID shards
 - [sched-20261021-004](/lkm/2026/10/21/sched-20261021-004-sched-ext-reject-oversized-automatic-cid-shards.html) `fix/low/under_review` — sched_ext: Reject oversized automatic CID shards

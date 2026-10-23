@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 81 篇
+共 82 篇
 
+- [sched-20261023-016](../../2026/10/sched-20261023-016-git-pull-sched-ext-changes-for-v7-4.md) `feature/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-015](../../2026/10/sched-20261022-015-sched-core-avoid-requeueing-a-singleton-balance-callback.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-011](../../2026/10/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

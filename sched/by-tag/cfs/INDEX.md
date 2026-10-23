@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 244 篇
+共 249 篇
 
+- [sched-20261023-014](../../2026/10/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
+- [sched-20261023-006](../../2026/10/sched-20261023-006-sched-pelt-fix-truncation-of-the-pelt-period-count.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261023-003](../../2026/10/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/high/under_review` — Daehyeon Ko 发往 sched 的单补丁修复：CFS 带宽节流在任务从 fair 类迁出（`DEQUEUE_CLASS`）时只把 `p->throttled` 从 `throttled_limbo_list` 里移除却**不清位**；若期间最后一份有限配额被禁用、之后再回到 fair 类，陈旧的 `p->throttled` 会让类切换 dequeue 跳过 `__dequeue_tas
+- [sched-20261023-001](../../2026/10/sched-20261023-001-sched-small-changes.md) `fix/low/under_review` — Yafang Shao 发往 sched 的两补丁小系列（cover 标题「sched: small changes」），均来自其 BPF-NUMA 系列实现中顺手发现的改进、可独立应用：patch 1 修复 `!CONFIG_SCHED_CACHE` 下 `get_pref_llc()` stub 仍持旧 `mm_struct` 参数的死代码（`Fixes: b636fef85bda`、`Cc:
 - [sched-20261022-016](../../2026/10/sched-20261022-016-sched-fair-preserve-wake-affine-cpu-for-non-smt-reciprocal-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-014](../../2026/10/sched-20261022-014-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-012](../../2026/10/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
