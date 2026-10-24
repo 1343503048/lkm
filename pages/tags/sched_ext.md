@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 281
+article_count: 287
 ---
 
+- [sched-20261024-002](/lkm/2026/10/24/sched-20261024-002-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
+- [sched-20261024-003](/lkm/2026/10/24/sched-20261024-003-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/medium/under_review` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
+- [sched-20261024-004](/lkm/2026/10/24/sched-20261024-004-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.html) `fix/none/merged_tip` — sched_ext: Regenerate the enum tables and drop scx_qmap's last compat lookup
+- [sched-20261024-005](/lkm/2026/10/24/sched-20261024-005-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
+- [sched-20261024-008](/lkm/2026/10/24/sched-20261024-008-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.html) `bug/high/rfc` — sched_ext: sub-scheduler kfuncs use struct scx_sched beyond the RCU read side under sleepable ops
+- [sched-20261024-009](/lkm/2026/10/24/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.html) `bug/low/rfc` — kernel/sched/ext/ext.c:6823:19: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20261023-002](/lkm/2026/10/23/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
 - [sched-20261023-007](/lkm/2026/10/23/sched-20261023-007-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.html) `fix/none/under_review` — sched_ext: Regenerate the enum tables and drop scx_qmap's last compat lookup
 - [sched-20261023-008](/lkm/2026/10/23/sched-20261023-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps

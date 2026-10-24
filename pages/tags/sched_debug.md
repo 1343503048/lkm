@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 70
+article_count: 71
 ---
 
+- [sched-20261024-006](/lkm/2026/10/24/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20261012-020](/lkm/2026/10/12/sched-20261012-020-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/under_review` — sched: Add task enqueue/dequeue trace points
 - [sched-20261012-027](/lkm/2026/10/12/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20261002-004](/lkm/2026/10/02/sched-20261002-004-sched-add-task-enqueue-dequeue-trace-points.html) `feature/none/under_review` — sched: Add task enqueue/dequeue trace points

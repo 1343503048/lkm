@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 172 篇
+共 173 篇
 
+- [sched-20261024-012](../../2026/10/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
 - [sched-20261023-014](../../2026/10/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

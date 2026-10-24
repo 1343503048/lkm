@@ -19183,6 +19183,247 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261020-012：Tejun Heo 向 Linus 发 sched_ext 树的 v7.4 合入窗口 pull request（tag `sched_ext-for-7.4`，截至 `1f5dde349ac2`）。亮点：proxy execution 与 sched_ext 可同时启用、lazy preemption、sub-scheduler 的 ecaps/CPU 委托可见性改进、新 kfuncs；另有 5 个错过 v7.3 发布窗口的 for-7.3-fixes 修复（其中 3 个标记 stable）随本 pull 合入。当日缓"
   },
   {
+    "title": "Sleeping Owner Handling for Proxy Execution (v33)",
+    "id": "sched-20261024-001",
+    "date": "2026-10-24",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "John Stultz",
+      "Peter Zijlstra",
+      "K Prateek Nayak",
+      "Shubhang Kaushik (Ampere)",
+      "zhidao su (Xiaomi)",
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-001-sleeping-owner-handling-for-proxy-execution-v33.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260922-002（v32）：John Stultz 发出 proxy execution 第 5 阶段「Sleeping Owner Handling」的第 32 版：任务阻塞在 owner 睡眠的 mutex 上时，把 waiter 停用并挂到 owner 的等待表，待 owner 唤醒时在同一 runqueue 重新激活以提升 owner。v32 新增 K Prateek 的「无 owner 时激活 blocked donor」补丁，并在 John 与 K Prateek 两套方案间等 Peter 表"
+  },
+  {
+    "title": "sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps",
+    "id": "sched-20261024-002",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-002-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-008（v2）：Tejun Heo 发往 sched_ext/for-7.4 的 bypass stall 修复系列（当日 v1→v2，15 patches）：bypassing 子调度器任务走 host 的 per-cpu bypass DSQ，而某 CPU 的 dispatch 只在 host 持有 `SCX_CAP_BASE` 时才下钻，此前 bypass 放置与 bypass 负载均衡忽略这点，导致任务被排到「host 无 BASE」的 CPU 上卡死或循环。修复把 `SCX_CAP_B"
+  },
+  {
+    "title": "sched_ext: Sync tools headers with scx and fix unsigned enum reads",
+    "id": "sched-20261024-003",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-003-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html",
+    "tldr": "Tejun Heo 发往 sched_ext/for-7.5 的四补丁系列：修 `__COMPAT_read_enum()` 对无符号 4 字节枚举的符号扩展（导致 `SCX_RESCUE_DISABLE` 被读成 `0xffffffffffffffff`）、把 tools/sched_ext/include 的共享头与 scx 仓库同步、并删掉 kernel 已不存在的枚举查表条目。属 for-7.5 枚举查表收尾的又一步（承接 10-23 已合入的 enum tables 系列），scx 侧 PR 已合并，在 Tejun 自有树迭代，高确信合入。"
+  },
+  {
+    "title": "sched_ext: Regenerate the enum tables and drop scx_qmap's last compat lookup",
+    "id": "sched-20261024-004",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-004-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-007：Tejun Heo 发往 sched_ext/for-7.5 的两补丁小系列——`scx_qmap` compat 移除遗留了一处 `__COMPAT_ENUM_OR_ZERO(\"scx_consts\",\"SCX_RESCUE_DISABLE\")` 查表，但该枚举在 kernel 内部 `enum scx_consts` 里、用户态只能从 BTF 读且查表没列它。patch 1 重新生成 autogen 枚举头补 presence marker 与 ABI 值，patch 2 把 `SC"
+  },
+  {
+    "title": "sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups",
+    "id": "sched-20261024-005",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "cfs"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-005-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-002：Kuba Piecuch（Google）的两补丁修复——`SCX_ENQ_CPU_SELECTED` 本应告诉 `ops.enqueue()` 本次唤醒是否执行过 `ops.select_cpu()`，但经 ttwu wakelist 投递的 queued wakeup 会丢掉 `WF_RQ_SELECTED`，导致设 `SCX_OPS_ALLOW_QUEUED_WAKEUP` 的 BPF 调度器无法判断且 `SCX_EV_SELECT_CPU_FALLBACK` 事件被低估。patch"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20261024-006",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261012-027（及更早 20260923-007）：Wei Yang 的 run_delay 多计数修复——`sched_delayed` 任务跨 CPU 迁移时 `run_delay` 重复累计；v2 获 K Prateek Nayak Reviewed-by + Tested-by，v3 已收集 tags；作者 10-12 向 Peter 补充「为何不能与 proxy exec 耦合」的论证并等拍板。 - sched-20261024-006（今天，v4）：Wei Yang 发 v4（`Fixes:"
+  },
+  {
+    "title": "sched/rt: Fix NULL pointer dereference in task_is_throttled_rt()",
+    "id": "sched-20261024-007",
+    "date": "2026-10-24",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "rt",
+      "crash",
+      "core_sched"
+    ],
+    "authors": [
+      "Aamir Ahmed"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.html",
+    "tldr": "Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p)->rt_rq[cpu]`，在 `CONFIG_SCHED_CORE=y` 下对带 core cookie 的 RT 任务触发持 rq 锁的 oops。修复改用 root rt_rq 并删掉无意义的"
+  },
+  {
+    "title": "sched_ext: sub-scheduler kfuncs use struct scx_sched beyond the RCU read side under sleepable ops",
+    "id": "sched-20261024-008",
+    "date": "2026-10-24",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Guikun Yang"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-008-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.html",
+    "tldr": "Guikun Yang 报告的 sched_ext 潜在 RCU use-after-free：四个子调度器 kfunc（`scx_bpf_sub_grant/sub_revoke/sub_caps/sub_kill_bstr`）通过 `scx_find_sub_sched()`（`rhashtable_lookup()` 的 _fast 变体）拿到 `struct scx_sched *`，但 kfunc 自身只拿 `guard(irqsave)`、既不持 RCU read lock 也不对调度器取引用，却在整个函数体解引用该指针；而 sleepable struct_ops（init_ta"
+  },
+  {
+    "title": "kernel/sched/ext/ext.c:6823:19: sparse: sparse: incorrect type in assignment (different address spaces)",
+    "id": "sched-20261024-009",
+    "date": "2026-10-24",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "rt",
+      "deadline"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.html",
+    "tldr": "kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different address spaces」告警，主题指向 ext.c:6823 处对 `__rcu` 指针的 `p->sched_class` 解引用。属构建 lint 噪音、非运行时 bug，无 patch、无"
+  },
+  {
+    "title": "sched: use static_branch_likely() for the NUMA balancing tick check",
+    "id": "sched-20261024-010",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "superseded",
+    "severity": "low",
+    "tags": [
+      "numa_balancing",
+      "cfs"
+    ],
+    "authors": [
+      "Yafang Shao"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261021-018：Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁——把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化；当日 Gregory Price 给 Acked-by 并要求「请单独提交」。 - sched-20261024-010（今天）：作者已拆出并单独重发（作为 `[PATCH 2/2]`），Gregory Price 复审后撤回其 Ack 判断——「On second look, I made "
+  },
+  {
+    "title": "sched/hotplug: Remove unused idle_task_exit",
+    "id": "sched-20261024-011",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Srikar Dronamraju"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-011-sched-hotplug-remove-unused-idle-task-exit.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261016-011：Srikar Dronamraju 清理 CPU hotplug 遗留——`idle_task_exit()` 原工作已移入调度器 hotplug 路径，函数成空 stub，20 个架构调用点已无作用；补丁跨 21 文件纯删 33 行。v1 发出暂无 review。 - sched-20261023-011：Frederic Weisbecker 给出 *Reviewed-by*，合入概率上升。 - sched-20261024-011（今天）：Peter Zijlstra 表态「Exc"
+  },
+  {
+    "title": "sched/cache: Honor asym packing over cache aware scheduling on hybrid systems",
+    "id": "sched-20261024-012",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "regression"
+    ],
+    "authors": [
+      "Tim Chen"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261006-002 / sched-20261008-011：Tim Chen 针对「cache-aware 调度在 AMD big/little 混合平台性能回退」的修复——让 asym packing 在迁向更高优先级空核时优先于 cache-aware；v3 移除冗余 `SD_ASYM_PACKING` 检查、改用 `group_asym_packing`，已获 Kayra Reviewed-by 与 Chen Yu/Klaus Kusche/Ricardo Neri Tested-by。 - sch"
+  },
+  {
+    "title": "sched: fix stale get_pref_llc() stub for !CONFIG_SCHED_CACHE",
+    "id": "sched-20261024-013",
+    "date": "2026-10-24",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Yafang Shao"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-013-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261021-017 / sched-20261022-014：Yafang Shao 的 bpf-next RFC v3 系列中的 1/5 补丁——修正 `!CONFIG_SCHED_CACHE` 构建下 `get_pref_llc()` 桩函数过期（与实际签名不符）的问题；已获 Gregory Price、Chen Yu、Tim Chen 三位 Reviewed-by，一致建议拆出单独提交并 `Cc: stable # v7.2.x`。 - sched-20261024-013（今天）：Peter Zij"
+  },
+  {
+    "title": "[linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression",
+    "id": "sched-20261024-014",
+    "date": "2026-10-24",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "preempt",
+      "regression",
+      "x86"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/10/24/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-009：kernel test robot 报告 commit `118a2cf4ce`（\"sched/core: Call wakeup_preempt() for queued tasks during class change\"）在 linus master 上使 `stress-ng.schedpolicy` 的 `ops_per_sec` 回退 **14.1%**（275785 → 236940），且 voluntary/involuntary 上下文切换分别暴涨 +634.5% / "
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

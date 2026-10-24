@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 74
+article_count: 75
 ---
 
+- [sched-20261024-014](/lkm/2026/10/24/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
 - [sched-20261023-009](/lkm/2026/10/23/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
 - [sched-20261023-010](/lkm/2026/10/23/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261018-007](/lkm/2026/10/18/sched-20261018-007-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.html) `fix/high/under_review` — sched/rt: queue a push when a queued RT task is boosted

@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 70 篇
+共 71 篇
 
+- [sched-20261024-006](../../2026/10/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-027](../../2026/10/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-020](../../2026/10/sched-20261012-020-sched-add-task-enqueue-dequeue-trace-points.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261002-004](../../2026/10/sched-20261002-004-sched-add-task-enqueue-dequeue-trace-points.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

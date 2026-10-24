@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 75
+article_count: 76
 ---
 
+- [sched-20261024-011](/lkm/2026/10/24/sched-20261024-011-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit
 - [sched-20261023-011](/lkm/2026/10/23/sched-20261023-011-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit
 - [sched-20261022-002](/lkm/2026/10/22/sched-20261022-002-cpuidle-psci-allow-skipping-the-suspend-mode-switch.html) `feature/none/under_review` — cpuidle: psci: Allow skipping the suspend mode switch
 - [sched-20261021-016](/lkm/2026/10/21/sched-20261021-016-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation

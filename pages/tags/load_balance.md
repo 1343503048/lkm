@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 172
+article_count: 173
 ---
 
+- [sched-20261024-012](/lkm/2026/10/24/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/merged_tip` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
 - [sched-20261023-013](/lkm/2026/10/23/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
 - [sched-20261023-014](/lkm/2026/10/23/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261023-015](/lkm/2026/10/23/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.html) `feature/none/rfc` — sched/topology: Introduce a NUMA distance matrix with unique distance values

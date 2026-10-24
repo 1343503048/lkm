@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 249
+article_count: 255
 ---
 
+- [sched-20261024-005](/lkm/2026/10/24/sched-20261024-005-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
+- [sched-20261024-006](/lkm/2026/10/24/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
+- [sched-20261024-010](/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/superseded` — sched: use static_branch_likely() for the NUMA balancing tick check
+- [sched-20261024-012](/lkm/2026/10/24/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/merged_tip` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems
+- [sched-20261024-013](/lkm/2026/10/24/sched-20261024-013-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.html) `fix/low/merged_tip` — sched: fix stale get_pref_llc() stub for !CONFIG_SCHED_CACHE
+- [sched-20261024-014](/lkm/2026/10/24/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
 - [sched-20261023-001](/lkm/2026/10/23/sched-20261023-001-sched-small-changes.html) `fix/low/under_review` — sched: small changes
 - [sched-20261023-003](/lkm/2026/10/23/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/under_review` — sched/fair: Clear throttle state when leaving the fair class
 - [sched-20261023-006](/lkm/2026/10/23/sched-20261023-006-sched-pelt-fix-truncation-of-the-pelt-period-count.html) `fix/low/under_review` — sched/pelt: Fix truncation of the PELT period count

@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 65
+article_count: 66
 ---
 
+- [sched-20261024-010](/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/superseded` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261023-001](/lkm/2026/10/23/sched-20261023-001-sched-small-changes.html) `fix/low/under_review` — sched: small changes
 - [sched-20261022-010](/lkm/2026/10/22/sched-20261022-010-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/low/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261022-012](/lkm/2026/10/22/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `fix/low/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus

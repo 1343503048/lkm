@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 34 篇
+共 35 篇
 
+- [sched-20261024-007](../../2026/10/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.md) `bug/high/under_review` — Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p
 - [sched-20261020-006](../../2026/10/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261020-005](../../2026/10/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261019-001](../../2026/10/sched-20261019-001-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

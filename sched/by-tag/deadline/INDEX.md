@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 41 篇
+共 42 篇
 
+- [sched-20261024-009](../../2026/10/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.md) `bug/low/rfc` — kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different 
 - [sched-20261020-010](../../2026/10/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261020-009](../../2026/10/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-009](../../2026/10/sched-20261019-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
