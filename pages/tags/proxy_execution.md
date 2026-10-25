@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 83
+article_count: 85
 ---
 
+- [sched-20261025-002](/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
+- [sched-20261025-010](/lkm/2026/10/25/sched-20261025-010-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)
 - [sched-20261024-001](/lkm/2026/10/24/sched-20261024-001-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)
 - [sched-20261023-016](/lkm/2026/10/23/sched-20261023-016-git-pull-sched-ext-changes-for-v7-4.html) `feature/none/merged_tip` — [GIT PULL] sched_ext: Changes for v7.4
 - [sched-20261022-011](/lkm/2026/10/22/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks

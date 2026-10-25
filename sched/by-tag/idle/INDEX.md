@@ -1,7 +1,8 @@
 # tag: idle
 
-共 76 篇
+共 77 篇
 
+- [sched-20261025-005](../../2026/10/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN：时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick
 - [sched-20261024-011](../../2026/10/sched-20261024-011-sched-hotplug-remove-unused-idle-task-exit.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-011](../../2026/10/sched-20261023-011-sched-hotplug-remove-unused-idle-task-exit.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-002](../../2026/10/sched-20261022-002-cpuidle-psci-allow-skipping-the-suspend-mode-switch.md) `feature/under_review` — Reza Kurniawan（与 Alejandro Tafalla 合著）v3 系列的 2/4 补丁：部分 SoC（如高通 MSM8917/MSM8937）报 OSI 模式受支持、却对 `PSCI_SET_SUSPEND_MODE` 返回 NOT_SUPPORTED，导致 `psci_set_osi_mode()` 失败、驱动 probe 直接中止。新增 `skip-suspend-mode-s

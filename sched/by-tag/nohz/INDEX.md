@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 51 篇
+共 52 篇
 
+- [sched-20261025-005](../../2026/10/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN：时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick
 - [sched-20261022-011](../../2026/10/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261019-013](../../2026/10/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.md) `feature/rfc` — Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼

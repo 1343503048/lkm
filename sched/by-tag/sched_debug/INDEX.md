@@ -1,7 +1,9 @@
 # tag: sched_debug
 
-共 71 篇
+共 73 篇
 
+- [sched-20261025-006](../../2026/10/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261025-002](../../2026/10/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — Wei Yang 在 run_delay v4（delayed dequeue 迁移多计修复）基础上补发独立单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：mutex owner 在别的 CPU 上跑时，`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU，迁移用 `activate_tas
 - [sched-20261024-006](../../2026/10/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-027](../../2026/10/sched-20261012-027-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-020](../../2026/10/sched-20261012-020-sched-add-task-enqueue-dequeue-trace-points.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

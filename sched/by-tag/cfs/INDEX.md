@@ -1,7 +1,12 @@
 # tag: cfs
 
-共 255 篇
+共 260 篇
 
+- [sched-20261025-009](../../2026/10/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261025-006](../../2026/10/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261025-004](../../2026/10/sched-20261025-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在
+- [sched-20261025-002](../../2026/10/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — Wei Yang 在 run_delay v4（delayed dequeue 迁移多计修复）基础上补发独立单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：mutex owner 在别的 CPU 上跑时，`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU，迁移用 `activate_tas
+- [sched-20261025-001](../../2026/10/sched-20261025-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — Qais Yousef 发单补丁修 uclamp 的 static key 非原子翻转导致的 runqueue 计数失衡竞态：`sched_uclamp_used` 使能瞬间部分 CPU 走 uclamp 快路径、部分不走，跨 CPU 的 enqueue/dequeue 不对称会使 `uclamp_rq` 计数永久错位。方案不试图堵住竞态，改为「视为既成事实 + idle 入口纠错」。kernel
 - [sched-20261024-014](../../2026/10/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-013](../../2026/10/sched-20261024-013-sched-fix-stale-get-pref-llc-stub-for-config-sched-cache.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-012](../../2026/10/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

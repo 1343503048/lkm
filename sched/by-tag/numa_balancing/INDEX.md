@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 66 篇
+共 67 篇
 
+- [sched-20261025-009](../../2026/10/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-010](../../2026/10/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-001](../../2026/10/sched-20261023-001-sched-small-changes.md) `fix/low/under_review` — Yafang Shao 发往 sched 的两补丁小系列（cover 标题「sched: small changes」），均来自其 BPF-NUMA 系列实现中顺手发现的改进、可独立应用：patch 1 修复 `!CONFIG_SCHED_CACHE` 下 `get_pref_llc()` stub 仍持旧 `mm_struct` 参数的死代码（`Fixes: b636fef85bda`、`Cc:
 - [sched-20261022-012](../../2026/10/sched-20261022-012-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。

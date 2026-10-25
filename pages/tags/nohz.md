@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 51
+article_count: 52
 ---
 
+- [sched-20261025-005](/lkm/2026/10/25/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261022-011](/lkm/2026/10/22/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261021-012](/lkm/2026/10/21/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261019-003](/lkm/2026/10/19/sched-20261019-003-sched-fair-switch-nohz-idle-cpus-to-use-sbm.html) `bug/high/rfc` — sched/fair: Switch nohz.idle_cpus to use sbm

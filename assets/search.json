@@ -19424,6 +19424,179 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-009：kernel test robot 报告 commit `118a2cf4ce`（\"sched/core: Call wakeup_preempt() for queued tasks during class change\"）在 linus master 上使 `stress-ng.schedpolicy` 的 `ops_per_sec` 回退 **14.1%**（275785 → 236940），且 voluntary/involuntary 上下文切换分别暴涨 +634.5% / "
   },
   {
+    "title": "sched/uclamp: Fix race condition leading to imbalanced uclamp_rq",
+    "id": "sched-20261025-001",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "uclamp",
+      "cfs"
+    ],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html",
+    "tldr": "Qais Yousef 发单补丁修 uclamp 的 static key 非原子翻转导致的 runqueue 计数失衡竞态：`sched_uclamp_used` 使能瞬间部分 CPU 走 uclamp 快路径、部分不走，跨 CPU 的 enqueue/dequeue 不对称会使 `uclamp_rq` 计数永久错位。方案不试图堵住竞态，改为「视为既成事实 + idle 入口纠错」。kernel test robot 当日报出 arm/arc allnoconfig 下的 `init_uclamp_rq` 重复符号**链接错误**，需先修。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for proxy-migrated blocked donors",
+    "id": "sched-20261025-002",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html",
+    "tldr": "Wei Yang 在 run_delay v4（delayed dequeue 迁移多计修复）基础上补发独立单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：mutex owner 在别的 CPU 上跑时，`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU，迁移用 `activate_task(ENQUEUE_NOCLOCK)`（不带 `ENQUEUE_RESTORE`）re-arm 了 `last_queued`，导致阻塞时长被误算成等 CPU 时长。补丁新增 `!task_is_bl"
+  },
+  {
+    "title": "sched/deadline: Fix this_bw on class change of a dying task",
+    "id": "sched-20261025-003",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline"
+    ],
+    "authors": [
+      "Nickolai Zeldovich"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html",
+    "tldr": "Nickolai Zeldovich 发 v1 单补丁，修 SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 之后、`__schedule()` dequeue 之前被 `sched_setscheduler(2)` 移出类时 `this_bw` 被重复扣减的 bug：`this_bw` 直到重启都偏小，`__sub_rq_bw()` 报 underflow / `running_bw > this_bw` 的 WARN，且 SCHED_FLAG_RECLAIM 任务的 GRUB 回收被误算。补丁让 TASK_DEAD 的带宽扣减只在 dyin"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261025-004",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "regression"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html",
+    "tldr": "Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在 AMD Ryzen AI HX 370 上错误覆盖 asym packing 放置导致的调度回退（Tim Chen）、`!CONFIG_SCHED_CACHE` 下 stale `get_pref_"
+  },
+  {
+    "title": "sched/cputime: Don't warn when the tick period starts after idle exit",
+    "id": "sched-20261025-005",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "nohz",
+      "idle"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html",
+    "tldr": "Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN：时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick_start` 的 `WARN_ON_ONCE`。该场景 tick restart 会保留 `last_tick`、首个 tick 覆盖 idle 退出后的区间、无重叠，记账本就正确，WARN 是误报"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for migrated sched_delayed tasks",
+    "id": "sched-20261025-006",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261012-027（及更早 20260923-007/20260921-006/20260922-015）：Wei Yang 的 run_delay 多计数修复——`sched_delayed` 任务跨 CPU 迁移时 `run_delay` 重复累计；v2 获 K Prateek Nayak Reviewed-by + Tested-by，v3 已收集 tags；作者 10-12 向 Peter 补充「为何不能与 proxy exec 耦合」的论证并等拍板。 - sched-20261024-006（v4"
+  },
+  {
+    "title": "sched_ext: Sync tools headers with scx and fix unsigned enum reads",
+    "id": "sched-20261025-007",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261024-003（v1）：Tejun Heo 发往 sched_ext/for-7.5 的四补丁系列——修 `__COMPAT_read_enum()` 对无符号 4 字节枚举的符号扩展（`SCX_RESCUE_DISABLE` 被读成 `0xffffffffffffffff`）、把 tools/sched_ext/include 共享头与 scx 仓库同步、删 kernel 已不存在的枚举查表条目。属 for-7.5 枚举查表收尾，scx 侧 PR 已合并，高确信合入。 - sched-20261025"
+  },
+  {
+    "title": "sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps",
+    "id": "sched-20261025-008",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-008（v2）：Tejun Heo 发往 sched_ext/for-7.4 的 bypass stall 修复系列（15 patches）：bypassing 子调度器任务走 host 的 per-cpu bypass DSQ，而某 CPU 的 dispatch 只在 host 持有 `SCX_CAP_BASE` 时下钻，此前 bypass 放置与 bypass 负载均衡忽略这点，任务被排到「host 无 BASE」的 CPU 上卡死或循环。 修复把 `SCX_CAP_BASE` 定为唯一 c"
+  },
+  {
+    "title": "sched: use static_branch_likely() for the NUMA balancing tick check",
+    "id": "sched-20261025-009",
+    "date": "2026-10-25",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "numa_balancing",
+      "cfs"
+    ],
+    "authors": [
+      "Yafang Shao"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261021-018：Yafang Shao 的 bpf-next RFC v3 系列中的 2/5 补丁——把 NUMA balancing tick 检查改用 `static_branch_likely()` 微优化；当日 Gregory Price 给 Acked-by 并要求「请单独提交」。 - sched-20261024-010：作者拆出单独重发（`[PATCH 2/2]`），Gregory Price 复审后撤回其 Ack 判断——「probably just drop this patch」，理"
+  },
+  {
+    "title": "Sleeping Owner Handling for Proxy Execution (v33)",
+    "id": "sched-20261025-010",
+    "date": "2026-10-25",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "John Stultz",
+      "Peter Zijlstra",
+      "K Prateek Nayak",
+      "Shubhang Kaushik (Ampere)",
+      "zhidao su (Xiaomi)",
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/25/sched-20261025-010-sleeping-owner-handling-for-proxy-execution-v33.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260922-002（v32）：John Stultz 发出 proxy execution 第 5 阶段「Sleeping Owner Handling」第 32 版：任务阻塞在 owner 睡眠的 mutex 上时，把 waiter 停用并挂到 owner 的等待表，待 owner 唤醒时在同 runqueue 重新激活以提升 owner。v32 新增 K Prateek 的「无 owner 时激活 blocked donor」补丁，并在 John 与 K Prateek 两套方案间等 Peter 表态。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

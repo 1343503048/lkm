@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 42
+article_count: 43
 ---
 
+- [sched-20261025-003](/lkm/2026/10/25/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task
 - [sched-20261024-009](/lkm/2026/10/24/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.html) `bug/low/rfc` — kernel/sched/ext/ext.c:6823:19: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20261020-009](/lkm/2026/10/20/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261020-010](/lkm/2026/10/20/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 287 篇
+共 289 篇
 
+- [sched-20261025-008](../../2026/10/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261025-007](../../2026/10/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-009](../../2026/10/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.md) `bug/low/rfc` — kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different 
 - [sched-20261024-008](../../2026/10/sched-20261024-008-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.md) `bug/high/rfc` — Guikun Yang 报告的 sched_ext 潜在 RCU use-after-free：四个子调度器 kfunc（`scx_bpf_sub_grant/sub_revoke/sub_caps/sub_kill_bstr`）通过 `scx_find_sub_sched()`（`rhashtable_lookup()` 的 _fast 变体）拿到 `struct scx_sched *`，但 
 - [sched-20261024-005](../../2026/10/sched-20261024-005-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

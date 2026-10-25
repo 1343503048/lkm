@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 287
+article_count: 289
 ---
 
+- [sched-20261025-007](/lkm/2026/10/25/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/medium/under_review` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
+- [sched-20261025-008](/lkm/2026/10/25/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
 - [sched-20261024-002](/lkm/2026/10/24/sched-20261024-002-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
 - [sched-20261024-003](/lkm/2026/10/24/sched-20261024-003-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/medium/under_review` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
 - [sched-20261024-004](/lkm/2026/10/24/sched-20261024-004-sched-ext-regenerate-the-enum-tables-and-drop-scx-qmap-s-las.html) `fix/none/merged_tip` — sched_ext: Regenerate the enum tables and drop scx_qmap's last compat lookup

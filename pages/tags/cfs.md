@@ -2,9 +2,14 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 255
+article_count: 260
 ---
 
+- [sched-20261025-001](/lkm/2026/10/25/sched-20261025-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
+- [sched-20261025-002](/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
+- [sched-20261025-004](/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20261025-006](/lkm/2026/10/25/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
+- [sched-20261025-009](/lkm/2026/10/25/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/under_review` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261024-005](/lkm/2026/10/24/sched-20261024-005-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
 - [sched-20261024-006](/lkm/2026/10/24/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20261024-010](/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/superseded` — sched: use static_branch_likely() for the NUMA balancing tick check
