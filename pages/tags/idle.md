@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 77
+article_count: 79
 ---
 
+- [sched-20261026-007](/lkm/2026/10/26/sched-20261026-007-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit
+- [sched-20261026-008](/lkm/2026/10/26/sched-20261026-008-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.html) `fix/low/merged_tip` — sched/idle: Use hrtimer cleanup class in play_idle_precise()
 - [sched-20261025-005](/lkm/2026/10/25/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261024-011](/lkm/2026/10/24/sched-20261024-011-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit
 - [sched-20261023-011](/lkm/2026/10/23/sched-20261023-011-sched-hotplug-remove-unused-idle-task-exit.html) `fix/none/under_review` — sched/hotplug: Remove unused idle_task_exit

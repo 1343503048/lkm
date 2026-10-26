@@ -19597,6 +19597,163 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260922-002（v32）：John Stultz 发出 proxy execution 第 5 阶段「Sleeping Owner Handling」第 32 版：任务阻塞在 owner 睡眠的 mutex 上时，把 waiter 停用并挂到 owner 的等待表，待 owner 唤醒时在同 runqueue 重新激活以提升 owner。v32 新增 K Prateek 的「无 owner 时激活 blocked donor」补丁，并在 John 与 K Prateek 两套方案间等 Peter 表态。"
   },
   {
+    "title": "sched/stats: Fix run_delay over-count for proxy-migrated blocked donors",
+    "id": "sched-20261026-001",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cfs",
+      "sched_debug",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-002：Wei Yang 在 run_delay v4（delayed dequeue 迁移多计修复）基础上补发独立单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：mutex owner 在别的 CPU 上跑时，`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU，迁移用 `activate_task(ENQUEUE_NOCLOCK)`（不带 `ENQUEUE_RESTORE`）re-ar"
+  },
+  {
+    "title": "sched/uclamp: Fix race condition leading to imbalanced uclamp_rq",
+    "id": "sched-20261026-002",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "uclamp",
+      "cfs"
+    ],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-001：Qais Yousef 发单补丁修 uclamp 的 static key 非原子翻转导致的 runqueue 计数失衡竞态：`sched_uclamp_used` 使能瞬间部分 CPU 走 uclamp 快路径、部分不走，跨 CPU 的 enqueue/dequeue 不对称会使 `uclamp_rq` 计数永久错位。方案不试图堵住竞态，改为「视为既成事实 + idle 入口纠错」。kernel test robot 当日报出 arm/arc allnoconfig 下的 `init_"
+  },
+  {
+    "title": "sched/autogroup: Fix task_group UAF during thread creation",
+    "id": "sched-20261026-003",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "autogroup",
+      "cgroup",
+      "crash"
+    ],
+    "authors": [
+      "Daehyeon Ko"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-004：Daehyeon Ko 发往 sched 的单补丁修复一个 autogroup 的 use-after-free：`sched_cgroup_fork()` 在 CLONE_THREAD 子进程尚未挂上线程链表前就把它指到 `p->signal->autogroup->tg`，而 autogroup 归属是 per-`signal_struct`、CLONE_THREAD 复用旧 `signal_struct` 且**不为子进程取 autogroup 引用**；`ksys_setsid("
+  },
+  {
+    "title": "sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups",
+    "id": "sched-20261026-004",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "cfs"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-002：Kuba Piecuch（Google）的两补丁修复——`SCX_ENQ_CPU_SELECTED` 本应告诉 `ops.enqueue()` 本次唤醒是否执行过 `ops.select_cpu()`，但经 ttwu wakelist 投递的 queued wakeup 会丢掉 `WF_RQ_SELECTED`，导致设 `SCX_OPS_ALLOW_QUEUED_WAKEUP` 的 BPF 调度器无法判断且 `SCX_EV_SELECT_CPU_FALLBACK` 事件被低估。patch"
+  },
+  {
+    "title": "[QUESTION] sched/clock: Potential timestamp jump due to inter-CPU counter skew?",
+    "id": "sched-20261026-005",
+    "date": "2026-10-26",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "sched_clock"
+    ],
+    "authors": [
+      "Zhang Qiao"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-005-question-sched-clock-potential-timestamp-jump-due-to-inter-c.html",
+    "tldr": "Zhang Qiao 在 LKML 提问：`update_sched_clock()` 用某个 CPU 读到的 counter 发布共享 `epoch_cyc`，其他 CPU 随后用它减自己读到的 counter，若某 CPU 观察到的 counter 值**严格小于**新 epoch（且非正常回绕），无符号减法会下溢、mask 后得到近一个完整周期的巨大 delta，`cyc_to_ns()` 可能乘法溢出或返回错误时间戳。Zhan Xusheng、Marc Zyngier、Peter Zijlstra 一致答复：这是**硬件契约问题**——RISC-V Zicntr/arm64 架构计时器"
+  },
+  {
+    "title": "Sleeping Owner Handling for Proxy Execution (v33)",
+    "id": "sched-20261026-006",
+    "date": "2026-10-26",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "John Stultz",
+      "Peter Zijlstra",
+      "K Prateek Nayak",
+      "Shubhang Kaushik (Ampere)",
+      "zhidao su (Xiaomi)",
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-006-sleeping-owner-handling-for-proxy-execution-v33.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260922-002（v32）：John Stultz 发出 proxy execution 第 5 阶段「Sleeping Owner Handling」第 32 版：任务阻塞在 owner 睡眠的 mutex 上时，把 waiter 停用并挂到 owner 的等待表，待 owner 唤醒时在同一 runqueue 重新激活以提升 owner。v32 新增 K Prateek 的「无 owner 时激活 blocked donor」补丁，并在 John 与 K Prateek 两套方案间等 Peter 表态"
+  },
+  {
+    "title": "sched/hotplug: Remove unused idle_task_exit",
+    "id": "sched-20261026-007",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Srikar Dronamraju"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-007-sched-hotplug-remove-unused-idle-task-exit.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261016-011：Srikar Dronamraju 清理 CPU hotplug 遗留——`idle_task_exit()` 原工作已移入调度器 hotplug 路径（`sched_force_init_mm()`），函数成空 stub，20 个架构调用点已无作用；补丁跨 21 文件纯删 33 行。v1 发出暂无 review。 - sched-20261023-011：Frederic Weisbecker 给出 *Reviewed-by*，合入概率上升。 - sched-20261024-011："
+  },
+  {
+    "title": "sched/idle: Use hrtimer cleanup class in play_idle_precise()",
+    "id": "sched-20261026-008",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Hui Su"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-008-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.html",
+    "tldr": "Hui Su 的 `sched/idle` 清理补丁已被 Thomas Gleixner 合入 tip 的 `timers/urgent` 分支（commit `bd091346971c88fccd44afd2547d28366f824572`）：用 `hrtimer_on_stack` cleanup class（`CLASS()`）把 `play_idle_precise()` 里 on-stack hrtimer 的「初始化 + 销毁」配对起来，消除手动 `hrtimer_start` 与 debug 对象销毁之间的生命周期缝隙。属正确性/健壮性改进，已合入 tip，无参与空间。"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261026-009",
+    "date": "2026-10-26",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "regression"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/10/26/sched-20261026-009-git-pull-scheduler-fixes.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-004：Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在 AMD Ryzen AI HX 370 上错误覆盖 asym packing 放置导致的调"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

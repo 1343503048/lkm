@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 174 篇
+共 175 篇
 
+- [sched-20261026-009](../../2026/10/sched-20261026-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-004](../../2026/10/sched-20261025-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在
 - [sched-20261024-012](../../2026/10/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。

@@ -1,7 +1,8 @@
 # tag: sched_clock
 
-共 13 篇
+共 14 篇
 
+- [sched-20261026-005](../../2026/10/sched-20261026-005-question-sched-clock-potential-timestamp-jump-due-to-inter-c.md) `discussion/rfc` — Zhang Qiao 在 LKML 提问：`update_sched_clock()` 用某个 CPU 读到的 counter 发布共享 `epoch_cyc`，其他 CPU 随后用它减自己读到的 counter，若某 CPU 观察到的 counter 值**严格小于**新 epoch（且非正常回绕），无符号减法会下溢、mask 后得到近一个完整周期的巨大 delta，`cyc_to_ns()` 
 - [sched-20260930-010](../../2026/09/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20260929-002](../../2026/09/sched-20260929-002-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — David Stevens 的 PSI 修复：在 stable clock 系统上 `cpu_clock(cpu)` 会忽略 cpu 参数，导致 PSI 内部出现跨 CPU 的时间戳比较，负 skew 会让 u32 的活跃态时长计算下溢，产生约 4 秒的假 delta 冲进累加器，造成 PSI_POLL 的虚假唤醒或 PSI_AVGS 的 nonsense 值（如 full>some、psi>10
 - [sched-20260924-015](../../2026/09/sched-20260924-015-sched-core-defer-preempted-remote-vcpu-task-clock-updates.md) `discussion/low/rfc` — - sched-20260921-009：Dongli Zhang 的「延迟被抢占远程 vCPU 的 task clock 更新」RFC 被 KVM 维护者 Sean Christopherson 质疑——方案关键约束「hypervisor 在清除 preempted 标记前发布最新 stealtime」在旧版 KVM 上无法保证，作者尚未回应。 - sched-20260924-015（今天，增

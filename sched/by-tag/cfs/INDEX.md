@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 260 篇
+共 264 篇
 
+- [sched-20261026-009](../../2026/10/sched-20261026-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261026-004](../../2026/10/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261026-002](../../2026/10/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261026-001](../../2026/10/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-009](../../2026/10/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-006](../../2026/10/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-004](../../2026/10/sched-20261025-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在

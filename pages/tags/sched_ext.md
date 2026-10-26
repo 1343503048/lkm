@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 289
+article_count: 290
 ---
 
+- [sched-20261026-004](/lkm/2026/10/26/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
 - [sched-20261025-007](/lkm/2026/10/25/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/medium/under_review` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
 - [sched-20261025-008](/lkm/2026/10/25/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
 - [sched-20261024-002](/lkm/2026/10/24/sched-20261024-002-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps

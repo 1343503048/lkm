@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 289 篇
+共 290 篇
 
+- [sched-20261026-004](../../2026/10/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-008](../../2026/10/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-007](../../2026/10/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-009](../../2026/10/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.md) `bug/low/rfc` — kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different 

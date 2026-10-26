@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 41
+article_count: 42
 ---
 
+- [sched-20261026-003](/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261024-007](/lkm/2026/10/24/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.html) `bug/high/under_review` — sched/rt: Fix NULL pointer dereference in task_is_throttled_rt()
 - [sched-20261023-003](/lkm/2026/10/23/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/under_review` — sched/fair: Clear throttle state when leaving the fair class
 - [sched-20261023-004](/lkm/2026/10/23/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation

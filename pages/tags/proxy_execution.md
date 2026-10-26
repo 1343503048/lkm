@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 85
+article_count: 87
 ---
 
+- [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
+- [sched-20261026-006](/lkm/2026/10/26/sched-20261026-006-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)
 - [sched-20261025-002](/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261025-010](/lkm/2026/10/25/sched-20261025-010-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)
 - [sched-20261024-001](/lkm/2026/10/24/sched-20261024-001-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)

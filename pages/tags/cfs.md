@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 260
+article_count: 264
 ---
 
+- [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
+- [sched-20261026-002](/lkm/2026/10/26/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
+- [sched-20261026-004](/lkm/2026/10/26/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
+- [sched-20261026-009](/lkm/2026/10/26/sched-20261026-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261025-001](/lkm/2026/10/25/sched-20261025-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261025-002](/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261025-004](/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes

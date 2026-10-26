@@ -1,7 +1,8 @@
 # tag: crash
 
-共 41 篇
+共 42 篇
 
+- [sched-20261026-003](../../2026/10/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-007](../../2026/10/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.md) `bug/high/under_review` — Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p
 - [sched-20261023-004](../../2026/10/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — Daehyeon Ko 发往 sched 的单补丁修复一个 autogroup 的 use-after-free：`sched_cgroup_fork()` 在 CLONE_THREAD 子进程尚未挂上线程链表前就把它指到 `p->signal->autogroup->tg`，而 autogroup 归属是 per-`signal_struct`、CLONE_THREAD 复用旧 `signal_
 - [sched-20261023-003](../../2026/10/sched-20261023-003-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/high/under_review` — Daehyeon Ko 发往 sched 的单补丁修复：CFS 带宽节流在任务从 fair 类迁出（`DEQUEUE_CLASS`）时只把 `p->throttled` 从 `throttled_limbo_list` 里移除却**不清位**；若期间最后一份有限配额被禁用、之后再回到 fair 类，陈旧的 `p->throttled` 会让类切换 dequeue 跳过 `__dequeue_tas

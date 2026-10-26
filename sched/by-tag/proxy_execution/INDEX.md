@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 85 篇
+共 87 篇
 
+- [sched-20261026-006](../../2026/10/sched-20261026-006-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261026-001](../../2026/10/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-010](../../2026/10/sched-20261025-010-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-002](../../2026/10/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — Wei Yang 在 run_delay v4（delayed dequeue 迁移多计修复）基础上补发独立单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：mutex owner 在别的 CPU 上跑时，`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU，迁移用 `activate_tas
 - [sched-20261024-001](../../2026/10/sched-20261024-001-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

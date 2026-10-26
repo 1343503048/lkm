@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 73
+article_count: 74
 ---
 
+- [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261025-002](/lkm/2026/10/25/sched-20261025-002-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261025-006](/lkm/2026/10/25/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
 - [sched-20261024-006](/lkm/2026/10/24/sched-20261024-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for migrated sched_delayed tasks
