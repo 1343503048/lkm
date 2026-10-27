@@ -19754,6 +19754,279 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-004：Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在 AMD Ryzen AI HX 370 上错误覆盖 asym packing 放置导致的调"
   },
   {
+    "title": "sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps",
+    "id": "sched-20261027-001",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-001-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-008（v1+v2，15 patches）：Tejun Heo 发往 sched_ext/for-7.4 的 bypass stall 修复系列。bypassing 子调度器的任务经其 host（最近的非 bypassing 祖先）的 per-cpu bypass DSQ 运行，而 caps 是 per-CPU、某 CPU 的 dispatch 只在 host 持 `SCX_CAP_BASE` 时下钻——bypass 放置与 bypass 负载均衡此前忽略这点，导致任务被排到「host 无 BA"
+  },
+  {
+    "title": "sched_ext: Fix the stall watchdog testing and blaming the wrong sched under bypass",
+    "id": "sched-20261027-002",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-002-sched-ext-fix-the-stall-watchdog-testing-and-blaming-the-wro.html",
+    "tldr": "Tejun Heo 发往 sched_ext/for-7.4-fixes 的单补丁修复：bypassing 调度器的任务由其 host（最近的非 bypassing 祖先）运行，而 stall watchdog 在 `check_rq_for_timeouts()` 里对 task 测的是「owner 的 timeout」、eject 的却是「DSQ 所属调度器」，三者（被测 sched、被 eject sched、运行任务的 sched）可能各不相同，导致误责甚至整个 sched_ext 被 disable。补丁统一改测「实际运行该任务的 sched」的 timeout 并 blame 之；"
+  },
+  {
+    "title": "sched_ext: Add NUMA balancing support",
+    "id": "sched-20261027-003",
+    "date": "2026-10-27",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "numa_balancing"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261002-014：Vladimir Vdovin 的单片 RFC——自动 NUMA balancing 对 sched_ext 任务事实性关闭：扫描只从 fair tick 排队，SCX 任务 `numa_pte_updates/s = 0`、跑在 preferred nid 比例 37%（fair 83%）。Andrea 回复正有一整套 sched_ext NUMA balancing 支持跟进。 - sched-20261004-001（v1）：Andrea 兑现承诺，发出 5 补丁系列：`SCX_O"
+  },
+  {
+    "title": "Make the scheduler stack end check selectable at boot",
+    "id": "sched-20261027-004",
+    "date": "2026-10-27",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "Chris Down"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-004-make-the-scheduler-stack-end-check-selectable-at-boot.html",
+    "tldr": "Chris Down（Meta）发 3 补丁系列，把 `CONFIG_SCHED_STACK_END_CHECK` 的栈尾检查从「仅编译期」改为「可用 `sched_stack_end_check=` 在 boot 时开关」，让一组机器共享同一内核镜像；附赠一个 SCS 关闭时跳过 shadow stack 检查的清理补丁，和一个 lkdtm 自测。Peter Zijlstra 当日 review，建议把 `scs_is_enabled()` 下沉、并让其它 `task_stack_end_corrupted()` 调用点也尊重该开关。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for proxy-migrated blocked donors",
+    "id": "sched-20261027-005",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-002（v1）：Wei Yang 补发单补丁，修 proxy execution 下被迁移的 blocked donor 的 run_delay 多计：`find_proxy_task()` 把仍在阻塞的 donor 迁到 owner 的 CPU 时，`activate_task(ENQUEUE_NOCLOCK)`（不带 `ENQUEUE_RESTORE`）re-arm 了 `last_queued`，阻塞时长被误算成等 CPU 时长；补丁新增 `!task_is_blocked()` 门控，2"
+  },
+  {
+    "title": "sched/deadline: Fix this_bw on class change of a dying task",
+    "id": "sched-20261027-006",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline"
+    ],
+    "authors": [
+      "Nickolai Zeldovich"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-003（v1）：Nickolai Zeldovich 修 SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 后、`__schedule()` dequeue 前被 `sched_setscheduler(2)` 移出类时 `this_bw` 被重复扣减的 bug（`this_bw` 短账直到 reboot、GRUB 回收误算）。补丁让 TASK_DEAD 带宽扣减只在 dying 任务自己的 DEQUEUE_SLEEP dequeue 路径执行。"
+  },
+  {
+    "title": "sched/fair: Introduce the SMT_BUDDY_ASSIST feature",
+    "id": "sched-20261027-007",
+    "date": "2026-10-27",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Li kunyu"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261021-003（RFC v1，6 patches）：Li kunyu 的「SMT Buddy Assist」RFC——利用 SMT 兄弟核互相 assist，在周期性负载均衡里向 SMT sibling push、push 成功后排除该 sibling、newidle 均衡限制到 LLC 域，并加 burst 阈值，目标是降低突发唤醒下的任务分布不均。Peter Zijlstra 当日给出严厉 review（缩进「horrific」、静态阈值「horrible」等）。 - sched-20261022-"
+  },
+  {
+    "title": "sched/cputime: Don't warn when the tick period starts after idle exit",
+    "id": "sched-20261027-008",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "nohz"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-008-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-005（v1）：Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN——时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick_start` 的 `WARN_ON_ONCE`；该场景记账本就正确，WARN 是"
+  },
+  {
+    "title": "sched/rt,dl: Remove unreachable migration-disabled push checks",
+    "id": "sched-20261027-009",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "rt",
+      "deadline"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261020-009（v2）：Shubhang Kaushik（Ampere）清理 `push_rt_task()`/`push_dl_task()` 里不可达的 migration-disabled 分支，并移除只服务该分支的 `@pull` 参数；Christian Loehle 给 `Tested-by`（「cannot reproduce the code path」），Kayra Cizmeci 给 `Reviewed-by`。 - sched-20261027-009（今天）：作者回帖感谢两位 r"
+  },
+  {
+    "title": "sched/proxy: Add deactivated (sleeping) owner handling to find_proxy_task()",
+    "id": "sched-20261027-010",
+    "date": "2026-10-27",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "proxy_execution"
+    ],
+    "authors": [
+      "John Stultz"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-010-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261024-001（v33）：John Stultz 的 proxy execution 第 5 阶段「Sleeping Owner Handling」第 33 版，扩到 7 补丁，聚合多人修复（psi 状态、远程 tick 用 rq->donor、无 owner 激活 blocked donor、proxy 链循环检测等）；Peter Zijlstra、Andrea Righi、Kayra Cizmeci 当日密集 review。 - sched-20261026-006：7/7 核心补丁及 1/3/4 "
+  },
+  {
+    "title": "sched_ext: Reject rq-lock-taking kfuncs in tracing programs",
+    "id": "sched-20261027-011",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Junbin Zhang"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-011-sched-ext-reject-rq-lock-taking-kfuncs-in-tracing-programs.html",
+    "tldr": "Junbin Zhang（sprooc）发单补丁修一个死锁：`scx_bpf_cpuperf_set()`/`scx_bpf_cidperf_set()` 注册在 `scx_kfunc_ids_any`（对 `BPF_PROG_TYPE_TRACING` 开放），而 tracing 程序可能运行在「外层已持 rq lock」的上下文（如 `sched_switch`），此时 kfunc 会再次 `rq_lock_irqsave()` 拿同一把锁、锁死 CPU。补丁在 verifier 阶段拒绝 tracing 程序调用这两个 kfunc，同时保留 struct_ops 与 syscall 程序"
+  },
+  {
+    "title": "sched_ext: sub-scheduler kfuncs use struct scx_sched beyond the RCU read side under sleepable ops",
+    "id": "sched-20261027-012",
+    "date": "2026-10-27",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Guikun Yang"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-012-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261024-008：Guikun Yang 报告的潜在 RCU use-after-free——四个子调度器 kfunc（`scx_bpf_sub_grant/sub_revoke/sub_caps/sub_kill_bstr`）经 `scx_find_sub_sched()` 拿到 `struct scx_sched *` 后，只持 `guard(irqsave)`、不持 RCU read lock 就全程解引用。 - sched-20261027-012（今天）：sched_ext 维护者 Tejun "
+  },
+  {
+    "title": "sched_ext: Sync tools headers with scx and fix unsigned enum reads",
+    "id": "sched-20261027-013",
+    "date": "2026-10-27",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-013-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261024-003（v1，4 patches）：Tejun Heo 发往 sched_ext/for-7.5 的系列——修 `__COMPAT_read_enum()` 对无符号 4 字节枚举的符号扩展（`SCX_RESCUE_DISABLE` 被读成 `0xffffffffffffffff`）、同步 tools/sched_ext/include 共享头与 scx 仓库、删 kernel 已不存在的枚举查表条目。 - sched-20261025-007：Andrea Righi 给 2-4/4 三枚 `"
+  },
+  {
+    "title": "[linus:master] [sched]  c72945693b: stress-ng.rawudp.packets_32_bytes_received_per_sec 34.2% improvement",
+    "id": "sched-20261027-014",
+    "date": "2026-10-27",
+    "type": "discussion",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "kernel test robot"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-014-linus-master-sched-c72945693b-stress-ng-rawudp-packets-32-by.html",
+    "tldr": "kernel test robot 报告：mainline commit `c72945693b`（\"sched: Restart fair hrtick after same-task repicks\"，即 Shubhang Kaushik 的 same-task repick 后重启 fair hrtick 修复，9 月已合入）在 stress-ng rawudp 小包场景带来 **34.2% 提升**，是一项已合入修复的正面性能确认。"
+  },
+  {
+    "title": "cpufreq: intel_pstate: Restore P-state request on resume without HWP",
+    "id": "sched-20261027-015",
+    "date": "2026-10-27",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Zak Brighton Knight"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html",
+    "tldr": "Zak Brighton Knight 报告并修一个 intel_pstate 被动模式的 resume 缺陷：无 HWP 的 Ivy Bridge（ThinkPad T520/i7-3840QM，coreboot）每次 suspend-to-RAM 后 turbo 永久丢失（停在 2.8GHz 基频直到改 policy limit 或重启），原因是 resume 时固件把 `MSR_IA32_PERF_CTL` 设回基频、内核因缓存/`policy->cur` 跳过重写。补丁在 resume 时恢复 P-state 请求。Rafael 当日转达 Sashiko 指出的并发 race，需再打磨"
+  },
+  {
+    "title": "cpufreq: stats: Fix potential out-of-bounds access in deferred reset",
+    "id": "sched-20261027-016",
+    "date": "2026-10-27",
+    "type": "bug",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Zhongqiu Han"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-016-cpufreq-stats-fix-potential-out-of-bounds-access-in-deferred.html",
+    "tldr": "Zhongqiu Han（Qualcomm）修 `cpufreq_stats` 的潜在越界访问：当 `policy->cur` 不在频率表里时 `stats->last_index` 停在 -1，而 deferred reset（`cpufreq_stats_reset_table()`）末尾无条件 `cpufreq_stats_update()`，写 `time_in_state[-1]`。补丁让 reset_table 在 `last_index == -1` 时同样提前返回。Rafael 当日 `Applied as 7.4 material`。"
+  },
+  {
+    "title": "cpufreq: add an Amlogic speed-bin driver",
+    "id": "sched-20261027-017",
+    "date": "2026-10-27",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Christian Köver-Draxl"
+    ],
+    "url": "/lkm/2026/10/27/sched-20261027-017-cpufreq-add-an-amlogic-speed-bin-driver.html",
+    "tldr": "Christian Köver-Draxl 提交的 Amlogic speed-bin cpufreq 驱动（系列 4/4）讨论继续：Christian Hewitt 提醒其 S4 相关工作（ramp-delay 是 OPP 切换稳定的关键），而 Amlogic 厂商侧 Chuan Liu 当众要求「先 hold off 不要在 S4 上提 cpufreq 驱动」，因 S4 的 clock 驱动尚不能设 CPU 时钟、regulator 缺电压稳定等待逻辑，贸然提升频率可能挂系统。方向暂缓。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

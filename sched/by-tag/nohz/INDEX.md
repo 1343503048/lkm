@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 52 篇
+共 53 篇
 
+- [sched-20261027-008](../../2026/10/sched-20261027-008-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-005](../../2026/10/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN：时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick
 - [sched-20261022-011](../../2026/10/sched-20261022-011-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261021-012](../../2026/10/sched-20261021-012-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

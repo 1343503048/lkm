@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 43 篇
+共 45 篇
 
+- [sched-20261027-009](../../2026/10/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261027-006](../../2026/10/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-003](../../2026/10/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/under_review` — Nickolai Zeldovich 发 v1 单补丁，修 SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 之后、`__schedule()` dequeue 之前被 `sched_setscheduler(2)` 移出类时 `this_bw` 被重复扣减的 bug：`this_bw` 直到重启都偏小，`__sub_rq_bw()` 报 unde
 - [sched-20261024-009](../../2026/10/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.md) `bug/low/rfc` — kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different 
 - [sched-20261020-010](../../2026/10/sched-20261020-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

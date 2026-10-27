@@ -1,7 +1,10 @@
 # tag: cpufreq
 
-共 91 篇
+共 94 篇
 
+- [sched-20261027-017](../../2026/10/sched-20261027-017-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — Christian Köver-Draxl 提交的 Amlogic speed-bin cpufreq 驱动（系列 4/4）讨论继续：Christian Hewitt 提醒其 S4 相关工作（ramp-delay 是 OPP 切换稳定的关键），而 Amlogic 厂商侧 Chuan Liu 当众要求「先 hold off 不要在 S4 上提 cpufreq 驱动」，因 S4 的 clock 驱动尚
+- [sched-20261027-016](../../2026/10/sched-20261027-016-cpufreq-stats-fix-potential-out-of-bounds-access-in-deferred.md) `bug/medium/merged_tip` — Zhongqiu Han（Qualcomm）修 `cpufreq_stats` 的潜在越界访问：当 `policy->cur` 不在频率表里时 `stats->last_index` 停在 -1，而 deferred reset（`cpufreq_stats_reset_table()`）末尾无条件 `cpufreq_stats_update()`，写 `time_in_state[-1]`。补丁
+- [sched-20261027-015](../../2026/10/sched-20261027-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `bug/medium/under_review` — Zak Brighton Knight 报告并修一个 intel_pstate 被动模式的 resume 缺陷：无 HWP 的 Ivy Bridge（ThinkPad T520/i7-3840QM，coreboot）每次 suspend-to-RAM 后 turbo 永久丢失（停在 2.8GHz 基频直到改 policy limit 或重启），原因是 resume 时固件把 `MSR_IA32_P
 - [sched-20261022-006](../../2026/10/sched-20261022-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261022-004](../../2026/10/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.md) `bug/medium/under_review` — Jackie Liu（liu.yun@linux.dev）10-19 发出的 cpufreq 补丁，当日被 0-day 内核测试机器人（kernel test robot）报出 LTP 功能测试回退：`ltp.runpwtests03.fail`。该补丁的意图是「cpuinfo_avg_freq 不再使用 fallback 值」，但 0-day 在 Haswell i7-4790T 上跑 LTP 
 - [sched-20261021-019](../../2026/10/sched-20261021-019-cpufreq-longrun-fix-kernel-doc-warning.md) `fix/merged_tip` — Manuel Ebner 发往 cpufreq 的 v2 补丁：修复 longrun 驱动的 kernel-doc 告警。当日 cpufreq 维护者 Viresh Kumar 直接「Applied. Thanks.」收取。属 x86 老驱动（Transmeta LongRun）的文档级修复。

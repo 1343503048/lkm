@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 175
+article_count: 176
 ---
 
+- [sched-20261027-007](/lkm/2026/10/27/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261026-009](/lkm/2026/10/26/sched-20261026-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261025-004](/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261024-012](/lkm/2026/10/24/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/merged_tip` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems

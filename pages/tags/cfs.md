@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 264
+article_count: 266
 ---
 
+- [sched-20261027-007](/lkm/2026/10/27/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
+- [sched-20261027-014](/lkm/2026/10/27/sched-20261027-014-linus-master-sched-c72945693b-stress-ng-rawudp-packets-32-by.html) `discussion/none/merged_tip` — [linus:master] [sched]  c72945693b: stress-ng.rawudp.packets_32_bytes_received_per_sec 34.2% improvement
 - [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261026-002](/lkm/2026/10/26/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261026-004](/lkm/2026/10/26/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups

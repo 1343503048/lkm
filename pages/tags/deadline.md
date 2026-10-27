@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 43
+article_count: 45
 ---
 
+- [sched-20261027-006](/lkm/2026/10/27/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task
+- [sched-20261027-009](/lkm/2026/10/27/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261025-003](/lkm/2026/10/25/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task
 - [sched-20261024-009](/lkm/2026/10/24/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.html) `bug/low/rfc` — kernel/sched/ext/ext.c:6823:19: sparse: sparse: incorrect type in assignment (different address spaces)
 - [sched-20261020-009](/lkm/2026/10/20/sched-20261020-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks

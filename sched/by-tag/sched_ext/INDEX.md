@@ -1,7 +1,13 @@
 # tag: sched_ext
 
-共 290 篇
+共 296 篇
 
+- [sched-20261027-013](../../2026/10/sched-20261027-013-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261027-012](../../2026/10/sched-20261027-012-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261027-011](../../2026/10/sched-20261027-011-sched-ext-reject-rq-lock-taking-kfuncs-in-tracing-programs.md) `fix/high/under_review` — Junbin Zhang（sprooc）发单补丁修一个死锁：`scx_bpf_cpuperf_set()`/`scx_bpf_cidperf_set()` 注册在 `scx_kfunc_ids_any`（对 `BPF_PROG_TYPE_TRACING` 开放），而 tracing 程序可能运行在「外层已持 rq lock」的上下文（如 `sched_switch`），此时 kfunc 会再次 `
+- [sched-20261027-003](../../2026/10/sched-20261027-003-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261027-002](../../2026/10/sched-20261027-002-sched-ext-fix-the-stall-watchdog-testing-and-blaming-the-wro.md) `fix/medium/merged_tip` — Tejun Heo 发往 sched_ext/for-7.4-fixes 的单补丁修复：bypassing 调度器的任务由其 host（最近的非 bypassing 祖先）运行，而 stall watchdog 在 `check_rq_for_timeouts()` 里对 task 测的是「owner 的 timeout」、eject 的却是「DSQ 所属调度器」，三者（被测 sched、被 ej
+- [sched-20261027-001](../../2026/10/sched-20261027-001-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-004](../../2026/10/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-008](../../2026/10/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-007](../../2026/10/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 91
+article_count: 94
 ---
 
+- [sched-20261027-015](/lkm/2026/10/27/sched-20261027-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `bug/medium/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
+- [sched-20261027-016](/lkm/2026/10/27/sched-20261027-016-cpufreq-stats-fix-potential-out-of-bounds-access-in-deferred.html) `bug/medium/merged_tip` — cpufreq: stats: Fix potential out-of-bounds access in deferred reset
+- [sched-20261027-017](/lkm/2026/10/27/sched-20261027-017-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver
 - [sched-20261022-004](/lkm/2026/10/22/sched-20261022-004-cpufreq-avoid-fallback-values-in-cpuinfo-avg-freq.html) `bug/medium/under_review` — cpufreq: Avoid fallback values in cpuinfo_avg_freq
 - [sched-20261022-006](/lkm/2026/10/22/sched-20261022-006-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20261021-015](/lkm/2026/10/21/sched-20261021-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload

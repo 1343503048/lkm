@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 290
+article_count: 296
 ---
 
+- [sched-20261027-001](/lkm/2026/10/27/sched-20261027-001-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/high/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
+- [sched-20261027-002](/lkm/2026/10/27/sched-20261027-002-sched-ext-fix-the-stall-watchdog-testing-and-blaming-the-wro.html) `fix/medium/merged_tip` — sched_ext: Fix the stall watchdog testing and blaming the wrong sched under bypass
+- [sched-20261027-003](/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
+- [sched-20261027-011](/lkm/2026/10/27/sched-20261027-011-sched-ext-reject-rq-lock-taking-kfuncs-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject rq-lock-taking kfuncs in tracing programs
+- [sched-20261027-012](/lkm/2026/10/27/sched-20261027-012-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.html) `discussion/none/under_review` — sched_ext: sub-scheduler kfuncs use struct scx_sched beyond the RCU read side under sleepable ops
+- [sched-20261027-013](/lkm/2026/10/27/sched-20261027-013-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/low/merged_tip` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
 - [sched-20261026-004](/lkm/2026/10/26/sched-20261026-004-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
 - [sched-20261025-007](/lkm/2026/10/25/sched-20261025-007-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.html) `fix/medium/under_review` — sched_ext: Sync tools headers with scx and fix unsigned enum reads
 - [sched-20261025-008](/lkm/2026/10/25/sched-20261025-008-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/medium/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps

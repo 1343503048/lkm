@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 67
+article_count: 68
 ---
 
+- [sched-20261027-003](/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261025-009](/lkm/2026/10/25/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/under_review` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261024-010](/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/superseded` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261023-001](/lkm/2026/10/23/sched-20261023-001-sched-small-changes.html) `fix/low/under_review` — sched: small changes

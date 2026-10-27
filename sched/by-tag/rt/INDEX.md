@@ -1,7 +1,8 @@
 # tag: rt
 
-共 41 篇
+共 42 篇
 
+- [sched-20261027-009](../../2026/10/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-009](../../2026/10/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.md) `bug/low/rfc` — kernel test robot（0day/LKP）的 sparse（W=1，sparc64 randconfig）编译告警报告：proxy execution 使 `rq->curr` / `rq->donor` 带 `__rcu` 标注后，kernel/sched 下大量直接解引用点（rt.c、deadline.c、ext.c、syscalls.c、sched.h）触发「different 
 - [sched-20261024-007](../../2026/10/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.md) `bug/high/under_review` — Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p
 - [sched-20261023-012](../../2026/10/sched-20261023-012-sched-ext-support-rt-task-within-sched-ext.md) `discussion/rfc` — 本文为增量更新，完整脉络见下。
