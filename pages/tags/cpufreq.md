@@ -2,9 +2,13 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 94
+article_count: 98
 ---
 
+- [sched-20261029-013](/lkm/2026/10/29/sched-20261029-013-cpufreq-amd-pstate-register-write-fixes.html) `fix/low/under_review` — cpufreq/amd-pstate register write fixes
+- [sched-20261029-015](/lkm/2026/10/29/sched-20261029-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `fix/low/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
+- [sched-20261029-016](/lkm/2026/10/29/sched-20261029-016-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver
+- [sched-20261029-017](/lkm/2026/10/29/sched-20261029-017-cpufreq-cppc-enable-boost-by-default-when-supported.html) `feature/none/under_review` — cpufreq: CPPC: Enable boost by default when supported
 - [sched-20261027-015](/lkm/2026/10/27/sched-20261027-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `bug/medium/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
 - [sched-20261027-016](/lkm/2026/10/27/sched-20261027-016-cpufreq-stats-fix-potential-out-of-bounds-access-in-deferred.html) `bug/medium/merged_tip` — cpufreq: stats: Fix potential out-of-bounds access in deferred reset
 - [sched-20261027-017](/lkm/2026/10/27/sched-20261027-017-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver

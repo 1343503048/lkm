@@ -1,7 +1,8 @@
 # tag: proxy_execution
 
-共 89 篇
+共 90 篇
 
+- [sched-20261029-009](../../2026/10/sched-20261029-009-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-010](../../2026/10/sched-20261027-010-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-005](../../2026/10/sched-20261027-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-006](../../2026/10/sched-20261026-006-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

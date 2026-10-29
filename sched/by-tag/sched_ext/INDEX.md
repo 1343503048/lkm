@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 296 篇
+共 297 篇
 
+- [sched-20261029-012](../../2026/10/sched-20261029-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.md) `fix/low/under_review` — Andrea Righi 修 sched_ext 的一个效率缺陷：两个 IMMED 任务在空闲 CPU 上被唤醒时，内核会**不必要地把两个都踢回 BPF**，而不是让第一个留在本地 DSQ 待下一次 pick。根因是第二次插入触发的 reenqueue scan 里 `rq_is_open()` 看到 `next_class == ext` 就判定 CPU 不可用，尽管 CPU 仍在 idle。
 - [sched-20261027-013](../../2026/10/sched-20261027-013-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-012](../../2026/10/sched-20261027-012-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-011](../../2026/10/sched-20261027-011-sched-ext-reject-rq-lock-taking-kfuncs-in-tracing-programs.md) `fix/high/under_review` — Junbin Zhang（sprooc）发单补丁修一个死锁：`scx_bpf_cpuperf_set()`/`scx_bpf_cidperf_set()` 注册在 `scx_kfunc_ids_any`（对 `BPF_PROG_TYPE_TRACING` 开放），而 tracing 程序可能运行在「外层已持 rq lock」的上下文（如 `sched_switch`），此时 kfunc 会再次 `

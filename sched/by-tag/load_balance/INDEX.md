@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 176 篇
+共 180 篇
 
+- [sched-20261029-007](../../2026/10/sched-20261029-007-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — Zhan Xusheng 发单补丁修 cache-aware 调度的一个放置缺陷：当源 CPU 的容量被外部因素（如 hrtimer 抢占、IRQ 记账）压减后，仍会被 `alb_break_llc()` 以「LLC 优先」为由拦下来不被迁移，任务长期滞留在低容量 CPU 上。补丁把「reduced capacity」检查挪到 `alb_break_llc()` 之前，让容量降低先于 LLC 偏好
+- [sched-20261029-006](../../2026/10/sched-20261029-006-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `discussion/under_review` — Qing Wang 的 v3 补丁把 `newidle_balance` 里用随机掷骰（`sched_rng()`）决定「本次是否做负载均衡」的做法，换成 **Bresenham 累加器**——在 1024 次窗口内把允许的均衡次数**均匀铺开**，消除随机方差带来的「长时间不均衡」或「连续均衡」突发。今日讨论：Kayra Cizmeci 要求先给「突发是否有实际影响」的数据、否则倾向保留现状，并
+- [sched-20261029-005](../../2026/10/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261029-003](../../2026/10/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-007](../../2026/10/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-009](../../2026/10/sched-20261026-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-004](../../2026/10/sched-20261025-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-10-25`，截至 `cac037a85c1971ec75c4d3edf5a28af9ec2a089c`），含三枚修复：mmcid affinity 触发切回 per-task 模式（Hui Su）、cache aware scheduling 在

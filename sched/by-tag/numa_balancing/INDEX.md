@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 68 篇
+共 70 篇
 
+- [sched-20261029-004](../../2026/10/sched-20261029-004-sched-numa-refine-memory-tiering-promotion-heuristics.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261029-003](../../2026/10/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-003](../../2026/10/sched-20261027-003-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-009](../../2026/10/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-010](../../2026/10/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。

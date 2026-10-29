@@ -1,7 +1,11 @@
 # tag: cpufreq
 
-共 94 篇
+共 98 篇
 
+- [sched-20261029-017](../../2026/10/sched-20261029-017-cpufreq-cppc-enable-boost-by-default-when-supported.md) `feature/under_review` — Pengjie Zhang（华为）的 v2 补丁让 CPPC 驱动在「Highest Performance 超过 Nominal Performance」（即平台支持 boost）时**默认启用 boost**，省去用户空间逐 policy 手动开启的步骤——此前驱动默认禁用 boost，governor 无法用到平台宣传的完整性能区间；仍可用 boost knob 退回 nominal 以内。
+- [sched-20261029-016](../../2026/10/sched-20261029-016-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261029-015](../../2026/10/sched-20261029-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261029-013](../../2026/10/sched-20261029-013-cpufreq-amd-pstate-register-write-fixes.md) `fix/low/under_review` — Christian Loehle（Arm）在把 AMD 机器纳入其 acpi-cppc 测试时发现两个 amd-pstate 寄存器写值缺陷，发 2 补丁修复（合计 1 文件 2 增 2 删）：① minimum 性能 hint 可超过 policy 上限（如 schedutil 遇到要满容量的 RT 任务时），旧逻辑反过来把 `max_perf` 抬到 `min_perf`、突破 policy 
 - [sched-20261027-017](../../2026/10/sched-20261027-017-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — Christian Köver-Draxl 提交的 Amlogic speed-bin cpufreq 驱动（系列 4/4）讨论继续：Christian Hewitt 提醒其 S4 相关工作（ramp-delay 是 OPP 切换稳定的关键），而 Amlogic 厂商侧 Chuan Liu 当众要求「先 hold off 不要在 S4 上提 cpufreq 驱动」，因 S4 的 clock 驱动尚
 - [sched-20261027-016](../../2026/10/sched-20261027-016-cpufreq-stats-fix-potential-out-of-bounds-access-in-deferred.md) `bug/medium/merged_tip` — Zhongqiu Han（Qualcomm）修 `cpufreq_stats` 的潜在越界访问：当 `policy->cur` 不在频率表里时 `stats->last_index` 停在 -1，而 deferred reset（`cpufreq_stats_reset_table()`）末尾无条件 `cpufreq_stats_update()`，写 `time_in_state[-1]`。补丁
 - [sched-20261027-015](../../2026/10/sched-20261027-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `bug/medium/under_review` — Zak Brighton Knight 报告并修一个 intel_pstate 被动模式的 resume 缺陷：无 HWP 的 Ivy Bridge（ThinkPad T520/i7-3840QM，coreboot）每次 suspend-to-RAM 后 turbo 永久丢失（停在 2.8GHz 基频直到改 policy limit 或重启），原因是 resume 时固件把 `MSR_IA32_P

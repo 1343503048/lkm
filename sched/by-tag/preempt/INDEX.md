@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 75 篇
+共 76 篇
 
+- [sched-20261029-011](../../2026/10/sched-20261029-011-sched-split-preempt-count-bookkeeping-from-raw-updates.md) `feature/rfc` — Karl Mehltretter 的 13 片 RFC v2 系列（patch 3「Split preempt-count bookkeeping from raw updates」）试图把 preempt count 的**原始更新**与**记账/debug/tracing**拆开：hardirq 最早入口在可插桩的 debug/tracing 代码能跑之前就必须更新 preempt count
 - [sched-20261024-014](../../2026/10/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-010](../../2026/10/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op

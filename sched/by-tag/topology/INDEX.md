@@ -1,7 +1,8 @@
 # tag: topology
 
-共 132 篇
+共 133 篇
 
+- [sched-20261029-005](../../2026/10/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
 - [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261023-005](../../2026/10/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.md) `feature/rfc` — Fengyu Wang（海光）发往 sched 的 RFC 单补丁：修正 `build_overlap_sched_groups()` 在部分 NUMA 拓扑（环形四节点即一例）下生成的 sched group 会互相重叠，导致同一 CPU 的负载/容量被重复计入、域平均值产生偏差。方案是「保留本地 child span、把重叠的 remote 候选下沉到更小的 NUMA 子域，直到其 child

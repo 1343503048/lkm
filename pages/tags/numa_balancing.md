@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 68
+article_count: 70
 ---
 
+- [sched-20261029-003](/lkm/2026/10/29/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
+- [sched-20261029-004](/lkm/2026/10/29/sched-20261029-004-sched-numa-refine-memory-tiering-promotion-heuristics.html) `discussion/none/under_review` — sched/numa: refine memory tiering promotion heuristics
 - [sched-20261027-003](/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
 - [sched-20261025-009](/lkm/2026/10/25/sched-20261025-009-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/under_review` — sched: use static_branch_likely() for the NUMA balancing tick check
 - [sched-20261024-010](/lkm/2026/10/24/sched-20261024-010-sched-use-static-branch-likely-for-the-numa-balancing-tick-c.html) `fix/low/superseded` — sched: use static_branch_likely() for the NUMA balancing tick check

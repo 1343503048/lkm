@@ -2,9 +2,10 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 89
+article_count: 90
 ---
 
+- [sched-20261029-009](/lkm/2026/10/29/sched-20261029-009-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.html) `fix/none/under_review` — sched/proxy: Add deactivated (sleeping) owner handling to find_proxy_task()
 - [sched-20261027-005](/lkm/2026/10/27/sched-20261027-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261027-010](/lkm/2026/10/27/sched-20261027-010-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.html) `feature/none/under_review` — sched/proxy: Add deactivated (sleeping) owner handling to find_proxy_task()
 - [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors

@@ -1,7 +1,8 @@
 # tag: cfs
 
-共 266 篇
+共 267 篇
 
+- [sched-20261029-008](../../2026/10/sched-20261029-008-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-014](../../2026/10/sched-20261027-014-linus-master-sched-c72945693b-stress-ng-rawudp-packets-32-by.md) `discussion/merged_tip` — kernel test robot 报告：mainline commit `c72945693b`（"sched: Restart fair hrtick after same-task repicks"，即 Shubhang Kaushik 的 same-task repick 后重启 fair hrtick 修复，9 月已合入）在 stress-ng rawudp 小包场景带来 **34.2%
 - [sched-20261027-007](../../2026/10/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-009](../../2026/10/sched-20261026-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

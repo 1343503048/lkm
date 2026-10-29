@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 296
+article_count: 297
 ---
 
+- [sched-20261029-012](/lkm/2026/10/29/sched-20261029-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.html) `fix/low/under_review` — sched_ext: Avoid unnecessary IMMED reenqueues on idle CPUs
 - [sched-20261027-001](/lkm/2026/10/27/sched-20261027-001-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/high/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
 - [sched-20261027-002](/lkm/2026/10/27/sched-20261027-002-sched-ext-fix-the-stall-watchdog-testing-and-blaming-the-wro.html) `fix/medium/merged_tip` — sched_ext: Fix the stall watchdog testing and blaming the wrong sched under bypass
 - [sched-20261027-003](/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support
