@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 102
+article_count: 103
 ---
 
+- [sched-20261031-004](/lkm/2026/10/31/sched-20261031-004-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support
 - [sched-20261030-013](/lkm/2026/10/30/sched-20261030-013-cpufreq-amd-pstate-register-write-fixes.html) `fix/low/under_review` — cpufreq/amd-pstate register write fixes
 - [sched-20261030-014](/lkm/2026/10/30/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `fix/low/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
 - [sched-20261030-015](/lkm/2026/10/30/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload

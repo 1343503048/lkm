@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 182 篇
+共 183 篇
 
+- [sched-20261031-009](../../2026/10/sched-20261031-009-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-018](../../2026/10/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-006](../../2026/10/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-007](../../2026/10/sched-20261029-007-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — Zhan Xusheng 发单补丁修 cache-aware 调度的一个放置缺陷：当源 CPU 的容量被外部因素（如 hrtimer 抢占、IRQ 记账）压减后，仍会被 `alb_break_llc()` 以「LLC 优先」为由拦下来不被迁移，任务长期滞留在低容量 CPU 上。补丁把「reduced capacity」检查挪到 `alb_break_llc()` 之前，让容量降低先于 LLC 偏好

@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 112
+article_count: 115
 ---
 
+- [sched-20261031-007](/lkm/2026/10/31/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.html) `fix/low/under_review` — sched/topology: Retry scheduler domains after failed construction
+- [sched-20261031-012](/lkm/2026/10/31/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
+- [sched-20261031-013](/lkm/2026/10/31/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/merged_tip` — sched_ext: Call ops.sub_attach() only while the cgroup is online
 - [sched-20261030-008](/lkm/2026/10/30/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261030-010](/lkm/2026/10/30/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/under_review` — sched_ext: Call ops.sub_attach() only while the cgroup is online
 - [sched-20261026-003](/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation

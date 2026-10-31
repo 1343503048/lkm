@@ -2,9 +2,12 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 54
+article_count: 57
 ---
 
+- [sched-20261031-001](/lkm/2026/10/31/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
+- [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
+- [sched-20261031-015](/lkm/2026/10/31/sched-20261031-015-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261030-003](/lkm/2026/10/30/sched-20261030-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261026-009](/lkm/2026/10/26/sched-20261026-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261025-004](/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes

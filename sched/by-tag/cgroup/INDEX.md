@@ -1,7 +1,10 @@
 # tag: cgroup
 
-共 112 篇
+共 115 篇
 
+- [sched-20261031-013](../../2026/10/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261031-012](../../2026/10/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261031-007](../../2026/10/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.md) `fix/low/under_review` — Avi Weiss 的单补丁修 `partition_sched_domains_locked()` 的一个缺陷：`build_sched_domains()` 失败后，请求的分区仍被记录，于是下一次**相同的**重建会直接复用这个失败分区，导致其 CPU 在瞬时的 `alloc_rootdomain()` 失败后一直挂在默认根域上。修法：复用/摘除分区前先确认根域已安装（`+13/-3`），让下
 - [sched-20261030-010](../../2026/10/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/under_review` — Tejun Heo 修 sched_ext cgroup sub-scheduler 的一个竞态：`ops.sub_attach()` 在 enable work 检查 cgroup 是否仍 online **之前**执行，父调度器可能为一个「rmdir 已经返回」的 cgroup 收到 attach 回调，让父侧的 cgroup 清理与 sub-scheduler attach 产生竞争。修法：
 - [sched-20261030-008](../../2026/10/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-003](../../2026/10/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。

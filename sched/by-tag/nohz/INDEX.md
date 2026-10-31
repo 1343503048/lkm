@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 54 篇
+共 55 篇
 
+- [sched-20261031-001](../../2026/10/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 的 v2 补丁删掉 `kcpustat_dyntick_stop()` 里一条误报的 `WARN_ON`：x86 在 jiffies→tsc-early 时钟源切换后的第一个 idle 周期里，idle 结束可能早于下一个 tick 周期的起点，此时**并没有重复记账**，只是警告判断写错。Linus 本人、Paul Menzel、Breno Leitao 各自在真机/
 - [sched-20261029-010](../../2026/10/sched-20261029-010-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-008](../../2026/10/sched-20261027-008-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-005](../../2026/10/sched-20261025-005-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 修 `kcpustat_dyntick_stop()` 的误报 WARN：时钟源从 refined-jiffies 切到 tsc-early（或 KVM 下 jiffies→hpet）时 ktime 落后 tick 至多一个 tick，NOHZ 排的 sched timer 可能在 now 之后一个 tick 以上才到期，idle 提前退出就命中 `now < tick

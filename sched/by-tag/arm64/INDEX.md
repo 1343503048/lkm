@@ -1,7 +1,8 @@
 # tag: arm64
 
-共 30 篇
+共 31 篇
 
+- [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`
 - [sched-20261015-021](../../2026/10/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261009-002](../../2026/10/sched-20261009-002-cpufreq-qcom-cpufreq-hw-fix-device-node-refcount-leak-in-pha.md) `fix/low/merged_tip` — Haotian Zhang（ISCAS）修复 qcom-cpufreq-hw 里 `of_parse_phandle_with_args()` 返回的 provider 节点引用从未被 `of_node_put()` 释放、每次成功调用都泄漏一个引用（`qcom_get_related_cpus()` 每个 present CPU 泄漏一次）的 bug。维护者 Viresh Kumar 当日即回复
 - [sched-20260925-010](../../2026/09/sched-20260925-010-sched-steal-governor-introduce-preferred-cpus-and-steal-driv.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

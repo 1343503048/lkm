@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 302
+article_count: 305
 ---
 
+- [sched-20261031-003](/lkm/2026/10/31/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
+- [sched-20261031-013](/lkm/2026/10/31/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/merged_tip` — sched_ext: Call ops.sub_attach() only while the cgroup is online
+- [sched-20261031-014](/lkm/2026/10/31/sched-20261031-014-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.html) `fix/low/merged_tip` — sched_ext: Fix scx_bpf_dsq_reenq() kerneldoc claiming NMI calls are allowed
 - [sched-20261030-009](/lkm/2026/10/30/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
 - [sched-20261030-010](/lkm/2026/10/30/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/under_review` — sched_ext: Call ops.sub_attach() only while the cgroup is online
 - [sched-20261030-011](/lkm/2026/10/30/sched-20261030-011-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.html) `fix/low/under_review` — sched_ext: Fix scx_bpf_dsq_reenq() kerneldoc claiming NMI calls are allowed

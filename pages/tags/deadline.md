@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 46
+article_count: 48
 ---
 
+- [sched-20261031-002](/lkm/2026/10/31/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `bug/medium/rfc` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
+- [sched-20261031-011](/lkm/2026/10/31/sched-20261031-011-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.html) `bug/medium/under_review` — sched/deadline: total_bw leak when a task leaves SCHED_DEADLINE while not queued
 - [sched-20261030-001](/lkm/2026/10/30/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.html) `bug/medium/under_review` — sched/deadline: total_bw leak when a task leaves SCHED_DEADLINE while not queued
 - [sched-20261027-006](/lkm/2026/10/27/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task
 - [sched-20261027-009](/lkm/2026/10/27/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks

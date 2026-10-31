@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 15 篇
+共 16 篇
 
+- [sched-20261031-002](../../2026/10/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `bug/medium/rfc` — Tejun Heo 最初发了一版 `[PATCH sched/urgent]` 修 `__pick_task_dl()` 在 server pick 返回 `RETRY_TASK` 时也把 server 记进 `rq->dl_server`、导致重启的 pick 把「陈旧 server」塞给无关任务的缺陷；随后两封回帖自撤回——「发错补丁了」，改成发**带 reproducer 的 bug 报告*
 - [sched-20261018-010](../../2026/10/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261016-014](../../2026/10/sched-20261016-014-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261015-012](../../2026/10/sched-20261015-012-sched-deadline-make-dl-server-nohz-full-aware.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

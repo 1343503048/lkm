@@ -2,9 +2,10 @@
 layout: default
 tag: "tick"
 title: "标签: tick"
-article_count: 7
+article_count: 8
 ---
 
+- [sched-20261031-001](/lkm/2026/10/31/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261019-010](/lkm/2026/10/19/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks
 - [sched-20261019-013](/lkm/2026/10/19/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.html) `feature/none/rfc` — cpu/hotplug: Remove cpu_down() global stop_machine() except for CPUHP_TEARDOWN_CPU itself
 - [sched-20261017-005](/lkm/2026/10/17/sched-20261017-005-sched-core-use-the-scheduling-context-for-remote-ticks.html) `fix/medium/under_review` — sched/core: Use the scheduling context for remote ticks

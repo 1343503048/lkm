@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 102 篇
+共 103 篇
 
+- [sched-20261031-004](../../2026/10/sched-20261031-004-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-017](../../2026/10/sched-20261030-017-selftests-cpufreq-stop-cpu-hotplug-loop-after-cpufreq-update.md) `fix/low/under_review` — Yining Xiong 修 cpufreq selftests 的 hotplug 测试：原 `hotplug_with_updates_cpu()` 用固定 5000 次循环触发 CPU hotplug，存在①测试结束后后台 hotplug 任务仍继续跑（冗余 on/offline）、②cpufreq 频率设置慢时 hotplug 循环可能在频率更新完成前就退出（破坏测试目的）两个问题。v3 
 - [sched-20261030-015](../../2026/10/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-014](../../2026/10/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

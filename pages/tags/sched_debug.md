@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 76
+article_count: 77
 ---
 
+- [sched-20261031-005](/lkm/2026/10/31/sched-20261031-005-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name
 - [sched-20261030-005](/lkm/2026/10/30/sched-20261030-005-sched-debug-introduce-per-cpu-debugfs-files.html) `fix/low/under_review` — sched/debug: Introduce per-CPU debugfs files
 - [sched-20261029-002](/lkm/2026/10/29/sched-20261029-002-sched-debug-introduce-per-cpu-debugfs-files.html) `fix/low/under_review` — sched/debug: Introduce per-CPU debugfs files
 - [sched-20261026-001](/lkm/2026/10/26/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors

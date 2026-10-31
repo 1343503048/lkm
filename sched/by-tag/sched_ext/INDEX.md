@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 302 篇
+共 305 篇
 
+- [sched-20261031-014](../../2026/10/sched-20261031-014-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261031-013](../../2026/10/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261031-003](../../2026/10/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-021](../../2026/10/sched-20261030-021-git-pull-sched-ext-fixes-for-v7-4.md) `fix/merged_tip` — Tejun Heo 的 `sched_ext: Fixes for v7.4` GIT PULL（10-27 发出）已被 Linus 合并进 `torvalds/linux.git`，合并 commit 为 `729beb5aa80ce4bcf40f9ff74ed845269393a6ae`。这是 v7.4 窗口的 sched_ext 修复集（区别于此前已单独覆盖的「sched_ext: Chan
 - [sched-20261030-012](../../2026/10/sched-20261030-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-011](../../2026/10/sched-20261030-011-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.md) `fix/low/under_review` — Tejun Heo 修 sched_ext 的 kerneldoc 与实现不符：`c659e506f9a7`（"sched_ext: Reject NMI calls to lock-taking kfuncs"）已让 `scx_bpf_dsq_reenq()` 在 NMI 调用时 abort 调度器，但该 kfunc 及其 wrapper `scx_bpf_reenqueue_local___v

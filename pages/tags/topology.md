@@ -2,9 +2,10 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 133
+article_count: 134
 ---
 
+- [sched-20261031-007](/lkm/2026/10/31/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.html) `fix/low/under_review` — sched/topology: Retry scheduler domains after failed construction
 - [sched-20261029-005](/lkm/2026/10/29/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `discussion/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261023-005](/lkm/2026/10/23/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.html) `feature/none/rfc` — sched/topology: Avoid overlapping NUMA groups when possible
 - [sched-20261023-013](/lkm/2026/10/23/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/under_review` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems

@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 46 篇
+共 48 篇
 
+- [sched-20261031-011](../../2026/10/sched-20261031-011-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261031-002](../../2026/10/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `bug/medium/rfc` — Tejun Heo 最初发了一版 `[PATCH sched/urgent]` 修 `__pick_task_dl()` 在 server pick 返回 `RETRY_TASK` 时也把 server 记进 `rq->dl_server`、导致重启的 pick 把「陈旧 server」塞给无关任务的缺陷；随后两封回帖自撤回——「发错补丁了」，改成发**带 reproducer 的 bug 报告*
 - [sched-20261030-001](../../2026/10/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/medium/under_review` — Tejun Heo 报告一个 SCHED_DEADLINE 的带宽泄漏 bug：任务在「未入队」（睡眠或被 SIGSTOP 暂停）状态下切换到其它调度策略时，其在 root domain 的 `total_bw` 中的带宽不会被归还，任务退出后依然残留；反复触发可把 `total_bw` 填满到准入上限，之后 `sched_setattr(SCHED_DEADLINE)`、CPU offline、
 - [sched-20261027-009](../../2026/10/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-006](../../2026/10/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

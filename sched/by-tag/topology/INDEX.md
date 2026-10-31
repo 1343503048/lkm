@@ -1,7 +1,8 @@
 # tag: topology
 
-共 133 篇
+共 134 篇
 
+- [sched-20261031-007](../../2026/10/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.md) `fix/low/under_review` — Avi Weiss 的单补丁修 `partition_sched_domains_locked()` 的一个缺陷：`build_sched_domains()` 失败后，请求的分区仍被记录，于是下一次**相同的**重建会直接复用这个失败分区，导致其 CPU 在瞬时的 `alloc_rootdomain()` 失败后一直挂在默认根域上。修法：复用/摘除分区前先确认根域已安装（`+13/-3`），让下
 - [sched-20261029-005](../../2026/10/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
 - [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
