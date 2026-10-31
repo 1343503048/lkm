@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 180
+article_count: 182
 ---
 
+- [sched-20261030-006](/lkm/2026/10/30/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.html) `fix/low/under_review` — sched/cache: Check reduced capacity before alb_break_llc()
+- [sched-20261030-018](/lkm/2026/10/30/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `discussion/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261029-003](/lkm/2026/10/29/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
 - [sched-20261029-005](/lkm/2026/10/29/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `discussion/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261029-006](/lkm/2026/10/29/sched-20261029-006-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `discussion/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator

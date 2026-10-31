@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 79
+article_count: 80
 ---
 
+- [sched-20261030-003](/lkm/2026/10/30/sched-20261030-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261023-010](/lkm/2026/10/23/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261022-005](/lkm/2026/10/22/sched-20261022-005-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261022-007](/lkm/2026/10/22/sched-20261022-007-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue

@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 297 篇
+共 302 篇
 
+- [sched-20261030-021](../../2026/10/sched-20261030-021-git-pull-sched-ext-fixes-for-v7-4.md) `fix/merged_tip` — Tejun Heo 的 `sched_ext: Fixes for v7.4` GIT PULL（10-27 发出）已被 Linus 合并进 `torvalds/linux.git`，合并 commit 为 `729beb5aa80ce4bcf40f9ff74ed845269393a6ae`。这是 v7.4 窗口的 sched_ext 修复集（区别于此前已单独覆盖的「sched_ext: Chan
+- [sched-20261030-012](../../2026/10/sched-20261030-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-011](../../2026/10/sched-20261030-011-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.md) `fix/low/under_review` — Tejun Heo 修 sched_ext 的 kerneldoc 与实现不符：`c659e506f9a7`（"sched_ext: Reject NMI calls to lock-taking kfuncs"）已让 `scx_bpf_dsq_reenq()` 在 NMI 调用时 abort 调度器，但该 kfunc 及其 wrapper `scx_bpf_reenqueue_local___v
+- [sched-20261030-010](../../2026/10/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/under_review` — Tejun Heo 修 sched_ext cgroup sub-scheduler 的一个竞态：`ops.sub_attach()` 在 enable work 检查 cgroup 是否仍 online **之前**执行，父调度器可能为一个「rmdir 已经返回」的 cgroup 收到 attach 回调，让父侧的 cgroup 清理与 sub-scheduler attach 产生竞争。修法：
+- [sched-20261030-009](../../2026/10/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.md) `fix/medium/under_review` — Tejun Heo 修 sched_ext 在 proxy execution 下的一个 stale pick 缺陷：`do_pick_task_scx()` 把 `rq->donor` 作为 `@prev` 传给 `dispatch_one()`，但 `dispatch_one()` 释放 rq lock 期间，别的 CPU 可能唤醒该 donor 并把它迁移走（`proxy_needs_ret
 - [sched-20261029-012](../../2026/10/sched-20261029-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.md) `fix/low/under_review` — Andrea Righi 修 sched_ext 的一个效率缺陷：两个 IMMED 任务在空闲 CPU 上被唤醒时，内核会**不必要地把两个都踢回 BPF**，而不是让第一个留在本地 DSQ 待下一次 pick。根因是第二次插入触发的 reenqueue scan 里 `rq_is_open()` 看到 `next_class == ext` 就判定 CPU 不可用，尽管 CPU 仍在 idle。
 - [sched-20261027-013](../../2026/10/sched-20261027-013-sched-ext-sync-tools-headers-with-scx-and-fix-unsigned-enum.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-012](../../2026/10/sched-20261027-012-sched-ext-sub-scheduler-kfuncs-use-struct-scx-sched-beyond-t.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。

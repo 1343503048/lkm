@@ -2,9 +2,10 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 45
+article_count: 46
 ---
 
+- [sched-20261030-001](/lkm/2026/10/30/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.html) `bug/medium/under_review` — sched/deadline: total_bw leak when a task leaves SCHED_DEADLINE while not queued
 - [sched-20261027-006](/lkm/2026/10/27/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task
 - [sched-20261027-009](/lkm/2026/10/27/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261025-003](/lkm/2026/10/25/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/under_review` — sched/deadline: Fix this_bw on class change of a dying task

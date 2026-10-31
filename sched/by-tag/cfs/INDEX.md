@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 267 篇
+共 270 篇
 
+- [sched-20261030-007](../../2026/10/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-004](../../2026/10/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-002](../../2026/10/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.md) `bug/high/under_review` — Ajay Kaher（Broadcom）报告 6.1.159（Photon OS 5.0）内核在 `update_blocked_averages()` 里触发 general protection fault（疑似 use-after-free）：一个已被释放的 task_group 的 cfs_rq 仍挂在 `rq->leaf_cfs_rq_list` 上，`for_each_leaf_cfs
 - [sched-20261029-008](../../2026/10/sched-20261029-008-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-014](../../2026/10/sched-20261027-014-linus-master-sched-c72945693b-stress-ng-rawudp-packets-32-by.md) `discussion/merged_tip` — kernel test robot 报告：mainline commit `c72945693b`（"sched: Restart fair hrtick after same-task repicks"，即 Shubhang Kaushik 的 same-task repick 后重启 fair hrtick 修复，9 月已合入）在 stress-ng rawudp 小包场景带来 **34.2%
 - [sched-20261027-007](../../2026/10/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

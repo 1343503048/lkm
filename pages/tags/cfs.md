@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 267
+article_count: 270
 ---
 
+- [sched-20261030-002](/lkm/2026/10/30/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.html) `bug/high/under_review` — [BUG] sched/fair: GPF in update_blocked_averages() on stale leaf cfs_rq of freed task_group (6.1.159)
+- [sched-20261030-004](/lkm/2026/10/30/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
+- [sched-20261030-007](/lkm/2026/10/30/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/medium/under_review` — sched/fair: Clear throttle state when leaving the fair class
 - [sched-20261029-008](/lkm/2026/10/29/sched-20261029-008-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/medium/under_review` — sched/fair: Clear throttle state when leaving the fair class
 - [sched-20261027-007](/lkm/2026/10/27/sched-20261027-007-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261027-014](/lkm/2026/10/27/sched-20261027-014-linus-master-sched-c72945693b-stress-ng-rawudp-packets-32-by.html) `discussion/none/merged_tip` — [linus:master] [sched]  c72945693b: stress-ng.rawudp.packets_32_bytes_received_per_sec 34.2% improvement

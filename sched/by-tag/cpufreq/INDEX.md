@@ -1,7 +1,11 @@
 # tag: cpufreq
 
-共 98 篇
+共 102 篇
 
+- [sched-20261030-017](../../2026/10/sched-20261030-017-selftests-cpufreq-stop-cpu-hotplug-loop-after-cpufreq-update.md) `fix/low/under_review` — Yining Xiong 修 cpufreq selftests 的 hotplug 测试：原 `hotplug_with_updates_cpu()` 用固定 5000 次循环触发 CPU hotplug，存在①测试结束后后台 hotplug 任务仍继续跑（冗余 on/offline）、②cpufreq 频率设置慢时 hotplug 循环可能在频率更新完成前就退出（破坏测试目的）两个问题。v3 
+- [sched-20261030-015](../../2026/10/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-014](../../2026/10/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-013](../../2026/10/sched-20261030-013-cpufreq-amd-pstate-register-write-fixes.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-017](../../2026/10/sched-20261029-017-cpufreq-cppc-enable-boost-by-default-when-supported.md) `feature/under_review` — Pengjie Zhang（华为）的 v2 补丁让 CPPC 驱动在「Highest Performance 超过 Nominal Performance」（即平台支持 boost）时**默认启用 boost**，省去用户空间逐 policy 手动开启的步骤——此前驱动默认禁用 boost，governor 无法用到平台宣传的完整性能区间；仍可用 boost knob 退回 nominal 以内。
 - [sched-20261029-016](../../2026/10/sched-20261029-016-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-015](../../2026/10/sched-20261029-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -1,7 +1,8 @@
 # tag: idle
 
-共 80 篇
+共 81 篇
 
+- [sched-20261030-016](../../2026/10/sched-20261030-016-cpuidle-idle-miss-accounting-fixes.md) `fix/low/under_review` — Christian Loehle（Arm）发 2 补丁修 cpuidle 的 `cpu_idle_miss` 统计：① 把「timer 广播失败导致的浅状态回退」从 above/below miss 记账中排除（广播回退是本该计 miss 的被动行为，会污染观测）；② 在判 below miss 时尊重 entry-time 延迟约束，排除「更深状态存在但违反 latency QoS」造成的假 b
 - [sched-20261029-014](../../2026/10/sched-20261029-014-arm-omap-cpuidle34xx-fix-unbalanced-cpu-pm-enter-exit-and-cl.md) `fix/medium/under_review` — Andreas Kemnade 发 2 补丁修 OMAP3 cpuidle 驱动（`arch/arm/mach-omap2/cpuidle34xx.c`）：① 平衡 `cpu_pm_enter()`/`cpu_pm_exit()` 调用——原代码在 idle 路径上 enter/exit 不对等，导致 `vfp_pm_resume()` 不会被调用来恢复 NEON/FPU 状态（作者在研究偶发 F
 - [sched-20261026-008](../../2026/10/sched-20261026-008-sched-idle-use-hrtimer-cleanup-class-in-play-idle-precise.md) `fix/low/merged_tip` — Hui Su 的 `sched/idle` 清理补丁已被 Thomas Gleixner 合入 tip 的 `timers/urgent` 分支（commit `bd091346971c88fccd44afd2547d28366f824572`）：用 `hrtimer_on_stack` cleanup class（`CLASS()`）把 `play_idle_precise()` 里 on-st
 - [sched-20261026-007](../../2026/10/sched-20261026-007-sched-hotplug-remove-unused-idle-task-exit.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。

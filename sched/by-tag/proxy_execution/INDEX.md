@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 90 篇
+共 92 篇
 
+- [sched-20261030-020](../../2026/10/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-009](../../2026/10/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.md) `fix/medium/under_review` — Tejun Heo 修 sched_ext 在 proxy execution 下的一个 stale pick 缺陷：`do_pick_task_scx()` 把 `rq->donor` 作为 `@prev` 传给 `dispatch_one()`，但 `dispatch_one()` 释放 rq lock 期间，别的 CPU 可能唤醒该 donor 并把它迁移走（`proxy_needs_ret
 - [sched-20261029-009](../../2026/10/sched-20261029-009-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-010](../../2026/10/sched-20261027-010-sched-proxy-add-deactivated-sleeping-owner-handling-to-find.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-005](../../2026/10/sched-20261027-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

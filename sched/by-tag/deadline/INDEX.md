@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 45 篇
+共 46 篇
 
+- [sched-20261030-001](../../2026/10/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/medium/under_review` — Tejun Heo 报告一个 SCHED_DEADLINE 的带宽泄漏 bug：任务在「未入队」（睡眠或被 SIGSTOP 暂停）状态下切换到其它调度策略时，其在 root domain 的 `total_bw` 中的带宽不会被归还，任务退出后依然残留；反复触发可把 `total_bw` 填满到准入上限，之后 `sched_setattr(SCHED_DEADLINE)`、CPU offline、
 - [sched-20261027-009](../../2026/10/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-006](../../2026/10/sched-20261027-006-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-003](../../2026/10/sched-20261025-003-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/under_review` — Nickolai Zeldovich 发 v1 单补丁，修 SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 之后、`__schedule()` dequeue 之前被 `sched_setscheduler(2)` 移出类时 `this_bw` 被重复扣减的 bug：`this_bw` 直到重启都偏小，`__sub_rq_bw()` 报 unde

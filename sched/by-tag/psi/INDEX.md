@@ -1,7 +1,8 @@
 # tag: psi
 
-共 22 篇
+共 23 篇
 
+- [sched-20261030-020](../../2026/10/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261019-011](../../2026/10/sched-20261019-011-sched-psi-preserve-rt-poll-notifications.md) `fix/medium/under_review` — Hui Su 发往 sched/psi 的两补丁修复：特权 RT trigger 注册会先吞掉 pressure 记账、独立 worker 关闭路径会让 rate-limit 内的 pending 事件悬空。补丁 1 保留注册时的 pressure 变化并在到期评估后推进 consumed total；补丁 2 从 trigger 列表推导 pending deadline，投递后回到 idle。
 - [sched-20261019-007](../../2026/10/sched-20261019-007-sched-psi-keep-average-work-scheduled-for-pending-notificati.md) `fix/medium/under_review` — Hui Su 发往 sched/psi 的单补丁修复：非特权 PSI trigger 用平均聚合 worker，若在 rate-limit 窗口内触发阈值、通知被 `pending_event` 推迟，而窗口未到压力就停了，`psi_avgs_work()` 因 `PSI_STATE_RESCHEDULE` 不再置位而停止续排，pending 事件可能一直不投递直到新活动重启 worker。补丁复
 - [sched-20261016-006](../../2026/10/sched-20261016-006-sched-psi-remove-the-rcu-wait-from-trigger-destruction.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

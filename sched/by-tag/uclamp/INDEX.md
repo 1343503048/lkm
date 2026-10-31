@@ -1,7 +1,8 @@
 # tag: uclamp
 
-共 4 篇
+共 5 篇
 
+- [sched-20261030-004](../../2026/10/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-001](../../2026/10/sched-20261029-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-002](../../2026/10/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-001](../../2026/10/sched-20261025-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — Qais Yousef 发单补丁修 uclamp 的 static key 非原子翻转导致的 runqueue 计数失衡竞态：`sched_uclamp_used` 使能瞬间部分 CPU 走 uclamp 快路径、部分不走，跨 CPU 的 enqueue/dequeue 不对称会使 `uclamp_rq` 计数永久错位。方案不试图堵住竞态，改为「视为既成事实 + idle 入口纠错」。kernel

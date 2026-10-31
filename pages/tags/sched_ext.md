@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 297
+article_count: 302
 ---
 
+- [sched-20261030-009](/lkm/2026/10/30/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
+- [sched-20261030-010](/lkm/2026/10/30/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/under_review` — sched_ext: Call ops.sub_attach() only while the cgroup is online
+- [sched-20261030-011](/lkm/2026/10/30/sched-20261030-011-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.html) `fix/low/under_review` — sched_ext: Fix scx_bpf_dsq_reenq() kerneldoc claiming NMI calls are allowed
+- [sched-20261030-012](/lkm/2026/10/30/sched-20261030-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.html) `fix/low/merged_tip` — sched_ext: Avoid unnecessary IMMED reenqueues on idle CPUs
+- [sched-20261030-021](/lkm/2026/10/30/sched-20261030-021-git-pull-sched-ext-fixes-for-v7-4.html) `fix/none/merged_tip` — [GIT PULL] sched_ext: Fixes for v7.4
 - [sched-20261029-012](/lkm/2026/10/29/sched-20261029-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.html) `fix/low/under_review` — sched_ext: Avoid unnecessary IMMED reenqueues on idle CPUs
 - [sched-20261027-001](/lkm/2026/10/27/sched-20261027-001-sched-ext-fix-bypassed-sub-scheduler-tasks-stalling-when-the.html) `fix/high/under_review` — sched_ext: Fix bypassed sub-scheduler tasks stalling when the host lacks caps
 - [sched-20261027-002](/lkm/2026/10/27/sched-20261027-002-sched-ext-fix-the-stall-watchdog-testing-and-blaming-the-wro.html) `fix/medium/merged_tip` — sched_ext: Fix the stall watchdog testing and blaming the wrong sched under bypass

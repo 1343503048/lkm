@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 70
+article_count: 71
 ---
 
+- [sched-20261030-019](/lkm/2026/10/30/sched-20261030-019-sched-numa-refine-memory-tiering-promotion-heuristics.html) `discussion/none/under_review` — sched/numa: refine memory tiering promotion heuristics
 - [sched-20261029-003](/lkm/2026/10/29/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity
 - [sched-20261029-004](/lkm/2026/10/29/sched-20261029-004-sched-numa-refine-memory-tiering-promotion-heuristics.html) `discussion/none/under_review` — sched/numa: refine memory tiering promotion heuristics
 - [sched-20261027-003](/lkm/2026/10/27/sched-20261027-003-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support

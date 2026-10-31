@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 110
+article_count: 112
 ---
 
+- [sched-20261030-008](/lkm/2026/10/30/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
+- [sched-20261030-010](/lkm/2026/10/30/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/under_review` — sched_ext: Call ops.sub_attach() only while the cgroup is online
 - [sched-20261026-003](/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261023-004](/lkm/2026/10/23/sched-20261023-004-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261023-010](/lkm/2026/10/23/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption

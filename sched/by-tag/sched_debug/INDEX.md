@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 75 篇
+共 76 篇
 
+- [sched-20261030-005](../../2026/10/sched-20261030-005-sched-debug-introduce-per-cpu-debugfs-files.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-002](../../2026/10/sched-20261029-002-sched-debug-introduce-per-cpu-debugfs-files.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-001](../../2026/10/sched-20261026-001-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261025-006](../../2026/10/sched-20261025-006-sched-stats-fix-run-delay-over-count-for-migrated-sched-dela.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

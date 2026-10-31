@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 180 篇
+共 182 篇
 
+- [sched-20261030-018](../../2026/10/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261030-006](../../2026/10/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-007](../../2026/10/sched-20261029-007-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — Zhan Xusheng 发单补丁修 cache-aware 调度的一个放置缺陷：当源 CPU 的容量被外部因素（如 hrtimer 抢占、IRQ 记账）压减后，仍会被 `alb_break_llc()` 以「LLC 优先」为由拦下来不被迁移，任务长期滞留在低容量 CPU 上。补丁把「reduced capacity」检查挪到 `alb_break_llc()` 之前，让容量降低先于 LLC 偏好
 - [sched-20261029-006](../../2026/10/sched-20261029-006-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `discussion/under_review` — Qing Wang 的 v3 补丁把 `newidle_balance` 里用随机掷骰（`sched_rng()`）决定「本次是否做负载均衡」的做法，换成 **Bresenham 累加器**——在 1024 次窗口内把允许的均衡次数**均匀铺开**，消除随机方差带来的「长时间不均衡」或「连续均衡」突发。今日讨论：Kayra Cizmeci 要求先给「突发是否有实际影响」的数据、否则倾向保留现状，并
 - [sched-20261029-005](../../2026/10/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。

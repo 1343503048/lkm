@@ -20301,6 +20301,351 @@
     "tldr": "Pengjie Zhang（华为）的 v2 补丁让 CPPC 驱动在「Highest Performance 超过 Nominal Performance」（即平台支持 boost）时**默认启用 boost**，省去用户空间逐 policy 手动开启的步骤——此前驱动默认禁用 boost，governor 无法用到平台宣传的完整性能区间；仍可用 boost knob 退回 nominal 以内。今日 Christian Loehle（Arm）继续评论：声明「并非拦补丁」，但抛出更深一层的问题——「highest − nominal 当作 boost」这个解释本身**是否还值得保留**？若干脆"
   },
   {
+    "title": "sched/deadline: total_bw leak when a task leaves SCHED_DEADLINE while not queued",
+    "id": "sched-20261030-001",
+    "date": "2026-10-30",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.html",
+    "tldr": "Tejun Heo 报告一个 SCHED_DEADLINE 的带宽泄漏 bug：任务在「未入队」（睡眠或被 SIGSTOP 暂停）状态下切换到其它调度策略时，其在 root domain 的 `total_bw` 中的带宽不会被归还，任务退出后依然残留；反复触发可把 `total_bw` 填满到准入上限，之后 `sched_setattr(SCHED_DEADLINE)`、CPU offline、以及启用 sched_ext（挂 ext dl_server）都会以 `-EBUSY` 失败。Juri Lelli 当日给出一个 inline 修复补丁（在 `switched_from_dl()` "
+  },
+  {
+    "title": "[BUG] sched/fair: GPF in update_blocked_averages() on stale leaf cfs_rq of freed task_group (6.1.159)",
+    "id": "sched-20261030-002",
+    "date": "2026-10-30",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "crash"
+    ],
+    "authors": [
+      "Ajay Kaher"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.html",
+    "tldr": "Ajay Kaher（Broadcom）报告 6.1.159（Photon OS 5.0）内核在 `update_blocked_averages()` 里触发 general protection fault（疑似 use-after-free）：一个已被释放的 task_group 的 cfs_rq 仍挂在 `rq->leaf_cfs_rq_list` 上，`for_each_leaf_cfs_rq_safe()` 遍历到它时解引用 `cfs_rq->tg->se[cpu]` 拿到垃圾指针导致崩溃。无 vmcore、无复现脚本。作者怀疑存在一条「在 `unregister_fair_sch"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20261030-003",
+    "date": "2026-10-30",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "eevdf",
+      "regression"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-003-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260923-001 / 20261007-009：Aishwarya Rambhadran 报告 v7.2→v7.3 在 AWS Graviton3 上个别 schbench 配置 p99 回退 ~30%，bisect 指向「Move to a single runqueue」；后续怀疑点收敛到 WA_WEIGHT/task_h_load。 - sched-20261016-002：Jakub Okoński 给出可复现量化回归——单运行队列疑似破坏 `cpu.idle` cgroup 的 wakeup p"
+  },
+  {
+    "title": "sched/uclamp: Fix race condition leading to imbalanced uclamp_rq",
+    "id": "sched-20261030-004",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "uclamp",
+      "cfs"
+    ],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261025-001：Qais Yousef 发单补丁修 uclamp 的 static key 非原子翻转导致的 runqueue 计数失衡竞态，方案「视为既成事实 + idle 入口纠错」；lkp 当日报 `init_uclamp_rq` 链接错误。 - sched-20261026-002（v2）：修掉链接错误，idle 检测改 `WARN_ON(uclamp_is_imbalanced(rq))`；Peter 建议把 `uclamp_flags` 折进 hole、用 `UCLAMP_FLAG_IDLE"
+  },
+  {
+    "title": "sched/debug: Introduce per-CPU debugfs files",
+    "id": "sched-20261030-005",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Aaron Tomlin"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-005-sched-debug-introduce-per-cpu-debugfs-files.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260728-004 / 20260809-001（v1–v3）：Aaron Tomlin 发起「按 CPU 暴露调度调试信息」系列，最初单补丁把 `/proc/sched_debug` 部分内容下放到 per-CPU debugfs 文件 `/sys/kernel/debug/sched/cpu/cpu<N>/debug`，并顺手修掉并发读 `/sys/kernel/debug/sched/debug` 时几处 lockless 解引用 UAF。 - sched-20260827-001 / 2026082"
+  },
+  {
+    "title": "sched/cache: Check reduced capacity before alb_break_llc()",
+    "id": "sched-20261030-006",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "load_balance"
+    ],
+    "authors": [
+      "Zhan Xusheng"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261029-007：Zhan Xusheng 发单补丁修 cache-aware 调度放置缺陷——源 CPU 容量被压减后仍被 `alb_break_llc()` 以 LLC 优先拦下不迁移，任务滞留低容量 CPU；把 reduced-capacity 检查挪到 `alb_break_llc()` 之前。QEMU 复现：任务 20s 内停在 CPU0 只能跑 1.8e7 iters/s，关 cache-aware 后 4.6e7。Chen Yu 认可方向但要求补 benchmark 并考虑调 `alb_br"
+  },
+  {
+    "title": "sched/fair: Clear throttle state when leaving the fair class",
+    "id": "sched-20261030-007",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Daehyeon Ko"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-003：Daehyeon Ko 发单补丁修 CFS 带宽节流的状态残留——任务迁出 fair 类时只把 `p->throttled` 从 `throttled_limbo_list` 移除却不**清位**，若期间最后一份有限配额被禁用、再回 fair 类会走真实 enqueue 却仍带 `throttled` 位，最终 fair picker 选中 `TASK_DEAD` 触发 `BUG()`。已获 Aaron Lu Reviewed-by。 - sched-20261029-008：维护者 B"
+  },
+  {
+    "title": "sched/autogroup: Fix task_group UAF during thread creation",
+    "id": "sched-20261030-008",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "autogroup",
+      "cgroup"
+    ],
+    "authors": [
+      "Daehyeon Ko"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261023-004：Daehyeon Ko 发单补丁修 autogroup 的 use-after-free：`sched_cgroup_fork()` 在 CLONE_THREAD 子进程尚未挂上线程链表前就把它指到 `p->signal->autogroup->tg`，而 CLONE_THREAD 复用旧 `signal_struct` 且不为子进程取 autogroup 引用；`ksys_setsid()` 在释放 `tasklist_lock` 后才做 autogroup move，与 `copy_"
+  },
+  {
+    "title": "sched_ext: Fix stale pick when a wakeup resets the donor during dispatch",
+    "id": "sched-20261030-009",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html",
+    "tldr": "Tejun Heo 修 sched_ext 在 proxy execution 下的一个 stale pick 缺陷：`do_pick_task_scx()` 把 `rq->donor` 作为 `@prev` 传给 `dispatch_one()`，但 `dispatch_one()` 释放 rq lock 期间，别的 CPU 可能唤醒该 donor 并把它迁移走（`proxy_needs_return()` 会把它 dequeue、把 donor 重置回 `rq->curr`），导致 dispatch 返回的 verdict 描述的是**旧 donor**，最终本 CPU 去跑一个其实已排队"
+  },
+  {
+    "title": "sched_ext: Call ops.sub_attach() only while the cgroup is online",
+    "id": "sched-20261030-010",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext",
+      "cgroup"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-010-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html",
+    "tldr": "Tejun Heo 修 sched_ext cgroup sub-scheduler 的一个竞态：`ops.sub_attach()` 在 enable work 检查 cgroup 是否仍 online **之前**执行，父调度器可能为一个「rmdir 已经返回」的 cgroup 收到 attach 回调，让父侧的 cgroup 清理与 sub-scheduler attach 产生竞争。修法：在 `scx_sub_enable_workfn()` 里 `cgroup_lock()` 下检查 `CSS_ONLINE`，仅对 online 的 cgroup 调 `ops.sub_attach("
+  },
+  {
+    "title": "sched_ext: Fix scx_bpf_dsq_reenq() kerneldoc claiming NMI calls are allowed",
+    "id": "sched-20261030-011",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-011-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.html",
+    "tldr": "Tejun Heo 修 sched_ext 的 kerneldoc 与实现不符：`c659e506f9a7`（\"sched_ext: Reject NMI calls to lock-taking kfuncs\"）已让 `scx_bpf_dsq_reenq()` 在 NMI 调用时 abort 调度器，但该 kfunc 及其 wrapper `scx_bpf_reenqueue_local___v2()` 的 kerneldoc 仍写着「Can be called from anywhere」。补丁把两处 kerneldoc 改为「任意上下文**除 NMI**」，并顺带修 wrapper 里「"
+  },
+  {
+    "title": "sched_ext: Avoid unnecessary IMMED reenqueues on idle CPUs",
+    "id": "sched-20261030-012",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Andrea Righi"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-012-sched-ext-avoid-unnecessary-immed-reenqueues-on-idle-cpus.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261029-012：Andrea Righi 修 sched_ext 效率缺陷——两个 IMMED 任务在空闲 CPU 上被唤醒时，内核会不必要地把两个都踢回 BPF（`rq_is_open()` 看到 `next_class == ext` 就判 CPU 不可用，尽管仍 idle）。v2 改为「CPU idle 时即便 `next_class` 已被抬到 ext 也报告 rq 开放」，只把 head 之后的 IMMED 任务踢回 BPF。virtme-ng 4-vCPU 复现：10000 对唤醒里 977"
+  },
+  {
+    "title": "cpufreq/amd-pstate register write fixes",
+    "id": "sched-20261030-013",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-013-cpufreq-amd-pstate-register-write-fixes.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261029-013：Christian Loehle（Arm）在把 AMD 机器纳入 acpi-cppc 测试时发现两个 amd-pstate 寄存器写值缺陷，发 2 补丁：① minimum 性能 hint 可超 policy 上限、旧逻辑反而把 `max_perf` 抬到 `min_perf`，改为把 `min_perf` 钳到 `max_limit_perf`；② resume 路径把 `policy->cur` 换算回 Desired 时向上取整可能超上限。 - sched-20261030-013"
+  },
+  {
+    "title": "cpufreq: intel_pstate: Restore P-state request on resume without HWP",
+    "id": "sched-20261030-014",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq",
+      "x86"
+    ],
+    "authors": [
+      "Zak Brighton Knight"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261027-015：Zak Brighton Knight 报告并修 intel_pstate 被动模式 resume 缺陷——无 HWP 的 Ivy Bridge（ThinkPad T520/i7-3840QM，coreboot）每次 suspend-to-RAM 后 turbo 永久丢失（停在 2.8GHz 基频直到改 policy 或重启），根因是 resume 时固件把 `MSR_IA32_PERF_CTL` 设回基频、内核因缓存/`policy->cur` 跳过重写。 - sched-202610"
+  },
+  {
+    "title": "cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload",
+    "id": "sched-20261030-015",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Sumit Gupta",
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260827-007：Sumit Gupta 的 CPPC 系列（CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值）经 v1–v5 演进，以 arm64 PCC 为主要验证路径。 - sched-20260917-006：v5 获 K Prateek Nayak 的 x86 实测 Tested-by。 - sched-20260926-009：cpufreq 维护者 Rafael Wysocki 催评审——「没有其他输入我不会应用这个系列」。 - sched-20261021-015：Christia"
+  },
+  {
+    "title": "cpuidle: idle_miss accounting fixes",
+    "id": "sched-20261030-016",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-016-cpuidle-idle-miss-accounting-fixes.html",
+    "tldr": "Christian Loehle（Arm）发 2 补丁修 cpuidle 的 `cpu_idle_miss` 统计：① 把「timer 广播失败导致的浅状态回退」从 above/below miss 记账中排除（广播回退是本该计 miss 的被动行为，会污染观测）；② 在判 below miss 时尊重 entry-time 延迟约束，排除「更深状态存在但违反 latency QoS」造成的假 below miss。`Fixes: 04dab58a39d4`。Orion O6 实测：patch 1 前 8172 次广播回退里记录 6930 次 cpu_idle_miss，之后 7763 次回退"
+  },
+  {
+    "title": "selftests: cpufreq: stop CPU hotplug loop after cpufreq update test",
+    "id": "sched-20261030-017",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cpufreq"
+    ],
+    "authors": [
+      "Yining Xiong"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-017-selftests-cpufreq-stop-cpu-hotplug-loop-after-cpufreq-update.html",
+    "tldr": "Yining Xiong 修 cpufreq selftests 的 hotplug 测试：原 `hotplug_with_updates_cpu()` 用固定 5000 次循环触发 CPU hotplug，存在①测试结束后后台 hotplug 任务仍继续跑（冗余 on/offline）、②cpufreq 频率设置慢时 hotplug 循环可能在频率更新完成前就退出（破坏测试目的）两个问题。v3 改用信号通知终止无限 hotplug 循环（`trap 'quit=1' SIGTERM` + 子进程 while 循环），并加 EXIT trap 清理 hotplug 子进程；且把 hotplug"
+  },
+  {
+    "title": "sched/fair: Replace random newidle_balance with Bresenham accumulator",
+    "id": "sched-20261030-018",
+    "date": "2026-10-30",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance"
+    ],
+    "authors": [
+      "Qing Wang"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261029-006（v3）：Qing Wang 把 `newidle_balance` 的随机掷骰换成 Bresenham 累加器以消除方差；Kayra 要求先给「突发是否有实际影响」的数据，并指出 v3 移除 `sched_rng()` 会在 Linus/tip 树上编译报错；作者承诺 v4 删掉有 bug 的 reset 行。 - sched-20261030-018（今天）：作者发 **v4**（恢复被误删的 `sched_rnd_state`/`sched_rng()`，保留 Bresenham）。"
+  },
+  {
+    "title": "sched/numa: refine memory tiering promotion heuristics",
+    "id": "sched-20261030-019",
+    "date": "2026-10-30",
+    "type": "discussion",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Li Zhe"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-019-sched-numa-refine-memory-tiering-promotion-heuristics.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261014-002（v1 0/6）：Li Zhe（字节跳动）发系列修 NUMA balancing 的 scan-period 调整、memory-tiering promotion 反馈污染、陈旧 task-placement 三类问题；Gregory Price 要求补「用户可见性能影响」数据。 - sched-20261015-026：Li Zhe 回应，坦承部分补丁无说服力数据，计划把严重修复与启发式改动拆开。 - sched-20261029-004（v2 0/3）：收束为 free-space "
+  },
+  {
+    "title": "Sleeping Owner Handling for Proxy Execution (v33)",
+    "id": "sched-20261030-020",
+    "date": "2026-10-30",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "proxy_execution",
+      "psi"
+    ],
+    "authors": [
+      "John Stultz"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.html",
+    "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20260922-002（v32）：John Stultz 发出 proxy execution 第 5 阶段「Sleeping Owner Handling」第 32 版：任务阻塞在 owner 睡眠的 mutex 上时，把 waiter 停用并挂到 owner 等待表，待 owner 唤醒时在同 rq 重新激活以提升 owner。 - sched-20261024-001（v33）：系列扩到 7 补丁（PSI 状态、远程 tick、无 owner/无 mutex、return migration、链循环检测等"
+  },
+  {
+    "title": "[GIT PULL] sched_ext: Fixes for v7.4",
+    "id": "sched-20261030-021",
+    "date": "2026-10-30",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/10/30/sched-20261030-021-git-pull-sched-ext-fixes-for-v7-4.html",
+    "tldr": "Tejun Heo 的 `sched_ext: Fixes for v7.4` GIT PULL（10-27 发出）已被 Linus 合并进 `torvalds/linux.git`，合并 commit 为 `729beb5aa80ce4bcf40f9ff74ed845269393a6ae`。这是 v7.4 窗口的 sched_ext 修复集（区别于此前已单独覆盖的「sched_ext: Changes for v7.4」新功能 pull），随 pr-tracker-bot 的合并通知到达。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

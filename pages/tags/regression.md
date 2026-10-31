@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 53
+article_count: 54
 ---
 
+- [sched-20261030-003](/lkm/2026/10/30/sched-20261030-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261026-009](/lkm/2026/10/26/sched-20261026-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261025-004](/lkm/2026/10/25/sched-20261025-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261024-012](/lkm/2026/10/24/sched-20261024-012-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.html) `fix/high/merged_tip` — sched/cache: Honor asym packing over cache aware scheduling on hybrid systems

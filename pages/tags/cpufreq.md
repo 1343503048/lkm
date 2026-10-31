@@ -2,9 +2,13 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 98
+article_count: 102
 ---
 
+- [sched-20261030-013](/lkm/2026/10/30/sched-20261030-013-cpufreq-amd-pstate-register-write-fixes.html) `fix/low/under_review` — cpufreq/amd-pstate register write fixes
+- [sched-20261030-014](/lkm/2026/10/30/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `fix/low/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
+- [sched-20261030-015](/lkm/2026/10/30/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `fix/low/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
+- [sched-20261030-017](/lkm/2026/10/30/sched-20261030-017-selftests-cpufreq-stop-cpu-hotplug-loop-after-cpufreq-update.html) `fix/low/under_review` — selftests: cpufreq: stop CPU hotplug loop after cpufreq update test
 - [sched-20261029-013](/lkm/2026/10/29/sched-20261029-013-cpufreq-amd-pstate-register-write-fixes.html) `fix/low/under_review` — cpufreq/amd-pstate register write fixes
 - [sched-20261029-015](/lkm/2026/10/29/sched-20261029-015-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `fix/low/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP
 - [sched-20261029-016](/lkm/2026/10/29/sched-20261029-016-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver

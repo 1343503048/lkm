@@ -1,7 +1,8 @@
 # tag: x86
 
-共 30 篇
+共 31 篇
 
+- [sched-20261030-014](../../2026/10/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-014](../../2026/10/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-013](../../2026/10/sched-20261023-013-sched-cache-honor-asym-packing-over-cache-aware-scheduling-o.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
