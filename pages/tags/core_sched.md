@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 35
+article_count: 37
 ---
 
+- [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch
+- [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261024-007](/lkm/2026/10/24/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.html) `bug/high/under_review` — sched/rt: Fix NULL pointer dereference in task_is_throttled_rt()
 - [sched-20261020-005](/lkm/2026/10/20/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.html) `fix/medium/under_review` — sched_ext: Reenqueue IMMED tasks when their CPU picks idle
 - [sched-20261020-006](/lkm/2026/10/20/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.html) `fix/medium/merged_tip` — sched_ext: Queue the kick_sync wait from set_next_task_scx()

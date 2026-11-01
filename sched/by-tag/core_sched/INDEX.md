@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 35 篇
+共 37 篇
 
+- [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。
+- [sched-20261101-002](../../2026/11/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/high/under_review` — 修复 sched_ext dispatch 过程中 rq->donor 被其他 CPU 改掉后仍沿用旧 `@prev` 导致的 stale pick（可能让本 CPU 运行一个已排队到别的 rq 的任务）。v4 已获 Andrea Righi Reviewed-by，属于 for-7.4-fixes，Cc stable v6.12+，合入可能性高。
 - [sched-20261024-007](../../2026/10/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.md) `bug/high/under_review` — Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p
 - [sched-20261020-006](../../2026/10/sched-20261020-006-sched-ext-queue-the-kick-sync-wait-from-set-next-task-scx.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261020-005](../../2026/10/sched-20261020-005-sched-ext-reenqueue-immed-tasks-when-their-cpu-picks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

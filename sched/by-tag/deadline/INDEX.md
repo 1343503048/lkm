@@ -1,7 +1,10 @@
 # tag: deadline
 
-共 48 篇
+共 51 篇
 
+- [sched-20261101-007](../../2026/11/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/medium/rfc` — Weiheng Qiu 报告：把处于睡眠态的 SCHED_DEADLINE 任务在 root cpuset 与 exclusive partition 之间来回移动（且中途未运行），会让 root domain 的 `total_bw` 少记该任务带宽，导致超额准入、任务退出时 `total_bw` 下溢——小 DL 请求 -EBUSY、大请求在 `__dl_overflow()` 中回绕被误准入
+- [sched-20261101-006](../../2026/11/sched-20261101-006-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.md) `bug/medium/rfc` — Weiheng Qiu 报告：对已退出但未 reaped（zombie）的任务调用 `sched_setattr(SCHED_DEADLINE)` 会返回 0 并占用 root domain 的 `dl_bw->total_bw`，且永不释放，最终把 admission 打满、后续 DL 请求与 CPU offline 报 -EBUSY。附带完整复现程序，尚无 fix 补丁。
+- [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。
 - [sched-20261031-011](../../2026/10/sched-20261031-011-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-002](../../2026/10/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `bug/medium/rfc` — Tejun Heo 最初发了一版 `[PATCH sched/urgent]` 修 `__pick_task_dl()` 在 server pick 返回 `RETRY_TASK` 时也把 server 记进 `rq->dl_server`、导致重启的 pick 把「陈旧 server」塞给无关任务的缺陷；随后两封回帖自撤回——「发错补丁了」，改成发**带 reproducer 的 bug 报告*
 - [sched-20261030-001](../../2026/10/sched-20261030-001-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/medium/under_review` — Tejun Heo 报告一个 SCHED_DEADLINE 的带宽泄漏 bug：任务在「未入队」（睡眠或被 SIGSTOP 暂停）状态下切换到其它调度策略时，其在 root domain 的 `total_bw` 中的带宽不会被归还，任务退出后依然残留；反复触发可把 `total_bw` 填满到准入上限，之后 `sched_setattr(SCHED_DEADLINE)`、CPU offline、

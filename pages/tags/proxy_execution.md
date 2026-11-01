@@ -2,9 +2,12 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 93
+article_count: 96
 ---
 
+- [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch
+- [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
+- [sched-20261101-005](/lkm/2026/11/01/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261031-003](/lkm/2026/10/31/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
 - [sched-20261030-009](/lkm/2026/10/30/sched-20261030-009-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
 - [sched-20261030-020](/lkm/2026/10/30/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)

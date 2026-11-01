@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 81
+article_count: 83
 ---
 
+- [sched-20261101-005](/lkm/2026/11/01/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/low/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
+- [sched-20261101-008](/lkm/2026/11/01/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261031-015](/lkm/2026/10/31/sched-20261031-015-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261030-003](/lkm/2026/10/30/sched-20261030-003-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261023-010](/lkm/2026/10/23/sched-20261023-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption

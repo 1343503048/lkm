@@ -1,7 +1,8 @@
 # tag: cfs
 
-共 270 篇
+共 271 篇
 
+- [sched-20261101-008](../../2026/11/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — Chengfeng Lin 的 v3 系列尝试把 EEVDF 从 per-CPU runqueue 收敛到单一 runqueue。本窗口内作者回帖 Mike Galbraith，讨论单 runqueue 下 DELAY_DEQUEUE 的记账行为变化，并给出基准数据：跳过 `__dequeue_task()` 里一次冗余 `update_curr_eevdf()` 在 15-worker 场景基本
 - [sched-20261030-007](../../2026/10/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-004](../../2026/10/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-002](../../2026/10/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.md) `bug/high/under_review` — Ajay Kaher（Broadcom）报告 6.1.159（Photon OS 5.0）内核在 `update_blocked_averages()` 里触发 general protection fault（疑似 use-after-free）：一个已被释放的 task_group 的 cfs_rq 仍挂在 `rq->leaf_cfs_rq_list` 上，`for_each_leaf_cfs

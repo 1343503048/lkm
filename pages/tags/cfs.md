@@ -2,9 +2,10 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 270
+article_count: 271
 ---
 
+- [sched-20261101-008](/lkm/2026/11/01/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261030-002](/lkm/2026/10/30/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.html) `bug/high/under_review` — [BUG] sched/fair: GPF in update_blocked_averages() on stale leaf cfs_rq of freed task_group (6.1.159)
 - [sched-20261030-004](/lkm/2026/10/30/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261030-007](/lkm/2026/10/30/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/medium/under_review` — sched/fair: Clear throttle state when leaving the fair class

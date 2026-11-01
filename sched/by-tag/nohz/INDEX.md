@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 55 篇
+共 56 篇
 
+- [sched-20261101-001](../../2026/11/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/merged_tip` — 修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler f
 - [sched-20261031-001](../../2026/10/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 的 v2 补丁删掉 `kcpustat_dyntick_stop()` 里一条误报的 `WARN_ON`：x86 在 jiffies→tsc-early 时钟源切换后的第一个 idle 周期里，idle 结束可能早于下一个 tick 周期的起点，此时**并没有重复记账**，只是警告判断写错。Linus 本人、Paul Menzel、Breno Leitao 各自在真机/
 - [sched-20261029-010](../../2026/10/sched-20261029-010-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261027-008](../../2026/10/sched-20261027-008-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

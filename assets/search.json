@@ -20908,6 +20908,158 @@
     "tldr": "本文为增量更新，完整脉络见 related_articles。  - sched-20261029-011：Karl Mehltretter 的 13 片 RFC v2 系列把 preempt count 的 raw 更新与 debug/tracing 记账分离；Peter Zijlstra 评 patch 3「Urgh, so much crazy」——noinstr 里的 WARN 是 fine 的，tracing 要搬但搬法太丑，建议顺带修 `preempt_{en,dis}able_notrace()` 的 bound 检查缺口。 - sched-20261031-016（今天）：作者"
   },
   {
+    "title": "sched/cputime: Don't warn when the tick period starts after idle exit",
+    "id": "sched-20261101-001",
+    "date": "2026-11-01",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "nohz",
+      "idle",
+      "tick"
+    ],
+    "authors": [
+      "Stian Halseth"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html",
+    "tldr": "修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler fix 发往 Linus，将进入 v7.4-rc1。"
+  },
+  {
+    "title": "sched_ext: Fix stale pick when the donor changes during dispatch",
+    "id": "sched-20261101-002",
+    "date": "2026-11-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "sched_ext",
+      "proxy_execution",
+      "core_sched"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html",
+    "tldr": "修复 sched_ext dispatch 过程中 rq->donor 被其他 CPU 改掉后仍沿用旧 `@prev` 导致的 stale pick（可能让本 CPU 运行一个已排队到别的 rq 的任务）。v4 已获 Andrea Righi Reviewed-by，属于 for-7.4-fixes，Cc stable v6.12+，合入可能性高。"
+  },
+  {
+    "title": "sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()",
+    "id": "sched-20261101-003",
+    "date": "2026-11-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-003-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html",
+    "tldr": "修复 runtime CPU up 时，sched 域重建会把 rq 置为 online，导致在 `ops.cpu_online()` 之前就调用 `ops.enqueue()`/`ops.dispatch()` 的问题。方案是移除 rq_online/rq_offline 钩子，改在 `handle_hotplug()` 里统一管理 SCX_RQ_ONLINE。两补丁系列，for-7.4-fixes，Cc stable v6.12+。"
+  },
+  {
+    "title": "sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK",
+    "id": "sched-20261101-004",
+    "date": "2026-11-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "core_sched",
+      "proxy_execution"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html",
+    "tldr": "Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。"
+  },
+  {
+    "title": "sched/stats: Fix run_delay over-count for proxy-migrated blocked donors",
+    "id": "sched-20261101-005",
+    "date": "2026-11-01",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "proxy_execution",
+      "eevdf"
+    ],
+    "authors": [
+      "Wei Yang"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html",
+    "tldr": "修复 proxy execution 下 blocked donor 迁移到 owner CPU 后 `/proc/<tid>/schedstat` 的 run_delay 字段被重复计数的问题。作者 Wei Yang 给出了带测试数据的完整方案，并建议把 DELAY_DEQUEUE 与 proxy 两处修复拆成独立补丁以便 backport。"
+  },
+  {
+    "title": "sched/deadline: total_bw leak when SCHED_DEADLINE is set on a dead task",
+    "id": "sched-20261101-006",
+    "date": "2026-11-01",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [
+      "deadline"
+    ],
+    "authors": [
+      "Weiheng Qiu"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-006-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.html",
+    "tldr": "Weiheng Qiu 报告：对已退出但未 reaped（zombie）的任务调用 `sched_setattr(SCHED_DEADLINE)` 会返回 0 并占用 root domain 的 `dl_bw->total_bw`，且永不释放，最终把 admission 打满、后续 DL 请求与 CPU offline 报 -EBUSY。附带完整复现程序，尚无 fix 补丁。"
+  },
+  {
+    "title": "sched/deadline, cpuset: total_bw corrupted by a sleeping DL task's cpuset move",
+    "id": "sched-20261101-007",
+    "date": "2026-11-01",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "medium",
+    "tags": [
+      "deadline",
+      "cgroup"
+    ],
+    "authors": [
+      "Weiheng Qiu"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.html",
+    "tldr": "Weiheng Qiu 报告：把处于睡眠态的 SCHED_DEADLINE 任务在 root cpuset 与 exclusive partition 之间来回移动（且中途未运行），会让 root domain 的 `total_bw` 少记该任务带宽，导致超额准入、任务退出时 `total_bw` 下溢——小 DL 请求 -EBUSY、大请求在 `__dl_overflow()` 中回绕被误准入。附带完整复现程序，尚无 fix。"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20261101-008",
+    "date": "2026-11-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Chengfeng Lin"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "Chengfeng Lin 的 v3 系列尝试把 EEVDF 从 per-CPU runqueue 收敛到单一 runqueue。本窗口内作者回帖 Mike Galbraith，讨论单 runqueue 下 DELAY_DEQUEUE 的记账行为变化，并给出基准数据：跳过 `__dequeue_task()` 里一次冗余 `update_curr_eevdf()` 在 15-worker 场景基本持平（-0.22%）、2-worker 控制组 +1.27%。方向性重构，合入为时尚早。"
+  },
+  {
+    "title": "sched: Extend task command name with TASK_COMM_EXT_LEN",
+    "id": "sched-20261101-009",
+    "date": "2026-11-01",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [],
+    "authors": [
+      "André Almeida"
+    ],
+    "url": "/lkm/2026/11/01/sched-20261101-009-sched-extend-task-command-name-with-task-comm-ext-len.html",
+    "tldr": "André Almeida 的 treewide 系列（v8，第 4/6 个补丁）用 `TASK_COMM_EXT_LEN` 扩展任务命令名长度。本窗口内 kernel test robot 报告该补丁在 W=1 构建下于 nouveau 驱动触发 snprintf 截断告警，需要作者跟进修复。"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

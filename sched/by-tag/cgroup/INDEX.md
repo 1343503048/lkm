@@ -1,7 +1,8 @@
 # tag: cgroup
 
-共 115 篇
+共 116 篇
 
+- [sched-20261101-007](../../2026/11/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/medium/rfc` — Weiheng Qiu 报告：把处于睡眠态的 SCHED_DEADLINE 任务在 root cpuset 与 exclusive partition 之间来回移动（且中途未运行），会让 root domain 的 `total_bw` 少记该任务带宽，导致超额准入、任务退出时 `total_bw` 下溢——小 DL 请求 -EBUSY、大请求在 `__dl_overflow()` 中回绕被误准入
 - [sched-20261031-013](../../2026/10/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-012](../../2026/10/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-007](../../2026/10/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.md) `fix/low/under_review` — Avi Weiss 的单补丁修 `partition_sched_domains_locked()` 的一个缺陷：`build_sched_domains()` 失败后，请求的分区仍被记录，于是下一次**相同的**重建会直接复用这个失败分区，导致其 CPU 在瞬时的 `alloc_rootdomain()` 失败后一直挂在默认根域上。修法：复用/摘除分区前先确认根域已安装（`+13/-3`），让下

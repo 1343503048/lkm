@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 305 篇
+共 307 篇
 
+- [sched-20261101-003](../../2026/11/sched-20261101-003-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/under_review` — 修复 runtime CPU up 时，sched 域重建会把 rq 置为 online，导致在 `ops.cpu_online()` 之前就调用 `ops.enqueue()`/`ops.dispatch()` 的问题。方案是移除 rq_online/rq_offline 钩子，改在 `handle_hotplug()` 里统一管理 SCX_RQ_ONLINE。两补丁系列，for-7.4-fix
+- [sched-20261101-002](../../2026/11/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/high/under_review` — 修复 sched_ext dispatch 过程中 rq->donor 被其他 CPU 改掉后仍沿用旧 `@prev` 导致的 stale pick（可能让本 CPU 运行一个已排队到别的 rq 的任务）。v4 已获 Andrea Righi Reviewed-by，属于 for-7.4-fixes，Cc stable v6.12+，合入可能性高。
 - [sched-20261031-014](../../2026/10/sched-20261031-014-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-013](../../2026/10/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-003](../../2026/10/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

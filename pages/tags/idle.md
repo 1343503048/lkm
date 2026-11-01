@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 82
+article_count: 83
 ---
 
+- [sched-20261101-001](/lkm/2026/11/01/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/merged_tip` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261030-016](/lkm/2026/10/30/sched-20261030-016-cpuidle-idle-miss-accounting-fixes.html) `fix/low/under_review` — cpuidle: idle_miss accounting fixes
 - [sched-20261029-014](/lkm/2026/10/29/sched-20261029-014-arm-omap-cpuidle34xx-fix-unbalanced-cpu-pm-enter-exit-and-cl.html) `fix/medium/under_review` — ARM: omap: cpuidle34xx: Fix unbalanced cpu_pm_enter()/exit() and cleanup

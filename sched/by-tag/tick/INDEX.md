@@ -1,7 +1,8 @@
 # tag: tick
 
-共 8 篇
+共 9 篇
 
+- [sched-20261101-001](../../2026/11/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/merged_tip` — 修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler f
 - [sched-20261031-001](../../2026/10/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 的 v2 补丁删掉 `kcpustat_dyntick_stop()` 里一条误报的 `WARN_ON`：x86 在 jiffies→tsc-early 时钟源切换后的第一个 idle 周期里，idle 结束可能早于下一个 tick 周期的起点，此时**并没有重复记账**，只是警告判断写错。Linus 本人、Paul Menzel、Breno Leitao 各自在真机/
 - [sched-20261019-013](../../2026/10/sched-20261019-013-cpu-hotplug-remove-cpu-down-global-stop-machine-except-for-c.md) `feature/rfc` — Frederic Weisbecker 发往 lkml 的大规模 RFC（49 补丁）：把 CPU down 路径里所有 teardown 回调从全局 stop_machine 移入一个新「post stop_machine」阶段——stop_machine 主函数跑完后、其它 CPU 可退出的同时、IRQ 仍关闭地执行，从而消解「teardown 阶段停掉全系统 CPU」与 RT/隔离任务的不兼
 - [sched-20261019-010](../../2026/10/sched-20261019-010-sched-core-use-the-scheduling-context-for-remote-ticks.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

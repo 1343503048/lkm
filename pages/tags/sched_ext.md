@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 305
+article_count: 307
 ---
 
+- [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch
+- [sched-20261101-003](/lkm/2026/11/01/sched-20261101-003-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/under_review` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
 - [sched-20261031-003](/lkm/2026/10/31/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch
 - [sched-20261031-013](/lkm/2026/10/31/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.html) `fix/low/merged_tip` — sched_ext: Call ops.sub_attach() only while the cgroup is online
 - [sched-20261031-014](/lkm/2026/10/31/sched-20261031-014-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.html) `fix/low/merged_tip` — sched_ext: Fix scx_bpf_dsq_reenq() kerneldoc claiming NMI calls are allowed
