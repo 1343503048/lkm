@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 271
+article_count: 278
 ---
 
+- [sched-20261102-002](/lkm/2026/11/02/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.html) `fix/medium/under_review` — sched/uclamp: Reject clamp values above SCHED_CAPACITY_SCALE
+- [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
+- [sched-20261102-015](/lkm/2026/11/02/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261102-019](/lkm/2026/11/02/sched-20261102-019-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
+- [sched-20261102-021](/lkm/2026/11/02/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
+- [sched-20261102-022](/lkm/2026/11/02/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `feature/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
+- [sched-20261102-027](/lkm/2026/11/02/sched-20261102-027-sched-convert-paravirt-steal-to-new-static-key-apis.html) `fix/none/merged_tip` — sched: Convert paravirt_steal to new static key APIs
 - [sched-20261101-008](/lkm/2026/11/01/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261030-002](/lkm/2026/10/30/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.html) `bug/high/under_review` — [BUG] sched/fair: GPF in update_blocked_averages() on stale leaf cfs_rq of freed task_group (6.1.159)
 - [sched-20261030-004](/lkm/2026/10/30/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq

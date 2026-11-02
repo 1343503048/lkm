@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 307
+article_count: 311
 ---
 
+- [sched-20261102-007](/lkm/2026/11/02/sched-20261102-007-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.html) `fix/none/under_review` — sched_ext: Say "hosting" instead of "running" in scx_exec_sched() comments
+- [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
+- [sched-20261102-016](/lkm/2026/11/02/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/medium/merged_tip` — sched_ext: Fix stale pick when the donor changes during dispatch
+- [sched-20261102-017](/lkm/2026/11/02/sched-20261102-017-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/under_review` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
 - [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch
 - [sched-20261101-003](/lkm/2026/11/01/sched-20261101-003-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/under_review` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
 - [sched-20261031-003](/lkm/2026/10/31/sched-20261031-003-sched-ext-fix-stale-pick-when-a-wakeup-resets-the-donor-duri.html) `fix/medium/under_review` — sched_ext: Fix stale pick when a wakeup resets the donor during dispatch

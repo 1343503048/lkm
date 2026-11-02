@@ -1,7 +1,8 @@
 # tag: idle
 
-共 83 篇
+共 84 篇
 
+- [sched-20261102-026](../../2026/11/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-001](../../2026/11/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/merged_tip` — 修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler f
 - [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`
 - [sched-20261030-016](../../2026/10/sched-20261030-016-cpuidle-idle-miss-accounting-fixes.md) `fix/low/under_review` — Christian Loehle（Arm）发 2 补丁修 cpuidle 的 `cpu_idle_miss` 统计：① 把「timer 广播失败导致的浅状态回退」从 above/below miss 记账中排除（广播回退是本该计 miss 的被动行为，会污染观测）；② 在判 below miss 时尊重 entry-time 延迟约束，排除「更深状态存在但违反 latency QoS」造成的假 b

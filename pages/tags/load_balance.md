@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 183
+article_count: 185
 ---
 
+- [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
+- [sched-20261102-022](/lkm/2026/11/02/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `feature/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
 - [sched-20261031-009](/lkm/2026/10/31/sched-20261031-009-sched-cache-check-reduced-capacity-before-alb-break-llc.html) `fix/low/under_review` — sched/cache: Check reduced capacity before alb_break_llc()
 - [sched-20261030-006](/lkm/2026/10/30/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.html) `fix/low/under_review` — sched/cache: Check reduced capacity before alb_break_llc()
 - [sched-20261030-018](/lkm/2026/10/30/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `discussion/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator

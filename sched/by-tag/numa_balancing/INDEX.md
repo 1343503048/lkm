@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 71 篇
+共 72 篇
 
+- [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
 - [sched-20261030-019](../../2026/10/sched-20261030-019-sched-numa-refine-memory-tiering-promotion-heuristics.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-004](../../2026/10/sched-20261029-004-sched-numa-refine-memory-tiering-promotion-heuristics.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-003](../../2026/10/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

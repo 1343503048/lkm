@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 56
+article_count: 57
 ---
 
+- [sched-20261102-026](/lkm/2026/11/02/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation
 - [sched-20261101-001](/lkm/2026/11/01/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/merged_tip` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261031-001](/lkm/2026/10/31/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261029-010](/lkm/2026/10/29/sched-20261029-010-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit

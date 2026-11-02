@@ -2,9 +2,10 @@
 layout: default
 tag: "cppc"
 title: "标签: cppc"
-article_count: 5
+article_count: 6
 ---
 
+- [sched-20261102-010](/lkm/2026/11/02/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.html) `feature/none/rfc` — cpufreq: Add a CPUFREQ_UPDATE_CPUINFO policy notifier event
 - [sched-20261031-004](/lkm/2026/10/31/sched-20261031-004-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support
 - [sched-20261007-010](/lkm/2026/10/07/sched-20261007-010-cpufreq-resolve-cppc-frequencies-to-performance-levels.html) `feature/low/under_review` — cpufreq: Resolve CPPC frequencies to performance levels
 - [sched-20261004-007](/lkm/2026/10/04/sched-20261004-007-cpufreq-cppc-resolve-frequencies-to-performance-levels.html) `fix/medium/under_review` — cpufreq: CPPC: Resolve frequencies to performance levels

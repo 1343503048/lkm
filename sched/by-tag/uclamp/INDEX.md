@@ -1,7 +1,9 @@
 # tag: uclamp
 
-共 5 篇
+共 7 篇
 
+- [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-002](../../2026/11/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.md) `fix/medium/under_review` — Andrea Parri 修复 uclamp 的 `sched_util_min/max` 取值校验漏洞：由于 `util_min/util_max` 被声明为 `int` 而 `SCHED_CAPACITY_SCALE` 为 `long`，负值与 `INT_MAX` 都能绕过 `uclamp_validate()` 的 `+1 wrap` 检查，随后被截断到 11 位但仍按完整值计算 bucke
 - [sched-20261030-004](../../2026/10/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-001](../../2026/10/sched-20261029-001-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-002](../../2026/10/sched-20261026-002-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

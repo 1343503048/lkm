@@ -1,7 +1,8 @@
 # tag: numa
 
-共 17 篇
+共 18 篇
 
+- [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。
 - [sched-20261023-005](../../2026/10/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.md) `feature/rfc` — Fengyu Wang（海光）发往 sched 的 RFC 单补丁：修正 `build_overlap_sched_groups()` 在部分 NUMA 拓扑（环形四节点即一例）下生成的 sched group 会互相重叠，导致同一 CPU 的负载/容量被重复计入、域平均值产生偏差。方案是「保留本地 child span、把重叠的 remote 候选下沉到更小的 NUMA 子域，直到其 child
 - [sched-20261006-005](../../2026/10/sched-20261006-005-sched-ext-add-numa-balancing-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 134
+article_count: 137
 ---
 
+- [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261102-005](/lkm/2026/11/02/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.html) `fix/high/under_review` — sched/core: keep offline cpus out of core-wide selections
+- [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
 - [sched-20261031-007](/lkm/2026/10/31/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.html) `fix/low/under_review` — sched/topology: Retry scheduler domains after failed construction
 - [sched-20261029-005](/lkm/2026/10/29/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.html) `discussion/none/rfc` — sched: Introduce idle SMT priority for asymmetric capacity systems
 - [sched-20261023-005](/lkm/2026/10/23/sched-20261023-005-sched-topology-avoid-overlapping-numa-groups-when-possible.html) `feature/none/rfc` — sched/topology: Avoid overlapping NUMA groups when possible

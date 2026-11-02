@@ -2,9 +2,15 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 51
+article_count: 57
 ---
 
+- [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261102-003](/lkm/2026/11/02/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
+- [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
+- [sched-20261102-013](/lkm/2026/11/02/sched-20261102-013-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.html) `bug/high/under_review` — sched/deadline: total_bw leak when SCHED_DEADLINE is set on a dead task
+- [sched-20261102-014](/lkm/2026/11/02/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.html) `bug/high/under_review` — sched/deadline, cpuset: total_bw corrupted by a sleeping DL task's cpuset move
+- [sched-20261102-018](/lkm/2026/11/02/sched-20261102-018-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.html) `bug/high/under_review` — sched/deadline: total_bw leak when a task leaves SCHED_DEADLINE while not queued
 - [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261101-006](/lkm/2026/11/01/sched-20261101-006-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.html) `bug/medium/rfc` — sched/deadline: total_bw leak when SCHED_DEADLINE is set on a dead task
 - [sched-20261101-007](/lkm/2026/11/01/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.html) `bug/medium/rfc` — sched/deadline, cpuset: total_bw corrupted by a sleeping DL task's cpuset move

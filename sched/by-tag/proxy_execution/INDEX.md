@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 96 篇
+共 98 篇
 
+- [sched-20261102-016](../../2026/11/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-005](../../2026/11/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 修复 proxy execution 下 blocked donor 迁移到 owner CPU 后 `/proc/<tid>/schedstat` 的 run_delay 字段被重复计数的问题。作者 Wei Yang 给出了带测试数据的完整方案，并建议把 DELAY_DEQUEUE 与 proxy 两处修复拆成独立补丁以便 backport。
 - [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。
 - [sched-20261101-002](../../2026/11/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/high/under_review` — 修复 sched_ext dispatch 过程中 rq->donor 被其他 CPU 改掉后仍沿用旧 `@prev` 导致的 stale pick（可能让本 CPU 运行一个已排队到别的 rq 的任务）。v4 已获 Andrea Righi Reviewed-by，属于 for-7.4-fixes，Cc stable v6.12+，合入可能性高。

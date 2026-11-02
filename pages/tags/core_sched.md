@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 37
+article_count: 39
 ---
 
+- [sched-20261102-005](/lkm/2026/11/02/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.html) `fix/high/under_review` — sched/core: keep offline cpus out of core-wide selections
+- [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch
 - [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261024-007](/lkm/2026/10/24/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.html) `bug/high/under_review` — sched/rt: Fix NULL pointer dereference in task_is_throttled_rt()

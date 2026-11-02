@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 83 篇
+共 86 篇
 
+- [sched-20261102-019](../../2026/11/sched-20261102-019-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-015](../../2026/11/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-008](../../2026/11/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — Chengfeng Lin 的 v3 系列尝试把 EEVDF 从 per-CPU runqueue 收敛到单一 runqueue。本窗口内作者回帖 Mike Galbraith，讨论单 runqueue 下 DELAY_DEQUEUE 的记账行为变化，并给出基准数据：跳过 `__dequeue_task()` 里一次冗余 `update_curr_eevdf()` 在 15-worker 场景基本
 - [sched-20261101-005](../../2026/11/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 修复 proxy execution 下 blocked donor 迁移到 owner CPU 后 `/proc/<tid>/schedstat` 的 run_delay 字段被重复计数的问题。作者 Wei Yang 给出了带测试数据的完整方案，并建议把 DELAY_DEQUEUE 与 proxy 两处修复拆成独立补丁以便 backport。
 - [sched-20261031-015](../../2026/10/sched-20261031-015-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

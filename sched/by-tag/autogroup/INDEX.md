@@ -1,7 +1,8 @@
 # tag: autogroup
 
-共 6 篇
+共 7 篇
 
+- [sched-20261102-020](../../2026/11/sched-20261102-020-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-012](../../2026/10/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-008](../../2026/10/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261026-003](../../2026/10/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -2,9 +2,15 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 116
+article_count: 122
 ---
 
+- [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261102-003](/lkm/2026/11/02/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
+- [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261102-014](/lkm/2026/11/02/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.html) `bug/high/under_review` — sched/deadline, cpuset: total_bw corrupted by a sleeping DL task's cpuset move
+- [sched-20261102-020](/lkm/2026/11/02/sched-20261102-020-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/medium/under_review` — sched/autogroup: Fix task_group UAF during thread creation
+- [sched-20261102-023](/lkm/2026/11/02/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.html) `feature/none/under_review` — sched/numa: make free-space tiering promotion bypass configurable
 - [sched-20261101-007](/lkm/2026/11/01/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.html) `bug/medium/rfc` — sched/deadline, cpuset: total_bw corrupted by a sleeping DL task's cpuset move
 - [sched-20261031-007](/lkm/2026/10/31/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.html) `fix/low/under_review` — sched/topology: Retry scheduler domains after failed construction
 - [sched-20261031-012](/lkm/2026/10/31/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation

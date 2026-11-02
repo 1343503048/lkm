@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 52
+article_count: 54
 ---
 
+- [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261013-012](/lkm/2026/10/13/sched-20261013-012-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261012-013](/lkm/2026/10/12/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()
 - [sched-20261011-003](/lkm/2026/10/11/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.html) `fix/medium/under_review` — sched_ext: idle: Respect task affinity in restricted CPU selection

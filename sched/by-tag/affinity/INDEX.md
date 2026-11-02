@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 52 篇
+共 54 篇
 
+- [sched-20261102-004](../../2026/11/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — Yury Norov 发 6-patch 系列，为 "preferred CPUs" 提供**运行时可写**的 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`），用于在物理 CPU 竞争时手动预留 CPU、把 fair 任务导流到其余 CPU。Peter Zijlstra 明确 NAK 了整个方向（「We already have cpusets
+- [sched-20261102-001](../../2026/11/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — Andrea Parri 修复 `sched_setattr(SCHED_DEADLINE)` 在任务处于 `migrate_disable()` 段内时被误判为「affinity 未覆盖 root domain」而返回 -EPERM 的问题，根因是 `__sched_setscheduler()` 检查了 `p->cpus_ptr`（会被 `migrate_disable_switch()` 临
 - [sched-20261013-012](../../2026/10/sched-20261013-012-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261012-013](../../2026/10/sched-20261012-013-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261011-003](../../2026/10/sched-20261011-003-sched-ext-idle-respect-task-affinity-in-restricted-cpu-selec.md) `fix/medium/under_review` — Hui Su 修复 sched_ext restructed `select_cpu` kfunc 路径在单 CPU / migration-disabled 任务上可能返回「不在任务亲和性 (`p->cpus_ptr`) 内」的空闲 CPU 的问题（v1 只校验 caller 提供的 `@allowed` 掩码）。经 Andrea Righi review 后，v2 改为从任务状态推导候选 CP

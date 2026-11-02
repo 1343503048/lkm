@@ -1,7 +1,10 @@
 # tag: topology
 
-共 134 篇
+共 137 篇
 
+- [sched-20261102-006](../../2026/11/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — Zhan Xusheng 把 cache-aware 调度里 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（用「线程数 vs CPU 数」比较却只为借它 20% 的 margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧的 `x*1280 < y*1024` 严格等价），无功能变化。动机是 Qais Yousef 
+- [sched-20261102-005](../../2026/11/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.md) `fix/high/under_review` — Ahmed Abdelraoof（Amazon）修复 hotplug 期间 core scheduling 的窄竞态：新进 CPU 已加入 sibling 集但尚未把 `rq->core` 指向组 leader 期间，在线 CPU 的 `pick_next_task()` 会错误地读写这个离线 CPU 的 runqueue，导致静默数据破坏乃至 `cookie_equals()` 解引用 NULL
+- [sched-20261102-004](../../2026/11/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — Yury Norov 发 6-patch 系列，为 "preferred CPUs" 提供**运行时可写**的 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`），用于在物理 CPU 竞争时手动预留 CPU、把 fair 任务导流到其余 CPU。Peter Zijlstra 明确 NAK 了整个方向（「We already have cpusets
 - [sched-20261031-007](../../2026/10/sched-20261031-007-sched-topology-retry-scheduler-domains-after-failed-construc.md) `fix/low/under_review` — Avi Weiss 的单补丁修 `partition_sched_domains_locked()` 的一个缺陷：`build_sched_domains()` 失败后，请求的分区仍被记录，于是下一次**相同的**重建会直接复用这个失败分区，导致其 CPU 在瞬时的 `alloc_rootdomain()` 失败后一直挂在默认根域上。修法：复用/摘除分区前先确认根域已安装（`+13/-3`），让下
 - [sched-20261029-005](../../2026/10/sched-20261029-005-sched-introduce-idle-smt-priority-for-asymmetric-capacity-sy.md) `discussion/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261023-015](../../2026/10/sched-20261023-015-sched-topology-introduce-a-numa-distance-matrix-with-unique.md) `feature/rfc` — 本文为增量更新，完整脉络见下（Jianyong Wu（海光）23 补丁 RFC「NUMA/LLC 两级亲和性打分负载均衡」的持续评审）。

@@ -1,7 +1,13 @@
 # tag: deadline
 
-共 51 篇
+共 57 篇
 
+- [sched-20261102-018](../../2026/11/sched-20261102-018-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-014](../../2026/11/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-013](../../2026/11/sched-20261102-013-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-011](../../2026/11/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-003](../../2026/11/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — Andrea Parri 修复 `__sched_setscheduler()` 在重入（recheck label）路径上对 `cpuset_mutex` 的二次解锁：`sched_setattr(SCHED_FLAG_KEEP_POLICY)` 作用在 SCHED_DEADLINE 任务上、且并发改策略时会 drop 锁并 restart，但 `cpuset_locked` 标志未清，导致出口
+- [sched-20261102-001](../../2026/11/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — Andrea Parri 修复 `sched_setattr(SCHED_DEADLINE)` 在任务处于 `migrate_disable()` 段内时被误判为「affinity 未覆盖 root domain」而返回 -EPERM 的问题，根因是 `__sched_setscheduler()` 检查了 `p->cpus_ptr`（会被 `migrate_disable_switch()` 临
 - [sched-20261101-007](../../2026/11/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/medium/rfc` — Weiheng Qiu 报告：把处于睡眠态的 SCHED_DEADLINE 任务在 root cpuset 与 exclusive partition 之间来回移动（且中途未运行），会让 root domain 的 `total_bw` 少记该任务带宽，导致超额准入、任务退出时 `total_bw` 下溢——小 DL 请求 -EBUSY、大请求在 `__dl_overflow()` 中回绕被误准入
 - [sched-20261101-006](../../2026/11/sched-20261101-006-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.md) `bug/medium/rfc` — Weiheng Qiu 报告：对已退出但未 reaped（zombie）的任务调用 `sched_setattr(SCHED_DEADLINE)` 会返回 0 并占用 root domain 的 `dl_bw->total_bw`，且永不释放，最终把 admission 打满、后续 DL 请求与 CPU offline 报 -EBUSY。附带完整复现程序，尚无 fix 补丁。
 - [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。

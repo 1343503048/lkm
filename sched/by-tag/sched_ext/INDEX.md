@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 307 篇
+共 311 篇
 
+- [sched-20261102-017](../../2026/11/sched-20261102-017-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-016](../../2026/11/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-008](../../2026/11/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/under_review` — Shubhang Kaushik（Ampere）修复 sched_ext 的一个死锁：`scx_bpf_destroy_dsq()` 会取目标 user DSQ 的 raw spinlock，却也被注册到 `BPF_PROG_TYPE_TRACING`（`scx_kfunc_ids_any`）。一个未关联的 tracing 程序可经兼容路径解析到活动 root 调度器，在 DSQ 锁已被持有时递归
+- [sched-20261102-007](../../2026/11/sched-20261102-007-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.md) `fix/under_review` — Tejun Heo 的纯注释清理补丁（for-7.5）：把 `scx_exec_sched()` 及相关注释里「the sched running @sch's tasks」统一改为「the sched hosting @sch's tasks」，与 bypass dispatch 代码里已有的 host 术语对齐，消除读者对「running」一词的歧义（被 bypass 的调度器的任务由最近的非
 - [sched-20261101-003](../../2026/11/sched-20261101-003-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/under_review` — 修复 runtime CPU up 时，sched 域重建会把 rq 置为 online，导致在 `ops.cpu_online()` 之前就调用 `ops.enqueue()`/`ops.dispatch()` 的问题。方案是移除 rq_online/rq_offline 钩子，改在 `handle_hotplug()` 里统一管理 SCX_RQ_ONLINE。两补丁系列，for-7.4-fix
 - [sched-20261101-002](../../2026/11/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/high/under_review` — 修复 sched_ext dispatch 过程中 rq->donor 被其他 CPU 改掉后仍沿用旧 `@prev` 导致的 stale pick（可能让本 CPU 运行一个已排队到别的 rq 的任务）。v4 已获 Andrea Righi Reviewed-by，属于 for-7.4-fixes，Cc stable v6.12+，合入可能性高。
 - [sched-20261031-014](../../2026/10/sched-20261031-014-sched-ext-fix-scx-bpf-dsq-reenq-kerneldoc-claiming-nmi-calls.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

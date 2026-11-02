@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 183 篇
+共 185 篇
 
+- [sched-20261102-022](../../2026/11/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-006](../../2026/11/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — Zhan Xusheng 把 cache-aware 调度里 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（用「线程数 vs CPU 数」比较却只为借它 20% 的 margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧的 `x*1280 < y*1024` 严格等价），无功能变化。动机是 Qais Yousef 
 - [sched-20261031-009](../../2026/10/sched-20261031-009-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-018](../../2026/10/sched-20261030-018-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-006](../../2026/10/sched-20261030-006-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

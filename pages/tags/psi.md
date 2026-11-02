@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 23
+article_count: 24
 ---
 
+- [sched-20261102-009](/lkm/2026/11/02/sched-20261102-009-sched-psi-let-procfs-copy-in-trigger-writes.html) `feature/none/rfc` — sched/psi: let procfs copy in trigger writes
 - [sched-20261030-020](/lkm/2026/10/30/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)
 - [sched-20261019-007](/lkm/2026/10/19/sched-20261019-007-sched-psi-keep-average-work-scheduled-for-pending-notificati.html) `fix/medium/under_review` — sched/psi: Keep average work scheduled for pending notifications
 - [sched-20261019-011](/lkm/2026/10/19/sched-20261019-011-sched-psi-preserve-rt-poll-notifications.html) `fix/medium/under_review` — sched/psi: Preserve RT poll notifications

@@ -2,9 +2,10 @@
 layout: default
 tag: "bpf"
 title: "标签: bpf"
-article_count: 10
+article_count: 11
 ---
 
+- [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
 - [sched-20261023-002](/lkm/2026/10/23/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.html) `fix/low/under_review` — sched: Fix SCX_ENQ_CPU_SELECTED for queued wakeups
 - [sched-20261019-008](/lkm/2026/10/19/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html) `feature/none/rfc` — BPF-based per-cgroup NUMA balancing mode selection
 - [sched-20261006-005](/lkm/2026/10/06/sched-20261006-005-sched-ext-add-numa-balancing-support.html) `feature/none/under_review` — sched_ext: Add NUMA balancing support

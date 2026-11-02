@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 77 篇
+共 78 篇
 
+- [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-005](../../2026/10/sched-20261031-005-sched-add-support-for-long-task-name.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-005](../../2026/10/sched-20261030-005-sched-debug-introduce-per-cpu-debugfs-files.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-002](../../2026/10/sched-20261029-002-sched-debug-introduce-per-cpu-debugfs-files.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

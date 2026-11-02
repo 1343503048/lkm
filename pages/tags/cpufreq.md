@@ -2,9 +2,12 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 103
+article_count: 106
 ---
 
+- [sched-20261102-010](/lkm/2026/11/02/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.html) `feature/none/rfc` — cpufreq: Add a CPUFREQ_UPDATE_CPUINFO policy notifier event
+- [sched-20261102-024](/lkm/2026/11/02/sched-20261102-024-cpufreq-fix-policy-max-not-returning-to-non-boost-freq-on-bo.html) `fix/medium/under_review` — cpufreq: fix policy max not returning to non-boost freq on boost disable
+- [sched-20261102-025](/lkm/2026/11/02/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver
 - [sched-20261031-004](/lkm/2026/10/31/sched-20261031-004-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.html) `feature/none/under_review` — ACPI / cpufreq: CPPC: Add ospm_nominal_perf support
 - [sched-20261030-013](/lkm/2026/10/30/sched-20261030-013-cpufreq-amd-pstate-register-write-fixes.html) `fix/low/under_review` — cpufreq/amd-pstate register write fixes
 - [sched-20261030-014](/lkm/2026/10/30/sched-20261030-014-cpufreq-intel-pstate-restore-p-state-request-on-resume-witho.html) `fix/low/under_review` — cpufreq: intel_pstate: Restore P-state request on resume without HWP

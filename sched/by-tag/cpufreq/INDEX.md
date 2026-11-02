@@ -1,7 +1,10 @@
 # tag: cpufreq
 
-共 103 篇
+共 106 篇
 
+- [sched-20261102-025](../../2026/11/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-024](../../2026/11/sched-20261102-024-cpufreq-fix-policy-max-not-returning-to-non-boost-freq-on-bo.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles（本系列即 schedutil boost 频率处理系列，本文以其 v3 2/2 补丁标题为跟踪入口）。
+- [sched-20261102-010](../../2026/11/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.md) `feature/rfc` — Hugo Sales 的 RFC（4 patches，v1）：新增 `CPUFREQ_UPDATE_CPUINFO` policy notifier 事件，在 boost 开关等改变 `policy->cpuinfo.max_freq` 的时机通知依赖方（典型是 ACPI processor thermal 的节流步进，它按 `cpuinfo.max_freq` 的固定比例计算）。patch 2/
 - [sched-20261031-004](../../2026/10/sched-20261031-004-acpi-cpufreq-cppc-add-ospm-nominal-perf-support.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-017](../../2026/10/sched-20261030-017-selftests-cpufreq-stop-cpu-hotplug-loop-after-cpufreq-update.md) `fix/low/under_review` — Yining Xiong 修 cpufreq selftests 的 hotplug 测试：原 `hotplug_with_updates_cpu()` 用固定 5000 次循环触发 CPU hotplug，存在①测试结束后后台 hotplug 任务仍继续跑（冗余 on/offline）、②cpufreq 频率设置慢时 hotplug 循环可能在频率更新完成前就退出（破坏测试目的）两个问题。v3 
 - [sched-20261030-015](../../2026/10/sched-20261030-015-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

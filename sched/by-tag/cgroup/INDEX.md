@@ -1,7 +1,13 @@
 # tag: cgroup
 
-共 116 篇
+共 122 篇
 
+- [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
+- [sched-20261102-020](../../2026/11/sched-20261102-020-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-014](../../2026/11/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-004](../../2026/11/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — Yury Norov 发 6-patch 系列，为 "preferred CPUs" 提供**运行时可写**的 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`），用于在物理 CPU 竞争时手动预留 CPU、把 fair 任务导流到其余 CPU。Peter Zijlstra 明确 NAK 了整个方向（「We already have cpusets
+- [sched-20261102-003](../../2026/11/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — Andrea Parri 修复 `__sched_setscheduler()` 在重入（recheck label）路径上对 `cpuset_mutex` 的二次解锁：`sched_setattr(SCHED_FLAG_KEEP_POLICY)` 作用在 SCHED_DEADLINE 任务上、且并发改策略时会 drop 锁并 restart，但 `cpuset_locked` 标志未清，导致出口
+- [sched-20261102-001](../../2026/11/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — Andrea Parri 修复 `sched_setattr(SCHED_DEADLINE)` 在任务处于 `migrate_disable()` 段内时被误判为「affinity 未覆盖 root domain」而返回 -EPERM 的问题，根因是 `__sched_setscheduler()` 检查了 `p->cpus_ptr`（会被 `migrate_disable_switch()` 临
 - [sched-20261101-007](../../2026/11/sched-20261101-007-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/medium/rfc` — Weiheng Qiu 报告：把处于睡眠态的 SCHED_DEADLINE 任务在 root cpuset 与 exclusive partition 之间来回移动（且中途未运行），会让 root domain 的 `total_bw` 少记该任务带宽，导致超额准入、任务退出时 `total_bw` 下溢——小 DL 请求 -EBUSY、大请求在 `__dl_overflow()` 中回绕被误准入
 - [sched-20261031-013](../../2026/10/sched-20261031-013-sched-ext-call-ops-sub-attach-only-while-the-cgroup-is-onlin.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-012](../../2026/10/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。

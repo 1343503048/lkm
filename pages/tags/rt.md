@@ -2,9 +2,12 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 42
+article_count: 45
 ---
 
+- [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261102-003](/lkm/2026/11/02/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
+- [sched-20261102-021](/lkm/2026/11/02/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261027-009](/lkm/2026/10/27/sched-20261027-009-sched-rt-dl-remove-unreachable-migration-disabled-push-check.html) `fix/none/under_review` — sched/rt,dl: Remove unreachable migration-disabled push checks
 - [sched-20261024-007](/lkm/2026/10/24/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.html) `bug/high/under_review` — sched/rt: Fix NULL pointer dereference in task_is_throttled_rt()
 - [sched-20261024-009](/lkm/2026/10/24/sched-20261024-009-kernel-sched-ext-ext-c-6823-19-sparse-sparse-incorrect-type.html) `bug/low/rfc` — kernel/sched/ext/ext.c:6823:19: sparse: sparse: incorrect type in assignment (different address spaces)

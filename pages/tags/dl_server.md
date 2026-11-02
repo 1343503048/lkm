@@ -2,9 +2,10 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 17
+article_count: 18
 ---
 
+- [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261031-002](/lkm/2026/10/31/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `bug/medium/rfc` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261018-010](/lkm/2026/10/18/sched-20261018-010-x86-sched-mm-speed-up-cpu-hotplug-on-large-systems.html) `feature/none/under_review` — x86, sched, mm: Speed up CPU hotplug on large systems

@@ -2,9 +2,10 @@
 layout: default
 tag: "autogroup"
 title: "标签: autogroup"
-article_count: 6
+article_count: 7
 ---
 
+- [sched-20261102-020](/lkm/2026/11/02/sched-20261102-020-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/medium/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261031-012](/lkm/2026/10/31/sched-20261031-012-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261030-008](/lkm/2026/10/30/sched-20261030-008-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation
 - [sched-20261026-003](/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation

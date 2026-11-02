@@ -1,7 +1,14 @@
 # tag: cfs
 
-共 271 篇
+共 278 篇
 
+- [sched-20261102-027](../../2026/11/sched-20261102-027-sched-convert-paravirt-steal-to-new-static-key-apis.md) `fix/merged_tip` — Hongyan Xia 的 paravirt_steal 静态 key API 迁移补丁（RESEND 单补丁，亦为「Remove deprecated static key API in scheduler code」0/3 系列的 2/3）已被 Peter Zijlstra 收取，commit `a5576ebce920` 进 riscv/linux.git（fixes）。这是跨月的静态 ke
+- [sched-20261102-022](../../2026/11/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-019](../../2026/11/sched-20261102-019-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-015](../../2026/11/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261102-006](../../2026/11/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — Zhan Xusheng 把 cache-aware 调度里 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（用「线程数 vs CPU 数」比较却只为借它 20% 的 margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧的 `x*1280 < y*1024` 严格等价），无功能变化。动机是 Qais Yousef 
+- [sched-20261102-002](../../2026/11/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.md) `fix/medium/under_review` — Andrea Parri 修复 uclamp 的 `sched_util_min/max` 取值校验漏洞：由于 `util_min/util_max` 被声明为 `int` 而 `SCHED_CAPACITY_SCALE` 为 `long`，负值与 `INT_MAX` 都能绕过 `uclamp_validate()` 的 `+1 wrap` 检查，随后被截断到 11 位但仍按完整值计算 bucke
 - [sched-20261101-008](../../2026/11/sched-20261101-008-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — Chengfeng Lin 的 v3 系列尝试把 EEVDF 从 per-CPU runqueue 收敛到单一 runqueue。本窗口内作者回帖 Mike Galbraith，讨论单 runqueue 下 DELAY_DEQUEUE 的记账行为变化，并给出基准数据：跳过 `__dequeue_task()` 里一次冗余 `update_curr_eevdf()` 在 15-worker 场景基本
 - [sched-20261030-007](../../2026/10/sched-20261030-007-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261030-004](../../2026/10/sched-20261030-004-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
