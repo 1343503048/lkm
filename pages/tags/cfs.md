@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 278
+article_count: 281
 ---
 
+- [sched-20261103-004](/lkm/2026/11/03/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.html) `bug/medium/under_review` — sched/delayacct: blkio_start recorded on the wrong task when a delayed task is blocked from pick
+- [sched-20261103-015](/lkm/2026/11/03/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261103-017](/lkm/2026/11/03/sched-20261103-017-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
 - [sched-20261102-002](/lkm/2026/11/02/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.html) `fix/medium/under_review` — sched/uclamp: Reject clamp values above SCHED_CAPACITY_SCALE
 - [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
 - [sched-20261102-015](/lkm/2026/11/02/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue

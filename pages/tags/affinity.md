@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 54
+article_count: 56
 ---
 
+- [sched-20261103-013](/lkm/2026/11/03/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261103-018](/lkm/2026/11/03/sched-20261103-018-sched-decouple-preferred-cpu-from-paravirt-in-kconfig-preemp.html) `feature/none/under_review` — sched: decouple PREFERRED_CPU from PARAVIRT in Kconfig.preempt
 - [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
 - [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261013-012](/lkm/2026/10/13/sched-20261013-012-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.html) `fix/medium/under_review` — sched: irq: cpu-hotplug race vs set_cpus_allowed_ptr()

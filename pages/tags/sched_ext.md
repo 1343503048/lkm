@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 311
+article_count: 314
 ---
 
+- [sched-20261103-022](/lkm/2026/11/03/sched-20261103-022-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/merged_tip` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
+- [sched-20261103-023](/lkm/2026/11/03/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.html) `fix/none/merged_tip` — sched_ext: Say "hosting" instead of "running" in scx_exec_sched() comments
+- [sched-20261103-024](/lkm/2026/11/03/sched-20261103-024-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/merged_tip` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
 - [sched-20261102-007](/lkm/2026/11/02/sched-20261102-007-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.html) `fix/none/under_review` — sched_ext: Say "hosting" instead of "running" in scx_exec_sched() comments
 - [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
 - [sched-20261102-016](/lkm/2026/11/02/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/medium/merged_tip` — sched_ext: Fix stale pick when the donor changes during dispatch

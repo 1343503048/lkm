@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 72
+article_count: 73
 ---
 
+- [sched-20261103-002](/lkm/2026/11/03/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.html) `bug/high/rfc` — mm, sched, cgroup: LRU Cache never drains when isolcpus are used with spinning SCHED_FIFO tasks causing page migration stalls
 - [sched-20261102-023](/lkm/2026/11/02/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.html) `feature/none/under_review` — sched/numa: make free-space tiering promotion bypass configurable
 - [sched-20261030-019](/lkm/2026/10/30/sched-20261030-019-sched-numa-refine-memory-tiering-promotion-heuristics.html) `discussion/none/under_review` — sched/numa: refine memory tiering promotion heuristics
 - [sched-20261029-003](/lkm/2026/10/29/sched-20261029-003-sched-scale-cache-aware-aggregation-at-llc-granularity.html) `feature/none/rfc` — sched: Scale cache-aware aggregation at LLC granularity

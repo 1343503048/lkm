@@ -1,7 +1,10 @@
 # tag: cgroup
 
-共 122 篇
+共 125 篇
 
+- [sched-20261103-014](../../2026/11/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-002](../../2026/11/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.md) `bug/high/rfc` — Canonical 的 Caron Wills / Matthew Ruffell 报告一起生产环境 bug：isolcpus 大系统上 SCHED_FIFO 忙循环任务导致 systemd/PID 1 卡 D 状态最长 10 分钟、ssh 登录失败。根因是 nohz_full CPU 的 per-CPU work 永不执行、`flush_work()` 挂起。6 补丁系列修复 `cpu_is_i
+- [sched-20261103-001](../../2026/11/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.md) `fix/high/merged_tip` — Juri Lelli 的 4 补丁系列修复多个 SCHED_DEADLINE 带宽记账 bug（total_bw 泄漏/下溢最终导致新 DL 准入与 CPU offline 报 -EBUSY），当日即由 Ingo Molnar 全数合入 tip/sched/urgent，收到 4 封 tip-bot2 通知。
 - [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
 - [sched-20261102-020](../../2026/11/sched-20261102-020-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-014](../../2026/11/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

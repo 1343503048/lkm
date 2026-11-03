@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 57
+article_count: 60
 ---
 
+- [sched-20261103-001](/lkm/2026/11/03/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.html) `fix/high/merged_tip` — sched/deadline: Fix assorted dl_bw accounting bugs
+- [sched-20261103-013](/lkm/2026/11/03/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
+- [sched-20261103-014](/lkm/2026/11/03/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
 - [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
 - [sched-20261102-003](/lkm/2026/11/02/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
 - [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK

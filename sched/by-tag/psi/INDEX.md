@@ -1,7 +1,8 @@
 # tag: psi
 
-共 24 篇
+共 25 篇
 
+- [sched-20261103-005](../../2026/11/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.md) `fix/medium/under_review` — Shubhang Kaushik（Ampere）修 PSI：EEVDF 的 delayed dequeue（`DEQUEUE_DELAYED`）只会「完成」先前已记账的 sleep dequeue，但 `psi_dequeue()` 仍清掉全部 PSI 标志（含 TSK_IOWAIT），导致睡眠压力记账被提前终止、唤醒时 `psi_enqueue()` 期望清理的保留状态落空。修复让 `DEQUE
 - [sched-20261102-009](../../2026/11/sched-20261102-009-sched-psi-let-procfs-copy-in-trigger-writes.md) `feature/rfc` — Christian Brauner 的大型 procfs "work" RFC 系列（27 patches，v1）中的第 17 封，把 `/proc/pressure/*`（PSI trigger）的写路径从 `copy_from_user()` 改为 procfs 的 `->proc_write_buf()`：由 procfs 在 pin entry 之前拷贝写入内容，PSI 写函数只处理已有内
 - [sched-20261030-020](../../2026/10/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261019-011](../../2026/10/sched-20261019-011-sched-psi-preserve-rt-poll-notifications.md) `fix/medium/under_review` — Hui Su 发往 sched/psi 的两补丁修复：特权 RT trigger 注册会先吞掉 pressure 记账、独立 worker 关闭路径会让 rate-limit 内的 pending 事件悬空。补丁 1 保留注册时的 pressure 变化并在到期评估后推进 consumed total；补丁 2 从 trigger 列表推导 pending deadline，投递后回到 idle。

@@ -1,7 +1,13 @@
 # tag: cpufreq
 
-共 106 篇
+共 112 篇
 
+- [sched-20261103-021](../../2026/11/sched-20261103-021-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 CPPC 系列——在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值，避免离线-上线周期后电源管理配置失效。
+- [sched-20261103-020](../../2026/11/sched-20261103-020-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-012](../../2026/11/sched-20261103-012-cpufreq-pxa-release-the-core-clock-reference-on-failure-and.md) `fix/low/under_review` — Wentao Liang 修 pxa2xx cpufreq 驱动的时钟引用泄漏：`pxa_cpu_init()` 在 CPU 不支持或 `cpufreq_register_driver()` 失败时不释放 `clk_get_sys()` 取得的 core clock，exit 路径也持有不放。补丁在失败与 exit 时 `clk_put()`。Krzysztof Kozlowski 强烈否定（与同
+- [sched-20261103-011](../../2026/11/sched-20261103-011-cpufreq-mediatek-release-dvfs-resources-when-removing-the-dr.md) `fix/low/under_review` — Wentao Liang 为 mediatek cpufreq 驱动补 `remove` 回调，在解绑/卸载时释放 probe 保留的时钟/regulator/OPP 等 DVFS 资源，避免 list 仍指向被 devm 释放的内存与资源泄漏。Krzysztof Kozlowski 强烈否定：系列疑似 AI 批量生成、未测试，属「hostile patch bombing」。
+- [sched-20261103-010](../../2026/11/sched-20261103-010-cpufreq-pcc-cpufreq-validate-the-acpi-interface-data.md) `fix/medium/under_review` — Kang Chen 为 PCC cpufreq 驱动补 ACPI 接口数据校验：`pcc_get_offset()` 不检查 PCCP 包元素个数就读 `elements[0]/[1]`，且把 64 位值截断成 u32 当字节偏移未校验映射大小；PCCH 与 `_OSC` 应答也有类似越界读。修复加元素个数/buffer 长度/映射大小校验。单补丁，当日无人回帖。
+- [sched-20261103-009](../../2026/11/sched-20261103-009-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-disabled.md) `fix/medium/under_review` — Avi Weiss 修 schedutil 的一个频率卡高问题：`nohz=off` 时 `tick_nohz_idle_stop_tick()` 会不递增 `idle_calls` 就返回，`sugov_hold_freq()` 把不变的计数器当成「CPU 持续忙」、阻止 CPU 空闲后降频。修复在 NOHZ 停用时跳过 busy-CPU hold 启发式。评审建议改用 `tick_nohz_i
 - [sched-20261102-025](../../2026/11/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-024](../../2026/11/sched-20261102-024-cpufreq-fix-policy-max-not-returning-to-non-boost-freq-on-bo.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles（本系列即 schedutil boost 频率处理系列，本文以其 v3 2/2 补丁标题为跟踪入口）。
 - [sched-20261102-010](../../2026/11/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.md) `feature/rfc` — Hugo Sales 的 RFC（4 patches，v1）：新增 `CPUFREQ_UPDATE_CPUINFO` policy notifier 事件，在 boost 开关等改变 `policy->cpuinfo.max_freq` 的时机通知依赖方（典型是 ACPI processor thermal 的节流步进，它按 `cpuinfo.max_freq` 的固定比例计算）。patch 2/

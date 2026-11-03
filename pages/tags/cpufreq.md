@@ -2,9 +2,15 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 106
+article_count: 112
 ---
 
+- [sched-20261103-009](/lkm/2026/11/03/sched-20261103-009-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-disabled.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is disabled
+- [sched-20261103-010](/lkm/2026/11/03/sched-20261103-010-cpufreq-pcc-cpufreq-validate-the-acpi-interface-data.html) `fix/medium/under_review` — cpufreq: pcc-cpufreq: validate the ACPI interface data
+- [sched-20261103-011](/lkm/2026/11/03/sched-20261103-011-cpufreq-mediatek-release-dvfs-resources-when-removing-the-dr.html) `fix/low/under_review` — cpufreq: mediatek: Release DVFS resources when removing the driver
+- [sched-20261103-012](/lkm/2026/11/03/sched-20261103-012-cpufreq-pxa-release-the-core-clock-reference-on-failure-and.html) `fix/low/under_review` — cpufreq: pxa: Release the core clock reference on failure and exit
+- [sched-20261103-020](/lkm/2026/11/03/sched-20261103-020-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver
+- [sched-20261103-021](/lkm/2026/11/03/sched-20261103-021-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.html) `feature/none/under_review` — cpufreq: CPPC: Preserve OSPM-set registers across hotplug and unload
 - [sched-20261102-010](/lkm/2026/11/02/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.html) `feature/none/rfc` — cpufreq: Add a CPUFREQ_UPDATE_CPUINFO policy notifier event
 - [sched-20261102-024](/lkm/2026/11/02/sched-20261102-024-cpufreq-fix-policy-max-not-returning-to-non-boost-freq-on-bo.html) `fix/medium/under_review` — cpufreq: fix policy max not returning to non-boost freq on boost disable
 - [sched-20261102-025](/lkm/2026/11/02/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver

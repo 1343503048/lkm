@@ -1,7 +1,11 @@
 # tag: eevdf
 
-共 86 篇
+共 90 篇
 
+- [sched-20261103-015](../../2026/11/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-005](../../2026/11/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.md) `fix/medium/under_review` — Shubhang Kaushik（Ampere）修 PSI：EEVDF 的 delayed dequeue（`DEQUEUE_DELAYED`）只会「完成」先前已记账的 sleep dequeue，但 `psi_dequeue()` 仍清掉全部 PSI 标志（含 TSK_IOWAIT），导致睡眠压力记账被提前终止、唤醒时 `psi_enqueue()` 期望清理的保留状态落空。修复让 `DEQUE
+- [sched-20261103-004](../../2026/11/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.md) `bug/medium/under_review` — kiln 报告 DELAY_DEQUEUE 引入的 delay accounting bug：`__block_task()` 调 `delayacct_blkio_start()` 时总是写 `current`，使 delayed 任务从 `dequeue_entities()` 路径被 block 时 `blkio_start` 保持 0，随后 `delayacct_blkio_end()` 
+- [sched-20261103-003](../../2026/11/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.md) `fix/critical/rfc` — Aleksei Fedorov 的 RFC 补丁：`pick_eevdf()` 在多个实体 runnable 但无人 eligible（含 curr）时返回 NULL，调用方随后解引用崩溃；补丁在 NULL 时回退取最左实体并 `WARN_ON_ONCE`。Peter Zijlstra 明确否定：这个 WARN 杀伤力和 NULL 解引用一样大，应该找根因而不是打补丁。
 - [sched-20261102-019](../../2026/11/sched-20261102-019-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-015](../../2026/11/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

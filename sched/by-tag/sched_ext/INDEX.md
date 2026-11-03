@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 311 篇
+共 314 篇
 
+- [sched-20261103-024](../../2026/11/sched-20261103-024-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-023](../../2026/11/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-022](../../2026/11/sched-20261103-022-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-017](../../2026/11/sched-20261102-017-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-016](../../2026/11/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-008](../../2026/11/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/under_review` — Shubhang Kaushik（Ampere）修复 sched_ext 的一个死锁：`scx_bpf_destroy_dsq()` 会取目标 user DSQ 的 raw spinlock，却也被注册到 `BPF_PROG_TYPE_TRACING`（`scx_kfunc_ids_any`）。一个未关联的 tracing 程序可经兼容路径解析到活动 root 调度器，在 DSQ 锁已被持有时递归

@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 122
+article_count: 125
 ---
 
+- [sched-20261103-001](/lkm/2026/11/03/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.html) `fix/high/merged_tip` — sched/deadline: Fix assorted dl_bw accounting bugs
+- [sched-20261103-002](/lkm/2026/11/03/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.html) `bug/high/rfc` — mm, sched, cgroup: LRU Cache never drains when isolcpus are used with spinning SCHED_FIFO tasks causing page migration stalls
+- [sched-20261103-014](/lkm/2026/11/03/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
 - [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
 - [sched-20261102-003](/lkm/2026/11/02/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()
 - [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask

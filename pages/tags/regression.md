@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 57
+article_count: 58
 ---
 
+- [sched-20261103-015](/lkm/2026/11/03/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261031-001](/lkm/2026/10/31/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit
 - [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261031-015](/lkm/2026/10/31/sched-20261031-015-sched-eevdf-move-to-a-single-runqueue.html) `discussion/medium/under_review` — sched/eevdf: Move to a single runqueue

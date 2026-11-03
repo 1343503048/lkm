@@ -1,7 +1,10 @@
 # tag: deadline
 
-共 57 篇
+共 60 篇
 
+- [sched-20261103-014](../../2026/11/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-013](../../2026/11/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-001](../../2026/11/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.md) `fix/high/merged_tip` — Juri Lelli 的 4 补丁系列修复多个 SCHED_DEADLINE 带宽记账 bug（total_bw 泄漏/下溢最终导致新 DL 准入与 CPU offline 报 -EBUSY），当日即由 Ingo Molnar 全数合入 tip/sched/urgent，收到 4 封 tip-bot2 通知。
 - [sched-20261102-018](../../2026/11/sched-20261102-018-sched-deadline-total-bw-leak-when-a-task-leaves-sched-deadli.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-014](../../2026/11/sched-20261102-014-sched-deadline-cpuset-total-bw-corrupted-by-a-sleeping-dl-ta.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-013](../../2026/11/sched-20261102-013-sched-deadline-total-bw-leak-when-sched-deadline-is-set-on-a.md) `bug/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

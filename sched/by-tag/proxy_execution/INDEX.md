@@ -1,7 +1,9 @@
 # tag: proxy_execution
 
-共 98 篇
+共 100 篇
 
+- [sched-20261103-008](../../2026/11/sched-20261103-008-proxy-reset-donor-warning-from-sched-proxy-block-task-when-p.md) `bug/low/under_review` — Tejun Heo 报告 proxy execution 的一个 WARN：`sched_proxy_block_task()` 在 p 同时是 donor 时无条件调 `proxy_reset_donor()`，而后者 `WARN_ON_ONCE(rq->donor == rq->curr)` 会在 p 既是 curr 又是 donor 时触发。可在一分钟内复现，但作者称「除此之外运行中没有别的
+- [sched-20261103-007](../../2026/11/sched-20261103-007-sched-core-don-t-lower-rq-next-class-in-proxy-reset-donor.md) `fix/medium/under_review` — Tejun Heo 的 proxy execution urgent 修复：`proxy_reset_donor()` 无条件把 `rq->next_class` 设为 `rq->curr` 的类，会在「pick 掉锁后」窗口里把 RT wakeup 抬高过的 `next_class` 压低回 ext，导致 RT 任务要等下一次 schedule 才运行。修复改为只在 `curr->sched_c
 - [sched-20261102-016](../../2026/11/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-005](../../2026/11/sched-20261101-005-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/low/under_review` — 修复 proxy execution 下 blocked donor 迁移到 owner CPU 后 `/proc/<tid>/schedstat` 的 run_delay 字段被重复计数的问题。作者 Wei Yang 给出了带测试数据的完整方案，并建议把 DELAY_DEQUEUE 与 proxy 两处修复拆成独立补丁以便 backport。

@@ -2,9 +2,11 @@
 layout: default
 tag: "proxy_execution"
 title: "标签: proxy_execution"
-article_count: 98
+article_count: 100
 ---
 
+- [sched-20261103-007](/lkm/2026/11/03/sched-20261103-007-sched-core-don-t-lower-rq-next-class-in-proxy-reset-donor.html) `fix/medium/under_review` — sched/core: Don't lower rq->next_class in proxy_reset_donor()
+- [sched-20261103-008](/lkm/2026/11/03/sched-20261103-008-proxy-reset-donor-warning-from-sched-proxy-block-task-when-p.html) `bug/low/under_review` — proxy_reset_donor() warning from sched_proxy_block_task() when p is curr
 - [sched-20261102-012](/lkm/2026/11/02/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261102-016](/lkm/2026/11/02/sched-20261102-016-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/medium/merged_tip` — sched_ext: Fix stale pick when the donor changes during dispatch
 - [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch

@@ -2,9 +2,13 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 86
+article_count: 90
 ---
 
+- [sched-20261103-003](/lkm/2026/11/03/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.html) `fix/critical/rfc` — sched/eevdf: fall back to the leftmost entity when nobody is eligible
+- [sched-20261103-004](/lkm/2026/11/03/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.html) `bug/medium/under_review` — sched/delayacct: blkio_start recorded on the wrong task when a delayed task is blocked from pick
+- [sched-20261103-005](/lkm/2026/11/03/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/medium/under_review` — sched/psi: Preserve PSI state on delayed dequeue
+- [sched-20261103-015](/lkm/2026/11/03/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261102-012](/lkm/2026/11/02/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261102-015](/lkm/2026/11/02/sched-20261102-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261102-019](/lkm/2026/11/02/sched-20261102-019-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting

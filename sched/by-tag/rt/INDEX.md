@@ -1,7 +1,8 @@
 # tag: rt
 
-共 45 篇
+共 46 篇
 
+- [sched-20261103-016](../../2026/11/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-003](../../2026/11/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — Andrea Parri 修复 `__sched_setscheduler()` 在重入（recheck label）路径上对 `cpuset_mutex` 的二次解锁：`sched_setattr(SCHED_FLAG_KEEP_POLICY)` 作用在 SCHED_DEADLINE 任务上、且并发改策略时会 drop 锁并 restart，但 `cpuset_locked` 标志未清，导致出口
 - [sched-20261102-001](../../2026/11/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — Andrea Parri 修复 `sched_setattr(SCHED_DEADLINE)` 在任务处于 `migrate_disable()` 段内时被误判为「affinity 未覆盖 root domain」而返回 -EPERM 的问题，根因是 `__sched_setscheduler()` 检查了 `p->cpus_ptr`（会被 `migrate_disable_switch()` 临

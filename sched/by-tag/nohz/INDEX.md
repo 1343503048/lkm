@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 57 篇
+共 58 篇
 
+- [sched-20261103-009](../../2026/11/sched-20261103-009-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-disabled.md) `fix/medium/under_review` — Avi Weiss 修 schedutil 的一个频率卡高问题：`nohz=off` 时 `tick_nohz_idle_stop_tick()` 会不递增 `idle_calls` 就返回，`sugov_hold_freq()` 把不变的计数器当成「CPU 持续忙」、阻止 CPU 空闲后降频。修复在 NOHZ 停用时跳过 busy-CPU hold 启发式。评审建议改用 `tick_nohz_i
 - [sched-20261102-026](../../2026/11/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-001](../../2026/11/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/merged_tip` — 修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler f
 - [sched-20261031-001](../../2026/10/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/under_review` — Stian Halseth 的 v2 补丁删掉 `kcpustat_dyntick_stop()` 里一条误报的 `WARN_ON`：x86 在 jiffies→tsc-early 时钟源切换后的第一个 idle 周期里，idle 结束可能早于下一个 tick 周期的起点，此时**并没有重复记账**，只是警告判断写错。Linus 本人、Paul Menzel、Breno Leitao 各自在真机/

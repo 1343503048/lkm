@@ -1,7 +1,8 @@
 # tag: crash
 
-共 43 篇
+共 44 篇
 
+- [sched-20261103-003](../../2026/11/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.md) `fix/critical/rfc` — Aleksei Fedorov 的 RFC 补丁：`pick_eevdf()` 在多个实体 runnable 但无人 eligible（含 curr）时返回 NULL，调用方随后解引用崩溃；补丁在 NULL 时回退取最左实体并 `WARN_ON_ONCE`。Peter Zijlstra 明确否定：这个 WARN 杀伤力和 NULL 解引用一样大，应该找根因而不是打补丁。
 - [sched-20261030-002](../../2026/10/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.md) `bug/high/under_review` — Ajay Kaher（Broadcom）报告 6.1.159（Photon OS 5.0）内核在 `update_blocked_averages()` 里触发 general protection fault（疑似 use-after-free）：一个已被释放的 task_group 的 cfs_rq 仍挂在 `rq->leaf_cfs_rq_list` 上，`for_each_leaf_cfs
 - [sched-20261026-003](../../2026/10/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261024-007](../../2026/10/sched-20261024-007-sched-rt-fix-null-pointer-dereference-in-task-is-throttled-r.md) `bug/high/under_review` — Aamir Ahmed 提交的 RT 类空指针解引用修复：当 `CONFIG_RT_GROUP_SCHED=y` 但运行时禁用（`rt_group_sched=0` 或默认禁用）时，`alloc_rt_sched_group()` 提前返回使非 root 任务组的 `tg->rt_rq` 为 NULL，而 `task_is_throttled_rt()` 仍无条件解引用 `task_group(p

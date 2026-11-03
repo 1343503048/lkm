@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 278 篇
+共 281 篇
 
+- [sched-20261103-017](../../2026/11/sched-20261103-017-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-015](../../2026/11/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
+- [sched-20261103-004](../../2026/11/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.md) `bug/medium/under_review` — kiln 报告 DELAY_DEQUEUE 引入的 delay accounting bug：`__block_task()` 调 `delayacct_blkio_start()` 时总是写 `current`，使 delayed 任务从 `dequeue_entities()` 路径被 block 时 `blkio_start` 保持 0，随后 `delayacct_blkio_end()` 
 - [sched-20261102-027](../../2026/11/sched-20261102-027-sched-convert-paravirt-steal-to-new-static-key-apis.md) `fix/merged_tip` — Hongyan Xia 的 paravirt_steal 静态 key API 迁移补丁（RESEND 单补丁，亦为「Remove deprecated static key API in scheduler code」0/3 系列的 2/3）已被 Peter Zijlstra 收取，commit `a5576ebce920` 进 riscv/linux.git（fixes）。这是跨月的静态 ke
 - [sched-20261102-022](../../2026/11/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
