@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 60 篇
+共 62 篇
 
+- [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 
+- [sched-20261105-001](../../2026/11/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上，再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核：`__dl_sub()` 除零、无 active CPU 时 `dl_task_root_domain_cpu()` BUG()、隔离 CPU 全下线后重建记账 BUG
 - [sched-20261103-014](../../2026/11/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-013](../../2026/11/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-001](../../2026/11/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.md) `fix/high/merged_tip` — Juri Lelli 的 4 补丁系列修复多个 SCHED_DEADLINE 带宽记账 bug（total_bw 泄漏/下溢最终导致新 DL 准入与 CPU offline 报 -EBUSY），当日即由 Ingo Molnar 全数合入 tip/sched/urgent，收到 4 封 tip-bot2 通知。

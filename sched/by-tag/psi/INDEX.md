@@ -1,7 +1,9 @@
 # tag: psi
 
-共 25 篇
+共 27 篇
 
+- [sched-20261105-015](../../2026/11/sched-20261105-015-sched-psi-let-procfs-copy-in-trigger-writes.md) `feature/rfc` — - sched-20261102-009：Brauner 大型 procfs "work" 系列 v1（27 补丁）的第 17 封，把 `/proc/pressure/*` trigger 写路径从 `copy_from_user()` 改为 procfs 的 `->proc_write_buf()`，PSI 侧无功能变化。 - sched-20261105（今天）：该系列 RESEND v2（`
+- [sched-20261105-014](../../2026/11/sched-20261105-014-sched-psi-don-t-drop-the-last-byte-of-a-trigger-write.md) `fix/low/under_review` — Christian Brauner 修 `psi_write()` 的缓冲区结尾处理：当前最多拷贝 32 字节并「覆盖最后一字节」作为终止符，导致短于 32 字节、无换行结尾的 trigger 写入丢掉最后一位数字（`"some 150000 1000000"` 变成 `"some 150000 100000"`，`"some 150 10000"` 直接 -EINVAL）。补丁改为最多拷贝 31
 - [sched-20261103-005](../../2026/11/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.md) `fix/medium/under_review` — Shubhang Kaushik（Ampere）修 PSI：EEVDF 的 delayed dequeue（`DEQUEUE_DELAYED`）只会「完成」先前已记账的 sleep dequeue，但 `psi_dequeue()` 仍清掉全部 PSI 标志（含 TSK_IOWAIT），导致睡眠压力记账被提前终止、唤醒时 `psi_enqueue()` 期望清理的保留状态落空。修复让 `DEQUE
 - [sched-20261102-009](../../2026/11/sched-20261102-009-sched-psi-let-procfs-copy-in-trigger-writes.md) `feature/rfc` — Christian Brauner 的大型 procfs "work" RFC 系列（27 patches，v1）中的第 17 封，把 `/proc/pressure/*`（PSI trigger）的写路径从 `copy_from_user()` 改为 procfs 的 `->proc_write_buf()`：由 procfs 在 pin entry 之前拷贝写入内容，PSI 写函数只处理已有内
 - [sched-20261030-020](../../2026/10/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

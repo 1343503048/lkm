@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 314 篇
+共 315 篇
 
+- [sched-20261105-010](../../2026/11/sched-20261105-010-sched-ext-decompose-scx-cid-init.md) `feature/under_review` — Zhang Qiao 的 4 补丁系列把 sched_ext 里约 230 行的 `scx_cid_init()` 单体函数拆解为共享一个 file-private builder 结构体的若干 stage helper，纯代码搬移、无行为变化，为后续修 `calc_shard_layout()` 的 partial-SMT core 计数与单核 shard 硬上限角例做铺垫。基于 tj/sche
 - [sched-20261103-024](../../2026/11/sched-20261103-024-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-023](../../2026/11/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-022](../../2026/11/sched-20261103-022-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

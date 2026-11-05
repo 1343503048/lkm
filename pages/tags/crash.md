@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 44
+article_count: 45
 ---
 
+- [sched-20261105-004](/lkm/2026/11/05/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `fix/critical/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet
 - [sched-20261103-003](/lkm/2026/11/03/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.html) `fix/critical/rfc` — sched/eevdf: fall back to the leftmost entity when nobody is eligible
 - [sched-20261030-002](/lkm/2026/10/30/sched-20261030-002-bug-sched-fair-gpf-in-update-blocked-averages-on-stale-leaf.html) `bug/high/under_review` — [BUG] sched/fair: GPF in update_blocked_averages() on stale leaf cfs_rq of freed task_group (6.1.159)
 - [sched-20261026-003](/lkm/2026/10/26/sched-20261026-003-sched-autogroup-fix-task-group-uaf-during-thread-creation.html) `fix/critical/under_review` — sched/autogroup: Fix task_group UAF during thread creation

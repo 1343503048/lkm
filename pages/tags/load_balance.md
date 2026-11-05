@@ -2,9 +2,14 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 185
+article_count: 190
 ---
 
+- [sched-20261105-005](/lkm/2026/11/05/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261105-006](/lkm/2026/11/05/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261105-008](/lkm/2026/11/05/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.html) `fix/medium/under_review` — sched/cache: Fix group_llc_balance being unreachable above the first NUMA level
+- [sched-20261105-011](/lkm/2026/11/05/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.html) `bug/medium/under_review` — sched: ITMT + DELAY_DEQUEUE: woken task waits ~1 ms behind another task on the preferred CPU while allowed CPUs are idle
+- [sched-20261105-016](/lkm/2026/11/05/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.html) `fix/high/under_review` — sched/isolation: Drain per-CPU LRU batches when CPUs become isolated
 - [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
 - [sched-20261102-022](/lkm/2026/11/02/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.html) `feature/none/under_review` — sched/fair: Remove magic hardcoded margin in fits_capacity()
 - [sched-20261031-009](/lkm/2026/10/31/sched-20261031-009-sched-cache-check-reduced-capacity-before-alb-break-llc.html) `fix/low/under_review` — sched/cache: Check reduced capacity before alb_break_llc()

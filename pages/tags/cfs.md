@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 281
+article_count: 285
 ---
 
+- [sched-20261105-006](/lkm/2026/11/05/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261105-007](/lkm/2026/11/05/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
+- [sched-20261105-009](/lkm/2026/11/05/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
+- [sched-20261105-011](/lkm/2026/11/05/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.html) `bug/medium/under_review` — sched: ITMT + DELAY_DEQUEUE: woken task waits ~1 ms behind another task on the preferred CPU while allowed CPUs are idle
 - [sched-20261103-004](/lkm/2026/11/03/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.html) `bug/medium/under_review` — sched/delayacct: blkio_start recorded on the wrong task when a delayed task is blocked from pick
 - [sched-20261103-015](/lkm/2026/11/03/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261103-017](/lkm/2026/11/03/sched-20261103-017-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts

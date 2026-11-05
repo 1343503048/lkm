@@ -1,7 +1,8 @@
 # tag: perf
 
-共 47 篇
+共 48 篇
 
+- [sched-20261105-007](../../2026/11/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — Qing Wang 的 v4 补丁用 Bresenham 累加器替换 `newidle_balance` 的随机（NI_RANDOM）触发，把「是否做 idle 平衡」变成确定性计数。今日 Qing 与 Peter 就 `newidle_window_pos` 初值展开讨论（v4 已通过「不清零位置」修掉历史丢调用问题），Chengfeng Lin 给出原生 MMTests sembench 数据
 - [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
 - [sched-20261019-002](../../2026/10/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/under_review` — Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实
 - [sched-20261015-016](../../2026/10/sched-20261015-016-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

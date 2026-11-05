@@ -2,9 +2,11 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 25
+article_count: 27
 ---
 
+- [sched-20261105-014](/lkm/2026/11/05/sched-20261105-014-sched-psi-don-t-drop-the-last-byte-of-a-trigger-write.html) `fix/low/under_review` — sched/psi: don't drop the last byte of a trigger write
+- [sched-20261105-015](/lkm/2026/11/05/sched-20261105-015-sched-psi-let-procfs-copy-in-trigger-writes.html) `feature/none/rfc` — sched/psi: let procfs copy in trigger writes
 - [sched-20261103-005](/lkm/2026/11/03/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/medium/under_review` — sched/psi: Preserve PSI state on delayed dequeue
 - [sched-20261102-009](/lkm/2026/11/02/sched-20261102-009-sched-psi-let-procfs-copy-in-trigger-writes.html) `feature/none/rfc` — sched/psi: let procfs copy in trigger writes
 - [sched-20261030-020](/lkm/2026/10/30/sched-20261030-020-sleeping-owner-handling-for-proxy-execution-v33.html) `feature/none/rfc` — Sleeping Owner Handling for Proxy Execution (v33)

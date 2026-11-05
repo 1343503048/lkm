@@ -2,9 +2,10 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 39
+article_count: 40
 ---
 
+- [sched-20261105-004](/lkm/2026/11/05/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `fix/critical/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet
 - [sched-20261102-005](/lkm/2026/11/02/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.html) `fix/high/under_review` — sched/core: keep offline cpus out of core-wide selections
 - [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261101-002](/lkm/2026/11/01/sched-20261101-002-sched-ext-fix-stale-pick-when-the-donor-changes-during-dispa.html) `fix/high/under_review` — sched_ext: Fix stale pick when the donor changes during dispatch

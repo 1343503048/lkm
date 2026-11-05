@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 39 篇
+共 40 篇
 
+- [sched-20261105-004](../../2026/11/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `fix/critical/under_review` — Seiji Nishikawa 的修复针对 core scheduling 里 `pick_next_task()` 会扫描尚未 join core 的 SMT 兄弟 CPU（其 `core_pick` 为 NULL）而导致的空指针崩溃。Peter Zijlstra 认可其思路、给出 `for_each_core_cpu_wrap` 的封装建议；Seiji 实测 Peter 的初版建议仍会复现 K
 - [sched-20261102-011](../../2026/11/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-005](../../2026/11/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.md) `fix/high/under_review` — Ahmed Abdelraoof（Amazon）修复 hotplug 期间 core scheduling 的窄竞态：新进 CPU 已加入 sibling 集但尚未把 `rq->core` 指向组 leader 期间，在线 CPU 的 `pick_next_task()` 会错误地读写这个离线 CPU 的 runqueue，导致静默数据破坏乃至 `cookie_equals()` 解引用 NULL
 - [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。

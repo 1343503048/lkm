@@ -2,9 +2,13 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 137
+article_count: 141
 ---
 
+- [sched-20261105-005](/lkm/2026/11/05/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261105-008](/lkm/2026/11/05/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.html) `fix/medium/under_review` — sched/cache: Fix group_llc_balance being unreachable above the first NUMA level
+- [sched-20261105-009](/lkm/2026/11/05/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts
+- [sched-20261105-012](/lkm/2026/11/05/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug
 - [sched-20261102-004](/lkm/2026/11/02/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261102-005](/lkm/2026/11/02/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.html) `fix/high/under_review` — sched/core: keep offline cpus out of core-wide selections
 - [sched-20261102-006](/lkm/2026/11/02/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts

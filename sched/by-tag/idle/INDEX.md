@@ -1,7 +1,9 @@
 # tag: idle
 
-共 84 篇
+共 86 篇
 
+- [sched-20261105-023](../../2026/11/sched-20261105-023-cpuidle-idle-miss-accounting-fixes.md) `fix/low/under_review` — Christian Loehle 的两补丁系列修复 cpuidle 的 idle_miss 记账。今日 Loehle 追问维护者意见，Rafael J. Wysocki 回应「只粗略看过、目前没有顾虑」。方向获维护者初步认可，处于低争议的待收取状态。
+- [sched-20261105-007](../../2026/11/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — Qing Wang 的 v4 补丁用 Bresenham 累加器替换 `newidle_balance` 的随机（NI_RANDOM）触发，把「是否做 idle 平衡」变成确定性计数。今日 Qing 与 Peter 就 `newidle_window_pos` 初值展开讨论（v4 已通过「不清零位置」修掉历史丢调用问题），Chengfeng Lin 给出原生 MMTests sembench 数据
 - [sched-20261102-026](../../2026/11/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-001](../../2026/11/sched-20261101-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.md) `fix/low/merged_tip` — 修复 `kcpustat_dyntick_stop()` 在时钟源从 jiffies 切换到 tsc-early 后可能触发的 cputime 假阳性 WARN（日志噪音）。补丁已由 Ingo Molnar 合入 tip/sched/urgent（commit `b327e63683a2b894b500027375342c25222b58ef`），并随 [GIT PULL] scheduler f
 - [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`

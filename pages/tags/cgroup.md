@@ -2,9 +2,13 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 125
+article_count: 129
 ---
 
+- [sched-20261105-001](/lkm/2026/11/05/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261105-002](/lkm/2026/11/05/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.html) `regression/critical/superseded` — sched/deadline: Fix stale root domain in cpuset bandwidth transfer
+- [sched-20261105-012](/lkm/2026/11/05/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug
+- [sched-20261105-013](/lkm/2026/11/05/sched-20261105-013-selftests-cgroup-skip-the-cpu-max-tests-without-cfs-bandwidt.html) `fix/low/under_review` — selftests: cgroup: skip the cpu.max tests without CFS bandwidth control
 - [sched-20261103-001](/lkm/2026/11/03/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.html) `fix/high/merged_tip` — sched/deadline: Fix assorted dl_bw accounting bugs
 - [sched-20261103-002](/lkm/2026/11/03/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.html) `bug/high/rfc` — mm, sched, cgroup: LRU Cache never drains when isolcpus are used with spinning SCHED_FIFO tasks causing page migration stalls
 - [sched-20261103-014](/lkm/2026/11/03/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()

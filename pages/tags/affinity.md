@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 56
+article_count: 58
 ---
 
+- [sched-20261105-005](/lkm/2026/11/05/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261105-016](/lkm/2026/11/05/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.html) `fix/high/under_review` — sched/isolation: Drain per-CPU LRU batches when CPUs become isolated
 - [sched-20261103-013](/lkm/2026/11/03/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
 - [sched-20261103-018](/lkm/2026/11/03/sched-20261103-018-sched-decouple-preferred-cpu-from-paravirt-in-kconfig-preemp.html) `feature/none/under_review` — sched: decouple PREFERRED_CPU from PARAVIRT in Kconfig.preempt
 - [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks

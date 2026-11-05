@@ -1,7 +1,8 @@
 # tag: regression
 
-共 58 篇
+共 59 篇
 
+- [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 
 - [sched-20261103-015](../../2026/11/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-015](../../2026/10/sched-20261031-015-sched-eevdf-move-to-a-single-runqueue.md) `discussion/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`

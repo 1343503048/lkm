@@ -1,7 +1,8 @@
 # tag: rt
 
-共 46 篇
+共 47 篇
 
+- [sched-20261105-003](../../2026/11/sched-20261105-003-revert-sched-rt-substract-number-of-tasks-of-throttled-queue.md) `discussion/rfc` — Qais Yousef 的 `[PATCH RFC v5 0/4]`（sched/rt 节流记账清理）中 patch 3/4 为 revert「从被节流队列的 rq->nr_running 中减任务数」这一历史提交；今天是原作者 Kayra Cizmeci 与 Qais 就该 revert 及 `inc/dec_rt_tasks()` 实现是否等价展开的 RFC 讨论——目前双方仍在厘清 `rt_
 - [sched-20261103-016](../../2026/11/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-003](../../2026/11/sched-20261102-003-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — Andrea Parri 修复 `__sched_setscheduler()` 在重入（recheck label）路径上对 `cpuset_mutex` 的二次解锁：`sched_setattr(SCHED_FLAG_KEEP_POLICY)` 作用在 SCHED_DEADLINE 任务上、且并发改策略时会 drop 锁并 restart，但 `cpuset_locked` 标志未清，导致出口

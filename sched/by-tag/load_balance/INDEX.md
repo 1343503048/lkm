@@ -1,7 +1,12 @@
 # tag: load_balance
 
-共 185 篇
+共 190 篇
 
+- [sched-20261105-016](../../2026/11/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.md) `fix/high/under_review` — - sched-20261103-002：Canonical 报告 isolcpus + SCHED_FIFO 忙循环导致 systemd 卡 D 状态的生产 bug，根因含 `cpu_is_isolated()` 对 nohz_full 判定退化；6 补丁系列的 patch 4/6 即本主题「隔离 CPU 清空 per-CPU LRU batch」。 - sched-20261105（今天）：s
+- [sched-20261105-011](../../2026/11/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — Francesco Nigro 报告的 bug：在启用 ITMT（Intel Turbo Boost Max 3.0，非对称算力）+ DELAY_DEQUEUE 的环境里，被唤醒任务会在首选 CPU 上等约 1ms 落在另一任务之后，即便允许的其它 CPU 全部空闲。K Prateek Nayak（AMD）初步定位为 idle 平衡器把 delayed 任务迁到首选 CPU、与同一 CPU 上并发
+- [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并
+- [sched-20261105-006](../../2026/11/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 李坤宇（Li kunyu）的补丁试图在 wakeup 路径上、当目标 runqueue 深度达到平均 nr_running 的 3 倍时，改用「分布」策略把突发唤醒的任务导流到其它 CPU，避免任务在保证有 idle CPU 可用的情况下仍堆叠到同一 CPU。两位资深 reviewer（Kayra Cizmeci、K Prateek Nayak）给出密集意见（补丁甚至不适用于 mainline），
+- [sched-20261105-005](../../2026/11/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），
 - [sched-20261102-022](../../2026/11/sched-20261102-022-sched-fair-remove-magic-hardcoded-margin-in-fits-capacity.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-006](../../2026/11/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — Zhan Xusheng 把 cache-aware 调度里 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（用「线程数 vs CPU 数」比较却只为借它 20% 的 margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧的 `x*1280 < y*1024` 严格等价），无功能变化。动机是 Qais Yousef 
 - [sched-20261031-009](../../2026/10/sched-20261031-009-sched-cache-check-reduced-capacity-before-alb-break-llc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

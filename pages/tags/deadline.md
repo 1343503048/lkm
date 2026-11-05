@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 60
+article_count: 62
 ---
 
+- [sched-20261105-001](/lkm/2026/11/05/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261105-002](/lkm/2026/11/05/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.html) `regression/critical/superseded` — sched/deadline: Fix stale root domain in cpuset bandwidth transfer
 - [sched-20261103-001](/lkm/2026/11/03/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.html) `fix/high/merged_tip` — sched/deadline: Fix assorted dl_bw accounting bugs
 - [sched-20261103-013](/lkm/2026/11/03/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks
 - [sched-20261103-014](/lkm/2026/11/03/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.html) `fix/high/under_review` — sched: Fix cpuset_mutex double unlock in __sched_setscheduler()

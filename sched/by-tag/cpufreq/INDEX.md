@@ -1,7 +1,13 @@
 # tag: cpufreq
 
-共 112 篇
+共 118 篇
 
+- [sched-20261105-022](../../2026/11/sched-20261105-022-cpufreq-sun50i-handle-boards-with-the-allwinner-sun50i-a133.md) `fix/medium/under_review` — Rajan Yadav 修 sun50i cpufreq 对 A133 的支持：Teclast P80 只以 `allwinner,sun50i-a133` 作为 SoC compatible，但 sun50i 驱动与 cpufreq-dt-platdev blocklist 都没列它，导致 cpufreq-dt 自行 probe、只找到 `opp-microvolt-speedN` 属性而失败（
+- [sched-20261105-021](../../2026/11/sched-20261105-021-cpufreq-tegra194-add-tegra264-support.md) `feature/under_review` — Sumit Gupta 的 9 补丁系列给 tegra194-cpufreq 驱动加入 Tegra264 支持。Tegra264 延续「BPMP 提供 NDIV 上限、驱动从 core clock + 参考计数器推导当前频率」的既有模型，但频率读取改走 64 位 AMU 计数器、频率请求改走 MMIO（CCPLEX 的 core_freq_req 寄存器，每个寄存器对应一个两核 cluster）。
+- [sched-20261105-020](../../2026/11/sched-20261105-020-cpufreq-cppc-add-ospm-nominal-freq-attribute.md) `feature/under_review` — Sumit Gupta 的 v8 系列为 CPPC cpufreq 新增 `ospm_nominal_freq` 属性（patch 2/3），把平台 OSPM nominal 频率作为 cpufreq 属性暴露。已迭代到第 8 版，今日 Christian Loehle 对 2/3 给出 `Reviewed-by`，进入收尾评审阶段。
+- [sched-20261105-019](../../2026/11/sched-20261105-019-cpufreq-cppc-enable-boost-by-default-when-supported.md) `feature/under_review` — Pengjie Zhang 的 v2 想让 CPPC cpufreq 驱动在平台支持 boost 时默认启用全局 boost（而非默认关闭）。今日讨论焦点落在「全局 boost 文件的语义」：Loehle 指出全局 boost=1 只是「允许 boost 的许可」而非「boost 被支持」，并顺带发现 power-orion-o6 上全局 boost 文件读写自相矛盾（写 1/0 都 -EINVA
+- [sched-20261105-018](../../2026/11/sched-20261105-018-cpufreq-cppc-set-cppc-enable-register-in-cpu-init.md) `fix/medium/under_review` — Sumit Gupta 从「autonomous mode boot 参数」系列里拆出的独立 bugfix：cppc_cpufreq 驱动从不写 ACPI CPPC Enable 寄存器，导致像 NVIDIA GB10 这类平台不写该寄存器就不会启用 CPPC、CPU 永远停在最低频率。补丁在 `cppc_cpufreq_cpu_init()` 开头调 `cppc_set_enable()`，`F
+- [sched-20261105-017](../../2026/11/sched-20261105-017-cpufreq-fix-global-boost-state-updates.md) `fix/low/under_review` — Christian Loehle 的 v2 两补丁修复 cpufreq 全局 boost 状态的两个缺陷：更新失败时保持原 boost 状态（不回退也不误置）、以及串行化并发的全局 boost 写。v2 按 Zhongqiu Han 意见拆成两个补丁并各带 Fixes，已获 Pengjie Zhang、Sumit Gupta、Zhongqiu Han 的 Reviewed-by；仅剩 Sumit 
 - [sched-20261103-021](../../2026/11/sched-20261103-021-cpufreq-cppc-preserve-ospm-set-registers-across-hotplug-and.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。这是 Sumit Gupta 的 CPPC 系列——在 CPU 热插拔与驱动卸载时保留 OSPM 设置的寄存器值，避免离线-上线周期后电源管理配置失效。
 - [sched-20261103-020](../../2026/11/sched-20261103-020-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-012](../../2026/11/sched-20261103-012-cpufreq-pxa-release-the-core-clock-reference-on-failure-and.md) `fix/low/under_review` — Wentao Liang 修 pxa2xx cpufreq 驱动的时钟引用泄漏：`pxa_cpu_init()` 在 CPU 不支持或 `cpufreq_register_driver()` 失败时不释放 `clk_get_sys()` 取得的 core clock，exit 路径也持有不放。补丁在失败与 exit 时 `clk_put()`。Krzysztof Kozlowski 强烈否定（与同

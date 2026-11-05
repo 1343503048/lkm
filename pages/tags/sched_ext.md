@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 314
+article_count: 315
 ---
 
+- [sched-20261105-010](/lkm/2026/11/05/sched-20261105-010-sched-ext-decompose-scx-cid-init.html) `feature/none/under_review` — sched_ext: Decompose scx_cid_init()
 - [sched-20261103-022](/lkm/2026/11/03/sched-20261103-022-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/merged_tip` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
 - [sched-20261103-023](/lkm/2026/11/03/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.html) `fix/none/merged_tip` — sched_ext: Say "hosting" instead of "running" in scx_exec_sched() comments
 - [sched-20261103-024](/lkm/2026/11/03/sched-20261103-024-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/merged_tip` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs

@@ -1,7 +1,11 @@
 # tag: cgroup
 
-共 125 篇
+共 129 篇
 
+- [sched-20261105-013](../../2026/11/sched-20261105-013-selftests-cgroup-skip-the-cpu-max-tests-without-cfs-bandwidt.md) `fix/low/under_review` — Sasha Levin 修 cgroup 自测：`cpu.max` 只有在内核开了 `CONFIG_CFS_BANDWIDTH` 时才存在（arm64 defconfig 未开），导致 `test_cpucg_max` 与 `test_cpucg_max_nested` 在 arm64 上写 `cpu.max` 失败而报错。补丁让两项测试在 `cpu.max` 不存在时跳过，并把 `CONFIG_
+- [sched-20261105-012](../../2026/11/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — Guopeng Zhang 的 v2 三补丁系列（本文基于其 2/3 主题）修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（`Oops: general protection fault`）的问题。通过要求分区创建/更新与 hotplug 路径都保留一
+- [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 
+- [sched-20261105-001](../../2026/11/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上，再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核：`__dl_sub()` 除零、无 active CPU 时 `dl_task_root_domain_cpu()` BUG()、隔离 CPU 全下线后重建记账 BUG
 - [sched-20261103-014](../../2026/11/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-002](../../2026/11/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.md) `bug/high/rfc` — Canonical 的 Caron Wills / Matthew Ruffell 报告一起生产环境 bug：isolcpus 大系统上 SCHED_FIFO 忙循环任务导致 systemd/PID 1 卡 D 状态最长 10 分钟、ssh 登录失败。根因是 nohz_full CPU 的 per-CPU work 永不执行、`flush_work()` 挂起。6 补丁系列修复 `cpu_is_i
 - [sched-20261103-001](../../2026/11/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.md) `fix/high/merged_tip` — Juri Lelli 的 4 补丁系列修复多个 SCHED_DEADLINE 带宽记账 bug（total_bw 泄漏/下溢最终导致新 DL 准入与 CPU offline 报 -EBUSY），当日即由 Ingo Molnar 全数合入 tip/sched/urgent，收到 4 封 tip-bot2 通知。

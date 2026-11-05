@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 281 篇
+共 285 篇
 
+- [sched-20261105-011](../../2026/11/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — Francesco Nigro 报告的 bug：在启用 ITMT（Intel Turbo Boost Max 3.0，非对称算力）+ DELAY_DEQUEUE 的环境里，被唤醒任务会在首选 CPU 上等约 1ms 落在另一任务之后，即便允许的其它 CPU 全部空闲。K Prateek Nayak（AMD）初步定位为 idle 平衡器把 delayed 任务迁到首选 CPU、与同一 CPU 上并发
+- [sched-20261105-009](../../2026/11/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — - sched-20261102-006：Zhan Xusheng 把 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（「线程数 vs CPU 数」只借其 20% margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧 `x*1280 < y*1024` 严格等价），以防 Qais 的 capacity-aware 
+- [sched-20261105-007](../../2026/11/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — Qing Wang 的 v4 补丁用 Bresenham 累加器替换 `newidle_balance` 的随机（NI_RANDOM）触发，把「是否做 idle 平衡」变成确定性计数。今日 Qing 与 Peter 就 `newidle_window_pos` 初值展开讨论（v4 已通过「不清零位置」修掉历史丢调用问题），Chengfeng Lin 给出原生 MMTests sembench 数据
+- [sched-20261105-006](../../2026/11/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 李坤宇（Li kunyu）的补丁试图在 wakeup 路径上、当目标 runqueue 深度达到平均 nr_running 的 3 倍时，改用「分布」策略把突发唤醒的任务导流到其它 CPU，避免任务在保证有 idle CPU 可用的情况下仍堆叠到同一 CPU。两位资深 reviewer（Kayra Cizmeci、K Prateek Nayak）给出密集意见（补丁甚至不适用于 mainline），
 - [sched-20261103-017](../../2026/11/sched-20261103-017-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-015](../../2026/11/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-004](../../2026/11/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.md) `bug/medium/under_review` — kiln 报告 DELAY_DEQUEUE 引入的 delay accounting bug：`__block_task()` 调 `delayacct_blkio_start()` 时总是写 `current`，使 delayed 任务从 `dequeue_entities()` 路径被 block 时 `blkio_start` 保持 0，随后 `delayacct_blkio_end()` 

@@ -2,9 +2,15 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 112
+article_count: 118
 ---
 
+- [sched-20261105-017](/lkm/2026/11/05/sched-20261105-017-cpufreq-fix-global-boost-state-updates.html) `fix/low/under_review` — cpufreq: Fix global boost state updates
+- [sched-20261105-018](/lkm/2026/11/05/sched-20261105-018-cpufreq-cppc-set-cppc-enable-register-in-cpu-init.html) `fix/medium/under_review` — cpufreq: CPPC: Set CPPC Enable register in cpu_init
+- [sched-20261105-019](/lkm/2026/11/05/sched-20261105-019-cpufreq-cppc-enable-boost-by-default-when-supported.html) `feature/none/under_review` — cpufreq: CPPC: Enable boost by default when supported
+- [sched-20261105-020](/lkm/2026/11/05/sched-20261105-020-cpufreq-cppc-add-ospm-nominal-freq-attribute.html) `feature/none/under_review` — cpufreq: CPPC: Add ospm_nominal_freq attribute
+- [sched-20261105-021](/lkm/2026/11/05/sched-20261105-021-cpufreq-tegra194-add-tegra264-support.html) `feature/none/under_review` — cpufreq: tegra194: add Tegra264 support
+- [sched-20261105-022](/lkm/2026/11/05/sched-20261105-022-cpufreq-sun50i-handle-boards-with-the-allwinner-sun50i-a133.html) `fix/medium/under_review` — cpufreq: sun50i: Handle boards with the allwinner,sun50i-a133 compatible
 - [sched-20261103-009](/lkm/2026/11/03/sched-20261103-009-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-disabled.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is disabled
 - [sched-20261103-010](/lkm/2026/11/03/sched-20261103-010-cpufreq-pcc-cpufreq-validate-the-acpi-interface-data.html) `fix/medium/under_review` — cpufreq: pcc-cpufreq: validate the ACPI interface data
 - [sched-20261103-011](/lkm/2026/11/03/sched-20261103-011-cpufreq-mediatek-release-dvfs-resources-when-removing-the-dr.html) `fix/low/under_review` — cpufreq: mediatek: Release DVFS resources when removing the driver

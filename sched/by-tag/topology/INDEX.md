@@ -1,7 +1,11 @@
 # tag: topology
 
-共 137 篇
+共 141 篇
 
+- [sched-20261105-012](../../2026/11/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — Guopeng Zhang 的 v2 三补丁系列（本文基于其 2/3 主题）修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（`Oops: general protection fault`）的问题。通过要求分区创建/更新与 hotplug 路径都保留一
+- [sched-20261105-009](../../2026/11/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — - sched-20261102-006：Zhan Xusheng 把 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（「线程数 vs CPU 数」只借其 20% margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧 `x*1280 < y*1024` 严格等价），以防 Qais 的 capacity-aware 
+- [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并
+- [sched-20261105-005](../../2026/11/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），
 - [sched-20261102-006](../../2026/11/sched-20261102-006-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — Zhan Xusheng 把 cache-aware 调度里 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（用「线程数 vs CPU 数」比较却只为借它 20% 的 margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧的 `x*1280 < y*1024` 严格等价），无功能变化。动机是 Qais Yousef 
 - [sched-20261102-005](../../2026/11/sched-20261102-005-sched-core-keep-offline-cpus-out-of-core-wide-selections.md) `fix/high/under_review` — Ahmed Abdelraoof（Amazon）修复 hotplug 期间 core scheduling 的窄竞态：新进 CPU 已加入 sibling 集但尚未把 `rq->core` 指向组 leader 期间，在线 CPU 的 `pick_next_task()` 会错误地读写这个离线 CPU 的 runqueue，导致静默数据破坏乃至 `cookie_equals()` 解引用 NULL
 - [sched-20261102-004](../../2026/11/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — Yury Norov 发 6-patch 系列，为 "preferred CPUs" 提供**运行时可写**的 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`），用于在物理 CPU 竞争时手动预留 CPU、把 fair 任务导流到其余 CPU。Peter Zijlstra 明确 NAK 了整个方向（「We already have cpusets

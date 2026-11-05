@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 56 篇
+共 58 篇
 
+- [sched-20261105-016](../../2026/11/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.md) `fix/high/under_review` — - sched-20261103-002：Canonical 报告 isolcpus + SCHED_FIFO 忙循环导致 systemd 卡 D 状态的生产 bug，根因含 `cpu_is_isolated()` 对 nohz_full 判定退化；6 补丁系列的 patch 4/6 即本主题「隔离 CPU 清空 per-CPU LRU batch」。 - sched-20261105（今天）：s
+- [sched-20261105-005](../../2026/11/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），
 - [sched-20261103-018](../../2026/11/sched-20261103-018-sched-decouple-preferred-cpu-from-paravirt-in-kconfig-preemp.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-013](../../2026/11/sched-20261103-013-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-004](../../2026/11/sched-20261102-004-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — Yury Norov 发 6-patch 系列，为 "preferred CPUs" 提供**运行时可写**的 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`），用于在物理 CPU 竞争时手动预留 CPU、把 fair 任务导流到其余 CPU。Peter Zijlstra 明确 NAK 了整个方向（「We already have cpusets

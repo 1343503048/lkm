@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 73 篇
+共 74 篇
 
+- [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并
 - [sched-20261103-002](../../2026/11/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.md) `bug/high/rfc` — Canonical 的 Caron Wills / Matthew Ruffell 报告一起生产环境 bug：isolcpus 大系统上 SCHED_FIFO 忙循环任务导致 systemd/PID 1 卡 D 状态最长 10 分钟、ssh 登录失败。根因是 nohz_full CPU 的 per-CPU work 永不执行、`flush_work()` 挂起。6 补丁系列修复 `cpu_is_i
 - [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
 - [sched-20261030-019](../../2026/10/sched-20261030-019-sched-numa-refine-memory-tiering-promotion-heuristics.md) `discussion/under_review` — 本文为增量更新，完整脉络见 related_articles。
