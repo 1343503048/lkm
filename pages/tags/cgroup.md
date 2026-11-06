@@ -2,9 +2,14 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 129
+article_count: 134
 ---
 
+- [sched-20261106-001](/lkm/2026/11/06/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261106-003](/lkm/2026/11/06/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261106-009](/lkm/2026/11/06/sched-20261106-009-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED
+- [sched-20261106-019](/lkm/2026/11/06/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.html) `regression/high/under_review` — [linus:master] [sched/fair]  fb1050ac8e: stress-ng.sleep.ops_per_sec 29.9% regression
+- [sched-20261106-024](/lkm/2026/11/06/sched-20261106-024-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/merged_tip` — sched/fair: Clear throttle state when leaving the fair class
 - [sched-20261105-001](/lkm/2026/11/05/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261105-002](/lkm/2026/11/05/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.html) `regression/critical/superseded` — sched/deadline: Fix stale root domain in cpuset bandwidth transfer
 - [sched-20261105-012](/lkm/2026/11/05/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug

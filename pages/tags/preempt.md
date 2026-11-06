@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 77
+article_count: 78
 ---
 
+- [sched-20261106-010](/lkm/2026/11/06/sched-20261106-010-sched-fair-fix-the-runtime-check-in-preempt-sync.html) `fix/medium/under_review` — sched/fair: Fix the runtime check in preempt_sync()
 - [sched-20261031-016](/lkm/2026/10/31/sched-20261031-016-sched-split-preempt-count-bookkeeping-from-raw-updates.html) `feature/none/rfc` — sched: Split preempt-count bookkeeping from raw updates
 - [sched-20261029-011](/lkm/2026/10/29/sched-20261029-011-sched-split-preempt-count-bookkeeping-from-raw-updates.html) `feature/none/rfc` — sched: Split preempt-count bookkeeping from raw updates
 - [sched-20261024-014](/lkm/2026/10/24/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression

@@ -1,7 +1,11 @@
 # tag: load_balance
 
-共 190 篇
+共 194 篇
 
+- [sched-20261106-022](../../2026/11/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `5ebdfe12ab96368d0339593129d4ce0bc2bd06f5`）：`sched_cluster_active` static key 的增/减不对称——`build_sched_domains()` 每建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domain
+- [sched-20261106-021](../../2026/11/sched-20261106-021-sched-cache-ignore-non-fair-current-in-alb-break-llc.md) `fix/medium/merged_tip` — Kayra Cizmeci 的 cache-aware 调度修复（此前 10 月发出并获 Tim Chen Reviewed-by）今日被 Ingo Molnar 合入 tip/sched/urgent：`alb_break_llc()` 会把非 fair 的 `rq->curr` 原样喂给 `task_misfits_asym_cpu()`，而主动均衡只会从 `cfs_tasks` detach
+- [sched-20261106-004](../../2026/11/sched-20261106-004-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261106-002](../../2026/11/sched-20261106-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）继续改进短 slice 任务的调度延迟：为正 lag 引入衰减、在选 CPU 时考虑 slice、为 fair 类新增 push 回调机制、用 push 把「入队时没跑上」的短任务迁移到更合适的 CPU、让 feec()（EAS）按 cost+slice 选 CPU、并修复多任务同时醒来堆叠同一 idle 
 - [sched-20261105-016](../../2026/11/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.md) `fix/high/under_review` — - sched-20261103-002：Canonical 报告 isolcpus + SCHED_FIFO 忙循环导致 systemd 卡 D 状态的生产 bug，根因含 `cpu_is_isolated()` 对 nohz_full 判定退化；6 补丁系列的 patch 4/6 即本主题「隔离 CPU 清空 per-CPU LRU batch」。 - sched-20261105（今天）：s
 - [sched-20261105-011](../../2026/11/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — Francesco Nigro 报告的 bug：在启用 ITMT（Intel Turbo Boost Max 3.0，非对称算力）+ DELAY_DEQUEUE 的环境里，被唤醒任务会在首选 CPU 上等约 1ms 落在另一任务之后，即便允许的其它 CPU 全部空闲。K Prateek Nayak（AMD）初步定位为 idle 平衡器把 delayed 任务迁到首选 CPU、与同一 CPU 上并发
 - [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并

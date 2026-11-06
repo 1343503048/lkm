@@ -1,7 +1,10 @@
 # tag: perf
 
-共 48 篇
+共 51 篇
 
+- [sched-20261106-023](../../2026/11/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.md) `fix/low/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `a0c755e574e37fddb59edf175f27dc3877e7fe23`）：`accumulate_sum()` 用 u64 计算已流逝的 PELT 周期数、却以 u32 返回，当周期数是 2^32 的整数倍（约 50 天不更新）时被截断为 0，调用方误判「无周期边界」跳过平均值重算，`*_avg` 相对 `
+- [sched-20261106-005](../../2026/11/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261106-002](../../2026/11/sched-20261106-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）继续改进短 slice 任务的调度延迟：为正 lag 引入衰减、在选 CPU 时考虑 slice、为 fair 类新增 push 回调机制、用 push 把「入队时没跑上」的短任务迁移到更合适的 CPU、让 feec()（EAS）按 cost+slice 选 CPU、并修复多任务同时醒来堆叠同一 idle 
 - [sched-20261105-007](../../2026/11/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — Qing Wang 的 v4 补丁用 Bresenham 累加器替换 `newidle_balance` 的随机（NI_RANDOM）触发，把「是否做 idle 平衡」变成确定性计数。今日 Qing 与 Peter 就 `newidle_window_pos` 初值展开讨论（v4 已通过「不清零位置」修掉历史丢调用问题），Chengfeng Lin 给出原生 MMTests sembench 数据
 - [sched-20261023-009](../../2026/10/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — kernel test robot（0day/LKP）报告：commit `118a2cf4ced60777a2408001e2b4838fed1cea55`（"sched/core: Call wakeup_preempt() for queued tasks during class change"）在 linus master 上使 `stress-ng.schedpolicy` 的 `op
 - [sched-20261019-002](../../2026/10/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.md) `feature/under_review` — Chengfeng Lin 发往 sched 的单补丁优化：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，attr.sched_runtime 为零而 se.slice 存实际时长，两者直接比较导致未变的 `sched_setparam()` 请求误走参数更新路径。补丁改为先比较 default/custom 模式再比较时长（按 Peter 建议），实

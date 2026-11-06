@@ -2,9 +2,12 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 48
+article_count: 51
 ---
 
+- [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
+- [sched-20261106-023](/lkm/2026/11/06/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.html) `fix/low/merged_tip` — sched/pelt: Fix u32 truncation of the PELT period count
 - [sched-20261105-007](/lkm/2026/11/05/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261023-009](/lkm/2026/10/23/sched-20261023-009-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.html) `regression/high/under_review` — [linus:master] [sched/core] 118a2cf4ce: stress-ng.schedpolicy.ops_per_sec 14.1% regression
 - [sched-20261019-002](/lkm/2026/10/19/sched-20261019-002-sched-fair-avoid-redundant-updates-for-unchanged-default-sli.html) `feature/none/under_review` — sched/fair: avoid redundant updates for unchanged default slices

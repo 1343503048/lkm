@@ -2,9 +2,14 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 315
+article_count: 320
 ---
 
+- [sched-20261106-006](/lkm/2026/11/06/sched-20261106-006-sched-ext-decompose-scx-cid-init.html) `feature/none/superseded` — sched_ext: Decompose scx_cid_init()
+- [sched-20261106-007](/lkm/2026/11/06/sched-20261106-007-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/under_review` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()
+- [sched-20261106-015](/lkm/2026/11/06/sched-20261106-015-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.html) `fix/low/under_review` — sched_ext: Reset task fields on exit of an SCX_TASK_READY task
+- [sched-20261106-016](/lkm/2026/11/06/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/under_review` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
+- [sched-20261106-017](/lkm/2026/11/06/sched-20261106-017-sched-ext-read-exit-kind-before-flushing-in-scx-flush-disabl.html) `fix/medium/merged_tip` — sched_ext: Read exit_kind before flushing in scx_flush_disable_work()
 - [sched-20261105-010](/lkm/2026/11/05/sched-20261105-010-sched-ext-decompose-scx-cid-init.html) `feature/none/under_review` — sched_ext: Decompose scx_cid_init()
 - [sched-20261103-022](/lkm/2026/11/03/sched-20261103-022-sched-ext-fix-ops-enqueue-dispatch-calls-before-ops-cpu-onli.html) `fix/medium/merged_tip` — sched_ext: Fix ops.enqueue/dispatch() calls before ops.cpu_online()
 - [sched-20261103-023](/lkm/2026/11/03/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.html) `fix/none/merged_tip` — sched_ext: Say "hosting" instead of "running" in scx_exec_sched() comments

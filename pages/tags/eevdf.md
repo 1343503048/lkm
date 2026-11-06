@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 90
+article_count: 93
 ---
 
+- [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261106-003](/lkm/2026/11/06/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261106-025](/lkm/2026/11/06/sched-20261106-025-sched-core-account-i-o-waits-independently-of-delayed-dequeu.html) `fix/medium/merged_tip` — sched/core: Account I/O waits independently of delayed dequeue
 - [sched-20261103-003](/lkm/2026/11/03/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.html) `fix/critical/rfc` — sched/eevdf: fall back to the leftmost entity when nobody is eligible
 - [sched-20261103-004](/lkm/2026/11/03/sched-20261103-004-sched-delayacct-blkio-start-recorded-on-the-wrong-task-when.html) `bug/medium/under_review` — sched/delayacct: blkio_start recorded on the wrong task when a delayed task is blocked from pick
 - [sched-20261103-005](/lkm/2026/11/03/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/medium/under_review` — sched/psi: Preserve PSI state on delayed dequeue

@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 77 篇
+共 78 篇
 
+- [sched-20261106-010](../../2026/11/sched-20261106-010-sched-fair-fix-the-runtime-check-in-preempt-sync.md) `fix/medium/under_review` — Peng Wang（阿里）修复 `preempt_sync()` 里 NEXT_BUDDY 的 runtime 检查恒为 0 的 bug：`wakeup_preempt_fair()` 已经先调 `update_curr_fair()` 把 `se->exec_start` 更新成 `rq_clock_task()`，随后 `preempt_sync()` 用 `rq_clock_task() -
 - [sched-20261031-016](../../2026/10/sched-20261031-016-sched-split-preempt-count-bookkeeping-from-raw-updates.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261029-011](../../2026/10/sched-20261029-011-sched-split-preempt-count-bookkeeping-from-raw-updates.md) `feature/rfc` — Karl Mehltretter 的 13 片 RFC v2 系列（patch 3「Split preempt-count bookkeeping from raw updates」）试图把 preempt count 的**原始更新**与**记账/debug/tracing**拆开：hardirq 最早入口在可插桩的 debug/tracing 代码能跑之前就必须更新 preempt count
 - [sched-20261024-014](../../2026/10/sched-20261024-014-linus-master-sched-core-118a2cf4ce-stress-ng-schedpolicy-ops.md) `regression/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

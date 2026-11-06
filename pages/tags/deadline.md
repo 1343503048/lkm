@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 62
+article_count: 65
 ---
 
+- [sched-20261106-001](/lkm/2026/11/06/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261106-011](/lkm/2026/11/06/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
+- [sched-20261106-026](/lkm/2026/11/06/sched-20261106-026-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.html) `fix/medium/merged_tip` — sched/deadline: Fix this_bw on class change of a dying task
 - [sched-20261105-001](/lkm/2026/11/05/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261105-002](/lkm/2026/11/05/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.html) `regression/critical/superseded` — sched/deadline: Fix stale root domain in cpuset bandwidth transfer
 - [sched-20261103-001](/lkm/2026/11/03/sched-20261103-001-sched-deadline-fix-assorted-dl-bw-accounting-bugs.html) `fix/high/merged_tip` — sched/deadline: Fix assorted dl_bw accounting bugs

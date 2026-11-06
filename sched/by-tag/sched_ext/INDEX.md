@@ -1,7 +1,12 @@
 # tag: sched_ext
 
-共 315 篇
+共 320 篇
 
+- [sched-20261106-017](../../2026/11/sched-20261106-017-sched-ext-read-exit-kind-before-flushing-in-scx-flush-disabl.md) `fix/medium/merged_tip` — jpiecuch@google.com 的 sched_ext for-7.4-fixes 修复（补丁本体系 11-04 发出、未在本日缓存内）：`scx_flush_disable_work()` 里应在 flush 之前读取任务的 exit_kind，避免禁用流程中读到已变化的状态。今日 Tejun Heo 回复「Applied to sched_ext/for-7.4-fixes」，并补上 
+- [sched-20261106-016](../../2026/11/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/under_review` — Radu Toader 为 sched_ext 新增一个**测试用**调度器 `scx_tickbug`（tools/sched_ext，为此系列 1/2）：它唯一的目的就是让一个任务在「runqueue 非空、但 CPU 处在 idle loop」的状态上保持可控时长。这个状态就是 `tick_irq_exit()` 里一个 gate 所测量/依赖的状态——已有示例调度器能到达但**保持不住**
+- [sched-20261106-015](../../2026/11/sched-20261106-015-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.md) `fix/low/under_review` — Rahad Bhuiya 的 1 行修复（bpf-next，sched_ext）补上 `scx_reset_task_fields()` 的一个漏调用：任务以 `SCX_TASK_READY` 状态退出时（典型如「经 `ops.init_task()` 初始化、但从未在 ext_sched_class 下启用就退出」的 fork 任务，或 disabled 任务），`__scx_disable_a
+- [sched-20261106-007](../../2026/11/sched-20261106-007-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.md) `fix/medium/under_review` — Zhang Qiao 单独提交的 sched_ext for-7.4-fixes 补丁，修复 `calc_shard_layout()` 在 partial-SMT 系统（部分核开 SMT、部分不开）上的 core 计数错误。这是对昨日 Tejun Heo「把修复单独发出来」要求的直接响应——放弃 `scx_cid_init()` 拆解重构后，把其中的真实 bug 修复独立成补丁。基于 for-7
+- [sched-20261106-006](../../2026/11/sched-20261106-006-sched-ext-decompose-scx-cid-init.md) `feature/superseded` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-010](../../2026/11/sched-20261105-010-sched-ext-decompose-scx-cid-init.md) `feature/under_review` — Zhang Qiao 的 4 补丁系列把 sched_ext 里约 230 行的 `scx_cid_init()` 单体函数拆解为共享一个 file-private builder 结构体的若干 stage helper，纯代码搬移、无行为变化，为后续修 `calc_shard_layout()` 的 partial-SMT core 计数与单核 shard 硬上限角例做铺垫。基于 tj/sche
 - [sched-20261103-024](../../2026/11/sched-20261103-024-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261103-023](../../2026/11/sched-20261103-023-sched-ext-say-hosting-instead-of-running-in-scx-exec-sched-c.md) `fix/merged_tip` — 本文为增量更新，完整脉络见 related_articles。

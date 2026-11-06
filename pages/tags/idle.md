@@ -2,9 +2,12 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 86
+article_count: 89
 ---
 
+- [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
+- [sched-20261106-016](/lkm/2026/11/06/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/under_review` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
+- [sched-20261106-018](/lkm/2026/11/06/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available
 - [sched-20261105-007](/lkm/2026/11/05/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261105-023](/lkm/2026/11/05/sched-20261105-023-cpuidle-idle-miss-accounting-fixes.html) `fix/low/under_review` — cpuidle: idle_miss accounting fixes
 - [sched-20261102-026](/lkm/2026/11/02/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.html) `feature/none/rfc` — cpuidle: runtime exit latency prediction and timer compensation

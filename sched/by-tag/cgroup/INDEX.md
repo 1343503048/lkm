@@ -1,7 +1,12 @@
 # tag: cgroup
 
-共 129 篇
+共 134 篇
 
+- [sched-20261106-024](../../2026/11/sched-20261106-024-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/high/merged_tip` — Daehyeon Ko 的修复今日合入 tip/sched/urgent（commit `c282051fc2cae2ea54770ebe435dbea090272c25`，Cc: stable）：任务迁出 fair 类时只在 `throttled_limbo_list` 移除 `p->throttled` 却不清位，若期间最后一份有限 CFS 配额被禁用、再回 fair 类会走真实 enqueu
+- [sched-20261106-019](../../2026/11/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.md) `regression/high/under_review` — kernel test robot（0-Day）在 **linus:master** 上复现 commit `fb1050ac8e`（"sched/fair: Change the default cgroup_mode to concur"）的显著回归：stress-ng.sleep.ops_per_sec 下降 **29.9%**（Sapphire Rapids 224 线程），netperf
+- [sched-20261106-009](../../2026/11/sched-20261106-009-sched-remove-config-rt-group-sched.md) `discussion/rfc` — Sebastian Andrzej Siewior 提议删除 `CONFIG_RT_GROUP_SCHED`（-1438 行）：它「broken beyond repair」，启用后无法给任务设 SCHED_FIFO/RR（cgroup 无 runtime 可分配、cgroup v2 根本不能分配 runtime）、SCHED_DEADLINE 准入也卡死，主流发行版（Debian/OpenSus
+- [sched-20261106-003](../../2026/11/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — Peter Zijlstra 发出 3 补丁系列修复 cgroup SCHED_IDLE 任务组的抢占问题：patch 1 用 guard 清理 `sched_group_set_idle()`、patch 2 把 `cfs_rq::idle` 改为「祖先 tg::idle 之和」、patch 3（RFC）携带 Vincent Guittot 的 `sched/eevdf: Fix sched i
+- [sched-20261106-001](../../2026/11/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-013](../../2026/11/sched-20261105-013-selftests-cgroup-skip-the-cpu-max-tests-without-cfs-bandwidt.md) `fix/low/under_review` — Sasha Levin 修 cgroup 自测：`cpu.max` 只有在内核开了 `CONFIG_CFS_BANDWIDTH` 时才存在（arm64 defconfig 未开），导致 `test_cpucg_max` 与 `test_cpucg_max_nested` 在 arm64 上写 `cpu.max` 失败而报错。补丁让两项测试在 `cpu.max` 不存在时跳过，并把 `CONFIG_
 - [sched-20261105-012](../../2026/11/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — Guopeng Zhang 的 v2 三补丁系列（本文基于其 2/3 主题）修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（`Oops: general protection fault`）的问题。通过要求分区创建/更新与 hotplug 路径都保留一
 - [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 

@@ -1,7 +1,10 @@
 # tag: affinity
 
-共 58 篇
+共 61 篇
 
+- [sched-20261106-012](../../2026/11/sched-20261106-012-sched-mmcid-defer-affinity-updates-until-schedule-in.md) `bug/critical/under_review` — Weiming Shi 修复 MM-CID 亲和性更新路径的 use-after-free（KASAN 已抓到、`panic_on_warn` 直接 panic）：`set_cpus_allowed_common()` 把远端任务的 `p->mm` 传给 `mm_update_cpus_allowed()`，但调度锁并不稳定这个指针——同一 owner 的 `sched_setaffinity()
+- [sched-20261106-011](../../2026/11/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — Andrea Parri 修复 sched_setaffinity 与 sched_setattr(SCHED_DEADLINE) 的竞态：二者并发作用在同一任务上时可能**双双成功**——setattr 把任务设成 SCHED_DEADLINE、setaffinity 把其 affinity 缩窄到比 root domain 还小，得到一个「affinity 窄于 root domain」的 d
+- [sched-20261106-008](../../2026/11/sched-20261106-008-sched-decouple-preferred-cpu-from-paravirt.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-016](../../2026/11/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.md) `fix/high/under_review` — - sched-20261103-002：Canonical 报告 isolcpus + SCHED_FIFO 忙循环导致 systemd 卡 D 状态的生产 bug，根因含 `cpu_is_isolated()` 对 nohz_full 判定退化；6 补丁系列的 patch 4/6 即本主题「隔离 CPU 清空 per-CPU LRU batch」。 - sched-20261105（今天）：s
 - [sched-20261105-005](../../2026/11/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），
 - [sched-20261103-018](../../2026/11/sched-20261103-018-sched-decouple-preferred-cpu-from-paravirt-in-kconfig-preemp.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。

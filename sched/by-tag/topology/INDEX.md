@@ -1,7 +1,9 @@
 # tag: topology
 
-共 141 篇
+共 143 篇
 
+- [sched-20261106-022](../../2026/11/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `5ebdfe12ab96368d0339593129d4ce0bc2bd06f5`）：`sched_cluster_active` static key 的增/减不对称——`build_sched_domains()` 每建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domain
+- [sched-20261106-020](../../2026/11/sched-20261106-020-sched-move-cpuhp-ap-sched-starting-to-post-stop-machine.md) `feature/under_review` — Frederic Weisbecker 的 CPU hotplug 重构系列（47 补丁）中的 03/47：把 `CPUHP_AP_SCHED_STARTING` 这个 teardown 回调从「stop_machine 主阶段」挪到新引入的「stop machine post function」（IRQ 仍禁、但其它 CPU 已可退出 stop_machine）。目的是从全局 stop_mach
 - [sched-20261105-012](../../2026/11/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — Guopeng Zhang 的 v2 三补丁系列（本文基于其 2/3 主题）修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（`Oops: general protection fault`）的问题。通过要求分区创建/更新与 hotplug 路径都保留一
 - [sched-20261105-009](../../2026/11/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.md) `fix/under_review` — - sched-20261102-006：Zhan Xusheng 把 `invalid_llc_nr()` 对 `fits_capacity()` 的误用（「线程数 vs CPU 数」只借其 20% margin）抽成独立 helper `fits_llc_nr()`（`x*5 < y*4`，与旧 `x*1280 < y*1024` 严格等价），以防 Qais 的 capacity-aware 
 - [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并

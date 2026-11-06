@@ -1,7 +1,10 @@
 # tag: deadline
 
-共 62 篇
+共 65 篇
 
+- [sched-20261106-026](../../2026/11/sched-20261106-026-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/merged_tip` — Nickolai Zeldovich 的修复今日合入 tip/sched/urgent（commit `0c93e25ef11a9dee43f6076bd1f09771dc2b167e`）：SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 之后、`__schedule()` dequeue 之前被 `sched_setscheduler(2)` 移
+- [sched-20261106-011](../../2026/11/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — Andrea Parri 修复 sched_setaffinity 与 sched_setattr(SCHED_DEADLINE) 的竞态：二者并发作用在同一任务上时可能**双双成功**——setattr 把任务设成 SCHED_DEADLINE、setaffinity 把其 affinity 缩窄到比 root domain 还小，得到一个「affinity 窄于 root domain」的 d
+- [sched-20261106-001](../../2026/11/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 
 - [sched-20261105-001](../../2026/11/sched-20261105-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上，再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核：`__dl_sub()` 除零、无 active CPU 时 `dl_task_root_domain_cpu()` BUG()、隔离 CPU 全下线后重建记账 BUG
 - [sched-20261103-014](../../2026/11/sched-20261103-014-sched-fix-cpuset-mutex-double-unlock-in-sched-setscheduler.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

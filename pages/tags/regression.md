@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 59
+article_count: 60
 ---
 
+- [sched-20261106-019](/lkm/2026/11/06/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.html) `regression/high/under_review` — [linus:master] [sched/fair]  fb1050ac8e: stress-ng.sleep.ops_per_sec 29.9% regression
 - [sched-20261105-002](/lkm/2026/11/05/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.html) `regression/critical/superseded` — sched/deadline: Fix stale root domain in cpuset bandwidth transfer
 - [sched-20261103-015](/lkm/2026/11/03/sched-20261103-015-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261031-001](/lkm/2026/10/31/sched-20261031-001-sched-cputime-don-t-warn-when-the-tick-period-starts-after-i.html) `fix/low/under_review` — sched/cputime: Don't warn when the tick period starts after idle exit

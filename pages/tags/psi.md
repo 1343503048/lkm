@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 27
+article_count: 28
 ---
 
+- [sched-20261106-013](/lkm/2026/11/06/sched-20261106-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html) `fix/medium/under_review` — sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace
 - [sched-20261105-014](/lkm/2026/11/05/sched-20261105-014-sched-psi-don-t-drop-the-last-byte-of-a-trigger-write.html) `fix/low/under_review` — sched/psi: don't drop the last byte of a trigger write
 - [sched-20261105-015](/lkm/2026/11/05/sched-20261105-015-sched-psi-let-procfs-copy-in-trigger-writes.html) `feature/none/rfc` — sched/psi: let procfs copy in trigger writes
 - [sched-20261103-005](/lkm/2026/11/03/sched-20261103-005-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/medium/under_review` — sched/psi: Preserve PSI state on delayed dequeue

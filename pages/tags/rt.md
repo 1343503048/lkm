@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 47
+article_count: 48
 ---
 
+- [sched-20261106-009](/lkm/2026/11/06/sched-20261106-009-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED
 - [sched-20261105-003](/lkm/2026/11/05/sched-20261105-003-revert-sched-rt-substract-number-of-tasks-of-throttled-queue.html) `discussion/none/rfc` — Revert "sched/rt: Substract number of tasks of throttled queues from rq->nr_running"
 - [sched-20261103-016](/lkm/2026/11/03/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261102-001](/lkm/2026/11/02/sched-20261102-001-sched-deadline-fix-spurious-eperm-for-migration-disabled-tas.html) `fix/medium/under_review` — sched/deadline: Fix spurious -EPERM for migration-disabled tasks

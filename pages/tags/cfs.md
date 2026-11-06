@@ -2,9 +2,19 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 285
+article_count: 295
 ---
 
+- [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261106-003](/lkm/2026/11/06/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261106-004](/lkm/2026/11/06/sched-20261106-004-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
+- [sched-20261106-010](/lkm/2026/11/06/sched-20261106-010-sched-fair-fix-the-runtime-check-in-preempt-sync.html) `fix/medium/under_review` — sched/fair: Fix the runtime check in preempt_sync()
+- [sched-20261106-019](/lkm/2026/11/06/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.html) `regression/high/under_review` — [linus:master] [sched/fair]  fb1050ac8e: stress-ng.sleep.ops_per_sec 29.9% regression
+- [sched-20261106-021](/lkm/2026/11/06/sched-20261106-021-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/merged_tip` — sched/cache: Ignore non-fair current in alb_break_llc()
+- [sched-20261106-023](/lkm/2026/11/06/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.html) `fix/low/merged_tip` — sched/pelt: Fix u32 truncation of the PELT period count
+- [sched-20261106-024](/lkm/2026/11/06/sched-20261106-024-sched-fair-clear-throttle-state-when-leaving-the-fair-class.html) `fix/high/merged_tip` — sched/fair: Clear throttle state when leaving the fair class
+- [sched-20261106-025](/lkm/2026/11/06/sched-20261106-025-sched-core-account-i-o-waits-independently-of-delayed-dequeu.html) `fix/medium/merged_tip` — sched/core: Account I/O waits independently of delayed dequeue
 - [sched-20261105-006](/lkm/2026/11/05/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261105-007](/lkm/2026/11/05/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261105-009](/lkm/2026/11/05/sched-20261105-009-sched-cache-don-t-use-fits-capacity-to-compare-thread-and-cp.html) `fix/none/under_review` — sched/cache: Don't use fits_capacity() to compare thread and CPU counts

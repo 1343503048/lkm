@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 190
+article_count: 194
 ---
 
+- [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261106-004](/lkm/2026/11/06/sched-20261106-004-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261106-021](/lkm/2026/11/06/sched-20261106-021-sched-cache-ignore-non-fair-current-in-alb-break-llc.html) `fix/medium/merged_tip` — sched/cache: Ignore non-fair current in alb_break_llc()
+- [sched-20261106-022](/lkm/2026/11/06/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/merged_tip` — sched/topology: Balance cluster static-key updates
 - [sched-20261105-005](/lkm/2026/11/05/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261105-006](/lkm/2026/11/05/sched-20261105-006-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261105-008](/lkm/2026/11/05/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.html) `fix/medium/under_review` — sched/cache: Fix group_llc_balance being unreachable above the first NUMA level

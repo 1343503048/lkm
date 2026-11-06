@@ -1,7 +1,10 @@
 # tag: idle
 
-共 86 篇
+共 89 篇
 
+- [sched-20261106-018](../../2026/11/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — Florian Fainelli（Broadcom）为 Christian Loehle 的「无 cpuidle driver 时停止 tick」单行修复补上 Tested-by：该修复被 backport 进 stable（5.15、6.1 等）后，Broadcom 在 ARM 32 位平台（无 ARM_CPUIDLE/ARM_PSCI_CPUIDLE、只有 WFI idle）的网络吞吐测试中撞
+- [sched-20261106-016](../../2026/11/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/under_review` — Radu Toader 为 sched_ext 新增一个**测试用**调度器 `scx_tickbug`（tools/sched_ext，为此系列 1/2）：它唯一的目的就是让一个任务在「runqueue 非空、但 CPU 处在 idle loop」的状态上保持可控时长。这个状态就是 `tick_irq_exit()` 里一个 gate 所测量/依赖的状态——已有示例调度器能到达但**保持不住**
+- [sched-20261106-005](../../2026/11/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-023](../../2026/11/sched-20261105-023-cpuidle-idle-miss-accounting-fixes.md) `fix/low/under_review` — Christian Loehle 的两补丁系列修复 cpuidle 的 idle_miss 记账。今日 Loehle 追问维护者意见，Rafael J. Wysocki 回应「只粗略看过、目前没有顾虑」。方向获维护者初步认可，处于低争议的待收取状态。
 - [sched-20261105-007](../../2026/11/sched-20261105-007-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — Qing Wang 的 v4 补丁用 Bresenham 累加器替换 `newidle_balance` 的随机（NI_RANDOM）触发，把「是否做 idle 平衡」变成确定性计数。今日 Qing 与 Peter 就 `newidle_window_pos` 初值展开讨论（v4 已通过「不清零位置」修掉历史丢调用问题），Chengfeng Lin 给出原生 MMTests sembench 数据
 - [sched-20261102-026](../../2026/11/sched-20261102-026-cpuidle-runtime-exit-latency-prediction-and-timer-compensati.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。
