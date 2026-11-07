@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 61 篇
+共 63 篇
 
+- [sched-20261107-009](../../2026/11/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-008](../../2026/11/sched-20261107-008-sched-decouple-preferred-cpu-from-paravirt.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-012](../../2026/11/sched-20261106-012-sched-mmcid-defer-affinity-updates-until-schedule-in.md) `bug/critical/under_review` — Weiming Shi 修复 MM-CID 亲和性更新路径的 use-after-free（KASAN 已抓到、`panic_on_warn` 直接 panic）：`set_cpus_allowed_common()` 把远端任务的 `p->mm` 传给 `mm_update_cpus_allowed()`，但调度锁并不稳定这个指针——同一 owner 的 `sched_setaffinity()
 - [sched-20261106-011](../../2026/11/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — Andrea Parri 修复 sched_setaffinity 与 sched_setattr(SCHED_DEADLINE) 的竞态：二者并发作用在同一任务上时可能**双双成功**——setattr 把任务设成 SCHED_DEADLINE、setaffinity 把其 affinity 缩窄到比 root domain 还小，得到一个「affinity 窄于 root domain」的 d
 - [sched-20261106-008](../../2026/11/sched-20261106-008-sched-decouple-preferred-cpu-from-paravirt.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

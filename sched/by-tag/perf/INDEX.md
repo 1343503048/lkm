@@ -1,7 +1,8 @@
 # tag: perf
 
-共 51 篇
+共 52 篇
 
+- [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-023](../../2026/11/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.md) `fix/low/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `a0c755e574e37fddb59edf175f27dc3877e7fe23`）：`accumulate_sum()` 用 u64 计算已流逝的 PELT 周期数、却以 u32 返回，当周期数是 2^32 的整数倍（约 50 天不更新）时被截断为 0，调用方误判「无周期边界」跳过平均值重算，`*_avg` 相对 `
 - [sched-20261106-005](../../2026/11/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-002](../../2026/11/sched-20261106-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）继续改进短 slice 任务的调度延迟：为正 lag 引入衰减、在选 CPU 时考虑 slice、为 fair 类新增 push 回调机制、用 push 把「入队时没跑上」的短任务迁移到更合适的 CPU、让 feec()（EAS）按 cost+slice 选 CPU、并修复多任务同时醒来堆叠同一 idle 

@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 89
+article_count: 90
 ---
 
+- [sched-20261107-006](/lkm/2026/11/07/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/superseded` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
 - [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261106-016](/lkm/2026/11/06/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/under_review` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
 - [sched-20261106-018](/lkm/2026/11/06/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available

@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 295 篇
+共 299 篇
 
+- [sched-20261107-005](../../2026/11/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-003](../../2026/11/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-001](../../2026/11/sched-20261107-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-025](../../2026/11/sched-20261106-025-sched-core-account-i-o-waits-independently-of-delayed-dequeu.md) `fix/medium/merged_tip` — Christian Loehle（Arm）的修复今日合入 tip/sched/urgent（commit `0965587d00b84f0a3b0fc94930d4a5f8ff011eda`）：blkio delay 记账与 `rq->nr_iowait` 此前都绑在「任务从 runqueue 移除」（`__block_task()`）上，与 EEVDF delayed dequeue 冲突——延
 - [sched-20261106-024](../../2026/11/sched-20261106-024-sched-fair-clear-throttle-state-when-leaving-the-fair-class.md) `fix/high/merged_tip` — Daehyeon Ko 的修复今日合入 tip/sched/urgent（commit `c282051fc2cae2ea54770ebe435dbea090272c25`，Cc: stable）：任务迁出 fair 类时只在 `throttled_limbo_list` 移除 `p->throttled` 却不清位，若期间最后一份有限 CFS 配额被禁用、再回 fair 类会走真实 enqueu
 - [sched-20261106-023](../../2026/11/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.md) `fix/low/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `a0c755e574e37fddb59edf175f27dc3877e7fe23`）：`accumulate_sum()` 用 u64 计算已流逝的 PELT 周期数、却以 u32 返回，当周期数是 2^32 的整数倍（约 50 天不更新）时被截断为 0，调用方误判「无周期边界」跳过平均值重算，`*_avg` 相对 `

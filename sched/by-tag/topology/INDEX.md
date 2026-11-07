@@ -1,7 +1,9 @@
 # tag: topology
 
-共 143 篇
+共 145 篇
 
+- [sched-20261107-012](../../2026/11/sched-20261107-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-009](../../2026/11/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-022](../../2026/11/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `5ebdfe12ab96368d0339593129d4ce0bc2bd06f5`）：`sched_cluster_active` static key 的增/减不对称——`build_sched_domains()` 每建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domain
 - [sched-20261106-020](../../2026/11/sched-20261106-020-sched-move-cpuhp-ap-sched-starting-to-post-stop-machine.md) `feature/under_review` — Frederic Weisbecker 的 CPU hotplug 重构系列（47 补丁）中的 03/47：把 `CPUHP_AP_SCHED_STARTING` 这个 teardown 回调从「stop_machine 主阶段」挪到新引入的「stop machine post function」（IRQ 仍禁、但其它 CPU 已可退出 stop_machine）。目的是从全局 stop_mach
 - [sched-20261105-012](../../2026/11/sched-20261105-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — Guopeng Zhang 的 v2 三补丁系列（本文基于其 2/3 主题）修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（`Oops: general protection fault`）的问题。通过要求分区创建/更新与 hotplug 路径都保留一

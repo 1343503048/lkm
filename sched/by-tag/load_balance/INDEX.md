@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 194 篇
+共 197 篇
 
+- [sched-20261107-009](../../2026/11/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-001](../../2026/11/sched-20261107-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-022](../../2026/11/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `5ebdfe12ab96368d0339593129d4ce0bc2bd06f5`）：`sched_cluster_active` static key 的增/减不对称——`build_sched_domains()` 每建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domain
 - [sched-20261106-021](../../2026/11/sched-20261106-021-sched-cache-ignore-non-fair-current-in-alb-break-llc.md) `fix/medium/merged_tip` — Kayra Cizmeci 的 cache-aware 调度修复（此前 10 月发出并获 Tim Chen Reviewed-by）今日被 Ingo Molnar 合入 tip/sched/urgent：`alb_break_llc()` 会把非 fair 的 `rq->curr` 原样喂给 `task_misfits_asym_cpu()`，而主动均衡只会从 `cfs_tasks` detach
 - [sched-20261106-004](../../2026/11/sched-20261106-004-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

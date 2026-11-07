@@ -2,9 +2,13 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 134
+article_count: 138
 ---
 
+- [sched-20261107-002](/lkm/2026/11/07/sched-20261107-002-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261107-005](/lkm/2026/11/07/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261107-011](/lkm/2026/11/07/sched-20261107-011-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED
+- [sched-20261107-012](/lkm/2026/11/07/sched-20261107-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug
 - [sched-20261106-001](/lkm/2026/11/06/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261106-003](/lkm/2026/11/06/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261106-009](/lkm/2026/11/06/sched-20261106-009-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED

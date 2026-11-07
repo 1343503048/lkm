@@ -1,7 +1,8 @@
 # tag: idle
 
-共 89 篇
+共 90 篇
 
+- [sched-20261107-006](../../2026/11/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/superseded` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-018](../../2026/11/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — Florian Fainelli（Broadcom）为 Christian Loehle 的「无 cpuidle driver 时停止 tick」单行修复补上 Tested-by：该修复被 backport 进 stable（5.15、6.1 等）后，Broadcom 在 ARM 32 位平台（无 ARM_CPUIDLE/ARM_PSCI_CPUIDLE、只有 WFI idle）的网络吞吐测试中撞
 - [sched-20261106-016](../../2026/11/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/under_review` — Radu Toader 为 sched_ext 新增一个**测试用**调度器 `scx_tickbug`（tools/sched_ext，为此系列 1/2）：它唯一的目的就是让一个任务在「runqueue 非空、但 CPU 处在 idle loop」的状态上保持可控时长。这个状态就是 `tick_irq_exit()` 里一个 gate 所测量/依赖的状态——已有示例调度器能到达但**保持不住**
 - [sched-20261106-005](../../2026/11/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

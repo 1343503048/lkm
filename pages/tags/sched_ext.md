@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 320
+article_count: 322
 ---
 
+- [sched-20261107-006](/lkm/2026/11/07/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/superseded` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
+- [sched-20261107-007](/lkm/2026/11/07/sched-20261107-007-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.html) `fix/low/merged_tip` — sched_ext: Reset task fields on exit of an SCX_TASK_READY task
 - [sched-20261106-006](/lkm/2026/11/06/sched-20261106-006-sched-ext-decompose-scx-cid-init.html) `feature/none/superseded` — sched_ext: Decompose scx_cid_init()
 - [sched-20261106-007](/lkm/2026/11/06/sched-20261106-007-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/under_review` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()
 - [sched-20261106-015](/lkm/2026/11/06/sched-20261106-015-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.html) `fix/low/under_review` — sched_ext: Reset task fields on exit of an SCX_TASK_READY task

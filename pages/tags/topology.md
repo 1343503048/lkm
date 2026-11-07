@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 143
+article_count: 145
 ---
 
+- [sched-20261107-009](/lkm/2026/11/07/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261107-012](/lkm/2026/11/07/sched-20261107-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug
 - [sched-20261106-020](/lkm/2026/11/06/sched-20261106-020-sched-move-cpuhp-ap-sched-starting-to-post-stop-machine.html) `feature/none/under_review` — sched: Move CPUHP_AP_SCHED_STARTING to post stop_machine()
 - [sched-20261106-022](/lkm/2026/11/06/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.html) `fix/medium/merged_tip` — sched/topology: Balance cluster static-key updates
 - [sched-20261105-005](/lkm/2026/11/05/sched-20261105-005-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask

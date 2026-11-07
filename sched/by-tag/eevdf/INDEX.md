@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 93 篇
+共 96 篇
 
+- [sched-20261107-005](../../2026/11/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261107-003](../../2026/11/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-025](../../2026/11/sched-20261106-025-sched-core-account-i-o-waits-independently-of-delayed-dequeu.md) `fix/medium/merged_tip` — Christian Loehle（Arm）的修复今日合入 tip/sched/urgent（commit `0965587d00b84f0a3b0fc94930d4a5f8ff011eda`）：blkio delay 记账与 `rq->nr_iowait` 此前都绑在「任务从 runqueue 移除」（`__block_task()`）上，与 EEVDF delayed dequeue 冲突——延
 - [sched-20261106-003](../../2026/11/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — Peter Zijlstra 发出 3 补丁系列修复 cgroup SCHED_IDLE 任务组的抢占问题：patch 1 用 guard 清理 `sched_group_set_idle()`、patch 2 把 `cfs_rq::idle` 改为「祖先 tg::idle 之和」、patch 3（RFC）携带 Vincent Guittot 的 `sched/eevdf: Fix sched i
 - [sched-20261106-002](../../2026/11/sched-20261106-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）继续改进短 slice 任务的调度延迟：为正 lag 引入衰减、在选 CPU 时考虑 slice、为 fair 类新增 push 回调机制、用 push 把「入队时没跑上」的短任务迁移到更合适的 CPU、让 feec()（EAS）按 cost+slice 选 CPU、并修复多任务同时醒来堆叠同一 idle 

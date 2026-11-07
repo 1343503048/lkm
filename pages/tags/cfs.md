@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 295
+article_count: 299
 ---
 
+- [sched-20261107-001](/lkm/2026/11/07/sched-20261107-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
+- [sched-20261107-003](/lkm/2026/11/07/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261107-004](/lkm/2026/11/07/sched-20261107-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261107-005](/lkm/2026/11/07/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261106-003](/lkm/2026/11/06/sched-20261106-003-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261106-004](/lkm/2026/11/06/sched-20261106-004-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average

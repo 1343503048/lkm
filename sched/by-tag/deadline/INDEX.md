@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 65 篇
+共 66 篇
 
+- [sched-20261107-002](../../2026/11/sched-20261107-002-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-026](../../2026/11/sched-20261106-026-sched-deadline-fix-this-bw-on-class-change-of-a-dying-task.md) `fix/medium/merged_tip` — Nickolai Zeldovich 的修复今日合入 tip/sched/urgent（commit `0c93e25ef11a9dee43f6076bd1f09771dc2b167e`）：SCHED_DEADLINE 任务在 `do_task_dead()` 置 `TASK_DEAD` 之后、`__schedule()` dequeue 之前被 `sched_setscheduler(2)` 移
 - [sched-20261106-011](../../2026/11/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — Andrea Parri 修复 sched_setaffinity 与 sched_setattr(SCHED_DEADLINE) 的竞态：二者并发作用在同一任务上时可能**双双成功**——setattr 把任务设成 SCHED_DEADLINE、setaffinity 把其 affinity 缩窄到比 root domain 还小，得到一个「affinity 窄于 root domain」的 d
 - [sched-20261106-001](../../2026/11/sched-20261106-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 61
+article_count: 63
 ---
 
+- [sched-20261107-008](/lkm/2026/11/07/sched-20261107-008-sched-decouple-preferred-cpu-from-paravirt.html) `feature/none/under_review` — sched: Decouple PREFERRED_CPU from PARAVIRT
+- [sched-20261107-009](/lkm/2026/11/07/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261106-008](/lkm/2026/11/06/sched-20261106-008-sched-decouple-preferred-cpu-from-paravirt.html) `feature/none/under_review` — sched: Decouple PREFERRED_CPU from PARAVIRT
 - [sched-20261106-011](/lkm/2026/11/06/sched-20261106-011-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
 - [sched-20261106-012](/lkm/2026/11/06/sched-20261106-012-sched-mmcid-defer-affinity-updates-until-schedule-in.html) `bug/critical/under_review` — sched/mmcid: Defer affinity updates until schedule-in
