@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 299
+article_count: 302
 ---
 
+- [sched-20261108-005](/lkm/2026/11/08/sched-20261108-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
+- [sched-20261108-006](/lkm/2026/11/08/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
+- [sched-20261108-008](/lkm/2026/11/08/sched-20261108-008-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261107-001](/lkm/2026/11/07/sched-20261107-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261107-003](/lkm/2026/11/07/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261107-004](/lkm/2026/11/07/sched-20261107-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

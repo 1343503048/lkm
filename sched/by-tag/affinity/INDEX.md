@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 63 篇
+共 64 篇
 
+- [sched-20261108-004](../../2026/11/sched-20261108-004-sched-mmcid-synchronize-exec-mm-teardown-with-affinity-updat.md) `bug/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-009](../../2026/11/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-008](../../2026/11/sched-20261107-008-sched-decouple-preferred-cpu-from-paravirt.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-012](../../2026/11/sched-20261106-012-sched-mmcid-defer-affinity-updates-until-schedule-in.md) `bug/critical/under_review` — Weiming Shi 修复 MM-CID 亲和性更新路径的 use-after-free（KASAN 已抓到、`panic_on_warn` 直接 panic）：`set_cpus_allowed_common()` 把远端任务的 `p->mm` 传给 `mm_update_cpus_allowed()`，但调度锁并不稳定这个指针——同一 owner 的 `sched_setaffinity()

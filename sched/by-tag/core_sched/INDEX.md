@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 41 篇
+共 42 篇
 
+- [sched-20261108-005](../../2026/11/sched-20261108-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-001](../../2026/11/sched-20261107-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-004](../../2026/11/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `fix/critical/under_review` — Seiji Nishikawa 的修复针对 core scheduling 里 `pick_next_task()` 会扫描尚未 join core 的 SMT 兄弟 CPU（其 `core_pick` 为 NULL）而导致的空指针崩溃。Peter Zijlstra 认可其思路、给出 `for_each_core_cpu_wrap` 的封装建议；Seiji 实测 Peter 的初版建议仍会复现 K
 - [sched-20261102-011](../../2026/11/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

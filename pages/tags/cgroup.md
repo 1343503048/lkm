@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 138
+article_count: 141
 ---
 
+- [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
+- [sched-20261108-002](/lkm/2026/11/08/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.html) `fix/low/under_review` — [BUG] sched/isolation: suspicious RCU usage with CONFIG_CPUSETS=n
+- [sched-20261108-003](/lkm/2026/11/08/sched-20261108-003-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261107-002](/lkm/2026/11/07/sched-20261107-002-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261107-005](/lkm/2026/11/07/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261107-011](/lkm/2026/11/07/sched-20261107-011-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED

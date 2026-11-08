@@ -1,7 +1,8 @@
 # tag: regression
 
-共 61 篇
+共 62 篇
 
+- [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-003](../../2026/11/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-019](../../2026/11/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.md) `regression/high/under_review` — kernel test robot（0-Day）在 **linus:master** 上复现 commit `fb1050ac8e`（"sched/fair: Change the default cgroup_mode to concur"）的显著回归：stress-ng.sleep.ops_per_sec 下降 **29.9%**（Sapphire Rapids 224 线程），netperf
 - [sched-20261105-002](../../2026/11/sched-20261105-002-sched-deadline-fix-stale-root-domain-in-cpuset-bandwidth-tra.md) `regression/critical/superseded` — （增量更新，完整脉络见下）Juri Lelli 此前的 4 补丁带宽记账系列（patch 1「Fix stale root domain in cpuset bandwidth transfer」已进 linux-next 为 b4a61fdc19c5）被 Marek Szyprowski 在 Amlogic ODROID-N2 上复现出 CPU hotplug 的 `kernel BUG at 

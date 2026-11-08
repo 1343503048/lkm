@@ -22955,6 +22955,162 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-012：Guopeng Zhang 的 v2 三补丁系列修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（GPF）的问题。刚发出 v2，暂无维护者回复。 - sched-20261107-012（今天）：**Waiman Long（cpuset/cgroup 维护者）评审 patch 1/3（Reject updates that empty the top sched domain"
   },
   {
+    "title": "[BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline",
+    "id": "sched-20261108-001",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "cgroup",
+      "topology",
+      "crash"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html",
+    "tldr": "Mathieu Desnoyers 报告一个可复现的 panic：`isolcpus=domain` 启动时，cpuset 分区可以把所有 housekeeping CPU 拿走，顶层 cpuset 只剩启动时隔离的 CPU、生成空调度域，随后对 CPU 执行 offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd`，直接内核 panic。他附了根因分析与首行 scissors 线后的修复草案。游离在 `kernel/sched` 之外但与调度域强相关的 cpuset 边界缺陷，值得关注。"
+  },
+  {
+    "title": "[BUG] sched/isolation: suspicious RCU usage with CONFIG_CPUSETS=n",
+    "id": "sched-20261108-002",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.html",
+    "tldr": "Mathieu Desnoyers 报告一个 `CONFIG_CPUSETS=n` + `isolcpus=domain` 下的 lockdep 假阳性：读写 `/proc/sys/kernel/sched_rt_runtime_us` 时 `housekeeping_cpumask()` 的 `rcu_dereference_all_check()` 判定失败，打出 \"suspicious RCU usage\"。经分析这是误报（无 cpuset 时指针启动后不再变化），作者附了一行修复草案。低严重度、纯日志噪音问题。"
+  },
+  {
+    "title": "sched/deadline: bandwidth accounting fixes and selftests",
+    "id": "sched-20261108-003",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "deadline",
+      "cgroup"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-003-sched-deadline-bandwidth-accounting-fixes-and-selftests.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核），带自测与 sched_debug。Juri 已对多数补丁给 Reviewed-by/Acked-by，Marek Szyprowski 实测修复了 CPU hotplug 崩溃并给 Tested-by；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261"
+  },
+  {
+    "title": "sched/mmcid: Synchronize exec MM teardown with affinity updates",
+    "id": "sched-20261108-004",
+    "date": "2026-11-08",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "affinity"
+    ],
+    "authors": [
+      "Weiming Shi"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-004-sched-mmcid-synchronize-exec-mm-teardown-with-affinity-updat.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-012：Weiming Shi 修复 MM-CID 亲和性更新路径的 use-after-free（KASAN 已抓到、`panic_on_warn` 直接 panic）：`set_cpus_allowed_common()` 把远端任务的 `p->mm` 传给 `mm_update_cpus_allowed()`，但调度锁并不稳定这个指针——同一 owner 的 `sched_setaffinity()` 会与目标任务的 exec（替换并释放旧 mm）竞速，当前内核只是「碰巧」被 `futex_exec_done()` 取 "
+  },
+  {
+    "title": "sched: core-sched fixes and balancing",
+    "id": "sched-20261108-005",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "core_sched",
+      "cfs",
+      "load_balance"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-005-sched-core-sched-fixes-and-balancing.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261107-001：Peter Zijlstra 的 v2 系列（12 补丁）发出，核心是 rq_clock/rq_lock 语义整体重做——cover 明说「主差异是 rq_clock 的重做，因为 TJ（Tejun Heo）指出上一版把它彻底搞错了」。新增 `rq_drop_lock()`、分解 `update_rq_clock()`、引入 `RQCF_NOP_MASK` 让已 UPDATED 的 rq 跳过重复更新，取代 v1 靠 `core_clock_updated` 布尔量猜时钟的绕路逻辑；补丁 1 也补了「锁间隙兄弟 CPU"
+  },
+  {
+    "title": "sched/eevdf: Move to a single runqueue",
+    "id": "sched-20261108-006",
+    "date": "2026-11-08",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "regression"
+    ],
+    "authors": [
+      "Chengfeng Lin"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261101-008：Chengfeng Lin 的 v3 系列尝试把 EEVDF 收敛到单一 runqueue；窗口内讨论单 runqueue 下 DELAY_DEQUEUE 记账与跳过一次冗余 `update_curr_eevdf()`（15-worker -0.22%、2-worker +1.27%）。 - sched-20261102-015：作者与 Mike Galbraith 继续 benchmark 对话，澄清 Mike 观测的负面影响来自其 measurement 场景，作者愿意全范围重跑。 - sched-20261103"
+  },
+  {
+    "title": "cpufreq: schedutil: Skip busy-CPU hold when NOHZ is inactive",
+    "id": "sched-20261108-007",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cpufreq",
+      "nohz"
+    ],
+    "authors": [
+      "Avi Weiss"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.html",
+    "tldr": "Avi Weiss 的 v2 单补丁修复 schedutil governor 在 NOHZ 失效场景下的「假忙」误判：`sugov_hold_freq()` 依赖 NOHZ idle-call 计数判断 CPU 近期是否空闲，NOHZ 被禁用或激活失败时计数不推进，CPU 被当作持续繁忙，频率永不下降。修复在 `tick_nohz_is_active()` 为假时跳过 busy-CPU hold。带 `Fixes`/`Cc: stable`，改动 3 行。"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261108-008",
+    "date": "2026-11-08",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "deadline",
+      "topology",
+      "load_balance"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-008-git-pull-scheduler-fixes.html",
+    "tldr": "Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`，截至 `006991aa89974378ee579416dba87adc22cd60fd`），含六枚此前已过 review 的修复：dying SCHED_DEADLINE 任务切 class 的 this_bw 缺账（Nickolai Zeldovich）、I/O 等待独立于 delayed dequeue 记账（Christian Loehle）、离开 fair class 时清 throttle 状态（Daehyeon Ko"
+  },
+  {
+    "title": "rv: Verify generic IRQ context transitions",
+    "id": "sched-20261108-009",
+    "date": "2026-11-08",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Karl Mehltretter"
+    ],
+    "url": "/lkm/2026/11/08/sched-20261108-009-rv-verify-generic-irq-context-transitions.html",
+    "tldr": "Karl Mehltretter 的 RFC v2 系列（9 补丁）为 Runtime Verification（rv）框架新增「IRQ 退出时的调度归属」验证：在 `preempt_schedule_irq()` 前后加裸 tracepoint（不导出 tracefs），记录发起调度的 owner 任务，再用一个 per-task 的 hybrid-automaton 监控器跟踪该调用穿越挂起/迁移/恢复/返回的完整生命周期，并配 KUnit 测试。调度相关性在于 patch 2/9 直接给 `kernel/sched/core.c` 与 `include/trace/events/sche"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

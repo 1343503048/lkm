@@ -1,7 +1,8 @@
 # tag: cpufreq
 
-共 118 篇
+共 119 篇
 
+- [sched-20261108-007](../../2026/11/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.md) `fix/medium/under_review` — Avi Weiss 的 v2 单补丁修复 schedutil governor 在 NOHZ 失效场景下的「假忙」误判：`sugov_hold_freq()` 依赖 NOHZ idle-call 计数判断 CPU 近期是否空闲，NOHZ 被禁用或激活失败时计数不推进，CPU 被当作持续繁忙，频率永不下降。修复在 `tick_nohz_is_active()` 为假时跳过 busy-CPU hold
 - [sched-20261105-022](../../2026/11/sched-20261105-022-cpufreq-sun50i-handle-boards-with-the-allwinner-sun50i-a133.md) `fix/medium/under_review` — Rajan Yadav 修 sun50i cpufreq 对 A133 的支持：Teclast P80 只以 `allwinner,sun50i-a133` 作为 SoC compatible，但 sun50i 驱动与 cpufreq-dt-platdev blocklist 都没列它，导致 cpufreq-dt 自行 probe、只找到 `opp-microvolt-speedN` 属性而失败（
 - [sched-20261105-021](../../2026/11/sched-20261105-021-cpufreq-tegra194-add-tegra264-support.md) `feature/under_review` — Sumit Gupta 的 9 补丁系列给 tegra194-cpufreq 驱动加入 Tegra264 支持。Tegra264 延续「BPMP 提供 NDIV 上限、驱动从 core clock + 参考计数器推导当前频率」的既有模型，但频率读取改走 64 位 AMU 计数器、频率请求改走 MMIO（CCPLEX 的 core_freq_req 寄存器，每个寄存器对应一个两核 cluster）。
 - [sched-20261105-020](../../2026/11/sched-20261105-020-cpufreq-cppc-add-ospm-nominal-freq-attribute.md) `feature/under_review` — Sumit Gupta 的 v8 系列为 CPPC cpufreq 新增 `ospm_nominal_freq` 属性（patch 2/3），把平台 OSPM nominal 频率作为 cpufreq 属性暴露。已迭代到第 8 版，今日 Christian Loehle 对 2/3 给出 `Reviewed-by`，进入收尾评审阶段。

@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 145
+article_count: 148
 ---
 
+- [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
+- [sched-20261108-002](/lkm/2026/11/08/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.html) `fix/low/under_review` — [BUG] sched/isolation: suspicious RCU usage with CONFIG_CPUSETS=n
+- [sched-20261108-008](/lkm/2026/11/08/sched-20261108-008-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261107-009](/lkm/2026/11/07/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261107-012](/lkm/2026/11/07/sched-20261107-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.html) `fix/high/under_review` — cgroup/cpuset: Keep the top sched domain non-empty on CPU hotplug
 - [sched-20261106-020](/lkm/2026/11/06/sched-20261106-020-sched-move-cpuhp-ap-sched-starting-to-post-stop-machine.html) `feature/none/under_review` — sched: Move CPUHP_AP_SCHED_STARTING to post stop_machine()

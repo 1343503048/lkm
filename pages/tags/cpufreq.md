@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 118
+article_count: 119
 ---
 
+- [sched-20261108-007](/lkm/2026/11/08/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is inactive
 - [sched-20261105-017](/lkm/2026/11/05/sched-20261105-017-cpufreq-fix-global-boost-state-updates.html) `fix/low/under_review` — cpufreq: Fix global boost state updates
 - [sched-20261105-018](/lkm/2026/11/05/sched-20261105-018-cpufreq-cppc-set-cppc-enable-register-in-cpu-init.html) `fix/medium/under_review` — cpufreq: CPPC: Set CPPC Enable register in cpu_init
 - [sched-20261105-019](/lkm/2026/11/05/sched-20261105-019-cpufreq-cppc-enable-boost-by-default-when-supported.html) `feature/none/under_review` — cpufreq: CPPC: Enable boost by default when supported

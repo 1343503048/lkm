@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 299 篇
+共 302 篇
 
+- [sched-20261108-008](../../2026/11/sched-20261108-008-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`，截至 `006991aa89974378ee579416dba87adc22cd60fd`），含六枚此前已过 review 的修复：dying SCHED_DEADLINE 任务切 class 的 this_bw 缺账（Nickola
+- [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261108-005](../../2026/11/sched-20261108-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-005](../../2026/11/sched-20261107-005-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-003](../../2026/11/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

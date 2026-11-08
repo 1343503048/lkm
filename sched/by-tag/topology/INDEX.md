@@ -1,7 +1,10 @@
 # tag: topology
 
-共 145 篇
+共 148 篇
 
+- [sched-20261108-008](../../2026/11/sched-20261108-008-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`，截至 `006991aa89974378ee579416dba87adc22cd60fd`），含六枚此前已过 review 的修复：dying SCHED_DEADLINE 任务切 class 的 this_bw 缺账（Nickola
+- [sched-20261108-002](../../2026/11/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.md) `fix/low/under_review` — Mathieu Desnoyers 报告一个 `CONFIG_CPUSETS=n` + `isolcpus=domain` 下的 lockdep 假阳性：读写 `/proc/sys/kernel/sched_rt_runtime_us` 时 `housekeeping_cpumask()` 的 `rcu_dereference_all_check()` 判定失败，打出 "suspicious RC
+- [sched-20261108-001](../../2026/11/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `fix/critical/under_review` — Mathieu Desnoyers 报告一个可复现的 panic：`isolcpus=domain` 启动时，cpuset 分区可以把所有 housekeeping CPU 拿走，顶层 cpuset 只剩启动时隔离的 CPU、生成空调度域，随后对 CPU 执行 offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd`，直接内核
 - [sched-20261107-012](../../2026/11/sched-20261107-012-cgroup-cpuset-keep-the-top-sched-domain-non-empty-on-cpu-hot.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-009](../../2026/11/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-022](../../2026/11/sched-20261106-022-sched-topology-balance-cluster-static-key-updates.md) `fix/medium/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `5ebdfe12ab96368d0339593129d4ce0bc2bd06f5`）：`sched_cluster_active` static key 的增/减不对称——`build_sched_domains()` 每建一个含 SD_CLUSTER 域的分区就加一次，而 `detach_destroy_domain

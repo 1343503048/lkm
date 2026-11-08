@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 63
+article_count: 64
 ---
 
+- [sched-20261108-004](/lkm/2026/11/08/sched-20261108-004-sched-mmcid-synchronize-exec-mm-teardown-with-affinity-updat.html) `bug/critical/under_review` — sched/mmcid: Synchronize exec MM teardown with affinity updates
 - [sched-20261107-008](/lkm/2026/11/07/sched-20261107-008-sched-decouple-preferred-cpu-from-paravirt.html) `feature/none/under_review` — sched: Decouple PREFERRED_CPU from PARAVIRT
 - [sched-20261107-009](/lkm/2026/11/07/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261106-008](/lkm/2026/11/06/sched-20261106-008-sched-decouple-preferred-cpu-from-paravirt.html) `feature/none/under_review` — sched: Decouple PREFERRED_CPU from PARAVIRT
