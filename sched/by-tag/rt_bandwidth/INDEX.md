@@ -1,7 +1,9 @@
 # tag: rt_bandwidth
 
-共 5 篇
+共 7 篇
 
+- [sched-20261109-012](../../2026/11/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.md) `bug/medium/under_review` — 社区报告一个 RT 调度 bug：任务从 SCHED_FIFO 切到 SCHED_OTHER 并阻塞睡眠后，RLIMIT_RTTIME 的 RT 运行时间计数器没有复位——反复「FIFO 跑 8ms → 切 SCHED_OTHER → 睡眠 10ms」会让 RT runtime 跨睡眠累计，最终触发 SIGXCPU，即便每次 RT 执行区间都低于限制。附完整 reproducer，Ubuntu 7
+- [sched-20261109-001](../../2026/11/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-011](../../2026/11/sched-20261107-011-sched-remove-config-rt-group-sched.md) `discussion/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-009](../../2026/11/sched-20261106-009-sched-remove-config-rt-group-sched.md) `discussion/rfc` — Sebastian Andrzej Siewior 提议删除 `CONFIG_RT_GROUP_SCHED`（-1438 行）：它「broken beyond repair」，启用后无法给任务设 SCHED_FIFO/RR（cgroup 无 runtime 可分配、cgroup v2 根本不能分配 runtime）、SCHED_DEADLINE 准入也卡死，主流发行版（Debian/OpenSus
 - [sched-20261017-004](../../2026/10/sched-20261017-004-sched-rt-queue-a-push-when-a-queued-rt-task-is-boosted.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

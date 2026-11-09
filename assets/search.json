@@ -23111,6 +23111,294 @@
     "tldr": "Karl Mehltretter 的 RFC v2 系列（9 补丁）为 Runtime Verification（rv）框架新增「IRQ 退出时的调度归属」验证：在 `preempt_schedule_irq()` 前后加裸 tracepoint（不导出 tracefs），记录发起调度的 owner 任务，再用一个 per-task 的 hybrid-automaton 监控器跟踪该调用穿越挂起/迁移/恢复/返回的完整生命周期，并配 KUnit 测试。调度相关性在于 patch 2/9 直接给 `kernel/sched/core.c` 与 `include/trace/events/sche"
   },
   {
+    "title": "sched/deadline: bandwidth accounting fixes and selftests",
+    "id": "sched-20261109-001",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "deadline",
+      "cgroup",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核），带自测与 sched_debug。Juri 已对多数补丁给 Reviewed-by/Acked-by，Marek Szyprowski 实测修复了 CPU hotplug 崩溃并给 Tested-by；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261"
+  },
+  {
+    "title": "Improving latency of short slice tasks",
+    "id": "sched-20261109-002",
+    "date": "2026-11-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-002：Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）改进短 slice 任务调度延迟：正 lag 衰减、选 CPU 考虑 slice、fair 类新增 push 回调、让 feec() 按 cost+slice 选 CPU、修复多任务同时醒来堆叠同一 idle CPU。dragonboard rb5 上 4 短任务同时醒来平均延迟约 1051us→61us，hackbench pipe +15-25%；cyclictest 99.9 分位略回退。 - sched-20261107"
+  },
+  {
+    "title": "cpuset: empty sched domain with isolcpus=domain, panic at CPU offline",
+    "id": "sched-20261109-003",
+    "date": "2026-11-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "topology",
+      "crash",
+      "affinity"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261108-001：Mathieu Desnoyers 报告一个可复现 panic——`isolcpus=domain` 启动时 cpuset 分区可把所有 housekeeping CPU 拿走，顶层 cpuset 只剩隔离 CPU、生成空调度域，随后 CPU offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd` 直接内核 panic。附根因分析与修复草案。 - sched-20261109-003（今天）：**Waiman Long（cpuset/cgroup"
+  },
+  {
+    "title": "sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS",
+    "id": "sched-20261109-004",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "affinity",
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261108-002：Mathieu Desnoyers 报告 `CONFIG_CPUSETS=n` + `isolcpus=domain` 下读写 `/proc/sys/kernel/sched_rt_runtime_us` 触发 \"suspicious RCU usage\" lockdep 假阳性（误报），并附一行修复草案。 - sched-20261109-004（今天）：**作者把草案落成正式补丁** `[PATCH] sched/isolation: Fix suspicious RCU usage without CONFIG_"
+  },
+  {
+    "title": "cgroup/cpuset: Reject updates that empty the top sched domain",
+    "id": "sched-20261109-005",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "topology",
+      "affinity"
+    ],
+    "authors": [
+      "Guopeng Zhang"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-012：Guopeng Zhang 的 v2 三补丁系列修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（GPF）的问题。刚发出，暂无维护者回复。 - sched-20261107-012：Waiman Long（cpuset/cgroup 维护者）评审 patch 1/3（Reject updates that empty the top sched domain）——认可代码改动"
+  },
+  {
+    "title": "sched/fair: Fix cgroup::idle preemption",
+    "id": "sched-20261109-006",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Peter Zijlstra",
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-003：Peter Zijlstra 发出 3 补丁系列修复 cgroup SCHED_IDLE 任务组的抢占问题：patch 1 用 guard 清理 `sched_group_set_idle()`、patch 2 把 `cfs_rq::idle` 改为「祖先 tg::idle 之和」、patch 3（RFC）携带 Vincent 的 `sched/eevdf: Fix sched idle task group preemption`。Kayra 指出 patch 2 有任务组创建竞态并追问 `se_is_idle()`"
+  },
+  {
+    "title": "sched: core-sched fixes and balancing",
+    "id": "sched-20261109-007",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "core_sched",
+      "sched_clock",
+      "preempt"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-007-sched-core-sched-fixes-and-balancing.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261107-001：Peter Zijlstra 的 v2 系列（12 补丁）发出，核心是 rq_clock/rq_lock 语义整体重做——cover 明说「主差异是 rq_clock 的重做，因为 TJ（Tejun Heo）指出上一版把它彻底搞错了」。新增 `rq_drop_lock()`、分解 `update_rq_clock()`、引入 `RQCF_NOP_MASK` 让已 UPDATED 的 rq 跳过重复更新，取代 v1 靠 `core_clock_updated` 布尔量猜时钟的绕路逻辑。 - sched-20261108-"
+  },
+  {
+    "title": "sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average",
+    "id": "sched-20261109-008",
+    "date": "2026-11-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "cfs",
+      "nohz"
+    ],
+    "authors": [
+      "Li kunyu"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-006：李坤宇（Li kunyu）的补丁在 wakeup 路径上、当目标 runqueue 深度达到平均 nr_running 的 3 倍时改用「分布」策略把突发唤醒任务导流到其它 CPU；Kayra Cizmeci 与 K Prateek Nayak 给出密集意见（补丁甚至不适用于 mainline），作者逐条消化中。 - sched-20261106-004：v2 发出——rebase 到最新 mainline、3x 阈值预计算缓存进 root_domain、改用 `rq->next_balance` 门控提前触发周期均衡"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261109-009",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "deadline",
+      "topology",
+      "load_balance"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-009-git-pull-scheduler-fixes.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261108-008：Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`），含六枚此前已过 review 的修复（dying deadline 任务 this_bw 缺账、I/O 等待独立记账、离开 fair 清 throttle、PELT 周期计数 u32 截断、cluster static-key 不平衡、alb_break_llc 忽略非 fair current）。当日缓存未见 Linus 合并回帖。 - sched-2"
+  },
+  {
+    "title": "sched/fair: Skip sched-domain traversal when wake affine is disabled",
+    "id": "sched-20261109-010",
+    "date": "2026-11-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Srikar Dronamraju"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.html",
+    "tldr": "Srikar Dronamraju 发单补丁：`select_task_rq_fair()` 中 when `want_affine == false`（`wake_wide()` 返回 true 或醒来的 CPU 不在任务允许 mask 内）的 TTWU wakeup 本已走快路径，但仍会进入 sched-domain 遍历随即 break——把这类 wakeup 直接跳入既有快路径，省掉无谓的 sd 遍历。Kayra Cizmeci 回帖指出 `SD_BALANCE_WAKE` 实际根本没被设置，并给出一个更直接的替代改法。"
+  },
+  {
+    "title": "sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()",
+    "id": "sched-20261109-011",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "affinity",
+      "core_sched"
+    ],
+    "authors": [
+      "Fushuai Wang"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html",
+    "tldr": "Fushuai Wang 发单补丁修复 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态：`sched_push_current_non_preferred_cpu()` 在 irq 上下文检查 `is_migration_disabled()` 后才排队 stopper，排在队列里时任务持续运行、可能在 stopper 执行前进入 `migrate_disable()`——在 stopper 里重新检查 `is_migration_disabled()` 再调 `__migrate_task()`，避免对 migrate-disabled 任"
+  },
+  {
+    "title": "sched/rt: RLIMIT_RTTIME not reset after blocking under SCHED_OTHER",
+    "id": "sched-20261109-012",
+    "date": "2026-11-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "l I"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.html",
+    "tldr": "社区报告一个 RT 调度 bug：任务从 SCHED_FIFO 切到 SCHED_OTHER 并阻塞睡眠后，RLIMIT_RTTIME 的 RT 运行时间计数器没有复位——反复「FIFO 跑 8ms → 切 SCHED_OTHER → 睡眠 10ms」会让 RT runtime 跨睡眠累计，最终触发 SIGXCPU，即便每次 RT 执行区间都低于限制。附完整 reproducer，Ubuntu 7.0.0-38-generic 复现，源码检查 mainline 同样存在。当日无人回帖。"
+  },
+  {
+    "title": "sched_ext selftest enable_cmask fails to load on 7.4-rc2: verifier rejects arena pointer cast from scx_enable_args.cmask_arena_addr",
+    "id": "sched-20261109-013",
+    "date": "2026-11-09",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Zhijian Han"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-013-sched-ext-selftest-enable-cmask-fails-to-load-on-7-4-rc2.html",
+    "tldr": "Zhijian Han 报告 sched_ext 的 enable_cmask selftest（merge window 经 `d781d1b78acf` 加入）在 v7.4-rc2 与 linux-next-20261105 上加载失败：BPF verifier 拒绝 `struct scx_cmask __arena *m = (struct scx_cmask __arena *)args->cmask_arena_addr;` 这处「u64 承载的 arena 地址」转型——C cast 不产生 `addr_space_cast` insn，成员加载产出 `R7=scalar()` "
+  },
+  {
+    "title": "sched: move stack_canary to the start of the randomizable region",
+    "id": "sched-20261109-014",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "riscv",
+      "preempt"
+    ],
+    "authors": [
+      "Valentin Schneider",
+      "Ruidong Tian"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-014：RISC-V 的 task_struct 增长导致 per-task stack canary 偏移超界、构建失败的修复（把 `stack_canary` 挪到「可随机化区域」起始处），被 Valentin Schneider 再次推动（替社区 ping Peter 与 Ingo）。补丁历经 Ruidong Tian（5 月 v1）与 Charles Mirabile（8 月 v2）两版未入主线。 - sched-20261107-010：Peter Zijlstra 回帖「这样显得特别随意，且极易随 task_str"
+  },
+  {
+    "title": "sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus",
+    "id": "sched-20261109-015",
+    "date": "2026-11-09",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Luo Gengkun"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261021-010：Luo Gengkun（华为）的系列（task_cache_work 只扫访问过的 CPU）推进到 v10；K Prateek Nayak 在 4 代 EPYC 上实测给 Tested-by（hackbench/tbench/stream/netperf/schbench 无超方差回退），并建议把 benchmark 数字放进 commit message。 - sched-20261022-012：Chen Yu 在多 LLC per node 的 Xeon 上跑完整 hackbench 后给 Reviewed-by"
+  },
+  {
+    "title": "sched/cache: Remove the old cache group footprint on exec",
+    "id": "sched-20261109-016",
+    "date": "2026-11-09",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "load_balance",
+      "cfs",
+      "topology"
+    ],
+    "authors": [
+      "Jemmy Wong"
+    ],
+    "url": "/lkm/2026/11/09/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261009-007 → sched-20261014-010：Jemmy Wong 修 `sched_cache_exec_mmap()` 记账遗漏——exec 换 cache group 后旧 group 的 footprint 只在 exit 路径减；多轮演进确定 footprint 转 `atomic_long_t`、去 clamp、placement pass 只更新一次。 - sched-20261015-017：Chen Yu 认可改名并请作者发正式版，Jemmy 发 v3。 - sched-20261021-011：Chen"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 322
+article_count: 323
 ---
 
+- [sched-20261109-013](/lkm/2026/11/09/sched-20261109-013-sched-ext-selftest-enable-cmask-fails-to-load-on-7-4-rc2.html) `bug/medium/under_review` — sched_ext selftest enable_cmask fails to load on 7.4-rc2: verifier rejects arena pointer cast from scx_enable_args.cmask_arena_addr
 - [sched-20261107-006](/lkm/2026/11/07/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/superseded` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
 - [sched-20261107-007](/lkm/2026/11/07/sched-20261107-007-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.html) `fix/low/merged_tip` — sched_ext: Reset task fields on exit of an SCX_TASK_READY task
 - [sched-20261106-006](/lkm/2026/11/06/sched-20261106-006-sched-ext-decompose-scx-cid-init.html) `feature/none/superseded` — sched_ext: Decompose scx_cid_init()

@@ -1,7 +1,12 @@
 # tag: cgroup
 
-共 141 篇
+共 146 篇
 
+- [sched-20261109-006](../../2026/11/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-005](../../2026/11/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-004](../../2026/11/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-003](../../2026/11/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-001](../../2026/11/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-003](../../2026/11/sched-20261108-003-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-002](../../2026/11/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.md) `fix/low/under_review` — Mathieu Desnoyers 报告一个 `CONFIG_CPUSETS=n` + `isolcpus=domain` 下的 lockdep 假阳性：读写 `/proc/sys/kernel/sched_rt_runtime_us` 时 `housekeeping_cpumask()` 的 `rcu_dereference_all_check()` 判定失败，打出 "suspicious RC
 - [sched-20261108-001](../../2026/11/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `fix/critical/under_review` — Mathieu Desnoyers 报告一个可复现的 panic：`isolcpus=domain` 启动时，cpuset 分区可以把所有 housekeeping CPU 拿走，顶层 cpuset 只剩启动时隔离的 CPU、生成空调度域，随后对 CPU 执行 offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd`，直接内核

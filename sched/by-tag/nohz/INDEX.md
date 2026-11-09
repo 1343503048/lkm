@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 61 篇
+共 62 篇
 
+- [sched-20261109-008](../../2026/11/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-007](../../2026/11/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.md) `fix/medium/under_review` — Avi Weiss 的 v2 单补丁修复 schedutil governor 在 NOHZ 失效场景下的「假忙」误判：`sugov_hold_freq()` 依赖 NOHZ idle-call 计数判断 CPU 近期是否空闲，NOHZ 被禁用或激活失败时计数不推进，CPU 被当作持续繁忙，频率永不下降。修复在 `tick_nohz_is_active()` 为假时跳过 busy-CPU hold
 - [sched-20261106-018](../../2026/11/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — Florian Fainelli（Broadcom）为 Christian Loehle 的「无 cpuidle driver 时停止 tick」单行修复补上 Tested-by：该修复被 backport 进 stable（5.15、6.1 等）后，Broadcom 在 ARM 32 位平台（无 ARM_CPUIDLE/ARM_PSCI_CPUIDLE、只有 WFI idle）的网络吞吐测试中撞
 - [sched-20261105-016](../../2026/11/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.md) `fix/high/under_review` — - sched-20261103-002：Canonical 报告 isolcpus + SCHED_FIFO 忙循环导致 systemd 卡 D 状态的生产 bug，根因含 `cpu_is_isolated()` 对 nohz_full 判定退化；6 补丁系列的 patch 4/6 即本主题「隔离 CPU 清空 per-CPU LRU batch」。 - sched-20261105（今天）：s

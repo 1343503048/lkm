@@ -2,9 +2,13 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 64
+article_count: 68
 ---
 
+- [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
+- [sched-20261109-004](/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html) `fix/low/under_review` — sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS
+- [sched-20261109-005](/lkm/2026/11/09/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
+- [sched-20261109-011](/lkm/2026/11/09/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261108-004](/lkm/2026/11/08/sched-20261108-004-sched-mmcid-synchronize-exec-mm-teardown-with-affinity-updat.html) `bug/critical/under_review` — sched/mmcid: Synchronize exec MM teardown with affinity updates
 - [sched-20261107-008](/lkm/2026/11/07/sched-20261107-008-sched-decouple-preferred-cpu-from-paravirt.html) `feature/none/under_review` — sched: Decouple PREFERRED_CPU from PARAVIRT
 - [sched-20261107-009](/lkm/2026/11/07/sched-20261107-009-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/stalled` — sched: Expose writable interface for preferred CPUs mask

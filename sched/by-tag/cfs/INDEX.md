@@ -1,7 +1,15 @@
 # tag: cfs
 
-共 302 篇
+共 310 篇
 
+- [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-015](../../2026/11/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-011](../../2026/11/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — Fushuai Wang 发单补丁修复 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态：`sched_push_current_non_preferred_cpu()` 在 irq 上下文检查 `is_migration_disabled()` 后才排队 stopper，排在队列里时任务持续运行、可能在 stopper 执行前进入 `migrat
+- [sched-20261109-010](../../2026/11/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.md) `feature/under_review` — Srikar Dronamraju 发单补丁：`select_task_rq_fair()` 中 when `want_affine == false`（`wake_wide()` 返回 true 或醒来的 CPU 不在任务允许 mask 内）的 TTWU wakeup 本已走快路径，但仍会进入 sched-domain 遍历随即 break——把这类 wakeup 直接跳入既有快路径，省掉无谓的
+- [sched-20261109-009](../../2026/11/sched-20261109-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-008](../../2026/11/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-006](../../2026/11/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-002](../../2026/11/sched-20261109-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-008](../../2026/11/sched-20261108-008-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`，截至 `006991aa89974378ee579416dba87adc22cd60fd`），含六枚此前已过 review 的修复：dying SCHED_DEADLINE 任务切 class 的 this_bw 缺账（Nickola
 - [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-005](../../2026/11/sched-20261108-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

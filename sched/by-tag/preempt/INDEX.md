@@ -1,7 +1,9 @@
 # tag: preempt
 
-共 79 篇
+共 81 篇
 
+- [sched-20261109-014](../../2026/11/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-007](../../2026/11/sched-20261109-007-sched-core-sched-fixes-and-balancing.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-009](../../2026/11/sched-20261108-009-rv-verify-generic-irq-context-transitions.md) `discussion/rfc` — Karl Mehltretter 的 RFC v2 系列（9 补丁）为 Runtime Verification（rv）框架新增「IRQ 退出时的调度归属」验证：在 `preempt_schedule_irq()` 前后加裸 tracepoint（不导出 tracefs），记录发起调度的 owner 任务，再用一个 per-task 的 hybrid-automaton 监控器跟踪该调用穿越挂起/
 - [sched-20261106-010](../../2026/11/sched-20261106-010-sched-fair-fix-the-runtime-check-in-preempt-sync.md) `fix/medium/under_review` — Peng Wang（阿里）修复 `preempt_sync()` 里 NEXT_BUDDY 的 runtime 检查恒为 0 的 bug：`wakeup_preempt_fair()` 已经先调 `update_curr_fair()` 把 `se->exec_start` 更新成 `rq_clock_task()`，随后 `preempt_sync()` 用 `rq_clock_task() -
 - [sched-20261031-016](../../2026/10/sched-20261031-016-sched-split-preempt-count-bookkeeping-from-raw-updates.md) `feature/rfc` — 本文为增量更新，完整脉络见 related_articles。

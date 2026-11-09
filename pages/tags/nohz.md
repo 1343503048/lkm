@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 61
+article_count: 62
 ---
 
+- [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261108-007](/lkm/2026/11/08/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is inactive
 - [sched-20261106-018](/lkm/2026/11/06/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available
 - [sched-20261105-016](/lkm/2026/11/05/sched-20261105-016-sched-isolation-drain-per-cpu-lru-batches-when-cpus-become-i.html) `fix/high/under_review` — sched/isolation: Drain per-CPU LRU batches when CPUs become isolated

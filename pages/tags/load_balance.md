@@ -2,9 +2,15 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 199
+article_count: 205
 ---
 
+- [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261109-009](/lkm/2026/11/09/sched-20261109-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20261109-010](/lkm/2026/11/09/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.html) `feature/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
+- [sched-20261109-015](/lkm/2026/11/09/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261109-016](/lkm/2026/11/09/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/medium/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261108-005](/lkm/2026/11/08/sched-20261108-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261108-008](/lkm/2026/11/08/sched-20261108-008-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261107-001](/lkm/2026/11/07/sched-20261107-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing

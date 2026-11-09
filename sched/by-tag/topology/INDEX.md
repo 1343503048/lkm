@@ -1,7 +1,14 @@
 # tag: topology
 
-共 148 篇
+共 155 篇
 
+- [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-015](../../2026/11/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-010](../../2026/11/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.md) `feature/under_review` — Srikar Dronamraju 发单补丁：`select_task_rq_fair()` 中 when `want_affine == false`（`wake_wide()` 返回 true 或醒来的 CPU 不在任务允许 mask 内）的 TTWU wakeup 本已走快路径，但仍会进入 sched-domain 遍历随即 break——把这类 wakeup 直接跳入既有快路径，省掉无谓的
+- [sched-20261109-009](../../2026/11/sched-20261109-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-005](../../2026/11/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-004](../../2026/11/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261109-003](../../2026/11/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-008](../../2026/11/sched-20261108-008-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-08`，截至 `006991aa89974378ee579416dba87adc22cd60fd`），含六枚此前已过 review 的修复：dying SCHED_DEADLINE 任务切 class 的 this_bw 缺账（Nickola
 - [sched-20261108-002](../../2026/11/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.md) `fix/low/under_review` — Mathieu Desnoyers 报告一个 `CONFIG_CPUSETS=n` + `isolcpus=domain` 下的 lockdep 假阳性：读写 `/proc/sys/kernel/sched_rt_runtime_us` 时 `housekeeping_cpumask()` 的 `rcu_dereference_all_check()` 判定失败，打出 "suspicious RC
 - [sched-20261108-001](../../2026/11/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `fix/critical/under_review` — Mathieu Desnoyers 报告一个可复现的 panic：`isolcpus=domain` 启动时，cpuset 分区可以把所有 housekeeping CPU 拿走，顶层 cpuset 只剩启动时隔离的 CPU、生成空调度域，随后对 CPU 执行 offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd`，直接内核

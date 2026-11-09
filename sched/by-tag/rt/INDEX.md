@@ -1,7 +1,8 @@
 # tag: rt
 
-共 49 篇
+共 50 篇
 
+- [sched-20261109-012](../../2026/11/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.md) `bug/medium/under_review` — 社区报告一个 RT 调度 bug：任务从 SCHED_FIFO 切到 SCHED_OTHER 并阻塞睡眠后，RLIMIT_RTTIME 的 RT 运行时间计数器没有复位——反复「FIFO 跑 8ms → 切 SCHED_OTHER → 睡眠 10ms」会让 RT runtime 跨睡眠累计，最终触发 SIGXCPU，即便每次 RT 执行区间都低于限制。附完整 reproducer，Ubuntu 7
 - [sched-20261107-011](../../2026/11/sched-20261107-011-sched-remove-config-rt-group-sched.md) `discussion/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-009](../../2026/11/sched-20261106-009-sched-remove-config-rt-group-sched.md) `discussion/rfc` — Sebastian Andrzej Siewior 提议删除 `CONFIG_RT_GROUP_SCHED`（-1438 行）：它「broken beyond repair」，启用后无法给任务设 SCHED_FIFO/RR（cgroup 无 runtime 可分配、cgroup v2 根本不能分配 runtime）、SCHED_DEADLINE 准入也卡死，主流发行版（Debian/OpenSus
 - [sched-20261105-003](../../2026/11/sched-20261105-003-revert-sched-rt-substract-number-of-tasks-of-throttled-queue.md) `discussion/rfc` — Qais Yousef 的 `[PATCH RFC v5 0/4]`（sched/rt 节流记账清理）中 patch 3/4 为 revert「从被节流队列的 rq->nr_running 中减任务数」这一历史提交；今天是原作者 Kayra Cizmeci 与 Qais 就该 revert 及 `inc/dec_rt_tasks()` 实现是否等价展开的 RFC 讨论——目前双方仍在厘清 `rt_

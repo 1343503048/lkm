@@ -2,9 +2,16 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 148
+article_count: 155
 ---
 
+- [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
+- [sched-20261109-004](/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html) `fix/low/under_review` — sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS
+- [sched-20261109-005](/lkm/2026/11/09/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
+- [sched-20261109-009](/lkm/2026/11/09/sched-20261109-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20261109-010](/lkm/2026/11/09/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.html) `feature/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
+- [sched-20261109-015](/lkm/2026/11/09/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/under_review` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261109-016](/lkm/2026/11/09/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.html) `fix/medium/under_review` — sched/cache: Remove the old cache group footprint on exec
 - [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261108-002](/lkm/2026/11/08/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.html) `fix/low/under_review` — [BUG] sched/isolation: suspicious RCU usage with CONFIG_CPUSETS=n
 - [sched-20261108-008](/lkm/2026/11/08/sched-20261108-008-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes

@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 42 篇
+共 44 篇
 
+- [sched-20261109-011](../../2026/11/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — Fushuai Wang 发单补丁修复 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态：`sched_push_current_non_preferred_cpu()` 在 irq 上下文检查 `is_migration_disabled()` 后才排队 stopper，排在队列里时任务持续运行、可能在 stopper 执行前进入 `migrat
+- [sched-20261109-007](../../2026/11/sched-20261109-007-sched-core-sched-fixes-and-balancing.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-005](../../2026/11/sched-20261108-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-001](../../2026/11/sched-20261107-001-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-004](../../2026/11/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `fix/critical/under_review` — Seiji Nishikawa 的修复针对 core scheduling 里 `pick_next_task()` 会扫描尚未 join core 的 SMT 兄弟 CPU（其 `core_pick` 为 NULL）而导致的空指针崩溃。Peter Zijlstra 认可其思路、给出 `for_each_core_cpu_wrap` 的封装建议；Seiji 实测 Peter 的初版建议仍会复现 K

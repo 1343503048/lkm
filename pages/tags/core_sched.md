@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 42
+article_count: 44
 ---
 
+- [sched-20261109-007](/lkm/2026/11/09/sched-20261109-007-sched-core-sched-fixes-and-balancing.html) `fix/medium/under_review` — sched: core-sched fixes and balancing
+- [sched-20261109-011](/lkm/2026/11/09/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261108-005](/lkm/2026/11/08/sched-20261108-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261107-001](/lkm/2026/11/07/sched-20261107-001-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261105-004](/lkm/2026/11/05/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `fix/critical/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet

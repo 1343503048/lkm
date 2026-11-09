@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 46
+article_count: 47
 ---
 
+- [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261105-004](/lkm/2026/11/05/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `fix/critical/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet
 - [sched-20261103-003](/lkm/2026/11/03/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.html) `fix/critical/rfc` — sched/eevdf: fall back to the leftmost entity when nobody is eligible

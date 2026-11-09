@@ -1,7 +1,8 @@
 # tag: sched_ext
 
-共 322 篇
+共 323 篇
 
+- [sched-20261109-013](../../2026/11/sched-20261109-013-sched-ext-selftest-enable-cmask-fails-to-load-on-7-4-rc2.md) `bug/medium/under_review` — Zhijian Han 报告 sched_ext 的 enable_cmask selftest（merge window 经 `d781d1b78acf` 加入）在 v7.4-rc2 与 linux-next-20261105 上加载失败：BPF verifier 拒绝 `struct scx_cmask __arena *m = (struct scx_cmask __arena *)args
 - [sched-20261107-007](../../2026/11/sched-20261107-007-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-006](../../2026/11/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/superseded` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-017](../../2026/11/sched-20261106-017-sched-ext-read-exit-kind-before-flushing-in-scx-flush-disabl.md) `fix/medium/merged_tip` — jpiecuch@google.com 的 sched_ext for-7.4-fixes 修复（补丁本体系 11-04 发出、未在本日缓存内）：`scx_flush_disable_work()` 里应在 flush 之前读取任务的 exit_kind，避免禁用流程中读到已变化的状态。今日 Tejun Heo 回复「Applied to sched_ext/for-7.4-fixes」，并补上 

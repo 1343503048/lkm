@@ -2,9 +2,10 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 49
+article_count: 50
 ---
 
+- [sched-20261109-012](/lkm/2026/11/09/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.html) `bug/medium/under_review` — sched/rt: RLIMIT_RTTIME not reset after blocking under SCHED_OTHER
 - [sched-20261107-011](/lkm/2026/11/07/sched-20261107-011-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED
 - [sched-20261106-009](/lkm/2026/11/06/sched-20261106-009-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED
 - [sched-20261105-003](/lkm/2026/11/05/sched-20261105-003-revert-sched-rt-substract-number-of-tasks-of-throttled-queue.html) `discussion/none/rfc` — Revert "sched/rt: Substract number of tasks of throttled queues from rq->nr_running"

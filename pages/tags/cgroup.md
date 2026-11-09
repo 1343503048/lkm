@@ -2,9 +2,14 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 141
+article_count: 146
 ---
 
+- [sched-20261109-001](/lkm/2026/11/09/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
+- [sched-20261109-004](/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html) `fix/low/under_review` — sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS
+- [sched-20261109-005](/lkm/2026/11/09/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
+- [sched-20261109-006](/lkm/2026/11/09/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261108-002](/lkm/2026/11/08/sched-20261108-002-bug-sched-isolation-suspicious-rcu-usage-with-config-cpusets.html) `fix/low/under_review` — [BUG] sched/isolation: suspicious RCU usage with CONFIG_CPUSETS=n
 - [sched-20261108-003](/lkm/2026/11/08/sched-20261108-003-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests

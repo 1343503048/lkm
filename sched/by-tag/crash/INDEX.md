@@ -1,7 +1,8 @@
 # tag: crash
 
-共 46 篇
+共 47 篇
 
+- [sched-20261109-003](../../2026/11/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-001](../../2026/11/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `fix/critical/under_review` — Mathieu Desnoyers 报告一个可复现的 panic：`isolcpus=domain` 启动时，cpuset 分区可以把所有 housekeeping CPU 拿走，顶层 cpuset 只剩启动时隔离的 CPU、生成空调度域，随后对 CPU 执行 offline 触发 `partition_sched_domains()` 越界读 `cpu_rq(NR_CPUS)->sd`，直接内核
 - [sched-20261105-004](../../2026/11/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `fix/critical/under_review` — Seiji Nishikawa 的修复针对 core scheduling 里 `pick_next_task()` 会扫描尚未 join core 的 SMT 兄弟 CPU（其 `core_pick` 为 NULL）而导致的空指针崩溃。Peter Zijlstra 认可其思路、给出 `for_each_core_cpu_wrap` 的封装建议；Seiji 实测 Peter 的初版建议仍会复现 K
 - [sched-20261103-003](../../2026/11/sched-20261103-003-sched-eevdf-fall-back-to-the-leftmost-entity-when-nobody-is.md) `fix/critical/rfc` — Aleksei Fedorov 的 RFC 补丁：`pick_eevdf()` 在多个实体 runnable 但无人 eligible（含 curr）时返回 NULL，调用方随后解引用崩溃；补丁在 NULL 时回退取最左实体并 `WARN_ON_ONCE`。Peter Zijlstra 明确否定：这个 WARN 杀伤力和 NULL 解引用一样大，应该找根因而不是打补丁。
