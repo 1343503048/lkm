@@ -2,9 +2,15 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 323
+article_count: 329
 ---
 
+- [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
+- [sched-20261110-004](/lkm/2026/11/10/sched-20261110-004-tools-sched-ext-robustness-fixes-from-cold-review.html) `fix/low/under_review` — tools/sched_ext: robustness fixes from cold review
+- [sched-20261110-005](/lkm/2026/11/10/sched-20261110-005-sched-ext-make-dsq-iterator-stay-drained-after-null.html) `fix/medium/under_review` — sched_ext: make DSQ iterator stay drained after NULL
+- [sched-20261110-015](/lkm/2026/11/10/sched-20261110-015-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/under_review` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()
+- [sched-20261110-016](/lkm/2026/11/10/sched-20261110-016-selftests-sched-ext-fix-enable-cmask-load-failure-on-older-c.html) `fix/low/merged_tip` — selftests/sched_ext: Fix enable_cmask load failure on older clangs
 - [sched-20261109-013](/lkm/2026/11/09/sched-20261109-013-sched-ext-selftest-enable-cmask-fails-to-load-on-7-4-rc2.html) `bug/medium/under_review` — sched_ext selftest enable_cmask fails to load on 7.4-rc2: verifier rejects arena pointer cast from scx_enable_args.cmask_arena_addr
 - [sched-20261107-006](/lkm/2026/11/07/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/superseded` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
 - [sched-20261107-007](/lkm/2026/11/07/sched-20261107-007-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.html) `fix/low/merged_tip` — sched_ext: Reset task fields on exit of an SCX_TASK_READY task

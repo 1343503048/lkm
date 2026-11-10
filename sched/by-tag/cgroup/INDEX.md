@@ -1,7 +1,16 @@
 # tag: cgroup
 
-共 146 篇
+共 155 篇
 
+- [sched-20261110-017](../../2026/11/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-014](../../2026/11/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-013](../../2026/11/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-011](../../2026/11/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-008](../../2026/11/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发 RFC v4（4 补丁），把 NUMA balancing 的开关从「单一系统级 sysctl `kernel.numa_balancing`」下放到 per-memcg，并通过 BPF kfunc（`bpf_numab_set_mode()`/`bpf_numab_get_mode()`）读写：延迟敏感负载可关、NUMA 感知负载可开，不再靠一个全局开关。设计按 Te
+- [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko
+- [sched-20261110-003](../../2026/11/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.md) `feature/under_review` — Fernand Sieber（Amazon）发 v2 四补丁系列，为 CFS 带宽控制器补上「CPU credits」场景所需的三个能力：新增 `cpu.max.runtime` 读/写 cgroup v2 文件以直接读写 runtime（信用额度）、解除 `cpu.max.burst` 不能超过一个 quota 的限制、并让空闲组在 idle 期间持续挣取最多 quota+burst 的额度。目
+- [sched-20261110-001](../../2026/11/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — Michal Blaszczyk 发 v3 RESEND：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max` 等）时，CFS 与 SCX 的状态更新不是原子的——CFS 部分由 `shares_mutex` 串行化但在调用 `scx_group_set_weight()` 前已释放，导致 CFS、SCX 内部记账（`tg->scx.weight`
 - [sched-20261109-006](../../2026/11/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-005](../../2026/11/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-004](../../2026/11/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。

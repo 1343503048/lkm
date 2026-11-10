@@ -1,7 +1,8 @@
 # tag: regression
 
-共 62 篇
+共 63 篇
 
+- [sched-20261110-006](../../2026/11/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.md) `fix/medium/under_review` — Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick
 - [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-003](../../2026/11/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-019](../../2026/11/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.md) `regression/high/under_review` — kernel test robot（0-Day）在 **linus:master** 上复现 commit `fb1050ac8e`（"sched/fair: Change the default cgroup_mode to concur"）的显著回归：stress-ng.sleep.ops_per_sec 下降 **29.9%**（Sapphire Rapids 224 线程），netperf

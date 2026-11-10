@@ -1,7 +1,9 @@
 # tag: dl_server
 
-共 18 篇
+共 20 篇
 
+- [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko
 - [sched-20261102-011](../../2026/11/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261101-004](../../2026/11/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `fix/medium/under_review` — Tejun Heo 的 sched/urgent 补丁修复了 `__pick_next_task()` 中 server pick 返回 RETRY_TASK 重启后 `rq->dl_server` 残留的问题。本窗口内作者又补充报告了 core scheduling 的 `pick_next_task()` 中还有三处会留下 stale `rq->dl_server`，原补丁范围需要扩展。
 - [sched-20261031-002](../../2026/10/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.md) `bug/medium/rfc` — Tejun Heo 最初发了一版 `[PATCH sched/urgent]` 修 `__pick_task_dl()` 在 server pick 返回 `RETRY_TASK` 时也把 server 记进 `rq->dl_server`、导致重启的 pick 把「陈旧 server」塞给无关任务的缺陷；随后两封回帖自撤回——「发错补丁了」，改成发**带 reproducer 的 bug 报告*

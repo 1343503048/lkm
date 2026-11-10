@@ -1,7 +1,13 @@
 # tag: cfs
 
-共 310 篇
+共 316 篇
 
+- [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-011](../../2026/11/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-006](../../2026/11/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.md) `fix/medium/under_review` — Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick
+- [sched-20261110-003](../../2026/11/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.md) `feature/under_review` — Fernand Sieber（Amazon）发 v2 四补丁系列，为 CFS 带宽控制器补上「CPU credits」场景所需的三个能力：新增 `cpu.max.runtime` 读/写 cgroup v2 文件以直接读写 runtime（信用额度）、解除 `cpu.max.burst` 不能超过一个 quota 的限制、并让空闲组在 idle 期间持续挣取最多 quota+burst 的额度。目
+- [sched-20261110-001](../../2026/11/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — Michal Blaszczyk 发 v3 RESEND：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max` 等）时，CFS 与 SCX 的状态更新不是原子的——CFS 部分由 `shares_mutex` 串行化但在调用 `scx_group_set_weight()` 前已释放，导致 CFS、SCX 内部记账（`tg->scx.weight`
 - [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-015](../../2026/11/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-011](../../2026/11/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — Fushuai Wang 发单补丁修复 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态：`sched_push_current_non_preferred_cpu()` 在 irq 上下文检查 `is_migration_disabled()` 后才排队 stopper，排在队列里时任务持续运行、可能在 stopper 执行前进入 `migrat

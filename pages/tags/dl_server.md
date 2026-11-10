@@ -2,9 +2,11 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 18
+article_count: 20
 ---
 
+- [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server
+- [sched-20261110-009](/lkm/2026/11/10/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261101-004](/lkm/2026/11/01/sched-20261101-004-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK
 - [sched-20261031-002](/lkm/2026/10/31/sched-20261031-002-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `bug/medium/rfc` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK

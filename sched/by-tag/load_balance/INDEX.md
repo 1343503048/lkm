@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 205 篇
+共 206 篇
 
+- [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-015](../../2026/11/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-010](../../2026/11/sched-20261109-010-sched-fair-skip-sched-domain-traversal-when-wake-affine-i.md) `feature/under_review` — Srikar Dronamraju 发单补丁：`select_task_rq_fair()` 中 when `want_affine == false`（`wake_wide()` 返回 true 或醒来的 CPU 不在任务允许 mask 内）的 TTWU wakeup 本已走快路径，但仍会进入 sched-domain 遍历随即 break——把这类 wakeup 直接跳入既有快路径，省掉无谓的

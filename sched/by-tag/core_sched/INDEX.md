@@ -1,7 +1,8 @@
 # tag: core_sched
 
-共 44 篇
+共 45 篇
 
+- [sched-20261110-006](../../2026/11/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.md) `fix/medium/under_review` — Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick
 - [sched-20261109-011](../../2026/11/sched-20261109-011-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — Fushuai Wang 发单补丁修复 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态：`sched_push_current_non_preferred_cpu()` 在 irq 上下文检查 `is_migration_disabled()` 后才排队 stopper，排在队列里时任务持续运行、可能在 stopper 执行前进入 `migrat
 - [sched-20261109-007](../../2026/11/sched-20261109-007-sched-core-sched-fixes-and-balancing.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-005](../../2026/11/sched-20261108-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

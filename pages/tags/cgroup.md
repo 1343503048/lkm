@@ -2,9 +2,18 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 146
+article_count: 155
 ---
 
+- [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
+- [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server
+- [sched-20261110-008](/lkm/2026/11/10/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html) `feature/none/rfc` — BPF-based per-cgroup NUMA balancing mode selection
+- [sched-20261110-009](/lkm/2026/11/10/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261110-011](/lkm/2026/11/10/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261110-013](/lkm/2026/11/10/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html) `fix/high/under_review` — sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace
+- [sched-20261110-014](/lkm/2026/11/10/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
+- [sched-20261110-017](/lkm/2026/11/10/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/under_review` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261109-001](/lkm/2026/11/09/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261109-004](/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html) `fix/low/under_review` — sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS

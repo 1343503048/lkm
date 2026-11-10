@@ -2,9 +2,10 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 205
+article_count: 206
 ---
 
+- [sched-20261110-012](/lkm/2026/11/10/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.html) `fix/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
 - [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261109-009](/lkm/2026/11/09/sched-20261109-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes

@@ -1,7 +1,9 @@
 # tag: eevdf
 
-共 99 篇
+共 101 篇
 
+- [sched-20261110-011](../../2026/11/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-006](../../2026/11/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-002](../../2026/11/sched-20261109-002-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

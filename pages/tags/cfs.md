@@ -2,9 +2,15 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 310
+article_count: 316
 ---
 
+- [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
+- [sched-20261110-006](/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html) `fix/medium/under_review` — sched/fair: Stop core-scheduled siblings trading rescheduling IPIs
+- [sched-20261110-010](/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261110-011](/lkm/2026/11/10/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
+- [sched-20261110-012](/lkm/2026/11/10/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.html) `fix/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
 - [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261109-006](/lkm/2026/11/09/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average

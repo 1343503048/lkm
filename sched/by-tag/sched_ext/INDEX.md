@@ -1,7 +1,13 @@
 # tag: sched_ext
 
-共 323 篇
+共 329 篇
 
+- [sched-20261110-016](../../2026/11/sched-20261110-016-selftests-sched-ext-fix-enable-cmask-load-failure-on-older-c.md) `fix/low/merged_tip` — Tejun Heo 修 sched_ext `enable_cmask` selftest 在老 clang 上加载失败的问题：该测试把任务 cmask 的 u64 arena 地址 cast 成 `__arena` 指针，但没走 `cast_kern()`，老 clang（无 `__BPF_FEATURE_ADDR_SPACE_CAST`）需要显式 cast，否则测试加载失败。补丁加一行 `ca
+- [sched-20261110-015](../../2026/11/sched-20261110-015-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261110-005](../../2026/11/sched-20261110-005-sched-ext-make-dsq-iterator-stay-drained-after-null.md) `fix/medium/under_review` — Kang Chen 修 sched_ext DSQ 迭代器的一个 verifier 契约违约：`bpf_iter_scx_dsq_next()` 走到队列末尾时 `nldsq_cursor_next_task()` 会把迭代游标从链表摘除，下一次调用见到 `list_empty(&cursor->node)` 就从 DSQ 头重新开始、返回同一轮迭代的第一个任务。而 verifier 依赖「nex
+- [sched-20261110-004](../../2026/11/sched-20261110-004-tools-sched-ext-robustness-fixes-from-cold-review.md) `fix/low/under_review` — Tao Cui（麒麟）发 9 补丁系列，修复 sched_ext 四个示例调度器（scx_flatcg / scx_pair / scx_qmap / scx_userland）在 cold review 中发现的一批健壮性问题：非法 stats interval 导致 100% CPU 忙旋、usage synopsis 漏选项、restart 后 pair_id/hier stats base
+- [sched-20261110-003](../../2026/11/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.md) `feature/under_review` — Fernand Sieber（Amazon）发 v2 四补丁系列，为 CFS 带宽控制器补上「CPU credits」场景所需的三个能力：新增 `cpu.max.runtime` 读/写 cgroup v2 文件以直接读写 runtime（信用额度）、解除 `cpu.max.burst` 不能超过一个 quota 的限制、并让空闲组在 idle 期间持续挣取最多 quota+burst 的额度。目
+- [sched-20261110-001](../../2026/11/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — Michal Blaszczyk 发 v3 RESEND：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max` 等）时，CFS 与 SCX 的状态更新不是原子的——CFS 部分由 `shares_mutex` 串行化但在调用 `scx_group_set_weight()` 前已释放，导致 CFS、SCX 内部记账（`tg->scx.weight`
 - [sched-20261109-013](../../2026/11/sched-20261109-013-sched-ext-selftest-enable-cmask-fails-to-load-on-7-4-rc2.md) `bug/medium/under_review` — Zhijian Han 报告 sched_ext 的 enable_cmask selftest（merge window 经 `d781d1b78acf` 加入）在 v7.4-rc2 与 linux-next-20261105 上加载失败：BPF verifier 拒绝 `struct scx_cmask __arena *m = (struct scx_cmask __arena *)args
 - [sched-20261107-007](../../2026/11/sched-20261107-007-sched-ext-reset-task-fields-on-exit-of-an-scx-task-ready-tas.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-006](../../2026/11/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/superseded` — 本文为增量更新，完整脉络见下。

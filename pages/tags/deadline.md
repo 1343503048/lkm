@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 70
+article_count: 72
 ---
 
+- [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server
+- [sched-20261110-009](/lkm/2026/11/10/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261109-001](/lkm/2026/11/09/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261109-009](/lkm/2026/11/09/sched-20261109-009-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261108-003](/lkm/2026/11/08/sched-20261108-003-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests

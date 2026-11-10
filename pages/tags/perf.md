@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 52
+article_count: 53
 ---
 
+- [sched-20261110-010](/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261107-004](/lkm/2026/11/07/sched-20261107-004-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261106-002](/lkm/2026/11/06/sched-20261106-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator

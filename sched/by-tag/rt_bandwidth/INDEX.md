@@ -1,7 +1,8 @@
 # tag: rt_bandwidth
 
-共 7 篇
+共 8 篇
 
+- [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko
 - [sched-20261109-012](../../2026/11/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.md) `bug/medium/under_review` — 社区报告一个 RT 调度 bug：任务从 SCHED_FIFO 切到 SCHED_OTHER 并阻塞睡眠后，RLIMIT_RTTIME 的 RT 运行时间计数器没有复位——反复「FIFO 跑 8ms → 切 SCHED_OTHER → 睡眠 10ms」会让 RT runtime 跨睡眠累计，最终触发 SIGXCPU，即便每次 RT 执行区间都低于限制。附完整 reproducer，Ubuntu 7
 - [sched-20261109-001](../../2026/11/sched-20261109-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-011](../../2026/11/sched-20261107-011-sched-remove-config-rt-group-sched.md) `discussion/rfc` — 本文为增量更新，完整脉络见下。

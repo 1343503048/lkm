@@ -2,9 +2,11 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 99
+article_count: 101
 ---
 
+- [sched-20261110-010](/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261110-011](/lkm/2026/11/10/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261109-006](/lkm/2026/11/09/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261108-006](/lkm/2026/11/08/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue

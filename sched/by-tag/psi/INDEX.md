@@ -1,7 +1,8 @@
 # tag: psi
 
-共 28 篇
+共 29 篇
 
+- [sched-20261110-013](../../2026/11/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-013](../../2026/11/sched-20261106-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/medium/under_review` — Hungyu Lin 修复 PSI trigger 的权限检查回归：commit `d82caa273565` 把 CAP_SYS_RESOURCE 检查从 `/proc/pressure/*` 的 open() 挪到 `psi_trigger_create()`，却用 `cap_raised()` 直接测 opener 的 effective 位，替换掉了原来的 `capable()`——而 `
 - [sched-20261105-015](../../2026/11/sched-20261105-015-sched-psi-let-procfs-copy-in-trigger-writes.md) `feature/rfc` — - sched-20261102-009：Brauner 大型 procfs "work" 系列 v1（27 补丁）的第 17 封，把 `/proc/pressure/*` trigger 写路径从 `copy_from_user()` 改为 procfs 的 `->proc_write_buf()`，PSI 侧无功能变化。 - sched-20261105（今天）：该系列 RESEND v2（`
 - [sched-20261105-014](../../2026/11/sched-20261105-014-sched-psi-don-t-drop-the-last-byte-of-a-trigger-write.md) `fix/low/under_review` — Christian Brauner 修 `psi_write()` 的缓冲区结尾处理：当前最多拷贝 32 字节并「覆盖最后一字节」作为终止符，导致短于 32 字节、无换行结尾的 trigger 写入丢掉最后一位数字（`"some 150000 1000000"` 变成 `"some 150000 100000"`，`"some 150 10000"` 直接 -EINVAL）。补丁改为最多拷贝 31

@@ -2,9 +2,11 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 74
+article_count: 76
 ---
 
+- [sched-20261110-002](/lkm/2026/11/10/sched-20261110-002-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/high/under_review` — sched/numa: stop VMA scan filters from gating promotion
+- [sched-20261110-008](/lkm/2026/11/10/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html) `feature/none/rfc` — BPF-based per-cgroup NUMA balancing mode selection
 - [sched-20261105-008](/lkm/2026/11/05/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.html) `fix/medium/under_review` — sched/cache: Fix group_llc_balance being unreachable above the first NUMA level
 - [sched-20261103-002](/lkm/2026/11/03/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.html) `bug/high/rfc` — mm, sched, cgroup: LRU Cache never drains when isolcpus are used with spinning SCHED_FIFO tasks causing page migration stalls
 - [sched-20261102-023](/lkm/2026/11/02/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.html) `feature/none/under_review` — sched/numa: make free-space tiering promotion bypass configurable

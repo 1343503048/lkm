@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 155
+article_count: 157
 ---
 
+- [sched-20261110-014](/lkm/2026/11/10/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
+- [sched-20261110-017](/lkm/2026/11/10/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/under_review` — sched: Expose writable interface for preferred CPUs mask
 - [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261109-004](/lkm/2026/11/09/sched-20261109-004-sched-isolation-fix-suspicious-rcu-usage-without-config-cpus.html) `fix/low/under_review` — sched/isolation: Fix suspicious RCU usage without CONFIG_CPUSETS
 - [sched-20261109-005](/lkm/2026/11/09/sched-20261109-005-cgroup-cpuset-reject-updates-that-empty-the-top-sched-doma.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain

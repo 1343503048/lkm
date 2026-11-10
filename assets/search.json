@@ -23399,6 +23399,305 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261009-007 → sched-20261014-010：Jemmy Wong 修 `sched_cache_exec_mmap()` 记账遗漏——exec 换 cache group 后旧 group 的 footprint 只在 exit 路径减；多轮演进确定 footprint 转 `atomic_long_t`、去 clamp、placement pass 只更新一次。 - sched-20261015-017：Chen Yu 认可改名并请作者发正式版，Jemmy 发 v3。 - sched-20261021-011：Chen"
   },
   {
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
+    "id": "sched-20261110-001",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "sched_ext"
+    ],
+    "authors": [
+      "Michal Blaszczyk"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html",
+    "tldr": "Michal Blaszczyk 发 v3 RESEND：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max` 等）时，CFS 与 SCX 的状态更新不是原子的——CFS 部分由 `shares_mutex` 串行化但在调用 `scx_group_set_weight()` 前已释放，导致 CFS、SCX 内部记账（`tg->scx.weight`）与 BPF 调度器三者看到互不一致的参数。修复把 CFS 的锁上移到 `kernel/sched/core.c` 的核心写回处理器，让 CFS 与 SCX 回调在同一把锁下原子执行。已有 Andre"
+  },
+  {
+    "title": "sched/numa: stop VMA scan filters from gating promotion",
+    "id": "sched-20261110-002",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-002-sched-numa-stop-vma-scan-filters-from-gating-promotion.html",
+    "tldr": "Gregory Price（Meta）发 v5 七补丁系列，修复 NUMA balancing 的 fault-injection（PROT_NONE 喷涂）侧被「为 socket 放置设计的过滤器」误伤、导致内存 tier 升级（promotion）被完全卡死的问题：作者在测 fairness 控制时发现 numa balancing 在最近的 shmem 修复之后彻底失效，热内存长期滞留 CXL 慢层。系列把「扫描意图（placement vs promotion）」显式下传，保留放置扫描的过滤、但允许 promotion-only 扫描穿透这些过滤器。AMD Zen5（768GB DRA"
+  },
+  {
+    "title": "sched/fair: cpu.max.runtime and idle refill for CPU credits",
+    "id": "sched-20261110-003",
+    "date": "2026-11-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "sched_ext"
+    ],
+    "authors": [
+      "Fernand Sieber"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html",
+    "tldr": "Fernand Sieber（Amazon）发 v2 四补丁系列，为 CFS 带宽控制器补上「CPU credits」场景所需的三个能力：新增 `cpu.max.runtime` 读/写 cgroup v2 文件以直接读写 runtime（信用额度）、解除 `cpu.max.burst` 不能超过一个 quota 的限制、并让空闲组在 idle 期间持续挣取最多 quota+burst 的额度。目标是把 CFS bandwidth 控制器直接当作 burstable VM 的「信用桶」：quota=基线（挣额度速率）、quota+burst=上限、runtime=当前额度。补丁 3 把写入透传"
+  },
+  {
+    "title": "tools/sched_ext: robustness fixes from cold review",
+    "id": "sched-20261110-004",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-004-tools-sched-ext-robustness-fixes-from-cold-review.html",
+    "tldr": "Tao Cui（麒麟）发 9 补丁系列，修复 sched_ext 四个示例调度器（scx_flatcg / scx_pair / scx_qmap / scx_userland）在 cold review 中发现的一批健壮性问题：非法 stats interval 导致 100% CPU 忙旋、usage synopsis 漏选项、restart 后 pair_id/hier stats baseline 未复位、batch size 0 被静默接受导致任务堆积等。均为工具层小修，多数带 `Fixes:`，无内核改动。"
+  },
+  {
+    "title": "sched_ext: make DSQ iterator stay drained after NULL",
+    "id": "sched-20261110-005",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kang Chen"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-005-sched-ext-make-dsq-iterator-stay-drained-after-null.html",
+    "tldr": "Kang Chen 修 sched_ext DSQ 迭代器的一个 verifier 契约违约：`bpf_iter_scx_dsq_next()` 走到队列末尾时 `nldsq_cursor_next_task()` 会把迭代游标从链表摘除，下一次调用见到 `list_empty(&cursor->node)` 就从 DSQ 头重新开始、返回同一轮迭代的第一个任务。而 verifier 依赖「next() 一旦返回 NULL 就持续返回 NULL」的契约（`process_iter_next_call()` 把迭代器标记为 DRAINED、把后续调用结果当常量 0），于是重启的迭代会把任务指针交"
+  },
+  {
+    "title": "sched/fair: Stop core-scheduled siblings trading rescheduling IPIs",
+    "id": "sched-20261110-006",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cfs",
+      "core_sched",
+      "regression"
+    ],
+    "authors": [
+      "Fernand Sieber"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html",
+    "tldr": "Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick（SNT_PICK）时重新武装；被再次 pick 的实体保留过期的 vprot，之后每次 `update_curr()` 都再要一次 reschedule——core scheduling 下这个「要"
+  },
+  {
+    "title": "Hierarchical Constant Bandwidth Server",
+    "id": "sched-20261110-007",
+    "date": "2026-11-10",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "rt",
+      "deadline",
+      "dl_server",
+      "cgroup",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "Yuri Andriaccio",
+      "Luca Abeni"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html",
+    "tldr": "Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko 指出的大量 bug，并新增 dl_freq_invariant 标志、cgroup-v2 接口重构、cpuset/cpu 控制器集成、hotplug 集成、非特权 FIFO/RR 任务支持、HRTI"
+  },
+  {
+    "title": "BPF-based per-cgroup NUMA balancing mode selection",
+    "id": "sched-20261110-008",
+    "date": "2026-11-10",
+    "type": "feature",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "numa_balancing",
+      "cgroup"
+    ],
+    "authors": [
+      "Yafang Shao"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.html",
+    "tldr": "Yafang Shao 发 RFC v4（4 补丁），把 NUMA balancing 的开关从「单一系统级 sysctl `kernel.numa_balancing`」下放到 per-memcg，并通过 BPF kfunc（`bpf_numab_set_mode()`/`bpf_numab_get_mode()`）读写：延迟敏感负载可关、NUMA 感知负载可开，不再靠一个全局开关。设计按 Tejun 的建议把 mode 存进 cgroup 的 memcg。patch 1 是纯 helper 清理（`task_numab_enabled()` 等），已获 Zi Yan 与 Gregory P"
+  },
+  {
+    "title": "sched/deadline: bandwidth accounting fixes and selftests",
+    "id": "sched-20261110-009",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "cgroup"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核），带自测与 sched_debug。Juri 已对多数补丁给 Reviewed-by/Acked-by，Marek Szyprowski 实测修复了 CPU hotplug 崩溃并给 Tested-by；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261"
+  },
+  {
+    "title": "Improving latency of short slice tasks",
+    "id": "sched-20261110-010",
+    "date": "2026-11-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "cfs",
+      "perf"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-002：Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）改进短 slice 任务调度延迟：正 lag 衰减、选 CPU 考虑 slice、fair 类新增 push 回调、让 feec() 按 cost+slice 选 CPU、修复多任务同时醒来堆叠同一 idle CPU。dragonboard rb5 上 4 短任务同时醒来平均延迟约 1051us→61us，hackbench pipe +15-25%；cyclictest 99.9 分位略回退。 - sched-20261107"
+  },
+  {
+    "title": "sched/fair: Fix cgroup::idle preemption",
+    "id": "sched-20261110-011",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Peter Zijlstra",
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-003：Peter Zijlstra 发出 3 补丁系列修复 cgroup SCHED_IDLE 任务组的抢占问题：patch 1 用 guard 清理 `sched_group_set_idle()`、patch 2 把 `cfs_rq::idle` 改为「祖先 tg::idle 之和」、patch 3（RFC）携带 Vincent 的 `sched/eevdf: Fix sched idle task group preemption`。Kayra 指出 patch 2 有任务组创建竞态并追问 `se_is_idle()`"
+  },
+  {
+    "title": "sched/fair: Skip sched-domain traversal when wake affine is disabled",
+    "id": "sched-20261110-012",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "affinity"
+    ],
+    "authors": [
+      "Srikar Dronamraju"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261109-010：Srikar Dronamraju 发单补丁，把 `select_task_rq_fair()` 里 `want_affine == false`（`wake_wide()` 为真或醒来的 CPU 不在任务允许 mask 内）的 TTWU wakeup 直接跳入既有快路径、省掉「进入 sched-domain 遍历随即 break」的无谓开销。Kayra 当日指出 `SD_BALANCE_WAKE` 实际从未被设置，并给出一个更直接的替代改法。 - sched-20261110-012（今天）：**Kayra 深化质疑"
+  },
+  {
+    "title": "sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace",
+    "id": "sched-20261110-013",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "psi",
+      "cgroup"
+    ],
+    "authors": [
+      "Hungyu Lin"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-013：Hungyu Lin 修复 PSI trigger 权限检查回归：commit `d82caa273565` 把 CAP_SYS_RESOURCE 检查从 `/proc/pressure/*` open() 挪到 `psi_trigger_create()`，却用 `cap_raised()` 直接测 opener 的 effective 位替换掉原来的 `capable()`——既不做 initial user namespace 检查、也不走 LSM capable hook，导致「建了 user namespac"
+  },
+  {
+    "title": "cgroup/cpuset: Reject updates that empty the top sched domain",
+    "id": "sched-20261110-014",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "topology",
+      "affinity"
+    ],
+    "authors": [
+      "Guopeng Zhang",
+      "Ridong Chen"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-012：Guopeng Zhang 的 v2 三补丁系列修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（GPF）的问题。刚发出，暂无维护者回复。 - sched-20261107-012：Waiman Long（cpuset/cgroup 维护者）评审 patch 1/3——认可代码改动，对自测脚本给四点意见。 - sched-20261109-005：Guopeng 逐条回应 W"
+  },
+  {
+    "title": "sched_ext: Fix partial-SMT core counting in calc_shard_layout()",
+    "id": "sched-20261110-015",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Zhang Qiao"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-015-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-007：Zhang Qiao 单独提交的 sched_ext for-7.4-fixes 补丁，修复 `calc_shard_layout()` 在 partial-SMT 系统（部分核开 SMT、部分不开）上的 core 计数错误——这是对 Tejun Heo「把修复单独发出来」要求的直接响应（放弃 `scx_cid_init()` 拆解重构、把真实 bug 独立成补丁）。 - sched-20261110-015（今天）：**v2 发出**（`sched_ext/for-7.4-fixes` 分支，内嵌 diff）。修复思"
+  },
+  {
+    "title": "selftests/sched_ext: Fix enable_cmask load failure on older clangs",
+    "id": "sched-20261110-016",
+    "date": "2026-11-10",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tejun Heo"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-016-selftests-sched-ext-fix-enable-cmask-load-failure-on-older-c.html",
+    "tldr": "Tejun Heo 修 sched_ext `enable_cmask` selftest 在老 clang 上加载失败的问题：该测试把任务 cmask 的 u64 arena 地址 cast 成 `__arena` 指针，但没走 `cast_kern()`，老 clang（无 `__BPF_FEATURE_ADDR_SPACE_CAST`）需要显式 cast，否则测试加载失败。补丁加一行 `cast_kern(m)`，已由作者标记「Applied to sched_ext/for-7.5」。这是对 20261109-013 那条「enable_cmask selftest 在 7.4-rc2"
+  },
+  {
+    "title": "sched: Expose writable interface for preferred CPUs mask",
+    "id": "sched-20261110-017",
+    "date": "2026-11-10",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "affinity",
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Yury Norov"
+    ],
+    "url": "/lkm/2026/11/10/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），仅认可 patch 1（PREFERRED_CPU 与 PARAVIRT 解耦）。 - sched-20261105-005：讨论转入 hotplug 移除最后一个 "
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

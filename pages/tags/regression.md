@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 62
+article_count: 63
 ---
 
+- [sched-20261110-006](/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html) `fix/medium/under_review` — sched/fair: Stop core-scheduled siblings trading rescheduling IPIs
 - [sched-20261108-006](/lkm/2026/11/08/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261107-003](/lkm/2026/11/07/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261106-019](/lkm/2026/11/06/sched-20261106-019-linus-master-sched-fair-fb1050ac8e-stress-ng-sleep-ops-per-s.html) `regression/high/under_review` — [linus:master] [sched/fair]  fb1050ac8e: stress-ng.sleep.ops_per_sec 29.9% regression

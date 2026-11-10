@@ -1,7 +1,9 @@
 # tag: numa_balancing
 
-共 74 篇
+共 76 篇
 
+- [sched-20261110-008](../../2026/11/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发 RFC v4（4 补丁），把 NUMA balancing 的开关从「单一系统级 sysctl `kernel.numa_balancing`」下放到 per-memcg，并通过 BPF kfunc（`bpf_numab_set_mode()`/`bpf_numab_get_mode()`）读写：延迟敏感负载可关、NUMA 感知负载可开，不再靠一个全局开关。设计按 Te
+- [sched-20261110-002](../../2026/11/sched-20261110-002-sched-numa-stop-vma-scan-filters-from-gating-promotion.md) `fix/high/under_review` — Gregory Price（Meta）发 v5 七补丁系列，修复 NUMA balancing 的 fault-injection（PROT_NONE 喷涂）侧被「为 socket 放置设计的过滤器」误伤、导致内存 tier 升级（promotion）被完全卡死的问题：作者在测 fairness 控制时发现 numa balancing 在最近的 shmem 修复之后彻底失效，热内存长期滞留 CX
 - [sched-20261105-008](../../2026/11/sched-20261105-008-sched-cache-fix-group-llc-balance-being-unreachable-above-th.md) `fix/medium/under_review` — Jianyong Wu（Hygon）的补丁修复 cache-aware 调度里 `group_llc_balance` 这一 LLC 级任务聚合在「第一层 NUMA 之上」不可达的问题：此前任务一旦落到第一层 NUMA 之外，mainline 不会再把任务拉回其首选 LLC。Intel 的 Tim Chen / Chen Yu 给出积极反馈与更清晰的重构版本，作者将把 Tim 的版本并入 v2 并
 - [sched-20261103-002](../../2026/11/sched-20261103-002-mm-sched-cgroup-lru-cache-never-drains-when-isolcpus-are-use.md) `bug/high/rfc` — Canonical 的 Caron Wills / Matthew Ruffell 报告一起生产环境 bug：isolcpus 大系统上 SCHED_FIFO 忙循环任务导致 systemd/PID 1 卡 D 状态最长 10 分钟、ssh 登录失败。根因是 nohz_full CPU 的 per-CPU work 永不执行、`flush_work()` 挂起。6 补丁系列修复 `cpu_is_i
 - [sched-20261102-023](../../2026/11/sched-20261102-023-sched-numa-make-free-space-tiering-promotion-bypass-configur.md) `feature/under_review` — Li Zhe（字节）的 v2 系列（3 patches）让 NUMA 内存 tiering 中「顶层有空闲就绕过 hotness/rate-limit 检查、直接 promote」的 free-space bypass 行为可配置：为有意把 DRAM/CXL 按计划比例摆放（而非依赖自然 spillover）的部署保留原有 hotness 与限速检查。作者今天回帖感谢 Bharata 的认可，并请
