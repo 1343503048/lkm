@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 63
+article_count: 64
 ---
 
+- [sched-20261111-021](/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261110-006](/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html) `fix/medium/under_review` — sched/fair: Stop core-scheduled siblings trading rescheduling IPIs
 - [sched-20261108-006](/lkm/2026/11/08/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue
 - [sched-20261107-003](/lkm/2026/11/07/sched-20261107-003-sched-eevdf-move-to-a-single-runqueue.html) `feature/none/under_review` — sched/eevdf: Move to a single runqueue

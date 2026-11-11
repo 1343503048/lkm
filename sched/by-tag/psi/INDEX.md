@@ -1,7 +1,8 @@
 # tag: psi
 
-共 29 篇
+共 30 篇
 
+- [sched-20261111-012](../../2026/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-013](../../2026/11/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-013](../../2026/11/sched-20261106-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/medium/under_review` — Hungyu Lin 修复 PSI trigger 的权限检查回归：commit `d82caa273565` 把 CAP_SYS_RESOURCE 检查从 `/proc/pressure/*` 的 open() 挪到 `psi_trigger_create()`，却用 `cap_raised()` 直接测 opener 的 effective 位，替换掉了原来的 `capable()`——而 `
 - [sched-20261105-015](../../2026/11/sched-20261105-015-sched-psi-let-procfs-copy-in-trigger-writes.md) `feature/rfc` — - sched-20261102-009：Brauner 大型 procfs "work" 系列 v1（27 补丁）的第 17 封，把 `/proc/pressure/*` trigger 写路径从 `copy_from_user()` 改为 procfs 的 `->proc_write_buf()`，PSI 侧无功能变化。 - sched-20261105（今天）：该系列 RESEND v2（`

@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 71
+article_count: 73
 ---
 
+- [sched-20261111-002](/lkm/2026/11/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
+- [sched-20261111-015](/lkm/2026/11/11/sched-20261111-015-sched-mmcid-synchronize-mm-teardown-with-affinity-updates.html) `fix/critical/under_review` — sched/mmcid: Synchronize MM teardown with affinity updates
 - [sched-20261110-012](/lkm/2026/11/10/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.html) `fix/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
 - [sched-20261110-014](/lkm/2026/11/10/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.html) `fix/high/under_review` — cgroup/cpuset: Reject updates that empty the top sched domain
 - [sched-20261110-017](/lkm/2026/11/10/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/under_review` — sched: Expose writable interface for preferred CPUs mask

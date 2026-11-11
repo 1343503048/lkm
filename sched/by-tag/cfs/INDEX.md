@@ -1,7 +1,14 @@
 # tag: cfs
 
-共 316 篇
+共 323 篇
 
+- [sched-20261111-014](../../2026/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-013](../../2026/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-010](../../2026/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-009](../../2026/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-008](../../2026/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-005](../../2026/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-011](../../2026/11/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

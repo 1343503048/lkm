@@ -2,9 +2,10 @@
 layout: default
 tag: "hang"
 title: "标签: hang"
-article_count: 15
+article_count: 16
 ---
 
+- [sched-20261111-021](/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
 - [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261010-008](/lkm/2026/10/10/sched-20261010-008-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.html) `fix/high/under_review` — sched_ext: Fix stall when a task enqueued with SCX_ENQ_LAST lands back on its CPU's local DSQ

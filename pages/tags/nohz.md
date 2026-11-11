@@ -2,9 +2,11 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 62
+article_count: 64
 ---
 
+- [sched-20261111-004](/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
+- [sched-20261111-023](/lkm/2026/11/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available
 - [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261108-007](/lkm/2026/11/08/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is inactive
 - [sched-20261106-018](/lkm/2026/11/06/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available

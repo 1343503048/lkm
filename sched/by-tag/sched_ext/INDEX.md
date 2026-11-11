@@ -1,7 +1,11 @@
 # tag: sched_ext
 
-共 329 篇
+共 333 篇
 
+- [sched-20261111-018](../../2026/11/sched-20261111-018-tools-sched-ext-robustness-fixes-from-cold-review.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-017](../../2026/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-016](../../2026/11/sched-20261111-016-sched-ext-make-dsq-iterator-stay-drained-after-null.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-014](../../2026/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-016](../../2026/11/sched-20261110-016-selftests-sched-ext-fix-enable-cmask-load-failure-on-older-c.md) `fix/low/merged_tip` — Tejun Heo 修 sched_ext `enable_cmask` selftest 在老 clang 上加载失败的问题：该测试把任务 cmask 的 u64 arena 地址 cast 成 `__arena` 指针，但没走 `cast_kern()`，老 clang（无 `__BPF_FEATURE_ADDR_SPACE_CAST`）需要显式 cast，否则测试加载失败。补丁加一行 `ca
 - [sched-20261110-015](../../2026/11/sched-20261110-015-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-005](../../2026/11/sched-20261110-005-sched-ext-make-dsq-iterator-stay-drained-after-null.md) `fix/medium/under_review` — Kang Chen 修 sched_ext DSQ 迭代器的一个 verifier 契约违约：`bpf_iter_scx_dsq_next()` 走到队列末尾时 `nldsq_cursor_next_task()` 会把迭代游标从链表摘除，下一次调用见到 `list_empty(&cursor->node)` 就从 DSQ 头重新开始、返回同一轮迭代的第一个任务。而 verifier 依赖「nex

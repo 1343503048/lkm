@@ -1,7 +1,8 @@
 # tag: hang
 
-共 15 篇
+共 16 篇
 
+- [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261102-008](../../2026/11/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/under_review` — Shubhang Kaushik（Ampere）修复 sched_ext 的一个死锁：`scx_bpf_destroy_dsq()` 会取目标 user DSQ 的 raw spinlock，却也被注册到 `BPF_PROG_TYPE_TRACING`（`scx_kfunc_ids_any`）。一个未关联的 tracing 程序可经兼容路径解析到活动 root 调度器，在 DSQ 锁已被持有时递归
 - [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`
 - [sched-20261010-008](../../2026/10/sched-20261010-008-sched-ext-fix-stall-when-a-task-enqueued-with-scx-enq-last-l.md) `fix/high/under_review` — 本文为增量更新，完整脉络见 related_articles。

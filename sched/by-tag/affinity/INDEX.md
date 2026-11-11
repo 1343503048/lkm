@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 71 篇
+共 73 篇
 
+- [sched-20261111-015](../../2026/11/sched-20261111-015-sched-mmcid-synchronize-mm-teardown-with-affinity-updates.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-002](../../2026/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — Mel Gorman 发三补丁系列修复 RT 类的 pushable 记账缺陷：`dae5c0292080`（"sched/rt,dl: Skip migrate-disabled tasks when picking a push candidate"）虽让 `pick_next_pushable_task()` 不再返回 migrate-disabled 任务，但 `enqueue_task_
 - [sched-20261110-017](../../2026/11/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-014](../../2026/11/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。

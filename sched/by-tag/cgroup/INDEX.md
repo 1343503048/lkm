@@ -1,7 +1,13 @@
 # tag: cgroup
 
-共 155 篇
+共 161 篇
 
+- [sched-20261111-014](../../2026/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-010](../../2026/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-008](../../2026/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-007](../../2026/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-006](../../2026/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-001](../../2026/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kerne
 - [sched-20261110-017](../../2026/11/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-014](../../2026/11/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-013](../../2026/11/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

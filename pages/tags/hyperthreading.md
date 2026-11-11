@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 36
+article_count: 37
 ---
 
+- [sched-20261111-017](/lkm/2026/11/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/merged_tip` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()
 - [sched-20261023-014](/lkm/2026/10/23/sched-20261023-014-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261022-008](/lkm/2026/10/22/sched-20261022-008-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature
 - [sched-20261021-003](/lkm/2026/10/21/sched-20261021-003-sched-fair-introduce-the-smt-buddy-assist-feature.html) `feature/none/rfc` — sched/fair: Introduce the SMT_BUDDY_ASSIST feature

@@ -2,9 +2,13 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 51
+article_count: 55
 ---
 
+- [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261111-002](/lkm/2026/11/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
+- [sched-20261111-003](/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html) `feature/none/under_review` — sched/rt: cpupri_find: Use cpumask_intersects where applicable
+- [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server
 - [sched-20261109-012](/lkm/2026/11/09/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.html) `bug/medium/under_review` — sched/rt: RLIMIT_RTTIME not reset after blocking under SCHED_OTHER
 - [sched-20261107-011](/lkm/2026/11/07/sched-20261107-011-sched-remove-config-rt-group-sched.html) `discussion/none/rfc` — sched: Remove CONFIG_RT_GROUP_SCHED

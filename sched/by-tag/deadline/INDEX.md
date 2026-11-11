@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 72 篇
+共 74 篇
 
+- [sched-20261111-006](../../2026/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-005](../../2026/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko
 - [sched-20261109-009](../../2026/11/sched-20261109-009-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — 本文为增量更新，完整脉络见下。

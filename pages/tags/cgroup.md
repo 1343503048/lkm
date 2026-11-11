@@ -2,9 +2,15 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 155
+article_count: 161
 ---
 
+- [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261111-006](/lkm/2026/11/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
+- [sched-20261111-007](/lkm/2026/11/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.html) `fix/high/under_review` — cgroup/cpuset: Keep the top scheduling domain populated
+- [sched-20261111-008](/lkm/2026/11/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for a burstable budget
+- [sched-20261111-010](/lkm/2026/11/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261111-014](/lkm/2026/11/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server

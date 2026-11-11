@@ -23698,6 +23698,404 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261102-004：Yury Norov 发 6-patch 系列为 preferred CPUs 提供运行时可写 sysfs 接口（`/sys/devices/system/cpu/cpuN/preferred`）；Peter Zijlstra 对整个手动接口方向 NAK（「We already have cpusets... this isn't happening」），仅认可 patch 1（PREFERRED_CPU 与 PARAVIRT 解耦）。 - sched-20261105-005：讨论转入 hotplug 移除最后一个 "
   },
   {
+    "title": "sched: RT throttling cleanup and a bit of documentation",
+    "id": "sched-20261111-001",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "rt",
+      "dl_server",
+      "rt_bandwidth",
+      "cgroup"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html",
+    "tldr": "Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kernel/sched/dl_{period,runtime}_us`、把 rcutorture 从 procfs 接口迁移走、新增 `/sys/kernel/sched/cpuX/fair_server_{"
+  },
+  {
+    "title": "sched/rt: Do not account migrate-disabled tasks as pushable",
+    "id": "sched-20261111-002",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "affinity"
+    ],
+    "authors": [
+      "Mel Gorman",
+      "Yousaf Kaukab"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html",
+    "tldr": "Mel Gorman 发三补丁系列修复 RT 类的 pushable 记账缺陷：`dae5c0292080`（\"sched/rt,dl: Skip migrate-disabled tasks when picking a push candidate\"）虽让 `pick_next_pushable_task()` 不再返回 migrate-disabled 任务，但 `enqueue_task_rt()`/`put_prev_task_rt()` 仍把这些任务放进 pushable 列表并把 rq 标记为 overloaded，导致其它 CPU 的 pull IPI 反复命中「推不动」的 m"
+  },
+  {
+    "title": "sched/rt: cpupri_find: Use cpumask_intersects where applicable",
+    "id": "sched-20261111-003",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "rt",
+      "idle",
+      "perf"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html",
+    "tldr": "Shrikanth Hegde（IBM）发五补丁清理系列，把「只为判断两个/三个 cpumask 是否有交集、却调用返回具体 CPU 的接口」的调用点统一改成 `cpumask_intersects`/`cpumask_intersects_and`。今日缓存只收到 patch 1/5（`sched/rt: cpupri_find`）与 patch 4/5（`cpuidle: Use cpumask_intersects_and`），其余三封不在缓存。纯微优化清理，无行为变化，刚发出、暂无回复。"
+  },
+  {
+    "title": "sched/idle: Don't handle polling idle as dynticks idle",
+    "id": "sched-20261111-004",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "nohz",
+      "idle"
+    ],
+    "authors": [
+      "Marco Crivellari"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html",
+    "tldr": "Marco Crivellari（SUSE）发 v2 系列（4 补丁，当日仅收到 patch 2/4），修 `idle=poll` 与 nohz_full 的交互缺陷：`TS_FLAG_INIDLE` 让 nohz 误以为 idle=poll 时的 tick 仍由 idle 循环管理，但 `cpu_idle_poll()` 在中断后不会重跑 idle 循环，导致 nohz_full CPU 上被停止的 tick 在 polling 前被重启、唤醒后持续打断用户态。修复把「进入 dynticks idle」限定在 cpuidle 路径（`cpuidle_idle_call()`），进入 poll"
+  },
+  {
+    "title": "sched: core-sched fixes and balancing",
+    "id": "sched-20261111-005",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "core_sched",
+      "cfs",
+      "deadline",
+      "rt"
+    ],
+    "authors": [
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261107-001：Peter Zijlstra 的 v2 系列（12 补丁）发出，核心是 rq_clock/rq_lock 语义整体重做——cover 明说「主差异是 rq_clock 的重做，因为 TJ（Tejun Heo）指出上一版把它彻底搞错了」。新增 `rq_drop_lock()`、分解 `update_rq_clock()`、引入 `RQCF_NOP_MASK` 让已 UPDATED 的 rq 跳过重复更新，取代 v1 靠 `core_clock_updated` 布尔量猜时钟的绕路逻辑。 - sched-20261108-"
+  },
+  {
+    "title": "sched/deadline: Keep departing bandwidth across a root domain rebuild",
+    "id": "sched-20261111-006",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "deadline",
+      "cgroup"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2 系列（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核），带自测与 sched_debug。Juri 已对多数补丁给 Reviewed-by/Acked-by；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261106-001：v3 发出，扩到 24 补丁，吸收 Juri 被 Ingo 丢弃的 4 个 sche"
+  },
+  {
+    "title": "cgroup/cpuset: Keep the top scheduling domain populated",
+    "id": "sched-20261111-007",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Guopeng Zhang",
+      "Ridong Chen"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-012：Guopeng Zhang 的 v2 三补丁系列修复 cpuset 分区操作与 CPU hotplug 把顶层调度域清空、进而触发 `build_sched_domains()` 告警与 `build_perf_domains()` 越界访问（GPF）的问题。刚发出，暂无维护者回复。 - sched-20261107-012：Waiman Long（cpuset/cgroup 维护者）评审 patch 1/3——认可代码改动，对自测脚本给四点意见。 - sched-20261109-005：Guopeng 逐条回应 W"
+  },
+  {
+    "title": "sched/fair: cpu.max.runtime and idle refill for a burstable budget",
+    "id": "sched-20261111-008",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "cgroup"
+    ],
+    "authors": [
+      "Fernand Sieber"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261110-003：Fernand Sieber（Amazon）发 v2 四补丁系列，为 CFS 带宽控制器补上「CPU credits」场景的三个能力：新增 `cpu.max.runtime` 读写文件、解除 `cpu.max.burst` 不能超过一个 quota 的限制、让空闲组在 idle 期间持续挣取额度；补丁 3/4 把额度透传给 BPF 调度器并把 SCX 任务计入同一 runtime。 - sched-20261111-008（今天）：**Tejun Heo 明确否定 v2 的 maximalist 方案，作者改发 v3（"
+  },
+  {
+    "title": "sched/fair: Add push task mechanism for fair",
+    "id": "sched-20261111-009",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf",
+      "cfs"
+    ],
+    "authors": [
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-002：Vincent Guittot（sched/fair 维护者）的 v3 大系列（20 补丁）改进短 slice 任务调度延迟：正 lag 衰减、选 CPU 考虑 slice、fair 类新增 push 回调、feec() 按 cost+slice 选 CPU、修复多任务同时醒来堆叠同一 idle CPU。dragonboard rb5 上 4 短任务同时醒来平均延迟约 1051us→61us。 - sched-20261107-004：Kayra Cizmeci 评审 patch 02–06/20，对 03/04/05"
+  },
+  {
+    "title": "sched/eevdf: Fix sched idle task group preemption",
+    "id": "sched-20261111-010",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "eevdf"
+    ],
+    "authors": [
+      "Peter Zijlstra",
+      "Vincent Guittot"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-003：Peter Zijlstra 发出 3 补丁系列修复 cgroup SCHED_IDLE 任务组的抢占问题：patch 1 用 guard 清理 `sched_group_set_idle()`、patch 2 把 `cfs_rq::idle` 改为「祖先 tg::idle 之和」、patch 3（RFC）携带 Vincent 的 `sched/eevdf: Fix sched idle task group preemption`。Kayra 指出 patch 2 有任务组创建竞态。 - sched-20261107"
+  },
+  {
+    "title": "Cache aware scheduling: Reduce the overhead of task_cache_work",
+    "id": "sched-20261111-011",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "numa_balancing",
+      "perf"
+    ],
+    "authors": [
+      "Luo Gengkun"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261021-010：Luo Gengkun（华为）的系列（task_cache_work 只扫访问过的 CPU）推进到 v10；K Prateek Nayak 在 4 代 EPYC 上实测给 Tested-by，并建议把 benchmark 数字放进 commit message。 - sched-20261022-012：Chen Yu 在多 LLC per node 的 Xeon 上跑完整 hackbench 后给 Reviewed-by + Tested-by；Tim Chen 提两处注释/死代码 nit。 - sched-2026"
+  },
+  {
+    "title": "sched/psi: Preserve PSI state on delayed dequeue",
+    "id": "sched-20261111-012",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "psi",
+      "eevdf"
+    ],
+    "authors": [
+      "Shubhang Kaushik"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261103-005：Shubhang Kaushik（Ampere）修 PSI——EEVDF 的 delayed dequeue（`DEQUEUE_DELAYED`）只「完成」先前已记账的 sleep dequeue，但 `psi_dequeue()` 仍清掉全部 PSI 标志（含 TSK_IOWAIT），导致睡眠压力记账被提前终止、唤醒时触发 `psi: inconsistent task state` 警告；修复让 `DEQUEUE_DELAYED` 与 `DEQUEUE_SAVE` 一样保持 PSI 状态不变。 - sched-20"
+  },
+  {
+    "title": "sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average",
+    "id": "sched-20261111-013",
+    "date": "2026-11-11",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "cfs"
+    ],
+    "authors": [
+      "Li kunyu"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-006：李坤宇（Li kunyu）的补丁在 wakeup 路径上、当目标 runqueue 深度达到平均 nr_running 的 3 倍时改用「分布」策略把突发唤醒任务导流到其它 CPU；Kayra Cizmeci 与 K Prateek Nayak 给密集意见（补丁甚至不适用于 mainline）。 - sched-20261106-004：v2 发出——rebase 到最新 mainline、3x 阈值预计算缓存进 root_domain、改用 `rq->next_balance` 门控提前触发周期均衡。 - sched"
+  },
+  {
+    "title": "sched: Lift cgroup update locking to core to prevent CFS/SCX divergence",
+    "id": "sched-20261111-014",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "cgroup",
+      "cfs",
+      "sched_ext"
+    ],
+    "authors": [
+      "Michal Blaszczyk"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261110-001：Michal Blaszczyk 发 v3 RESEND——并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max` 等）时，CFS 与 SCX 的状态更新不是原子的：CFS 部分由 `shares_mutex` 串行化但在调用 `scx_group_set_weight()` 前已释放，导致 CFS、SCX 内部记账（`tg->scx.weight`）与 BPF 调度器三者看到互不一致的参数。修复把 CFS 的锁上移到 `kernel/sched/core.c`，让 CF"
+  },
+  {
+    "title": "sched/mmcid: Synchronize MM teardown with affinity updates",
+    "id": "sched-20261111-015",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "affinity"
+    ],
+    "authors": [
+      "Weiming Shi"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-015-sched-mmcid-synchronize-mm-teardown-with-affinity-updates.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-012：Weiming Shi 修复 MM-CID 亲和性更新路径的 use-after-free（KASAN 抓到、`panic_on_warn` 直接 panic）：`set_cpus_allowed_common()` 把远端任务的 `p->mm` 传给 `mm_update_cpus_allowed()`，但调度锁不稳定该指针——同一 owner 的 `sched_setaffinity()` 与目标任务的 exec（替换并释放旧 mm）竞速；`CONFIG_FUTEX=n` 的合法配置下仍脆弱。v1 把 MM-CID"
+  },
+  {
+    "title": "sched_ext: make DSQ iterator stay drained after NULL",
+    "id": "sched-20261111-016",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kang Chen"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-016-sched-ext-make-dsq-iterator-stay-drained-after-null.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261110-005：Kang Chen 修 sched_ext DSQ 迭代器的一个 verifier 契约违约：`bpf_iter_scx_dsq_next()` 走到队列末尾时游标被从链表摘除，下一次调用见 `list_empty(&cursor->node)` 就从 DSQ 头重新遍历、返回同一轮第一个任务；而 verifier 依赖「next() 返回 NULL 后持续返回 NULL」的契约，重启的迭代会把任务指针交给 BPF 程序、verifier 却认为 R0==0。修复在游标 flag 记 drained 状态。`Fixes"
+  },
+  {
+    "title": "sched_ext: Fix partial-SMT core counting in calc_shard_layout()",
+    "id": "sched-20261111-017",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "hyperthreading"
+    ],
+    "authors": [
+      "Zhang Qiao"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261106-007：Zhang Qiao 提交的 sched_ext for-7.4-fixes 补丁（v1），修复 `calc_shard_layout()` 在 partial-SMT 系统（部分核开 SMT、部分不开）上的 core 计数错误——把真实 bug 独立成补丁、放弃 `scx_cid_init()` 拆解重构。 - sched-20261110-015：v2 发出（`sched_ext/for-7.4-fixes`，内嵌 diff）——core 的计数应取「该核在 `@llc_cpus` 内的第一个 sibling」而非"
+  },
+  {
+    "title": "tools/sched_ext: robustness fixes from cold review",
+    "id": "sched-20261111-018",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-018-tools-sched-ext-robustness-fixes-from-cold-review.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261110-004：Tao Cui（麒麟）发 9 补丁系列，修复 sched_ext 四个示例调度器（scx_flatcg / scx_pair / scx_qmap / scx_userland）在 cold review 中发现的一批健壮性问题：非法 stats interval 导致 100% CPU 忙旋、usage synopsis 漏选项、restart 后 pair_id/hier stats baseline 未复位、batch size 0 被静默接受导致任务堆积等。均为工具层小修，多数带 `Fixes:`，无内核改动。"
+  },
+  {
+    "title": "sched/numa: scan PID-inactive VMAs for promotion",
+    "id": "sched-20261111-019",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-019-sched-numa-scan-pid-inactive-vmas-for-promotion.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261110-002：Gregory Price（Meta）发 v5 七补丁系列，修复 NUMA balancing 的 fault-injection（PROT_NONE 喷涂）侧被「为 socket 放置设计的过滤器」误伤、导致内存 tier 升级（promotion）被完全卡死的问题：作者在测 fairness 控制时发现 numa balancing 在最近的 shmem 修复之后彻底失效，热内存长期滞留 CXL 慢层。系列把「扫描意图（placement vs promotion）」显式下传，保留放置扫描的过滤、允许 promot"
+  },
+  {
+    "title": "cpuidle: cpu_idle_miss accounting fixes",
+    "id": "sched-20261111-020",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-020-cpuidle-cpu-idle-miss-accounting-fixes.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261030-016 / sched-20261105-023：Christian Loehle 的两补丁系列修复 cpuidle 的 idle_miss 记账，方向获 Rafael J. Wysocki 初步认可。 - sched-20261111-020（今天）：**作者回应 Rafael 对 v1 的两个问题并发出 v2**——Rafael 问「broadcast fallback 跳过记账是理论问题还是实际可观测」，作者答「真实问题，约占 arm64 上 5% 的 idle_miss」；Rafael 问「below miss 用的延"
+  },
+  {
+    "title": "[REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP",
+    "id": "sched-20261111-021",
+    "date": "2026-11-11",
+    "type": "bug",
+    "status": "rfc",
+    "severity": "high",
+    "tags": [
+      "idle",
+      "hang",
+      "regression",
+      "arm64"
+    ],
+    "authors": [
+      "Dario Binacchi"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261031-006：Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus 在 mainline `c339f4010dea` 上约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或 hang 到看门狗复位；`cpuidle.off=1` 或 revert `65705b18162b`（\"cpuidle: psci: Move initialization a bit earlier in the boot sequence\"）后正常。已挂 `#regzbot "
+  },
+  {
+    "title": "ARM: omap: cpuidle34xx: balance cpu_pm_enter/exit()",
+    "id": "sched-20261111-022",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "idle"
+    ],
+    "authors": [
+      "Andreas Kemnade"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-022-arm-omap-cpuidle34xx-balance-cpu-pm-enter-exit.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261029-014：Andreas Kemnade 发 2 补丁修 OMAP3 cpuidle 驱动：① 平衡 `cpu_pm_enter()`/`cpu_pm_exit()` 调用——原 idle 路径 enter/exit 不对等，导致 `vfp_pm_resume()` 不被调用、NEON/FPU 状态无法恢复（与 Sicelo 观察到的「pm_debug/count 里 NEON off=1 而 MPU=0」吻合）；② state info 声明为 `const` 作清理。`Fixes: 1cd96478cf150`。 - sch"
+  },
+  {
+    "title": "sched/idle: Stop the tick when no cpuidle driver is available",
+    "id": "sched-20261111-023",
+    "date": "2026-11-11",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "idle",
+      "nohz"
+    ],
+    "authors": [
+      "Christian Loehle"
+    ],
+    "url": "/lkm/2026/11/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20260729-003 / sched-20261106-018：Christian Loehle 的单行修复恢复「无 cpuidle driver 时无条件停 tick」，修 `f4c31b07b136`（\"sched: idle: Consolidate the handling of two special cases\"）的回归——此前 Oracle 报告 OCI 小规格 VM 上 sysbench 回退最多 -29%，Broadcom 的 Florian Fainelli 也确认该回归经 stable backport 扩散到 ARM"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

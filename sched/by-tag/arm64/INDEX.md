@@ -1,7 +1,8 @@
 # tag: arm64
 
-共 32 篇
+共 33 篇
 
+- [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261102-025](../../2026/11/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.md) `feature/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-006](../../2026/10/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — Dario Binacchi 报告一个 cpuidle/psci 的启动回归：i.MX8M Plus（Engicam i.Core MX8M Plus）在 mainline `c339f4010dea` 上，约 1/3 的启动在 `ledtrig-cpu` 注册后 stall ~0.9s 或直接 hang 到看门狗复位。`cpuidle.off=1` 或 revert `65705b18162b`
 - [sched-20261015-021](../../2026/10/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.md) `fix/low/superseded` — 本文为增量更新，完整脉络见 related_articles。

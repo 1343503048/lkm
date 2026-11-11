@@ -2,9 +2,10 @@
 layout: default
 tag: "arm64"
 title: "标签: arm64"
-article_count: 32
+article_count: 33
 ---
 
+- [sched-20261111-021](/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261102-025](/lkm/2026/11/02/sched-20261102-025-cpufreq-add-an-amlogic-speed-bin-driver.html) `feature/none/under_review` — cpufreq: add an Amlogic speed-bin driver
 - [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261015-021](/lkm/2026/10/15/sched-20261015-021-sched-rt-avoid-rto-push-to-stopped-cpus-during-shutdown.html) `fix/low/superseded` — sched/rt: Avoid RTO push to stopped CPUs during shutdown

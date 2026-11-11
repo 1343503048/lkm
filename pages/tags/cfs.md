@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 316
+article_count: 323
 ---
 
+- [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
+- [sched-20261111-008](/lkm/2026/11/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for a burstable budget
+- [sched-20261111-009](/lkm/2026/11/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261111-010](/lkm/2026/11/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261111-011](/lkm/2026/11/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work
+- [sched-20261111-013](/lkm/2026/11/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
+- [sched-20261111-014](/lkm/2026/11/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
 - [sched-20261110-006](/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html) `fix/medium/under_review` — sched/fair: Stop core-scheduled siblings trading rescheduling IPIs

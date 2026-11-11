@@ -2,9 +2,15 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 90
+article_count: 96
 ---
 
+- [sched-20261111-003](/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html) `feature/none/under_review` — sched/rt: cpupri_find: Use cpumask_intersects where applicable
+- [sched-20261111-004](/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
+- [sched-20261111-020](/lkm/2026/11/11/sched-20261111-020-cpuidle-cpu-idle-miss-accounting-fixes.html) `fix/low/under_review` — cpuidle: cpu_idle_miss accounting fixes
+- [sched-20261111-021](/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
+- [sched-20261111-022](/lkm/2026/11/11/sched-20261111-022-arm-omap-cpuidle34xx-balance-cpu-pm-enter-exit.html) `fix/medium/under_review` — ARM: omap: cpuidle34xx: balance cpu_pm_enter/exit()
+- [sched-20261111-023](/lkm/2026/11/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available
 - [sched-20261107-006](/lkm/2026/11/07/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/superseded` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU
 - [sched-20261106-005](/lkm/2026/11/06/sched-20261106-005-sched-fair-replace-random-newidle-balance-with-bresenham-acc.html) `feature/none/under_review` — sched/fair: Replace random newidle_balance with Bresenham accumulator
 - [sched-20261106-016](/lkm/2026/11/06/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.html) `feature/none/under_review` — sched_ext: Add scx_tickbug, a scheduler that holds a task on an idle CPU

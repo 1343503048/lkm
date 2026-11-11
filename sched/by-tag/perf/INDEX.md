@@ -1,7 +1,9 @@
 # tag: perf
 
-共 53 篇
+共 55 篇
 
+- [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-003](../../2026/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.md) `feature/under_review` — Shrikanth Hegde（IBM）发五补丁清理系列，把「只为判断两个/三个 cpumask 是否有交集、却调用返回具体 CPU 的接口」的调用点统一改成 `cpumask_intersects`/`cpumask_intersects_and`。今日缓存只收到 patch 1/5（`sched/rt: cpupri_find`）与 patch 4/5（`cpuidle: Use cpumas
 - [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-004](../../2026/11/sched-20261107-004-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-023](../../2026/11/sched-20261106-023-sched-pelt-fix-u32-truncation-of-the-pelt-period-count.md) `fix/low/merged_tip` — Hui Su 的修复今日合入 tip/sched/urgent（commit `a0c755e574e37fddb59edf175f27dc3877e7fe23`）：`accumulate_sum()` 用 u64 计算已流逝的 PELT 周期数、却以 u32 返回，当周期数是 2^32 的整数倍（约 50 天不更新）时被截断为 0，调用方误判「无周期边界」跳过平均值重算，`*_avg` 相对 `

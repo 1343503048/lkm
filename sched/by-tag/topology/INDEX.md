@@ -1,7 +1,8 @@
 # tag: topology
 
-共 157 篇
+共 158 篇
 
+- [sched-20261111-007](../../2026/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-017](../../2026/11/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-014](../../2026/11/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

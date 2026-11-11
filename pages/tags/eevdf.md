@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 101
+article_count: 104
 ---
 
+- [sched-20261111-009](/lkm/2026/11/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261111-010](/lkm/2026/11/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261111-012](/lkm/2026/11/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/low/under_review` — sched/psi: Preserve PSI state on delayed dequeue
 - [sched-20261110-010](/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
 - [sched-20261110-011](/lkm/2026/11/10/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.html) `fix/medium/under_review` — sched/fair: Fix cgroup::idle preemption
 - [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

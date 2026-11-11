@@ -1,7 +1,8 @@
 # tag: load_balance
 
-共 206 篇
+共 207 篇
 
+- [sched-20261111-013](../../2026/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-015](../../2026/11/sched-20261109-015-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

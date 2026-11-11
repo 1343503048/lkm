@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 62 篇
+共 64 篇
 
+- [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-004](../../2026/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — Marco Crivellari（SUSE）发 v2 系列（4 补丁，当日仅收到 patch 2/4），修 `idle=poll` 与 nohz_full 的交互缺陷：`TS_FLAG_INIDLE` 让 nohz 误以为 idle=poll 时的 tick 仍由 idle 循环管理，但 `cpu_idle_poll()` 在中断后不会重跑 idle 循环，导致 nohz_full CPU 上被停
 - [sched-20261109-008](../../2026/11/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261108-007](../../2026/11/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.md) `fix/medium/under_review` — Avi Weiss 的 v2 单补丁修复 schedutil governor 在 NOHZ 失效场景下的「假忙」误判：`sugov_hold_freq()` 依赖 NOHZ idle-call 计数判断 CPU 近期是否空闲，NOHZ 被禁用或激活失败时计数不推进，CPU 被当作持续繁忙，频率永不下降。修复在 `tick_nohz_is_active()` 为假时跳过 busy-CPU hold
 - [sched-20261106-018](../../2026/11/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — Florian Fainelli（Broadcom）为 Christian Loehle 的「无 cpuidle driver 时停止 tick」单行修复补上 Tested-by：该修复被 backport 进 stable（5.15、6.1 等）后，Broadcom 在 ARM 32 位平台（无 ARM_CPUIDLE/ARM_PSCI_CPUIDLE、只有 WFI idle）的网络吞吐测试中撞

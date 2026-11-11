@@ -2,9 +2,10 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 20
+article_count: 21
 ---
 
+- [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server
 - [sched-20261110-009](/lkm/2026/11/10/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261102-011](/lkm/2026/11/02/sched-20261102-011-sched-deadline-fix-stale-rq-dl-server-after-a-server-pick-re.html) `fix/medium/under_review` — sched/deadline: Fix stale rq->dl_server after a server pick returns RETRY_TASK

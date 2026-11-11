@@ -1,7 +1,13 @@
 # tag: idle
 
-共 90 篇
+共 96 篇
 
+- [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-022](../../2026/11/sched-20261111-022-arm-omap-cpuidle34xx-balance-cpu-pm-enter-exit.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-020](../../2026/11/sched-20261111-020-cpuidle-cpu-idle-miss-accounting-fixes.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-004](../../2026/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — Marco Crivellari（SUSE）发 v2 系列（4 补丁，当日仅收到 patch 2/4），修 `idle=poll` 与 nohz_full 的交互缺陷：`TS_FLAG_INIDLE` 让 nohz 误以为 idle=poll 时的 tick 仍由 idle 循环管理，但 `cpu_idle_poll()` 在中断后不会重跑 idle 循环，导致 nohz_full CPU 上被停
+- [sched-20261111-003](../../2026/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.md) `feature/under_review` — Shrikanth Hegde（IBM）发五补丁清理系列，把「只为判断两个/三个 cpumask 是否有交集、却调用返回具体 CPU 的接口」的调用点统一改成 `cpumask_intersects`/`cpumask_intersects_and`。今日缓存只收到 patch 1/5（`sched/rt: cpupri_find`）与 patch 4/5（`cpuidle: Use cpumas
 - [sched-20261107-006](../../2026/11/sched-20261107-006-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/superseded` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-018](../../2026/11/sched-20261106-018-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — Florian Fainelli（Broadcom）为 Christian Loehle 的「无 cpuidle driver 时停止 tick」单行修复补上 Tested-by：该修复被 backport 进 stable（5.15、6.1 等）后，Broadcom 在 ARM 32 位平台（无 ARM_CPUIDLE/ARM_PSCI_CPUIDLE、只有 WFI idle）的网络吞吐测试中撞
 - [sched-20261106-016](../../2026/11/sched-20261106-016-sched-ext-add-scx-tickbug-a-scheduler-that-holds-a-task-on-a.md) `feature/under_review` — Radu Toader 为 sched_ext 新增一个**测试用**调度器 `scx_tickbug`（tools/sched_ext，为此系列 1/2）：它唯一的目的就是让一个任务在「runqueue 非空、但 CPU 处在 idle loop」的状态上保持可控时长。这个状态就是 `tick_irq_exit()` 里一个 gate 所测量/依赖的状态——已有示例调度器能到达但**保持不住**

@@ -1,7 +1,10 @@
 # tag: eevdf
 
-共 101 篇
+共 104 篇
 
+- [sched-20261111-012](../../2026/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-010](../../2026/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261111-009](../../2026/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-011](../../2026/11/sched-20261110-011-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-006](../../2026/11/sched-20261109-006-sched-fair-fix-cgroup-idle-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

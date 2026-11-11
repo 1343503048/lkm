@@ -2,9 +2,13 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 329
+article_count: 333
 ---
 
+- [sched-20261111-014](/lkm/2026/11/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261111-016](/lkm/2026/11/11/sched-20261111-016-sched-ext-make-dsq-iterator-stay-drained-after-null.html) `fix/medium/merged_tip` — sched_ext: make DSQ iterator stay drained after NULL
+- [sched-20261111-017](/lkm/2026/11/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/merged_tip` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()
+- [sched-20261111-018](/lkm/2026/11/11/sched-20261111-018-tools-sched-ext-robustness-fixes-from-cold-review.html) `fix/low/merged_tip` — tools/sched_ext: robustness fixes from cold review
 - [sched-20261110-001](/lkm/2026/11/10/sched-20261110-001-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261110-003](/lkm/2026/11/10/sched-20261110-003-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
 - [sched-20261110-004](/lkm/2026/11/10/sched-20261110-004-tools-sched-ext-robustness-fixes-from-cold-review.html) `fix/low/under_review` — tools/sched_ext: robustness fixes from cold review
