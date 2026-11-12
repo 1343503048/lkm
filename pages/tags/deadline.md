@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 74
+article_count: 76
 ---
 
+- [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()
+- [sched-20261112-012](/lkm/2026/11/12/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
 - [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261111-006](/lkm/2026/11/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server

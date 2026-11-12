@@ -2,9 +2,17 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 161
+article_count: 169
 ---
 
+- [sched-20261112-007](/lkm/2026/11/12/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait
+- [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261112-012](/lkm/2026/11/12/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
+- [sched-20261112-013](/lkm/2026/11/12/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/under_review` — sched: Expose writable interface for preferred CPUs mask
+- [sched-20261112-014](/lkm/2026/11/12/sched-20261112-014-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
+- [sched-20261112-016](/lkm/2026/11/12/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261112-018](/lkm/2026/11/12/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.html) `fix/medium/under_review` — sched/fair: Make cfs_rq::idle the sum of ancestor tg::idle
+- [sched-20261112-019](/lkm/2026/11/12/sched-20261112-019-cgroup-cpuset-keep-an-active-housekeeping-cpu-in-the-top-sch.html) `fix/high/under_review` — cgroup/cpuset: Keep an active housekeeping CPU in the top sched domain
 - [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261111-006](/lkm/2026/11/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
 - [sched-20261111-007](/lkm/2026/11/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.html) `fix/high/under_review` — cgroup/cpuset: Keep the top scheduling domain populated

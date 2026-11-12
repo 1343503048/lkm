@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 78
+article_count: 79
 ---
 
+- [sched-20261112-006](/lkm/2026/11/12/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
 - [sched-20261111-011](/lkm/2026/11/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work
 - [sched-20261111-019](/lkm/2026/11/11/sched-20261111-019-sched-numa-scan-pid-inactive-vmas-for-promotion.html) `fix/high/under_review` — sched/numa: scan PID-inactive VMAs for promotion
 - [sched-20261110-002](/lkm/2026/11/10/sched-20261110-002-sched-numa-stop-vma-scan-filters-from-gating-promotion.html) `fix/high/under_review` — sched/numa: stop VMA scan filters from gating promotion

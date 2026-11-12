@@ -1,7 +1,9 @@
 # tag: deadline
 
-共 74 篇
+共 76 篇
 
+- [sched-20261112-012](../../2026/11/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-011](../../2026/11/sched-20261112-011-sched-remove-sched-class-balance.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-006](../../2026/11/sched-20261111-006-sched-deadline-keep-departing-bandwidth-across-a-root-domain.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-005](../../2026/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。

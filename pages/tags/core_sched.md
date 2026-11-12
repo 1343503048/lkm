@@ -2,9 +2,10 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 46
+article_count: 47
 ---
 
+- [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()
 - [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261110-006](/lkm/2026/11/10/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.html) `fix/medium/under_review` — sched/fair: Stop core-scheduled siblings trading rescheduling IPIs
 - [sched-20261109-007](/lkm/2026/11/09/sched-20261109-007-sched-core-sched-fixes-and-balancing.html) `fix/medium/under_review` — sched: core-sched fixes and balancing

@@ -1,7 +1,10 @@
 # tag: rt
 
-共 55 篇
+共 58 篇
 
+- [sched-20261112-011](../../2026/11/sched-20261112-011-sched-remove-sched-class-balance.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-009](../../2026/11/sched-20261112-009-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-005](../../2026/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-003](../../2026/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.md) `feature/under_review` — Shrikanth Hegde（IBM）发五补丁清理系列，把「只为判断两个/三个 cpumask 是否有交集、却调用返回具体 CPU 的接口」的调用点统一改成 `cpumask_intersects`/`cpumask_intersects_and`。今日缓存只收到 patch 1/5（`sched/rt: cpupri_find`）与 patch 4/5（`cpuidle: Use cpumas
 - [sched-20261111-002](../../2026/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — Mel Gorman 发三补丁系列修复 RT 类的 pushable 记账缺陷：`dae5c0292080`（"sched/rt,dl: Skip migrate-disabled tasks when picking a push candidate"）虽让 `pick_next_pushable_task()` 不再返回 migrate-disabled 任务，但 `enqueue_task_

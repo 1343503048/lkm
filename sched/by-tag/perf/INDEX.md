@@ -1,7 +1,8 @@
 # tag: perf
 
-共 55 篇
+共 56 篇
 
+- [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 
 - [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-003](../../2026/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.md) `feature/under_review` — Shrikanth Hegde（IBM）发五补丁清理系列，把「只为判断两个/三个 cpumask 是否有交集、却调用返回具体 CPU 的接口」的调用点统一改成 `cpumask_intersects`/`cpumask_intersects_and`。今日缓存只收到 patch 1/5（`sched/rt: cpupri_find`）与 patch 4/5（`cpuidle: Use cpumas
 - [sched-20261110-010](../../2026/11/sched-20261110-010-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

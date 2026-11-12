@@ -1,7 +1,15 @@
 # tag: cgroup
 
-共 161 篇
+共 169 篇
 
+- [sched-20261112-019](../../2026/11/sched-20261112-019-cgroup-cpuset-keep-an-active-housekeeping-cpu-in-the-top-sch.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-018](../../2026/11/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-014](../../2026/11/sched-20261112-014-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-013](../../2026/11/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-012](../../2026/11/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-007](../../2026/11/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-014](../../2026/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-010](../../2026/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-008](../../2026/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

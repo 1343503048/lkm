@@ -2,9 +2,12 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 55
+article_count: 58
 ---
 
+- [sched-20261112-009](/lkm/2026/11/12/sched-20261112-009-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
+- [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()
 - [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261111-002](/lkm/2026/11/11/sched-20261111-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261111-003](/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html) `feature/none/under_review` — sched/rt: cpupri_find: Use cpumask_intersects where applicable

@@ -1,7 +1,8 @@
 # tag: numa_balancing
 
-共 78 篇
+共 79 篇
 
+- [sched-20261112-006](../../2026/11/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-019](../../2026/11/sched-20261111-019-sched-numa-scan-pid-inactive-vmas-for-promotion.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-008](../../2026/11/sched-20261110-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发 RFC v4（4 补丁），把 NUMA balancing 的开关从「单一系统级 sysctl `kernel.numa_balancing`」下放到 per-memcg，并通过 BPF kfunc（`bpf_numab_set_mode()`/`bpf_numab_get_mode()`）读写：延迟敏感负载可关、NUMA 感知负载可开，不再靠一个全局开关。设计按 Te

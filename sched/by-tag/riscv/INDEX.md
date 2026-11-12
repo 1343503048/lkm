@@ -1,7 +1,8 @@
 # tag: riscv
 
-共 7 篇
+共 8 篇
 
+- [sched-20261112-008](../../2026/11/sched-20261112-008-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-014](../../2026/11/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261107-010](../../2026/11/sched-20261107-010-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261106-014](../../2026/11/sched-20261106-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/medium/under_review` — RISC-V 的 task_struct 增长导致 per-task stack canary 偏移超界、构建失败的修复（把 `stack_canary` 挪到「可随机化区域」的起始处），今天被 Valentin Schneider 再次推动：他替社区「ping」Peter 与 Ingo，请他们收取该补丁，并评估了唯一替代方案（加一条 LUI 指令拉伸 RISC-V 立即数），认为「有点浪费但当下

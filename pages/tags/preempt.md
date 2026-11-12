@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 81
+article_count: 82
 ---
 
+- [sched-20261112-008](/lkm/2026/11/12/sched-20261112-008-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/low/under_review` — sched: move stack_canary to the start of the randomizable region
 - [sched-20261109-007](/lkm/2026/11/09/sched-20261109-007-sched-core-sched-fixes-and-balancing.html) `fix/medium/under_review` — sched: core-sched fixes and balancing
 - [sched-20261109-014](/lkm/2026/11/09/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/low/under_review` — sched: move stack_canary to the start of the randomizable region
 - [sched-20261108-009](/lkm/2026/11/08/sched-20261108-009-rv-verify-generic-irq-context-transitions.html) `discussion/none/rfc` — rv: Verify generic IRQ context transitions

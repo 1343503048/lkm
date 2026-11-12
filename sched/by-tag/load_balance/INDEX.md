@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 207 篇
+共 210 篇
 
+- [sched-20261112-020](../../2026/11/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-006](../../2026/11/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 
 - [sched-20261111-013](../../2026/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-012](../../2026/11/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.md) `fix/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-016](../../2026/11/sched-20261109-016-sched-cache-remove-the-old-cache-group-footprint-on-exec.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

@@ -1,7 +1,8 @@
 # tag: idle
 
-共 96 篇
+共 97 篇
 
+- [sched-20261112-017](../../2026/11/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-022](../../2026/11/sched-20261111-022-arm-omap-cpuidle34xx-balance-cpu-pm-enter-exit.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。

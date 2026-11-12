@@ -2,9 +2,12 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 104
+article_count: 107
 ---
 
+- [sched-20261112-004](/lkm/2026/11/12/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `fix/medium/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
+- [sched-20261112-015](/lkm/2026/11/12/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261112-016](/lkm/2026/11/12/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261111-009](/lkm/2026/11/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261111-010](/lkm/2026/11/11/sched-20261111-010-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
 - [sched-20261111-012](/lkm/2026/11/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/low/under_review` — sched/psi: Preserve PSI state on delayed dequeue

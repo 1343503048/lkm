@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 333
+article_count: 335
 ---
 
+- [sched-20261112-001](/lkm/2026/11/12/sched-20261112-001-sched-ext-fix-entry-path-contract-breaks-in-core-c.html) `fix/medium/under_review` — sched_ext: Fix entry-path contract breaks in core.c
+- [sched-20261112-002](/lkm/2026/11/12/sched-20261112-002-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.html) `fix/high/under_review` — sched_ext: fix kfunc, sub-sched, flatcg and idle-mask issues
 - [sched-20261111-014](/lkm/2026/11/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.html) `fix/medium/under_review` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261111-016](/lkm/2026/11/11/sched-20261111-016-sched-ext-make-dsq-iterator-stay-drained-after-null.html) `fix/medium/merged_tip` — sched_ext: make DSQ iterator stay drained after NULL
 - [sched-20261111-017](/lkm/2026/11/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/merged_tip` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()

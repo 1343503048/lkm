@@ -1,7 +1,9 @@
 # tag: bpf
 
-共 11 篇
+共 13 篇
 
+- [sched-20261112-002](../../2026/11/sched-20261112-002-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.md) `fix/high/under_review` — Tao Cui 发六补丁系列修 sched_ext core、scx_flatcg 示例调度器与 CID helper 的六个问题，最严重的是两个 DSQ 迭代 kfunc 可被 tracing 程序调用、在 DSQ 锁已被持有时递归自旋导致整机锁死；另有 scx_bpf_cid_node() 对非法 cid 直接 abort 调度器、sub-scheduler 声明的 cid_online/ci
+- [sched-20261112-001](../../2026/11/sched-20261112-001-sched-ext-fix-entry-path-contract-breaks-in-core-c.md) `fix/medium/under_review` — Tao Cui 发两补丁修复 sched_ext 在 core.c 里两处「进入路径契约」被破坏的问题：fork 路径 `wake_up_new_task()` 调了 `select_task_rq()` 却不带 `ENQUEUE_RQ_SELECTED`，导致 `SCX_EV_SELECT_CPU_FALLBACK` 永远不统计 fork 侧 fallback；`rt_mutex_setprio
 - [sched-20261102-008](../../2026/11/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/under_review` — Shubhang Kaushik（Ampere）修复 sched_ext 的一个死锁：`scx_bpf_destroy_dsq()` 会取目标 user DSQ 的 raw spinlock，却也被注册到 `BPF_PROG_TYPE_TRACING`（`scx_kfunc_ids_any`）。一个未关联的 tracing 程序可经兼容路径解析到活动 root 调度器，在 DSQ 锁已被持有时递归
 - [sched-20261023-002](../../2026/10/sched-20261023-002-sched-fix-scx-enq-cpu-selected-for-queued-wakeups.md) `fix/low/under_review` — Kuba Piecuch（Google）发往 sched 的两补丁修复：`SCX_ENQ_CPU_SELECTED` 本应告诉 `ops.enqueue()` 本次唤醒是否执行过 `ops.select_cpu()`，但经 ttwu wakelist 投递的 queued wakeup 会丢掉 `WF_RQ_SELECTED`，导致开启了 `SCX_OPS_ALLOW_QUEUED_WAKEUP`
 - [sched-20261019-008](../../2026/10/sched-20261019-008-bpf-based-per-cgroup-numa-balancing-mode-selection.md) `feature/rfc` — Yafang Shao 发往 bpf-next 的 RFC v3 五补丁系列：给 NUMA balancing 加**每 cgroup 的模式选择**——latency-sensitive 服务想关掉 NUMA balancing、batch 服务想让 PMEM-resident 内存热晋升，全局 `kernel.numa_balancing` 单一 sysctl 无法同时满足。方案新增 `cgr

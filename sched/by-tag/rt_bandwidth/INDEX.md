@@ -1,7 +1,8 @@
 # tag: rt_bandwidth
 
-共 9 篇
+共 10 篇
 
+- [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-001](../../2026/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kerne
 - [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko
 - [sched-20261109-012](../../2026/11/sched-20261109-012-bug-sched-rt-rlimit-rttime-not-reset-after-blocking-under.md) `bug/medium/under_review` — 社区报告一个 RT 调度 bug：任务从 SCHED_FIFO 切到 SCHED_OTHER 并阻塞睡眠后，RLIMIT_RTTIME 的 RT 运行时间计数器没有复位——反复「FIFO 跑 8ms → 切 SCHED_OTHER → 睡眠 10ms」会让 RT runtime 跨睡眠累计，最终触发 SIGXCPU，即便每次 RT 执行区间都低于限制。附完整 reproducer，Ubuntu 7

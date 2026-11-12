@@ -2,9 +2,10 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 96
+article_count: 97
 ---
 
+- [sched-20261112-017](/lkm/2026/11/12/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261111-003](/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html) `feature/none/under_review` — sched/rt: cpupri_find: Use cpumask_intersects where applicable
 - [sched-20261111-004](/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261111-020](/lkm/2026/11/11/sched-20261111-020-cpuidle-cpu-idle-miss-accounting-fixes.html) `fix/low/under_review` — cpuidle: cpu_idle_miss accounting fixes

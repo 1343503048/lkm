@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 55
+article_count: 56
 ---
 
+- [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261111-003](/lkm/2026/11/11/sched-20261111-003-sched-rt-cpupri-find-use-cpumask-intersects-where-applicable.html) `feature/none/under_review` — sched/rt: cpupri_find: Use cpumask_intersects where applicable
 - [sched-20261111-011](/lkm/2026/11/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work
 - [sched-20261110-010](/lkm/2026/11/10/sched-20261110-010-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

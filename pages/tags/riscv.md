@@ -2,9 +2,10 @@
 layout: default
 tag: "riscv"
 title: "标签: riscv"
-article_count: 7
+article_count: 8
 ---
 
+- [sched-20261112-008](/lkm/2026/11/12/sched-20261112-008-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/low/under_review` — sched: move stack_canary to the start of the randomizable region
 - [sched-20261109-014](/lkm/2026/11/09/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/low/under_review` — sched: move stack_canary to the start of the randomizable region
 - [sched-20261107-010](/lkm/2026/11/07/sched-20261107-010-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/medium/under_review` — sched: move stack_canary to the start of the randomizable region
 - [sched-20261106-014](/lkm/2026/11/06/sched-20261106-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/medium/under_review` — sched: move stack_canary to the start of the randomizable region

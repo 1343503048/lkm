@@ -1,7 +1,8 @@
 # tag: x86
 
-共 35 篇
+共 36 篇
 
+- [sched-20261112-020](../../2026/11/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261105-011](../../2026/11/sched-20261105-011-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — Francesco Nigro 报告的 bug：在启用 ITMT（Intel Turbo Boost Max 3.0，非对称算力）+ DELAY_DEQUEUE 的环境里，被唤醒任务会在首选 CPU 上等约 1ms 落在另一任务之后，即便允许的其它 CPU 全部空闲。K Prateek Nayak（AMD）初步定位为 idle 平衡器把 delayed 任务迁到首选 CPU、与同一 CPU 上并发
 - [sched-20261102-027](../../2026/11/sched-20261102-027-sched-convert-paravirt-steal-to-new-static-key-apis.md) `fix/merged_tip` — Hongyan Xia 的 paravirt_steal 静态 key API 迁移补丁（RESEND 单补丁，亦为「Remove deprecated static key API in scheduler code」0/3 系列的 2/3）已被 Peter Zijlstra 收取，commit `a5576ebce920` 进 riscv/linux.git（fixes）。这是跨月的静态 ke
 - [sched-20261102-010](../../2026/11/sched-20261102-010-cpufreq-add-a-cpufreq-update-cpuinfo-policy-notifier-event.md) `feature/rfc` — Hugo Sales 的 RFC（4 patches，v1）：新增 `CPUFREQ_UPDATE_CPUINFO` policy notifier 事件，在 boost 开关等改变 `policy->cpuinfo.max_freq` 的时机通知依赖方（典型是 ACPI processor thermal 的节流步进，它按 `cpuinfo.max_freq` 的固定比例计算）。patch 2/

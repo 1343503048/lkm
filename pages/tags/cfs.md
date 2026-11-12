@@ -2,9 +2,18 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 323
+article_count: 332
 ---
 
+- [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
+- [sched-20261112-004](/lkm/2026/11/12/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `fix/medium/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
+- [sched-20261112-007](/lkm/2026/11/12/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait
+- [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()
+- [sched-20261112-014](/lkm/2026/11/12/sched-20261112-014-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for CPU credits
+- [sched-20261112-015](/lkm/2026/11/12/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261112-016](/lkm/2026/11/12/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.html) `fix/medium/under_review` — sched/eevdf: Fix sched idle task group preemption
+- [sched-20261112-018](/lkm/2026/11/12/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.html) `fix/medium/under_review` — sched/fair: Make cfs_rq::idle the sum of ancestor tg::idle
+- [sched-20261112-020](/lkm/2026/11/12/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.html) `bug/medium/under_review` — sched: ITMT + DELAY_DEQUEUE: woken task waits ~1 ms behind another task on the preferred CPU while allowed CPUs are idle
 - [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing
 - [sched-20261111-008](/lkm/2026/11/11/sched-20261111-008-sched-fair-cpu-max-runtime-and-idle-refill-for-a-burstable-b.html) `feature/none/under_review` — sched/fair: cpu.max.runtime and idle refill for a burstable budget
 - [sched-20261111-009](/lkm/2026/11/11/sched-20261111-009-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair

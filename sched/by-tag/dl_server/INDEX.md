@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 21 篇
+共 22 篇
 
+- [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-001](../../2026/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kerne
 - [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-007](../../2026/11/sched-20261110-007-hierarchical-constant-bandwidth-server.md) `feature/rfc` — Yuri Andriaccio 发第 7 版 RFC（29 补丁），用层次化 Constant Bandwidth Server（HCBS）替换现有 `RT_GROUP_SCHED` 机制，为 rt-cgroup 提供理论上更稳健、且与 SCHED_DEADLINE/SCHED_EXT 一致的带宽隔离。v7 相对 v6 变化巨大：rebase 到 7.4-rc1、修掉 v6 评审与 sashiko

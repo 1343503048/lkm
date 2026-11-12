@@ -2,9 +2,12 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 207
+article_count: 210
 ---
 
+- [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
+- [sched-20261112-006](/lkm/2026/11/12/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
+- [sched-20261112-020](/lkm/2026/11/12/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.html) `bug/medium/under_review` — sched: ITMT + DELAY_DEQUEUE: woken task waits ~1 ms behind another task on the preferred CPU while allowed CPUs are idle
 - [sched-20261111-013](/lkm/2026/11/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261110-012](/lkm/2026/11/10/sched-20261110-012-sched-fair-skip-sched-domain-traversal-when-wake-affine-is-d.html) `fix/none/under_review` — sched/fair: Skip sched-domain traversal when wake affine is disabled
 - [sched-20261109-002](/lkm/2026/11/09/sched-20261109-002-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

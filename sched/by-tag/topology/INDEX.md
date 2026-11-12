@@ -1,7 +1,11 @@
 # tag: topology
 
-共 158 篇
+共 162 篇
 
+- [sched-20261112-019](../../2026/11/sched-20261112-019-cgroup-cpuset-keep-an-active-housekeeping-cpu-in-the-top-sch.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-013](../../2026/11/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-006](../../2026/11/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 
 - [sched-20261111-007](../../2026/11/sched-20261111-007-cgroup-cpuset-keep-the-top-scheduling-domain-populated.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-017](../../2026/11/sched-20261110-017-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-014](../../2026/11/sched-20261110-014-cgroup-cpuset-reject-updates-that-empty-the-top-sched-domain.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

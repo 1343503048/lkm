@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 64
+article_count: 65
 ---
 
+- [sched-20261112-017](/lkm/2026/11/12/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261111-004](/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261111-023](/lkm/2026/11/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.html) `fix/medium/under_review` — sched/idle: Stop the tick when no cpuidle driver is available
 - [sched-20261109-008](/lkm/2026/11/09/sched-20261109-008-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/under_review` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average

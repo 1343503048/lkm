@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 333 篇
+共 335 篇
 
+- [sched-20261112-002](../../2026/11/sched-20261112-002-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.md) `fix/high/under_review` — Tao Cui 发六补丁系列修 sched_ext core、scx_flatcg 示例调度器与 CID helper 的六个问题，最严重的是两个 DSQ 迭代 kfunc 可被 tracing 程序调用、在 DSQ 锁已被持有时递归自旋导致整机锁死；另有 scx_bpf_cid_node() 对非法 cid 直接 abort 调度器、sub-scheduler 声明的 cid_online/ci
+- [sched-20261112-001](../../2026/11/sched-20261112-001-sched-ext-fix-entry-path-contract-breaks-in-core-c.md) `fix/medium/under_review` — Tao Cui 发两补丁修复 sched_ext 在 core.c 里两处「进入路径契约」被破坏的问题：fork 路径 `wake_up_new_task()` 调了 `select_task_rq()` 却不带 `ENQUEUE_RQ_SELECTED`，导致 `SCX_EV_SELECT_CPU_FALLBACK` 永远不统计 fork 侧 fallback；`rt_mutex_setprio
 - [sched-20261111-018](../../2026/11/sched-20261111-018-tools-sched-ext-robustness-fixes-from-cold-review.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-017](../../2026/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-016](../../2026/11/sched-20261111-016-sched-ext-make-dsq-iterator-stay-drained-after-null.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。

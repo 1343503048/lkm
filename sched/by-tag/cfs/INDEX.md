@@ -1,7 +1,16 @@
 # tag: cfs
 
-共 323 篇
+共 332 篇
 
+- [sched-20261112-020](../../2026/11/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-018](../../2026/11/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-015](../../2026/11/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-014](../../2026/11/sched-20261112-014-sched-fair-cpu-max-runtime-and-idle-refill-for-cpu-credits.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-011](../../2026/11/sched-20261112-011-sched-remove-sched-class-balance.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-007](../../2026/11/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261112-004](../../2026/11/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.md) `fix/medium/under_review` — K Prateek Nayak 修一个 delayed-dequeue 记账缺陷：任务被 delay 时 `set_delayed()` 调整了 `h_nr_runnable`，但带 `DEQUEUE_DELAYED` 的 dequeue 又在 `dequeue_hierarchy()` 里再减一次（随后 `__dequeue_task()` 经 `clear_delayed()` 立刻纠正），导
+- [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 
 - [sched-20261111-014](../../2026/11/sched-20261111-014-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs-scx.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-013](../../2026/11/sched-20261111-013-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

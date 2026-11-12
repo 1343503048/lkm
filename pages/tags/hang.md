@@ -2,9 +2,10 @@
 layout: default
 tag: "hang"
 title: "标签: hang"
-article_count: 16
+article_count: 17
 ---
 
+- [sched-20261112-005](/lkm/2026/11/12/sched-20261112-005-sched-wait-queue-non-exclusive-waiters-at-the-head-in-do-wai.html) `bug/high/under_review` — sched/wait: Queue non-exclusive waiters at the head in do_wait_intr*()
 - [sched-20261111-021](/lkm/2026/11/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
 - [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
 - [sched-20261031-006](/lkm/2026/10/31/sched-20261031-006-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.html) `bug/high/rfc` — [REGRESSION] cpuidle: psci: boot stall/hang on i.MX8MP
