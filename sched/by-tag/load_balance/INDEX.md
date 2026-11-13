@@ -1,7 +1,10 @@
 # tag: load_balance
 
-共 210 篇
+共 213 篇
 
+- [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-007](../../2026/11/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.md) `feature/under_review` — Tim Chen（Intel）发两补丁系列：为 cache aware scheduling（`CONFIG_SCHED_CACHE`）补文档（新增 `Documentation/scheduler/sched-cache.rst`，与 `sched-energy.rst` 同风格），并修正 `can_migrate_llc()` 上方注释里的迁移决策矩阵（若干单元格与默认阈值下函数实际计算结果不
+- [sched-20261113-001](../../2026/11/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.md) `regression/high/under_review` — Usama Arif 提交 revert 补丁，回退 `61ea17a63719`（给 `select_idle_capacity()` 套用 SIS_UTIL 扫描预算）：该提交在非对称路径下因零扫描预算而跳过 allowed domain 的全量搜索，导致唤醒型延迟敏感负载的分钟级 p50 延迟从 129ms 恶化到 223ms。补丁带完整 benchmark 数据与 `Fixes:` 标签，
 - [sched-20261112-020](../../2026/11/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-006](../../2026/11/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 

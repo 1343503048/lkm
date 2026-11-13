@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 75 篇
+共 77 篇
 
+- [sched-20261113-017](../../2026/11/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-009](../../2026/11/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-013](../../2026/11/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-009](../../2026/11/sched-20261112-009-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-015](../../2026/11/sched-20261111-015-sched-mmcid-synchronize-mm-teardown-with-affinity-updates.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。

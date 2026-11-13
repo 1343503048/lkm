@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 47 篇
+共 49 篇
 
+- [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-002](../../2026/11/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.md) `bug/high/under_review` — Fernand Sieber（Amazon）发五补丁系列修复 core scheduling 下 DL server 饥饿：默认 fair server（50ms/1s）预留 5% CPU，但一个 CFS 任务在 SMT sibling 上与带 cookie 的 SCHED_FIFO 任务同核运行时，实测只拿到 0.000% 而非 5%；ext server 同样饿死。两个独立机制共同导致（cor
 - [sched-20261112-011](../../2026/11/sched-20261112-011-sched-remove-sched-class-balance.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-005](../../2026/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-006](../../2026/11/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.md) `fix/medium/under_review` — Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick

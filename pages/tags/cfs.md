@@ -2,9 +2,13 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 332
+article_count: 336
 ---
 
+- [sched-20261113-001](/lkm/2026/11/13/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.html) `regression/high/under_review` — Revert "sched/fair: Add SIS_UTIL support to select_idle_capacity()"
+- [sched-20261113-011](/lkm/2026/11/13/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
+- [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
+- [sched-20261113-018](/lkm/2026/11/13/sched-20261113-018-sched-remove-sched-class-balance.html) `feature/none/under_review` — sched: Remove sched_class::balance()
 - [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261112-004](/lkm/2026/11/12/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `fix/medium/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
 - [sched-20261112-007](/lkm/2026/11/12/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait

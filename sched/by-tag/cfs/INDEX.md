@@ -1,7 +1,11 @@
 # tag: cfs
 
-共 332 篇
+共 336 篇
 
+- [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-011](../../2026/11/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-001](../../2026/11/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.md) `regression/high/under_review` — Usama Arif 提交 revert 补丁，回退 `61ea17a63719`（给 `select_idle_capacity()` 套用 SIS_UTIL 扫描预算）：该提交在非对称路径下因零扫描预算而跳过 allowed domain 的全量搜索，导致唤醒型延迟敏感负载的分钟级 p50 延迟从 129ms 恶化到 223ms。补丁带完整 benchmark 数据与 `Fixes:` 标签，
 - [sched-20261112-020](../../2026/11/sched-20261112-020-sched-itmt-delay-dequeue-woken-task-waits-1-ms-behind-anothe.md) `bug/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-018](../../2026/11/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

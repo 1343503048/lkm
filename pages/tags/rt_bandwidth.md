@@ -2,9 +2,10 @@
 layout: default
 tag: "rt_bandwidth"
 title: "标签: rt_bandwidth"
-article_count: 10
+article_count: 11
 ---
 
+- [sched-20261113-010](/lkm/2026/11/13/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server

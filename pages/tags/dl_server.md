@@ -2,9 +2,12 @@
 layout: default
 tag: "dl_server"
 title: "标签: dl_server"
-article_count: 22
+article_count: 25
 ---
 
+- [sched-20261113-002](/lkm/2026/11/13/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.html) `bug/high/under_review` — sched: Fix DL server starvation under core scheduling
+- [sched-20261113-010](/lkm/2026/11/13/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261113-013](/lkm/2026/11/13/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.html) `bug/high/under_review` — sched/deadline: Move a task's bandwidth only where room was made
 - [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261111-001](/lkm/2026/11/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261110-007](/lkm/2026/11/10/sched-20261110-007-hierarchical-constant-bandwidth-server.html) `feature/none/rfc` — Hierarchical Constant Bandwidth Server

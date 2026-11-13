@@ -2,9 +2,12 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 58
+article_count: 61
 ---
 
+- [sched-20261113-010](/lkm/2026/11/13/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261113-017](/lkm/2026/11/13/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
+- [sched-20261113-018](/lkm/2026/11/13/sched-20261113-018-sched-remove-sched-class-balance.html) `feature/none/under_review` — sched: Remove sched_class::balance()
 - [sched-20261112-009](/lkm/2026/11/12/sched-20261112-009-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()

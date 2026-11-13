@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 107 篇
+共 108 篇
 
+- [sched-20261113-011](../../2026/11/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-015](../../2026/11/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-004](../../2026/11/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.md) `fix/medium/under_review` — K Prateek Nayak 修一个 delayed-dequeue 记账缺陷：任务被 delay 时 `set_delayed()` 调整了 `h_nr_runnable`，但带 `DEQUEUE_DELAYED` 的 dequeue 又在 `dequeue_hierarchy()` 里再减一次（随后 `__dequeue_task()` 经 `clear_delayed()` 立刻纠正），导

@@ -1,7 +1,10 @@
 # tag: dl_server
 
-共 22 篇
+共 25 篇
 
+- [sched-20261113-013](../../2026/11/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-010](../../2026/11/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-002](../../2026/11/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.md) `bug/high/under_review` — Fernand Sieber（Amazon）发五补丁系列修复 core scheduling 下 DL server 饥饿：默认 fair server（50ms/1s）预留 5% CPU，但一个 CFS 任务在 SMT sibling 上与带 cookie 的 SCHED_FIFO 任务同核运行时，实测只拿到 0.000% 而非 5%；ext server 同样饿死。两个独立机制共同导致（cor
 - [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-001](../../2026/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kerne
 - [sched-20261110-009](../../2026/11/sched-20261110-009-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。

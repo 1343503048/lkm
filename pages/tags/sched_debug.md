@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 78
+article_count: 79
 ---
 
+- [sched-20261113-006](/lkm/2026/11/13/sched-20261113-006-make-the-scheduler-stack-end-check-selectable-at-boot.html) `feature/none/under_review` — Make the scheduler stack end check selectable at boot
 - [sched-20261102-012](/lkm/2026/11/02/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors
 - [sched-20261031-005](/lkm/2026/10/31/sched-20261031-005-sched-add-support-for-long-task-name.html) `feature/low/under_review` — sched: Add support for long task name
 - [sched-20261030-005](/lkm/2026/10/30/sched-20261030-005-sched-debug-introduce-per-cpu-debugfs-files.html) `fix/low/under_review` — sched/debug: Introduce per-CPU debugfs files

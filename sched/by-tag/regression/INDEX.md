@@ -1,7 +1,8 @@
 # tag: regression
 
-共 64 篇
+共 65 篇
 
+- [sched-20261113-001](../../2026/11/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.md) `regression/high/under_review` — Usama Arif 提交 revert 补丁，回退 `61ea17a63719`（给 `select_idle_capacity()` 套用 SIS_UTIL 扫描预算）：该提交在非对称路径下因零扫描预算而跳过 allowed domain 的全量搜索，导致唤醒型延迟敏感负载的分钟级 p50 延迟从 129ms 恶化到 223ms。补丁带完整 benchmark 数据与 `Fixes:` 标签，
 - [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261110-006](../../2026/11/sched-20261110-006-sched-fair-stop-core-scheduled-siblings-trading-rescheduling.md) `fix/medium/under_review` — Fernand Sieber（Amazon）发 2 补丁系列修复 core scheduling 下两个 SMT 兄弟互相发 rescheduling IPI 的回归：自 v6.17 起 commit `0b9ca2dcabc3` 让 `update_curr()` 在保护 slice 过期后每次都要 reschedule，而 `set_protect_slice()` 只在 fresh pick
 - [sched-20261108-006](../../2026/11/sched-20261108-006-sched-eevdf-move-to-a-single-runqueue.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

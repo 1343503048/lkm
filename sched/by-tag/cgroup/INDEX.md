@@ -1,7 +1,9 @@
 # tag: cgroup
 
-共 169 篇
+共 171 篇
 
+- [sched-20261113-013](../../2026/11/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261113-010](../../2026/11/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-019](../../2026/11/sched-20261112-019-cgroup-cpuset-keep-an-active-housekeeping-cpu-in-the-top-sch.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-018](../../2026/11/sched-20261112-018-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

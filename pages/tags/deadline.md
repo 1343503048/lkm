@@ -2,9 +2,13 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 76
+article_count: 80
 ---
 
+- [sched-20261113-002](/lkm/2026/11/13/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.html) `bug/high/under_review` — sched: Fix DL server starvation under core scheduling
+- [sched-20261113-009](/lkm/2026/11/13/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
+- [sched-20261113-013](/lkm/2026/11/13/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.html) `bug/high/under_review` — sched/deadline: Move a task's bandwidth only where room was made
+- [sched-20261113-018](/lkm/2026/11/13/sched-20261113-018-sched-remove-sched-class-balance.html) `feature/none/under_review` — sched: Remove sched_class::balance()
 - [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()
 - [sched-20261112-012](/lkm/2026/11/12/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild
 - [sched-20261111-005](/lkm/2026/11/11/sched-20261111-005-sched-core-sched-fixes-and-balancing.html) `fix/high/under_review` — sched: core-sched fixes and balancing

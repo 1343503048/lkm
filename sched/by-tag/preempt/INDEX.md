@@ -1,7 +1,8 @@
 # tag: preempt
 
-共 82 篇
+共 83 篇
 
+- [sched-20261113-008](../../2026/11/sched-20261113-008-sched-preempt-fix-duplicate-extern-declarations.md) `discussion/stalled` — Safocl Stollmannovic 提交（作为 10 补丁「去除重复 extern 声明」系列的一篇，v1 与 v2 当日先后发出）删除 `include/asm-generic/preempt.h` 中 `preempt_schedule()` / `preempt_schedule_notrace()` 的 `extern` 关键字，理由是 C++ 编译内核模块时 `extern asm
 - [sched-20261112-008](../../2026/11/sched-20261112-008-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-014](../../2026/11/sched-20261109-014-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261109-007](../../2026/11/sched-20261109-007-sched-core-sched-fixes-and-balancing.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

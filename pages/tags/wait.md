@@ -2,9 +2,10 @@
 layout: default
 tag: "wait"
 title: "标签: wait"
-article_count: 4
+article_count: 5
 ---
 
+- [sched-20261113-005](/lkm/2026/11/13/sched-20261113-005-sched-wait-kill-leftover-bookmark-logic-in-wake-up-common.html) `fix/none/under_review` — sched/wait: kill leftover bookmark logic in __wake_up_common()
 - [sched-20261112-005](/lkm/2026/11/12/sched-20261112-005-sched-wait-queue-non-exclusive-waiters-at-the-head-in-do-wai.html) `bug/high/under_review` — sched/wait: Queue non-exclusive waiters at the head in do_wait_intr*()
 - [sched-20261015-027](/lkm/2026/10/15/sched-20261015-027-sched-wait-avoid-modifying-entry-on-failed-priority-registra.html) `fix/low/merged_tip` — sched/wait: Avoid modifying entry on failed priority registration
 - [sched-20261012-016](/lkm/2026/10/12/sched-20261012-016-sched-wait-avoid-modifying-entry-on-failed-priority-registra.html) `fix/low/under_review` — sched/wait: avoid modifying entry on failed priority registration

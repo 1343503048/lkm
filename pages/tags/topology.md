@@ -2,9 +2,11 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 162
+article_count: 164
 ---
 
+- [sched-20261113-007](/lkm/2026/11/13/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.html) `feature/none/under_review` — sched/cahce: Document cache aware scheduling
+- [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261112-006](/lkm/2026/11/12/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
 - [sched-20261112-013](/lkm/2026/11/12/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.html) `feature/none/under_review` — sched: Expose writable interface for preferred CPUs mask

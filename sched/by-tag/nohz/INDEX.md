@@ -1,7 +1,8 @@
 # tag: nohz
 
-共 65 篇
+共 66 篇
 
+- [sched-20261113-019](../../2026/11/sched-20261113-019-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-017](../../2026/11/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-004](../../2026/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — Marco Crivellari（SUSE）发 v2 系列（4 补丁，当日仅收到 patch 2/4），修 `idle=poll` 与 nohz_full 的交互缺陷：`TS_FLAG_INIDLE` 让 nohz 误以为 idle=poll 时的 tick 仍由 idle 循环管理，但 `cpu_idle_poll()` 在中断后不会重跑 idle 循环，导致 nohz_full CPU 上被停

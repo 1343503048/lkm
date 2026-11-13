@@ -2,9 +2,11 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 169
+article_count: 171
 ---
 
+- [sched-20261113-010](/lkm/2026/11/13/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
+- [sched-20261113-013](/lkm/2026/11/13/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.html) `bug/high/under_review` — sched/deadline: Move a task's bandwidth only where room was made
 - [sched-20261112-007](/lkm/2026/11/12/sched-20261112-007-sched-mmcid-bound-the-cid-allocation-busy-wait.html) `fix/high/under_review` — sched/mmcid: Bound the CID allocation busy wait
 - [sched-20261112-010](/lkm/2026/11/12/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261112-012](/lkm/2026/11/12/sched-20261112-012-sched-deadline-keep-departing-bandwidth-across-a-root-domain.html) `fix/critical/under_review` — sched/deadline: Keep departing bandwidth across a root domain rebuild

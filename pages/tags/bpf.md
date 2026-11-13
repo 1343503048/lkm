@@ -2,9 +2,11 @@
 layout: default
 tag: "bpf"
 title: "标签: bpf"
-article_count: 13
+article_count: 15
 ---
 
+- [sched-20261113-014](/lkm/2026/11/13/sched-20261113-014-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.html) `fix/medium/under_review` — sched_ext: fix kfunc, sub-sched, flatcg and idle-mask issues
+- [sched-20261113-015](/lkm/2026/11/13/sched-20261113-015-sched-ext-block-a-retained-donor-before-pi-deboost-routes-it.html) `fix/medium/under_review` — sched_ext: Block a retained donor before PI deboost routes it back to sched_ext
 - [sched-20261112-001](/lkm/2026/11/12/sched-20261112-001-sched-ext-fix-entry-path-contract-breaks-in-core-c.html) `fix/medium/under_review` — sched_ext: Fix entry-path contract breaks in core.c
 - [sched-20261112-002](/lkm/2026/11/12/sched-20261112-002-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.html) `fix/high/under_review` — sched_ext: fix kfunc, sub-sched, flatcg and idle-mask issues
 - [sched-20261102-008](/lkm/2026/11/02/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.html) `fix/high/under_review` — sched_ext: Reject scx_bpf_destroy_dsq() in tracing programs
