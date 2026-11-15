@@ -1,7 +1,8 @@
 # tag: uclamp
 
-共 8 篇
+共 9 篇
 
+- [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_
 - [sched-20261103-016](../../2026/11/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-002](../../2026/11/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.md) `fix/medium/under_review` — Andrea Parri 修复 uclamp 的 `sched_util_min/max` 取值校验漏洞：由于 `util_min/util_max` 被声明为 `int` 而 `SCHED_CAPACITY_SCALE` 为 `long`，负值与 `INT_MAX` 都能绕过 `uclamp_validate()` 的 `+1 wrap` 检查，随后被截断到 11 位但仍按完整值计算 bucke

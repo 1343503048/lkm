@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 213 篇
+共 215 篇
 
+- [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_
 - [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-007](../../2026/11/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.md) `feature/under_review` — Tim Chen（Intel）发两补丁系列：为 cache aware scheduling（`CONFIG_SCHED_CACHE`）补文档（新增 `Documentation/scheduler/sched-cache.rst`，与 `sched-energy.rst` 同风格），并修正 `can_migrate_llc()` 上方注释里的迁移决策矩阵（若干单元格与默认阈值下函数实际计算结果不
 - [sched-20261113-001](../../2026/11/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.md) `regression/high/under_review` — Usama Arif 提交 revert 补丁，回退 `61ea17a63719`（给 `select_idle_capacity()` 套用 SIS_UTIL 扫描预算）：该提交在非对称路径下因零扫描预算而跳过 allowed domain 的全量搜索，导致唤醒型延迟敏感负载的分钟级 p50 延迟从 129ms 恶化到 223ms。补丁带完整 benchmark 数据与 `Fixes:` 标签，

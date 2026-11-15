@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 338
+article_count: 340
 ---
 
+- [sched-20261115-001](/lkm/2026/11/15/sched-20261115-001-selftests-sched-ext-fix-flaky-rt-stall-measurement.html) `fix/none/under_review` — selftests/sched_ext: Fix flaky rt_stall measurement
+- [sched-20261115-002](/lkm/2026/11/15/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html) `fix/medium/under_review` — sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue
 - [sched-20261113-014](/lkm/2026/11/13/sched-20261113-014-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.html) `fix/medium/under_review` — sched_ext: fix kfunc, sub-sched, flatcg and idle-mask issues
 - [sched-20261113-015](/lkm/2026/11/13/sched-20261113-015-sched-ext-block-a-retained-donor-before-pi-deboost-routes-it.html) `fix/medium/under_review` — sched_ext: Block a retained donor before PI deboost routes it back to sched_ext
 - [sched-20261113-016](/lkm/2026/11/13/sched-20261113-016-sched-ext-make-dsq-iterator-stay-drained-after-null.html) `fix/medium/merged_tip` — sched_ext: make DSQ iterator stay drained after NULL

@@ -2,9 +2,10 @@
 layout: default
 tag: "cpufreq"
 title: "标签: cpufreq"
-article_count: 119
+article_count: 120
 ---
 
+- [sched-20261115-003](/lkm/2026/11/15/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
 - [sched-20261108-007](/lkm/2026/11/08/sched-20261108-007-cpufreq-schedutil-skip-busy-cpu-hold-when-nohz-is-inactive.html) `fix/medium/under_review` — cpufreq: schedutil: Skip busy-CPU hold when NOHZ is inactive
 - [sched-20261105-017](/lkm/2026/11/05/sched-20261105-017-cpufreq-fix-global-boost-state-updates.html) `fix/low/under_review` — cpufreq: Fix global boost state updates
 - [sched-20261105-018](/lkm/2026/11/05/sched-20261105-018-cpufreq-cppc-set-cppc-enable-register-in-cpu-init.html) `fix/medium/under_review` — cpufreq: CPPC: Set CPPC Enable register in cpu_init

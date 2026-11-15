@@ -2,9 +2,12 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 336
+article_count: 339
 ---
 
+- [sched-20261115-002](/lkm/2026/11/15/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html) `fix/medium/under_review` — sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue
+- [sched-20261115-003](/lkm/2026/11/15/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
+- [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261113-001](/lkm/2026/11/13/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.html) `regression/high/under_review` — Revert "sched/fair: Add SIS_UTIL support to select_idle_capacity()"
 - [sched-20261113-011](/lkm/2026/11/13/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes

@@ -2,9 +2,10 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 108
+article_count: 109
 ---
 
+- [sched-20261115-007](/lkm/2026/11/15/sched-20261115-007-sched-docs-rewrite-sched-eevdf-rst.html) `feature/none/under_review` — sched/docs: Rewrite sched-eevdf.rst
 - [sched-20261113-011](/lkm/2026/11/13/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261112-004](/lkm/2026/11/12/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `fix/medium/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
 - [sched-20261112-015](/lkm/2026/11/12/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair

@@ -24778,6 +24778,146 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261111-004：Marco Crivellari（SUSE）发 v2 四补丁（当日仅收到 patch 2/4），修 `idle=poll` 与 nohz_full 的交互缺陷——polling 期间 `TS_FLAG_INIDLE` 被误置导致 tick 在 nohz_full CPU 上被重启、唤醒后持续打断用户态。方案由 Frederic Weisbecker 建议。 - sched-20261112-017：Frederic 给 Reviewed-by；K Prateek 提 nit（用 `guard(irqsave)()` 简"
   },
   {
+    "title": "selftests/sched_ext: Fix flaky rt_stall measurement",
+    "id": "sched-20261115-001",
+    "date": "2026-11-15",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext",
+      "dl_server"
+    ],
+    "authors": [
+      "Jonathan Bastari Thamrin"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-001-selftests-sched-ext-fix-flaky-rt-stall-measurement.html",
+    "tldr": "Jonathan Bastari Thamrin 发 v2 修 rt_stall selftest 的 CI flake：根因是 CORE_ID 上 DL server budget 被其它 FAIR/EXT 任务共享、父任务未 pin 走、以及用 /proc/stat 的 USER_HZ(10ms) 粗粒度计时导致比例失真。v2 改用 clock_getcpuclockid() 精确计时并把父任务 pin 到 CORE_ID 之外。sched_ext 维护者 Andrea Righi 已 Reviewed-by，仅剩措辞与注释两个小改动，合入 for-7.4-fixes 可能性高。"
+  },
+  {
+    "title": "sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue",
+    "id": "sched-20261115-002",
+    "date": "2026-11-15",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext",
+      "cfs"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261112-001：Tao Cui 两补丁修复 sched_ext 在 core.c 里的进入路径契约；其中 patch 1 即本系列 `sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue`——在 fork 路径 `wake_up_new_task()` 里给初始入队补上 `ENQUEUE_RQ_SELECTED`，与唤醒路径对齐（只有 sched_ext 消费该标志）。当时 Peter 只对 patch 2 表态 NAK，patch 1 未获单独确认。 - sched-2026"
+  },
+  {
+    "title": "sched/pelt: Skip redundant decay and divisions when sched_avg is zero",
+    "id": "sched-20261115-003",
+    "date": "2026-11-15",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "perf",
+      "cpufreq"
+    ],
+    "authors": [
+      "Chris Wiseman"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html",
+    "tldr": "Chris Wiseman（Google）发 PELT 微优化：当 sched_avg 各字段已衰减归零时，`accumulate_sum()` 仍跑三次 `decay_load(0, periods)` 并在跨 1024us 边界后返回 periods>0，触发 `___update_load_avg()` 做三次零除法并向 `cpufreq_update_util()` 报告虚假 decay；`update_irq_load_avg(rq, 0)` 也无条件二次调用 `___update_load_sum()`（恒返 0）。补丁在零负载+已归零时提前返回 0，并在 `!running` 时"
+  },
+  {
+    "title": "[GIT PULL] scheduler fixes",
+    "id": "sched-20261115-004",
+    "date": "2026-11-15",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "high",
+    "tags": [
+      "deadline",
+      "uclamp",
+      "cgroup",
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Ingo Molnar"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html",
+    "tldr": "Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、__sched_setscheduler 的 cpuset_mutex 二次解锁、invalid_llc_nr 不用 fits_capacity 比较线程/CPU 数、CPU onlining 不触碰未"
+  },
+  {
+    "title": "sched/topology: Avoid unsequenced accesses to jiffies in sd_init()",
+    "id": "sched-20261115-005",
+    "date": "2026-11-15",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "topology"
+    ],
+    "authors": [
+      "Nathan Chancellor"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-005-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html",
+    "tldr": "Nathan Chancellor 修 clang 新告警导致的构建破坏：`sd_init()` 的 designated initializer 里两处 `= jiffies`（`.last_balance`、`.last_decay_max_lb_cost`）对 volatile 变量构成未定序访问，`CONFIG_WERROR=y` / `W=1` 下 `-Wunsequenced` 报错。补丁把这两次初始化移到 initializer 之外插入序列点，消除 UB 与告警（Fixes: 2b4cfe64dee0，Cc: stable）。"
+  },
+  {
+    "title": "sched/fair: Avoid re-syncing runtime_enabled on root domain changes",
+    "id": "sched-20261115-006",
+    "date": "2026-11-15",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "topology",
+      "perf"
+    ],
+    "authors": [
+      "Qiliang Yuan",
+      "Peter Zijlstra"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261112-003：Qiliang Yuan 两补丁削掉 sched domain rebuild 里按「CPU 数 × task group 数」膨胀的逐组清理；其中 patch 2 即 `sched/fair: Avoid re-syncing runtime_enabled on root domain changes`（用 per-rq flag 跳过 update_runtime_enabled() 遍历）。作者给 4000 cgroup/32 核实测，Peter 建议改「加 boolean 参数」的方向。 - sched-20"
+  },
+  {
+    "title": "sched/docs: Rewrite sched-eevdf.rst",
+    "id": "sched-20261115-007",
+    "date": "2026-11-15",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "eevdf"
+    ],
+    "authors": [
+      "Kayra Cizmeci"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-007-sched-docs-rewrite-sched-eevdf-rst.html",
+    "tldr": "Kayra Cizmeci 重写 EEVDF 文档 sched-eevdf.rst（+155/-39），补充 V、vruntime、deadline、eligibility、lag、delayed dequeue 等核心概念的公式与数值示例，并修复一处指向随机回复而非 cover letter 的引用链接。文档类改动，当日无 review。"
+  },
+  {
+    "title": "sched/preempt: fix duplicate extern declarations",
+    "id": "sched-20261115-008",
+    "date": "2026-11-15",
+    "type": "discussion",
+    "status": "stalled",
+    "severity": "none",
+    "tags": [
+      "preempt"
+    ],
+    "authors": [
+      "Safocl Stollmannovic"
+    ],
+    "url": "/lkm/2026/11/15/sched-20261115-008-sched-preempt-fix-duplicate-extern-declarations.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261113-008：Safocl Stollmannovic 在「去除重复 extern 声明」系列里删除 `include/asm-generic/preempt.h` 两个声明的 extern（理由是 C++ 编译模块时 `extern asmlinkage` 因 asmlinkage 展开成 `extern \"C\"` 而报重复 extern）；Arnd Bergmann 明确反对（内核不以 C++ 为支持目标、非用户可见头、纯风格偏好），v1/v2 当日先后发出均被否决。 - sched-20261115-008（今天）：作者把系列"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

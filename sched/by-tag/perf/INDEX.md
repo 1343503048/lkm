@@ -1,7 +1,9 @@
 # tag: perf
 
-共 57 篇
+共 59 篇
 
+- [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261115-003](../../2026/11/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — Chris Wiseman（Google）发 PELT 微优化：当 sched_avg 各字段已衰减归零时，`accumulate_sum()` 仍跑三次 `decay_load(0, periods)` 并在跨 1024us 边界后返回 periods>0，触发 `___update_load_avg()` 做三次零除法并向 `cpufreq_update_util()` 报告虚假 decay；
 - [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-003](../../2026/11/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — Qiliang Yuan 发两补丁削掉 sched domain rebuild（CPU hotplug / cpuset partition 变更触发）里按「CPU 数 × task group 数」膨胀的逐组清理：rebuild 时 `rq_attach_root()` 会对每个 active CPU 跑一遍 `rq_offline_fair()`/`rq_online_fair()` 的全 
 - [sched-20261111-011](../../2026/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

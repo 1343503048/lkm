@@ -1,7 +1,10 @@
 # tag: topology
 
-共 164 篇
+共 167 篇
 
+- [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261115-005](../../2026/11/sched-20261115-005-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — Nathan Chancellor 修 clang 新告警导致的构建破坏：`sd_init()` 的 designated initializer 里两处 `= jiffies`（`.last_balance`、`.last_decay_max_lb_cost`）对 volatile 变量构成未定序访问，`CONFIG_WERROR=y` / `W=1` 下 `-Wunsequenced` 报错。
+- [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_
 - [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-007](../../2026/11/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.md) `feature/under_review` — Tim Chen（Intel）发两补丁系列：为 cache aware scheduling（`CONFIG_SCHED_CACHE`）补文档（新增 `Documentation/scheduler/sched-cache.rst`，与 `sched-energy.rst` 同风格），并修正 `can_migrate_llc()` 上方注释里的迁移决策矩阵（若干单元格与默认阈值下函数实际计算结果不
 - [sched-20261112-019](../../2026/11/sched-20261112-019-cgroup-cpuset-keep-an-active-housekeeping-cpu-in-the-top-sch.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 164
+article_count: 167
 ---
 
+- [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20261115-005](/lkm/2026/11/15/sched-20261115-005-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
+- [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261113-007](/lkm/2026/11/13/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.html) `feature/none/under_review` — sched/cahce: Document cache aware scheduling
 - [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261112-003](/lkm/2026/11/12/sched-20261112-003-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds

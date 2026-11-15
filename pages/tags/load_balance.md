@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 213
+article_count: 215
 ---
 
+- [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
+- [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261113-001](/lkm/2026/11/13/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.html) `regression/high/under_review` — Revert "sched/fair: Add SIS_UTIL support to select_idle_capacity()"
 - [sched-20261113-007](/lkm/2026/11/13/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.html) `feature/none/under_review` — sched/cahce: Document cache aware scheduling
 - [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes

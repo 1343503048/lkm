@@ -1,7 +1,8 @@
 # tag: eevdf
 
-共 108 篇
+共 109 篇
 
+- [sched-20261115-007](../../2026/11/sched-20261115-007-sched-docs-rewrite-sched-eevdf-rst.md) `feature/under_review` — Kayra Cizmeci 重写 EEVDF 文档 sched-eevdf.rst（+155/-39），补充 V、vruntime、deadline、eligibility、lag、delayed dequeue 等核心概念的公式与数值示例，并修复一处指向随机回复而非 cover letter 的引用链接。文档类改动，当日无 review。
 - [sched-20261113-011](../../2026/11/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-015](../../2026/11/sched-20261112-015-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

@@ -1,7 +1,10 @@
 # tag: cfs
 
-共 336 篇
+共 339 篇
 
+- [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261115-003](../../2026/11/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — Chris Wiseman（Google）发 PELT 微优化：当 sched_avg 各字段已衰减归零时，`accumulate_sum()` 仍跑三次 `decay_load(0, periods)` 并在跨 1024us 边界后返回 periods>0，触发 `___update_load_avg()` 做三次零除法并向 `cpufreq_update_util()` 报告虚假 decay；
+- [sched-20261115-002](../../2026/11/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-011](../../2026/11/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
