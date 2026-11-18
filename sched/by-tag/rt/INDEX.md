@@ -1,7 +1,9 @@
 # tag: rt
 
-共 61 篇
+共 63 篇
 
+- [sched-20261118-019](../../2026/11/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.md) `feature/merged_tip` — Shrikanth Hegde（IBM）的 `cpumask_intersects` 清理系列**今日两枚被合入 tip/sched/core**：`sched/rt: cpupri_find`（commit `fda7fb5adda6`）与 `cpu/hotplug`（commit `69465ca8f6b5`），Committer Peter Zijlstra。把「只为判空却调用返回具体 CP
+- [sched-20261118-006](../../2026/11/sched-20261118-006-sched-rt-do-not-account-migrate-disabled-tasks-as-pushab.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-017](../../2026/11/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-010](../../2026/11/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

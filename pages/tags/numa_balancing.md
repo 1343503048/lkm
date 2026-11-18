@@ -2,9 +2,12 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 80
+article_count: 83
 ---
 
+- [sched-20261118-011](/lkm/2026/11/18/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.html) `feature/none/under_review` — sched/topology: Add new kernel parameter to tune NUMA domain flags
+- [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261118-018](/lkm/2026/11/18/sched-20261118-018-sched-cache-avoid-cache-aware-scheduling-for-memory-hea.html) `fix/medium/under_review` — sched/cache: Avoid cache-aware scheduling for memory-heavy processes
 - [sched-20261113-007](/lkm/2026/11/13/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.html) `feature/none/under_review` — sched/cahce: Document cache aware scheduling
 - [sched-20261112-006](/lkm/2026/11/12/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
 - [sched-20261111-011](/lkm/2026/11/11/sched-20261111-011-cache-aware-scheduling-reduce-the-overhead-of-task-cache-wor.html) `feature/none/under_review` — Cache aware scheduling: Reduce the overhead of task_cache_work

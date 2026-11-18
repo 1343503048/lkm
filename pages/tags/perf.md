@@ -2,9 +2,12 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 59
+article_count: 62
 ---
 
+- [sched-20261118-009](/lkm/2026/11/18/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
+- [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261118-020](/lkm/2026/11/18/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.html) `feature/none/merged_tip` — sched/fair: Avoid redundant updates for unchanged default slices
 - [sched-20261115-003](/lkm/2026/11/15/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
 - [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261113-012](/lkm/2026/11/13/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes

@@ -2,9 +2,10 @@
 layout: default
 tag: "sched_clock"
 title: "标签: sched_clock"
-article_count: 15
+article_count: 16
 ---
 
+- [sched-20261118-021](/lkm/2026/11/18/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.html) `fix/low/merged_tip` — softirq: Treat an interrupted idle task as idle in tick_irq_exit()
 - [sched-20261109-007](/lkm/2026/11/09/sched-20261109-007-sched-core-sched-fixes-and-balancing.html) `fix/medium/under_review` — sched: core-sched fixes and balancing
 - [sched-20261026-005](/lkm/2026/10/26/sched-20261026-005-question-sched-clock-potential-timestamp-jump-due-to-inter-c.html) `discussion/none/rfc` — [QUESTION] sched/clock: Potential timestamp jump due to inter-CPU counter skew?
 - [sched-20260930-010](/lkm/2026/09/30/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.html) `fix/medium/under_review` — sched/psi: clamp negative cpu_clock() skew

@@ -2,9 +2,10 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 84
+article_count: 85
 ---
 
+- [sched-20261118-008](/lkm/2026/11/18/sched-20261118-008-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261115-008](/lkm/2026/11/15/sched-20261115-008-sched-preempt-fix-duplicate-extern-declarations.html) `discussion/none/stalled` — sched/preempt: fix duplicate extern declarations
 - [sched-20261113-008](/lkm/2026/11/13/sched-20261113-008-sched-preempt-fix-duplicate-extern-declarations.html) `discussion/none/stalled` — sched/preempt: fix duplicate extern declarations
 - [sched-20261112-008](/lkm/2026/11/12/sched-20261112-008-sched-move-stack-canary-to-the-start-of-the-randomizable-reg.html) `fix/low/under_review` — sched: move stack_canary to the start of the randomizable region

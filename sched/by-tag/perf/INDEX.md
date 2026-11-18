@@ -1,7 +1,10 @@
 # tag: perf
 
-共 59 篇
+共 62 篇
 
+- [sched-20261118-020](../../2026/11/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.md) `feature/merged_tip` — Chengfeng Lin 的性能优化**今日合入 tip/sched/core**（commit `9dc6cae4904f`，Committer Peter Zijlstra）：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，此前 `attr.sched_runtime=0` 与 `se.slice` 直接比较恒不相等，导致一个「参数未变的 `sch
+- [sched-20261118-017](../../2026/11/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/merged_tip` — Luo Gengkun（华为）的 `task_cache_work()` 开销优化**今日被合入 tip/sched/core**（commit `953f9fc86e54`，Committer Peter Zijlstra）：用 `visited_cpus` 追踪已访问 CPU 并按 `llc_epoch_affinity_timeout` 淘汰，避免多 NUMA 系统上扫描全量 CPU，随之删
+- [sched-20261118-009](../../2026/11/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-003](../../2026/11/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — Chris Wiseman（Google）发 PELT 微优化：当 sched_avg 各字段已衰减归零时，`accumulate_sum()` 仍跑三次 `decay_load(0, periods)` 并在跨 1024us 边界后返回 periods>0，触发 `___update_load_avg()` 做三次零除法并向 `cpufreq_update_util()` 报告虚假 decay；
 - [sched-20261113-012](../../2026/11/sched-20261113-012-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

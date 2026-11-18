@@ -1,7 +1,10 @@
 # tag: numa_balancing
 
-共 80 篇
+共 83 篇
 
+- [sched-20261118-018](../../2026/11/sched-20261118-018-sched-cache-avoid-cache-aware-scheduling-for-memory-hea.md) `fix/medium/under_review` — Chen Yu（Intel）在 cache-aware scheduling v4（22 补丁）系列中提出 patch 17/22：对 RSS 超过 LLC（last-level cache）容量的 memory-heavy 进程暂停 cache-aware 聚合，改用 RSS/足迹门控 + 迟滞避免「先聚合再被 wake_affine 锁死在本地 LLC」的回归。Red Hat 的 Jirka 
+- [sched-20261118-017](../../2026/11/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/merged_tip` — Luo Gengkun（华为）的 `task_cache_work()` 开销优化**今日被合入 tip/sched/core**（commit `953f9fc86e54`，Committer Peter Zijlstra）：用 `visited_cpus` 追踪已访问 CPU 并按 `llc_epoch_affinity_timeout` 淘汰，避免多 NUMA 系统上扫描全量 CPU，随之删
+- [sched-20261118-011](../../2026/11/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.md) `feature/under_review` — Jianyong Wu（Hygon）发补丁新增内核启动参数，用于按 NUMA 距离阈值独立微调 `SD_BALANCE_FORK`/`SD_BALANCE_EXEC`/`SD_WAKE_AFFINE` 三个调度域标志。Tim Chen（sched/cache 维护者）评审时建议改用现成的 `node_reclaim_distance`（arch 侧可设 32）与 `relax_domain_lev
 - [sched-20261113-007](../../2026/11/sched-20261113-007-sched-cahce-document-cache-aware-scheduling.md) `feature/under_review` — Tim Chen（Intel）发两补丁系列：为 cache aware scheduling（`CONFIG_SCHED_CACHE`）补文档（新增 `Documentation/scheduler/sched-cache.rst`，与 `sched-energy.rst` 同风格），并修正 `can_migrate_llc()` 上方注释里的迁移决策矩阵（若干单元格与默认阈值下函数实际计算结果不
 - [sched-20261112-006](../../2026/11/sched-20261112-006-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-019](../../2026/11/sched-20261111-019-sched-numa-scan-pid-inactive-vmas-for-promotion.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

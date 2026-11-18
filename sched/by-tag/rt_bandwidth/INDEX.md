@@ -1,7 +1,8 @@
 # tag: rt_bandwidth
 
-共 11 篇
+共 12 篇
 
+- [sched-20261118-006](../../2026/11/sched-20261118-006-sched-rt-do-not-account-migrate-disabled-tasks-as-pushab.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-010](../../2026/11/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-010](../../2026/11/sched-20261112-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-001](../../2026/11/sched-20261111-001-sched-rt-throttling-cleanup-and-a-bit-of-documentation.md) `feature/under_review` — Sebastian Andrzej Siewior（PREEMPT_RT 维护者）发 v2 七补丁系列，梳理 RT throttling 机制遗留的历史包袱：把 CONFIG_RT_GROUP_SCHED 标记为 broken（作者想直接删除但未被允许）、把 SCHED_DEADLINE 的准入控制从 `sched_rt_{period,runtime}_us` 解耦并迁到 `/sys/kerne

@@ -1,7 +1,10 @@
 # tag: idle
 
-共 98 篇
+共 101 篇
 
+- [sched-20261118-027](../../2026/11/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.md) `fix/high/under_review` — Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 c
+- [sched-20261118-026](../../2026/11/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.md) `fix/medium/under_review` — Kevin Hilman（TI）发 v2：s2idle 期间只为「最深 CPU idle 状态」设域感知的 `->enter_s2idle()` 回调，其余状态绕过 PM domain，导致 QoS 限值排除了最深状态时整个 CPU PM domain 层级永不掉电。v2 把域感知回调赋给除 WFI 外的所有 CPU idle 状态（仅 s2idle 路径），使 genpd governor 在 
+- [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行
 - [sched-20261113-019](../../2026/11/sched-20261113-019-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-017](../../2026/11/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

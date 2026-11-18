@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 340
+article_count: 343
 ---
 
+- [sched-20261118-012](/lkm/2026/11/18/sched-20261118-012-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is.html) `fix/high/under_review` — sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched
+- [sched-20261118-021](/lkm/2026/11/18/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.html) `fix/low/merged_tip` — softirq: Treat an interrupted idle task as idle in tick_irq_exit()
+- [sched-20261118-024](/lkm/2026/11/18/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.html) `fix/medium/merged_tip` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
 - [sched-20261115-001](/lkm/2026/11/15/sched-20261115-001-selftests-sched-ext-fix-flaky-rt-stall-measurement.html) `fix/none/under_review` — selftests/sched_ext: Fix flaky rt_stall measurement
 - [sched-20261115-002](/lkm/2026/11/15/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html) `fix/medium/under_review` — sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue
 - [sched-20261113-014](/lkm/2026/11/13/sched-20261113-014-sched-ext-fix-kfunc-sub-sched-flatcg-and-idle-mask-issues.html) `fix/medium/under_review` — sched_ext: fix kfunc, sub-sched, flatcg and idle-mask issues

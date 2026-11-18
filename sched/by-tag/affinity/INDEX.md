@@ -1,7 +1,8 @@
 # tag: affinity
 
-共 77 篇
+共 78 篇
 
+- [sched-20261118-013](../../2026/11/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.md) `fix/high/under_review` — Mathieu Desnoyers 发 17 补丁系列修复 rseq concurrency ID（mm_cid）机制的六个问题 + 一组新自测，六个修复全部标记 for stable：① failed execve 后任务带着 `0x80000000` 的 mm_cid 返回用户态；② io_uring/vhost worker 抢占进程线程的 CID；③ failed execve 后 2-3
 - [sched-20261113-017](../../2026/11/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-009](../../2026/11/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-013](../../2026/11/sched-20261112-013-sched-expose-writable-interface-for-preferred-cpus-mask.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

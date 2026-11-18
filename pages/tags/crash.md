@@ -2,9 +2,11 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 47
+article_count: 49
 ---
 
+- [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
+- [sched-20261118-013](/lkm/2026/11/18/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.html) `fix/high/under_review` — sched/mmcid: fixes for execve, mode switches and affinity
 - [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261108-001](/lkm/2026/11/08/sched-20261108-001-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `fix/critical/under_review` — [BUG] cpuset: empty sched domain with isolcpus=domain, panic at CPU offline
 - [sched-20261105-004](/lkm/2026/11/05/sched-20261105-004-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.html) `fix/critical/under_review` — sched/core: Do not touch SMT siblings that have not joined the core yet

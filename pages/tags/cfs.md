@@ -2,9 +2,18 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 339
+article_count: 348
 ---
 
+- [sched-20261118-005](/lkm/2026/11/18/sched-20261118-005-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261118-008](/lkm/2026/11/18/sched-20261118-008-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
+- [sched-20261118-009](/lkm/2026/11/18/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
+- [sched-20261118-016](/lkm/2026/11/18/sched-20261118-016-sched-fair-convert-rq-lock-irqsave-to-guard-scoped-guard.html) `feature/none/under_review` — sched/fair: Convert rq_lock_irqsave() to guard()/scoped_guard()
+- [sched-20261118-020](/lkm/2026/11/18/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.html) `feature/none/merged_tip` — sched/fair: Avoid redundant updates for unchanged default slices
+- [sched-20261118-022](/lkm/2026/11/18/sched-20261118-022-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.html) `fix/medium/merged_tip` — sched/fair: Make cfs_rq::idle the sum of ancestor tg::idle
+- [sched-20261118-023](/lkm/2026/11/18/sched-20261118-023-sched-fair-avoid-transient-double-accounting-for-delayed-t.html) `fix/medium/merged_tip` — sched/fair: Avoid transient double accounting for delayed tasks
+- [sched-20261118-024](/lkm/2026/11/18/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.html) `fix/medium/merged_tip` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261118-025](/lkm/2026/11/18/sched-20261118-025-sched-fair-use-guard-in-sched-group-set-idle.html) `fix/none/merged_tip` — sched/fair: Use guard in sched_group_set_idle()
 - [sched-20261115-002](/lkm/2026/11/15/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html) `fix/medium/under_review` — sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue
 - [sched-20261115-003](/lkm/2026/11/15/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
 - [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes

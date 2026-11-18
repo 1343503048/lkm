@@ -1,7 +1,10 @@
 # tag: topology
 
-共 167 篇
+共 170 篇
 
+- [sched-20261118-019](../../2026/11/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.md) `feature/merged_tip` — Shrikanth Hegde（IBM）的 `cpumask_intersects` 清理系列**今日两枚被合入 tip/sched/core**：`sched/rt: cpupri_find`（commit `fda7fb5adda6`）与 `cpu/hotplug`（commit `69465ca8f6b5`），Committer Peter Zijlstra。把「只为判空却调用返回具体 CP
+- [sched-20261118-011](../../2026/11/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.md) `feature/under_review` — Jianyong Wu（Hygon）发补丁新增内核启动参数，用于按 NUMA 距离阈值独立微调 `SD_BALANCE_FORK`/`SD_BALANCE_EXEC`/`SD_WAKE_AFFINE` 三个调度域标志。Tim Chen（sched/cache 维护者）评审时建议改用现成的 `node_reclaim_distance`（arch 侧可设 32）与 `relax_domain_lev
+- [sched-20261118-007](../../2026/11/sched-20261118-007-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-005](../../2026/11/sched-20261115-005-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — Nathan Chancellor 修 clang 新告警导致的构建破坏：`sd_init()` 的 designated initializer 里两处 `= jiffies`（`.last_balance`、`.last_decay_max_lb_cost`）对 volatile 变量构成未定序访问，`CONFIG_WERROR=y` / `W=1` 下 `-Wunsequenced` 报错。
 - [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_

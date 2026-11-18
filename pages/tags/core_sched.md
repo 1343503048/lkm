@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 49
+article_count: 51
 ---
 
+- [sched-20261118-002](/lkm/2026/11/18/sched-20261118-002-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-i.html) `fix/medium/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
+- [sched-20261118-003](/lkm/2026/11/18/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.html) `fix/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261113-002](/lkm/2026/11/13/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.html) `bug/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261113-018](/lkm/2026/11/13/sched-20261113-018-sched-remove-sched-class-balance.html) `feature/none/under_review` — sched: Remove sched_class::balance()
 - [sched-20261112-011](/lkm/2026/11/12/sched-20261112-011-sched-remove-sched-class-balance.html) `fix/high/under_review` — sched: Remove sched_class::balance()

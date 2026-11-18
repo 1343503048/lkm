@@ -1,7 +1,11 @@
 # tag: eevdf
 
-共 109 篇
+共 113 篇
 
+- [sched-20261118-023](../../2026/11/sched-20261118-023-sched-fair-avoid-transient-double-accounting-for-delayed-t.md) `fix/medium/merged_tip` — K Prateek Nayak 的 delayed-dequeue 记账修复**今日合入 tip/sched/urgent**（commit `486c3d06b902`）：delayed 任务被 delay 时 `set_delayed()` 已调整 `h_nr_runnable`，但带 `DEQUEUE_DELAYED` 的 dequeue 又在 `dequeue_hierarchy()` 里
+- [sched-20261118-022](../../2026/11/sched-20261118-022-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/merged_tip` — Peter Zijlstra 的 cgroup SCHED_IDLE 抢占修复 **patch 2 今日合入 tip/sched/urgent**（commit `75545668ae0f`）：把 `cfs_rq::idle` 从「tg::idle 的拷贝」改为「所有祖先 tg::idle 之和」，使 `se_is_idle()` 能感知祖先路径上任意一层的 idle cgroup，修复单 run
+- [sched-20261118-010](../../2026/11/sched-20261118-010-sched-eevdf-fix-vprot-across-reweighting.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261118-005](../../2026/11/sched-20261118-005-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-007](../../2026/11/sched-20261115-007-sched-docs-rewrite-sched-eevdf-rst.md) `feature/under_review` — Kayra Cizmeci 重写 EEVDF 文档 sched-eevdf.rst（+155/-39），补充 V、vruntime、deadline、eligibility、lag、delayed dequeue 等核心概念的公式与数值示例，并修复一处指向随机回复而非 cover letter 的引用链接。文档类改动，当日无 review。
 - [sched-20261113-011](../../2026/11/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-016](../../2026/11/sched-20261112-016-sched-eevdf-fix-sched-idle-task-group-preemption.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

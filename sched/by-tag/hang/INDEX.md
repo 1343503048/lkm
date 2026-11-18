@@ -1,7 +1,8 @@
 # tag: hang
 
-共 17 篇
+共 18 篇
 
+- [sched-20261118-027](../../2026/11/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.md) `fix/high/under_review` — Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 c
 - [sched-20261112-005](../../2026/11/sched-20261112-005-sched-wait-queue-non-exclusive-waiters-at-the-head-in-do-wai.md) `bug/high/under_review` — Mani Tofigh 修一个可让任务永久睡眠的 waitqueue 缺陷：`wait_event_interruptible_locked_irq()`（eventfd/timerfd 用）把非独占读等待者加到队列尾部，若同一文件上先加了一个 `EPOLLEXCLUSIVE` 的 epoll 观察者，`__wake_up_common()` 唤醒独占条目后就停，被唤醒的 epoll 任务若被杀或
 - [sched-20261111-021](../../2026/11/sched-20261111-021-regression-cpuidle-psci-boot-stall-hang-on-i-mx8mp.md) `bug/high/rfc` — 本文为增量更新，完整脉络见下。
 - [sched-20261102-008](../../2026/11/sched-20261102-008-sched-ext-reject-scx-bpf-destroy-dsq-in-tracing-programs.md) `fix/high/under_review` — Shubhang Kaushik（Ampere）修复 sched_ext 的一个死锁：`scx_bpf_destroy_dsq()` 会取目标 user DSQ 的 raw spinlock，却也被注册到 `BPF_PROG_TYPE_TRACING`（`scx_kfunc_ids_any`）。一个未关联的 tracing 程序可经兼容路径解析到活动 root 调度器，在 DSQ 锁已被持有时递归

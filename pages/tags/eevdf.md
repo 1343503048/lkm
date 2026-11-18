@@ -2,9 +2,13 @@
 layout: default
 tag: "eevdf"
 title: "标签: eevdf"
-article_count: 109
+article_count: 113
 ---
 
+- [sched-20261118-005](/lkm/2026/11/18/sched-20261118-005-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261118-010](/lkm/2026/11/18/sched-20261118-010-sched-eevdf-fix-vprot-across-reweighting.html) `fix/medium/under_review` — sched/eevdf: Fix vprot across reweighting
+- [sched-20261118-022](/lkm/2026/11/18/sched-20261118-022-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.html) `fix/medium/merged_tip` — sched/fair: Make cfs_rq::idle the sum of ancestor tg::idle
+- [sched-20261118-023](/lkm/2026/11/18/sched-20261118-023-sched-fair-avoid-transient-double-accounting-for-delayed-t.html) `fix/medium/merged_tip` — sched/fair: Avoid transient double accounting for delayed tasks
 - [sched-20261115-007](/lkm/2026/11/15/sched-20261115-007-sched-docs-rewrite-sched-eevdf-rst.html) `feature/none/under_review` — sched/docs: Rewrite sched-eevdf.rst
 - [sched-20261113-011](/lkm/2026/11/13/sched-20261113-011-sched-fair-add-push-task-mechanism-for-fair.html) `feature/none/under_review` — sched/fair: Add push task mechanism for fair
 - [sched-20261112-004](/lkm/2026/11/12/sched-20261112-004-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `fix/medium/under_review` — sched/fair: Avoid transient double accounting for delayed tasks

@@ -2,9 +2,13 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 215
+article_count: 219
 ---
 
+- [sched-20261118-005](/lkm/2026/11/18/sched-20261118-005-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks
+- [sched-20261118-011](/lkm/2026/11/18/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.html) `feature/none/under_review` — sched/topology: Add new kernel parameter to tune NUMA domain flags
+- [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261118-018](/lkm/2026/11/18/sched-20261118-018-sched-cache-avoid-cache-aware-scheduling-for-memory-hea.html) `fix/medium/under_review` — sched/cache: Avoid cache-aware scheduling for memory-heavy processes
 - [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes
 - [sched-20261113-001](/lkm/2026/11/13/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.html) `regression/high/under_review` — Revert "sched/fair: Add SIS_UTIL support to select_idle_capacity()"

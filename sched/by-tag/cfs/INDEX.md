@@ -1,7 +1,16 @@
 # tag: cfs
 
-共 339 篇
+共 348 篇
 
+- [sched-20261118-025](../../2026/11/sched-20261118-025-sched-fair-use-guard-in-sched-group-set-idle.md) `fix/merged_tip` — Peter Zijlstra 的清理补丁**今日合入 tip/sched/urgent**（commit `9a92f776dfa6`）：`sched_group_set_idle()` 改用 `guard` 管理 `rq_lock_irqsave()`，配合「`cfs_rq::idle` 改为祖先 tg::idle 之和」（sched-20261118-022）的语义变化做针对性清理。属同名配套
+- [sched-20261118-024](../../2026/11/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.md) `fix/medium/merged_tip` — Michal Blaszczyk 的 CFS/SCX 状态分歧修复**今日合入 tip/sched/urgent**（commit `342fe98c3431`）：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max`/`cpu.idle`/`cpu.weight.nice`）时，CFS 的 `shares_mutex` 在调用 `scx_group
+- [sched-20261118-023](../../2026/11/sched-20261118-023-sched-fair-avoid-transient-double-accounting-for-delayed-t.md) `fix/medium/merged_tip` — K Prateek Nayak 的 delayed-dequeue 记账修复**今日合入 tip/sched/urgent**（commit `486c3d06b902`）：delayed 任务被 delay 时 `set_delayed()` 已调整 `h_nr_runnable`，但带 `DEQUEUE_DELAYED` 的 dequeue 又在 `dequeue_hierarchy()` 里
+- [sched-20261118-022](../../2026/11/sched-20261118-022-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.md) `fix/medium/merged_tip` — Peter Zijlstra 的 cgroup SCHED_IDLE 抢占修复 **patch 2 今日合入 tip/sched/urgent**（commit `75545668ae0f`）：把 `cfs_rq::idle` 从「tg::idle 的拷贝」改为「所有祖先 tg::idle 之和」，使 `se_is_idle()` 能感知祖先路径上任意一层的 idle cgroup，修复单 run
+- [sched-20261118-020](../../2026/11/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.md) `feature/merged_tip` — Chengfeng Lin 的性能优化**今日合入 tip/sched/core**（commit `9dc6cae4904f`，Committer Peter Zijlstra）：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，此前 `attr.sched_runtime=0` 与 `se.slice` 直接比较恒不相等，导致一个「参数未变的 `sch
+- [sched-20261118-016](../../2026/11/sched-20261118-016-sched-fair-convert-rq-lock-irqsave-to-guard-scoped-guard.md) `feature/under_review` — Li kunyu 发两补丁清理 `kernel/sched/fair.c` 的 rq 锁用法：把三处 `rq_lock_irqsave()/rq_unlock_irqrestore()` 对改成 `guard()/scoped_guard()`，把一处 `rq_lock_irq()/rq_unlock_irq()` 改成 `guard(rq_lock_irq)`，消除显式 `struct rq_f
+- [sched-20261118-009](../../2026/11/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261118-008](../../2026/11/sched-20261118-008-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261118-005](../../2026/11/sched-20261118-005-improving-latency-of-short-slice-tasks.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-006](../../2026/11/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-003](../../2026/11/sched-20261115-003-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — Chris Wiseman（Google）发 PELT 微优化：当 sched_avg 各字段已衰减归零时，`accumulate_sum()` 仍跑三次 `decay_load(0, periods)` 并在跨 1024us 边界后返回 periods>0，触发 `___update_load_avg()` 做三次零除法并向 `cpufreq_update_util()` 报告虚假 decay；
 - [sched-20261115-002](../../2026/11/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

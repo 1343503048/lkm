@@ -2,9 +2,19 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 172
+article_count: 182
 ---
 
+- [sched-20261118-001](/lkm/2026/11/18/sched-20261118-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
+- [sched-20261118-013](/lkm/2026/11/18/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.html) `fix/high/under_review` — sched/mmcid: fixes for execve, mode switches and affinity
+- [sched-20261118-014](/lkm/2026/11/18/sched-20261118-014-sched-isolation-publish-new-hk-type-domain-cpumask-under.html) `fix/medium/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex
+- [sched-20261118-015](/lkm/2026/11/18/sched-20261118-015-sched-isolation-enable-cpuset-mutex-cpus-read-lock-sync.html) `fix/medium/under_review` — sched/isolation: Enable cpuset_mutex/cpus_read_lock synchronization before freeing old housekeeping cpumask
+- [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
+- [sched-20261118-018](/lkm/2026/11/18/sched-20261118-018-sched-cache-avoid-cache-aware-scheduling-for-memory-hea.html) `fix/medium/under_review` — sched/cache: Avoid cache-aware scheduling for memory-heavy processes
+- [sched-20261118-022](/lkm/2026/11/18/sched-20261118-022-sched-fair-make-cfs-rq-idle-the-sum-of-ancestor-tg-idle.html) `fix/medium/merged_tip` — sched/fair: Make cfs_rq::idle the sum of ancestor tg::idle
+- [sched-20261118-024](/lkm/2026/11/18/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.html) `fix/medium/merged_tip` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence
+- [sched-20261118-025](/lkm/2026/11/18/sched-20261118-025-sched-fair-use-guard-in-sched-group-set-idle.html) `fix/none/merged_tip` — sched/fair: Use guard in sched_group_set_idle()
 - [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261113-010](/lkm/2026/11/13/sched-20261113-010-sched-rt-throttling-cleanup-and-a-bit-of-documentation.html) `feature/none/under_review` — sched: RT throttling cleanup and a bit of documentation
 - [sched-20261113-013](/lkm/2026/11/13/sched-20261113-013-sched-deadline-move-a-task-s-bandwidth-only-where-room-was-m.html) `bug/high/under_review` — sched/deadline: Move a task's bandwidth only where room was made

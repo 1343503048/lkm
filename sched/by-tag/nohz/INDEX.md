@@ -1,7 +1,13 @@
 # tag: nohz
 
-共 66 篇
+共 72 篇
 
+- [sched-20261118-027](../../2026/11/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.md) `fix/high/under_review` — Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 c
+- [sched-20261118-026](../../2026/11/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.md) `fix/medium/under_review` — Kevin Hilman（TI）发 v2：s2idle 期间只为「最深 CPU idle 状态」设域感知的 `->enter_s2idle()` 回调，其余状态绕过 PM domain，导致 QoS 限值排除了最深状态时整个 CPU PM domain 层级永不掉电。v2 把域感知回调赋给除 WFI 外的所有 CPU idle 状态（仅 s2idle 路径），使 genpd governor 在 
+- [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行
+- [sched-20261118-015](../../2026/11/sched-20261118-015-sched-isolation-enable-cpuset-mutex-cpus-read-lock-sync.md) `fix/medium/under_review` — Waiman Long 的 v2 补丁（与 Ridong Chen 的 sched-20261118-014 是同一 housekeeping/cpuset 竞态的两个竞争方案）：在释放旧 housekeeping cpumask 之前先做 `cpuset_mutex`/`cpus_read_lock` 同步，保证旧指针被使用时不会被释放。今日 Waiman 回帖解释设计取舍——housekeep
+- [sched-20261118-014](../../2026/11/sched-20261118-014-sched-isolation-publish-new-hk-type-domain-cpumask-under.md) `fix/medium/under_review` — Ridong Chen 发补丁修复 housekeeping（isolcpus=domain）与 cpuset 之间的 cpumask 发布竞态：新的 `HK_TYPE_DOMAIN` cpumask 改在 `cpuset_mutex` 保护下发布，避免与 cpuset 的 sched domain 重建/hotplug 交错时读到不一致的 housekeeping 视图。Tejun Heo 与 
+- [sched-20261118-004](../../2026/11/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.md) `bug/high/under_review` — Waiman Long 报告：`isolcpus=domain` 指定在 boot CPU 上、且关闭 `CONFIG_CPUSETS` 时，启动阶段 `select_fallback_rq()` 触发 `BUG()`（因 isolcpus=domain 把 boot CPU 从 sched domain 中剥离后，fallback 找不到可运行的 CPU）。今日 Frederic Weisbec
 - [sched-20261113-019](../../2026/11/sched-20261113-019-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261112-017](../../2026/11/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261111-023](../../2026/11/sched-20261111-023-sched-idle-stop-the-tick-when-no-cpuidle-driver-is-available.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

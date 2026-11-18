@@ -2,9 +2,15 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 66
+article_count: 72
 ---
 
+- [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
+- [sched-20261118-014](/lkm/2026/11/18/sched-20261118-014-sched-isolation-publish-new-hk-type-domain-cpumask-under.html) `fix/medium/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex
+- [sched-20261118-015](/lkm/2026/11/18/sched-20261118-015-sched-isolation-enable-cpuset-mutex-cpus-read-lock-sync.html) `fix/medium/under_review` — sched/isolation: Enable cpuset_mutex/cpus_read_lock synchronization before freeing old housekeeping cpumask
+- [sched-20261118-021](/lkm/2026/11/18/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.html) `fix/low/merged_tip` — softirq: Treat an interrupted idle task as idle in tick_irq_exit()
+- [sched-20261118-026](/lkm/2026/11/18/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.html) `fix/medium/under_review` — cpuidle: psci: Allow domain idle states in s2idle for all CPU idle states
+- [sched-20261118-027](/lkm/2026/11/18/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.html) `fix/high/under_review` — cpuidle: Do not reinstall the idle handler while paused
 - [sched-20261113-019](/lkm/2026/11/13/sched-20261113-019-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/medium/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261112-017](/lkm/2026/11/12/sched-20261112-017-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle
 - [sched-20261111-004](/lkm/2026/11/11/sched-20261111-004-sched-idle-don-t-handle-polling-idle-as-dynticks-idle.html) `fix/low/under_review` — sched/idle: Don't handle polling idle as dynticks idle

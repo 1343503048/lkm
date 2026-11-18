@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 340 篇
+共 343 篇
 
+- [sched-20261118-024](../../2026/11/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.md) `fix/medium/merged_tip` — Michal Blaszczyk 的 CFS/SCX 状态分歧修复**今日合入 tip/sched/urgent**（commit `342fe98c3431`）：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max`/`cpu.idle`/`cpu.weight.nice`）时，CFS 的 `shares_mutex` 在调用 `scx_group
+- [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行
+- [sched-20261118-012](../../2026/11/sched-20261118-012-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is.md) `fix/high/under_review` — Kuba Piecuch（Google）为 sched_ext/for-7.4-fixes 发修复：启用 SCX 时 `static_branch_enable(&__scx_enabled)` 按地址序而非原子地 patch jump-label 站点，`task_should_scx()` 可能先于 `__schedule()` 被 patch，导致并发 fork/sched_setsched
 - [sched-20261115-002](../../2026/11/sched-20261115-002-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-001](../../2026/11/sched-20261115-001-selftests-sched-ext-fix-flaky-rt-stall-measurement.md) `fix/under_review` — Jonathan Bastari Thamrin 发 v2 修 rt_stall selftest 的 CI flake：根因是 CORE_ID 上 DL server budget 被其它 FAIR/EXT 任务共享、父任务未 pin 走、以及用 /proc/stat 的 USER_HZ(10ms) 粗粒度计时导致比例失真。v2 改用 clock_getcpuclockid() 精确计时并把父任
 - [sched-20261113-016](../../2026/11/sched-20261113-016-sched-ext-make-dsq-iterator-stay-drained-after-null.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。

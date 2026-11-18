@@ -1,7 +1,8 @@
 # tag: sched_clock
 
-共 15 篇
+共 16 篇
 
+- [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行
 - [sched-20261109-007](../../2026/11/sched-20261109-007-sched-core-sched-fixes-and-balancing.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261026-005](../../2026/10/sched-20261026-005-question-sched-clock-potential-timestamp-jump-due-to-inter-c.md) `discussion/rfc` — Zhang Qiao 在 LKML 提问：`update_sched_clock()` 用某个 CPU 读到的 counter 发布共享 `epoch_cyc`，其他 CPU 随后用它减自己读到的 counter，若某 CPU 观察到的 counter 值**严格小于**新 epoch（且非正常回绕），无符号减法会下溢、mask 后得到近一个完整周期的巨大 delta，`cyc_to_ns()` 
 - [sched-20260930-010](../../2026/09/sched-20260930-010-sched-psi-clamp-negative-cpu-clock-skew.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

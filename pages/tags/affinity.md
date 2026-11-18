@@ -2,9 +2,10 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 77
+article_count: 78
 ---
 
+- [sched-20261118-013](/lkm/2026/11/18/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.html) `fix/high/under_review` — sched/mmcid: fixes for execve, mode switches and affinity
 - [sched-20261113-009](/lkm/2026/11/13/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
 - [sched-20261113-017](/lkm/2026/11/13/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261112-009](/lkm/2026/11/12/sched-20261112-009-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable

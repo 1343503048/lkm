@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 167
+article_count: 170
 ---
 
+- [sched-20261118-007](/lkm/2026/11/18/sched-20261118-007-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
+- [sched-20261118-011](/lkm/2026/11/18/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.html) `feature/none/under_review` — sched/topology: Add new kernel parameter to tune NUMA domain flags
+- [sched-20261118-019](/lkm/2026/11/18/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.html) `feature/none/merged_tip` — sched/rt: cpupri_find: Use cpumask_intersects where applicable
 - [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261115-005](/lkm/2026/11/15/sched-20261115-005-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
 - [sched-20261115-006](/lkm/2026/11/15/sched-20261115-006-sched-fair-avoid-re-syncing-runtime-enabled-on-root-domain-c.html) `feature/none/under_review` — sched/fair: Avoid re-syncing runtime_enabled on root domain changes

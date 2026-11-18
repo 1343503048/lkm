@@ -2,9 +2,11 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 81
+article_count: 83
 ---
 
+- [sched-20261118-001](/lkm/2026/11/18/sched-20261118-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261118-003](/lkm/2026/11/18/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.html) `fix/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261113-002](/lkm/2026/11/13/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.html) `bug/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261113-009](/lkm/2026/11/13/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
