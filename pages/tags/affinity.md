@@ -2,9 +2,12 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 78
+article_count: 81
 ---
 
+- [sched-20261119-003](/lkm/2026/11/19/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
+- [sched-20261119-011](/lkm/2026/11/19/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/none/under_review` — sched: restore preferred CPUs when hotplug removes the last one
+- [sched-20261119-012](/lkm/2026/11/19/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-013](/lkm/2026/11/18/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.html) `fix/high/under_review` — sched/mmcid: fixes for execve, mode switches and affinity
 - [sched-20261113-009](/lkm/2026/11/13/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.html) `fix/medium/under_review` — sched/deadline: Check SCHED_DEADLINE affinity under the rq lock
 - [sched-20261113-017](/lkm/2026/11/13/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable

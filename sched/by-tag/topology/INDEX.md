@@ -1,7 +1,13 @@
 # tag: topology
 
-共 170 篇
+共 176 篇
 
+- [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261119-011](../../2026/11/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/under_review` — Yury Norov（NVIDIA）7 补丁系列（11/13 发出）的 patch 2/7：当 hotplug 移除最后一颗 preferred CPU 时恢复 preferred CPU 集合，避免任务失去首选 CPU 后行为退化。今日仅捕获到 Shrikanth Hegde（IBM）的一条简短评审「pr_warn instead?」——即建议把该路径的日志级别改用 `pr_warn`。补丁正文
+- [sched-20261119-010](../../2026/11/sched-20261119-010-sched-topology-remove-stale-comment-around-llc-bytes-on-powe.md) `fix/under_review` — Shrikanth Hegde（IBM）发 5 补丁系列的最后一枚 sched 侧补丁：PowerPC 现已填充 generic cacheinfo（前 4 枚多半是 arch/powerpc 侧改动，本日缓存仅在 sched 侧捕获到 patch 5/5），`get_effective_llc_bytes()` 已能在 PowerPC 上读取 LLC size，故删除 `sched_update
+- [sched-20261119-009](../../2026/11/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261119-008](../../2026/11/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261119-004](../../2026/11/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-019](../../2026/11/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.md) `feature/merged_tip` — Shrikanth Hegde（IBM）的 `cpumask_intersects` 清理系列**今日两枚被合入 tip/sched/core**：`sched/rt: cpupri_find`（commit `fda7fb5adda6`）与 `cpu/hotplug`（commit `69465ca8f6b5`），Committer Peter Zijlstra。把「只为判空却调用返回具体 CP
 - [sched-20261118-011](../../2026/11/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.md) `feature/under_review` — Jianyong Wu（Hygon）发补丁新增内核启动参数，用于按 NUMA 距离阈值独立微调 `SD_BALANCE_FORK`/`SD_BALANCE_EXEC`/`SD_WAKE_AFFINE` 三个调度域标志。Tim Chen（sched/cache 维护者）评审时建议改用现成的 `node_reclaim_distance`（arch 侧可设 32）与 `relax_domain_lev
 - [sched-20261118-007](../../2026/11/sched-20261118-007-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。

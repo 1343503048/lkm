@@ -1,7 +1,8 @@
 # tag: dl_server
 
-共 28 篇
+共 29 篇
 
+- [sched-20261119-001](../../2026/11/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-003](../../2026/11/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-001](../../2026/11/sched-20261118-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-001](../../2026/11/sched-20261115-001-selftests-sched-ext-fix-flaky-rt-stall-measurement.md) `fix/under_review` — Jonathan Bastari Thamrin 发 v2 修 rt_stall selftest 的 CI flake：根因是 CORE_ID 上 DL server budget 被其它 FAIR/EXT 任务共享、父任务未 pin 走、以及用 /proc/stat 的 USER_HZ(10ms) 粗粒度计时导致比例失真。v2 改用 clock_getcpuclockid() 精确计时并把父任

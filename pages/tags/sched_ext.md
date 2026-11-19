@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 343
+article_count: 345
 ---
 
+- [sched-20261119-006](/lkm/2026/11/19/sched-20261119-006-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html) `fix/none/under_review` — tools/sched_ext: Add "arena" BTF type tag to the __arena qualifier
+- [sched-20261119-007](/lkm/2026/11/19/sched-20261119-007-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is-ful.html) `fix/medium/merged_tip` — sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched
 - [sched-20261118-012](/lkm/2026/11/18/sched-20261118-012-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is.html) `fix/high/under_review` — sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched
 - [sched-20261118-021](/lkm/2026/11/18/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.html) `fix/low/merged_tip` — softirq: Treat an interrupted idle task as idle in tick_irq_exit()
 - [sched-20261118-024](/lkm/2026/11/18/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.html) `fix/medium/merged_tip` — sched: Lift cgroup update locking to core to prevent CFS/SCX divergence

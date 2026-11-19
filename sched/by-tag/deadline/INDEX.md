@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 83 篇
+共 84 篇
 
+- [sched-20261119-001](../../2026/11/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-003](../../2026/11/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-001](../../2026/11/sched-20261118-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_

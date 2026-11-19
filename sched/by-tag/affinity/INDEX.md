@@ -1,7 +1,10 @@
 # tag: affinity
 
-共 78 篇
+共 81 篇
 
+- [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261119-011](../../2026/11/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/under_review` — Yury Norov（NVIDIA）7 补丁系列（11/13 发出）的 patch 2/7：当 hotplug 移除最后一颗 preferred CPU 时恢复 preferred CPU 集合，避免任务失去首选 CPU 后行为退化。今日仅捕获到 Shrikanth Hegde（IBM）的一条简短评审「pr_warn instead?」——即建议把该路径的日志级别改用 `pr_warn`。补丁正文
+- [sched-20261119-003](../../2026/11/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-013](../../2026/11/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.md) `fix/high/under_review` — Mathieu Desnoyers 发 17 补丁系列修复 rseq concurrency ID（mm_cid）机制的六个问题 + 一组新自测，六个修复全部标记 for stable：① failed execve 后任务带着 `0x80000000` 的 mm_cid 返回用户态；② io_uring/vhost worker 抢占进程线程的 CID；③ failed execve 后 2-3
 - [sched-20261113-017](../../2026/11/sched-20261113-017-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-009](../../2026/11/sched-20261113-009-sched-deadline-check-sched-deadline-affinity-under-the-rq-lo.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

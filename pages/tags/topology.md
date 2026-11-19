@@ -2,9 +2,15 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 170
+article_count: 176
 ---
 
+- [sched-20261119-004](/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
+- [sched-20261119-008](/lkm/2026/11/19/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
+- [sched-20261119-009](/lkm/2026/11/19/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.html) `fix/low/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex
+- [sched-20261119-010](/lkm/2026/11/19/sched-20261119-010-sched-topology-remove-stale-comment-around-llc-bytes-on-powe.html) `fix/none/under_review` — sched/topology: Remove stale comment around llc_bytes on powerpc
+- [sched-20261119-011](/lkm/2026/11/19/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/none/under_review` — sched: restore preferred CPUs when hotplug removes the last one
+- [sched-20261119-012](/lkm/2026/11/19/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-007](/lkm/2026/11/18/sched-20261118-007-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
 - [sched-20261118-011](/lkm/2026/11/18/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.html) `feature/none/under_review` — sched/topology: Add new kernel parameter to tune NUMA domain flags
 - [sched-20261118-019](/lkm/2026/11/18/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.html) `feature/none/merged_tip` — sched/rt: cpupri_find: Use cpumask_intersects where applicable

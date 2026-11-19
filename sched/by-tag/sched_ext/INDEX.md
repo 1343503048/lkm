@@ -1,7 +1,9 @@
 # tag: sched_ext
 
-共 343 篇
+共 345 篇
 
+- [sched-20261119-007](../../2026/11/sched-20261119-007-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is-ful.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261119-006](../../2026/11/sched-20261119-006-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.md) `fix/under_review` — Shaojie Sun 发 1 行修复：给 `tools/sched_ext` 里的 `__arena` 限定符补上 `btf_type_tag("arena")`，与 `tools/testing/selftests/bpf/libarena`（commit a0fa68d8ce75）对齐，使「某类型是否属于 arena」单凭 BTF 即可判断。Tao Cui 已实测（sched_ext for
 - [sched-20261118-024](../../2026/11/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.md) `fix/medium/merged_tip` — Michal Blaszczyk 的 CFS/SCX 状态分歧修复**今日合入 tip/sched/urgent**（commit `342fe98c3431`）：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max`/`cpu.idle`/`cpu.weight.nice`）时，CFS 的 `shares_mutex` 在调用 `scx_group
 - [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行
 - [sched-20261118-012](../../2026/11/sched-20261118-012-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is.md) `fix/high/under_review` — Kuba Piecuch（Google）为 sched_ext/for-7.4-fixes 发修复：启用 SCX 时 `static_branch_enable(&__scx_enabled)` 按地址序而非原子地 patch jump-label 站点，`task_should_scx()` 可能先于 `__schedule()` 被 patch，导致并发 fork/sched_setsched

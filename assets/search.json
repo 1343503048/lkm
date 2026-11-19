@@ -25389,6 +25389,229 @@
     "tldr": "Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 cpuidle 就被实际恢复；随后上线的 CPU 进入深 ACPI C-state，`cache_aps_init()` 的 stop_machine 里 idle CPU 不回 IPI、另一 CPU "
   },
   {
+    "title": "sched/deadline: first bandwidth accounting fixes and selftests",
+    "id": "sched-20261119-001",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "cgroup"
+    ],
+    "authors": [
+      "Mathieu Desnoyers",
+      "Juri Lelli",
+      "Andrea Parri"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2（21 补丁）在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug（其中 3 个可直接打死内核），带自测与 sched_debug；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261106-001 / 20261107-002 / 20261108-003 / 20261109-001 / 20261110-009：v3（24 补丁）→ v4（26）→ "
+  },
+  {
+    "title": "sched/rt: Do not account migrate-disabled tasks as pushable",
+    "id": "sched-20261119-002",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "Mel Gorman"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261111-002：Mel Gorman 发补丁修 RT 类 pushable 记账缺陷——migrate-disabled 任务仍被放进 pushable 列表并置起 `rq->rt.overloaded`，导致其它 CPU 的 pull IPI 反复命中「推不动」的任务、制造无效 IPI。 - sched-20261112-009：折叠为单补丁 v2，Peter 评审（问无条件保留 `is_migration_disabled()` 的副作用、请 deadline 侧做同样处理）。 - sched-20261113-017：Mel 回"
+  },
+  {
+    "title": "sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()",
+    "id": "sched-20261119-003",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "affinity",
+      "load_balance"
+    ],
+    "authors": [
+      "Fushuai Wang"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261109-011：Fushuai Wang 发 v1 修 `sched_non_preferred_cpu_push_stop()` 的 TOCTOU 竞态——`sched_push_current_non_preferred_cpu()` 在 irq 上下文先查 `is_migration_disabled()` 再排队 stopper，任务可能在 stopper 执行前进入 `migrate_disable()`；v1 在 stopper 里重检后再 `__migrate_task()`。Shrikanth 追问复现方式。 - sc"
+  },
+  {
+    "title": "sched/fair: Cut per-group work from sched domain rebuilds",
+    "id": "sched-20261119-004",
+    "date": "2026-11-19",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "topology",
+      "cgroup"
+    ],
+    "authors": [
+      "Qiliang Yuan"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261112-003：Qiliang Yuan 的 v1 针对「sched domain 重建时 `rq_offline_fair()`/`rq_online_fair()` 对每个 CPU 遍历全部 task group」的 O(nr_cpus × nr_task_groups) 开销做优化，Dietmar Eggemann 在 f60a631ab9ed 评审时就点出 offline 侧问题；作者同事报出 AI agent harness 主机上千个 cpu cgroup、VM 运行中 hot-add vCPU 的痛点场景。 - sche"
+  },
+  {
+    "title": "sched: Limit sysctl sched_rt_{period|runtime}_us to RT_GROUP_SCHED",
+    "id": "sched-20261119-005",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "rt",
+      "rt_bandwidth"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-005-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.html",
+    "tldr": "Sebastian Andrzej Siewior 的 v3 8 补丁系列（cover 主题「sched/deadline: Reject debugfs dl_server writes for not-active CPUs」，11/13 发出）里的 patch 6/8：在未开启 `RT_GROUP_SCHED` 时删除 `sched_rt_period_us`/`sched_rt_runtime_us` 两个 sysctl——因为向它们写值「毫无作用」，但人们普遍误以为写它们能关闭 RT 限流。Intel 0day（kernel test robot）跑出 `ltp.proc_sched"
+  },
+  {
+    "title": "tools/sched_ext: Add \"arena\" BTF type tag to the __arena qualifier",
+    "id": "sched-20261119-006",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Shaojie Sun"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-006-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html",
+    "tldr": "Shaojie Sun 发 1 行修复：给 `tools/sched_ext` 里的 `__arena` 限定符补上 `btf_type_tag(\"arena\")`，与 `tools/testing/selftests/bpf/libarena`（commit a0fa68d8ce75）对齐，使「某类型是否属于 arena」单凭 BTF 即可判断。Tao Cui 已实测（sched_ext for-next 上全部工具/sched_ext 调度器可 build、scx_sdt 带 tag 正常加载运行）并给 Tested-by，但指出两点：补丁对当前树（0a5e9cf2525f 改了上下文行）"
+  },
+  {
+    "title": "sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched",
+    "id": "sched-20261119-007",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Kuba Piecuch"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-007-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is-ful.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261118-012：Kuba Piecuch（Google）为 sched_ext/for-7.4-fixes 发修复——`static_branch_enable(&__scx_enabled)` 按地址序而非原子地 patch jump-label，`task_should_scx()` 可能先于 `__schedule()` 被 patch，导致并发 fork/sched_setscheduler 在窗口期内把任务迁到 ext 类，触发 `put_prev_task_scx` WARNING；修复用带 release 语义的标志把任"
+  },
+  {
+    "title": "sched/cache: Enable LLC aggregation above the first NUMA level",
+    "id": "sched-20261119-008",
+    "date": "2026-11-19",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "load_balance",
+      "topology"
+    ],
+    "authors": [
+      "Jianyong Wu"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-008：Jianyong Wu（Hygon）的 v1 修复 cache-aware 调度里 `group_llc_balance` 在第一层 NUMA 之上不可达的缺陷；Tim Chen 给 busiest_llc_balance 重构、Chen Yu 质疑「fix vs 增强」定位并要求补 benchmark。 - sched-20261112-006：**v2 发出**——采纳 Tim Chen 重构、补 NUMA balancing 开/关的 schbench/hackbench 数据、标题从「Fix」改「Enable」"
+  },
+  {
+    "title": "sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex",
+    "id": "sched-20261119-009",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "cgroup",
+      "topology"
+    ],
+    "authors": [
+      "Ridong Chen"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261118-014：Ridong Chen 发补丁修复 housekeeping（isolcpus=domain）与 cpuset 之间的 cpumask 发布竞态——把新 `HK_TYPE_DOMAIN` cpumask 的发布纳入 `cpuset_mutex` 保护。Tejun Heo 与 Waiman Long 已 Acked-by；Frederic Weisbecker 追问「为何 `cpuset_handle_hotplug` 会改隔离分区」这一锁谜题的根源。 - sched-20261119-009（今天）：**Waiman "
+  },
+  {
+    "title": "sched/topology: Remove stale comment around llc_bytes on powerpc",
+    "id": "sched-20261119-010",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "topology"
+    ],
+    "authors": [
+      "Shrikanth Hegde"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-010-sched-topology-remove-stale-comment-around-llc-bytes-on-powe.html",
+    "tldr": "Shrikanth Hegde（IBM）发 5 补丁系列的最后一枚 sched 侧补丁：PowerPC 现已填充 generic cacheinfo（前 4 枚多半是 arch/powerpc 侧改动，本日缓存仅在 sched 侧捕获到 patch 5/5），`get_effective_llc_bytes()` 已能在 PowerPC 上读取 LLC size，故删除 `sched_update_llc_bytes()` 上方「PowerPC 上 `get_effective_llc_bytes()` 恒返回 0、因而 cache-aware 调度在 PowerPC 上被禁用」的过期注释。纯"
+  },
+  {
+    "title": "sched: restore preferred CPUs when hotplug removes the last one",
+    "id": "sched-20261119-011",
+    "date": "2026-11-19",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "affinity",
+      "topology"
+    ],
+    "authors": [
+      "Yury Norov"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html",
+    "tldr": "Yury Norov（NVIDIA）7 补丁系列（11/13 发出）的 patch 2/7：当 hotplug 移除最后一颗 preferred CPU 时恢复 preferred CPU 集合，避免任务失去首选 CPU 后行为退化。今日仅捕获到 Shrikanth Hegde（IBM）的一条简短评审「pr_warn instead?」——即建议把该路径的日志级别改用 `pr_warn`。补丁正文与 cover 未在本日缓存中获取到，系列全貌（7 补丁各自内容）证据不足。"
+  },
+  {
+    "title": "[BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n",
+    "id": "sched-20261119-012",
+    "date": "2026-11-19",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "affinity",
+      "topology",
+      "regression"
+    ],
+    "authors": [
+      "Waiman Long"
+    ],
+    "url": "/lkm/2026/11/19/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261118-004：Waiman Long 报告 `isolcpus=domain` 指定在 boot CPU 上、且关闭 `CONFIG_CPUSETS` 时，启动阶段 `select_fallback_rq()` 触发 `BUG()`；Frederic Weisbecker 与 Waiman 就「boot CPU 能否被隔离」讨论（x86 上 boot CPU 不可 offline，隔离 boot CPU 属异端用法）。 - sched-20261119-012（今天）：**Mathieu Desnoyers 加入并定性为回归**——"
+  },
+  {
+    "title": "[tip:sched/core] [sched/fair]  9e3fa63360: stress-ng.spawn.ops_per_sec 12.8% regression",
+    "id": "sched-20261119-013",
+    "date": "2026-11-19",
+    "type": "regression",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cfs",
+      "load_balance",
+      "regression"
+    ],
+    "authors": [],
+    "url": "/lkm/2026/11/19/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.html",
+    "tldr": "Intel 0day（kernel test robot）报告：已进入 tip/sched/core 的 `9e3fa63360`（\"sched/fair: Rework/fix task_h_load()\"）在 Sapphire Rapids（224 线程、2 socket）上造成 **stress-ng `spawn` 用例 12.8% 的性能回退**（ops_per_sec 17811→15528）。同一报告还列出相邻提交 `e0aeaebb8a`（\"sched/fair: Extend for_each_sched_entity() with a back-link\"）一并纳入对比基线"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

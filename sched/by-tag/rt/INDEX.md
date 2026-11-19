@@ -1,7 +1,9 @@
 # tag: rt
 
-共 63 篇
+共 65 篇
 
+- [sched-20261119-005](../../2026/11/sched-20261119-005-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.md) `fix/low/under_review` — Sebastian Andrzej Siewior 的 v3 8 补丁系列（cover 主题「sched/deadline: Reject debugfs dl_server writes for not-active CPUs」，11/13 发出）里的 patch 6/8：在未开启 `RT_GROUP_SCHED` 时删除 `sched_rt_period_us`/`sched_rt_runti
+- [sched-20261119-002](../../2026/11/sched-20261119-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-019](../../2026/11/sched-20261118-019-sched-rt-cpupri-find-use-cpumask-intersects-where-applic.md) `feature/merged_tip` — Shrikanth Hegde（IBM）的 `cpumask_intersects` 清理系列**今日两枚被合入 tip/sched/core**：`sched/rt: cpupri_find`（commit `fda7fb5adda6`）与 `cpu/hotplug`（commit `69465ca8f6b5`），Committer Peter Zijlstra。把「只为判空却调用返回具体 CP
 - [sched-20261118-006](../../2026/11/sched-20261118-006-sched-rt-do-not-account-migrate-disabled-tasks-as-pushab.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 348 篇
+共 350 篇
 
+- [sched-20261119-013](../../2026/11/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.md) `regression/high/under_review` — Intel 0day（kernel test robot）报告：已进入 tip/sched/core 的 `9e3fa63360`（"sched/fair: Rework/fix task_h_load()"）在 Sapphire Rapids（224 线程、2 socket）上造成 **stress-ng `spawn` 用例 12.8% 的性能回退**（ops_per_sec 17811→15
+- [sched-20261119-004](../../2026/11/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-025](../../2026/11/sched-20261118-025-sched-fair-use-guard-in-sched-group-set-idle.md) `fix/merged_tip` — Peter Zijlstra 的清理补丁**今日合入 tip/sched/urgent**（commit `9a92f776dfa6`）：`sched_group_set_idle()` 改用 `guard` 管理 `rq_lock_irqsave()`，配合「`cfs_rq::idle` 改为祖先 tg::idle 之和」（sched-20261118-022）的语义变化做针对性清理。属同名配套
 - [sched-20261118-024](../../2026/11/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.md) `fix/medium/merged_tip` — Michal Blaszczyk 的 CFS/SCX 状态分歧修复**今日合入 tip/sched/urgent**（commit `342fe98c3431`）：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max`/`cpu.idle`/`cpu.weight.nice`）时，CFS 的 `shares_mutex` 在调用 `scx_group
 - [sched-20261118-023](../../2026/11/sched-20261118-023-sched-fair-avoid-transient-double-accounting-for-delayed-t.md) `fix/medium/merged_tip` — K Prateek Nayak 的 delayed-dequeue 记账修复**今日合入 tip/sched/urgent**（commit `486c3d06b902`）：delayed 任务被 delay 时 `set_delayed()` 已调整 `h_nr_runnable`，但带 `DEQUEUE_DELAYED` 的 dequeue 又在 `dequeue_hierarchy()` 里
