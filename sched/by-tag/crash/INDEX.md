@@ -1,7 +1,9 @@
 # tag: crash
 
-共 49 篇
+共 51 篇
 
+- [sched-20261120-020](../../2026/11/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-003](../../2026/11/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-013](../../2026/11/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.md) `fix/high/under_review` — Mathieu Desnoyers 发 17 补丁系列修复 rseq concurrency ID（mm_cid）机制的六个问题 + 一组新自测，六个修复全部标记 for stable：① failed execve 后任务带着 `0x80000000` 的 mm_cid 返回用户态；② io_uring/vhost worker 抢占进程线程的 CID；③ failed execve 后 2-3
 - [sched-20261118-004](../../2026/11/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.md) `bug/high/under_review` — Waiman Long 报告：`isolcpus=domain` 指定在 boot CPU 上、且关闭 `CONFIG_CPUSETS` 时，启动阶段 `select_fallback_rq()` 触发 `BUG()`（因 isolcpus=domain 把 boot CPU 从 sched domain 中剥离后，fallback 找不到可运行的 CPU）。今日 Frederic Weisbec
 - [sched-20261109-003](../../2026/11/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。

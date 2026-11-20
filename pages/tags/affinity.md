@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 81
+article_count: 83
 ---
 
+- [sched-20261120-015](/lkm/2026/11/20/sched-20261120-015-sched-mmcid-fix-per-cpu-cid-ownership-leak-in-sched-mm-cid-e.html) `fix/low/under_review` — sched/mmcid: fix per-CPU CID ownership leak in sched_mm_cid_exit()
+- [sched-20261120-019](/lkm/2026/11/20/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/low/under_review` — sched: restore preferred CPUs when hotplug removes the last one
 - [sched-20261119-003](/lkm/2026/11/19/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261119-011](/lkm/2026/11/19/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/none/under_review` — sched: restore preferred CPUs when hotplug removes the last one
 - [sched-20261119-012](/lkm/2026/11/19/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n

@@ -2,9 +2,11 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 49
+article_count: 51
 ---
 
+- [sched-20261120-003](/lkm/2026/11/20/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.html) `bug/high/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
+- [sched-20261120-020](/lkm/2026/11/20/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-013](/lkm/2026/11/18/sched-20261118-013-sched-mmcid-fixes-for-execve-mode-switches-and-affinity.html) `fix/high/under_review` — sched/mmcid: fixes for execve, mode switches and affinity
 - [sched-20261109-003](/lkm/2026/11/09/sched-20261109-003-bug-cpuset-empty-sched-domain-with-isolcpus-domain-panic-at.html) `bug/high/under_review` — cpuset: empty sched domain with isolcpus=domain, panic at CPU offline

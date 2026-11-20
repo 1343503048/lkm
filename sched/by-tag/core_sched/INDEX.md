@@ -1,7 +1,9 @@
 # tag: core_sched
 
-共 51 篇
+共 53 篇
 
+- [sched-20261120-009](../../2026/11/sched-20261120-009-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-003](../../2026/11/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-003](../../2026/11/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-002](../../2026/11/sched-20261118-002-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-i.md) `fix/medium/under_review` — Ibrahim Elshahed（Amazon）发两补丁系列修复 core scheduling 的 SM_IDLE fast path 问题：当 idle 任务经 fast path 重新入队/被选中后，`rq->core_pick` 与 forced-idle 状态可能残留过期值，导致 core-wide 选择误判。Peter Zijlstra 评审时质疑 patch 2 的 `rq->cor
 - [sched-20261113-018](../../2026/11/sched-20261113-018-sched-remove-sched-class-balance.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

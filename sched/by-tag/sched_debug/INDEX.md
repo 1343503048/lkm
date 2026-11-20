@@ -1,7 +1,8 @@
 # tag: sched_debug
 
-共 79 篇
+共 80 篇
 
+- [sched-20261120-012](../../2026/11/sched-20261120-012-rust-bindgen-preserve-sched-statistics-alignment.md) `fix/medium/under_review` — Peder Bergan 发单补丁修 Rust bindgen 布局 bug：`CONFIG_SCHEDSTATS=n` 时空结构体 `struct sched_statistics` 被 bindgen 丢掉对齐，导致其上 `task_struct.mm` 等字段错位（arm64 上报错位到 1168 vs C 的 1208），Rust Binder 经 `CurrentTask::mm()` 
 - [sched-20261113-006](../../2026/11/sched-20261113-006-make-the-scheduler-stack-end-check-selectable-at-boot.md) `feature/under_review` — Chris Down（Meta）发 v2 三补丁系列把 `CONFIG_SCHED_STACK_END_CHECK` 变成可在启动时通过 `sched_stack_end_check=` 切换：Meta 部分机型启用该检查（有用但每次上下文切换有开销），此前只能按 Kconfig 构建不同内核镜像，现在可共享同一镜像。v2 已吸收 Peter 与 Randy 对 v1 的意见（`scs_is_en
 - [sched-20261102-012](../../2026/11/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261031-005](../../2026/10/sched-20261031-005-sched-add-support-for-long-task-name.md) `feature/low/under_review` — 本文为增量更新，完整脉络见 related_articles。

@@ -1,7 +1,9 @@
 # tag: load_balance
 
-共 223 篇
+共 225 篇
 
+- [sched-20261120-022](../../2026/11/sched-20261120-022-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-004](../../2026/11/sched-20261120-004-sched-fix-load-accounting-and-improve-imbalance-calculation.md) `fix/low/under_review` — Srikar Dronamraju（IBM）发 3 补丁系列：patch 1 把 delayed-dequeued 任务从 `sum_nr_running` 剔除（修正调度组负载统计高估），patch 2 对「组内 core 数不同」的域改用可运行任务分布计算 imbalance，patch 3 清理 `cache_nice_tries` 初始化。Peter Zijlstra 对 patch 1 
 - [sched-20261119-013](../../2026/11/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.md) `regression/high/under_review` — Intel 0day（kernel test robot）报告：已进入 tip/sched/core 的 `9e3fa63360`（"sched/fair: Rework/fix task_h_load()"）在 Sapphire Rapids（224 线程、2 socket）上造成 **stress-ng `spawn` 用例 12.8% 的性能回退**（ops_per_sec 17811→15
 - [sched-20261119-008](../../2026/11/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-004](../../2026/11/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

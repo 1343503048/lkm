@@ -2,9 +2,11 @@
 layout: default
 tag: "idle"
 title: "标签: idle"
-article_count: 101
+article_count: 103
 ---
 
+- [sched-20261120-005](/lkm/2026/11/20/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.html) `fix/low/under_review` — sched/fair: Don't let task_tick_cache() IPI dyntick CPUs
+- [sched-20261120-006](/lkm/2026/11/20/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.html) `fix/medium/under_review` — sched_ext: idle: Don't stack a sync wakee behind a higher-class task
 - [sched-20261118-021](/lkm/2026/11/18/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.html) `fix/low/merged_tip` — softirq: Treat an interrupted idle task as idle in tick_irq_exit()
 - [sched-20261118-026](/lkm/2026/11/18/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.html) `fix/medium/under_review` — cpuidle: psci: Allow domain idle states in s2idle for all CPU idle states
 - [sched-20261118-027](/lkm/2026/11/18/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.html) `fix/high/under_review` — cpuidle: Do not reinstall the idle handler while paused

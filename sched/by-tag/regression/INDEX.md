@@ -1,7 +1,8 @@
 # tag: regression
 
-共 67 篇
+共 68 篇
 
+- [sched-20261120-021](../../2026/11/sched-20261120-021-sched-fair-avoid-transient-double-accounting-for-delayed-tas.md) `regression/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-013](../../2026/11/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.md) `regression/high/under_review` — Intel 0day（kernel test robot）报告：已进入 tip/sched/core 的 `9e3fa63360`（"sched/fair: Rework/fix task_h_load()"）在 Sapphire Rapids（224 线程、2 socket）上造成 **stress-ng `spawn` 用例 12.8% 的性能回退**（ops_per_sec 17811→15
 - [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261113-001](../../2026/11/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.md) `regression/high/under_review` — Usama Arif 提交 revert 补丁，回退 `61ea17a63719`（给 `select_idle_capacity()` 套用 SIS_UTIL 扫描预算）：该提交在非对称路径下因零扫描预算而跳过 allowed domain 的全量搜索，导致唤醒型延迟敏感负载的分钟级 p50 延迟从 129ms 恶化到 223ms。补丁带完整 benchmark 数据与 `Fixes:` 标签，

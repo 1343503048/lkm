@@ -1,7 +1,14 @@
 # tag: cfs
 
-共 350 篇
+共 357 篇
 
+- [sched-20261120-022](../../2026/11/sched-20261120-022-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-021](../../2026/11/sched-20261120-021-sched-fair-avoid-transient-double-accounting-for-delayed-tas.md) `regression/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-014](../../2026/11/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.md) `fix/low/under_review` — Qiliang Yuan 的 v2 3 补丁系列：给 `rq_online()`/`rq_offline()` 传入「CPU 是否改变状态（hotplug）」标志，让 fair 类在根域改变（而非 hotplug）时跳过不必要工作。当日缓存仅含两条回复：作者 Qiliang 解释设计并宣布 v3 将按 Prateek Nayak 的思路改为「root domain 变化用独立回调」；Li kuny
+- [sched-20261120-013](../../2026/11/sched-20261120-013-sched-boost-rwsem-holders-with-contended-high-priority-waite.md) `feature/rfc` — Peng Huang（Google）发 RFC 3 补丁系列：跟踪每个任务持有的 rw_semaphore 与每把 rwsem 上的最高优先级 waiter，对「持锁且被高优先级 waiter 竞争」的 fair 任务临时提升其 effective priority 与 EEVDF weight，以缓解读/写 rwsem 上的优先级反转。带 KUnit 自测与可选的 `rwsem_sched_bo
+- [sched-20261120-011](../../2026/11/sched-20261120-011-sched-fair-always-clear-se-exec-start-when-migrated.md) `fix/low/under_review` — Vincent Guittot 发单补丁：把「迁移时清 `se->exec_start`」从 `enqueue_entity()` 里的 conditional 移到 `enqueue_task_fair()` 入口，无条件处理——此前迁移到 throttled cfs_rq 的任务不会清 `exec_start`（那段清除被提前 return 跳过）。Kayra Cizmeci 追问是否需要 `
+- [sched-20261120-005](../../2026/11/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.md) `fix/low/under_review` — Valentin Schneider 发单补丁：在 NOHZ_FULL / isolcpus 场景下，housekeeping CPU 周期性地替 dyntick CPU 跑 `sched_tick_remote()`，从而触发 `task_tick_cache()` 的 `task_work_add()` 把纯用户态任务 IPI 踢出 userspace。补丁让 `task_tick_cache
+- [sched-20261120-004](../../2026/11/sched-20261120-004-sched-fix-load-accounting-and-improve-imbalance-calculation.md) `fix/low/under_review` — Srikar Dronamraju（IBM）发 3 补丁系列：patch 1 把 delayed-dequeued 任务从 `sum_nr_running` 剔除（修正调度组负载统计高估），patch 2 对「组内 core 数不同」的域改用可运行任务分布计算 imbalance，patch 3 清理 `cache_nice_tries` 初始化。Peter Zijlstra 对 patch 1 
 - [sched-20261119-013](../../2026/11/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.md) `regression/high/under_review` — Intel 0day（kernel test robot）报告：已进入 tip/sched/core 的 `9e3fa63360`（"sched/fair: Rework/fix task_h_load()"）在 Sapphire Rapids（224 线程、2 socket）上造成 **stress-ng `spawn` 用例 12.8% 的性能回退**（ops_per_sec 17811→15
 - [sched-20261119-004](../../2026/11/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-025](../../2026/11/sched-20261118-025-sched-fair-use-guard-in-sched-group-set-idle.md) `fix/merged_tip` — Peter Zijlstra 的清理补丁**今日合入 tip/sched/urgent**（commit `9a92f776dfa6`）：`sched_group_set_idle()` 改用 `guard` 管理 `rq_lock_irqsave()`，配合「`cfs_rq::idle` 改为祖先 tg::idle 之和」（sched-20261118-022）的语义变化做针对性清理。属同名配套

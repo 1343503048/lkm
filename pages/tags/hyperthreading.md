@@ -2,9 +2,10 @@
 layout: default
 tag: "hyperthreading"
 title: "标签: hyperthreading"
-article_count: 39
+article_count: 40
 ---
 
+- [sched-20261120-003](/lkm/2026/11/20/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.html) `bug/high/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
 - [sched-20261118-002](/lkm/2026/11/18/sched-20261118-002-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-i.html) `fix/medium/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
 - [sched-20261118-003](/lkm/2026/11/18/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.html) `fix/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261111-017](/lkm/2026/11/11/sched-20261111-017-sched-ext-fix-partial-smt-core-counting-in-calc-shard-layout.html) `fix/medium/merged_tip` — sched_ext: Fix partial-SMT core counting in calc_shard_layout()

@@ -2,9 +2,11 @@
 layout: default
 tag: "core_sched"
 title: "标签: core_sched"
-article_count: 51
+article_count: 53
 ---
 
+- [sched-20261120-003](/lkm/2026/11/20/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.html) `bug/high/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
+- [sched-20261120-009](/lkm/2026/11/20/sched-20261120-009-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261118-002](/lkm/2026/11/18/sched-20261118-002-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-i.html) `fix/medium/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
 - [sched-20261118-003](/lkm/2026/11/18/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.html) `fix/high/under_review` — sched: Fix DL server starvation under core scheduling
 - [sched-20261113-002](/lkm/2026/11/13/sched-20261113-002-sched-fix-dl-server-starvation-under-core-scheduling.html) `bug/high/under_review` — sched: Fix DL server starvation under core scheduling

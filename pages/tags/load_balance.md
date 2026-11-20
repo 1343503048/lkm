@@ -2,9 +2,11 @@
 layout: default
 tag: "load_balance"
 title: "标签: load_balance"
-article_count: 223
+article_count: 225
 ---
 
+- [sched-20261120-004](/lkm/2026/11/20/sched-20261120-004-sched-fix-load-accounting-and-improve-imbalance-calculation.html) `fix/low/under_review` — sched: Fix load accounting and improve imbalance calculation
+- [sched-20261120-022](/lkm/2026/11/20/sched-20261120-022-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/stalled` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261119-003](/lkm/2026/11/19/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261119-004](/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261119-008](/lkm/2026/11/19/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level

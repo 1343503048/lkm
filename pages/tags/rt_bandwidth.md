@@ -2,9 +2,10 @@
 layout: default
 tag: "rt_bandwidth"
 title: "标签: rt_bandwidth"
-article_count: 14
+article_count: 15
 ---
 
+- [sched-20261120-018](/lkm/2026/11/20/sched-20261120-018-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.html) `fix/low/under_review` — sched: Limit sysctl sched_rt_{period|runtime}_us to RT_GROUP_SCHED
 - [sched-20261119-002](/lkm/2026/11/19/sched-20261119-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261119-005](/lkm/2026/11/19/sched-20261119-005-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.html) `fix/low/under_review` — sched: Limit sysctl sched_rt_{period|runtime}_us to RT_GROUP_SCHED
 - [sched-20261118-006](/lkm/2026/11/18/sched-20261118-006-sched-rt-do-not-account-migrate-disabled-tasks-as-pushab.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable

@@ -2,9 +2,10 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 72
+article_count: 73
 ---
 
+- [sched-20261120-005](/lkm/2026/11/20/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.html) `fix/low/under_review` — sched/fair: Don't let task_tick_cache() IPI dyntick CPUs
 - [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-014](/lkm/2026/11/18/sched-20261118-014-sched-isolation-publish-new-hk-type-domain-cpumask-under.html) `fix/medium/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex
 - [sched-20261118-015](/lkm/2026/11/18/sched-20261118-015-sched-isolation-enable-cpuset-mutex-cpus-read-lock-sync.html) `fix/medium/under_review` — sched/isolation: Enable cpuset_mutex/cpus_read_lock synchronization before freeing old housekeeping cpumask

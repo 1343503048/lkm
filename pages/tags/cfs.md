@@ -2,9 +2,16 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 350
+article_count: 357
 ---
 
+- [sched-20261120-004](/lkm/2026/11/20/sched-20261120-004-sched-fix-load-accounting-and-improve-imbalance-calculation.html) `fix/low/under_review` — sched: Fix load accounting and improve imbalance calculation
+- [sched-20261120-005](/lkm/2026/11/20/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.html) `fix/low/under_review` — sched/fair: Don't let task_tick_cache() IPI dyntick CPUs
+- [sched-20261120-011](/lkm/2026/11/20/sched-20261120-011-sched-fair-always-clear-se-exec-start-when-migrated.html) `fix/low/under_review` — sched/fair: Always clear se->exec_start when migrated
+- [sched-20261120-013](/lkm/2026/11/20/sched-20261120-013-sched-boost-rwsem-holders-with-contended-high-priority-waite.html) `feature/none/rfc` — sched: boost rwsem holders with contended high-priority waiters
+- [sched-20261120-014](/lkm/2026/11/20/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.html) `fix/low/under_review` — sched: Tell rq_online() and rq_offline() whether the CPU changes state
+- [sched-20261120-021](/lkm/2026/11/20/sched-20261120-021-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `regression/high/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
+- [sched-20261120-022](/lkm/2026/11/20/sched-20261120-022-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.html) `feature/none/stalled` — sched/fair: Distribute burst-woken tasks when rq depth reaches 3x average
 - [sched-20261119-004](/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261119-013](/lkm/2026/11/19/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.html) `regression/high/under_review` — [tip:sched/core] [sched/fair]  9e3fa63360: stress-ng.spawn.ops_per_sec 12.8% regression
 - [sched-20261118-005](/lkm/2026/11/18/sched-20261118-005-improving-latency-of-short-slice-tasks.html) `feature/none/under_review` — Improving latency of short slice tasks

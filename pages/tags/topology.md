@@ -2,9 +2,13 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 176
+article_count: 180
 ---
 
+- [sched-20261120-014](/lkm/2026/11/20/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.html) `fix/low/under_review` — sched: Tell rq_online() and rq_offline() whether the CPU changes state
+- [sched-20261120-017](/lkm/2026/11/20/sched-20261120-017-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
+- [sched-20261120-019](/lkm/2026/11/20/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/low/under_review` — sched: restore preferred CPUs when hotplug removes the last one
+- [sched-20261120-020](/lkm/2026/11/20/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261119-004](/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261119-008](/lkm/2026/11/19/sched-20261119-008-sched-cache-enable-llc-aggregation-above-the-first-numa-leve.html) `feature/none/under_review` — sched/cache: Enable LLC aggregation above the first NUMA level
 - [sched-20261119-009](/lkm/2026/11/19/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.html) `fix/low/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex

@@ -1,7 +1,11 @@
 # tag: topology
 
-共 176 篇
+共 180 篇
 
+- [sched-20261120-020](../../2026/11/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-019](../../2026/11/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-017](../../2026/11/sched-20261120-017-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-014](../../2026/11/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.md) `fix/low/under_review` — Qiliang Yuan 的 v2 3 补丁系列：给 `rq_online()`/`rq_offline()` 传入「CPU 是否改变状态（hotplug）」标志，让 fair 类在根域改变（而非 hotplug）时跳过不必要工作。当日缓存仅含两条回复：作者 Qiliang 解释设计并宣布 v3 将按 Prateek Nayak 的思路改为「root domain 变化用独立回调」；Li kuny
 - [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-011](../../2026/11/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/under_review` — Yury Norov（NVIDIA）7 补丁系列（11/13 发出）的 patch 2/7：当 hotplug 移除最后一颗 preferred CPU 时恢复 preferred CPU 集合，避免任务失去首选 CPU 后行为退化。今日仅捕获到 Shrikanth Hegde（IBM）的一条简短评审「pr_warn instead?」——即建议把该路径的日志级别改用 `pr_warn`。补丁正文
 - [sched-20261119-010](../../2026/11/sched-20261119-010-sched-topology-remove-stale-comment-around-llc-bytes-on-powe.md) `fix/under_review` — Shrikanth Hegde（IBM）发 5 补丁系列的最后一枚 sched 侧补丁：PowerPC 现已填充 generic cacheinfo（前 4 枚多半是 arch/powerpc 侧改动，本日缓存仅在 sched 侧捕获到 patch 5/5），`get_effective_llc_bytes()` 已能在 PowerPC 上读取 LLC size，故删除 `sched_update

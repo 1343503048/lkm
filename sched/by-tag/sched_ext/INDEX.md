@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 345 篇
+共 348 篇
 
+- [sched-20261120-008](../../2026/11/sched-20261120-008-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-007](../../2026/11/sched-20261120-007-sched-ext-reject-oversized-dispatch-max-batch.md) `fix/low/under_review` — Sechang Lim 发单补丁：`bpf_scx_init_member()` 接受大到 INT_MAX 的 `dispatch_max_batch`，其决定 per-CPU dispatch buffer 大小，但 `__alloc_percpu()` 拒绝超过 `PCPU_MIN_UNIT_SIZE` 的分配——带 `BPF_F_LINK` 时超大值过 struct_ops 校验、link 
+- [sched-20261120-006](../../2026/11/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.md) `fix/medium/under_review` — Hang Zhengyang 发 2 补丁系列（sched_ext/for-7.5）：sched_ext 默认 idle CPU 选择会把 sync wakee 放到 waker 所在 CPU，即使 waker 是仍在运行的 RT/DL 任务——wakee 在其它 CPU 都空闲时被迫等待（实测最长 1.5s）。patch 1 对更高 class 的 waker 停止该捷径，patch 2 加 s
 - [sched-20261119-007](../../2026/11/sched-20261119-007-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is-ful.md) `fix/medium/merged_tip` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-006](../../2026/11/sched-20261119-006-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.md) `fix/under_review` — Shaojie Sun 发 1 行修复：给 `tools/sched_ext` 里的 `__arena` 限定符补上 `btf_type_tag("arena")`，与 `tools/testing/selftests/bpf/libarena`（commit a0fa68d8ce75）对齐，使「某类型是否属于 arena」单凭 BTF 即可判断。Tao Cui 已实测（sched_ext for
 - [sched-20261118-024](../../2026/11/sched-20261118-024-sched-lift-cgroup-update-locking-to-core-to-prevent-cfs.md) `fix/medium/merged_tip` — Michal Blaszczyk 的 CFS/SCX 状态分歧修复**今日合入 tip/sched/urgent**（commit `342fe98c3431`）：并发写 cgroup 控制文件（`cpu.shares`/`cpu.weight`/`cpu.max`/`cpu.idle`/`cpu.weight.nice`）时，CFS 的 `shares_mutex` 在调用 `scx_group

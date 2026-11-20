@@ -1,7 +1,10 @@
 # tag: cgroup
 
-共 185 篇
+共 188 篇
 
+- [sched-20261120-020](../../2026/11/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-002](../../2026/11/sched-20261120-002-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-001](../../2026/11/sched-20261120-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-009](../../2026/11/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-004](../../2026/11/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-001](../../2026/11/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.md) `fix/high/under_review` — 本文为增量更新，完整脉络见下。

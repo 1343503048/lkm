@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 345
+article_count: 348
 ---
 
+- [sched-20261120-006](/lkm/2026/11/20/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.html) `fix/medium/under_review` — sched_ext: idle: Don't stack a sync wakee behind a higher-class task
+- [sched-20261120-007](/lkm/2026/11/20/sched-20261120-007-sched-ext-reject-oversized-dispatch-max-batch.html) `fix/low/under_review` — sched_ext: reject oversized dispatch_max_batch
+- [sched-20261120-008](/lkm/2026/11/20/sched-20261120-008-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html) `fix/low/under_review` — tools/sched_ext: Add "arena" BTF type tag to the __arena qualifier
 - [sched-20261119-006](/lkm/2026/11/19/sched-20261119-006-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html) `fix/none/under_review` — tools/sched_ext: Add "arena" BTF type tag to the __arena qualifier
 - [sched-20261119-007](/lkm/2026/11/19/sched-20261119-007-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is-ful.html) `fix/medium/merged_tip` — sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched
 - [sched-20261118-012](/lkm/2026/11/18/sched-20261118-012-sched-ext-don-t-route-tasks-to-scx-before-scx-enabled-is.html) `fix/high/under_review` — sched_ext: Don't route tasks to SCX before __scx_enabled is fully patched

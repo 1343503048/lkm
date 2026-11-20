@@ -2,9 +2,12 @@
 layout: default
 tag: "deadline"
 title: "标签: deadline"
-article_count: 84
+article_count: 87
 ---
 
+- [sched-20261120-001](/lkm/2026/11/20/sched-20261120-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261120-002](/lkm/2026/11/20/sched-20261120-002-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html) `fix/critical/under_review` — sched/deadline: first bandwidth accounting fixes and selftests
+- [sched-20261120-018](/lkm/2026/11/20/sched-20261120-018-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.html) `fix/low/under_review` — sched: Limit sysctl sched_rt_{period|runtime}_us to RT_GROUP_SCHED
 - [sched-20261119-001](/lkm/2026/11/19/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html) `fix/high/under_review` — sched/deadline: first bandwidth accounting fixes and selftests
 - [sched-20261118-001](/lkm/2026/11/18/sched-20261118-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/high/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261118-003](/lkm/2026/11/18/sched-20261118-003-sched-fix-dl-server-starvation-under-core-scheduling.html) `fix/high/under_review` — sched: Fix DL server starvation under core scheduling

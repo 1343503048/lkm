@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 185
+article_count: 188
 ---
 
+- [sched-20261120-001](/lkm/2026/11/20/sched-20261120-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261120-002](/lkm/2026/11/20/sched-20261120-002-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html) `fix/critical/under_review` — sched/deadline: first bandwidth accounting fixes and selftests
+- [sched-20261120-020](/lkm/2026/11/20/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261119-001](/lkm/2026/11/19/sched-20261119-001-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html) `fix/high/under_review` — sched/deadline: first bandwidth accounting fixes and selftests
 - [sched-20261119-004](/lkm/2026/11/19/sched-20261119-004-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261119-009](/lkm/2026/11/19/sched-20261119-009-sched-isolation-publish-new-hk-type-domain-cpumask-under-cpu.html) `fix/low/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex

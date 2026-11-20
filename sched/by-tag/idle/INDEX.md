@@ -1,7 +1,9 @@
 # tag: idle
 
-共 101 篇
+共 103 篇
 
+- [sched-20261120-006](../../2026/11/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.md) `fix/medium/under_review` — Hang Zhengyang 发 2 补丁系列（sched_ext/for-7.5）：sched_ext 默认 idle CPU 选择会把 sync wakee 放到 waker 所在 CPU，即使 waker 是仍在运行的 RT/DL 任务——wakee 在其它 CPU 都空闲时被迫等待（实测最长 1.5s）。patch 1 对更高 class 的 waker 停止该捷径，patch 2 加 s
+- [sched-20261120-005](../../2026/11/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.md) `fix/low/under_review` — Valentin Schneider 发单补丁：在 NOHZ_FULL / isolcpus 场景下，housekeeping CPU 周期性地替 dyntick CPU 跑 `sched_tick_remote()`，从而触发 `task_tick_cache()` 的 `task_work_add()` 把纯用户态任务 IPI 踢出 userspace。补丁让 `task_tick_cache
 - [sched-20261118-027](../../2026/11/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.md) `fix/high/under_review` — Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 c
 - [sched-20261118-026](../../2026/11/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.md) `fix/medium/under_review` — Kevin Hilman（TI）发 v2：s2idle 期间只为「最深 CPU idle 状态」设域感知的 `->enter_s2idle()` 回调，其余状态绕过 PM domain，导致 QoS 限值排除了最深状态时整个 CPU PM domain 层级永不掉电。v2 把域感知回调赋给除 WFI 外的所有 CPU idle 状态（仅 s2idle 路径），使 genpd governor 在 
 - [sched-20261118-021](../../2026/11/sched-20261118-021-softirq-treat-an-interrupted-idle-task-as-idle-in-tick.md) `fix/low/merged_tip` — Radu Toader 的修复**今日合入 tip/sched/core**（commit `b251360cb2e6`，Committer Peter Zijlstra）：`tick_irq_exit()` 只在 `sched_core_idle_cpu()`（即 `idle_cpu()`）为真时跑 `tick_nohz_irq_exit()`，但 sched_ext 的 BPF 调度器把可运行

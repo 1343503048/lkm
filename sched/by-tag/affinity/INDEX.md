@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 81 篇
+共 83 篇
 
+- [sched-20261120-019](../../2026/11/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261120-015](../../2026/11/sched-20261120-015-sched-mmcid-fix-per-cpu-cid-ownership-leak-in-sched-mm-cid-e.md) `fix/low/under_review` — Dominik Maier（Google）回复 Thomas Gleixner 对其「修复 `sched_mm_cid_exit()` per-CPU CID ownership leak」补丁的评审：感谢 tglx 指向其更宏观的 MM CID 重做方案，并表示将改用「execve() 时显式重初始化 MM CID 状态」而非依赖 last-user 退出路径；同时为原提交的两处流程失误致歉。原
 - [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-011](../../2026/11/sched-20261119-011-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/under_review` — Yury Norov（NVIDIA）7 补丁系列（11/13 发出）的 patch 2/7：当 hotplug 移除最后一颗 preferred CPU 时恢复 preferred CPU 集合，避免任务失去首选 CPU 后行为退化。今日仅捕获到 Shrikanth Hegde（IBM）的一条简短评审「pr_warn instead?」——即建议把该路径的日志级别改用 `pr_warn`。补丁正文
 - [sched-20261119-003](../../2026/11/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

@@ -2,9 +2,10 @@
 layout: default
 tag: "psi"
 title: "标签: psi"
-article_count: 30
+article_count: 31
 ---
 
+- [sched-20261120-010](/lkm/2026/11/20/sched-20261120-010-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html) `fix/medium/under_review` — sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace
 - [sched-20261111-012](/lkm/2026/11/11/sched-20261111-012-sched-psi-preserve-psi-state-on-delayed-dequeue.html) `fix/low/under_review` — sched/psi: Preserve PSI state on delayed dequeue
 - [sched-20261110-013](/lkm/2026/11/10/sched-20261110-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html) `fix/high/under_review` — sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace
 - [sched-20261106-013](/lkm/2026/11/06/sched-20261106-013-sched-psi-check-cap-sys-resource-in-the-initial-user-namespa.html) `fix/medium/under_review` — sched/psi: Check CAP_SYS_RESOURCE in the initial user namespace

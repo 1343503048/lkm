@@ -2,9 +2,10 @@
 layout: default
 tag: "regression"
 title: "标签: regression"
-article_count: 67
+article_count: 68
 ---
 
+- [sched-20261120-021](/lkm/2026/11/20/sched-20261120-021-sched-fair-avoid-transient-double-accounting-for-delayed-tas.html) `regression/high/under_review` — sched/fair: Avoid transient double accounting for delayed tasks
 - [sched-20261119-012](/lkm/2026/11/19/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261119-013](/lkm/2026/11/19/sched-20261119-013-tip-sched-core-sched-fair-9e3fa63360-stress-ng-spawn-ops-per.html) `regression/high/under_review` — [tip:sched/core] [sched/fair]  9e3fa63360: stress-ng.spawn.ops_per_sec 12.8% regression
 - [sched-20261113-001](/lkm/2026/11/13/sched-20261113-001-revert-sched-fair-add-sis-util-support-to-select-idle-capaci.html) `regression/high/under_review` — Revert "sched/fair: Add SIS_UTIL support to select_idle_capacity()"
