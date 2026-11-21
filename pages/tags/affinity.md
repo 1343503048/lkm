@@ -2,9 +2,11 @@
 layout: default
 tag: "affinity"
 title: "标签: affinity"
-article_count: 83
+article_count: 85
 ---
 
+- [sched-20261121-002](/lkm/2026/11/21/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.html) `fix/medium/under_review` — sched: Reset cpumask if __migrate_task() failed for migration_cpu_stop()
+- [sched-20261121-006](/lkm/2026/11/21/sched-20261121-006-tick-sched-make-tick-nohz-full-mask-and-hk-type-kernel-noise.html) `fix/medium/under_review` — tick/sched: Make tick_nohz_full_mask and HK_TYPE_KERNEL_NOISE cpumask consistent
 - [sched-20261120-015](/lkm/2026/11/20/sched-20261120-015-sched-mmcid-fix-per-cpu-cid-ownership-leak-in-sched-mm-cid-e.html) `fix/low/under_review` — sched/mmcid: fix per-CPU CID ownership leak in sched_mm_cid_exit()
 - [sched-20261120-019](/lkm/2026/11/20/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/low/under_review` — sched: restore preferred CPUs when hotplug removes the last one
 - [sched-20261119-003](/lkm/2026/11/19/sched-20261119-003-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()

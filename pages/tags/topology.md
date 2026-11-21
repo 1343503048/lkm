@@ -2,9 +2,12 @@
 layout: default
 tag: "topology"
 title: "标签: topology"
-article_count: 180
+article_count: 183
 ---
 
+- [sched-20261121-007](/lkm/2026/11/21/sched-20261121-007-sched-isolation-forbid-the-boot-cpu-from-being-isolated.html) `fix/high/under_review` — sched/isolation: Forbid the boot CPU from being isolated
+- [sched-20261121-008](/lkm/2026/11/21/sched-20261121-008-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
+- [sched-20261121-010](/lkm/2026/11/21/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261120-014](/lkm/2026/11/20/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.html) `fix/low/under_review` — sched: Tell rq_online() and rq_offline() whether the CPU changes state
 - [sched-20261120-017](/lkm/2026/11/20/sched-20261120-017-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.html) `fix/low/under_review` — sched/topology: Avoid unsequenced accesses to jiffies in sd_init()
 - [sched-20261120-019](/lkm/2026/11/20/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.html) `fix/low/under_review` — sched: restore preferred CPUs when hotplug removes the last one

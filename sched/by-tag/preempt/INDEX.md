@@ -1,7 +1,10 @@
 # tag: preempt
 
-共 86 篇
+共 89 篇
 
+- [sched-20261121-005](../../2026/11/sched-20261121-005-tracing-sched-add-irq-preemption-lifecycle-tracepoints.md) `discussion/rfc` — Karl Mehltretter 的 RFC v2（9 补丁，含 IRQ 抢占生命周期 tracepoint）当日收到 Gabriele Monaco 的 review：质疑一处「调度前禁用抢占前先 trace」的 bookkeeping 注释用途、认为不必手工检查 static key（trace 宏内部已检查）、并追问 tracepoint 里 owner 字段语义（是否只是拿来和 entry
+- [sched-20261121-004](../../2026/11/sched-20261121-004-sched-rt-push-a-queued-task-when-its-priority-is-boosted.md) `fix/medium/under_review` — Chaosheng Qu 修 sched/rt 的一个迁移延迟问题：PI boost 把排队 RT 任务提到高于其它 CPU 上所有任务，但它仍不能在自己的 rq 上跑（当前任务优先级相同或更高），`prio_changed_rt()` 只 `resched_curr()`，任务要等当前任务自己让出；pull 侧 `pull_rt_task()` 只挑亲和包含本 CPU 的任务，mask 不含刚 
+- [sched-20261121-002](../../2026/11/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.md) `fix/medium/under_review` — Sebastian Andrzej Siewior 发 v3 修 syzbot 报的竞态：IRQ 亲和性变更与 CPU hotplug 并发时，`affine_move_task()` 里 `__migrate_task()` 因目标 CPU 下线而失败，任务停在当前 rq 但 `cpus_mask` 仍指向旧 mask，后续 `migrate_enable()` 因 `migration_pen
 - [sched-20261120-009](../../2026/11/sched-20261120-009-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-008](../../2026/11/sched-20261118-008-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-008](../../2026/11/sched-20261115-008-sched-preempt-fix-duplicate-extern-declarations.md) `discussion/stalled` — 本文为增量更新，完整脉络见下。

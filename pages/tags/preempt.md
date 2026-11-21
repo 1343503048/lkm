@@ -2,9 +2,12 @@
 layout: default
 tag: "preempt"
 title: "标签: preempt"
-article_count: 86
+article_count: 89
 ---
 
+- [sched-20261121-002](/lkm/2026/11/21/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.html) `fix/medium/under_review` — sched: Reset cpumask if __migrate_task() failed for migration_cpu_stop()
+- [sched-20261121-004](/lkm/2026/11/21/sched-20261121-004-sched-rt-push-a-queued-task-when-its-priority-is-boosted.html) `fix/medium/under_review` — sched/rt: push a queued task when its priority is boosted
+- [sched-20261121-005](/lkm/2026/11/21/sched-20261121-005-tracing-sched-add-irq-preemption-lifecycle-tracepoints.html) `discussion/none/rfc` — tracing/sched: Add IRQ preemption lifecycle tracepoints
 - [sched-20261120-009](/lkm/2026/11/20/sched-20261120-009-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-push.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261118-008](/lkm/2026/11/18/sched-20261118-008-sched-core-fix-a-toctou-bug-in-sched-non-preferred-cpu-pu.html) `fix/medium/under_review` — sched/core: Fix a TOCTOU bug in sched_non_preferred_cpu_push_stop()
 - [sched-20261115-008](/lkm/2026/11/15/sched-20261115-008-sched-preempt-fix-duplicate-extern-declarations.html) `discussion/none/stalled` — sched/preempt: fix duplicate extern declarations

@@ -1,7 +1,9 @@
 # tag: nohz
 
-共 73 篇
+共 75 篇
 
+- [sched-20261121-007](../../2026/11/sched-20261121-007-sched-isolation-forbid-the-boot-cpu-from-being-isolated.md) `fix/high/under_review` — Waiman Long 发 PATCH-next 2/3，是 [BUG] select_fallback_rq 启动崩溃（isolcpus=domain 隔离 boot CPU）的正式修复：启动参数里若把 boot CPU 放进 isolcpus，就把它从隔离范围清除并打印警告，同时更新 kernel-parameters.txt。该改动属用户可见行为变更，需维护者确认取舍。
+- [sched-20261121-006](../../2026/11/sched-20261121-006-tick-sched-make-tick-nohz-full-mask-and-hk-type-kernel-noise.md) `fix/medium/under_review` — Waiman Long 的 3 补丁系列（PATCH-next）之一：修 `tick_nohz_full_mask` 与 `HK_TYPE_KERNEL_NOISE` 两个 cpumask 长期不一致的问题，属于其修复「boot CPU 被域隔离导致启动 BUG()」的前置一致化。当日 kernel test robot 报出构建警告：`EXPORT_SYMBOL used for init sy
 - [sched-20261120-005](../../2026/11/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.md) `fix/low/under_review` — Valentin Schneider 发单补丁：在 NOHZ_FULL / isolcpus 场景下，housekeeping CPU 周期性地替 dyntick CPU 跑 `sched_tick_remote()`，从而触发 `task_tick_cache()` 的 `task_work_add()` 把纯用户态任务 IPI 踢出 userspace。补丁让 `task_tick_cache
 - [sched-20261118-027](../../2026/11/sched-20261118-027-cpuidle-do-not-reinstall-the-idle-handler-while-paused.md) `fix/high/under_review` — Wondertan 修复 ACPI 平台冬眠（hibernation）间歇性挂死：PM core 在系统级切换时暂停 cpuidle，但 `acpi_soft_cpu_online()` 里 `acpi_processor_hotplug()` 会用 `cpuidle_resume_and_unlock()` 无条件重装 idle handler，导致第一颗 secondary CPU 上线后 c
 - [sched-20261118-026](../../2026/11/sched-20261118-026-cpuidle-psci-allow-domain-idle-states-in-s2idle-for-al.md) `fix/medium/under_review` — Kevin Hilman（TI）发 v2：s2idle 期间只为「最深 CPU idle 状态」设域感知的 `->enter_s2idle()` 回调，其余状态绕过 PM domain，导致 QoS 限值排除了最深状态时整个 CPU PM domain 层级永不掉电。v2 把域感知回调赋给除 WFI 外的所有 CPU idle 状态（仅 s2idle 路径），使 genpd governor 在 

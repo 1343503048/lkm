@@ -2,9 +2,10 @@
 layout: default
 tag: "crash"
 title: "标签: crash"
-article_count: 51
+article_count: 52
 ---
 
+- [sched-20261121-008](/lkm/2026/11/21/sched-20261121-008-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261120-003](/lkm/2026/11/20/sched-20261120-003-sched-core-fix-stale-core-pick-and-forced-idle-after-sm-idle.html) `bug/high/under_review` — sched/core: Fix stale core_pick and forced idle after SM_IDLE fast path
 - [sched-20261120-020](/lkm/2026/11/20/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n

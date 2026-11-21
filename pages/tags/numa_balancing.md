@@ -2,9 +2,10 @@
 layout: default
 tag: "numa_balancing"
 title: "标签: numa_balancing"
-article_count: 83
+article_count: 84
 ---
 
+- [sched-20261121-013](/lkm/2026/11/21/sched-20261121-013-sched-numa-restrict-numa-migration-targets-to-common-memory.html) `fix/low/under_review` — sched/numa: restrict NUMA migration targets to common memory
 - [sched-20261118-011](/lkm/2026/11/18/sched-20261118-011-sched-topology-add-new-kernel-parameter-to-tune-numa-do.html) `feature/none/under_review` — sched/topology: Add new kernel parameter to tune NUMA domain flags
 - [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 - [sched-20261118-018](/lkm/2026/11/18/sched-20261118-018-sched-cache-avoid-cache-aware-scheduling-for-memory-hea.html) `fix/medium/under_review` — sched/cache: Avoid cache-aware scheduling for memory-heavy processes

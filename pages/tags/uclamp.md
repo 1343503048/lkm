@@ -2,9 +2,10 @@
 layout: default
 tag: "uclamp"
 title: "标签: uclamp"
-article_count: 9
+article_count: 10
 ---
 
+- [sched-20261121-009](/lkm/2026/11/21/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261115-004](/lkm/2026/11/15/sched-20261115-004-git-pull-scheduler-fixes.html) `fix/high/merged_tip` — [GIT PULL] scheduler fixes
 - [sched-20261103-016](/lkm/2026/11/03/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261102-002](/lkm/2026/11/02/sched-20261102-002-sched-uclamp-reject-clamp-values-above-sched-capacity-scale.html) `fix/medium/under_review` — sched/uclamp: Reject clamp values above SCHED_CAPACITY_SCALE

@@ -1,7 +1,8 @@
 # tag: perf
 
-共 62 篇
+共 63 篇
 
+- [sched-20261121-010](../../2026/11/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261118-020](../../2026/11/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.md) `feature/merged_tip` — Chengfeng Lin 的性能优化**今日合入 tip/sched/core**（commit `9dc6cae4904f`，Committer Peter Zijlstra）：`_sched_setscheduler()` 对使用默认 slice 的 fair 任务，此前 `attr.sched_runtime=0` 与 `se.slice` 直接比较恒不相等，导致一个「参数未变的 `sch
 - [sched-20261118-017](../../2026/11/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.md) `feature/merged_tip` — Luo Gengkun（华为）的 `task_cache_work()` 开销优化**今日被合入 tip/sched/core**（commit `953f9fc86e54`，Committer Peter Zijlstra）：用 `visited_cpus` 追踪已访问 CPU 并按 `llc_epoch_affinity_timeout` 淘汰，避免多 NUMA 系统上扫描全量 CPU，随之删
 - [sched-20261118-009](../../2026/11/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.md) `feature/under_review` — 本文为增量更新，完整脉络见下。

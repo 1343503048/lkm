@@ -2,9 +2,12 @@
 layout: default
 tag: "cgroup"
 title: "标签: cgroup"
-article_count: 188
+article_count: 191
 ---
 
+- [sched-20261121-001](/lkm/2026/11/21/sched-20261121-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
+- [sched-20261121-008](/lkm/2026/11/21/sched-20261121-008-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
+- [sched-20261121-009](/lkm/2026/11/21/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261120-001](/lkm/2026/11/20/sched-20261120-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html) `fix/critical/under_review` — sched/deadline: bandwidth accounting fixes and selftests
 - [sched-20261120-002](/lkm/2026/11/20/sched-20261120-002-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.html) `fix/critical/under_review` — sched/deadline: first bandwidth accounting fixes and selftests
 - [sched-20261120-020](/lkm/2026/11/20/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n

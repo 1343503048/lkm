@@ -2,9 +2,10 @@
 layout: default
 tag: "perf"
 title: "标签: perf"
-article_count: 62
+article_count: 63
 ---
 
+- [sched-20261121-010](/lkm/2026/11/21/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261118-009](/lkm/2026/11/18/sched-20261118-009-sched-pelt-skip-redundant-decay-and-divisions-when-sched-avg.html) `feature/none/under_review` — sched/pelt: Skip redundant decay and divisions when sched_avg is zero
 - [sched-20261118-017](/lkm/2026/11/18/sched-20261118-017-sched-cache-reduce-the-overhead-of-task-cache-work-by-only-s.html) `feature/none/merged_tip` — sched/cache: Reduce the overhead of task_cache_work by only scan the visisted cpus
 - [sched-20261118-020](/lkm/2026/11/18/sched-20261118-020-sched-fair-avoid-redundant-updates-for-unchanged-defa.html) `feature/none/merged_tip` — sched/fair: Avoid redundant updates for unchanged default slices

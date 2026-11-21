@@ -1,7 +1,9 @@
 # tag: rt
 
-共 66 篇
+共 68 篇
 
+- [sched-20261121-009](../../2026/11/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-004](../../2026/11/sched-20261121-004-sched-rt-push-a-queued-task-when-its-priority-is-boosted.md) `fix/medium/under_review` — Chaosheng Qu 修 sched/rt 的一个迁移延迟问题：PI boost 把排队 RT 任务提到高于其它 CPU 上所有任务，但它仍不能在自己的 rq 上跑（当前任务优先级相同或更高），`prio_changed_rt()` 只 `resched_curr()`，任务要等当前任务自己让出；pull 侧 `pull_rt_task()` 只挑亲和包含本 CPU 的任务，mask 不含刚 
 - [sched-20261120-016](../../2026/11/sched-20261120-016-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261119-005](../../2026/11/sched-20261119-005-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.md) `fix/low/under_review` — Sebastian Andrzej Siewior 的 v3 8 补丁系列（cover 主题「sched/deadline: Reject debugfs dl_server writes for not-active CPUs」，11/13 发出）里的 patch 6/8：在未开启 `RT_GROUP_SCHED` 时删除 `sched_rt_period_us`/`sched_rt_runti
 - [sched-20261119-002](../../2026/11/sched-20261119-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。

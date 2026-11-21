@@ -2,9 +2,11 @@
 layout: default
 tag: "cfs"
 title: "标签: cfs"
-article_count: 357
+article_count: 359
 ---
 
+- [sched-20261121-003](/lkm/2026/11/21/sched-20261121-003-sched-fair-add-to-comment.html) `fix/none/under_review` — sched/fair: add ')' to comment
+- [sched-20261121-010](/lkm/2026/11/21/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html) `feature/none/under_review` — sched/fair: Cut per-group work from sched domain rebuilds
 - [sched-20261120-004](/lkm/2026/11/20/sched-20261120-004-sched-fix-load-accounting-and-improve-imbalance-calculation.html) `fix/low/under_review` — sched: Fix load accounting and improve imbalance calculation
 - [sched-20261120-005](/lkm/2026/11/20/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.html) `fix/low/under_review` — sched/fair: Don't let task_tick_cache() IPI dyntick CPUs
 - [sched-20261120-011](/lkm/2026/11/20/sched-20261120-011-sched-fair-always-clear-se-exec-start-when-migrated.html) `fix/low/under_review` — sched/fair: Always clear se->exec_start when migrated

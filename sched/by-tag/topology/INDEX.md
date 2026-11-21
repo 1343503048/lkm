@@ -1,7 +1,10 @@
 # tag: topology
 
-共 180 篇
+共 183 篇
 
+- [sched-20261121-010](../../2026/11/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-008](../../2026/11/sched-20261121-008-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-007](../../2026/11/sched-20261121-007-sched-isolation-forbid-the-boot-cpu-from-being-isolated.md) `fix/high/under_review` — Waiman Long 发 PATCH-next 2/3，是 [BUG] select_fallback_rq 启动崩溃（isolcpus=domain 隔离 boot CPU）的正式修复：启动参数里若把 boot CPU 放进 isolcpus，就把它从隔离范围清除并打印警告，同时更新 kernel-parameters.txt。该改动属用户可见行为变更，需维护者确认取舍。
 - [sched-20261120-020](../../2026/11/sched-20261120-020-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-019](../../2026/11/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-017](../../2026/11/sched-20261120-017-sched-topology-avoid-unsequenced-accesses-to-jiffies-in-sd-i.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。

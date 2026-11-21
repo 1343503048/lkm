@@ -2,9 +2,11 @@
 layout: default
 tag: "nohz"
 title: "标签: nohz"
-article_count: 73
+article_count: 75
 ---
 
+- [sched-20261121-006](/lkm/2026/11/21/sched-20261121-006-tick-sched-make-tick-nohz-full-mask-and-hk-type-kernel-noise.html) `fix/medium/under_review` — tick/sched: Make tick_nohz_full_mask and HK_TYPE_KERNEL_NOISE cpumask consistent
+- [sched-20261121-007](/lkm/2026/11/21/sched-20261121-007-sched-isolation-forbid-the-boot-cpu-from-being-isolated.html) `fix/high/under_review` — sched/isolation: Forbid the boot CPU from being isolated
 - [sched-20261120-005](/lkm/2026/11/20/sched-20261120-005-sched-fair-don-t-let-task-tick-cache-ipi-dyntick-cpus.html) `fix/low/under_review` — sched/fair: Don't let task_tick_cache() IPI dyntick CPUs
 - [sched-20261118-004](/lkm/2026/11/18/sched-20261118-004-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolc.html) `bug/high/under_review` — [BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n
 - [sched-20261118-014](/lkm/2026/11/18/sched-20261118-014-sched-isolation-publish-new-hk-type-domain-cpumask-under.html) `fix/medium/under_review` — sched/isolation: Publish new HK_TYPE_DOMAIN cpumask under cpuset_mutex

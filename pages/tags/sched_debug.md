@@ -2,9 +2,11 @@
 layout: default
 tag: "sched_debug"
 title: "标签: sched_debug"
-article_count: 80
+article_count: 82
 ---
 
+- [sched-20261121-005](/lkm/2026/11/21/sched-20261121-005-tracing-sched-add-irq-preemption-lifecycle-tracepoints.html) `discussion/none/rfc` — tracing/sched: Add IRQ preemption lifecycle tracepoints
+- [sched-20261121-014](/lkm/2026/11/21/sched-20261121-014-rust-bindgen-preserve-sched-statistics-alignment.html) `fix/medium/under_review` — rust: bindgen: Preserve sched_statistics alignment
 - [sched-20261120-012](/lkm/2026/11/20/sched-20261120-012-rust-bindgen-preserve-sched-statistics-alignment.html) `fix/medium/under_review` — rust: bindgen: Preserve sched_statistics alignment
 - [sched-20261113-006](/lkm/2026/11/13/sched-20261113-006-make-the-scheduler-stack-end-check-selectable-at-boot.html) `feature/none/under_review` — Make the scheduler stack end check selectable at boot
 - [sched-20261102-012](/lkm/2026/11/02/sched-20261102-012-sched-stats-fix-run-delay-over-count-for-proxy-migrated-bloc.html) `fix/medium/under_review` — sched/stats: Fix run_delay over-count for proxy-migrated blocked donors

@@ -1,7 +1,9 @@
 # tag: cfs
 
-共 357 篇
+共 359 篇
 
+- [sched-20261121-010](../../2026/11/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.md) `feature/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-003](../../2026/11/sched-20261121-003-sched-fair-add-to-comment.md) `fix/under_review` — Manuel Ebner 发一行注释修复，给 `SCHED_TUNABLESCALING_LOG` 默认值公式注释补上漏掉的右括号。
 - [sched-20261120-022](../../2026/11/sched-20261120-022-sched-fair-distribute-burst-woken-tasks-when-rq-depth-reache.md) `feature/stalled` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-021](../../2026/11/sched-20261120-021-sched-fair-avoid-transient-double-accounting-for-delayed-tas.md) `regression/high/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-014](../../2026/11/sched-20261120-014-sched-tell-rq-online-and-rq-offline-whether-the-cpu-changes.md) `fix/low/under_review` — Qiliang Yuan 的 v2 3 补丁系列：给 `rq_online()`/`rq_offline()` 传入「CPU 是否改变状态（hotplug）」标志，让 fair 类在根域改变（而非 hotplug）时跳过不必要工作。当日缓存仅含两条回复：作者 Qiliang 解释设计并宣布 v3 将按 Prateek Nayak 的思路改为「root domain 变化用独立回调」；Li kuny

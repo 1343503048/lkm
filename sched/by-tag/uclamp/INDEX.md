@@ -1,7 +1,8 @@
 # tag: uclamp
 
-共 9 篇
+共 10 篇
 
+- [sched-20261121-009](../../2026/11/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261115-004](../../2026/11/sched-20261115-004-git-pull-scheduler-fixes.md) `fix/high/merged_tip` — Ingo Molnar 向 Linus 发 sched/urgent 修复 pull request（tip 树 `sched-urgent-2026-11-15`，顶部 commit ec6f6731538e），含五枚此前各自补丁系列已过 review 的正确性修复：deadline 迁移禁用任务假 -EPERM、uclamp 拒绝超 SCHED_CAPACITY_SCALE 的 clamp、_
 - [sched-20261103-016](../../2026/11/sched-20261103-016-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。
 - [sched-20261102-021](../../2026/11/sched-20261102-021-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见 related_articles。

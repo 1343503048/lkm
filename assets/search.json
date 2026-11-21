@@ -25984,6 +25984,260 @@
     "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-006 / 20261106-004 / 20261111-013：李坤宇（Li kunyu）的补丁在 wakeup 路径、目标 runqueue 深度达平均 nr_running 3 倍时改用「分布」策略导流突发唤醒任务；Kayra Cizmeci 与 K Prateek Nayak 给密集意见，多次 rebase 迭代。 - sched-20261120-022（今天）：**作者 ping**——请求 Peter 复审并告知是否有其它需要修改的地方。无新版本、无新评审意见。"
   },
   {
+    "title": "sched/deadline: bandwidth accounting fixes and selftests",
+    "id": "sched-20261121-001",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "critical",
+    "tags": [
+      "deadline",
+      "dl_server",
+      "cgroup"
+    ],
+    "authors": [
+      "Mathieu Desnoyers"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261105-001：Mathieu Desnoyers 的 v2 在 Juri Lelli 此前 4 个 sched/urgent 修复之上再修 17 个 SCHED_DEADLINE 带宽记账 bug，带自测与 sched_debug；Ingo 要求「严格只含 -stable 可回退修复的子集」。 - sched-20261106-001 … 20261110-009：v3（24 补丁）→ v4（26）→ v5（29），Juri 持续评审，对 deadline boost 补丁存疑并给 bandaid 备选。 - sched-20261"
+  },
+  {
+    "title": "sched: Reset cpumask if __migrate_task() failed for migration_cpu_stop()",
+    "id": "sched-20261121-002",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "affinity",
+      "preempt",
+      "syzbot"
+    ],
+    "authors": [
+      "Sebastian Andrzej Siewior"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.html",
+    "tldr": "Sebastian Andrzej Siewior 发 v3 修 syzbot 报的竞态：IRQ 亲和性变更与 CPU hotplug 并发时，`affine_move_task()` 里 `__migrate_task()` 因目标 CPU 下线而失败，任务停在当前 rq 但 `cpus_mask` 仍指向旧 mask，后续 `migrate_enable()` 因 `migration_pending` 为 NULL 触发出错。补丁在 `__migrate_task()` 失败时用 `do_set_cpus_allowed()` 把任务 mask 重置为当前所在 rq。Karl Mehlt"
+  },
+  {
+    "title": "sched/fair: add ')' to comment",
+    "id": "sched-20261121-003",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs"
+    ],
+    "authors": [
+      "Manuel Ebner"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-003-sched-fair-add-to-comment.html",
+    "tldr": "Manuel Ebner 发一行注释修复，给 `SCHED_TUNABLESCALING_LOG` 默认值公式注释补上漏掉的右括号。"
+  },
+  {
+    "title": "sched/rt: push a queued task when its priority is boosted",
+    "id": "sched-20261121-004",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "rt",
+      "preempt"
+    ],
+    "authors": [
+      "Chaosheng Qu"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-004-sched-rt-push-a-queued-task-when-its-priority-is-boosted.html",
+    "tldr": "Chaosheng Qu 修 sched/rt 的一个迁移延迟问题：PI boost 把排队 RT 任务提到高于其它 CPU 上所有任务，但它仍不能在自己的 rq 上跑（当前任务优先级相同或更高），`prio_changed_rt()` 只 `resched_curr()`，任务要等当前任务自己让出；pull 侧 `pull_rt_task()` 只挑亲和包含本 CPU 的任务，mask 不含刚 idle CPU 的任务不可达。作者补丁在排队非当前 RT 任务优先级提升时入队一个 push。作者在 4-vCPU QEMU 上给出基准（RT_PUSH_IPI off）：baseline 1/5 "
+  },
+  {
+    "title": "tracing/sched: Add IRQ preemption lifecycle tracepoints",
+    "id": "sched-20261121-005",
+    "date": "2026-11-21",
+    "type": "discussion",
+    "status": "rfc",
+    "severity": "none",
+    "tags": [
+      "preempt",
+      "sched_debug"
+    ],
+    "authors": [
+      "Karl Mehltretter"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-005-tracing-sched-add-irq-preemption-lifecycle-tracepoints.html",
+    "tldr": "Karl Mehltretter 的 RFC v2（9 补丁，含 IRQ 抢占生命周期 tracepoint）当日收到 Gabriele Monaco 的 review：质疑一处「调度前禁用抢占前先 trace」的 bookkeeping 注释用途、认为不必手工检查 static key（trace 宏内部已检查）、并追问 tracepoint 里 owner 字段语义（是否只是拿来和 entry 匹配）。系列仍处 RFC 阶段，无维护者表态。"
+  },
+  {
+    "title": "tick/sched: Make tick_nohz_full_mask and HK_TYPE_KERNEL_NOISE cpumask consistent",
+    "id": "sched-20261121-006",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "nohz",
+      "affinity"
+    ],
+    "authors": [
+      "Waiman Long"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-006-tick-sched-make-tick-nohz-full-mask-and-hk-type-kernel-noise.html",
+    "tldr": "Waiman Long 的 3 补丁系列（PATCH-next）之一：修 `tick_nohz_full_mask` 与 `HK_TYPE_KERNEL_NOISE` 两个 cpumask 长期不一致的问题，属于其修复「boot CPU 被域隔离导致启动 BUG()」的前置一致化。当日 kernel test robot 报出构建警告：`EXPORT_SYMBOL used for init symbol 'housekeeping_set_cpu'`（powerpc W=1），需小改后重发。"
+  },
+  {
+    "title": "sched/isolation: Forbid the boot CPU from being isolated",
+    "id": "sched-20261121-007",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "topology",
+      "nohz"
+    ],
+    "authors": [
+      "Waiman Long"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-007-sched-isolation-forbid-the-boot-cpu-from-being-isolated.html",
+    "tldr": "Waiman Long 发 PATCH-next 2/3，是 [BUG] select_fallback_rq 启动崩溃（isolcpus=domain 隔离 boot CPU）的正式修复：启动参数里若把 boot CPU 放进 isolcpus，就把它从隔离范围清除并打印警告，同时更新 kernel-parameters.txt。该改动属用户可见行为变更，需维护者确认取舍。"
+  },
+  {
+    "title": "[BUG] sched: BUG() in select_fallback_rq() at boot with isolcpus=domain on the boot CPU and CONFIG_CPUSETS=n",
+    "id": "sched-20261121-008",
+    "date": "2026-11-21",
+    "type": "bug",
+    "status": "under_review",
+    "severity": "high",
+    "tags": [
+      "cgroup",
+      "topology",
+      "crash"
+    ],
+    "authors": [
+      "Waiman Long"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-008-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261118-004：Waiman Long 报告 `isolcpus=domain` + boot CPU + `CONFIG_CPUSETS=n` 下 `select_fallback_rq()` 触发 BUG()；Frederic Weisbecker 与 Waiman 讨论 boot CPU 能否被隔离。 - sched-20261119-012：Mathieu Desnoyers 定性为回归（`bf5b0c27fad2`），支持 Waiman「拒绝把 boot CPU 域隔离」的修法，愿提供测试资源。 - sched-202611"
+  },
+  {
+    "title": "sched/uclamp: Fix race condition leading to imbalanced uclamp_rq",
+    "id": "sched-20261121-009",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "uclamp",
+      "rt",
+      "cgroup"
+    ],
+    "authors": [
+      "Qais Yousef"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261025-001：Qais Yousef 修 uclamp static key 非原子翻转导致的 rq 计数失衡竞态。 - sched-20261026-002（v2）：修链接错误、idle 检测改 WARN_ON。 - sched-20261029-001（v4）：拆 1/2（竞态）+2/2（wrapper）；Christian 指出 CFS 带宽节流不调 `uclamp_rq_dec()`。 - sched-20261030-004：上升为 CFS/RT 带宽节流 partial-dequeue 绕过 core {en,de}qu"
+  },
+  {
+    "title": "sched/fair: Cut per-group work from sched domain rebuilds",
+    "id": "sched-20261121-010",
+    "date": "2026-11-21",
+    "type": "feature",
+    "status": "under_review",
+    "severity": "none",
+    "tags": [
+      "cfs",
+      "topology",
+      "perf"
+    ],
+    "authors": [
+      "Qiliang Yuan"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-010-sched-fair-cut-per-group-work-from-sched-domain-rebuilds.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261112-003：Qiliang Yuan 的 v1 针对「sched domain 重建时 `rq_offline_fair()`/`rq_online_fair()` 对每个 CPU 遍历全部 task group」的 O(nr_cpus × nr_task_groups) 开销做优化；Dietmar Eggemann 在 f60a631ab9ed 评审时就点出 offline 侧问题；痛点场景是 AI agent harness 主机上千个 cpu cgroup、VM 运行中 hot-add vCPU。 - sched-20261"
+  },
+  {
+    "title": "sched_ext: Prefer ___v2 kfunc names in compat.bpf.h",
+    "id": "sched-20261121-011",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Ihor Solodrai"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-011-sched-ext-prefer-v2-kfunc-names-in-compat-bpf-h.html",
+    "tldr": "Ihor Solodrai 的 bpf-next v2 系列之 2/6：配合 libbpf「按原型选 kfunc 变体」的新行为，让 `compat.bpf.h` 优先解析 `___v2` kfunc 名，避免 wrapper 悄悄回退到 `___v1`（如 `scx_bpf_dsq_move_to_local()` 丢掉 `enq_flags`）。bpf-ci 机器人当日复审指出一个遗漏：`__COMPAT_scx_bpf_reenqueue_local_from_anywhere()` 仍只查 `___v2___compat` 名，新版 libbpf 下可能在 v6.19+ 内核上错误返回"
+  },
+  {
+    "title": "tools/sched_ext: Add \"arena\" BTF type tag to the __arena qualifier",
+    "id": "sched-20261121-012",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "merged_tip",
+    "severity": "low",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Shaojie Sun"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-012-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261119-006：Shaojie Sun 发 1 行修复给 `tools/sched_ext` 的 `__arena` 补 `btf_type_tag(\"arena\")`，与 libarena 对齐；Tao Cui 给 Tested-by 但指出需 rebase + scx 仓库侧同步。 - sched-20261120-008：v2 发出——按 Andrea Righi 意见把 tag 也补到 `__arena` 的 fallback 定义上；Andrea 已给 Reviewed-by。 - sched-20261121-012（今天"
+  },
+  {
+    "title": "sched/numa: restrict NUMA migration targets to common memory",
+    "id": "sched-20261121-013",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "low",
+    "tags": [
+      "numa_balancing"
+    ],
+    "authors": [
+      "Gregory Price"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-013-sched-numa-restrict-numa-migration-targets-to-common-memory.html",
+    "tldr": "Gregory Price（Meta）的「private nodes v6」60 补丁大系列之 10/60：把 `should_numa_migrate_memory()` 迁移目标判定从 `N_MEMORY` 收紧为 `N_MEMORY_COMMON`，避免把 folio 迁到「有 CPU 但 `__GFP_THISNODE` zonelist 为空」的节点。单行 sched/numa 改动，当日仅该补丁命中调度关键词，未见本系列其它补丁与讨论。"
+  },
+  {
+    "title": "rust: bindgen: Preserve sched_statistics alignment",
+    "id": "sched-20261121-014",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_debug"
+    ],
+    "authors": [
+      "Peder Bergan"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-014-rust-bindgen-preserve-sched-statistics-alignment.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261120-012：Peder Bergan 发 v1 修 Rust bindgen 布局 bug——`CONFIG_SCHEDSTATS=n` 时空结构体 `struct sched_statistics` 被 bindgen 丢掉对齐，导致 `task_struct.mm` 等字段错位（arm64 上报错位到 1168 vs C 的 1208），Rust Binder 经 `CurrentTask::mm()` 读错指针、`mmap()` 返 -EINVAL；Miguel Ojeda review 并建议改 Cc stable 写法与"
+  },
+  {
+    "title": "sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue",
+    "id": "sched-20261121-015",
+    "date": "2026-11-21",
+    "type": "fix",
+    "status": "under_review",
+    "severity": "medium",
+    "tags": [
+      "sched_ext"
+    ],
+    "authors": [
+      "Tao Cui"
+    ],
+    "url": "/lkm/2026/11/21/sched-20261121-015-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html",
+    "tldr": "本文为增量更新，完整脉络见下。  - sched-20261112-001：Tao Cui 两补丁修复 sched_ext 在 core.c 里的进入路径契约；patch 1 即本系列——在 fork 路径 `wake_up_new_task()` 给初始入队补 `ENQUEUE_RQ_SELECTED`，与唤醒路径对齐（仅 sched_ext 消费该标志）。当时 Peter 只对 patch 2 表态 NAK，patch 1 未获单独确认。 - sched-20261115-002：Tejun Heo 对 patch 1 给 Acked-by，并问 Peter 该补丁走 sched/core"
+  },
+  {
     "title": "LPC 2020 议题总览（调度 / 内存 / 性能 / Android / 体系结构）",
     "id": "lpc-2020-index",
     "date": "2026-09-22",

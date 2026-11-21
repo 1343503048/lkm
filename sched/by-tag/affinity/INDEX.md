@@ -1,7 +1,9 @@
 # tag: affinity
 
-共 83 篇
+共 85 篇
 
+- [sched-20261121-006](../../2026/11/sched-20261121-006-tick-sched-make-tick-nohz-full-mask-and-hk-type-kernel-noise.md) `fix/medium/under_review` — Waiman Long 的 3 补丁系列（PATCH-next）之一：修 `tick_nohz_full_mask` 与 `HK_TYPE_KERNEL_NOISE` 两个 cpumask 长期不一致的问题，属于其修复「boot CPU 被域隔离导致启动 BUG()」的前置一致化。当日 kernel test robot 报出构建警告：`EXPORT_SYMBOL used for init sy
+- [sched-20261121-002](../../2026/11/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.md) `fix/medium/under_review` — Sebastian Andrzej Siewior 发 v3 修 syzbot 报的竞态：IRQ 亲和性变更与 CPU hotplug 并发时，`affine_move_task()` 里 `__migrate_task()` 因目标 CPU 下线而失败，任务停在当前 rq 但 `cpus_mask` 仍指向旧 mask，后续 `migrate_enable()` 因 `migration_pen
 - [sched-20261120-019](../../2026/11/sched-20261120-019-sched-restore-preferred-cpus-when-hotplug-removes-the-last-o.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-015](../../2026/11/sched-20261120-015-sched-mmcid-fix-per-cpu-cid-ownership-leak-in-sched-mm-cid-e.md) `fix/low/under_review` — Dominik Maier（Google）回复 Thomas Gleixner 对其「修复 `sched_mm_cid_exit()` per-CPU CID ownership leak」补丁的评审：感谢 tglx 指向其更宏观的 MM CID 重做方案，并表示将改用「execve() 时显式重初始化 MM CID 状态」而非依赖 last-user 退出路径；同时为原提交的两处流程失误致歉。原
 - [sched-20261119-012](../../2026/11/sched-20261119-012-bug-sched-bug-in-select-fallback-rq-at-boot-with-isolcpus-do.md) `bug/high/under_review` — 本文为增量更新，完整脉络见下。

@@ -1,7 +1,8 @@
 # tag: deadline
 
-共 87 篇
+共 88 篇
 
+- [sched-20261121-001](../../2026/11/sched-20261121-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-018](../../2026/11/sched-20261120-018-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-002](../../2026/11/sched-20261120-002-sched-deadline-first-bandwidth-accounting-fixes-and-selftest.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-001](../../2026/11/sched-20261120-001-sched-deadline-bandwidth-accounting-fixes-and-selftests.md) `fix/critical/under_review` — 本文为增量更新，完整脉络见下。

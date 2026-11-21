@@ -2,9 +2,11 @@
 layout: default
 tag: "rt"
 title: "标签: rt"
-article_count: 66
+article_count: 68
 ---
 
+- [sched-20261121-004](/lkm/2026/11/21/sched-20261121-004-sched-rt-push-a-queued-task-when-its-priority-is-boosted.html) `fix/medium/under_review` — sched/rt: push a queued task when its priority is boosted
+- [sched-20261121-009](/lkm/2026/11/21/sched-20261121-009-sched-uclamp-fix-race-condition-leading-to-imbalanced-uclamp.html) `fix/medium/under_review` — sched/uclamp: Fix race condition leading to imbalanced uclamp_rq
 - [sched-20261120-016](/lkm/2026/11/20/sched-20261120-016-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261119-002](/lkm/2026/11/19/sched-20261119-002-sched-rt-do-not-account-migrate-disabled-tasks-as-pushable.html) `fix/medium/under_review` — sched/rt: Do not account migrate-disabled tasks as pushable
 - [sched-20261119-005](/lkm/2026/11/19/sched-20261119-005-sched-limit-sysctl-sched-rt-period-runtime-us-to-rt-group-sc.html) `fix/low/under_review` — sched: Limit sysctl sched_rt_{period|runtime}_us to RT_GROUP_SCHED

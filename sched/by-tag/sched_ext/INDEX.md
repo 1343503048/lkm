@@ -1,7 +1,10 @@
 # tag: sched_ext
 
-共 348 篇
+共 351 篇
 
+- [sched-20261121-015](../../2026/11/sched-20261121-015-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.md) `fix/medium/under_review` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-012](../../2026/11/sched-20261121-012-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.md) `fix/low/merged_tip` — 本文为增量更新，完整脉络见下。
+- [sched-20261121-011](../../2026/11/sched-20261121-011-sched-ext-prefer-v2-kfunc-names-in-compat-bpf-h.md) `fix/low/under_review` — Ihor Solodrai 的 bpf-next v2 系列之 2/6：配合 libbpf「按原型选 kfunc 变体」的新行为，让 `compat.bpf.h` 优先解析 `___v2` kfunc 名，避免 wrapper 悄悄回退到 `___v1`（如 `scx_bpf_dsq_move_to_local()` 丢掉 `enq_flags`）。bpf-ci 机器人当日复审指出一个遗漏：`__
 - [sched-20261120-008](../../2026/11/sched-20261120-008-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.md) `fix/low/under_review` — 本文为增量更新，完整脉络见下。
 - [sched-20261120-007](../../2026/11/sched-20261120-007-sched-ext-reject-oversized-dispatch-max-batch.md) `fix/low/under_review` — Sechang Lim 发单补丁：`bpf_scx_init_member()` 接受大到 INT_MAX 的 `dispatch_max_batch`，其决定 per-CPU dispatch buffer 大小，但 `__alloc_percpu()` 拒绝超过 `PCPU_MIN_UNIT_SIZE` 的分配——带 `BPF_F_LINK` 时超大值过 struct_ops 校验、link 
 - [sched-20261120-006](../../2026/11/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.md) `fix/medium/under_review` — Hang Zhengyang 发 2 补丁系列（sched_ext/for-7.5）：sched_ext 默认 idle CPU 选择会把 sync wakee 放到 waker 所在 CPU，即使 waker 是仍在运行的 RT/DL 任务——wakee 在其它 CPU 都空闲时被迫等待（实测最长 1.5s）。patch 1 对更高 class 的 waker 停止该捷径，patch 2 加 s

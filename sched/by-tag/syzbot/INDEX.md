@@ -1,7 +1,8 @@
 # tag: syzbot
 
-共 4 篇
+共 5 篇
 
+- [sched-20261121-002](../../2026/11/sched-20261121-002-sched-reset-cpumask-if-migrate-task-failed-for-migration-cpu.md) `fix/medium/under_review` — Sebastian Andrzej Siewior 发 v3 修 syzbot 报的竞态：IRQ 亲和性变更与 CPU hotplug 并发时，`affine_move_task()` 里 `__migrate_task()` 因目标 CPU 下线而失败，任务停在当前 rq 但 `cpus_mask` 仍指向旧 mask，后续 `migrate_enable()` 因 `migration_pen
 - [sched-20261006-007](../../2026/10/sched-20261006-007-sched-core-do-not-touch-smt-siblings-that-have-not-joined-th.md) `bug/medium/under_review` — Seiji Nishikawa（Red Hat）修复 core scheduling 与 CPU 上线的竞态窗口：新 CPU 上线时，`ap_starting()` 先 `set_cpu_sibling_map()`（把它加进兄弟的 `cpu_smt_mask()`）后 `notify_cpu_starting()`（触发 `sched_core_cpu_starting()` 把 `rq->co
 - [sched-20260919-014](../../2026/09/sched-20260919-014-warning-locking-bug-in-finish-task-switch-3.md) `bug/low/under_review` — syzbot 针对 `kernel/sched/core.c` 的 `finish_task_switch()` 锁上下文告警（lockdep `DEBUG_LOCKS_WARN_ON`）报告：有人提出的补丁经 syzbot 复测后告警仍触发。告警出现在 `finish_lock_switch` 获取 rq 锁时，触发路径经 net socket（tcp diag dump 持 socket 锁后
 - [sched-20260907-002](../../2026/09/sched-20260907-002-sched-irq-cpu-hotplug-race-vs-set-cpus-allowed-ptr.md) `bug/medium/rfc` — Sebastian Andrzej Siewior（linutronix）09-07 16:58 发出 RFC：syzbot 报出的一个 CPU 热插拔与 `set_cpus_allowed_ptr()` 的竞态——IRQ 线程在 `irq_thread_check_affinity()` 里请求迁移到一个「当时在线、但可能马上掉线」的 CPU，`__migrate_task()` 被 `is_c

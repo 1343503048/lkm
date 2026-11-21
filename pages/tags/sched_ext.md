@@ -2,9 +2,12 @@
 layout: default
 tag: "sched_ext"
 title: "标签: sched_ext"
-article_count: 348
+article_count: 351
 ---
 
+- [sched-20261121-011](/lkm/2026/11/21/sched-20261121-011-sched-ext-prefer-v2-kfunc-names-in-compat-bpf-h.html) `fix/low/under_review` — sched_ext: Prefer ___v2 kfunc names in compat.bpf.h
+- [sched-20261121-012](/lkm/2026/11/21/sched-20261121-012-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html) `fix/low/merged_tip` — tools/sched_ext: Add "arena" BTF type tag to the __arena qualifier
+- [sched-20261121-015](/lkm/2026/11/21/sched-20261121-015-sched-core-pass-enqueue-rq-selected-on-initial-enqueue.html) `fix/medium/under_review` — sched/core: Pass ENQUEUE_RQ_SELECTED on initial enqueue
 - [sched-20261120-006](/lkm/2026/11/20/sched-20261120-006-sched-ext-idle-don-t-stack-a-sync-wakee-behind-a-higher-clas.html) `fix/medium/under_review` — sched_ext: idle: Don't stack a sync wakee behind a higher-class task
 - [sched-20261120-007](/lkm/2026/11/20/sched-20261120-007-sched-ext-reject-oversized-dispatch-max-batch.html) `fix/low/under_review` — sched_ext: reject oversized dispatch_max_batch
 - [sched-20261120-008](/lkm/2026/11/20/sched-20261120-008-tools-sched-ext-add-arena-btf-type-tag-to-the-arena-qualifie.html) `fix/low/under_review` — tools/sched_ext: Add "arena" BTF type tag to the __arena qualifier
